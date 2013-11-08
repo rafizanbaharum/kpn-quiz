@@ -1,9 +1,12 @@
 package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.QaActorType;
+import my.gov.kpn.quiz.core.model.QaInstitution;
 import my.gov.kpn.quiz.core.model.QaInstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -14,16 +17,19 @@ import javax.persistence.Table;
 @Entity(name = "QaInstructor")
 public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
 
+    @OneToOne(targetEntity = QaInstitutionImpl.class)
+    @JoinColumn(name = "INSTITUTION_ID")
+    private QaInstitution institution;
+
     public QaInstructorImpl() {
         setActorType(QaActorType.INSTRUCTOR);
     }
 
-    public String getStaffNo() {
-        return getNricNo();
+    public QaInstitution getInstitution() {
+        return institution;
     }
 
-    public void setStaffNo(String staffNo) {
-        setNricNo(staffNo);
+    public void setInstitution(QaInstitution institution) {
+        this.institution = institution;
     }
-
 }

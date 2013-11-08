@@ -6,8 +6,11 @@ package my.gov.kpn.quiz.core.model;
  */
 public interface QaInstructor extends QaActor {
 
-    String getStaffNo();
+    /**
+     * @return
+     */
+    QaInstitution getInstitution();
 
-    void setStaffNo(String staffNo);
+    void setInstitution(QaInstitution institution);
 
 }

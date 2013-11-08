@@ -9,9 +9,23 @@ public interface QaQuestion {
     /**
      * @return
      */
-    String getTitle();
+    String getStatement();
 
-    void setTitle(String title);
+    void setStatement(String statement);
+
+    /**
+     * @return
+     */
+    Integer getAnswerIndex();
+
+    void setAnswerIndex(Integer answerIndex);
+
+    /**
+     * @return
+     */
+    String getAnswerKey();
+
+    void setAnswerKey(String answerKey);
 
     /**
      * @return
@@ -19,6 +33,13 @@ public interface QaQuestion {
     Double getWeight();
 
     void setWeight(Double weight);
+
+    /**
+     * @return
+     */
+    QaDifficulty getDifficulty();
+
+    void setDifficulty(QaDifficulty difficulty);
 
     /**
      * @return

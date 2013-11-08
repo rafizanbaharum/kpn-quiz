@@ -11,6 +11,13 @@ public interface QaCompetition {
     /**
      * @return
      */
+    Integer getYear();
+
+    void setYear(Integer year);
+
+    /**
+     * @return
+     */
     boolean isLocked();
 
     void setLocked(boolean locked);

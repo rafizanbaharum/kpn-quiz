@@ -25,6 +25,13 @@ public interface QaRound {
     /**
      * @return
      */
+    QaCompetition getCompetition();
+
+    void setCompetition(QaCompetition competition);
+
+    /**
+     * @return
+     */
     List<QaParticipant> getParticipants();
 
     void setParticipants(List<QaParticipant> participants);

@@ -21,6 +21,9 @@ public class QaCompetitionImpl implements QaCompetition {
     @SequenceGenerator(name = "SEQ_QA_CMPN", sequenceName = "SEQ_QA_CMPN", allocationSize = 1)
     private Long id;
 
+    @Column(name = "YEAR")
+    private Integer year;
+
     @Column(name = "LOCKED")
     private boolean locked;
 
@@ -36,6 +39,14 @@ public class QaCompetitionImpl implements QaCompetition {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public boolean isLocked() {

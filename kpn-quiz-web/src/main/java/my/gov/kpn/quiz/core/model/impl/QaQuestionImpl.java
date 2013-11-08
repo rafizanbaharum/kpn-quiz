@@ -15,8 +15,8 @@ public abstract class QaQuestionImpl implements QaQuestion {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_QA_ACTR")
-    @SequenceGenerator(name = "SEQ_QA_ACTR", sequenceName = "SEQ_QA_ACTR", allocationSize = 1)
+    @GeneratedValue(generator = "SEQ_QA_QSTN")
+    @SequenceGenerator(name = "SEQ_QA_QSTN", sequenceName = "SEQ_QA_QSTN", allocationSize = 1)
     private Long id;
 
     @Column(name = "TITLE")
@@ -24,6 +24,15 @@ public abstract class QaQuestionImpl implements QaQuestion {
 
     @Column(name = "WEIGHT")
     private Double weight;
+
+    @Column(name = "ANSWER_INDEX")
+    private Integer answerIndex;
+
+    @Column(name = "ANSWER_KEY")
+    private String answerKey;
+
+    @Column(name = "DIFFICULTY")
+    private QaDifficulty difficulty;
 
     @Column(name = "QUESTION_TYPE")
     private QaQuestionType questionType;
@@ -43,12 +52,20 @@ public abstract class QaQuestionImpl implements QaQuestion {
         this.id = id;
     }
 
-    public String getTitle() {
+    public String getStatement() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setStatement(String title) {
         this.title = title;
+    }
+
+    public QaDifficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(QaDifficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public Double getWeight() {
@@ -57,6 +74,22 @@ public abstract class QaQuestionImpl implements QaQuestion {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public Integer getAnswerIndex() {
+        return answerIndex;
+    }
+
+    public void setAnswerIndex(Integer answerIndex) {
+        this.answerIndex = answerIndex;
+    }
+
+    public String getAnswerKey() {
+        return answerKey;
+    }
+
+    public void setAnswerKey(String answerKey) {
+        this.answerKey = answerKey;
     }
 
     public QaQuestionType getQuestionType() {
