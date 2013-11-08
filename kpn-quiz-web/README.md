@@ -13,3 +13,15 @@ Round Selection Process
 * select top X by filter
 * start rejecting
 * can restart processing by resetting selection
+
+Instructor Registration
+------------------------
+* Pick institution
+* Register
+* Login
+* Add member
+* List members
+* Reset member password
+
+
+http://ms.wikipedia.org/wiki/Senarai_sekolah_menengah_di_Malaysia
