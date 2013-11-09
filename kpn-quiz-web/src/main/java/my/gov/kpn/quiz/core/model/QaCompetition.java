@@ -6,7 +6,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/7/13
  */
-public interface QaCompetition {
+public interface QaCompetition extends QaMetaObject{
 
     /**
      * @return

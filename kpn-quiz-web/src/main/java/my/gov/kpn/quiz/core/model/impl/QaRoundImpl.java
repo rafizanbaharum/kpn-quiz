@@ -1,9 +1,6 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaCompetition;
-import my.gov.kpn.quiz.core.model.QaMetadata;
-import my.gov.kpn.quiz.core.model.QaParticipant;
-import my.gov.kpn.quiz.core.model.QaRound;
+import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -32,6 +29,9 @@ public class QaRoundImpl implements QaRound, Serializable {
     @OneToOne(targetEntity = QaCompetitionImpl.class)
     @JoinColumn(name = "COMPETITION_ID")
     private QaCompetition competition;
+
+    @OneToMany(targetEntity = QaQuizImpl.class, mappedBy = "round")
+    private List<QaQuiz> quizzes;
 
     @OneToMany(targetEntity = QaParticipantImpl.class, mappedBy = "round")
     private List<QaParticipant> participants;
@@ -69,6 +69,14 @@ public class QaRoundImpl implements QaRound, Serializable {
 
     public void setCompetition(QaCompetition competition) {
         this.competition = competition;
+    }
+
+    public List<QaQuiz> getQuizzes() {
+        return quizzes;
+    }
+
+    public void setQuizzes(List<QaQuiz> quizzes) {
+        this.quizzes = quizzes;
     }
 
     public List<QaParticipant> getParticipants() {

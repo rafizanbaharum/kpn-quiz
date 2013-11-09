@@ -67,8 +67,8 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         metadata.setState(QaMetaState.ACTIVE);
         metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         metadata.setCreator(user.getId());
-        quiz.setMetadata(metadata);
-        session.save(quiz);
+        question.setMetadata(metadata);
+        session.save(question);
     }
 
     @Override
@@ -84,8 +84,8 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         metadata.setState(QaMetaState.INACTIVE);
         metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
         metadata.setDeleter(user.getId());
-        quiz.setMetadata(metadata);
-        session.update(quiz);
+        question.setMetadata(metadata);
+        session.update(question);
     }
 }
 

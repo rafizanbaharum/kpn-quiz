@@ -22,4 +22,22 @@ insert into QA_GROP_MMBR (ID, GROUP_ID, MEMBER_ID, M_ST, C_ID, C_TS) values (4, 
 
 
 
+-- INSTRUCTOR & STUDENT
+insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, LOCKED, M_ST, C_ID, C_TS) values (10, 'instructor1', 0, true, 1, 0, CURRENT_TIMESTAMP );
+insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
+values (10, 'Cikgu Ahmad', 'abc123', 'rafizan.baharum@gmail.com', null);
+
+insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, LOCKED, M_ST, C_ID, C_TS) values (11, 'student1', 0, true, 1, 0, CURRENT_TIMESTAMP );
+insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
+values (11, 'Ahmad', 'abc123', 'rafizan.baharum@gmail.com', null);
+
+insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, LOCKED, M_ST, C_ID, C_TS) values (12, 'student2', 0, true, 1, 0, CURRENT_TIMESTAMP );
+insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
+values (12, 'Ah Wong', 'abc123', 'rafizan.baharum@gmail.com', null);
+
+insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, LOCKED, M_ST, C_ID, C_TS) values (13, 'student3', 0, true, 1, 0, CURRENT_TIMESTAMP );
+insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
+values (13, 'Muthu', 'abc123', 'rafizan.baharum@gmail.com', null);
+
+
 

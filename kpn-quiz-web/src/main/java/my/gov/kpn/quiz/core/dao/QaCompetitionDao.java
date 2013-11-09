@@ -14,6 +14,8 @@ public interface QaCompetitionDao {
 
     QaCompetition findById(Long id);
 
+    QaCompetition findByYear(Integer year);
+
     List<QaCompetition> find(Integer offset, Integer limit);
 
     Integer count();
@@ -24,7 +26,7 @@ public interface QaCompetitionDao {
 
     void deactivate(QaCompetition competition, QaUser user);
 
-    void addQuiz(QaCompetition competition, QaRound round, QaUser user);
+    void addRound(QaCompetition competition, QaRound round, QaUser user);
 
-    void removeQuiz(QaCompetition competition, QaRound round, QaUser user);
+    void removeRound(QaCompetition competition, QaRound round, QaUser user);
 }

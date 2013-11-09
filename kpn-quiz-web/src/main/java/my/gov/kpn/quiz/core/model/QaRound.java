@@ -30,6 +30,14 @@ public interface QaRound extends QaMetaObject{
     void setCompetition(QaCompetition competition);
 
     /**
+     *
+     * @return
+     */
+    List<QaQuiz> getQuizzes();
+
+    void setQuizzes(List<QaQuiz> quizzes);
+
+    /**
      * @return
      */
     List<QaParticipant> getParticipants();

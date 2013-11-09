@@ -33,7 +33,7 @@ public class QaInstitutionDaoImpl extends DaoSupport<Long, QaInstitution, QaInst
         Query query = session.createQuery("select a from QaInstitution a where " +
                 "a.code = :code " +
                 "and a.metadata.state = :state ");
-        query.setString("identityNo", code);
+        query.setString("code", code);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return (QaInstitution) query.uniqueResult();
     }

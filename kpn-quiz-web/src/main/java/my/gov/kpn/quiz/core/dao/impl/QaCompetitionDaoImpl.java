@@ -29,6 +29,17 @@ public class QaCompetitionDaoImpl extends DaoSupport<Long, QaCompetition, QaComp
     }
 
     @Override
+        public QaCompetition findByYear(Integer year) {
+            Session session = sessionFactory.getCurrentSession();
+            Query query = session.createQuery("select a from QaCompetition a where " +
+                    "a.year = :year " +
+                    "and a.metadata.state = :state ");
+            query.setInteger("year", year);
+            query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+            return (QaCompetition) query.uniqueResult();
+        }
+
+    @Override
     public List<QaCompetition> find(Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaCompetition a where " +
@@ -55,7 +66,7 @@ public class QaCompetitionDaoImpl extends DaoSupport<Long, QaCompetition, QaComp
 
 
     @Override
-    public void addQuiz(QaCompetition competition, QaRound round, QaUser user) {
+    public void addRound(QaCompetition competition, QaRound round, QaUser user) {
         Validate.notNull(competition, "Competition should not be null");
         Validate.notNull(round, "Round should not be null");
 
@@ -72,7 +83,7 @@ public class QaCompetitionDaoImpl extends DaoSupport<Long, QaCompetition, QaComp
     }
 
     @Override
-    public void removeQuiz(QaCompetition competition, QaRound round, QaUser user) {
+    public void removeRound(QaCompetition competition, QaRound round, QaUser user) {
         Validate.notNull(competition, "Competition should not be null");
         Validate.notNull(round, "Round should not be null");
 
