@@ -50,22 +50,20 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
     private QaQuestionDao questionDao;
 
     private QaUser root;
+    private QaInstitution institution;
 
 
     @Before
     public void setUp() {
 
         root = userDao.findByUsername("root");
+        institution = institutionDao.findByCode("0");
     }
 
 
     @Test
     @Rollback(value = false)
     public void test() {
-
-        QaInstitution institution = new QaInstitutionImpl();
-        institution.setCode("ABC");
-        institution.setName("Sekolah Kebangsaan Jalan Gurney");
 
         QaUser admin = new QaUserImpl();
         QaUser instructor = new QaUserImpl();
@@ -124,7 +122,5 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question4.setStatement("1. Describe the security and foreign policies of the Federation of Malaya under Prime Minister Tunku Abdul Rahman");
         question3.setAnswerIndex(1);
         question3.setAnswerKey("TRUE");
-
-
     }
 }
