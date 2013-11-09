@@ -351,8 +351,11 @@
             <artifactId>gwt-servlet</artifactId>
             <version>${gwt.version}</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>14.0.1</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>kpn-quiz</finalName>
