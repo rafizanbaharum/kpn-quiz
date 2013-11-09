@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.web.filter;
 
+import my.gov.kpn.quiz.biz.integration.springsecurity.QaUserDetails;
 import org.apache.log4j.MDC;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
