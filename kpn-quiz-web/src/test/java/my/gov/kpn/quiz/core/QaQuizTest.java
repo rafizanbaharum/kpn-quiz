@@ -1,7 +1,19 @@
 package my.gov.kpn.quiz.core;
 
+import my.gov.kpn.quiz.config.Config;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.*;
+import org.hibernate.SessionFactory;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 
@@ -9,9 +21,22 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 11/8/13
  */
-public class QaQuizTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {Config.class})
+public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
+
+    private Logger log = LoggerFactory.getLogger(QaQuizTest.class);
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Before
+    public void setUp() {
+    }
 
 
+    @Test
+    @Rollback(value = false)
     public void test() {
 
         QaInstitution institution = new QaInstitutionImpl();
@@ -75,7 +100,6 @@ public class QaQuizTest {
         question4.setStatement("1. Describe the security and foreign policies of the Federation of Malaya under Prime Minister Tunku Abdul Rahman");
         question3.setAnswerIndex(1);
         question3.setAnswerKey("TRUE");
-
 
 
     }
