@@ -6,7 +6,7 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 11/7/13
  */
-public interface QaQuiz {
+public interface QaQuiz extends QaMetaObject {
 
     /**
      * @return

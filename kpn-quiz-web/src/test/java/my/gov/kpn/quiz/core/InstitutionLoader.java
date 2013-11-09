@@ -2,7 +2,11 @@ package my.gov.kpn.quiz.core;
 
 import com.google.common.io.LineReader;
 import my.gov.kpn.quiz.config.Config;
+import my.gov.kpn.quiz.core.dao.QaInstitutionDao;
+import my.gov.kpn.quiz.core.dao.QaUserDao;
+import my.gov.kpn.quiz.core.model.QaInstitution;
 import my.gov.kpn.quiz.core.model.QaUser;
+import my.gov.kpn.quiz.core.model.impl.QaInstitutionImpl;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,12 +29,17 @@ import java.io.IOException;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Config.class})
-public class InstitutionImporter {
+public class InstitutionLoader {
     private Logger log = LoggerFactory.getLogger(QaQuizTest.class);
 
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private QaUserDao userDao;
+
+    @Autowired
+    private QaInstitutionDao institutionDao;
 
     private QaUser root;
 
@@ -43,7 +52,6 @@ public class InstitutionImporter {
     @Test
     @Rollback(value = false)
     public void test() {
-
         try {
             File file = new File("C:/Projects/GitHub/kpn-quiz/kpn-quiz-web/src/test/resources/data/institution.txt");
             FileReader reader = new FileReader(file);
@@ -51,8 +59,11 @@ public class InstitutionImporter {
 
             String line = null;
             int index = 0;
-            while ((line = lreader.readLine()) != null){
-
+            while ((line = lreader.readLine()) != null) {
+                QaInstitution institution = new QaInstitutionImpl();
+                institution.setCode(Integer.toString(index));
+                institution.setName(Integer.toString(index));
+                institutionDao.save(institution, root);
             }
 
         } catch (FileNotFoundException e) {

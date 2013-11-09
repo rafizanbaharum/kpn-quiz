@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaRound;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 @Table(name = "QA_ROND")
 @Entity(name = "QaRound")
-public class QaRoundImpl implements QaRound {
+public class QaRoundImpl implements QaRound, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)
