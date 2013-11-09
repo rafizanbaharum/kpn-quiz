@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,6 +30,7 @@ import java.io.IOException;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Config.class})
+@Transactional
 public class InstitutionLoader {
     private Logger log = LoggerFactory.getLogger(QaQuizTest.class);
 
@@ -52,6 +54,7 @@ public class InstitutionLoader {
     @Test
     @Rollback(value = false)
     public void test() {
+
         try {
             File file = new File("C:/Projects/GitHub/kpn-quiz/kpn-quiz-web/src/test/resources/data/institution.txt");
             FileReader reader = new FileReader(file);
@@ -62,8 +65,9 @@ public class InstitutionLoader {
             while ((line = lreader.readLine()) != null) {
                 QaInstitution institution = new QaInstitutionImpl();
                 institution.setCode(Integer.toString(index));
-                institution.setName(Integer.toString(index));
+                institution.setName(line);
                 institutionDao.save(institution, root);
+                index++;
             }
 
         } catch (FileNotFoundException e) {

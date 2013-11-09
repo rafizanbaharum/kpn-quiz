@@ -27,7 +27,7 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
     private QaRound round;
 
     @OneToOne(targetEntity = QaUserImpl.class)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "USER_ID")
     private QaUser user;
 
     @Embedded

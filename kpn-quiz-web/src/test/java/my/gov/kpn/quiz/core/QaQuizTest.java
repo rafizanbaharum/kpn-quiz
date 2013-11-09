@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core;
 
 import my.gov.kpn.quiz.config.Config;
+import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.*;
 import org.hibernate.SessionFactory;
@@ -30,8 +31,31 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private QaUserDao userDao;
+
+    @Autowired
+    private QaInstitutionDao institutionDao;
+
+    @Autowired
+    private QaCompetitionDao competitionDao;
+
+    @Autowired
+    private QaRoundDao roundDao;
+
+    @Autowired
+    private QaQuizDao quizDao;
+
+    @Autowired
+    private QaQuestionDao questionDao;
+
+    private QaUser root;
+
+
     @Before
     public void setUp() {
+
+        root = userDao.findByUsername("root");
     }
 
 
