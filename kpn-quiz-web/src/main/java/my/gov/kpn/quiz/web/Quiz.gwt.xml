@@ -14,7 +14,6 @@
 
     <!-- For development a default of `DEBUG` is recommended -->
     <inherits name='com.google.gwt.logging.Logging'/>
-    <servlet path="/sds" class="my.gov.kpn.quiz.web.server.controller.loader.sdsImpl"/>
     <set-property name='gwt.logging.logLevel' value='ALL'/>
     <set-property name='gwt.logging.popupHandler' value='DISABLED'/>
     <set-property name='gwt.logging.consoleHandler' value='ENABLED'/>
