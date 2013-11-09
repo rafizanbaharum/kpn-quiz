@@ -6,8 +6,18 @@ package my.gov.kpn.quiz.core.model;
  */
 public interface QaPrincipalRole extends QaMetaObject {
 
+    /**
+     * @return
+     */
     QaRoleType getRoleType();
 
+    void setRoleType(QaRoleType roleType);
+
+    /**
+     * @return
+     */
     QaPrincipal getPrincipal();
+
+    void setPrincipal(QaPrincipal principal);
 
 }

@@ -8,7 +8,7 @@ import my.gov.kpn.quiz.core.model.QaUser;
  * @author rafizan.baharum
  * @since 11/9/13
  */
-public interface QaRoleDao {
+public interface QaPrincipalRoleDao {
 
     void grant(QaPrincipal principal, QaRoleType roleType, QaUser user);
 
@@ -23,8 +23,5 @@ public interface QaRoleDao {
     void overwrite(QaPrincipal principal, QaRoleType roleType, QaUser user);
 
     void overwrite(QaPrincipal principal, QaRoleType[] roleTypes, QaUser user);
-
-    void update(QaPrincipal principal, QaRoleType[] roleTypes, QaUser user);
-
 
 }
