@@ -5,7 +5,6 @@ import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -13,7 +12,7 @@ import java.io.Serializable;
  */
 @Table(name = "QA_MCQN")
 @Entity(name = "QaMultipleChoiceQuestion")
-public class QaMultipleChoiceQuestionImpl extends QaQuestionImpl implements QaMultipleChoiceQuestion, Serializable {
+public class QaMultipleChoiceQuestionImpl extends QaQuestionImpl implements QaMultipleChoiceQuestion {
 
     @Column(name = "CHOICE_1")
     private String choice1;

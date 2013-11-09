@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.core.model.impl;
 import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -10,7 +11,7 @@ import javax.persistence.*;
  */
 @Table(name = "QA_TEAM_MMBR")
 @Entity(name = "QaTeamMember")
-public class QaTeamMemberImpl implements QaTeamMember {
+public class QaTeamMemberImpl implements QaTeamMember, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

@@ -4,13 +4,12 @@ import my.gov.kpn.quiz.core.model.QaSubjectiveQuestion;
 
 import javax.persistence.Column;
 import javax.persistence.Lob;
-import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
  * @since 11/7/13
  */
-public class QaSubjectiveQuestionImpl extends QaQuestionImpl implements QaSubjectiveQuestion, Serializable {
+public class QaSubjectiveQuestionImpl extends QaQuestionImpl implements QaSubjectiveQuestion {
 
 
     @Lob

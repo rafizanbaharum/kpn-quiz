@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.model.QaActorType;
 import my.gov.kpn.quiz.core.model.QaMetadata;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Table(name = "QA_ACTR")
 @Entity(name = "QaActor")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class QaActorImpl implements QaActor {
+public abstract class QaActorImpl implements QaActor, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

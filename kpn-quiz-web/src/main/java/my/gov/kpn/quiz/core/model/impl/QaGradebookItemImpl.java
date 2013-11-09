@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.model.QaGradebookItem;
 import my.gov.kpn.quiz.core.model.QaQuestion;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -12,7 +13,7 @@ import javax.persistence.*;
  */
 @Table(name = "QA_GRBI")
 @Entity(name = "QaGradebookItem")
-public class QaGradebookItemImpl implements QaGradebookItem {
+public class QaGradebookItemImpl implements QaGradebookItem, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

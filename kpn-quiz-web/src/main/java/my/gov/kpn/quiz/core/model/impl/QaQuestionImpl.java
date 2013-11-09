@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.core.model.impl;
 import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "QA_QSTN")
 @Entity(name = "QaQuestion")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class QaQuestionImpl implements QaQuestion {
+public abstract class QaQuestionImpl implements QaQuestion, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

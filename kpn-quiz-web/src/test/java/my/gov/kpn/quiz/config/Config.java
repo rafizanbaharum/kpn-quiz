@@ -21,7 +21,7 @@ import java.util.Properties;
  * @since 11/9/13
  */
 @Configuration
-@ComponentScan({"com.ssm.llp.core", "com.ssm.llp.biz"})
+@ComponentScan({"my.gov.kpn.quiz.core", "my.gov.kpn.quiz.biz"})
 @PropertySource("classpath:app.properties")
 @EnableTransactionManagement
 public class Config {
@@ -72,8 +72,8 @@ public class Config {
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setUsername("quiz");
-        dataSource.setPassword("abc123");
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:5432/quiz");
+        dataSource.setPassword("quiz");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/quiz");
         dataSource.setDriverClassName("org.postgresql.Driver");
         dataSource.setInitialSize(10);
         dataSource.setMaxActive(5);

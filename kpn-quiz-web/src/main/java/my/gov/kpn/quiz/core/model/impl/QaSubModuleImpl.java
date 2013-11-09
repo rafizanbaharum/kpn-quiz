@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.model.QaModule;
 import my.gov.kpn.quiz.core.model.QaSubModule;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -12,7 +13,7 @@ import javax.persistence.*;
  */
 @Table(name = "QA_SMDL")
 @Entity(name = "QaSubModule")
-public class QaSubModuleImpl implements QaSubModule {
+public class QaSubModuleImpl implements QaSubModule, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

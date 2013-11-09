@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.model.QaMetadata;
 import my.gov.kpn.quiz.core.model.QaRound;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @Table(name = "QA_CMPN")
 @Entity(name = "QaCompetition")
-public class QaCompetitionImpl implements QaCompetition {
+public class QaCompetitionImpl implements QaCompetition, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

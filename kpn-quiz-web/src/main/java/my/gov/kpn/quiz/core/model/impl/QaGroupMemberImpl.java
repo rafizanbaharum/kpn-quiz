@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.QaMetadata;
 import my.gov.kpn.quiz.core.model.QaPrincipal;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -13,7 +14,7 @@ import javax.persistence.*;
  */
 @Table(name = "QA_GROP_MMBR")
 @Entity(name = "QaGroupMember")
-public class QaGroupMemberImpl implements QaGroupMember {
+public class QaGroupMemberImpl implements QaGroupMember, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

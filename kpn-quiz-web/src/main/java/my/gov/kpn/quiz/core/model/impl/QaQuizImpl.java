@@ -1,11 +1,11 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaMetadata;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaRound;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Table(name = "QA_QUIZ")
 @Entity(name = "QaQuiz")
-public class QaQuizImpl implements QaQuiz {
+public class QaQuizImpl implements QaQuiz, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

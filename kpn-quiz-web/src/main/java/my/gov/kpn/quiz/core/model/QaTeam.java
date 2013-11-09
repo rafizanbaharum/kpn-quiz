@@ -6,7 +6,7 @@ import java.util.Set;
  * @author rafizan.baharum
  * @since 11/7/13
  */
-public interface QaTeam {
+public interface QaTeam extends QaMetaObject{
 
     /**
      * @return

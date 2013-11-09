@@ -6,7 +6,7 @@ import my.gov.kpn.quiz.core.model.QaRound;
 import my.gov.kpn.quiz.core.model.QaUser;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Table(name = "QA_PRCT")
 @Entity(name = "QaParticipant")
-public class QaParticipantImpl implements QaParticipant {
+public class QaParticipantImpl implements QaParticipant, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

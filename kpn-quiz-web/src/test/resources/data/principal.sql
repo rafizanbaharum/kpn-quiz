@@ -19,7 +19,6 @@ insert into QA_GROP_MMBR (ID, GROUP_ID, MEMBER_ID, M_ST, C_ID, C_TS) values (1, 
 insert into QA_GROP_MMBR (ID, GROUP_ID, MEMBER_ID, M_ST, C_ID, C_TS) values (2, 3, 1, 1, 1, CURRENT_TIMESTAMP);
 insert into QA_GROP_MMBR (ID, GROUP_ID, MEMBER_ID, M_ST, C_ID, C_TS) values (3, 4, 1, 1, 1, CURRENT_TIMESTAMP);
 insert into QA_GROP_MMBR (ID, GROUP_ID, MEMBER_ID, M_ST, C_ID, C_TS) values (4, 5, 1, 1, 1, CURRENT_TIMESTAMP);
-insert into QA_GROP_MMBR (ID, GROUP_ID, MEMBER_ID, M_ST, C_ID, C_TS) values (5, 6, 1, 1, 1, CURRENT_TIMESTAMP);
 
 
 

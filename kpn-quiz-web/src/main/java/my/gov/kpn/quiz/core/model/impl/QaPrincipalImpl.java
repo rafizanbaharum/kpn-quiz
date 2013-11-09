@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.QaPrincipalRole;
 import my.gov.kpn.quiz.core.model.QaPrincipalType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Set;
 @Table(name = "QA_PCPL")
 @Entity(name = "QaPrincipal")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class QaPrincipalImpl implements QaPrincipal {
+public class QaPrincipalImpl implements QaPrincipal, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)
