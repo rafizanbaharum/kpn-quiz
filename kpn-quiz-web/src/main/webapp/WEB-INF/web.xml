@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+
+    <context-param>
+        <param-name>contextClass</param-name>
+        <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+    </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>my.gov.kpn.quiz.web.config.CfWebConfig</param-value>
+    </context-param>
+
+    <!-- ====================================================================================== -->
+    <!-- SECURITY CONFIG FILTER -->
+    <!-- ====================================================================================== -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- ====================================================================================== -->
+    <!-- SESSION EXPIRED FILTER  -->
+    <!-- ====================================================================================== -->
+
+    <filter>
+        <filter-name>springSessionExpiredFilterChain</filter-name>
+        <filter-class>my.gov.kpn.quiz.web.filter.SessionExpiredFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionExpiredFilterChain</filter-name>
+        <url-pattern>/my.gov.kpn.quiz.web.Finance/*</url-pattern>
+    </filter-mapping>
+
+    <!-- ====================================================================================== -->
+    <!-- HIBERNATE FILTER -->
+    <!-- ====================================================================================== -->
+    <filter>
+        <filter-name>hibernateFilter</filter-name>
+        <filter-class>
+            org.springframework.orm.hibernate4.support.OpenSessionInViewFilter
+        </filter-class>
+        <init-param>
+            <param-name>singleSession</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>sessionFactoryBeanName</param-name>
+            <param-value>sessionFactory</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>/my.gov.kpn.quiz.web.Finance/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>/secure/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>/service/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- ====================================================================================== -->
+    <!-- LOG4J FILTER -->
+    <!-- ====================================================================================== -->
+
+    <filter>
+        <filter-name>MDCLogServletFilter</filter-name>
+        <filter-class>my.gov.kpn.quiz.web.filter.MDCLogFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>MDCLogServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>NDCLogServletFilter</filter-name>
+        <filter-class>org.springframework.web.filter.Log4jNestedDiagnosticContextFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>NDCLogServletFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!-- ====================================================================================== -->
+    <!-- SERVLET DEFINITION -->
+    <!-- ====================================================================================== -->
+    <servlet>
+        <servlet-name>DdDelegate</servlet-name>
+        <servlet-class>my.gov.kpn.quiz.web.dd.server.DdDelegateImpl</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DdDelegate</servlet-name>
+        <url-pattern>/my.gov.kpn.quiz.web.Finance/DdDelegate</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- ====================================================================================== -->
+    <!-- LISTENERS -->
+    <!-- ====================================================================================== -->
+
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>my.gov.kpn.quiz.web.listener.FinalizerLeakPatchListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>my.gov.kpn.quiz.web.listener.DriverCleanupListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>my.gov.kpn.quiz.web.listener.CglibCleanupListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>my.gov.kpn.quiz.web.listener.Log4jCleanupListener</listener-class>
+    </listener>
+
+    <session-config>
+        <session-timeout>120</session-timeout>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
