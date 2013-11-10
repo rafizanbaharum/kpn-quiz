@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.web.controller;
 
-import my.gov.kpn.quiz.web.server.manager.InstructorRegistrationManager;
+import my.gov.kpn.quiz.biz.manager.RegistrationManager;
+import my.gov.kpn.quiz.core.dao.QaInstitutionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,10 @@ public class RegistrationController {
     private ApplicationContext applicationContext;
 
     @Autowired
-    private InstructorRegistrationManager registrationManager;
+    private RegistrationManager registrationManager;
+
+    @Autowired
+    private QaInstitutionDao institutionDao;
 
     @RequestMapping(method = {RequestMethod.GET})
     public String go(ModelMap model) {
@@ -55,9 +59,11 @@ public class RegistrationController {
         if (!passwordAgain.equals(password)) {
             return "register";
         }
-        registrationManager.register(username, password,
+
+        registrationManager.registerInstructor(username, password,
                 name, nricNo, email, phone, fax,
-                address1, address2, address3, institutionId);
+                address1, address2, address3,
+                institutionDao.findById(institutionId));
         return "registered";
     }
 }

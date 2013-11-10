@@ -20,6 +20,9 @@ public interface QaUserDao {
 
     QaUser findByRealName(String realname);
 
+    // TODO: satu malaysia?? maybe chunk it?
+    List<QaUser> findAll();
+
     List<QaUser> find(Integer offset, Integer limit);
 
     List<QaUser> find(String filter, Integer offset, Integer limit);

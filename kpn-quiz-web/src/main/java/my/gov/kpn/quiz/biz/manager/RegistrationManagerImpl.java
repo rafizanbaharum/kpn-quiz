@@ -1,10 +1,11 @@
-package my.gov.kpn.quiz.web.server.manager;
+package my.gov.kpn.quiz.biz.manager;
 
 import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.exception.LockedGroupException;
 import my.gov.kpn.quiz.core.exception.RecursiveGroupException;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
+import my.gov.kpn.quiz.core.model.impl.QaStudentImpl;
 import my.gov.kpn.quiz.core.model.impl.QaUserImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("instructorRegistrationManager")
 @Transactional
-public class InstructorRegistrationManagerImpl implements InstructorRegistrationManager {
+public class RegistrationManagerImpl implements RegistrationManager {
 
     public static final String ADMIN = "root";
-
     public static final String GROUP_INSTRUCTOR = "GROUP_INSTRUCTOR";
+    public static final String GROUP_STUDENT = "GROUP_STUDENT";
 
     @Autowired
     private QaUserDao userDao;
@@ -45,15 +46,14 @@ public class InstructorRegistrationManagerImpl implements InstructorRegistration
     @Autowired
     private ApplicationContext applicationContext;
 
-    @Override
-    public void register(String username,
-                         String password,
-                         String name,
-                         String nricNo,
-                         String email,
-                         String fax,
-                         String phone, String address1, String address2, String address3,
-                         Long institutionId) {
+    public void registerInstructor(String username,
+                                   String password,
+                                   String name,
+                                   String nricNo,
+                                   String email,
+                                   String fax,
+                                   String phone, String address1, String address2, String address3,
+                                   QaInstitution institution) {
 
         try {
             QaUser root = userDao.findByUsername(ADMIN);
@@ -74,7 +74,6 @@ public class InstructorRegistrationManagerImpl implements InstructorRegistration
             sessionFactory.getCurrentSession().refresh(user);
 
             // add actor
-            QaInstitution institution = institutionDao.findById(institutionId);
             QaInstructor instructor = new QaInstructorImpl();
             instructor.setName(name);
             instructor.setNricNo(nricNo);
@@ -106,7 +105,67 @@ public class InstructorRegistrationManagerImpl implements InstructorRegistration
         }
     }
 
-    @Override
+
+    public void registerStudent(String username,
+                                String password,
+                                String name,
+                                String nricNo,
+                                String email,
+                                String fax,
+                                String phone, String address1, String address2, String address3,
+                                QaInstitution institution) {
+
+        try {
+
+            QaUser root = userDao.findByUsername(ADMIN);
+            QaUser user = new QaUserImpl();
+            user.setEmail(email);
+            user.setUsername(username);
+            user.setPassword(password);
+            user.setRealname(name);
+            user.setLocked(true);
+            user.setPrincipalType(QaPrincipalType.USER);
+            userDao.save(user, root);
+            sessionFactory.getCurrentSession().flush();
+            sessionFactory.getCurrentSession().refresh(user);
+
+            // add roles
+            roleDao.grant(user, QaRoleType.ROLE_USER, root);
+            sessionFactory.getCurrentSession().flush();
+            sessionFactory.getCurrentSession().refresh(user);
+
+
+            // add actor
+            QaStudent student = new QaStudentImpl();
+            student.setName(name);
+            student.setNricNo(nricNo);
+            student.setAddress1(address1);
+            student.setAddress2(address2);
+            student.setAddress3(address3);
+            student.setEmail(email);
+            student.setPhone(phone);
+            student.setFax(fax);
+            student.setInstitution(institution);
+            actorDao.save(student, root);
+            sessionFactory.getCurrentSession().flush();
+            sessionFactory.getCurrentSession().refresh(student);
+
+            // update user
+            user.setActor(student);
+            userDao.save(user, root);
+            sessionFactory.getCurrentSession().flush();
+            sessionFactory.getCurrentSession().refresh(student);
+
+            QaGroup group = groupDao.findByName(GROUP_STUDENT);
+            groupDao.addMember(group, user, root);
+
+        } catch (RecursiveGroupException e) {
+            e.printStackTrace();
+        } catch (LockedGroupException e) {
+            e.printStackTrace();
+        }
+    }
+
     public boolean isExists(String username) {
         return false;  // TODO:
     }

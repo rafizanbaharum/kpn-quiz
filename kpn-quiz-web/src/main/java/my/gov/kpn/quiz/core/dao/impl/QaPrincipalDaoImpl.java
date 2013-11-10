@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core.dao.impl;
 
 import my.gov.kpn.quiz.core.dao.QaPrincipalDao;
+import my.gov.kpn.quiz.core.dao.QaPrincipalRoleDao;
 import my.gov.kpn.quiz.core.exception.RecursiveGroupException;
 import my.gov.kpn.quiz.core.model.QaGroup;
 import my.gov.kpn.quiz.core.model.QaMetaState;
@@ -26,6 +27,8 @@ import java.util.Set;
 public class QaPrincipalDaoImpl extends DaoSupport<Long, QaPrincipal, QaPrincipalImpl> implements QaPrincipalDao {
 
     private static final Logger log = Logger.getLogger(QaPrincipalDaoImpl.class);
+
+    private QaPrincipalRoleDao roleDao;
 
     private boolean allowRecursiveGroup = false;
 
