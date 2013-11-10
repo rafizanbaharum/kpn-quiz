@@ -20,8 +20,7 @@ import java.util.Properties;
  * @author alif razak
  */
 @Configuration
-@ComponentScan({"my.gov.kpn.quiz.core", "my.gov.kpn.quiz.biz", "my.gov.kpn.quiz.biz.integration",
-        "my.gov.kpn.quiz.web"})
+@ComponentScan({"my.gov.kpn.quiz.core", "my.gov.kpn.quiz.biz", "my.gov.kpn.quiz.web"})
 @PropertySource("classpath:app.properties")
 @EnableTransactionManagement
 public class QaWebConfig {
@@ -32,7 +31,7 @@ public class QaWebConfig {
     @Bean
     public SessionFactory sessionFactory() {
         return new LocalSessionFactoryBuilder(dataSource())
-                .scanPackages("my.gov.kpn.quiz.core.XXX")
+                .scanPackages("my.gov.kpn.quiz.core")
                 .addProperties(hibernateProperties())
                 .buildSessionFactory();
     }
@@ -74,7 +73,6 @@ public class QaWebConfig {
         dataSource.setUsername(environment.getProperty("db.username"));
         dataSource.setPassword(environment.getProperty("db.password"));
         dataSource.setUrl(environment.getProperty("db.url"));
-        dataSource.setDriverClassName(environment.getProperty("db.url"));
         dataSource.setDriverClassName(environment.getProperty("db.driver"));
         dataSource.setInitialSize(10);
         dataSource.setMaxActive(5);

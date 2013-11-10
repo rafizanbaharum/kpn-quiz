@@ -1,14 +1,15 @@
 package my.gov.kpn.quiz.web.client;
 
 import com.extjs.gxt.ui.client.GXT;
-import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.util.Theme;
 import com.extjs.gxt.ui.client.util.ThemeManager;
+import com.extjs.gxt.ui.client.widget.ContentPanel;
+import com.extjs.gxt.ui.client.widget.button.Button;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.logging.impl.FormatterImpl;
-import my.gov.kpn.quiz.web.client.controller.QuizController;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
@@ -44,9 +45,15 @@ public class Quiz implements EntryPoint {
 
         // add main application controller
         // trigger InitApplicationModel event
-        Dispatcher dispatcher = Dispatcher.get();
-        dispatcher.addController(new QuizController());
-        dispatcher.dispatch(QuizEvents.InitApplicationModel);
+//        Dispatcher dispatcher = Dispatcher.get();
+//        dispatcher.addController(new QuizController());
+//        dispatcher.dispatch(QuizEvents.InitApplicationModel);
+        ContentPanel contentPanel = new ContentPanel();
+        contentPanel.add(new Button("TEST"));
+        RootLayoutPanel rp = RootLayoutPanel.get();
+        rp.add(contentPanel);
+        log.info("Module loaded. BaseURL - " + GWT.getModuleBaseURL());
+
     }
 
     /**
