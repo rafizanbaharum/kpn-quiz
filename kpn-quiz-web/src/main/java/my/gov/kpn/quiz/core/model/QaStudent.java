@@ -9,8 +9,11 @@ public interface QaStudent extends QaActor {
     /**
      * @return
      */
-    QaInstitution getInstitution();
+//    QaInstitution getInstitution();
 
-    void setInstitution(QaInstitution institution);
+//    void setInstitution(QaInstitution institution);
 
+
+    void setInstructor(QaInstructor instructor);
+    QaInstructor getInstructor();
 }

@@ -38,9 +38,6 @@ public class RegistrationManagerImpl implements RegistrationManager {
     private QaActorDao actorDao;
 
     @Autowired
-    private QaInstitutionDao institutionDao;
-
-    @Autowired
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -52,8 +49,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                    String nricNo,
                                    String email,
                                    String fax,
-                                   String phone, String address1, String address2, String address3,
-                                   QaInstitution institution) {
+                                   String phone, String stateId, String districtId, String schoolName) {
 
         try {
             QaUser root = userDao.findByUsername(ADMIN);
@@ -77,13 +73,12 @@ public class RegistrationManagerImpl implements RegistrationManager {
             QaInstructor instructor = new QaInstructorImpl();
             instructor.setName(name);
             instructor.setNricNo(nricNo);
-            instructor.setAddress1(address1);
-            instructor.setAddress2(address2);
-            instructor.setAddress3(address3);
             instructor.setEmail(email);
             instructor.setPhone(phone);
             instructor.setFax(fax);
-            instructor.setInstitution(institution);
+            instructor.setStateName(stateId);
+            instructor.setDistrictName(districtId);
+            instructor.setSchoolName(schoolName);
             actorDao.save(instructor, root);
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(instructor);
@@ -110,16 +105,12 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                 String password,
                                 String name,
                                 String nricNo,
-                                String email,
-                                String fax,
-                                String phone, String address1, String address2, String address3,
-                                QaInstitution institution) {
+                                Long instructorId) {
 
         try {
 
             QaUser root = userDao.findByUsername(ADMIN);
             QaUser user = new QaUserImpl();
-            user.setEmail(email);
             user.setUsername(username);
             user.setPassword(password);
             user.setRealname(name);
@@ -136,16 +127,11 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
 
             // add actor
+            QaInstructor instructor =  (QaInstructor)actorDao.findById(instructorId);
             QaStudent student = new QaStudentImpl();
             student.setName(name);
             student.setNricNo(nricNo);
-            student.setAddress1(address1);
-            student.setAddress2(address2);
-            student.setAddress3(address3);
-            student.setEmail(email);
-            student.setPhone(phone);
-            student.setFax(fax);
-            student.setInstitution(institution);
+            student.setInstructor(instructor);
             actorDao.save(student, root);
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(student);

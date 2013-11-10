@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 @Table(name = "QA_INST")
 @Entity(name = "QaInstitution")
+@Deprecated
 public class QaInstitutionImpl implements QaInstitution, Serializable {
 
 

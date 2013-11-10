@@ -391,9 +391,41 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>tomcat-maven-plugin</artifactId>-->
+                <!--<version>1.0-beta-1</version>-->
                 <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.0-beta-1</version>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>2.3.0</version>
+                <configuration>
+                    <localWorkers>2</localWorkers>
+                    <runTarget>my.gov.kpn.quiz/Finance.html</runTarget>
+                    <draftCompile>true</draftCompile>
+                    <soycDetailed>false</soycDetailed>
+                    <extraJvmArgs>-Xmx1024m -Xms256m</extraJvmArgs>
+                    <!--<deploy>war/WEB-INF/deploy/</deploy>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resources</goal>
+                            <goal>compile</goal>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-user</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt-dev</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>

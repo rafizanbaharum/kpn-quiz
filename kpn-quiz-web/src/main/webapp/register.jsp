@@ -117,41 +117,68 @@
                                     </p>
                                 </div>
                             </fieldset>
+                            <%--<fieldset>--%>
+                                <%--<legend>--%>
+                                    <%--Address Information--%>
+                                <%--</legend>--%>
+                                <%--<p class="inline-small-label">--%>
+                                    <%--<label for="address1">--%>
+                                        <%--Address--%>
+                                    <%--</label>--%>
+                                    <%--<input type="text" id="address1" name="address1" class="required text">--%>
+                                <%--</p>--%>
+
+                                <%--<p class="inline-small-label">--%>
+                                    <%--<input type="text" name="address2" class="required text">--%>
+                                <%--</p>--%>
+
+                                <%--<p class="inline-small-label">--%>
+                                    <%--<input type="text" name="address3" class="required text">--%>
+                                <%--</p>--%>
+                            <%--</fieldset>--%>
+                        </div>
+                        <div>
                             <fieldset>
                                 <legend>
-                                    Address Information
+                                    State Information
                                 </legend>
                                 <p class="inline-small-label">
-                                    <label for="address1">
-                                        Address
+                                    <label for="stateId">
+                                        State
                                     </label>
-                                    <input type="text" id="address1" name="address1" class="required text">
-                                </p>
-
-                                <p class="inline-small-label">
-                                    <input type="text" name="address2" class="required text">
-                                </p>
-
-                                <p class="inline-small-label">
-                                    <input type="text" name="address3" class="required text">
+                                    <input type="text" id="stateId" name="stateId" class="required text"
+                                           value="0">
                                 </p>
                             </fieldset>
                         </div>
                         <div>
                             <fieldset>
                                 <legend>
-                                    Institution Information
+                                    District Information
                                 </legend>
                                 <p class="inline-small-label">
-                                    <label for="institutionId">
-                                        Institution
+                                    <label for="districtId">
+                                        District
                                     </label>
-                                    <input type="text" id="institutionId" name="institutionId" class="required text"
+                                    <input type="text" id="districtId" name="districtId" class="required text"
                                            value="0">
                                 </p>
                             </fieldset>
                         </div>
-                        <div class="actions">
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    School Information
+                                </legend>
+                                <p class="inline-small-label">
+                                    <label for="schoolName">
+                                        School
+                                    </label>
+                                    <input type="text" id="schoolName" name="schoolName" class="required text"
+                                           value="0">
+                                </p>
+                            </fieldset>
+                        </div>                        <div class="actions">
                             <div class="actions-left">
                                 <input type="reset">
                             </div>

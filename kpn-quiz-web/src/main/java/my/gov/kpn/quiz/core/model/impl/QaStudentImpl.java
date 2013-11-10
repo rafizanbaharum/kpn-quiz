@@ -2,12 +2,10 @@ package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.QaActorType;
 import my.gov.kpn.quiz.core.model.QaInstitution;
+import my.gov.kpn.quiz.core.model.QaInstructor;
 import my.gov.kpn.quiz.core.model.QaStudent;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author rafizan.baharum
@@ -17,19 +15,32 @@ import javax.persistence.Table;
 @Entity(name = "QaStudent")
 public class QaStudentImpl extends QaActorImpl implements QaStudent {
 
-    @OneToOne(targetEntity = QaInstitutionImpl.class)
-    @JoinColumn(name = "INSTITUTION_ID")
-    private QaInstitution institution;
+//    @OneToOne(targetEntity = QaInstitutionImpl.class)
+//    @JoinColumn(name = "INSTITUTION_ID")
+//    private QaInstitution institution;
+
+    @ManyToOne(targetEntity = QaInstructorImpl.class)
+    @JoinColumn(name = "INSTRUCTOR_ID")
+    private QaInstructor instructor;
 
     public QaStudentImpl() {
         setActorType(QaActorType.STUDENT);
     }
 
-    public QaInstitution getInstitution() {
-        return institution;
+//    public QaInstitution getInstitution() {
+//        return institution;
+//    }
+
+//    public void setInstitution(QaInstitution institution) {
+//        this.institution = institution;
+//    }
+
+
+    public QaInstructor getInstructor() {
+        return instructor;
     }
 
-    public void setInstitution(QaInstitution institution) {
-        this.institution = institution;
+    public void setInstructor(QaInstructor instructor) {
+        this.instructor = instructor;
     }
 }

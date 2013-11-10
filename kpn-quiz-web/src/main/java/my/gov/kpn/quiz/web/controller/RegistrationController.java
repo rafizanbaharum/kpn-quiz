@@ -51,10 +51,9 @@ public class RegistrationController {
             @RequestParam("email") String email,
             @RequestParam("phone") String phone,
             @RequestParam("fax") String fax,
-            @RequestParam("address1") String address1,
-            @RequestParam("address2") String address2,
-            @RequestParam("address3") String address3,
-            @RequestParam("address3") Long institutionId,
+            @RequestParam("stateId") String stateId,
+            @RequestParam("districtId") String districtId,
+            @RequestParam("schoolName") String schoolName,
             ModelMap model) {
         if (!passwordAgain.equals(password)) {
             return "register";
@@ -62,8 +61,7 @@ public class RegistrationController {
 
         registrationManager.registerInstructor(username, password,
                 name, nricNo, email, phone, fax,
-                address1, address2, address3,
-                institutionDao.findById(institutionId));
+                stateId, districtId, schoolName);
         return "registered";
     }
 }

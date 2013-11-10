@@ -10,13 +10,10 @@ public interface RegistrationManager {
 
     void registerInstructor(String username, String password, String name, String nricNo,
                             String email, String fax, String phone,
-                            String address1, String address2, String address3,
-                            QaInstitution institution);
+                            String stateId, String districtId, String schoolName);
 
     void registerStudent(String username, String password, String name, String nricNo,
-                         String email, String fax, String phone,
-                         String address1, String address2, String address3,
-                         QaInstitution institution);
+                         Long instructorId);
 
     boolean isExists(String username);
 
