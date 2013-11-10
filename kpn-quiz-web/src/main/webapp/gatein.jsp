@@ -6,7 +6,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Integrated Finance System</title>
+    <title>Test</title>
     <meta name="gwt:property" content="locale=en">
     <link rel="SHORTCUT ICON" href="favicon.ico"/>
 
@@ -39,7 +39,7 @@
             	}
     
         label.smallInput {
-                background: url(images/bg_s_input.gif) no-repeat;
+                /*background: url(images/bg_s_input.gif) no-repeat;*/
                 width: 168px;
             	}
     
@@ -50,7 +50,7 @@
                 margin: 5px 0 0 0;
             	}
     
-        label.smallInput input, label.mediumInput input, label.largeInput input {
+        label.smallInput input, label.mediumInput input, label.largeInput {
                 background: none;
                 border: none;
                 font-size: 0.9em;
@@ -58,7 +58,7 @@
             	}
     
          #loginForm {
-                background: url(images/fs_login_bg.png) no-repeat;
+                /*background: url(images/fs_login_bg.png) no-repeat;*/
                 width: 460px;
                 height: 160px;
                 margin: 0 auto 0 auto;
@@ -101,7 +101,7 @@
                         <td align="center" valign="top" height="30"><font size="3" face="Gill Sans MT" color="#FFFFFF"><b><u>U</u>niversiti  <u>T</u>eknologi  <u>M</u>alaysia  <u>F</u>inancial  <u>S</u>ystem  </b></font></td>
                     </tr>
                     <tr >
-                        <td align="right" valign="middle" height="55"><font size="7" color="#5c001f"><b>UTMFin</b></font></td>
+                        <td align="right" valign="middle" height="55"><font size="7" color="#5c001f"><b>QUIZ</b></font></td>
                     </tr>
                     <tr>
                         <td height="33" align="right" valign="bottom"><img src="images/inspiring-(2).png" width="370" height="31" /></td>
@@ -116,7 +116,7 @@
     <div id="container">
     <div id="logo">
     </div>
-    <form id="loginForm" action="j_spring_security_check" method="post">
+    <form id="loginForm" action="/login" method="post">
         <h2>Login</h2>
         <div id="loginContainer">
 	     <center><blink><font color="red" size="2">Id pengguna atau kata laluan salah</font></blink></center>
@@ -141,8 +141,8 @@
     </div>
     <table background="images/headerGradient.png" width="100%">
         <tr>
-            <td align="center" valign="middle" height="30"><font size="1" face="Arial" color="black">Copyright © 2012 Universiti Teknologi Malaysia
-    Disclaimer :<br> This website has been updated to the best of our knowledge to be accurate. However, Universiti Teknologi Malaysia shall not be liable for any loss or damage caused by the usage of any information obtained from this web site</font></td>
+                <%--<td align="center" valign="middle" height="30"><font size="1" face="Arial" color="black">Copyright © 2012 Universiti Teknologi Malaysia--%>
+        <%--Disclaimer :<br> This website has been updated to the best of our knowledge to be accurate. However, Universiti Teknologi Malaysia shall not be liable for any loss or damage caused by the usage of any information obtained from this web site</font></td>--%>
         </tr>
     </table></td></tr>
     </table>

@@ -33,7 +33,7 @@ values (11, 'Ahmad', 'abc123', 'rafizan.baharum@gmail.com', null);
 
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, LOCKED, M_ST, C_ID, C_TS) values (12, 'student2', 0, true, 1, 0, CURRENT_TIMESTAMP );
 insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
-values (12, 'Ah Wong', 'abc123', 'rafizan.baharum@gmail.com', null);
+values (12, 'Ah Wong', 'abc123' , 'rafizan.baharum@gmail.com', null);
 
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, LOCKED, M_ST, C_ID, C_TS) values (13, 'student3', 0, true, 1, 0, CURRENT_TIMESTAMP );
 insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)

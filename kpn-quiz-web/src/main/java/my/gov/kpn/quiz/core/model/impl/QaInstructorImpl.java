@@ -29,7 +29,7 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
     @Column(name = "DISTRICT_NAME")
     private String districtName;
 
-    @OneToMany
+    @OneToMany(targetEntity = QaStudentImpl.class, mappedBy = "instructor")
     private List<QaStudent> students;
 
     public QaInstructorImpl() {

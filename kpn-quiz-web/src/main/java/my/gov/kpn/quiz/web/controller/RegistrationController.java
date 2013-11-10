@@ -64,4 +64,30 @@ public class RegistrationController {
                 stateId, districtId, schoolName);
         return "registered";
     }
+
+    @RequestMapping(value="/addStudent", method = {RequestMethod.POST})
+    public String addStudent(
+            @RequestParam("studentUsername") String studentUsername,
+            @RequestParam("studentNric") String studentNric,
+            @RequestParam("studentName") String studentName,
+            @RequestParam("instructorId") Long instructorId,
+            ModelMap model) {
+
+        registrationManager.registerStudent(studentUsername, "abc123",
+                studentName, studentNric, instructorId);
+        return "registered";
+    }
+
+    @RequestMapping(value="/resetStudentPassword", method = {RequestMethod.POST})
+    public String addStudent(
+            @RequestParam("password") String password,
+            @RequestParam("passwordAgain") String passwordAgaian,
+            @RequestParam("instructorId") String instructorId,
+            ModelMap model) {
+
+//        registrationManager.register(username, password,
+//                name, nricNo, email, phone, fax,
+//                stateId, districtId, institutionId);
+        return "registered";
+    }
 }
