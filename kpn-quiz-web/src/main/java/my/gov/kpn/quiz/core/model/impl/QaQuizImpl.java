@@ -1,12 +1,11 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaMetadata;
-import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.core.model.QaRound;
+import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author rafizan.baharum
@@ -37,6 +36,9 @@ public class QaQuizImpl implements QaQuiz, Serializable {
     @OneToOne(targetEntity = QaRoundImpl.class)
     @JoinColumn(name = "ROUND_ID")
     private QaRound round;
+
+    @OneToMany(targetEntity = QaQuestionImpl.class, mappedBy = "quiz")
+    private List<QaQuestion> questions;
 
     @Embedded
     private QaMetadata metadata = new QaMetadata();
@@ -81,12 +83,21 @@ public class QaQuizImpl implements QaQuiz, Serializable {
         this.locked = locked;
     }
 
+
     public QaRound getRound() {
         return round;
     }
 
     public void setRound(QaRound round) {
         this.round = round;
+    }
+
+    public List<QaQuestion> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<QaQuestion> questions) {
+        this.questions = questions;
     }
 
     public QaMetadata getMetadata() {

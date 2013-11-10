@@ -80,6 +80,13 @@ public class QaUserDaoImpl extends DaoSupport<Long, QaUser, QaUserImpl> implemen
     }
 
     @Override
+    public List<QaUser> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from QaUser s");
+        return (List<QaUser>) query.list();
+    }
+
+    @Override
     public List<QaUser> find(Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from QaUser s");

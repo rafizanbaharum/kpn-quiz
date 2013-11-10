@@ -12,9 +12,9 @@ import static com.extjs.gxt.ui.client.widget.Dialog.OK;
  * @author rafizan.baharum
  * @since 11/9/13
  */
-public abstract class TimeAllocationAwareAsyncCallback<T> extends SessionAwareAsyncCallback<T> {
+public abstract class QuizExpiredAwareAsyncCallback<T> extends SessionAwareAsyncCallback<T> {
 
-    protected TimeAllocationAwareAsyncCallback() {
+    protected QuizExpiredAwareAsyncCallback() {
     }
 
     @Override
@@ -22,7 +22,8 @@ public abstract class TimeAllocationAwareAsyncCallback<T> extends SessionAwareAs
         doOnSuccess(returnObject);
     }
 
-
+    // check what quiz is running in ThreadLocal
+    // then timeout based on quiz.endDate
     @Override
     public void onFailure(Throwable exception) {
         if (exception instanceof StatusCodeException) {

@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core.model;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author rafizan.baharum
@@ -37,4 +38,11 @@ public interface QaQuiz extends QaMetaObject {
 
     void setRound(QaRound round);
 
+
+    /**
+     * @return
+     */
+    List<QaQuestion> getQuestions();
+
+    void setQuestions(List<QaQuestion> questions);
 }
