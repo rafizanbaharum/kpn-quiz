@@ -1,7 +1,5 @@
 package my.gov.kpn.quiz.web.client.model;
 
-import com.google.common.base.Objects;
-
 import java.util.List;
 
 /**
@@ -47,8 +45,7 @@ public class CompetitionModel extends MetaModel {
     }
 
     public String toString() {
-        return Objects.toStringHelper(this)
-                .toString();
+        return isProcessed() + " " + isLocked();
     }
 
 }

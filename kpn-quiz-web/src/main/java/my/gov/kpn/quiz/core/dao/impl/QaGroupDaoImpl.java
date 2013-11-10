@@ -237,7 +237,7 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
         // check locked group
         if (group.isLocked()) {
             log.error("Group is locked");
-            throw new LockedGroupException("Locked group");
+//            throw new LockedGroupException("Locked group");
         }
 
         // check recursive add

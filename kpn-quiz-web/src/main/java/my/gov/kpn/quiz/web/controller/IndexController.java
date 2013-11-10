@@ -15,7 +15,7 @@ public class IndexController {
 
     @RequestMapping(method = {RequestMethod.GET})
     public String go(ModelMap model) {
-        return "register";   // TODO : Redirect to index
+        return "index";
     }
 
 }
