@@ -49,7 +49,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                    String nricNo,
                                    String email,
                                    String fax,
-                                   String phone, String stateId, String districtId, String schoolName) {
+                                   String phone, Long stateId, String schoolName) {
 
         try {
             QaUser root = userDao.findByUsername(ADMIN);
@@ -76,8 +76,8 @@ public class RegistrationManagerImpl implements RegistrationManager {
             instructor.setEmail(email);
             instructor.setPhone(phone);
             instructor.setFax(fax);
-            instructor.setStateName(stateId);
-            instructor.setDistrictName(districtId);
+//            instructor.setStateName(stateId);
+//            instructor.setDistrictName(districtId);
             instructor.setSchoolName(schoolName);
             actorDao.save(instructor, root);
             sessionFactory.getCurrentSession().flush();

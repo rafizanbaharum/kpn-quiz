@@ -1,5 +1,10 @@
+<%@ page import = "java.util.Map" %>
+<%@ page import = "java.util.Set" %>
+<%@ page import = "java.util.Iterator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -71,7 +76,9 @@
                     <h3>Registration Form</h3>
                     <span></span>
                 </div>
-                <form method="post" name="loginForm" id="loginForm" action="register" class="validate">
+                <%--<form method="post" name="loginForm" id="loginForm" action="register" class="validate">--%>
+                <form:form commandName = "registration" action="${pageContext.request.contextPath}/register" method="POST">
+
                     <div class="content">
                         <fieldset>
                             <legend>
@@ -82,9 +89,7 @@
                                     <label for="nameTxt">
                                         Name
                                     </label>
-                                    <input type="text" id="nameTxt" value="" class="required fullname"
-                                           name="fullName"
-                                           class="text">
+                                    <form:input id="nameTxt" path="fullName" size="50" cssClass="required text"/>
                                 </p>
                             </div>
                             <div class="_50">
@@ -92,8 +97,7 @@
                                     <label for="nricNo">
                                         NRIC
                                     </label>
-                                    <input type="text" value="" id="nricNo" class="required nric" name="nricNo"
-                                           class="text">
+                                    <form:input id="nricNo" path="nricNo" size="50" cssClass="required fullname text"/>
                                 </p>
                             </div>
                             <div class="_50">
@@ -101,9 +105,7 @@
                                     <label for="username">
                                         Username
                                     </label>
-                                    <input type="text" value="" id="username" class="required username"
-                                           maxlength="16"
-                                           name="username" class="text">
+                                        <form:input id="username" path="username" size="50" cssClass="required text"/>
 
                                 <div id="username_status"></div>
                                 </p>
@@ -113,8 +115,7 @@
                                     <label for="emailTxt">
                                         Email
                                     </label>
-                                    <input type="text" value="" id="emailTxt" class="required email" name="email"
-                                           class="text">
+                                    <form:input id="emailTxt" path="email" size="50" cssClass="required text"/>
                                 </p>
                             </div>
                             <div class="_50">
@@ -122,6 +123,7 @@
                                     <label for="password">
                                         Password
                                     </label>
+                                    <form:input path="password" size="50" cssClass="required text"/>
                                     <input type="password" value="" id="password" class="required"
                                            name="password" class="text">
                                 </p>
@@ -131,8 +133,7 @@
                                     <label for="passwordAgain">
                                         Password Again
                                     </label>
-                                    <input type="password" value="" equalto="#password" id="passwordAgain"
-                                           class="required" name="passwordAgain" class="text">
+                                    <form:input id="passwordAgain" path="passwordAgain" size="50" cssClass="required text"/>
                                 </p>
                             </div>
                         </fieldset>
@@ -145,7 +146,7 @@
                                     <label for="phone">
                                         Phone
                                     </label>
-                                    <input type="text" value="" id="phone" name="phone" class="required phone text">
+                                    <form:input id="phone" path="phone" size="50" cssClass="required text"/>
                                 </p>
                             </div>
                             <div class="_50">
@@ -153,9 +154,20 @@
                                     <label for="fax">
                                         Fax
                                     </label>
-                                    <input type="text" value="" id="fax" name="fax" class="required fax text">
+                                    <form:input id="fax" path="fax" size="50" cssClass="required text"/>
                                 </p>
                             </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>
+                                School Name
+                            </legend>
+                            <p class="inline-small-label">
+                                <label for="schoolName">
+                                    School Name
+                                </label>
+                                <form:input id="schoolName" path="schoolName" size="50" cssClass="required text"/>
+                            </p>
                         </fieldset>
                         <fieldset>
                             <legend>
@@ -165,53 +177,67 @@
                                 <label for="address1">
                                     Address
                                 </label>
-                                <input type="text" id="address1" name="address1" class="required text">
+                                <form:input id="address1" path="address1" size="50" cssClass="required text"/>
                             </p>
 
                             <p class="inline-small-label">
-                                <input type="text" name="address2" class="required text">
+                                <form:input path="address2" size="50" cssClass="required text"/>
                             </p>
 
                             <p class="inline-small-label">
-                                <input type="text" name="address3" class="required text">
+                                <form:input path="address3" size="50" cssClass="required text"/>
                             </p>
-                        </fieldset>
-                        <fieldset>
-                            <legend>
-                                State Information
-                            </legend>
                             <p class="inline-small-label">
                                 <label for="stateId">
-                                    State
+                                    State     hello
                                 </label>
-                                <input type="text" id="stateId" name="stateId" class="required text"
-                                       value="0">
+                                <c:forEach var="i" items="${negeris}">
+                                     Country: ${i.key}  - Capital: ${i.value}
+                                </c:forEach>
+                                <form:select id="stateId" path = "stateId">
+                                    <form:option value = "-" label = "-"/>
+                                    <%
+                                        Map values = (Map)session.getAttribute("test");
+                                        Iterator entries = values.entrySet().iterator();
+                                                while (entries.hasNext()) {
+                                                  Map.Entry thisEntry = (Map.Entry) entries.next();
+                                                  Object key = thisEntry.getKey();
+                                                  Object value = thisEntry.getValue();
+                                            %>
+                                        <option value="<%= key %>"><%= value %> </option>
+                                    <%
+                                        }
+                                    %>
+                                    <%--<form:options items = "registration.negeris"/>--%>
+                                </form:select>
+                                <%--<input type="text" id="stateId" name="stateId" class="required text"--%>
+                                       <%--value="0">--%>
                             </p>
                         </fieldset>
-                        <fieldset>
-                            <legend>
-                                District Information
-                            </legend>
-                            <p class="inline-small-label">
-                                <label for="districtId">
-                                    District
-                                </label>
-                                <input type="text" id="districtId" name="districtId" class="required text"
-                                       value="0">
-                            </p>
-                        </fieldset>
-                        <fieldset>
-                            <legend>
-                                School Information
-                            </legend>
-                            <p class="inline-small-label">
-                                <label for="schoolName">
-                                    School
-                                </label>
-                                <input type="text" id="schoolName" name="schoolName" class="required text"
-                                       value="0">
-                            </p>
-                        </fieldset>
+                        <%--<fieldset>--%>
+                            <%--<legend>--%>
+                                <%--State Information--%>
+                            <%--</legend>--%>
+                            <%--<p class="inline-small-label">--%>
+                                <%--<label for="stateId">--%>
+                                    <%--State--%>
+                                <%--</label>--%>
+                                <%--<input type="text" id="stateId" name="stateId" class="required text"--%>
+                                       <%--value="0">--%>
+                            <%--</p>--%>
+                        <%--</fieldset>--%>
+                        <%--<fieldset>--%>
+                            <%--<legend>--%>
+                                <%--District Information--%>
+                            <%--</legend>--%>
+                            <%--<p class="inline-small-label">--%>
+                                <%--<label for="districtId">--%>
+                                    <%--District--%>
+                                <%--</label>--%>
+                                <%--<input type="text" id="districtId" name="districtId" class="required text"--%>
+                                       <%--value="0">--%>
+                            <%--</p>--%>
+                        <%--</fieldset>--%>
                     </div>
 
                     <div class="actions">
@@ -222,7 +248,7 @@
                             <input type="submit" value="Register">
                         </div>
                     </div>
-                </form>
+                </form:form>
             </div>
             <!-- End of .box -->
         </div>

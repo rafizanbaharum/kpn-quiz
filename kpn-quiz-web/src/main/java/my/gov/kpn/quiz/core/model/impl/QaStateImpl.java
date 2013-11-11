@@ -2,6 +2,7 @@ package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.QaInstitution;
 import my.gov.kpn.quiz.core.model.QaMetadata;
+import my.gov.kpn.quiz.core.model.QaState;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.io.Serializable;
  */
 @Table(name = "QA_STTE")
 @Entity(name = "QaState")
-public class QaStateImpl implements QaInstitution, Serializable {
+public class QaStateImpl implements QaState, Serializable {
 
 
     @Id

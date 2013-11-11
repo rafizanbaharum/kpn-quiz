@@ -10,7 +10,7 @@ public interface RegistrationManager {
 
     void registerInstructor(String username, String password, String name, String nricNo,
                             String email, String fax, String phone,
-                            String stateId, String districtId, String schoolName);
+                            Long stateId, String schoolName);
 
     void registerStudent(String username, String password, String name, String nricNo,
                          Long instructorId);

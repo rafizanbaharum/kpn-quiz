@@ -38,6 +38,11 @@ public class QaStateDaoImpl extends DaoSupport<Long, QaState, QaStateImpl> imple
         return (QaState) query.uniqueResult();
     }
 
+    public List<QaState> find() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaState a");
+        return (List<QaState>)query.list();
+    }
     @Override
     public List<QaState> find(Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();

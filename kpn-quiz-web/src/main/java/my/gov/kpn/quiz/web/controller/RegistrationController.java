@@ -1,15 +1,20 @@
 package my.gov.kpn.quiz.web.controller;
 
+import my.gov.kpn.quiz.biz.manager.QuizHelper;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.core.dao.QaInstitutionDao;
+import my.gov.kpn.quiz.web.client.model.RegistrationModel;
+import my.gov.kpn.quiz.web.server.Transformer;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * @author rafizan.baharum
@@ -26,11 +31,18 @@ public class RegistrationController {
     private RegistrationManager registrationManager;
 
     @Autowired
-    private QaInstitutionDao institutionDao;
+    private Transformer transformer;
+
+    @Autowired
+    private QuizHelper quizHelper;
 
     @RequestMapping(method = {RequestMethod.GET})
-    public String go(ModelMap model) {
-        model.put("name", "xxx");
+    public String go(@ModelAttribute("registration") RegistrationModel registrationModel, ModelMap model, HttpServletRequest request) {
+
+        Map<String,String> value = transformer.transformToDropDown(quizHelper.getStateList());
+        registrationModel.setNegeris(value); //tak jalan
+        model.put("negeris", value); //tak jalan
+        request.getSession().setAttribute("negeris",value);
         return "register";
     }
 
@@ -42,26 +54,16 @@ public class RegistrationController {
     }
 
     @RequestMapping(method = {RequestMethod.POST})
-    public String register(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password,
-            @RequestParam("passwordAgain") String passwordAgain,
-            @RequestParam("fullName") String name,
-            @RequestParam("nricNo") String nricNo,
-            @RequestParam("email") String email,
-            @RequestParam("phone") String phone,
-            @RequestParam("fax") String fax,
-            @RequestParam("stateId") String stateId,
-            @RequestParam("districtId") String districtId,
-            @RequestParam("schoolName") String schoolName,
+    public String register(@ModelAttribute("registration") RegistrationModel registrationModel,
             ModelMap model) {
-        if (!passwordAgain.equals(password)) {
+
+        if (!registrationModel.getPassword().equals(registrationModel.getPasswordAgain())) {
             return "register";
         }
 
-        registrationManager.registerInstructor(username, password,
-                name, nricNo, email, phone, fax,
-                stateId, districtId, schoolName);
+//        registrationManager.registerInstructor(registrationModel.getUsername(), registrationModel.getPassword(),
+//                registrationModel.getFullName(), registrationModel.getNricNo(), registrationModel.getEmail(), registrationModel.getPhone(), registrationModel.getFax(),
+//                registrationModel.getStateId(), registrationModel.getSchoolName());
         return "registered";
     }
 
