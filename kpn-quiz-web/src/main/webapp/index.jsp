@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel=dns-prefetch href="//fonts.googleapis.com">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>KPN:Quiz</title>
+    <title>ASEAN Quiz - KPN</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">

@@ -65,7 +65,7 @@ public class RegistrationController {
         return "registered";
     }
 
-    @RequestMapping(value="/addStudent", method = {RequestMethod.POST})
+    @RequestMapping(value = "/addStudent", method = {RequestMethod.POST})
     public String addStudent(
             @RequestParam("studentUsername") String studentUsername,
             @RequestParam("studentNric") String studentNric,
@@ -78,7 +78,7 @@ public class RegistrationController {
         return "registered";
     }
 
-    @RequestMapping(value="/resetStudentPassword", method = {RequestMethod.POST})
+    @RequestMapping(value = "/resetStudentPassword", method = {RequestMethod.POST})
     public String addStudent(
             @RequestParam("password") String password,
             @RequestParam("passwordAgain") String passwordAgaian,

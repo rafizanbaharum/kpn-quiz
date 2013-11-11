@@ -1,7 +1,7 @@
 <div id="header_toolbar">
     <div class="container_12">
 
-        <h1 class="grid_8">KPN Quiz</h1>
+        <h1 class="grid_8">ASEAN QUIZ</h1>
 
         <div class="grid_4">
             <div class="toolbar_large">
