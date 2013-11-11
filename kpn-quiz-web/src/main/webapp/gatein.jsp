@@ -28,9 +28,6 @@
     <div class="shadow"></div>
 </div>
 <div class="content">
-    <%--<h1>SSM | MyLLP</h1>--%>
-
-
     <div class="background"></div>
     <div class="wrapper">
         <div class="box">
@@ -68,7 +65,8 @@
                 </div>
                 <div class="actions">
                     <div class="actions-left">
-                        <input type="button" value="Register New Account" onclick="parent.location='<%=request.getContextPath() %>/register'"/>
+                        <input type="reset" value="Sign Up"
+                               onclick="parent.location='<%=request.getContextPath() %>/register'"/>
                     </div>
                     <div class="actions-right">
                         <input type="submit" value="Login"/>
