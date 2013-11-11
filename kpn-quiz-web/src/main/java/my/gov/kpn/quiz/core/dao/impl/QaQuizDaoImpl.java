@@ -29,6 +29,29 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     }
 
     @Override
+    public QaQuiz findCurrent() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaQuiz a where " +
+                "a.current = :current " +
+                "and a.metadata.state = :state " +
+                "order by a.code");
+        query.setBoolean("current", true);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return (QaQuiz) query.uniqueResult();
+    }
+
+
+    @Override
+    public List<QaQuiz> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaQuiz a where " +
+                "a.metadata.state = :state " +
+                "order by a.code");
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return query.list();
+    }
+
+    @Override
     public List<QaQuiz> find(Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +

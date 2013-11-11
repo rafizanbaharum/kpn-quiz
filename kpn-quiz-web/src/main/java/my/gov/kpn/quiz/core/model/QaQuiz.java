@@ -30,6 +30,12 @@ public interface QaQuiz extends QaMetaObject {
 
     void setEndDate(Date endDate);
 
+    /**
+     * @return
+     */
+    boolean isCurrent();
+
+    void setCurrent(boolean current);
 
     /**
      * @return

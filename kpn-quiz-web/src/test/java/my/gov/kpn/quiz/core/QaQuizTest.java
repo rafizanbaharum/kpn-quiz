@@ -81,8 +81,8 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         quiz.setRound(round1);
         quiz.setStartDate(new Date("09:00:00 22/01/2012")); // TODO???
         quiz.setEndDate(new Date("10:00:00 22/01/2012"));
+        quiz.setCurrent(true);
         roundDao.addQuiz(round1, quiz, root);
-
     }
 
     @Test

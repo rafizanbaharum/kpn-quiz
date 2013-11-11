@@ -14,6 +14,10 @@ public interface QaQuizDao {
 
     QaQuiz findById(Long id);
 
+    QaQuiz findCurrent();
+
+    List<QaQuiz> findAll();
+
     List<QaQuiz> find(Integer offset, Integer limit);
 
     Integer count();

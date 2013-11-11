@@ -27,8 +27,8 @@ public abstract class QuizExpiredAwareAsyncCallback<T> extends SessionAwareAsync
     @Override
     public void onFailure(Throwable exception) {
         if (exception instanceof StatusCodeException) {
-            if (504 == ((StatusCodeException) exception).getStatusCode()) {
-                MessageBox.info("Session timeout", "Please log in",
+            if (410 == ((StatusCodeException) exception).getStatusCode()) {
+                MessageBox.info("Quiz timeout", "Please log out",
                         new Listener<MessageBoxEvent>() {
                             @Override
                             public void handleEvent(MessageBoxEvent be) {

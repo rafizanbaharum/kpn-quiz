@@ -46,7 +46,6 @@ public class RoundManagerImpl implements RoundManager {
     public void processRound(QaRound round) {
         List<QaQuiz> quizzes = round.getQuizzes();
         for (QaQuiz quiz : quizzes) {
-
             // for every participant
             // create a gradebook
             List<QaParticipant> participants = round.getParticipants();

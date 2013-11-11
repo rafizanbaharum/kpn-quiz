@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.web.filter;
 
 import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.web.server.QuizDelegateImpl;
+import my.gov.kpn.quiz.web.server.GlobalRegistry;
 import org.joda.time.DateTime;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -29,7 +29,7 @@ public class QuizExpiredFilter extends GenericFilterBean {
 
         request.setAttribute(FILTER_APPLIED, Boolean.TRUE);
         // get in session
-        QaQuiz quiz = (QaQuiz) request.getSession().getAttribute(QuizDelegateImpl.CURRENT_QUIZ);
+        QaQuiz quiz = GlobalRegistry.getQuiz();
         DateTime now = DateTime.now();
         DateTime end = new DateTime(quiz.getEndDate());
 
