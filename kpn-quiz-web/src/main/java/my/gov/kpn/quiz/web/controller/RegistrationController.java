@@ -2,11 +2,9 @@ package my.gov.kpn.quiz.web.controller;
 
 import my.gov.kpn.quiz.biz.manager.QuizHelper;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
-import my.gov.kpn.quiz.core.dao.QaInstitutionDao;
 import my.gov.kpn.quiz.web.client.model.RegistrationModel;
 import my.gov.kpn.quiz.web.server.Transformer;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -24,6 +22,8 @@ import java.util.Map;
 @RequestMapping("/register")
 public class RegistrationController {
 
+    private static final Logger log = Logger.getLogger(RegistrationController.class);
+
     @Autowired
     private ApplicationContext applicationContext;
 
@@ -38,11 +38,8 @@ public class RegistrationController {
 
     @RequestMapping(method = {RequestMethod.GET})
     public String go(@ModelAttribute("registration") RegistrationModel registrationModel, ModelMap model, HttpServletRequest request) {
-
-        Map<String,String> value = transformer.transformToDropDown(quizHelper.getStateList());
-        registrationModel.setNegeris(value); //tak jalan
-        model.put("negeris", value); //tak jalan
-        request.getSession().setAttribute("negeris",value);
+        Map<String, String> value = transformer.transformToDropDown(quizHelper.getStateList());
+        model.put("states", value);
         return "register";
     }
 
@@ -55,7 +52,7 @@ public class RegistrationController {
 
     @RequestMapping(method = {RequestMethod.POST})
     public String register(@ModelAttribute("registration") RegistrationModel registrationModel,
-            ModelMap model) {
+                           ModelMap model) {
 
         if (!registrationModel.getPassword().equals(registrationModel.getPasswordAgain())) {
             return "register";

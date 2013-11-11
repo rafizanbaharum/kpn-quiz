@@ -1,9 +1,6 @@
-<%@ page import = "java.util.Map" %>
-<%@ page import = "java.util.Set" %>
-<%@ page import = "java.util.Iterator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
-<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -77,7 +74,8 @@
                     <span></span>
                 </div>
                 <%--<form method="post" name="loginForm" id="loginForm" action="register" class="validate">--%>
-                <form:form commandName = "registration" action="${pageContext.request.contextPath}/register" method="POST">
+                <form:form commandName="registration" action="${pageContext.request.contextPath}/register"
+                           method="POST">
 
                     <div class="content">
                         <fieldset>
@@ -105,10 +103,11 @@
                                     <label for="username">
                                         Username
                                     </label>
-                                        <form:input id="username" path="username" size="50" cssClass="required text"/>
+                                    <form:input id="username" path="username" size="50" cssClass="required text"/>
+
+                                </p>
 
                                 <div id="username_status"></div>
-                                </p>
                             </div>
                             <div class="_50">
                                 <p>
@@ -123,9 +122,7 @@
                                     <label for="password">
                                         Password
                                     </label>
-                                    <form:input path="password" size="50" cssClass="required text"/>
-                                    <input type="password" value="" id="password" class="required"
-                                           name="password" class="text">
+                                    <form:password id="password" path="password" size="50" cssClass="required text"/>
                                 </p>
                             </div>
                             <div class="_50">
@@ -133,7 +130,8 @@
                                     <label for="passwordAgain">
                                         Password Again
                                     </label>
-                                    <form:input id="passwordAgain" path="passwordAgain" size="50" cssClass="required text"/>
+                                    <form:password id="passwordAgain" path="passwordAgain" size="50"
+                                                   cssClass="required text"/>
                                 </p>
                             </div>
                         </fieldset>
@@ -187,57 +185,44 @@
                             <p class="inline-small-label">
                                 <form:input path="address3" size="50" cssClass="required text"/>
                             </p>
+
                             <p class="inline-small-label">
                                 <label for="stateId">
-                                    State     hello
+                                    State
                                 </label>
-                                <c:forEach var="i" items="${negeris}">
-                                     Country: ${i.key}  - Capital: ${i.value}
+                                <c:forEach var="i" items="${states}">
+                                    Country: ${i.key}  - Capital: ${i.value}
                                 </c:forEach>
-                                <form:select id="stateId" path = "stateId">
-                                    <form:option value = "-" label = "-"/>
-                                    <%
-                                        Map values = (Map)session.getAttribute("test");
-                                        Iterator entries = values.entrySet().iterator();
-                                                while (entries.hasNext()) {
-                                                  Map.Entry thisEntry = (Map.Entry) entries.next();
-                                                  Object key = thisEntry.getKey();
-                                                  Object value = thisEntry.getValue();
-                                            %>
-                                        <option value="<%= key %>"><%= value %> </option>
-                                    <%
-                                        }
-                                    %>
-                                    <%--<form:options items = "registration.negeris"/>--%>
+                                <form:select id="stateId" path="stateId">
+                                    <form:option selected="selected" value=""/>
+                                    <form:options items="${states}"/>
                                 </form:select>
-                                <%--<input type="text" id="stateId" name="stateId" class="required text"--%>
-                                       <%--value="0">--%>
                             </p>
                         </fieldset>
-                        <%--<fieldset>--%>
+                            <%--<fieldset>--%>
                             <%--<legend>--%>
-                                <%--State Information--%>
+                            <%--State Information--%>
                             <%--</legend>--%>
                             <%--<p class="inline-small-label">--%>
-                                <%--<label for="stateId">--%>
-                                    <%--State--%>
-                                <%--</label>--%>
-                                <%--<input type="text" id="stateId" name="stateId" class="required text"--%>
-                                       <%--value="0">--%>
+                            <%--<label for="stateId">--%>
+                            <%--State--%>
+                            <%--</label>--%>
+                            <%--<input type="text" id="stateId" name="stateId" class="required text"--%>
+                            <%--value="0">--%>
                             <%--</p>--%>
-                        <%--</fieldset>--%>
-                        <%--<fieldset>--%>
+                            <%--</fieldset>--%>
+                            <%--<fieldset>--%>
                             <%--<legend>--%>
-                                <%--District Information--%>
+                            <%--District Information--%>
                             <%--</legend>--%>
                             <%--<p class="inline-small-label">--%>
-                                <%--<label for="districtId">--%>
-                                    <%--District--%>
-                                <%--</label>--%>
-                                <%--<input type="text" id="districtId" name="districtId" class="required text"--%>
-                                       <%--value="0">--%>
+                            <%--<label for="districtId">--%>
+                            <%--District--%>
+                            <%--</label>--%>
+                            <%--<input type="text" id="districtId" name="districtId" class="required text"--%>
+                            <%--value="0">--%>
                             <%--</p>--%>
-                        <%--</fieldset>--%>
+                            <%--</fieldset>--%>
                     </div>
 
                     <div class="actions">
