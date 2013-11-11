@@ -1,9 +1,15 @@
 package my.gov.kpn.quiz.web.client.controller;
 
+import com.extjs.gxt.ui.client.Registry;
 import com.extjs.gxt.ui.client.event.EventType;
 import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.View;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import my.gov.kpn.quiz.web.client.QuizConstants;
+import my.gov.kpn.quiz.web.client.QuizDelegate;
+import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.QuizEvents;
 import my.gov.kpn.quiz.web.client.view.QuizView;
 
@@ -29,6 +35,10 @@ public class QuizController extends Controller {
     @Override
     protected void initialize() {
         super.initialize();
+
+        QuizDelegateAsync delegate = (QuizDelegateAsync) GWT.create(QuizDelegate.class);
+        ((ServiceDefTarget) delegate).setServiceEntryPoint(GWT.getModuleBaseURL() + QuizConstants.ENDPOINT_QUIZ);
+        Registry.register(QuizConstants.DELEGATE_QUIZ, delegate);
 //        Registry.register(QuizConstants.MESSAGE_APP, GWT.create(QuizMessage.class));
         view = new QuizView(this);
     }

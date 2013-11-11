@@ -43,7 +43,7 @@ public class RoundManagerImpl implements RoundManager {
         }
     }
 
-    public void processGradebook(QaRound round) {
+    public void processRound(QaRound round) {
         List<QaQuiz> quizzes = round.getQuizzes();
         for (QaQuiz quiz : quizzes) {
 
@@ -68,5 +68,10 @@ public class RoundManagerImpl implements RoundManager {
                 sessionFactory.getCurrentSession().flush();
             }
         }
+    }
+
+    @Override
+    public QaRound findRoundById(Long id) {
+        return roundDao.findById(id);
     }
 }

@@ -103,18 +103,15 @@
     <!-- ====================================================================================== -->
     <!-- SERVLET DEFINITION -->
     <!-- ====================================================================================== -->
-    <!--
-        <servlet>
-            <servlet-name>DdDelegate</servlet-name>
-            <servlet-class>my.gov.kpn.quiz.web.dd.server.DdDelegateImpl</servlet-class>
-        </servlet>
+    <servlet>
+        <servlet-name>QuizDelegate</servlet-name>
+        <servlet-class>my.gov.kpn.quiz.web.server.QuizDelegateImpl</servlet-class>
+    </servlet>
 
-        <servlet-mapping>
-            <servlet-name>DdDelegate</servlet-name>
-            <url-pattern>/my.gov.kpn.quiz.web.Finance/DdDelegate</url-pattern>
-        </servlet-mapping>
-    -->
-
+    <servlet-mapping>
+        <servlet-name>QuizDelegate</servlet-name>
+        <url-pattern>/my.gov.kpn.quiz.web.Quiz/QuizDelegate</url-pattern>
+    </servlet-mapping>
 
     <!-- ====================================================================================== -->
     <!-- LISTENERS -->

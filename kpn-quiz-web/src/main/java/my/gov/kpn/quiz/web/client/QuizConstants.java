@@ -2,23 +2,9 @@ package my.gov.kpn.quiz.web.client;
 
 public interface QuizConstants {
 
-    public static final String DELEGATE_SO = "so:delegate";
-    public static final String DELEGATE_AM = "am:delegate";
-    public static final String DELEGATE_JM = "jm:delegate";
-    public static final String DELEGATE_DD = "dd:delegate";
-    public static final String DELEGATE_BM = "bm:delegate";
-
-    public static final String ENDPOINT_SO = "SoDelegate";
-    public static final String ENDPOINT_AM = "AmDelegate";
-    public static final String ENDPOINT_JM = "JmDelegate";
-    public static final String ENDPOINT_DD = "DdDelegate";
-    public static final String ENDPOINT_BM = "BmDelegate";
-
-    public static final String CONTROLLER_SO = "so:controller";
-    public static final String CONTROLLER_AM = "am:controller";
-    public static final String CONTROLLER_JM = "jm:controller";
-    public static final String CONTROLLER_DD = "dd:controller";
-    public static final String CONTROLLER_BM = "bm:controller";
+    public static final String DELEGATE_QUIZ = "so:delegate";
+    public static final String ENDPOINT_QUIZ = "QuizDelegate";
+    public static final String CONTROLLER_QUIZ = "quiz:controller";
 
     public static final String APP_MAIN_MENU = "app:main:menu";
     public static final String APP_MAIN_CANVAS = "app:main:canvas";

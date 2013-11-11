@@ -8,7 +8,8 @@ import my.gov.kpn.quiz.core.model.QaRound;
  */
 public interface RoundManager {
 
-    void processGradebook(QaRound round);
+    void processRound(QaRound round);
 
+    QaRound findRoundById(Long id);
 }
 
