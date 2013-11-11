@@ -38,13 +38,6 @@ public class Quiz implements EntryPoint {
             });
         }
 
-        // loading system delegate
-//        AmDelegateAsync amDelegate = (AmDelegateAsync) GWT.create(AmDelegate.class);
-//        ((ServiceDefTarget) amDelegate).setServiceEntryPoint(GWT.getModuleBaseURL() + QuizConstants.ENDPOINT_AM);
-//        Registry.register(QuizConstants.DELEGATE_AM, amDelegate);
-
-        // add main application controller
-        // trigger InitApplicationModel event
 //        Dispatcher dispatcher = Dispatcher.get();
 //        dispatcher.addController(new QuizController());
 //        dispatcher.dispatch(QuizEvents.InitApplicationModel);

@@ -1,10 +1,13 @@
 package my.gov.kpn.quiz.biz.manager;
 
 import my.gov.kpn.quiz.core.dao.QaQuizDao;
+import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaRound;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +15,8 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/10/13
  */
+@Component("quizManager")
+@Transactional
 public class QuizManagerImpl implements QuizManager {
 
     @Autowired
@@ -42,5 +47,15 @@ public class QuizManagerImpl implements QuizManager {
     @Override
     public void processRound(QaRound round) {
         // TODO:
+    }
+
+    @Override
+    public QaQuiz findQuestionById(Long id) {
+        return quizDao.findById(id);
+    }
+
+    @Override
+    public List<QaQuestion> findQuestions(QaQuiz quiz) {
+        return quizDao.findQuestions(quiz);
     }
 }

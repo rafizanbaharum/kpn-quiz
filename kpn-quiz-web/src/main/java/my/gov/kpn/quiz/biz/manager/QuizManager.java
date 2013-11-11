@@ -1,7 +1,10 @@
 package my.gov.kpn.quiz.biz.manager;
 
+import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaRound;
+
+import java.util.List;
 
 /**
  * @author rafizan.baharum
@@ -20,4 +23,8 @@ public interface QuizManager {
     QaQuiz getCurrentQuiz();
 
     void processRound(QaRound round);
+
+    QaQuiz findQuestionById(Long id);
+
+    List<QaQuestion> findQuestions(QaQuiz quiz);
 }

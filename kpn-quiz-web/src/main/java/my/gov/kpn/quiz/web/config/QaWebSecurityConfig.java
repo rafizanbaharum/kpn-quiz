@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
 /**
  * http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/
@@ -25,12 +26,17 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resource/**");
+                .antMatchers("/resource/**")
+                .antMatchers("/quiz/**")
+                .antMatchers("/gxt/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .headers()
+                .addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                .and()
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
@@ -42,7 +48,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/secure/dashboard")
+                .defaultSuccessUrl("/application")
                 .failureUrl("/gate/in?login_error=1")
                 .loginPage("/gate/in")
                 .permitAll()

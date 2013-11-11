@@ -1,6 +1,8 @@
 package my.gov.kpn.quiz.web.client;
 
+import com.extjs.gxt.ui.client.data.ListLoadResult;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import my.gov.kpn.quiz.web.client.model.QuestionModel;
 import my.gov.kpn.quiz.web.client.model.QuizModel;
 import my.gov.kpn.quiz.web.client.model.RoundModel;
 
@@ -13,4 +15,6 @@ public interface QuizDelegateAsync {
     void processRound(RoundModel roundModel, AsyncCallback<Void> async);
 
     void startQuiz(QuizModel quizModel, AsyncCallback<Void> async);
+
+    void findQuestions(QuizModel quizModel, AsyncCallback<ListLoadResult<QuestionModel>> async);
 }

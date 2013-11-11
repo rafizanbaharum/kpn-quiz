@@ -21,7 +21,7 @@
         <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="org.hibernate" additivity="false">
-        <level value="INFO"/>
+        <level value="ERROR"/>
         <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="com.google" additivity="false">

@@ -20,6 +20,8 @@ public interface QaQuizDao {
 
     List<QaQuiz> find(Integer offset, Integer limit);
 
+    List<QaQuestion> findQuestions(QaQuiz quiz);
+
     Integer count();
 
     void save(QaQuiz quiz, QaUser user);

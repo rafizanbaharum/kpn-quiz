@@ -10,6 +10,8 @@ import my.gov.kpn.quiz.core.model.impl.QaGradebookItemImpl;
 import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +19,8 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/9/13
  */
+@Component("roundManager")
+@Transactional
 public class RoundManagerImpl implements RoundManager {
 
     @Autowired

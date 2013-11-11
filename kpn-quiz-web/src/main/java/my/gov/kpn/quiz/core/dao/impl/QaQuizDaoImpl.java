@@ -33,8 +33,7 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +
                 "a.current = :current " +
-                "and a.metadata.state = :state " +
-                "order by a.code");
+                "and a.metadata.state = :state");
         query.setBoolean("current", true);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return (QaQuiz) query.uniqueResult();
@@ -60,6 +59,18 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
         query.setMaxResults(limit);
+        return query.list();
+    }
+
+    @Override
+    public List<QaQuestion> findQuestions(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaQuestion a where " +
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state " +
+                "order by a.code");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return query.list();
     }
 
