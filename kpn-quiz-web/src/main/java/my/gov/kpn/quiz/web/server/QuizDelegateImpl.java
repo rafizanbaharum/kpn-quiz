@@ -24,6 +24,7 @@ import java.util.List;
  */
 public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implements QuizDelegate {
 
+
     @Autowired
     private QaQuizDao quizDao;
 

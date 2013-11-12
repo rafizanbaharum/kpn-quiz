@@ -4,7 +4,9 @@ import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.server.GlobalRegistry;
 import my.gov.kpn.quiz.web.server.common.AutoInjectingServletContextListener;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 /**
  * @author rafizan.baharum
@@ -12,12 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class QuizStartupListener extends AutoInjectingServletContextListener {
 
+    private static final Logger log = Logger.getLogger(QuizStartupListener.class);
+
     @Autowired
     private QuizManager quizManager;
 
     @Override
     protected void doContextInitialized() {
         QaQuiz currentQuiz = quizManager.getCurrentQuiz();
+        log.debug("loading quiz: " + currentQuiz.getTitle());
         GlobalRegistry.setQuiz(currentQuiz);
     }
 
