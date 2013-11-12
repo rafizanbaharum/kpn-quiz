@@ -3,7 +3,7 @@ package my.gov.kpn.quiz.web.listener;
 import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.server.GlobalRegistry;
-import my.gov.kpn.quiz.web.server.common.AutoInjectingServletContextListener;
+import my.gov.kpn.quiz.web.common.AutoInjectingServletContextListener;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -12,7 +12,7 @@ import my.gov.kpn.quiz.web.client.QuizDelegate;
 import my.gov.kpn.quiz.web.client.model.QuestionModel;
 import my.gov.kpn.quiz.web.client.model.QuizModel;
 import my.gov.kpn.quiz.web.client.model.RoundModel;
-import my.gov.kpn.quiz.web.server.common.AutoInjectingRemoteServiceServlet;
+import my.gov.kpn.quiz.web.common.AutoInjectingRemoteServiceServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
