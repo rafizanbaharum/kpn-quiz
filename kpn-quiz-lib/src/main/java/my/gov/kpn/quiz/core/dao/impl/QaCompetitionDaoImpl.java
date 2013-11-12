@@ -44,7 +44,7 @@ public class QaCompetitionDaoImpl extends DaoSupport<Long, QaCompetition, QaComp
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaCompetition a where " +
                 "a.metadata.state = :state " +
-                "order by a.code");
+                "order by a.id");
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
         query.setMaxResults(limit);

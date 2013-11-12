@@ -1,21 +1,21 @@
 package my.gov.kpn.quiz.web.client.view;
 
 import com.extjs.gxt.ui.client.Registry;
-import com.extjs.gxt.ui.client.data.BaseListLoader;
-import com.extjs.gxt.ui.client.data.ListLoadResult;
-import com.extjs.gxt.ui.client.data.ListLoader;
-import com.extjs.gxt.ui.client.data.LoadEvent;
+import com.extjs.gxt.ui.client.Style;
+import com.extjs.gxt.ui.client.binding.FormBinding;
+import com.extjs.gxt.ui.client.data.*;
 import com.extjs.gxt.ui.client.event.LoadListener;
 import com.extjs.gxt.ui.client.util.Margins;
 import com.extjs.gxt.ui.client.widget.CardPanel;
-import com.extjs.gxt.ui.client.widget.ContentPanel;
 import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ButtonBar;
+import com.extjs.gxt.ui.client.widget.form.FormPanel;
 import com.extjs.gxt.ui.client.widget.form.TextArea;
 import com.extjs.gxt.ui.client.widget.form.TextField;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayout;
 import com.extjs.gxt.ui.client.widget.layout.BorderLayoutData;
+import com.extjs.gxt.ui.client.widget.layout.FitLayout;
 import com.google.gwt.user.client.Element;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
@@ -33,7 +33,7 @@ import static com.extjs.gxt.ui.client.Style.LayoutRegion.SOUTH;
  * @author rafizan.baharum
  * @since 11/11/13
  */
-public class QuizPanel extends ContentPanel {
+public class QuizPanel extends LayoutContainer {
 
     private static final Logger log = Logger.getLogger(QuizPanel.class.getName());
 
@@ -56,7 +56,7 @@ public class QuizPanel extends ContentPanel {
     }
 
     private void setupListener() {
-        // TODO
+        loader.load(new BaseListLoadConfig());
     }
 
     private void createButtonBar() {
@@ -64,7 +64,6 @@ public class QuizPanel extends ContentPanel {
         ButtonBar buttonBar = new ButtonBar();
         buttonBar.add(next);
         buttonBar.setAlignment(CENTER);
-
         BorderLayoutData southData = new BorderLayoutData(SOUTH, .05f);
         southData.setMargins(new Margins(5, 0, 10, 0));
         add(buttonBar, southData);
@@ -78,10 +77,14 @@ public class QuizPanel extends ContentPanel {
                 ListLoadResult<QuestionModel> data = le.<ListLoadResult<QuestionModel>>getData();
                 List<QuestionModel> models = data.getData();
                 for (QuestionModel model : models) {
+                    log.info("adding question panel");
+                    log.info("statement: " + model.getStatement());
                     createQuestionPanel(model);
                 }
             }
         });
+        BorderLayoutData centerData = new BorderLayoutData(Style.LayoutRegion.CENTER);
+        add(cardPanel, centerData);
     }
 
     private void createQuestionPanel(QuestionModel model) {
@@ -99,7 +102,9 @@ public class QuizPanel extends ContentPanel {
     }
 
     private void createMultipleChoiceQuestionPanel(QuestionModel model) {
-        LayoutContainer panel = new LayoutContainer(new BorderLayout());
+        LayoutContainer panel = new LayoutContainer(new FitLayout());
+        FormPanel formPanel = new FormPanel();
+        formPanel.setHeaderVisible(false);
         TextField statementField = new TextField<String>();
         statementField.setId("statement");
         statementField.setName(QuestionModel.STATEMENT);
@@ -107,7 +112,7 @@ public class QuizPanel extends ContentPanel {
         statementField.setLabelSeparator("");
 
         TextField choice1Field = new TextField<String>();
-        choice1Field.setId("choice2");
+        choice1Field.setId("choice1");
         choice1Field.setName(MultipleChoiceQuestionModel.CHOICE_1);
         choice1Field.setFieldLabel("");
         choice1Field.setLabelSeparator("");
@@ -130,16 +135,21 @@ public class QuizPanel extends ContentPanel {
         choice4Field.setFieldLabel("");
         choice4Field.setLabelSeparator("");
 
-        panel.add(statementField);
-        panel.add(choice1Field);
-        panel.add(choice2Field);
-        panel.add(choice3Field);
-        panel.add(choice4Field);
+        formPanel.add(statementField);
+        formPanel.add(choice1Field);
+        formPanel.add(choice2Field);
+        formPanel.add(choice3Field);
+        formPanel.add(choice4Field);
+        panel.add(formPanel);
+        FormBinding binding = new FormBinding(formPanel, true);
+        binding.bind(model);
         cardPanel.add(panel);
     }
 
     private void createBooleanQuestionPanel(QuestionModel model) {
-        LayoutContainer panel = new LayoutContainer(new BorderLayout());
+        LayoutContainer panel = new LayoutContainer(new FitLayout());
+        FormPanel formPanel = new FormPanel();
+        formPanel.setHeaderVisible(false);
         TextField statementField = new TextField<String>();
         statementField.setId("statement");
         statementField.setName(QuestionModel.STATEMENT);
@@ -160,14 +170,20 @@ public class QuizPanel extends ContentPanel {
         choiceFalseField.setLabelSeparator("");
         choiceFalseField.setValue("FALSE");
 
-        panel.add(statementField);
-        panel.add(choiceTrueField);
-        panel.add(choiceFalseField);
+        formPanel.add(statementField);
+        formPanel.add(choiceTrueField);
+        formPanel.add(choiceFalseField);
+        FormBinding binding = new FormBinding(formPanel, true);
+        binding.bind(model);
+        panel.add(formPanel);
+
         cardPanel.add(panel);
     }
 
     private void createSubjectiveQuestionPanel(QuestionModel model) {
-        LayoutContainer panel = new LayoutContainer(new BorderLayout());
+        LayoutContainer panel = new LayoutContainer(new FitLayout());
+        FormPanel formPanel = new FormPanel();
+        formPanel.setHeaderVisible(false);
         TextField statementField = new TextField<String>();
         statementField.setId("statement");
         statementField.setName(QuestionModel.STATEMENT);
@@ -180,8 +196,11 @@ public class QuizPanel extends ContentPanel {
         area.setFieldLabel("");
         area.setLabelSeparator("");
 
-        panel.add(statementField);
-        cardPanel.add(panel);
+        formPanel.add(statementField);
+        FormBinding binding = new FormBinding(formPanel, true);
+        binding.bind(model);
+        panel.add(formPanel);
+        cardPanel.add(formPanel);
     }
 
     private void setupLoader() {

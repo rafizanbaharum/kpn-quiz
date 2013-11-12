@@ -1,11 +1,12 @@
 package my.gov.kpn.quiz.web.client.rpc;
 
-import com.extjs.gxt.ui.client.data.*;
+import com.extjs.gxt.ui.client.data.ListLoadResult;
+import com.extjs.gxt.ui.client.data.LoadConfig;
+import com.extjs.gxt.ui.client.data.RpcProxy;
 import com.extjs.gxt.ui.client.widget.MessageBox;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.model.QuestionModel;
-import my.gov.kpn.quiz.web.client.model.QuizModel;
 
 import java.util.logging.Logger;
 
@@ -17,8 +18,6 @@ public class QuestionRpcProxy extends RpcProxy<ListLoadResult<QuestionModel>> {
 
     private static final Logger log = Logger.getLogger(QuestionRpcProxy.class.getName());
 
-    public static final String QUIZ = "quiz";
-
     private QuizDelegateAsync delegate;
 
     public QuestionRpcProxy(QuizDelegateAsync delegate) {
@@ -29,8 +28,7 @@ public class QuestionRpcProxy extends RpcProxy<ListLoadResult<QuestionModel>> {
     protected void load(Object loadConfig, final AsyncCallback<ListLoadResult<QuestionModel>> callback) {
         final LoadConfig config = (LoadConfig) loadConfig;
 
-        delegate.findQuestions(
-                (QuizModel) config.get(QUIZ),
+        delegate.findCurrentQuestions(
                 new SessionAwareAsyncCallback<ListLoadResult<QuestionModel>>() {
                     @Override
                     public void doOnFailure(Throwable throwable) {
@@ -40,6 +38,7 @@ public class QuestionRpcProxy extends RpcProxy<ListLoadResult<QuestionModel>> {
 
                     @Override
                     public void doOnSuccess(ListLoadResult<QuestionModel> results) {
+                        log.info("loading questions: " + results.getData().size());
                         callback.onSuccess(results);
                     }
                 });

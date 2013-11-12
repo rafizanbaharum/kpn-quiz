@@ -48,9 +48,9 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
     }
 
     @Override
-    public ListLoadResult<QuestionModel> findQuestions(QuizModel quizModel) {
+    public ListLoadResult<QuestionModel> findCurrentQuestions() {
         ArrayList<QuestionModel> models = new ArrayList<QuestionModel>();
-        QaQuiz quiz = quizManager.findQuestionById(quizModel.getId());
+        QaQuiz quiz = GlobalRegistry.getQuiz();
         List<QaQuestion> questions = quizManager.findQuestions(quiz);
         for (QaQuestion question : questions) {
             models.add(quizConverter.convert(question));

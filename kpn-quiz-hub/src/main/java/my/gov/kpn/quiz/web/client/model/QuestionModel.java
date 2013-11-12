@@ -11,6 +11,8 @@ public class QuestionModel extends MetaModel {
     public static final String WEIGHT = "weight";
     public static final String DIFFICULTY = "difficulty";
 
+    private QuestionType questionType;
+
     public Long getId() {
         return get(ID);
     }

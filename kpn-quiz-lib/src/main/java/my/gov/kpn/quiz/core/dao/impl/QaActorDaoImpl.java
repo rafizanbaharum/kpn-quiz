@@ -55,7 +55,7 @@ public class QaActorDaoImpl extends DaoSupport<Long, QaActor, QaActorImpl> imple
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaActor a where " +
                 "a.metadata.state = :state " +
-                "order by a.code");
+                "order by a.id");
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
         query.setMaxResults(limit);
@@ -66,7 +66,7 @@ public class QaActorDaoImpl extends DaoSupport<Long, QaActor, QaActorImpl> imple
     public List<QaActor> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaActor a where " +
-                "(a.code like upper(:filter) " +
+                "(a.name like upper(:filter) " +
                 "or upper(a.description) like upper(:filter)) " +
                 "and a.metadata.state = :state");
         query.setString("filter", WILDCARD + filter + WILDCARD);

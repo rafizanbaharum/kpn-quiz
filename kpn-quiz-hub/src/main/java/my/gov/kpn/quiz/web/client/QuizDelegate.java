@@ -16,5 +16,5 @@ public interface QuizDelegate extends RemoteService {
 
     void startQuiz(QuizModel quizModel) throws Exception;
 
-    ListLoadResult<QuestionModel> findQuestions(QuizModel quizModel);
+    ListLoadResult<QuestionModel> findCurrentQuestions();
 }

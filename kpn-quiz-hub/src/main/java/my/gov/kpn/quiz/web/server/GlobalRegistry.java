@@ -19,9 +19,9 @@ public class GlobalRegistry {
     private QaQuiz quiz = null;
 
     private static synchronized GlobalRegistry getInstance() {
-        if (INSTANCE == null)
-            return new GlobalRegistry();
-
+        if (INSTANCE == null) {
+            INSTANCE = new GlobalRegistry();
+        }
         return INSTANCE;
     }
 

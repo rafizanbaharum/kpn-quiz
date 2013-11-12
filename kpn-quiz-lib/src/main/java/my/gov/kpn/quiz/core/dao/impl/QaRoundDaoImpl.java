@@ -33,7 +33,7 @@ public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> imple
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaRound a where " +
                 "a.metadata.state = :state " +
-                "order by a.code");
+                "order by a.id");
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
         query.setMaxResults(limit);
