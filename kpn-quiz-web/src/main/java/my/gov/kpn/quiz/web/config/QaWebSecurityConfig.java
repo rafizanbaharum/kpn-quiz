@@ -26,7 +26,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resource/**")
+                .antMatchers("/resources/**")
                 .antMatchers("/quiz/**")
                 .antMatchers("/gxt/**");
     }
@@ -43,12 +43,14 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/gate/**").permitAll()
                 .antMatchers("/validate/**").permitAll()
                 .antMatchers("/register/**").permitAll()
+                .antMatchers("/gxt/**").permitAll()
+                .antMatchers("/quiz/**").permitAll()
                 .antMatchers("/secure/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/application")
+                .defaultSuccessUrl("/secure/application")
                 .failureUrl("/gate/in?login_error=1")
                 .loginPage("/gate/in")
                 .permitAll()

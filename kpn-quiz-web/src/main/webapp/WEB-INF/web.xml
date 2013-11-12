@@ -35,16 +35,14 @@
     <!-- SESSION EXPIRED FILTER  -->
     <!-- ====================================================================================== -->
 
-    <!--
-        <filter>
-            <filter-name>springSessionExpiredFilterChain</filter-name>
-            <filter-class>my.gov.kpn.quiz.web.filter.SessionExpiredFilter</filter-class>
-        </filter>
-        <filter-mapping>
-            <filter-name>springSessionExpiredFilterChain</filter-name>
-            <url-pattern>/*</url-pattern>
-        </filter-mapping>
-    -->
+    <filter>
+        <filter-name>springSessionExpiredFilterChain</filter-name>
+        <filter-class>my.gov.kpn.quiz.web.filter.SessionExpiredFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionExpiredFilterChain</filter-name>
+        <url-pattern>/secure/*</url-pattern>
+    </filter-mapping>
 
 
     <filter>

@@ -141,4 +141,13 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     }
 
+
+    @Test
+    @Rollback(value = false)
+    public void testFindCurrent() {
+        QaQuiz current = quizDao.findCurrent();
+        log.debug("current: " + current.getTitle());
+    }
+
+
 }

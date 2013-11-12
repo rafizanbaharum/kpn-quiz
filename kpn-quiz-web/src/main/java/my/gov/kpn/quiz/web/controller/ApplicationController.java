@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @since 9/14/13
  */
 @Controller
-@RequestMapping("/application")
+@RequestMapping("/secure/application")
 public class ApplicationController {
 
     @RequestMapping(method = {RequestMethod.GET})
     public String go(ModelMap model) {
-        return "application";
+        return "secure/application";
     }
 
 }
