@@ -33,6 +33,9 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
     @Autowired
     private RoundManager roundManager;
 
+    @Autowired
+    private QuizConverter quizConverter;
+
     public void startQuiz(QuizModel quizModel) {
         // do something
     }
@@ -45,8 +48,12 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
     @Override
     public ListLoadResult<QuestionModel> findQuestions(QuizModel quizModel) {
+        ArrayList<QuestionModel> models = new ArrayList<QuestionModel>();
         QaQuiz quiz = quizManager.findQuestionById(quizModel.getId());
         List<QaQuestion> questions = quizManager.findQuestions(quiz);
-        return new BaseListLoadResult(new ArrayList<QuestionModel>());
+        for (QaQuestion question : questions) {
+            models.add(quizConverter.convert(question));
+        }
+        return new BaseListLoadResult(models);
     }
 }

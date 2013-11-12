@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.core.model.impl;
 
+import my.gov.kpn.quiz.core.model.QaQuestionType;
 import my.gov.kpn.quiz.core.model.QaSubjectiveQuestion;
 
 import javax.persistence.Column;
@@ -15,10 +16,13 @@ import javax.persistence.Table;
 @Entity(name = "QaSubjectiveQuestion")
 public class QaSubjectiveQuestionImpl extends QaQuestionImpl implements QaSubjectiveQuestion {
 
-
     @Lob
     @Column(name = "ANSWER_GUIDE")
     private String answerGuide;
+
+    public QaSubjectiveQuestionImpl() {
+        setQuestionType(QaQuestionType.SUBJECTIVE);
+    }
 
     public String getAnswerGuide() {
         return answerGuide;

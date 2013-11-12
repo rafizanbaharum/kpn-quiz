@@ -9,4 +9,8 @@ public enum QaDifficulty {
     EASY,
     INTERMEDIATE,
     DIFFICULT;
+
+    public static QaDifficulty get(int index) {
+        return values()[index];
+    }
 }

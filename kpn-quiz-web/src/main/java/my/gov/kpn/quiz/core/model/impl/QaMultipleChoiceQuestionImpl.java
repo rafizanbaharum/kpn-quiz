@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
+import my.gov.kpn.quiz.core.model.QaQuestionType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,10 @@ public class QaMultipleChoiceQuestionImpl extends QaQuestionImpl implements QaMu
 
     @Column(name = "CHOICE_4")
     private String choice4;
+
+    public QaMultipleChoiceQuestionImpl() {
+        setQuestionType(QaQuestionType.MULTIPLE_CHOICE);
+    }
 
     public String getChoice1() {
         return choice1;

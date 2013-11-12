@@ -41,6 +41,15 @@ public interface QaQuestion extends QaMetaObject {
 
     void setDifficulty(QaDifficulty difficulty);
 
+
+    /**
+     * @return
+     */
+    QaQuestionType getQuestionType();
+
+    void setQuestionType(QaQuestionType questionType);
+
+
     /**
      * @return
      */
