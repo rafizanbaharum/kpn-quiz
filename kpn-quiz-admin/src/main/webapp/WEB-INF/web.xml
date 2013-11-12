@@ -45,21 +45,6 @@
     </filter-mapping>
 
     <!-- ====================================================================================== -->
-    <!-- QUIZ EXPIRED FILTER  -->
-    <!-- ====================================================================================== -->
-
-    <!-- TODO: check only when quiz has started -->
-    <!-- TODO: DO NOT check before or during-->
-    <!--<filter>-->
-        <!--<filter-name>quizExpiredFilterChain</filter-name>-->
-        <!--<filter-class>my.gov.kpn.quiz.web.filter.QuizExpiredFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>quizExpiredFilterChain</filter-name>-->
-        <!--<url-pattern>/secure/*</url-pattern>-->
-    <!--</filter-mapping>-->
-
-    <!-- ====================================================================================== -->
     <!-- HIBERNATE FILTER  -->
     <!-- ====================================================================================== -->
 
@@ -92,7 +77,6 @@
     </filter-mapping>
 
 
-
     <!-- ====================================================================================== -->
     <!-- LOG4J FILTER -->
     <!-- ====================================================================================== -->
@@ -116,20 +100,6 @@
         <filter-name>NDCLogServletFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-
-    <!-- ====================================================================================== -->
-    <!-- SERVLET DEFINITION -->
-    <!-- ====================================================================================== -->
-    <servlet>
-        <servlet-name>QuizDelegate</servlet-name>
-        <servlet-class>my.gov.kpn.quiz.web.server.QuizDelegateImpl</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>QuizDelegate</servlet-name>
-        <url-pattern>/my.gov.kpn.quiz.web.Quiz/QuizDelegate</url-pattern>
-    </servlet-mapping>
 
     <!-- ====================================================================================== -->
     <!-- LISTENERS -->
@@ -158,9 +128,6 @@
 
     <listener>
         <listener-class>my.gov.kpn.quiz.web.listener.Log4jCleanupListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>my.gov.kpn.quiz.web.listener.QuizStartupListener</listener-class>
     </listener>
 
     <welcome-file-list>
