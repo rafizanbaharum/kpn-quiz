@@ -22,8 +22,10 @@ public class QuizStartupListener extends AutoInjectingServletContextListener {
     @Override
     protected void doContextInitialized() {
         QaQuiz currentQuiz = quizManager.getCurrentQuiz();
-        log.debug("loading quiz: " + currentQuiz.getTitle());
-        GlobalRegistry.setQuiz(currentQuiz);
+        if (null != currentQuiz) {
+            log.debug("loading quiz: " + currentQuiz.getTitle());
+            GlobalRegistry.setQuiz(currentQuiz);
+        }
     }
 
     @Override

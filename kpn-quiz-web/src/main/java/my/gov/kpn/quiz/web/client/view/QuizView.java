@@ -10,9 +10,6 @@ import com.extjs.gxt.ui.client.mvc.View;
 public class QuizView extends View {
     public QuizView(Controller controller) {
         super(controller);
-
-
-
     }
 
     @Override
