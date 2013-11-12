@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.biz.manager;
 
+import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaRound;
@@ -27,4 +28,7 @@ public interface QuizManager {
     QaQuiz findQuestionById(Long id);
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
+
+    void updateAnswer(QaParticipant participant, QaQuestion question);
+
 }

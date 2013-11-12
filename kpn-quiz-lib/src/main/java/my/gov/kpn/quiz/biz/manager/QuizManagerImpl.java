@@ -1,6 +1,8 @@
 package my.gov.kpn.quiz.biz.manager;
 
+import my.gov.kpn.quiz.core.dao.QaGradebookDao;
 import my.gov.kpn.quiz.core.dao.QaQuizDao;
+import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaRound;
@@ -21,6 +23,9 @@ public class QuizManagerImpl implements QuizManager {
 
     @Autowired
     private QaQuizDao quizDao;
+
+    @Autowired
+    private QaGradebookDao gradebookDao;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -57,5 +62,12 @@ public class QuizManagerImpl implements QuizManager {
     @Override
     public List<QaQuestion> findQuestions(QaQuiz quiz) {
         return quizDao.findQuestions(quiz);
+    }
+
+    @Override
+    public void updateAnswer(QaParticipant participant, QaQuestion question) {
+
+
+
     }
 }

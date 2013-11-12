@@ -14,6 +14,10 @@ public interface QaGradebookDao {
 
     List<QaGradebook> find(QaQuiz quiz);
 
+    List<QaGradebook> find(QaParticipant participant, QaQuiz quiz);
+
+    List<QaGradebook> find(QaParticipant participant, QaQuiz quiz, QaQuestion question);
+
     Integer count(QaQuiz quiz);
 
     void save(QaGradebook Gradebook, QaUser user);

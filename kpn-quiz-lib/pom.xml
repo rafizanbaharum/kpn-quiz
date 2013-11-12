@@ -1,8 +1,8 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
     <groupId>my.gov.kpn.quiz</groupId>
-    <artifactId>kpn-quiz-web</artifactId>
-    <packaging>war</packaging>
+    <artifactId>kpn-quiz-lib</artifactId>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -11,24 +11,12 @@
         <junit.version>4.8.1</junit.version>
         <log4j.version>1.2.16</log4j.version>
         <postgresql.version>9.1-901.jdbc4</postgresql.version>
-        <activiti.version>5.13</activiti.version>
-        <jackson.version>1.9.10</jackson.version>
-        <jasper.version>5.1.0</jasper.version>
         <springframework.version>3.2.3.RELEASE</springframework.version>
         <spring-security.version>3.2.0.RC1</spring-security.version>
         <spring-batch.version>2.2.1.RELEASE</spring-batch.version>
-        <spring-web.version>3.2.3.RELEASE</spring-web.version>
-        <spring-webmvc.verion>3.2.3.RELEASE</spring-webmvc.verion>
-        <gwt.version>2.3.0</gwt.version>
-        <gxt.version>2.2.4</gxt.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>my.gov.kpn.quiz</groupId>
-            <artifactId>kpn-quiz-lib</artifactId>
-            <version>1.0</version>
-        </dependency>
         <dependency>
             <groupId>javax.ejb</groupId>
             <artifactId>ejb-api</artifactId>
@@ -100,16 +88,6 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring-web.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring-webmvc.verion}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
             <version>${spring-security.version}</version>
@@ -144,11 +122,6 @@
             <artifactId>spring-batch-test</artifactId>
             <version>${spring-batch.version}</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -214,22 +187,6 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
             <version>5.13</version>
-        </dependency>
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring</artifactId>
-            <version>${activiti.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>juel</groupId>
-                    <artifactId>juel</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>de.odysseus.juel</groupId>
-            <artifactId>juel-impl</artifactId>
-            <version>2.2.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -341,29 +298,13 @@
             <version>2.1.1</version>
         </dependency>
         <dependency>
-            <groupId>com.extjs</groupId>
-            <artifactId>gxt</artifactId>
-            <version>${gxt.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <version>${gwt.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-servlet</artifactId>
-            <version>${gwt.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>14.0.1</version>
         </dependency>
     </dependencies>
     <build>
-        <finalName>kpn-quiz</finalName>
+        <finalName>kpn-quiz-lib</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -386,51 +327,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
-                <configuration>
-                    <warName>kpn-quiz</warName>
-                </configuration>
-            </plugin>
-            <plugin>
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>tomcat-maven-plugin</artifactId>-->
-                <!--<version>1.0-beta-1</version>-->
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.3.0</version>
-                <configuration>
-                    <localWorkers>2</localWorkers>
-                    <runTarget>my.gov.kpn.quiz/Finance.html</runTarget>
-                    <draftCompile>true</draftCompile>
-                    <soycDetailed>false</soycDetailed>
-                    <extraJvmArgs>-Xmx1024m -Xms256m</extraJvmArgs>
-                    <!--<deploy>war/WEB-INF/deploy/</deploy>-->
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>resources</goal>
-                            <goal>compile</goal>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.google.gwt</groupId>
-                        <artifactId>gwt-user</artifactId>
-                        <version>${gwt.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.google.gwt</groupId>
-                        <artifactId>gwt-dev</artifactId>
-                        <version>${gwt.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>

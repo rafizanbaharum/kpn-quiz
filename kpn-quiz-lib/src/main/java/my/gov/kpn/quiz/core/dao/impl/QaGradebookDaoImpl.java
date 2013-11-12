@@ -23,6 +23,30 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     }
 
     @Override
+    public List<QaGradebook> find(QaParticipant participant, QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaGradebook a where " +
+                "a.quiz = :quiz " +
+                "and a.participant = :participant " +
+                "and a.metadata.state = :state ");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return query.list();
+    }
+
+    @Override
+    public List<QaGradebook> find(QaParticipant participant, QaQuiz quiz, QaQuestion question) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaGradebook a where " +
+                "a.quiz = :quiz " +
+                "and a.participant = :participant " +
+                "and a.metadata.state = :state ");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return query.list();
+    }
+
+    @Override
     public List<QaGradebook> find(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaGradebook a where " +
