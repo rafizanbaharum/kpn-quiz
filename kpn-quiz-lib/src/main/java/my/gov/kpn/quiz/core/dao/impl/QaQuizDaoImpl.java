@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
@@ -62,7 +63,9 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         return query.list();
     }
 
+
     @Override
+    @Cacheable(value = "questionRegion")
     public List<QaQuestion> findQuestions(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuestion a where " +
