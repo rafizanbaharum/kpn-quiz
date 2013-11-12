@@ -1,7 +1,5 @@
 package my.gov.kpn.quiz.web.client.model;
 
-import com.google.common.base.Objects;
-
 import java.util.Date;
 
 public class QuizModel extends MetaModel {
@@ -62,11 +60,7 @@ public class QuizModel extends MetaModel {
     }
 
     public String toString() {
-        return Objects.toStringHelper(this)
-                .add("title", getTitle())
-                .add("start date", getStartDate())
-                .add("end date", getEndDate())
-                .toString();
+        return getTitle();
     }
 }
 

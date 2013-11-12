@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.web.client.model;
 
-import com.google.common.base.Objects;
 
 public class ParticipantModel extends MetaModel {
 
@@ -34,8 +33,7 @@ public class ParticipantModel extends MetaModel {
     }
 
     public String toString() {
-        return Objects.toStringHelper(this)
-                .toString();
+        return getUser().getEmail();
     }
 }
 

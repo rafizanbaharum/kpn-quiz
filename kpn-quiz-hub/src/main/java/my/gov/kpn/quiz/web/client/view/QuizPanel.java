@@ -33,16 +33,16 @@ import static com.extjs.gxt.ui.client.Style.LayoutRegion.SOUTH;
  * @author rafizan.baharum
  * @since 11/11/13
  */
-public class QuizSessionView extends ContentPanel {
+public class QuizPanel extends ContentPanel {
 
-    private static final Logger log = Logger.getLogger(QuizSessionView.class.getName());
+    private static final Logger log = Logger.getLogger(QuizPanel.class.getName());
 
     private CardPanel cardPanel;
     private QuizDelegateAsync delegate;
     private QuestionRpcProxy proxy;
     private ListLoader<ListLoadResult<QuestionModel>> loader;
 
-    public QuizSessionView() {
+    public QuizPanel() {
         super();
         setLayout(new BorderLayout());
     }

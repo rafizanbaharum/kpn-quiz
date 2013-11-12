@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.web.client.model;
 
-import com.google.common.base.Objects;
 
 import java.util.List;
 
@@ -53,10 +52,7 @@ public class RoundModel extends MetaModel {
     }
 
     public String toString() {
-        return Objects.toStringHelper(this)
-                .add("locked", isLocked())
-                .add("processed", isProcessed())
-                .toString();
+        return getId().toString();
     }
 }
 
