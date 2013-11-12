@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <defaultCache eternal="true" maxElementsInMemory="100" overflowToDisk="false"/>
+    <cache name="competitionRegion" maxElementsInMemory="100" eternal="true" overflowToDisk="false"/>
+    <cache name="roundRegion" maxElementsInMemory="100" eternal="true" overflowToDisk="false"/>
+    <cache name="gradebookRegion" maxElementsInMemory="100" eternal="true" overflowToDisk="false"/>
+    <cache name="questionRegion" maxElementsInMemory="100" eternal="true" overflowToDisk="false"/>
+</ehcache>
