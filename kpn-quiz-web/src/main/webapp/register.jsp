@@ -2,336 +2,183 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html>
+<!DOCTYPE html>
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
+<!--[if IE 8]>
+<html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]>
+<html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<!-- start: HEAD -->
 <head>
-    <meta charset="utf-8">
-    <link rel=dns-prefetch href="//fonts.googleapis.com">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ASEAN Quiz - KPN</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" type="image/png" href="/resources/img/favicon/favicon.ico">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="resources/css/960gs/fluid.css">
-    <link rel="stylesheet" href="resources/css/h5bp/normalize.css">
-    <link rel="stylesheet" href="resources/css/h5bp/non-semantic.helper.classes.css">
-    <link rel="stylesheet" href="resources/css/h5bp/print.styles.css">
-    <link rel="stylesheet" href="resources/css/sprites.css">
-    <link rel="stylesheet" href="resources/css/header.css">
-    <link rel="stylesheet" href="resources/css/navigation.css">
-    <link rel="stylesheet" href="resources/css/sidebar.css">
-    <link rel="stylesheet" href="resources/css/content.css">
-    <link rel="stylesheet" href="resources/css/footer.css">
-    <link rel="stylesheet" href="resources/css/typographics.css">
-    <link rel="stylesheet" href="resources/css/ie.fixes.css">
-    <link rel="stylesheet" href="resources/css/sprite.forms.css">
-    <link rel="stylesheet" href="resources/css/sprite.lists.css">
-    <link rel="stylesheet" href="resources/css/icons.css">
-    <link rel="stylesheet" href="resources/css/external/jquery-ui-1.8.16.custom.css">
-    <link rel="stylesheet" href="resources/css/sidebar.css">
-
-    <script>
-
-
-    </script>
+    <title>ASEAN QUIZ - KPN</title>
+    <!-- start: META -->
+    <meta charset="utf-8"/>
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1"/><![endif]-->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link rel="shortcut icon" href="/resources/img/favicon/favicon.ico">
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/style.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main-responsive.css">
+    <link rel="stylesheet" href="/assets/plugins/iCheck/skins/all.css">
+    <link rel="stylesheet" href="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/css/theme_light.css" id="skin_color">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="/assets/plugins/select2/select2.css">
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
+<!-- end: HEAD -->
+<!-- start: BODY -->
+<body class="login example2">
+<div class="main-login col-sm-4 col-sm-offset-4">
+    <div class="logo"><h2>ASEAN QUIZ</h2></div>
+    <!-- start: LOGIN BOX -->
+    <div class="box-register">
+        <h3>Sign Up</h3>
 
-<body>
+        <p>
+            Enter your personal details below:
+        </p>
 
-<!-- Begin of #height-wrapper -->
-<div id="height-wrapper">
-<!-- Begin of header -->
-<header>
-    <!-- Begin of the header toolbar -->
-    <jsp:include page="toolbar.jsp"/>
-    <!-- End of the header toolbar -->
-
-    <!-- Start of the main header bar -->
-    <jsp:include page="header.jsp"/>
-    <div id="nav_sub"></div>
-</header>
-
-<!-- Start of the content -->
-<div role="main" class="container_12" id="content-wrapper">
-
-
-    <!-- Start of the main content -->
-    <div id="main_content">
-
-        <h2 class="grid_12">Instructor Registration</h2>
-
-        <div class="clean"></div>
-
-        <div class="grid_12">
-            <div class="box">
-                <div class="header">
-                    <img src="resources/img/icons/packs/fugue/16x16/task-select-first.png" alt="" width="16"
-                         height="16">
-
-                    <h3>Registration Form</h3>
-                    <span></span>
-                </div>
-                <%--<form method="post" name="loginForm" id="loginForm" action="register" class="validate">--%>
-                <form:form commandName="registration" action="${pageContext.request.contextPath}/register"
-                           method="POST">
-
-                    <div class="content">
-                        <fieldset>
-                            <legend>
-                                Login Information
-                            </legend>
-                            <div class="_50">
-                                <p>
-                                    <label for="nameTxt">
-                                        Name
-                                    </label>
-                                    <form:input id="nameTxt" path="fullName" size="50" cssClass="required text"/>
-                                </p>
-                            </div>
-                            <div class="_50">
-                                <p>
-                                    <label for="nricNo">
-                                        NRIC
-                                    </label>
-                                    <form:input id="nricNo" path="nricNo" size="50" cssClass="required fullname text"/>
-                                </p>
-                            </div>
-                            <div class="_50">
-                                <p>
-                                    <label for="username">
-                                        Username
-                                    </label>
-                                    <form:input id="username" path="username" size="50" cssClass="required text"/>
-
-                                </p>
-
-                                <div id="username_status"></div>
-                            </div>
-                            <div class="_50">
-                                <p>
-                                    <label for="emailTxt">
-                                        Email
-                                    </label>
-                                    <form:input id="emailTxt" path="email" size="50" cssClass="required text"/>
-                                </p>
-                            </div>
-                            <div class="_50">
-                                <p>
-                                    <label for="password">
-                                        Password
-                                    </label>
-                                    <form:password id="password" path="password" size="50" cssClass="required text"/>
-                                </p>
-                            </div>
-                            <div class="_50">
-                                <p>
-                                    <label for="passwordAgain">
-                                        Password Again
-                                    </label>
-                                    <form:password id="passwordAgain" path="passwordAgain" size="50"
-                                                   cssClass="required text"/>
-                                </p>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>
-                                Contact Information
-                            </legend>
-                            <div class="_50">
-                                <p>
-                                    <label for="phone">
-                                        Phone
-                                    </label>
-                                    <form:input id="phone" path="phone" size="50" cssClass="required text"/>
-                                </p>
-                            </div>
-                            <div class="_50">
-                                <p>
-                                    <label for="fax">
-                                        Fax
-                                    </label>
-                                    <form:input id="fax" path="fax" size="50" cssClass="required text"/>
-                                </p>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>
-                                School Name
-                            </legend>
-                            <p class="inline-small-label">
-                                <label for="schoolName">
-                                    School Name
-                                </label>
-                                <form:input id="schoolName" path="schoolName" size="50" cssClass="required text"/>
-                            </p>
-                        </fieldset>
-                        <fieldset>
-                            <legend>
-                                Address Information
-                            </legend>
-                            <p class="inline-small-label">
-                                <label for="address1">
-                                    Address
-                                </label>
-                                <form:input id="address1" path="address1" size="50" cssClass="required text"/>
-                            </p>
-
-                            <p class="inline-small-label">
-                                <form:input path="address2" size="50" cssClass="required text"/>
-                            </p>
-
-                            <p class="inline-small-label">
-                                <form:input path="address3" size="50" cssClass="required text"/>
-                            </p>
-
-                            <p class="inline-small-label">
-                                <label for="stateId">
-                                    State
-                                </label>
-                                <c:forEach var="i" items="${states}">
-                                    Country: ${i.key}  - Capital: ${i.value}
-                                </c:forEach>
-                                <form:select id="stateId" path="stateId">
-                                    <form:option selected="selected" value=""/>
-                                    <form:options items="${states}"/>
-                                </form:select>
-                            </p>
-                        </fieldset>
-                            <%--<fieldset>--%>
-                            <%--<legend>--%>
-                            <%--State Information--%>
-                            <%--</legend>--%>
-                            <%--<p class="inline-small-label">--%>
-                            <%--<label for="stateId">--%>
-                            <%--State--%>
-                            <%--</label>--%>
-                            <%--<input type="text" id="stateId" name="stateId" class="required text"--%>
-                            <%--value="0">--%>
-                            <%--</p>--%>
-                            <%--</fieldset>--%>
-                            <%--<fieldset>--%>
-                            <%--<legend>--%>
-                            <%--District Information--%>
-                            <%--</legend>--%>
-                            <%--<p class="inline-small-label">--%>
-                            <%--<label for="districtId">--%>
-                            <%--District--%>
-                            <%--</label>--%>
-                            <%--<input type="text" id="districtId" name="districtId" class="required text"--%>
-                            <%--value="0">--%>
-                            <%--</p>--%>
-                            <%--</fieldset>--%>
-                    </div>
-
-                    <div class="actions">
-                        <div class="actions-left">
-                            <input type="reset">
-                        </div>
-                        <div class="actions-right">
-                            <input type="submit" value="Register">
-                        </div>
-                    </div>
-                </form:form>
+        <form method="post" class="form-login" action="${pageContext.request.contextPath}/register">
+            <div class="errorHandler alert alert-danger no-display">
+                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
             </div>
-            <!-- End of .box -->
-        </div>
-        <!-- End of .grid_6 -->
+            <fieldset>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="fullName" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="phone" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="address1" placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <select id="form-field-select-1" name="stateId" class="form-control">
+                        <option value="">&nbsp;</option>
+                        <c:forEach items="${states}" var="state">
+                            <option value='${state.key}'>${state.value}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" class="grey" value="F" name="gender">
+                            Female
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" class="grey" value="M" name="gender">
+                            Male
+                        </label>
+                    </div>
+                </div>
+                <p>
+                    Enter your school details below:
+                </p>
 
-        <div class="clear"></div>
+                <div class="form-group">
+ 							<span class="input-icon">
+ 								<input type="text" class="form-control" name="schoolName" placeholder="School Name">
+ 								<i class="icon-sitemap"></i> </span>
+                </div>
 
+                <p>
+                    Enter your account details below:
+                </p>
+
+                <div class="form-group">
+ 							<span class="input-icon">
+ 								<input type="text" class="form-control" name="username" placeholder="Username">
+ 								<i class="icon-user"></i> </span>
+                </div>
+                <div class="form-group">
+ 							<span class="input-icon">
+ 								<input type="password" class="form-control" id="password" name="password"
+                                       placeholder="Password">
+ 								<i class="icon-lock"></i> </span>
+                </div>
+                <div class="form-group">
+ 							<span class="input-icon">
+ 								<input type="password" class="form-control" name="passwordAgain"
+                                       placeholder="Password Again">
+ 								<i class="icon-lock"></i> </span>
+                </div>
+                <%--
+                                <div class="form-group">
+                                    <div>
+                                        <label for="agree" class="checkbox-inline">
+                                            <input type="checkbox" class="grey agree" id="agree" name="agree">
+                                            I agree to the Terms of Service and Privacy Policy
+                                        </label>
+                                    </div>
+                                </div>
+                --%>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = '/gate/in'">
+                        <i class="icon-circle-arrow-left"></i> Back
+                    </button>
+                    <button type="submit" class="btn btn-bricky pull-right">
+                        Submit <i class="icon-circle-arrow-right"></i>
+                    </button>
+                </div>
+            </fieldset>
+        </form>
     </div>
-    <!-- End of #main_content -->
-    <div class="push clear"></div>
-
-</div>
-<!-- End of #content-wrapper -->
-<div class="clear"></div>
-<div class="push"></div>
-<!-- BUGFIX if problems with sidebar in Chrome -->
-
-</div>
-<!-- End of #height-wrapper -->
-
-<!-- Start of footer-->
-<%--<footer>
-    <div class="container_12">
-        Copyright &copy; 2013 SSM, all rights reserved.
-        <div id="button_bar">
-            <ul>
-                <li>
-                    <span><a href="secure/dashboard.jsp">Dashboard</a></span>
-                </li>
-                <li>
-                    <span><a href="/gate/in">Login</a></span>
-                </li>
-            </ul>
-        </div>
+    <!-- end: LOGIN BOX -->
+    <!-- start: COPYRIGHT -->
+    <div class="copyright">
+        2013 &copy; ASEAN QUIZ
     </div>
-</footer>--%>
-<!-- End of footer-->
+    <!-- end: COPYRIGHT -->
+</div>
+<!-- start: MAIN JAVASCRIPTS -->
+<!--[if lt IE 9]>
+<script src="/assets/plugins/respond.min.js"></script>
+<script src="/assets/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="/assets/js/jquery-1.10.2.min.js"></script>
+<script src="/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/plugins/blockUI/jquery.blockUI.js"></script>
+<script src="/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+<script src="/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+<script src="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+<script src="/assets/js/main.js"></script>
+<!-- end: MAIN JAVASCRIPTS -->
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/assets/js/login.js"></script>
+<script src="/assets/plugins/select2/select2.min.js"></script>
+<script src="/assets/js/form-elements.js"></script>
 
-<!-- JavaScript at the bottom for fast page loading -->
-<!-- Grab Google CDN's jQuery + jQueryUI, with a protocol relative URL; fall back to local -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-<script>window.jQuery || document.write('<script src="resources/js/libs/jquery-1.7.1.js"><\/script>')</script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-<script>window.jQuery.ui || document.write('<script src="resources/js/libs/jquery-ui-1.8.16.min.js"><\/script>')</script>
-
-<script src="resources/js/libs/jquery-1.7.1.js"></script>
-
-<!-- scripts concatenated and minified via build script -->
-<script defer src="resources/js/plugins.js"></script>
-<!-- REQUIRED: Different own jQuery plugnis -->
-<script defer src="resources/js/mylibs/jquery.ba-resize.js"></script>
-<!-- RECOMMENDED when using sidebar: page resizing -->
-<script defer src="resources/js/mylibs/jquery.easing.1.3.js"></script>
-<!-- RECOMMENDED: box animations -->
-<script defer src="resources/js/mylibs/jquery.ui.touch-punch.js"></script>
-<!-- RECOMMENDED: touch compatibility -->
-<script defer src="resources/js/mylibs/jquery.chosen.js"></script>
-<script defer src="resources/js/mylibs/jquery.validate.js"></script>
-<script defer src="resources/js/script.js"></script>
-<!-- REQUIRED: Generic scripts -->
-<!-- end scripts -->
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        jQuery.validator.setDefaults({
-            debug: true,
-            success: "valid"
-        });
-        $("#loginForm").validate({
-
-            messages: {
-                passwordAgain: {
-                    equalTo: "password fields have to match"
-                }
-            }
-        });
-
-        $('#username').blur(function () {
-
-            var username = document.getElementById("username").value;
-            var url = '<%=request.getContextPath() %>/register/validate/' + username;
-
-            $('#username_status').html('<p>Validating username...</p>');
-            $.ajax({
-                url: url,
-                success: function (data) {
-                    $('#username_status').html(data);
-                },
-                error: function (data) {
-                    $('#username_status').html('<p>An error occurred.</p>');
-                }
-            });
-        });
-
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        Login.init();
     });
-
 </script>
-
 </body>
+<!-- end: BODY -->
 </html>

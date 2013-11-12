@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
@@ -24,6 +26,7 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
+    <link rel="shortcut icon" href="/resources/img/favicon/favicon.ico">
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/style.css">
@@ -79,17 +82,19 @@
                                 </a> </span>
                 </div>
                 <div class="form-actions">
-                    <label for="remember" class="checkbox-inline">
-                        <input type="checkbox" class="grey remember" id="remember" name="remember">
-                        Keep me signed in
-                    </label>
+                    <%--
+                                        <label for="remember" class="checkbox-inline">
+                                            <input type="checkbox" class="grey remember" id="remember" name="remember">
+                                            Keep me signed in
+                                        </label>
+                    --%>
                     <button type="submit" class="btn btn-bricky pull-right">
                         Login <i class="icon-circle-arrow-right"></i>
                     </button>
                 </div>
                 <div class="new-account">
                     Don't have an account yet?
-                    <a href="#" class="register">
+                    <a href="${pageContext.request.contextPath}/register" class="register">
                         Create an account
                     </a>
                 </div>
@@ -116,7 +121,7 @@
 								<i class="icon-envelope"></i> </span>
                 </div>
                 <div class="form-actions">
-                    <button class="btn btn-light-grey go-back">
+                    <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = '/gate/in'">
                         <i class="icon-circle-arrow-left"></i> Back
                     </button>
                     <button type="submit" class="btn btn-bricky pull-right">
@@ -127,102 +132,6 @@
         </form>
     </div>
     <!-- end: FORGOT BOX -->
-    <!-- start: REGISTER BOX -->
-    <div class="box-register">
-        <h3>Sign Up</h3>
-
-        <p>
-            Enter your personal details below:
-        </p>
-
-        <form class="form-register">
-            <div class="errorHandler alert alert-danger no-display">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-            </div>
-            <fieldset>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="full_name" placeholder="Full Name">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="nric" placeholder="I/C No">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="phone" placeholder="Phone">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="address" placeholder="Address">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="state" placeholder="State">
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="F" name="gender">
-                            Female
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="M" name="gender">
-                            Male
-                        </label>
-                    </div>
-                </div>
-                <p>
-                    Enter your school details below:
-                </p>
-
-                <div class="form-group">
-                    <span class="input-icon">
-                    <input type="text" class="form-control" name="school_name" placeholder="School Name">
-                        <i class="icon-sitemap"></i> </span>
-                </div>
-
-                <p>
-                    Enter your account details below:
-                </p>
-
-                <div class="form-group">
-							<span class="input-icon">
-								<input type="email" class="form-control" name="email" placeholder="Email">
-								<i class="icon-envelope"></i> </span>
-                </div>
-                <div class="form-group">
-							<span class="input-icon">
-								<input type="password" class="form-control" id="password" name="password"
-                                       placeholder="Password">
-								<i class="icon-lock"></i> </span>
-                </div>
-                <div class="form-group">
-							<span class="input-icon">
-								<input type="password" class="form-control" name="password_again"
-                                       placeholder="Password Again">
-								<i class="icon-lock"></i> </span>
-                </div>
-                <%--
-                                <div class="form-group">
-                                    <div>
-                                        <label for="agree" class="checkbox-inline">
-                                            <input type="checkbox" class="grey agree" id="agree" name="agree">
-                                            I agree to the Terms of Service and Privacy Policy
-                                        </label>
-                                    </div>
-                                </div>
-                --%>
-                <div class="form-actions">
-                    <button class="btn btn-light-grey go-back">
-                        <i class="icon-circle-arrow-left"></i> Back
-                    </button>
-                    <button type="submit" class="btn btn-bricky pull-right">
-                        Submit <i class="icon-circle-arrow-right"></i>
-                    </button>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-    <!-- end: REGISTER BOX -->
     <!-- start: COPYRIGHT -->
     <div class="copyright">
         2013 &copy; ASEAN QUIZ

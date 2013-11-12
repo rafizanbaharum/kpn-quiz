@@ -1,19 +1,4 @@
-var Login = function () {
-    var runLoginButtons = function () {
-        $('.forgot').bind('click', function () {
-            $('.box-login').hide();
-            $('.box-forgot').show();
-        });
-        $('.register').bind('click', function () {
-            $('.box-login').hide();
-            $('.box-register').show();
-        });
-        $('.go-back').click(function () {
-            $('.box-login').show();
-            $('.box-forgot').hide();
-            $('.box-register').hide();
-        });
-    };
+var Register = function () {
     var runSetDefaultValidation = function () {
         $.validator.setDefaults({
             errorElement: "span", // contain the error msg in a small tag
@@ -53,46 +38,6 @@ var Login = function () {
             unhighlight: function (element) { // revert the change done by hightlight
                 $(element).closest('.form-group').removeClass('has-error');
                 // set error class to the control group
-            }
-        });
-    };
-    var runLoginValidator = function () {
-        var form = $('.form-login');
-        var errorHandler = $('.errorHandler', form);
-        form.validate({
-            rules: {
-                username: {
-                    minlength: 2,
-                    required: true
-                },
-                password: {
-                    minlength: 6,
-                    required: true
-                }
-            },
-            submitHandler: function (form) {
-                errorHandler.hide();
-                form.submit();
-            },
-            invalidHandler: function (event, validator) { //display error alert on form submit
-                errorHandler.show();
-            }
-        });
-    };
-    var runForgotValidator = function () {
-        var form2 = $('.form-forgot');
-        var errorHandler2 = $('.errorHandler', form2);
-        form2.validate({
-            rules: {
-                email: {
-                    required: true
-                }
-            },
-            submitHandler: function (form) {
-                errorHandler2.hide();
-            },
-            invalidHandler: function (event, validator) { //display error alert on form submit
-                errorHandler2.show();
             }
         });
     };
@@ -150,10 +95,7 @@ var Login = function () {
     return {
         //main function to initiate template pages
         init: function () {
-            runLoginButtons();
             runSetDefaultValidation();
-            runLoginValidator();
-            runForgotValidator();
             runRegisterValidator();
         }
     };
