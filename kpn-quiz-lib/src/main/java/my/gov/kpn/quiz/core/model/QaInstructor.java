@@ -19,8 +19,8 @@ public interface QaInstructor extends QaActor {
 
     String getSchoolName();
 
-    void setStateName(String stateName);
-    String getStateName();
+    void setState(QaState stateName);
+    QaState getState();
 
     void setDistrictName(String districtName);
     String getDistrictName();

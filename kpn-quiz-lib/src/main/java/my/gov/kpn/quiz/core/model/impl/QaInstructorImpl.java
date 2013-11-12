@@ -1,9 +1,6 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaActorType;
-import my.gov.kpn.quiz.core.model.QaInstitution;
-import my.gov.kpn.quiz.core.model.QaInstructor;
-import my.gov.kpn.quiz.core.model.QaStudent;
+import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,8 +20,9 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
     @Column(name = "SCHOOL_NAME")
     private String schoolName;
 
-    @Column(name = "STATE_NAME")
-    private String stateName;
+    @OneToOne(targetEntity = QaStateImpl.class)
+    @JoinColumn(name = "STATE_ID")
+    private QaState stateName;
 
     @Column(name = "DISTRICT_NAME")
     private String districtName;
@@ -61,11 +59,11 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
         this.schoolName = schoolName;
     }
 
-    public String getStateName() {
+    public QaState getState() {
         return stateName;
     }
 
-    public void setStateName(String stateName) {
+    public void setState(QaState state) {
         this.stateName = stateName;
     }
 

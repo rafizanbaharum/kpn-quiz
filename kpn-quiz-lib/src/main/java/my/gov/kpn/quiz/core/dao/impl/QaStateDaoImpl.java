@@ -33,7 +33,7 @@ public class QaStateDaoImpl extends DaoSupport<Long, QaState, QaStateImpl> imple
         Query query = session.createQuery("select a from QaState a where " +
                 "a.code = :code " +
                 "and a.metadata.state = :state ");
-        query.setString("identityNo", code);
+        query.setString("code", code);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return (QaState) query.uniqueResult();
     }
