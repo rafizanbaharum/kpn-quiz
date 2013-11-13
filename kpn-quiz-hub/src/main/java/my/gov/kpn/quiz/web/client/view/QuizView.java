@@ -52,8 +52,9 @@ public class QuizView extends View {
     private LayoutContainer header;
     private LayoutContainer footer;
 
+    private static NumberFormat formatter = NumberFormat.getFormat("00");
     private Timer timer;
-    private Integer now = 60 * 60;
+    private Integer now = 60 * 60 * 1000;
     private Html time;
     private LayoutContainer clock;
     private int currentStep = 0;
@@ -111,7 +112,7 @@ public class QuizView extends View {
         timer = new Timer() {
             public void run() {
                 timer.schedule(1000);
-                now--;
+                now -= 1000;
                 time.setHtml(formattedNow());
             }
         };
@@ -224,19 +225,18 @@ public class QuizView extends View {
         button4.setStyleName("quiz-question-choice");
         button4.setText(model.getChoice4());
 
-        box.add(statement, new VBoxLayoutData(0, 0, 10, 0));
+        box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
         box.add(button1, new VBoxLayoutData(0, 0, 10, 0));
         box.add(button2, new VBoxLayoutData(0, 0, 5, 0));
         box.add(button3, new VBoxLayoutData(0, 0, 5, 0));
         box.add(button4, new VBoxLayoutData(0, 0, 5, 0));
         panel.add(box, new MarginData(60, 0, 0, 80));
-        cardPanel.add(panel);
+        cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
     private void createBooleanQuestionPanel(BooleanQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setStyleName("quiz-question");
-
         LayoutContainer box = new LayoutContainer();
         box.setLayout(new VBoxLayout());
         Html statement = new Html();
@@ -249,11 +249,11 @@ public class QuizView extends View {
         button2.setStyleName("quiz-question-choice");
         button2.setText("FALSE");
 
-        box.add(statement, new VBoxLayoutData(0, 0, 10, 0));
+        box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
         box.add(button1, new VBoxLayoutData(0, 0, 10, 0));
         box.add(button2, new VBoxLayoutData(0, 0, 5, 0));
         panel.add(box, new MarginData(60, 0, 0, 80));
-        cardPanel.add(panel);
+        cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
     private void createSubjectiveQuestionPanel(QuestionModel model) {
@@ -273,10 +273,10 @@ public class QuizView extends View {
         area.setHeight(250);
         area.setWidth(1000);
 
-        box.add(statement, new VBoxLayoutData(0, 0, 10, 0));
+        box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
         box.add(area, new VBoxLayoutData(0, 0, 10, 0));
         panel.add(box, new MarginData(60, 0, 0, 80));
-        cardPanel.add(panel);
+        cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
     class NextSelectionListener extends SelectionListener<ButtonEvent> {
@@ -303,7 +303,9 @@ public class QuizView extends View {
     private String formattedNow() {
         int minutes = now / (60 * 1000);
         int seconds = (now / 1000) % 60;
-        NumberFormat formatter = NumberFormat.getFormat("00");
+        log.info("now: " + now);
+        log.info("min: " + minutes);
+        log.info("sec: " + seconds);
         return formatter.format(minutes) + ":" + formatter.format(seconds);
     }
 }
