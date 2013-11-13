@@ -40,7 +40,7 @@
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
-<body class="footer-fixed">
+<body class="footer-fixed layout-boxed">
 <!-- start: HEADER -->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <!-- start: TOP NAVIGATION CONTAINER -->
