@@ -64,6 +64,15 @@ quiz-app-viewport
 
 }
 
+#quiz-counter {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: "Raleway", serif;
+    padding-left: 30px;
+    color: #000000;
+    background: url(../../gxt/images/bg/preview.png) no-repeat left center;
+}
+
 /* custom button */
 .quiz-nav-button .x-btn-text {
     font-size: 18px;

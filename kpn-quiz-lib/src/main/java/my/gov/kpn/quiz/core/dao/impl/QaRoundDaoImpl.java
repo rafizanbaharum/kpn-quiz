@@ -87,5 +87,40 @@ public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> imple
         quiz.setMetadata(metadata);
         session.update(quiz);
     }
+
+
+    @Override
+    public void addParticipant(QaRound round, QaParticipant participant, QaUser user) {
+        Validate.notNull(round, "Round should not be null");
+        Validate.notNull(round, "Round should not be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        participant.setRound(round);
+
+        // prepare metadata
+        QaMetadata metadata = new QaMetadata();
+        metadata.setState(QaMetaState.ACTIVE);
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreator(user.getId());
+        participant.setMetadata(metadata);
+        session.save(participant);
+    }
+
+    @Override
+    public void removeParticipant(QaRound round, QaParticipant participant, QaUser user) {
+        Validate.notNull(round, "Round should not be null");
+        Validate.notNull(participant, "Participant should not be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        participant.setRound(round);
+
+        // prepare metadata
+        QaMetadata metadata = round.getMetadata();
+        metadata.setState(QaMetaState.INACTIVE);
+        metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setDeleter(user.getId());
+        participant.setMetadata(metadata);
+        session.update(participant);
+    }
 }
 

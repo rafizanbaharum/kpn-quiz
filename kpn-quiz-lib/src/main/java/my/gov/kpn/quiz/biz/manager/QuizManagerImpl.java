@@ -1,11 +1,9 @@
 package my.gov.kpn.quiz.biz.manager;
 
 import my.gov.kpn.quiz.core.dao.QaGradebookDao;
+import my.gov.kpn.quiz.core.dao.QaParticipantDao;
 import my.gov.kpn.quiz.core.dao.QaQuizDao;
-import my.gov.kpn.quiz.core.model.QaParticipant;
-import my.gov.kpn.quiz.core.model.QaQuestion;
-import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.core.model.QaRound;
+import my.gov.kpn.quiz.core.model.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +21,9 @@ public class QuizManagerImpl implements QuizManager {
 
     @Autowired
     private QaQuizDao quizDao;
+
+    @Autowired
+    private QaParticipantDao participantDao;
 
     @Autowired
     private QaGradebookDao gradebookDao;
@@ -50,8 +51,8 @@ public class QuizManagerImpl implements QuizManager {
     }
 
     @Override
-    public void processRound(QaRound round) {
-        // TODO:
+    public QaParticipant findParticipant(QaQuiz quiz, QaUser user) {
+        return participantDao.find(quiz.getRound(), user);
     }
 
     @Override
@@ -66,8 +67,5 @@ public class QuizManagerImpl implements QuizManager {
 
     @Override
     public void updateAnswer(QaParticipant participant, QaQuestion question) {
-
-
-
     }
 }

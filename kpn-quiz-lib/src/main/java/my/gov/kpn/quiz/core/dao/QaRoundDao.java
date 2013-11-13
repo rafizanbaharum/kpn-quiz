@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.core.dao;
 
+import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaRound;
 import my.gov.kpn.quiz.core.model.QaUser;
@@ -27,4 +28,8 @@ public interface QaRoundDao {
     void addQuiz(QaRound round, QaQuiz quiz, QaUser user);
 
     void removeQuiz(QaRound round, QaQuiz quiz, QaUser user);
+
+    void addParticipant(QaRound round, QaParticipant participant, QaUser user);
+
+    void removeParticipant(QaRound round, QaParticipant participant, QaUser user);
 }

@@ -3,9 +3,7 @@ package my.gov.kpn.quiz.web.client.view;
 import com.extjs.gxt.ui.client.Registry;
 import com.extjs.gxt.ui.client.Style;
 import com.extjs.gxt.ui.client.data.*;
-import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.LoadListener;
-import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.event.*;
 import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
@@ -43,6 +41,8 @@ import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
 public class QuizView extends View {
 
     private static final Logger log = Logger.getLogger(QuizView.class.getName());
+    public static final int ONE_HOUR = 60 * 60 * 1000;
+    public static final int ONE_SECOND = 1000;
 
     private CardPanel cardPanel;
     private QuizDelegateAsync delegate;
@@ -53,10 +53,10 @@ public class QuizView extends View {
     private LayoutContainer footer;
 
     private static NumberFormat formatter = NumberFormat.getFormat("00");
-    private Timer timer;
+    private Timer t;
     private Integer now = 60 * 60 * 1000;
-    private Html time;
-    private LayoutContainer clock;
+    private Html timer;
+    private Html counter;
     private int currentStep = 0;
 
     public QuizView(Controller controller) {
@@ -93,7 +93,6 @@ public class QuizView extends View {
 
 
     private void onInitQuiz() {
-
         // load question
         loader.load(new BaseListLoadConfig());
         loader.addLoadListener(new LoadListener() {
@@ -109,14 +108,44 @@ public class QuizView extends View {
         });
 
         // timer
-        timer = new Timer() {
+        t = new Timer() {
             public void run() {
-                timer.schedule(1000);
-                now -= 1000;
-                time.setHtml(formattedNow());
+                t.schedule(ONE_SECOND);
+                if (now == ONE_HOUR)
+                    timer.fireEvent(QuizEvents.TimerStart);
+                if (now != 0)
+                    timer.fireEvent(QuizEvents.TimerUpdate);
+                else
+                    timer.fireEvent(QuizEvents.TimerEnd);
             }
         };
-        timer.schedule(1000);
+        t.schedule(1000);
+        initListener();
+    }
+
+    private void initListener() {
+        timer.addListener(QuizEvents.TimerUpdate, new Listener<BaseEvent>() {
+            @Override
+            public void handleEvent(BaseEvent be) {
+                now -= ONE_SECOND;
+                timer.setHtml(formattedNow());
+                counter.setHtml((currentStep + 1) + "/" + cardPanel.getItemCount());
+            }
+        });
+
+        cardPanel.addListener(QuizEvents.QuestionNext, new Listener<BaseEvent>() {
+            @Override
+            public void handleEvent(BaseEvent be) {
+                counter.setHtml((currentStep + 1) + "/" + cardPanel.getItemCount());
+            }
+        });
+
+        cardPanel.addListener(QuizEvents.QuestionPrev, new Listener<BaseEvent>() {
+            @Override
+            public void handleEvent(BaseEvent be) {
+                counter.setHtml((currentStep + 1) + "/" + cardPanel.getItemCount());
+            }
+        });
     }
 
 
@@ -124,11 +153,11 @@ public class QuizView extends View {
     private void createHeader(Viewport view) {
         header = new LayoutContainer();
         header.setId("quiz-app-header");
-        header.setLayout(new FitLayout());
+        header.setLayout(new FlowLayout());
         BorderLayoutData northData = new BorderLayoutData(Style.LayoutRegion.NORTH, 0.16f);
         northData.setMargins(new Margins(0, 0, 0, 0));
         view.add(header, northData);
-        createClockPanel();
+        createToolBar();
     }
 
     // main
@@ -154,14 +183,18 @@ public class QuizView extends View {
     }
 
 
-    private void createClockPanel() {
-        clock = new LayoutContainer();
-        clock.setLayout(new FlowLayout());
-        time = new Html();
-        time.setId("quiz-clock");
-        time.setHtml(formattedNow());
-        clock.add(time, new MarginData(30, 0, 0, 100));
-        header.add(clock);
+    private void createToolBar() {
+        timer = new Html();
+        timer.setId("quiz-clock");
+        timer.setHtml("Initializing...");
+        counter = new Html();
+        counter.setId("quiz-counter");
+        counter.setHtml("Initializing...");
+        LayoutContainer panel = new LayoutContainer();
+        panel.setLayout(new HBoxLayout());
+        panel.add(timer, new HBoxLayoutData(0, 0, 0, 20));
+        panel.add(counter, new HBoxLayoutData(0, 0, 0, 20));
+        header.add(panel, new MarginData(30, 0, 0, 0));
     }
 
     private void createButtonBar() {
@@ -256,8 +289,7 @@ public class QuizView extends View {
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
-    private void createSubjectiveQuestionPanel(QuestionModel model) {
-
+    private void createSubjectiveQuestionPanel(SubjectiveQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setStyleName("quiz-question");
 
@@ -286,6 +318,7 @@ public class QuizView extends View {
             currentStep += 1;
             if (currentStep < cardPanel.getItemCount()) {
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
+                cardPanel.fireEvent(QuizEvents.QuestionNext);
             }
         }
     }
@@ -296,6 +329,7 @@ public class QuizView extends View {
             currentStep -= 1;
             if (currentStep >= 0) {
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
+                cardPanel.fireEvent(QuizEvents.QuestionNext);
             }
         }
     }
@@ -303,9 +337,6 @@ public class QuizView extends View {
     private String formattedNow() {
         int minutes = now / (60 * 1000);
         int seconds = (now / 1000) % 60;
-        log.info("now: " + now);
-        log.info("min: " + minutes);
-        log.info("sec: " + seconds);
         return formatter.format(minutes) + ":" + formatter.format(seconds);
     }
 }
