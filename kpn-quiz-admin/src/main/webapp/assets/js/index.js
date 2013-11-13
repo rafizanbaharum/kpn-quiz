@@ -449,12 +449,6 @@ var Index = function () {
     };
     return {
         init: function () {
-            runChart1();
-            runChart2();
-            runChart3();
-            runSparkline();
-            runEasyPieChart();
-            runFullCalendar();
         }
     };
 }();

@@ -17,7 +17,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/secure")
-public class InstructorController extends AbstractController{
+public class InstructorController extends AbstractController {
 
     @Autowired
     private InstructorManager instructorManager;
@@ -26,9 +26,14 @@ public class InstructorController extends AbstractController{
     private Transformer transformer;
 
     @RequestMapping(value = "/index", method = {RequestMethod.GET})
-    public String go(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
-        studentModel.setInstructorId(getCurrentInstructorId());
+    public String index(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         return "secure/index";
+    }
+
+    @RequestMapping(value = "/register", method = {RequestMethod.GET})
+    public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
+        studentModel.setInstructorId(getCurrentInstructorId());
+        return "secure/studentRegister";
     }
 
     @RequestMapping(value = "/instructor", method = {RequestMethod.GET})
@@ -36,13 +41,12 @@ public class InstructorController extends AbstractController{
         return "secure/instructor";
     }
 
-
     @RequestMapping(value = "/studentList", method = {RequestMethod.GET})
-    public String studentList(@ModelAttribute("studentModel") StudentModel studentModel,ModelMap model) {
+    public String studentList(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
 
         List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
         List<StudentModel> studentModels = transformer.transform(students);
-        model.addAttribute("studentModels",studentModels);
+        model.addAttribute("studentModels", studentModels);
 
         return "secure/studentList";
     }

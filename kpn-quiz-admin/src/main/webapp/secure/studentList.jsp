@@ -1,5 +1,5 @@
-<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -22,7 +22,7 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/resources/img/favicon/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/style.css">
@@ -39,7 +39,6 @@
     <link rel="stylesheet" href="/assets/plugins/summernote/build/summernote.css">
     <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
@@ -55,12 +54,13 @@
             </button>
             <!-- end: RESPONSIVE MENU TOGGLER -->
             <!-- start: LOGO -->
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/secure/index">
                 ASEAN QUIZ
             </a>
             <!-- end: LOGO -->
         </div>
         <div class="navbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
             <ul class="nav navbar-right">
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
@@ -77,23 +77,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="pages_calendar.html">
-                                <i class="clip-calendar"></i>
-                                &nbsp;My Calendar
-                            </a>
-                        <li>
-                            <a href="pages_messages.html">
-                                <i class="clip-bubble-4"></i>
-                                &nbsp;My Messages (3)
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="utility_lock_screen.html"><i class="clip-locked"></i>
-                                &nbsp;Lock Screen </a>
-                        </li>
-                        <li>
-                            <a href="login_example1.html">
+                            <a href="${pageContext.request.contextPath}/gate/out">
                                 <i class="clip-exit"></i>
                                 &nbsp;Log Out
                             </a>
@@ -110,277 +94,205 @@
 <!-- end: HEADER -->
 <!-- start: MAIN CONTAINER -->
 <div class="main-container">
-<div class="navbar-content">
-    <!-- start: SIDEBAR -->
-    <div class="main-navigation navbar-collapse collapse">
-        <!-- start: MAIN MENU TOGGLER BUTTON -->
-        <div class="navigation-toggler">
-            <i class="clip-chevron-left"></i>
-            <i class="clip-chevron-right"></i>
-        </div>
-        <!-- end: MAIN MENU TOGGLER BUTTON -->
-        <!-- start: MAIN NAVIGATION MENU -->
-        <ul class="main-navigation-menu">
-            <li>
-                <a href="index.html"><i class="clip-home-3"></i>
-                    <span class="title"> Dashboard </span><span class="selected"></span>
-                </a>
-            </li>
-            <li class="active open">
-                <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                    <span class="title"> Student Management </span><i class="icon-arrow"></i>
-                    <span class="selected"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="/secure/index">
-                            <span class="title">Register</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="/secure/studentList">
-                            <span class="title">Student List</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+    <div class="navbar-content">
+        <!-- start: SIDEBAR -->
+        <div class="main-navigation navbar-collapse collapse">
+            <!-- start: MAIN MENU TOGGLER BUTTON -->
+            <div class="navigation-toggler">
+                <i class="clip-chevron-left"></i>
+                <i class="clip-chevron-right"></i>
+            </div>
+            <!-- end: MAIN MENU TOGGLER BUTTON -->
+            <!-- start: MAIN NAVIGATION MENU -->
+            <ul class="main-navigation-menu">
+                <li>
+                    <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
+                        <span class="title"> Dashboard </span><span class="selected"></span>
+                    </a>
+                </li>
+                <li class="active open">
+                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/secure/register">
+                                <span class="title">Register</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                                <span class="title">Student List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
-        </ul>
-        <!-- end: MAIN NAVIGATION MENU -->
-    </div>
-    <!-- end: SIDEBAR -->
-</div>
-<!-- start: PAGE -->
-<div class="main-content">
-<!-- start: PANEL CONFIGURATION MODAL FORM -->
-<div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title">Panel Configuration</h4>
-            </div>
-            <div class="modal-body">
-                Here will be a configuration form
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                    Save changes
-                </button>
-            </div>
+            </ul>
+            <!-- end: MAIN NAVIGATION MENU -->
         </div>
-        <!-- /.modal-content -->
+        <!-- end: SIDEBAR -->
     </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-<!-- end: SPANEL CONFIGURATION MODAL FORM -->
-<div class="container">
-<!-- start: PAGE HEADER -->
-<div class="row">
-    <div class="col-sm-12">
-        <!-- start: PAGE TITLE & BREADCRUMB -->
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-pencil"></i>
-                <a href="#">
-                    Student Management
-                </a>
-            </li>
-            <li class="active">
-                List
-            </li>
-            <li class="search-box">
-                <form class="sidebar-search">
-                    <div class="form-group">
-                        <input type="text" placeholder="Start Searching...">
-                        <button class="submit">
-                            <i class="clip-search-3"></i>
+    <!-- start: PAGE -->
+    <div class="main-content">
+        <!-- start: PANEL CONFIGURATION MODAL FORM -->
+        <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">Panel Configuration</h4>
+                    </div>
+                    <div class="modal-body">
+                        Here will be a configuration form
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Save changes
                         </button>
                     </div>
-                </form>
-            </li>
-        </ol>
-        <div class="page-header">
-            <h1>Student List </h1>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
-        <!-- end: PAGE TITLE & BREADCRUMB -->
+        <!-- /.modal -->
+        <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+        <div class="container">
+            <!-- start: PAGE HEADER -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- start: PAGE TITLE & BREADCRUMB -->
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="clip-pencil"></i>
+                            <a href="#">
+                                Student Management
+                            </a>
+                        </li>
+                        <li class="active">
+                            Student List
+                        </li>
+                        <li class="search-box">
+                            <form class="sidebar-search">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Start Searching...">
+                                    <button class="submit">
+                                        <i class="clip-search-3"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </li>
+                    </ol>
+                    <div class="page-header">
+                        <h1>Student List </h1>
+                    </div>
+                    <!-- end: PAGE TITLE & BREADCRUMB -->
+                </div>
+            </div>
+            <!-- end: PAGE HEADER -->
+            <!-- start: PAGE CONTENT -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start: BASIC TABLE PANEL -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            List of registered students
+                            <div class="panel-tools">
+                                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                                </a>
+                                <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                                    <i class="icon-wrench"></i>
+                                </a>
+                                <a class="btn btn-xs btn-link panel-refresh" href="#">
+                                    <i class="icon-refresh"></i>
+                                </a>
+                                <a class="btn btn-xs btn-link panel-expand" href="#">
+                                    <i class="icon-resize-full"></i>
+                                </a>
+                                <a class="btn btn-xs btn-link panel-close" href="#">
+                                    <i class="icon-remove"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover" id="sample-table-1">
+                                <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th>Name</th>
+                                    <th class="hidden-xs">NRIC</th>
+                                    <th class="hidden-xs">Username</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="student" items="${studentModels}" varStatus="idx">
+                                    <tr>
+                                        <td class="center">${idx.count}</td>
+                                        <td class="hidden-xs">${student.name}</td>
+                                        <td>${student.nric}</td>
+                                        <td class="hidden-xs">${student.username}</td>
+                                        <td class="center">
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                <a href="#" class="btn btn-teal tooltips" data-placement="top"
+                                                   data-original-title="Edit"><i
+                                                        class="icon-edit"></i></a>
+                                                <a href="#" class="btn btn-green tooltips" data-placement="top"
+                                                   data-original-title="Share"><i
+                                                        class="icon-share"></i></a>
+                                                <a href="#" class="btn btn-bricky tooltips" data-placement="top"
+                                                   data-original-title="Remove"><i
+                                                        class="icon-remove icon-white"></i></a>
+                                            </div>
+                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-primary dropdown-toggle btn-sm"
+                                                       data-toggle="dropdown"
+                                                       href="#">
+                                                        <i class="icon-cog"></i> <span class="caret"></span>
+                                                    </a>
+                                                    <ul role="menu" class="dropdown-menu pull-right">
+                                                        <li role="presentation">
+                                                            <a role="menuitem" tabindex="-1" href="#">
+                                                                <i class="icon-edit"></i> Edit
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation">
+                                                            <a role="menuitem" tabindex="-1" href="#">
+                                                                <i class="icon-share"></i> Share
+                                                            </a>
+                                                        </li>
+                                                        <li role="presentation">
+                                                            <a role="menuitem" tabindex="-1" href="#">
+                                                                <i class="icon-remove"></i> Remove
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end: BASIC TABLE PANEL -->
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<!-- end: PAGE HEADER -->
-<!-- start: PAGE CONTENT -->
-<div class="row">
-<div class="col-md-12">
-<!-- start: FORM VALIDATION 1 PANEL -->
-<div class="panel panel-default">
-<div class="panel-heading">
-    <i class="icon-external-link-sign"></i>
-    Register a student
-    <div class="panel-tools">
-        <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
-        </a>
-        <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
-            <i class="icon-wrench"></i>
-        </a>
-        <a class="btn btn-xs btn-link panel-refresh" href="#">
-            <i class="icon-refresh"></i>
-        </a>
-        <a class="btn btn-xs btn-link panel-expand" href="#">
-            <i class="icon-resize-full"></i>
-        </a>
-        <a class="btn btn-xs btn-link panel-close" href="#">
-            <i class="icon-remove"></i>
-        </a>
-    </div>
-</div>
-<div class="panel-body">
-    <h2><i class="icon-edit-sign teal"></i> LIST</h2>
-
-    <hr>
-    <table border=1>
-        <tr>
-        <th>Name</th>
-        <th>NRIC</th>
-        <th>Username</th>
-        <th>&nbsp;</th>
-        </tr>
-         <c:forEach var="student" items="${studentModels}">
-             <tr>
-               <td>${student.name}</td>
-               <td>${student.nric}</td>
-               <td>${student.username}</td>
-               <td><a href="#">Edit</a>&nbsp;<a href="#">Remove</a></td>
-             </tr>
-         </c:forEach>
-    </table>
-        <%--<form:form commandName="studentModel" action="${pageContext.request.contextPath}/register/addStudent" method="POST" >--%>
-        <%--<form:hidden path="instructorId" />--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-md-12">--%>
-                <%--<div class="errorHandler alert alert-danger no-display">--%>
-                    <%--<i class="icon-remove-sign"></i> You have some form errors. Please check below.--%>
-                <%--</div>--%>
-                <%--<div class="successHandler alert alert-success no-display">--%>
-                    <%--<i class="icon-ok"></i> Your form validation is successful!--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-6">--%>
-                <%--<div class="form-group">--%>
-                    <%--<label class="control-label">--%>
-                        <%--Name <span class="symbol required"></span>--%>
-                    <%--</label>--%>
-                    <%--<form:input path="name" placeholder="Insert your student Name" cssClass="form-control" />--%>
-                <%--</div>--%>
-                <%--<div class="form-group">--%>
-                    <%--<label class="control-label">--%>
-                        <%--NRIC <span class="symbol required"></span>--%>
-                    <%--</label>--%>
-                    <%--<form:input path="nric" cssClass="form-control" />--%>
-                <%--</div>--%>
-                <%--<div class="form-group">--%>
-                    <%--<label class="control-label">--%>
-                        <%--Username <span class="symbol required"></span>--%>
-                    <%--</label>--%>
-                    <%--<form:input path="username" cssClass="form-control" />--%>
-                <%--</div>--%>
-                <%--<div class="form-group">--%>
-                    <%--<label class="control-label">--%>
-                        <%--Password <span class="symbol required"></span>--%>
-                    <%--</label>--%>
-                    <%--<form:password path="password" cssClass="form-control" />--%>
-                <%--</div>--%>
-                <%--<div class="form-group">--%>
-                    <%--<label class="control-label">--%>
-                        <%--Confirm Password <span class="symbol required"></span>--%>
-                    <%--</label>--%>
-                    <%--<form:password path="passwordAgain" cssClass="form-control" />--%>
-                <%--</div>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-6">--%>
-                <%--<div class="form-group connected-group">--%>
-                    <%--<label class="control-label">--%>
-                        <%--Date of Birth <span class="symbol required"></span>--%>
-                    <%--</label>--%>
-
-                    <%--<div class="row">--%>
-                        <%--<div class="col-md-3">--%>
-                            <%--<form:select path="dob_dd" cssClass="form-control">--%>
-                                <%--<form:option value="-">DD</form:option>--%>
-                                 <%--<%--%>
-                                     <%--for(int i = 1; i <= 31; i++)--%>
-                                         <%--out.println("<option value="+ i +">"+ i +"</option>");--%>
-                                 <%--%>--%>
-                            <%--</form:select>--%>
-                        <%--</div>--%>
-                        <%--<div class="col-md-3">--%>
-                            <%--<form:select path="dob_mm" cssClass="form-control">--%>
-                                <%--<form:option value="-">MM</form:option>--%>
-                                 <%--<%--%>
-                                     <%--for(int i = 1; i <= 12; i++)--%>
-                                         <%--out.println("<option value="+ i +">"+ i +"</option>");--%>
-                                 <%--%>--%>
-                            <%--</form:select>--%>
-                        <%--</div>--%>
-                        <%--<div class="col-md-3">--%>
-                            <%--<form:input path="dob_yyyy" placeholder="yyyy" cssClass="form-control" />--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-                <%--<div class="form-group">--%>
-                    <%--<label class="control-label">--%>
-                        <%--Gender <span class="symbol required"></span>--%>
-                    <%--</label>--%>
-
-                    <%--<div>--%>
-                        <%--<label class="radio-inline">--%>
-                            <%--<input type="radio" class="grey" value="" name="gender" id="gender_female">--%>
-                            <%--Female--%>
-                        <%--</label>--%>
-                        <%--<label class="radio-inline">--%>
-                            <%--<input type="radio" class="grey" value="" name="gender" id="gender_male">--%>
-                            <%--Male--%>
-                        <%--</label>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-md-12">--%>
-                <%--<div>--%>
-                    <%--<span class="symbol required"></span>Required Fields--%>
-                    <%--<hr>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row">--%>
-            <%--<div class="col-md-8">--%>
-                <%--<p>--%>
-                    <%--By clicking REGISTER, you are agreeing to the Policy and Terms &amp; Conditions.--%>
-                <%--</p>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4">--%>
-                <%--<button class="btn btn-yellow btn-block" type="submit">--%>
-                    <%--Register <i class="icon-circle-arrow-right"></i>--%>
-                <%--</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</form:form>--%>
-</div>
-</div>
-<!-- end: FORM VALIDATION 1 PANEL -->
-</div>
-</div>
-
-</div>
-</div>
-<!-- end: PAGE -->
+    <!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
 <!-- start: FOOTER -->

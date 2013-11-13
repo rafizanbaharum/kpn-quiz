@@ -71,12 +71,12 @@ public class RegistrationController extends AbstractController{
 
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
             model.addAttribute(MSG_SUCCESS,"Password not match");
-            return "secure/index";
+            return "secure/studentRegister";
         }
 
         registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
                 studentModel.getName(), studentModel.getNric(), studentModel.getInstructorId());
-        return "secure/index";
+        return "secure/studentRegister";
     }
 
     @RequestMapping(value = "/resetStudentPassword", method = {RequestMethod.POST})

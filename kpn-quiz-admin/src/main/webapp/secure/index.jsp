@@ -1,4 +1,3 @@
-<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -35,8 +34,6 @@
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <link rel="stylesheet" href="/assets/plugins/summernote/build/summernote.css">
-    <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <!-- end: HEAD -->
@@ -59,6 +56,7 @@
             <!-- end: LOGO -->
         </div>
         <div class="navbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
             <ul class="nav navbar-right">
                 <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
@@ -92,59 +90,13 @@
 <!-- end: HEADER -->
 <!-- start: MAIN CONTAINER -->
 <div class="main-container">
-<div class="navbar-content">
-    <!-- start: SIDEBAR -->
-    <div class="main-navigation navbar-collapse collapse">
-        <!-- start: MAIN MENU TOGGLER BUTTON -->
-        <div class="navigation-toggler">
-            <i class="clip-chevron-left"></i>
-            <i class="clip-chevron-right"></i>
-        </div>
-        <!-- end: MAIN MENU TOGGLER BUTTON -->
-        <!-- start: MAIN NAVIGATION MENU -->
-        <ul class="main-navigation-menu">
-            <li>
-                <a href="index.html"><i class="clip-home-3"></i>
-                    <span class="title"> Dashboard </span><span class="selected"></span>
-                </a>
-            </li>
-            <li class="active open">
-                <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                    <span class="title"> Student Management </span><i class="icon-arrow"></i>
-                    <span class="selected"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="/secure/index">
-                            <span class="title">Register</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="/secure/studentList">
-                            <span class="title">Student List</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-        </ul>
-        <!-- end: MAIN NAVIGATION MENU -->
-    </div>
-    <!-- end: SIDEBAR -->
-</div>
-<!-- start: PAGE -->
-<div class="main-content">
-<!-- start: PANEL CONFIGURATION MODAL FORM -->
-<div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title">Panel Configuration</h4>
+    <div class="navbar-content">
+        <!-- start: SIDEBAR -->
+        <div class="main-navigation navbar-collapse collapse">
+            <!-- start: MAIN MENU TOGGLER BUTTON -->
+            <div class="navigation-toggler">
+                <i class="clip-chevron-left"></i>
+                <i class="clip-chevron-right"></i>
             </div>
             <!-- end: MAIN MENU TOGGLER BUTTON -->
             <!-- start: MAIN NAVIGATION MENU -->
@@ -161,8 +113,15 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/instructor">
-                                <span class="title">Register Student</span>
+                            <a href="${pageContext.request.contextPath}/secure/register">
+                                <span class="title">Register</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                                <span class="title">Student List</span>
                             </a>
                         </li>
                     </ul>
@@ -175,34 +134,6 @@
     </div>
     <!-- start: PAGE -->
     <div class="main-content">
-        <!-- start: PANEL CONFIGURATION MODAL FORM -->
-        <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">Panel Configuration</h4>
-                    </div>
-                    <div class="modal-body">
-                        Here will be a configuration form
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                            Save changes
-                        </button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-        <!-- end: SPANEL CONFIGURATION MODAL FORM -->
         <div class="container">
             <!-- start: PAGE HEADER -->
             <div class="row">
@@ -210,7 +141,7 @@
                     <!-- start: PAGE TITLE & BREADCRUMB -->
                     <ol class="breadcrumb">
                         <li>
-                            <i class="clip-home"></i>
+                            <i class="clip-home-3"></i>
                             <a href="#">
                                 Home
                             </a>
@@ -234,113 +165,27 @@
                             <small>overview &amp; stats</small>
                         </h1>
                     </div>
+                    <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
-        </div>
-        <div class="page-header">
-            <h1>Student Registration </h1>
-        </div>
-        <!-- end: PAGE TITLE & BREADCRUMB -->
-    </div>
-</div>
-<!-- end: PAGE HEADER -->
-<!-- start: PAGE CONTENT -->
-<div class="row">
-<div class="col-md-12">
-<!-- start: FORM VALIDATION 1 PANEL -->
-<div class="panel panel-default">
-<div class="panel-heading">
-    <i class="icon-external-link-sign"></i>
-    Register a student
-    <div class="panel-tools">
-        <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
-        </a>
-        <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
-            <i class="icon-wrench"></i>
-        </a>
-        <a class="btn btn-xs btn-link panel-refresh" href="#">
-            <i class="icon-refresh"></i>
-        </a>
-        <a class="btn btn-xs btn-link panel-expand" href="#">
-            <i class="icon-resize-full"></i>
-        </a>
-        <a class="btn btn-xs btn-link panel-close" href="#">
-            <i class="icon-remove"></i>
-        </a>
-    </div>
-</div>
-<div class="panel-body">
-    <h2><i class="icon-edit-sign teal"></i> REGISTER</h2>
+            <!-- end: PAGE HEADER -->
+            <!-- start: PAGE CONTENT -->
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="core-box">
+                        <div class="heading">
+                            <i class="clip-user-4 circle-icon circle-green"></i>
 
-    <hr>
-        <form:form commandName="studentModel" action="${pageContext.request.contextPath}/register/addStudent" method="POST" >
-        <form:hidden path="instructorId" />
-        <div class="row">
-            <div class="col-md-12">
-                <div class="errorHandler alert alert-danger no-display">
-                    <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">
-                        Name <span class="symbol required"></span>
-                    </label>
-                    <form:input path="name" placeholder="Insert your student Name" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        NRIC <span class="symbol required"></span>
-                    </label>
-                    <form:input path="nric" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Username <span class="symbol required"></span>
-                    </label>
-                    <form:input path="username" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Password <span class="symbol required"></span>
-                    </label>
-                    <form:password path="password" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Confirm Password <span class="symbol required"></span>
-                    </label>
-                    <form:password path="passwordAgain" cssClass="form-control" />
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group connected-group">
-                    <label class="control-label">
-                        Date of Birth <span class="symbol required"></span>
-                    </label>
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <form:select path="dob_dd" cssClass="form-control">
-                                <form:option value="-">DD</form:option>
-                                 <%
-                                     for(int i = 1; i <= 31; i++)
-                                         out.println("<option value="+ i +">"+ i +"</option>");
-                                 %>
-                            </form:select>
+                            <h2>Manage Users</h2>
                         </div>
-                        <div class="col-md-3">
-                            <form:select path="dob_mm" cssClass="form-control">
-                                <form:option value="-">MM</form:option>
-                                 <%
-                                     for(int i = 1; i <= 12; i++)
-                                         out.println("<option value="+ i +">"+ i +"</option>");
-                                 %>
-                            </form:select>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut
+                            laoreet dolore magna aliquam erat volutpat.
                         </div>
-                        <div class="col-md-3">
-                            <form:input path="dob_yyyy" placeholder="yyyy" cssClass="form-control" />
-                        </div>
+                        <a class="view-more" href="#">
+                            View More <i class="clip-arrow-right-2"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -348,41 +193,40 @@
                         <div class="heading">
                             <i class="clip-clip circle-icon circle-teal"></i>
 
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="" name="gender" id="gender_female">
-                            Female
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="" name="gender" id="gender_male">
-                            Male
-                        </label>
+                            <h2>Manage Orders</h2>
+                        </div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut
+                            laoreet dolore magna aliquam erat volutpat.
+                        </div>
+                        <a class="view-more" href="#">
+                            View More <i class="clip-arrow-right-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="core-box">
+                        <div class="heading">
+                            <i class="clip-database circle-icon circle-bricky"></i>
+
+                            <h2>Manage DataBase</h2>
+                        </div>
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                            tincidunt ut
+                            laoreet dolore magna aliquam erat volutpat.
+                        </div>
+                        <a class="view-more" href="#">
+                            View More <i class="clip-arrow-right-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+            <!-- end: PAGE CONTENT-->
         </div>
-            </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <span class="symbol required"></span>Required Fields
-                    <hr>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <p>
-                    By clicking REGISTER, you are agreeing to the Policy and Terms &amp; Conditions.
-                </p>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-yellow btn-block" type="submit">
-                    Register <i class="icon-circle-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-    </form:form>
+    </div>
+    <!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
 <!-- start: FOOTER -->
@@ -395,6 +239,30 @@
     </div>
 </div>
 <!-- end: FOOTER -->
+<div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title">Event Management</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-light-grey">
+                    Close
+                </button>
+                <button type="button" class="btn btn-danger remove-event no-display">
+                    <i class='icon-trash'></i> Delete Event
+                </button>
+                <button type='submit' class='btn btn-success save-event'>
+                    <i class='icon-ok'></i> Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
 <script src="/assets/plugins/respond.min.js"></script>
@@ -410,16 +278,12 @@
 <script src="/assets/js/main.js"></script>
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="/assets/plugins/summernote/build/summernote.min.js"></script>
-<script src="/assets/plugins/ckeditor/ckeditor.js"></script>
-<script src="/assets/plugins/ckeditor/adapters/jquery.js"></script>
-<script src="/assets/js/form-validation.js"></script>
+<script src="/assets/js/index.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        FormValidator.init();
+        Index.init();
     });
 </script>
 </body>
