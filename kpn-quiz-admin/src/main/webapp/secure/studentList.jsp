@@ -1,4 +1,5 @@
 <%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -276,7 +277,7 @@
             </li>
         </ol>
         <div class="page-header">
-            <h1>Student Registration </h1>
+            <h1>Student List </h1>
         </div>
         <!-- end: PAGE TITLE & BREADCRUMB -->
     </div>
@@ -308,121 +309,137 @@
     </div>
 </div>
 <div class="panel-body">
-    <h2><i class="icon-edit-sign teal"></i> REGISTER</h2>
+    <h2><i class="icon-edit-sign teal"></i> LIST</h2>
 
     <hr>
-        <form:form commandName="studentModel" action="${pageContext.request.contextPath}/register/addStudent" method="POST" >
-        <form:hidden path="instructorId" />
-        <div class="row">
-            <div class="col-md-12">
-                <div class="errorHandler alert alert-danger no-display">
-                    <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-                </div>
-                <div class="successHandler alert alert-success no-display">
-                    <i class="icon-ok"></i> Your form validation is successful!
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="control-label">
-                        Name <span class="symbol required"></span>
-                    </label>
-                    <form:input path="name" placeholder="Insert your student Name" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        NRIC <span class="symbol required"></span>
-                    </label>
-                    <form:input path="nric" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Username <span class="symbol required"></span>
-                    </label>
-                    <form:input path="username" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Password <span class="symbol required"></span>
-                    </label>
-                    <form:password path="password" cssClass="form-control" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Confirm Password <span class="symbol required"></span>
-                    </label>
-                    <form:password path="passwordAgain" cssClass="form-control" />
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group connected-group">
-                    <label class="control-label">
-                        Date of Birth <span class="symbol required"></span>
-                    </label>
+    <table border=1>
+        <tr>
+        <th>Name</th>
+        <th>NRIC</th>
+        <th>Username</th>
+        <th>&nbsp;</th>
+        </tr>
+         <c:forEach var="student" items="${studentModels}">
+             <tr>
+               <td>${student.name}</td>
+               <td>${student.nric}</td>
+               <td>${student.username}</td>
+               <td><a href="#">Edit</a>&nbsp;<a href="#">Remove</a></td>
+             </tr>
+         </c:forEach>
+    </table>
+        <%--<form:form commandName="studentModel" action="${pageContext.request.contextPath}/register/addStudent" method="POST" >--%>
+        <%--<form:hidden path="instructorId" />--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-md-12">--%>
+                <%--<div class="errorHandler alert alert-danger no-display">--%>
+                    <%--<i class="icon-remove-sign"></i> You have some form errors. Please check below.--%>
+                <%--</div>--%>
+                <%--<div class="successHandler alert alert-success no-display">--%>
+                    <%--<i class="icon-ok"></i> Your form validation is successful!--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-6">--%>
+                <%--<div class="form-group">--%>
+                    <%--<label class="control-label">--%>
+                        <%--Name <span class="symbol required"></span>--%>
+                    <%--</label>--%>
+                    <%--<form:input path="name" placeholder="Insert your student Name" cssClass="form-control" />--%>
+                <%--</div>--%>
+                <%--<div class="form-group">--%>
+                    <%--<label class="control-label">--%>
+                        <%--NRIC <span class="symbol required"></span>--%>
+                    <%--</label>--%>
+                    <%--<form:input path="nric" cssClass="form-control" />--%>
+                <%--</div>--%>
+                <%--<div class="form-group">--%>
+                    <%--<label class="control-label">--%>
+                        <%--Username <span class="symbol required"></span>--%>
+                    <%--</label>--%>
+                    <%--<form:input path="username" cssClass="form-control" />--%>
+                <%--</div>--%>
+                <%--<div class="form-group">--%>
+                    <%--<label class="control-label">--%>
+                        <%--Password <span class="symbol required"></span>--%>
+                    <%--</label>--%>
+                    <%--<form:password path="password" cssClass="form-control" />--%>
+                <%--</div>--%>
+                <%--<div class="form-group">--%>
+                    <%--<label class="control-label">--%>
+                        <%--Confirm Password <span class="symbol required"></span>--%>
+                    <%--</label>--%>
+                    <%--<form:password path="passwordAgain" cssClass="form-control" />--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-6">--%>
+                <%--<div class="form-group connected-group">--%>
+                    <%--<label class="control-label">--%>
+                        <%--Date of Birth <span class="symbol required"></span>--%>
+                    <%--</label>--%>
 
-                    <div class="row">
-                        <div class="col-md-3">
-                            <form:select path="dob_dd" cssClass="form-control">
-                                <form:option value="-">DD</form:option>
-                                 <%
-                                     for(int i = 1; i <= 31; i++)
-                                         out.println("<option value="+ i +">"+ i +"</option>");
-                                 %>
-                            </form:select>
-                        </div>
-                        <div class="col-md-3">
-                            <form:select path="dob_mm" cssClass="form-control">
-                                <form:option value="-">MM</form:option>
-                                 <%
-                                     for(int i = 1; i <= 12; i++)
-                                         out.println("<option value="+ i +">"+ i +"</option>");
-                                 %>
-                            </form:select>
-                        </div>
-                        <div class="col-md-3">
-                            <form:input path="dob_yyyy" placeholder="yyyy" cssClass="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">
-                        Gender <span class="symbol required"></span>
-                    </label>
+                    <%--<div class="row">--%>
+                        <%--<div class="col-md-3">--%>
+                            <%--<form:select path="dob_dd" cssClass="form-control">--%>
+                                <%--<form:option value="-">DD</form:option>--%>
+                                 <%--<%--%>
+                                     <%--for(int i = 1; i <= 31; i++)--%>
+                                         <%--out.println("<option value="+ i +">"+ i +"</option>");--%>
+                                 <%--%>--%>
+                            <%--</form:select>--%>
+                        <%--</div>--%>
+                        <%--<div class="col-md-3">--%>
+                            <%--<form:select path="dob_mm" cssClass="form-control">--%>
+                                <%--<form:option value="-">MM</form:option>--%>
+                                 <%--<%--%>
+                                     <%--for(int i = 1; i <= 12; i++)--%>
+                                         <%--out.println("<option value="+ i +">"+ i +"</option>");--%>
+                                 <%--%>--%>
+                            <%--</form:select>--%>
+                        <%--</div>--%>
+                        <%--<div class="col-md-3">--%>
+                            <%--<form:input path="dob_yyyy" placeholder="yyyy" cssClass="form-control" />--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<div class="form-group">--%>
+                    <%--<label class="control-label">--%>
+                        <%--Gender <span class="symbol required"></span>--%>
+                    <%--</label>--%>
 
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="" name="gender" id="gender_female">
-                            Female
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="" name="gender" id="gender_male">
-                            Male
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <span class="symbol required"></span>Required Fields
-                    <hr>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <p>
-                    By clicking REGISTER, you are agreeing to the Policy and Terms &amp; Conditions.
-                </p>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-yellow btn-block" type="submit">
-                    Register <i class="icon-circle-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-    </form:form>
+                    <%--<div>--%>
+                        <%--<label class="radio-inline">--%>
+                            <%--<input type="radio" class="grey" value="" name="gender" id="gender_female">--%>
+                            <%--Female--%>
+                        <%--</label>--%>
+                        <%--<label class="radio-inline">--%>
+                            <%--<input type="radio" class="grey" value="" name="gender" id="gender_male">--%>
+                            <%--Male--%>
+                        <%--</label>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-md-12">--%>
+                <%--<div>--%>
+                    <%--<span class="symbol required"></span>Required Fields--%>
+                    <%--<hr>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-md-8">--%>
+                <%--<p>--%>
+                    <%--By clicking REGISTER, you are agreeing to the Policy and Terms &amp; Conditions.--%>
+                <%--</p>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-4">--%>
+                <%--<button class="btn btn-yellow btn-block" type="submit">--%>
+                    <%--Register <i class="icon-circle-arrow-right"></i>--%>
+                <%--</button>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</form:form>--%>
 </div>
 </div>
 <!-- end: FORM VALIDATION 1 PANEL -->

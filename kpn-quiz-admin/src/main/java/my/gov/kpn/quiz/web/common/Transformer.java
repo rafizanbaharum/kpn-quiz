@@ -42,6 +42,7 @@ public class Transformer {
         StudentModel model = new StudentModel();
         QaUser user = instructorManager.findUserByActor(student);
         model.setName(student.getName());
+        model.setNric(student.getNricNo());
         model.setUsername(user.getUsername());
         return model;
     }
