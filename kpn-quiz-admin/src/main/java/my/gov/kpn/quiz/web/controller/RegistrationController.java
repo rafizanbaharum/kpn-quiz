@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/register")
-public class RegistrationController extends AbstractController{
+public class RegistrationController extends AbstractController {
 
     private static final Logger log = Logger.getLogger(RegistrationController.class);
 
@@ -67,7 +67,7 @@ public class RegistrationController extends AbstractController{
 
     @RequestMapping(value = "/addStudent", method = {RequestMethod.POST})
     public String addStudent(@ModelAttribute("studentModel") StudentModel studentModel,
-            ModelMap model) {
+                             ModelMap model) {
 
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
             model.addAttribute(MSG_SUCCESS,"Password not match");

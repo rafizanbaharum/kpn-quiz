@@ -20,8 +20,9 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
     @SequenceGenerator(name = "SEQ_QA_QSTN", sequenceName = "SEQ_QA_QSTN", allocationSize = 1)
     private Long id;
 
-    @Column(name = "TITLE")
-    private String title;
+    @Lob
+    @Column(name = "STATEMENT")
+    private String statement;
 
     @Column(name = "WEIGHT")
     private Double weight;
@@ -54,11 +55,11 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
     }
 
     public String getStatement() {
-        return title;
+        return statement;
     }
 
-    public void setStatement(String title) {
-        this.title = title;
+    public void setStatement(String statement) {
+        this.statement = statement;
     }
 
     public QaDifficulty getDifficulty() {

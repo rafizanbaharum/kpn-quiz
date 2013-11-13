@@ -39,7 +39,7 @@ quiz-app-viewport
 }
 
 #quiz-question-statement {
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .quiz-question-choice  > input[type="radio"] {
