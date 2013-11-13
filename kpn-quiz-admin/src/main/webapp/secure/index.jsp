@@ -234,9 +234,9 @@
                             <small>overview &amp; stats</small>
                         </h1>
                     </div>
-                </form>
-            </li>
-        </ol>
+                </div>
+            </div>
+        </div>
         <div class="page-header">
             <h1>Student Registration </h1>
         </div>
@@ -361,6 +361,7 @@
                 </div>
             </div>
         </div>
+            </div>
         <div class="row">
             <div class="col-md-12">
                 <div>
