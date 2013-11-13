@@ -238,10 +238,10 @@
         <div id="button_bar">
             <ul>
                 <li>
-                    <span><a href="/secure/dashboard.jsp">Dashboard</a></span>
+                    <span><a href="/secure/index.jsp">Dashboard</a></span>
                 </li>
                 <li>
-                    <span><a href="/gate/in">Login</a></span>
+                    <span><a href="${pageContext.request.contextPath}/gate/in">Login</a></span>
                 </li>
             </ul>
         </div>
