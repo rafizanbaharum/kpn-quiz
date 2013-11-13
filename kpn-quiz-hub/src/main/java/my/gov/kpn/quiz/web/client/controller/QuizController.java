@@ -25,13 +25,13 @@ public class QuizController extends Controller {
     protected View view;
 
     public QuizController() {
+        registerEventTypes(QuizEvents.InitApp);
         registerEventTypes(QuizEvents.InitQuiz);
     }
 
     @Override
     protected void initialize() {
         super.initialize();
-
         QuizDelegateAsync delegate = (QuizDelegateAsync) GWT.create(QuizDelegate.class);
         ((ServiceDefTarget) delegate).setServiceEntryPoint(GWT.getModuleBaseURL() + QuizConstants.ENDPOINT_QUIZ);
         Registry.register(QuizConstants.DELEGATE_QUIZ, delegate);
@@ -41,7 +41,9 @@ public class QuizController extends Controller {
 
     public void handleEvent(AppEvent event) {
         EventType type = event.getType();
-        if (type == QuizEvents.InitQuiz) {
+        if (type == QuizEvents.InitApp) {
+            forwardToView(view, event);
+        } else if (type == QuizEvents.InitQuiz) {
             forwardToView(view, event);
         }
     }
