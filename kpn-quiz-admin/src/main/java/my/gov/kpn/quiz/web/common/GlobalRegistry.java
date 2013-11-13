@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @since 11/11/13
  */
 
-@Component("registry")
+@Component("commonRegistry")
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class GlobalRegistry {
 
