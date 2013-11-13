@@ -86,6 +86,7 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
     public void testCreateQuestions() {
         QaQuiz quiz = quizDao.findCurrent();
         multipleChoiceQuestion(quiz);
+        booleanQuestion(quiz);
         subjectiveQuestion(quiz);
     }
 
@@ -376,7 +377,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question23.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question23, root);
 
-
         QaMultipleChoiceQuestion question24 = new QaMultipleChoiceQuestionImpl();
         question24.setDifficulty(QaDifficulty.EASY);
         question24.setWeight(1D);
@@ -391,18 +391,276 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
 
 
         // intermediate
+        QaMultipleChoiceQuestion question25 = new QaMultipleChoiceQuestionImpl();
+        question25.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question25.setWeight(1D);
+        question25.setStatement("The treaty that defined the boundaries between British Malaya and Dutch East Indies in 1824 was known a");
+        question25.setChoice1("Thailand");
+        question25.setChoice2("Cambodia");
+        question25.setChoice3("Malaysia");
+        question25.setChoice4("Myanmar");
+        question25.setAnswerKey("D");
+        question25.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question25, root);
+
+        QaMultipleChoiceQuestion question26 = new QaMultipleChoiceQuestionImpl();
+        question26.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question26.setWeight(1D);
+        question26.setStatement("The Majapahit Kingdom in 13th century expanded to become an empire under the premiership of");
+        question26.setChoice1("Thailand");
+        question26.setChoice2("Cambodia");
+        question26.setChoice3("Malaysia");
+        question26.setChoice4("Myanmar");
+        question26.setAnswerKey("D");
+        question26.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question26, root);
+
+        QaMultipleChoiceQuestion question27 = new QaMultipleChoiceQuestionImpl();
+        question27.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question27.setWeight(1D);
+        question27.setStatement("Which political party won a landslide victory in Singapore in 1959?");
+        question27.setChoice1("Thailand");
+        question27.setChoice2("Cambodia");
+        question27.setChoice3("Malaysia");
+        question27.setChoice4("Myanmar");
+        question27.setAnswerKey("D");
+        question27.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question27, root);
+
+        QaMultipleChoiceQuestion question28 = new QaMultipleChoiceQuestionImpl();
+        question28.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question28.setWeight(1D);
+        question28.setStatement("In 1998, the ASEAN Heads of Government adopted an action plan to implement ASEAN Vision 2020. What was the name of the plan?");
+        question28.setChoice1("Thailand");
+        question28.setChoice2("Cambodia");
+        question28.setChoice3("Malaysia");
+        question28.setChoice4("Myanmar");
+        question28.setAnswerKey("D");
+        question28.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question28, root);
+
+        QaMultipleChoiceQuestion question29 = new QaMultipleChoiceQuestionImpl();
+        question29.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question29.setWeight(1D);
+        question29.setStatement("The treaty that defined the boundaries between British Malaya and Dutch East Indies in 1824 was known a");
+        question29.setChoice1("Thailand");
+        question29.setChoice2("Cambodia");
+        question29.setChoice3("Malaysia");
+        question29.setChoice4("Myanmar");
+        question29.setAnswerKey("D");
+        question29.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question29, root);
+
+        QaMultipleChoiceQuestion question30 = new QaMultipleChoiceQuestionImpl();
+        question30.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question30.setWeight(1D);
+        question30.setStatement("The following are national heritage sites and reserves as stated in the ASEAN Heritage Parks and Reserves Declaration 1984 EXCEPT ____");
+        question30.setChoice1("Thailand");
+        question30.setChoice2("Cambodia");
+        question30.setChoice3("Malaysia");
+        question30.setChoice4("Myanmar");
+        question30.setAnswerKey("D");
+        question30.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question30, root);
+
+        QaMultipleChoiceQuestion question31 = new QaMultipleChoiceQuestionImpl();
+        question31.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question31.setWeight(1D);
+        question31.setStatement("The most recognisable feature of this mosque is the dome covered in pure gold.  What is the name of the mosque?");
+        question31.setChoice1("Thailand");
+        question31.setChoice2("Cambodia");
+        question31.setChoice3("Malaysia");
+        question31.setChoice4("Myanmar");
+        question31.setAnswerKey("D");
+        question31.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question31, root);
+
         // difficult
+        QaMultipleChoiceQuestion question32 = new QaMultipleChoiceQuestionImpl();
+        question32.setDifficulty(QaDifficulty.DIFFICULT);
+        question32.setWeight(1D);
+        question32.setStatement("Which one of these islands is not a part of Southeast Asia?");
+        question32.setChoice1("Thailand");
+        question32.setChoice2("Cambodia");
+        question32.setChoice3("Malaysia");
+        question32.setChoice4("Myanmar");
+        question32.setAnswerKey("D");
+        question32.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question32, root);
+
+        QaMultipleChoiceQuestion question33 = new QaMultipleChoiceQuestionImpl();
+        question33.setDifficulty(QaDifficulty.DIFFICULT);
+        question33.setWeight(1D);
+        question33.setStatement("Who scored at the final football match between Malaysia and Indonesia during the 26th Southeast Asian (SEA) Games in Jakarta?");
+        question33.setChoice1("Thailand");
+        question33.setChoice2("Cambodia");
+        question33.setChoice3("Malaysia");
+        question33.setChoice4("Myanmar");
+        question33.setAnswerKey("D");
+        question33.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question33, root);
+
+        QaMultipleChoiceQuestion question34 = new QaMultipleChoiceQuestionImpl();
+        question34.setDifficulty(QaDifficulty.DIFFICULT);
+        question34.setWeight(1D);
+        question34.setStatement("Which of the following is NOT a signatory of the Five Power Defence Arrangements (FPDA)?");
+        question34.setChoice1("Thailand");
+        question34.setChoice2("Cambodia");
+        question34.setChoice3("Malaysia");
+        question34.setChoice4("Myanmar");
+        question34.setAnswerKey("D");
+        question34.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question34, root);
+
+        QaMultipleChoiceQuestion question35 = new QaMultipleChoiceQuestionImpl();
+        question35.setDifficulty(QaDifficulty.DIFFICULT);
+        question35.setWeight(1D);
+        question35.setStatement("Which of the following is the longest-reigning monarch in Southeast Asia?");
+        question35.setChoice1("Thailand");
+        question35.setChoice2("Cambodia");
+        question35.setChoice3("Malaysia");
+        question35.setChoice4("Myanmar");
+        question35.setAnswerKey("D");
+        question35.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question35, root);
+
+        QaMultipleChoiceQuestion question36 = new QaMultipleChoiceQuestionImpl();
+        question36.setDifficulty(QaDifficulty.DIFFICULT);
+        question36.setWeight(1D);
+        question36.setStatement("Which ASEAN country was ranked as having the highest Human Development Index (HDI) in 2011? ");
+        question36.setChoice1("Thailand");
+        question36.setChoice2("Cambodia");
+        question36.setChoice3("Malaysia");
+        question36.setChoice4("Myanmar");
+        question36.setAnswerKey("D");
+        question36.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question36, root);
+
+        QaMultipleChoiceQuestion question37 = new QaMultipleChoiceQuestionImpl();
+        question37.setDifficulty(QaDifficulty.DIFFICULT);
+        question37.setWeight(1D);
+        question37.setStatement("Which one of these islands is not a part of Southeast Asia?");
+        question37.setChoice1("Thailand");
+        question37.setChoice2("Cambodia");
+        question37.setChoice3("Malaysia");
+        question37.setChoice4("Myanmar");
+        question37.setAnswerKey("D");
+        question37.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question37, root);
+
+        QaMultipleChoiceQuestion question38 = new QaMultipleChoiceQuestionImpl();
+        question38.setDifficulty(QaDifficulty.DIFFICULT);
+        question38.setWeight(1D);
+        question38.setStatement("The ASEAN Environmentally Sustainable City Award was first presented in 2008 to 10 cities/ townships/ districts as a motivation to share best practices and achieve high standards of environmental sustainability. Listed below are the winners of the award for 2011 EXCEPT ____");
+        question38.setChoice1("Thailand");
+        question38.setChoice2("Cambodia");
+        question38.setChoice3("Malaysia");
+        question38.setChoice4("Myanmar");
+        question38.setAnswerKey("D");
+        question38.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question38, root);
+
+        QaMultipleChoiceQuestion question39 = new QaMultipleChoiceQuestionImpl();
+        question39.setDifficulty(QaDifficulty.DIFFICULT);
+        question39.setWeight(1D);
+        question39.setStatement("Symphony Orchestra of Young Musicians is one of the cultural events to celebrate the 15th Anniversary of the Dialogue Partnership in 2011.  Name the Dialogue Partner.");
+        question39.setChoice1("Thailand");
+        question39.setChoice2("Cambodia");
+        question39.setChoice3("Malaysia");
+        question39.setChoice4("Myanmar");
+        question39.setAnswerKey("D");
+        question39.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question39, root);
+
+        QaMultipleChoiceQuestion question40 = new QaMultipleChoiceQuestionImpl();
+        question40.setDifficulty(QaDifficulty.DIFFICULT);
+        question40.setWeight(1D);
+        question40.setStatement("The Immediate Action Plans (IAPs) for Prevention and Control of Land and Forest Fires and Haze are designed to help local government units and the communities in developing comprehensive action plans for forest fire management. The first phase of the IAPs has been developed with funding support from the UNEP and the Government of Indonesia. Name the two areas involved in this programme.");
+        question40.setChoice1("Thailand");
+        question40.setChoice2("Cambodia");
+        question40.setChoice3("Malaysia");
+        question40.setChoice4("Myanmar");
+        question40.setAnswerKey("D");
+        question40.setAnswerIndex(4);
+        quizDao.addQuestion(quiz, question40, root);
+
+    }
+
+    private void booleanQuestion(QaQuiz quiz) {
+        QaBooleanQuestion question41 = new QaBooleanQuestionImpl();
+        question41.setDifficulty(QaDifficulty.INTERMEDIATE);
+        question41.setWeight(1D);
+        question41.setStatement("Australia is one of ASEAN’s Dialogue Partners.");
+        question41.setAnswerIndex(1);
+        question41.setAnswerKey("TRUE");
+        quizDao.addQuestion(quiz, question41, root);
+
+        QaBooleanQuestion question42 = new QaBooleanQuestionImpl();
+        question42.setDifficulty(QaDifficulty.DIFFICULT);
+        question42.setWeight(1D);
+        question42.setStatement("Chinese Muslims in Myanmar are called ‘Pantay’");
+        question42.setAnswerIndex(1);
+        question42.setAnswerKey("TRUE");
+        quizDao.addQuestion(quiz, question42, root);
+
+        QaBooleanQuestion question43 = new QaBooleanQuestionImpl();
+        question43.setDifficulty(QaDifficulty.DIFFICULT);
+        question43.setWeight(1D);
+        question43.setStatement("India is ASEAN’s largest export market.");
+        question43.setAnswerIndex(0);
+        question43.setAnswerKey("FALSE");
+        quizDao.addQuestion(quiz, question43, root);
+
+       QaBooleanQuestion question44 = new QaBooleanQuestionImpl();
+        question44.setDifficulty(QaDifficulty.EASY);
+        question44.setWeight(1D);
+        question44.setStatement("The Mulu National Park is located in the Philippines.");
+        question44.setAnswerIndex(0);
+        question44.setAnswerKey("FALSE");
+        quizDao.addQuestion(quiz, question44, root);
+
+       QaBooleanQuestion question45 = new QaBooleanQuestionImpl();
+        question45.setDifficulty(QaDifficulty.EASY);
+        question45.setWeight(1D);
+        question45.setStatement("One of the principles of ASEAN Charter is upholding international law with respect to human rights & social justice.");
+        question45.setAnswerIndex(1);
+        question45.setAnswerKey("TRUE");
+        quizDao.addQuestion(quiz, question45, root);
+
+       QaBooleanQuestion question46 = new QaBooleanQuestionImpl();
+        question46.setDifficulty(QaDifficulty.EASY);
+        question46.setWeight(1D);
+        question46.setStatement("Lorentz National Park is one of the ASEAN heritage parks located in Myanmar.");
+        question46.setAnswerIndex(0);
+        question46.setAnswerKey("FALSE");
+        quizDao.addQuestion(quiz, question46, root);
+
+       QaBooleanQuestion question47 = new QaBooleanQuestionImpl();
+        question47.setDifficulty(QaDifficulty.EASY);
+        question47.setWeight(1D);
+        question47.setStatement("There are only three aspects under the ASEAN Socio-Cultural Community pillar.");
+        question47.setAnswerIndex(0);
+        question47.setAnswerKey("FALSE");
+        quizDao.addQuestion(quiz, question47, root);
+
+       QaBooleanQuestion question48 = new QaBooleanQuestionImpl();
+        question48.setDifficulty(QaDifficulty.EASY);
+        question48.setWeight(1D);
+        question48.setStatement("The Presidential Democracy political system is practiced in Thailand.");
+        question48.setAnswerIndex(0);
+        question48.setAnswerKey("FALSE");
+        quizDao.addQuestion(quiz, question48, root);
+
+       QaBooleanQuestion question49 = new QaBooleanQuestionImpl();
+        question49.setDifficulty(QaDifficulty.DIFFICULT);
+        question49.setWeight(1D);
+        question49.setStatement("The official tourism slogan for Laos is “Simply Beautiful”");
+        question49.setAnswerIndex(1);
+        question49.setAnswerKey("TRUE");
+        quizDao.addQuestion(quiz, question49, root);
     }
 
     private void subjectiveQuestion(QaQuiz quiz) {
-
-        QaBooleanQuestion question3 = new QaBooleanQuestionImpl();
-        question3.setDifficulty(QaDifficulty.INTERMEDIATE);
-        question3.setWeight(1D);
-        question3.setStatement("Australia is one of ASEAN’s Dialogue Partners.");
-        question3.setAnswerIndex(1);
-        question3.setAnswerKey("TRUE");
-        quizDao.addQuestion(quiz, question3, root);
 
 
         QaSubjectiveQuestion question4 = new QaSubjectiveQuestionImpl();

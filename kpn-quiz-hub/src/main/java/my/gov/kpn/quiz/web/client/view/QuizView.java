@@ -58,6 +58,7 @@ public class QuizView extends View {
     private Html timer;
     private Html counter;
     private int currentStep = 0;
+    private int questionIndex = 0;
 
     public QuizView(Controller controller) {
         super(controller);
@@ -101,7 +102,8 @@ public class QuizView extends View {
                 ListLoadResult<QuestionModel> data = le.<ListLoadResult<QuestionModel>>getData();
                 List<QuestionModel> models = data.getData();
                 for (QuestionModel model : models) {
-                    createQuestionPanel(model);
+                    ++questionIndex;
+                    createQuestionPanel(questionIndex, model);
                 }
                 cardPanel.layout();
             }
@@ -222,21 +224,21 @@ public class QuizView extends View {
         main.add(cardPanel);
     }
 
-    private void createQuestionPanel(QuestionModel model) {
+    private void createQuestionPanel(int questionIndex, QuestionModel model) {
         switch (model.getQuestionType()) {
             case MULTIPLE_CHOICE:
-                createMultipleChoiceQuestionPanel((MultipleChoiceQuestionModel) model);
+                createMultipleChoiceQuestionPanel(questionIndex, (MultipleChoiceQuestionModel) model);
                 break;
             case BOOLEAN:
-                createBooleanQuestionPanel((BooleanQuestionModel) model);
+                createBooleanQuestionPanel(questionIndex, (BooleanQuestionModel) model);
                 break;
             case SUBJECTIVE:
-                createSubjectiveQuestionPanel((SubjectiveQuestionModel) model);
+                createSubjectiveQuestionPanel(questionIndex, (SubjectiveQuestionModel) model);
                 break;
         }
     }
 
-    private void createMultipleChoiceQuestionPanel(MultipleChoiceQuestionModel model) {
+    private void createMultipleChoiceQuestionPanel(int questionIndex, MultipleChoiceQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setStyleName("quiz-question");
 
@@ -244,7 +246,7 @@ public class QuizView extends View {
         box.setLayout(new VBoxLayout());
         Html statement = new Html();
         statement.setId("quiz-question-statement");
-        statement.setHtml(model.getStatement());
+        statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
         RadioButton button1 = new RadioButton("A");
         button1.setStyleName("quiz-question-choice");
         button1.setText(model.getChoice1());
@@ -267,14 +269,14 @@ public class QuizView extends View {
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
-    private void createBooleanQuestionPanel(BooleanQuestionModel model) {
+    private void createBooleanQuestionPanel(int questionIndex, BooleanQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setStyleName("quiz-question");
         LayoutContainer box = new LayoutContainer();
         box.setLayout(new VBoxLayout());
         Html statement = new Html();
         statement.setId("quiz-question-statement");
-        statement.setHtml(model.getStatement());
+        statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
         RadioButton button1 = new RadioButton("TRUE");
         button1.setStyleName("quiz-question-choice");
         button1.setText("TRUE");
@@ -289,7 +291,7 @@ public class QuizView extends View {
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
-    private void createSubjectiveQuestionPanel(SubjectiveQuestionModel model) {
+    private void createSubjectiveQuestionPanel(int questionIndex, SubjectiveQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setStyleName("quiz-question");
 
@@ -297,7 +299,7 @@ public class QuizView extends View {
         box.setLayout(new VBoxLayout());
         Html statement = new Html();
         statement.setId("quiz-question-statement");
-        statement.setHtml(model.getStatement());
+        statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
         TextArea area = new TextArea();
         area.setId("answer");
         area.setName("answer");
@@ -315,8 +317,9 @@ public class QuizView extends View {
 
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
-            currentStep += 1;
-            if (currentStep < cardPanel.getItemCount()) {
+
+            if ((currentStep + 1) < cardPanel.getItemCount()) {
+                currentStep += 1;
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
                 cardPanel.fireEvent(QuizEvents.QuestionNext);
             }
@@ -326,8 +329,8 @@ public class QuizView extends View {
     class PreviousSelectionListener extends SelectionListener<ButtonEvent> {
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
-            currentStep -= 1;
-            if (currentStep >= 0) {
+            if ((currentStep - 1) > 0) {
+                currentStep -= 1;
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
                 cardPanel.fireEvent(QuizEvents.QuestionNext);
             }
