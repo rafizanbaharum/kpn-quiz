@@ -122,15 +122,16 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
                 QaBooleanQuestion question3 = new QaBooleanQuestionImpl();
                 question3.setDifficulty(QaDifficulty.INTERMEDIATE);
                 question3.setWeight(1D);
-                question3.setStatement("1. Australia is one of ASEAN’s Dialogue Partners.");
+                question3.setStatement("Australia is one of ASEAN’s Dialogue Partners.");
                 question3.setAnswerIndex(1);
                 question3.setAnswerKey("TRUE");
                 quizDao.addQuestion(quiz, question3, root);
 
+
                 QaSubjectiveQuestion question4 = new QaSubjectiveQuestionImpl();
                 question4.setDifficulty(QaDifficulty.DIFFICULT);
                 question4.setWeight(1D);
-                question4.setStatement("1. Describe the security and foreign policies of the Federation of Malaya under Prime Minister Tunku Abdul Rahman");
+                question4.setStatement("Describe the security and foreign policies of the Federation of Malaya under Prime Minister Tunku Abdul Rahman");
                 question4.setAnswerIndex(0);
                 question4.setAnswerKey("N/A");
                 question4.setAnswerGuide("Answer guideline here");

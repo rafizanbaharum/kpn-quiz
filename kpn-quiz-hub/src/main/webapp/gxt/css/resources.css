@@ -42,19 +42,34 @@ quiz-app-viewport
     font-size: 30px;
 }
 
+.quiz-question-choice  > input[type="radio"] {
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+}
+
+.quiz-question-choice  > label {
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
 #quiz-clock {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
-    font-family: "Raleway";
-    color: #C8C7CC;
+    font-family: "Raleway", serif;
+    padding-left: 30px;
+    color: #000000;
+    background: url(../../gxt/images/bg/alarm-clock.png) no-repeat left center;
+
 }
 
 /* custom button */
-.quiz-nav-button {
+.quiz-nav-button .x-btn-text {
     font-size: 18px;
     font-weight: bold;
-    font-family: "Raleway";
-    color : #ffffff;
+    font-family: "Raleway, serif";
+    color: #ffffff;
     background-color: #007AFF;
 }
 

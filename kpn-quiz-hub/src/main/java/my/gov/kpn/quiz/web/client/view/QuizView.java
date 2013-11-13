@@ -19,6 +19,7 @@ import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ButtonBar;
 import com.extjs.gxt.ui.client.widget.form.TextArea;
 import com.extjs.gxt.ui.client.widget.layout.*;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -111,7 +112,7 @@ public class QuizView extends View {
             public void run() {
                 timer.schedule(1000);
                 now--;
-                time.setHtml(Integer.toString(now));
+                time.setHtml(formattedNow());
             }
         };
         timer.schedule(1000);
@@ -157,7 +158,7 @@ public class QuizView extends View {
         clock.setLayout(new FlowLayout());
         time = new Html();
         time.setId("quiz-clock");
-        time.setHtml(Integer.toString(now));
+        time.setHtml(formattedNow());
         clock.add(time, new MarginData(30, 0, 0, 100));
         header.add(clock);
     }
@@ -211,12 +212,16 @@ public class QuizView extends View {
         statement.setId("quiz-question-statement");
         statement.setHtml(model.getStatement());
         RadioButton button1 = new RadioButton("A");
+        button1.setStyleName("quiz-question-choice");
         button1.setText(model.getChoice1());
         RadioButton button2 = new RadioButton("B");
+        button2.setStyleName("quiz-question-choice");
         button2.setText(model.getChoice2());
         RadioButton button3 = new RadioButton("C");
+        button3.setStyleName("quiz-question-choice");
         button3.setText(model.getChoice3());
         RadioButton button4 = new RadioButton("D");
+        button4.setStyleName("quiz-question-choice");
         button4.setText(model.getChoice4());
 
         box.add(statement, new VBoxLayoutData(0, 0, 10, 0));
@@ -238,8 +243,10 @@ public class QuizView extends View {
         statement.setId("quiz-question-statement");
         statement.setHtml(model.getStatement());
         RadioButton button1 = new RadioButton("TRUE");
+        button1.setStyleName("quiz-question-choice");
         button1.setText("TRUE");
         RadioButton button2 = new RadioButton("FALSE");
+        button2.setStyleName("quiz-question-choice");
         button2.setText("FALSE");
 
         box.add(statement, new VBoxLayoutData(0, 0, 10, 0));
@@ -293,6 +300,12 @@ public class QuizView extends View {
         }
     }
 
+    private String formattedNow() {
+        int minutes = now / (60 * 1000);
+        int seconds = (now / 1000) % 60;
+        NumberFormat formatter = NumberFormat.getFormat("00");
+        return formatter.format(minutes) + ":" + formatter.format(seconds);
+    }
 }
 
 
