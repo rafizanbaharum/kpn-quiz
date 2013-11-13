@@ -38,7 +38,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/*").permitAll()
                 .antMatchers("/gate/**").permitAll()
                 .antMatchers("/validate/**").permitAll()
                 .antMatchers("/register/**").permitAll()
@@ -54,7 +54,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/index")
+                .logoutSuccessUrl("/gate/in")
                 .invalidateHttpSession(true);
     }
 

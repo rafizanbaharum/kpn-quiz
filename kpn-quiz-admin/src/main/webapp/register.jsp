@@ -26,7 +26,7 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/resources/img/favicon/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/style.css">
