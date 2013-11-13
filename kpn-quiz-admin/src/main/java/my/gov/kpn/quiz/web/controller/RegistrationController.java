@@ -4,6 +4,7 @@ import my.gov.kpn.quiz.biz.manager.QuizHelper;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.web.common.Transformer;
 import my.gov.kpn.quiz.web.model.RegistrationModel;
+import my.gov.kpn.quiz.web.model.StudentModel;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -20,7 +21,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/register")
-public class RegistrationController {
+public class RegistrationController extends AbstractController{
 
     private static final Logger log = Logger.getLogger(RegistrationController.class);
 
@@ -58,23 +59,24 @@ public class RegistrationController {
             return "register";
         }
 
-//        registrationManager.registerInstructor(registrationModel.getUsername(), registrationModel.getPassword(),
-//                registrationModel.getFullName(), registrationModel.getNricNo(), registrationModel.getEmail(), registrationModel.getPhone(), registrationModel.getFax(),
-//                registrationModel.getStateId(), registrationModel.getSchoolName());
+        registrationManager.registerInstructor(registrationModel.getUsername(), registrationModel.getPassword(),
+                registrationModel.getFullName(), registrationModel.getNricNo(), registrationModel.getEmail(), registrationModel.getPhone(), registrationModel.getFax(),
+                registrationModel.getStateId(), registrationModel.getSchoolName());
         return "registered";
     }
 
     @RequestMapping(value = "/addStudent", method = {RequestMethod.POST})
-    public String addStudent(
-            @RequestParam("studentUsername") String studentUsername,
-            @RequestParam("studentNric") String studentNric,
-            @RequestParam("studentName") String studentName,
-            @RequestParam("instructorId") Long instructorId,
+    public String addStudent(@ModelAttribute("studentModel") StudentModel studentModel,
             ModelMap model) {
 
-        registrationManager.registerStudent(studentUsername, "abc123",
-                studentName, studentNric, instructorId);
-        return "registered";
+        if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
+            model.addAttribute(MSG_SUCCESS,"Password not match");
+            return "secure/index";
+        }
+
+        registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
+                studentModel.getName(), studentModel.getNric(), studentModel.getInstructorId());
+        return "secure/index";
     }
 
     @RequestMapping(value = "/resetStudentPassword", method = {RequestMethod.POST})

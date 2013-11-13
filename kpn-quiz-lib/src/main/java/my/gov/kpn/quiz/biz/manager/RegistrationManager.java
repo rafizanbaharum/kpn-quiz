@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.biz.manager;
 
-import my.gov.kpn.quiz.core.model.QaInstitution;
 
 /**
  * @author rafizan.baharum
@@ -12,6 +11,14 @@ public interface RegistrationManager {
                             String email, String fax, String phone,
                             Long stateId, String schoolName);
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param name
+     * @param nricNo
+     * @param instructorId
+     */
     void registerStudent(String username, String password, String name, String nricNo,
                          Long instructorId);
 

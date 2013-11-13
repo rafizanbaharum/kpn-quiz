@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.exception.RecursiveGroupException;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
 import my.gov.kpn.quiz.core.model.impl.QaStudentImpl;
+import my.gov.kpn.quiz.core.model.impl.QaTeamImpl;
 import my.gov.kpn.quiz.core.model.impl.QaUserImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,11 +88,22 @@ public class RegistrationManagerImpl implements RegistrationManager {
             user.setActor(instructor);
             userDao.save(user, root);
             sessionFactory.getCurrentSession().flush();
-            sessionFactory.getCurrentSession().refresh(instructor);
+            sessionFactory.getCurrentSession().refresh(user);
 
             // add into group GROUP_INSTRUCTOR
             QaGroup group = groupDao.findByName(GROUP_INSTRUCTOR);
             groupDao.addMember(group, user, root);
+
+            sessionFactory.getCurrentSession().flush();
+            sessionFactory.getCurrentSession().refresh(group);
+
+            //create new team
+//            QaTeam team = new QaTeamImpl();
+//            team.setLeader(user);
+//            teamDao.save(team,root);
+//
+//            sessionFactory.getCurrentSession().flush();
+//            sessionFactory.getCurrentSession().refresh(team);
 
         } catch (RecursiveGroupException e) {
             e.printStackTrace();

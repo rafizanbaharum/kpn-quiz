@@ -38,10 +38,11 @@
     <link rel="stylesheet" href="/assets/plugins/summernote/build/summernote.css">
     <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
-<body class="footer-fixed">
+<body>
 <!-- start: HEADER -->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <!-- start: TOP NAVIGATION CONTAINER -->
@@ -75,7 +76,23 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${pageContext.request.contextPath}/gate/out">
+                            <a href="pages_calendar.html">
+                                <i class="clip-calendar"></i>
+                                &nbsp;My Calendar
+                            </a>
+                        <li>
+                            <a href="pages_messages.html">
+                                <i class="clip-bubble-4"></i>
+                                &nbsp;My Messages (3)
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="utility_lock_screen.html"><i class="clip-locked"></i>
+                                &nbsp;Lock Screen </a>
+                        </li>
+                        <li>
+                            <a href="login_example1.html">
                                 <i class="clip-exit"></i>
                                 &nbsp;Log Out
                             </a>
@@ -146,93 +163,114 @@
                 </button>
                 <h4 class="modal-title">Panel Configuration</h4>
             </div>
-            <!-- end: MAIN MENU TOGGLER BUTTON -->
-            <!-- start: MAIN NAVIGATION MENU -->
-            <ul class="main-navigation-menu">
-                <li class="active open">
-                    <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
-                        <span class="title"> Dashboard </span><span class="selected"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/instructor">
-                                <span class="title">Register Student</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-            </ul>
-            <!-- end: MAIN NAVIGATION MENU -->
+            <div class="modal-body">
+                Here will be a configuration form
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
         </div>
-        <!-- end: SIDEBAR -->
+        <!-- /.modal-content -->
     </div>
-    <!-- start: PAGE -->
-    <div class="main-content">
-        <!-- start: PANEL CONFIGURATION MODAL FORM -->
-        <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">Panel Configuration</h4>
-                    </div>
-                    <div class="modal-body">
-                        Here will be a configuration form
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                            Save changes
-                        </button>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- end: SPANEL CONFIGURATION MODAL FORM -->
+<div class="container">
+<!-- start: PAGE HEADER -->
+<div class="row">
+    <div class="col-sm-12">
+        <!-- start: STYLE SELECTOR BOX -->
+        <div id="style_selector">
+            <div id="style_selector_container">
+                <div class="style-main-title">
+                    Style Selector
+                </div>
+                <div class="box-title">
+                    Choose Your Layout Style
+                </div>
+                <div class="input-box">
+                    <div class="input">
+                        <select name="layout">
+                            <option value="default">Wide</option>
+                            <option value="boxed">Boxed</option>
+                        </select>
                     </div>
                 </div>
-                <!-- /.modal-content -->
+                <div class="box-title">
+                    Choose Your Header Style
+                </div>
+                <div class="input-box">
+                    <div class="input">
+                        <select name="header">
+                            <option value="fixed">Fixed</option>
+                            <option value="default">Default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box-title">
+                    Choose Your Footer Style
+                </div>
+                <div class="input-box">
+                    <div class="input">
+                        <select name="footer">
+                            <option value="default">Default</option>
+                            <option value="fixed">Fixed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box-title">
+                    Backgrounds for Boxed Version
+                </div>
+                <div class="images boxed-patterns">
+                    <a id="bg_style_1" href="#"><img alt="" src="/assets/images/bg.png"></a>
+                    <a id="bg_style_2" href="#"><img alt="" src="/assets/images/bg_2.png"></a>
+                    <a id="bg_style_3" href="#"><img alt="" src="/assets/images/bg_3.png"></a>
+                    <a id="bg_style_4" href="#"><img alt="" src="/assets/images/bg_4.png"></a>
+                    <a id="bg_style_5" href="#"><img alt="" src="/assets/images/bg_5.png"></a>
+                </div>
+                <div class="box-title">
+                    5 Predefined Color Schemes
+                </div>
+                <div class="images icons-color">
+                    <a id="light" href="#"><img class="active" alt="" src="/assets/images/lightgrey.png"></a>
+                    <a id="dark" href="#"><img alt="" src="/assets/images/darkgrey.png"></a>
+                    <a id="black_and_white" href="#"><img alt="" src="/assets/images/blackandwhite.png"></a>
+                    <a id="navy" href="#"><img alt="" src="/assets/images/navy.png"></a>
+                    <a id="green" href="#"><img alt="" src="/assets/images/green.png"></a>
+                </div>
+                <div style="height:25px;line-height:25px;" class="box-title">
+                    <a class="clear_style" href="#">
+                        Clear Styles
+                    </a>
+                </div>
             </div>
-            <!-- /.modal-dialog -->
+            <div class="style-toggle close"></div>
         </div>
-        <!-- /.modal -->
-        <!-- end: SPANEL CONFIGURATION MODAL FORM -->
-        <div class="container">
-            <!-- start: PAGE HEADER -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <!-- start: PAGE TITLE & BREADCRUMB -->
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="clip-home"></i>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li class="active">
-                            Dashboard
-                        </li>
-                        <li class="search-box">
-                            <form class="sidebar-search">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Start Searching...">
-                                    <button class="submit">
-                                        <i class="clip-search-3"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </li>
-                    </ol>
-                    <div class="page-header">
-                        <h1>Dashboard
-                            <small>overview &amp; stats</small>
-                        </h1>
+        <!-- end: STYLE SELECTOR BOX -->
+        <!-- start: PAGE TITLE & BREADCRUMB -->
+        <ol class="breadcrumb">
+            <li>
+                <i class="clip-pencil"></i>
+                <a href="#">
+                    Student Management
+                </a>
+            </li>
+            <li class="active">
+                List
+            </li>
+            <li class="search-box">
+                <form class="sidebar-search">
+                    <div class="form-group">
+                        <input type="text" placeholder="Start Searching...">
+                        <button class="submit">
+                            <i class="clip-search-3"></i>
+                        </button>
                     </div>
                 </form>
             </li>
@@ -279,6 +317,9 @@
             <div class="col-md-12">
                 <div class="errorHandler alert alert-danger no-display">
                     <i class="icon-remove-sign"></i> You have some form errors. Please check below.
+                </div>
+                <div class="successHandler alert alert-success no-display">
+                    <i class="icon-ok"></i> Your form validation is successful!
                 </div>
             </div>
             <div class="col-md-6">
@@ -343,10 +384,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-clip circle-icon circle-teal"></i>
+                <div class="form-group">
+                    <label class="control-label">
+                        Gender <span class="symbol required"></span>
+                    </label>
 
                     <div>
                         <label class="radio-inline">
@@ -382,6 +423,15 @@
             </div>
         </div>
     </form:form>
+</div>
+</div>
+<!-- end: FORM VALIDATION 1 PANEL -->
+</div>
+</div>
+
+</div>
+</div>
+<!-- end: PAGE -->
 </div>
 <!-- end: MAIN CONTAINER -->
 <!-- start: FOOTER -->

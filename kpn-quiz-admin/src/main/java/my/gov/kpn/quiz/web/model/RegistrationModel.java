@@ -17,7 +17,7 @@ public class RegistrationModel extends MetaModel {
     private String address2;
     private String address3;
     private String address4;
-    private String stateId;
+    private Long stateId;
     private Map<String, String> negeris;
 
     public String getAddress1() {
@@ -124,11 +124,11 @@ public class RegistrationModel extends MetaModel {
         this.nric = nric;
     }
 
-    public String getStateId() {
+    public Long getStateId() {
         return stateId;
     }
 
-    public void setStateId(String stateId) {
+    public void setStateId(Long stateId) {
         this.stateId = stateId;
     }
 

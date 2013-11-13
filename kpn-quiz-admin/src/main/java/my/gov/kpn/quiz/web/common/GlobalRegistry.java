@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.web.common;
 
+//import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -20,7 +21,7 @@ public class GlobalRegistry {
 
     private static synchronized GlobalRegistry getInstance() {
         if (INSTANCE == null)
-            return new GlobalRegistry();
+            INSTANCE = new GlobalRegistry();
 
         return INSTANCE;
     }

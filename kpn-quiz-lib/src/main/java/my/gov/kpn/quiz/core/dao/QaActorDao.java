@@ -1,8 +1,6 @@
 package my.gov.kpn.quiz.core.dao;
 
-import my.gov.kpn.quiz.core.model.QaActor;
-import my.gov.kpn.quiz.core.model.QaActorType;
-import my.gov.kpn.quiz.core.model.QaUser;
+import my.gov.kpn.quiz.core.model.*;
 
 import java.util.List;
 
@@ -25,6 +23,8 @@ public interface QaActorDao {
     List<QaActor> find(QaActorType type, Integer offset, Integer limit);
 
     List<QaActor> find(QaActorType type, String filter, Integer offset, Integer limit);
+
+    List<QaStudent> findStudent(QaInstructor instructor);
 
     Integer count();
 

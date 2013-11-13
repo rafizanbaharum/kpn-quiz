@@ -1,9 +1,7 @@
 package my.gov.kpn.quiz.core.dao.impl;
 
 import my.gov.kpn.quiz.core.dao.QaActorDao;
-import my.gov.kpn.quiz.core.model.QaActor;
-import my.gov.kpn.quiz.core.model.QaActorType;
-import my.gov.kpn.quiz.core.model.QaMetaState;
+import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaActorImpl;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -134,6 +132,17 @@ public class QaActorDaoImpl extends DaoSupport<Long, QaActor, QaActorImpl> imple
         query.setInteger("actorType", type.ordinal());
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public List<QaStudent> findStudent(QaInstructor instructor) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaStudent a where " +
+                " a.instructor = :instructor " +
+                "and a.metadata.state = :state");
+        query.setEntity("instructor", instructor);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return (List<QaStudent>)query.list();
     }
 
     // =============================================================================
