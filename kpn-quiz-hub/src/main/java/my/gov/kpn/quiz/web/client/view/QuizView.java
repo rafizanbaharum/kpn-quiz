@@ -265,7 +265,7 @@ public class QuizView extends View {
         box.add(button2, new VBoxLayoutData(0, 0, 5, 0));
         box.add(button3, new VBoxLayoutData(0, 0, 5, 0));
         box.add(button4, new VBoxLayoutData(0, 0, 5, 0));
-        panel.add(box, new MarginData(60, 0, 0, 80));
+        panel.add(box, new MarginData(50, 0, 0, 80));
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
@@ -287,7 +287,7 @@ public class QuizView extends View {
         box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
         box.add(button1, new VBoxLayoutData(0, 0, 10, 0));
         box.add(button2, new VBoxLayoutData(0, 0, 5, 0));
-        panel.add(box, new MarginData(60, 0, 0, 80));
+        panel.add(box, new MarginData(50, 0, 0, 80));
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
@@ -309,7 +309,7 @@ public class QuizView extends View {
 
         box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
         box.add(area, new VBoxLayoutData(0, 0, 10, 0));
-        panel.add(box, new MarginData(60, 0, 0, 80));
+        panel.add(box, new MarginData(50, 0, 0, 80));
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
