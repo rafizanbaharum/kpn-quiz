@@ -22,7 +22,9 @@ public interface QuizManager {
 
     QaParticipant findParticipant(QaQuiz quiz, QaUser user);
 
-    QaQuiz findQuestionById(Long id);
+    QaQuiz findQuizById(Long id);
+
+    QaQuestion findQuestionById(Long id);
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
 

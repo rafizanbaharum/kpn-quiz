@@ -17,4 +17,6 @@ public interface QuizDelegateAsync {
     void startQuiz(QuizModel quizModel, AsyncCallback<Void> async);
 
     void findCurrentQuestions(AsyncCallback<ListLoadResult<QuestionModel>> async);
+
+    void updateAnswer(QuestionModel model, String answerIndex, AsyncCallback<Void> async);
 }

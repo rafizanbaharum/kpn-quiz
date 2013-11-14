@@ -19,11 +19,14 @@ import com.extjs.gxt.ui.client.widget.form.TextArea;
 import com.extjs.gxt.ui.client.widget.layout.*;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.RootPanel;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.QuizEvents;
+import my.gov.kpn.quiz.web.client.event.QuizNavigateEvent;
+import my.gov.kpn.quiz.web.client.event.TimerEvent;
 import my.gov.kpn.quiz.web.client.model.BooleanQuestionModel;
 import my.gov.kpn.quiz.web.client.model.MultipleChoiceQuestionModel;
 import my.gov.kpn.quiz.web.client.model.QuestionModel;
@@ -41,24 +44,26 @@ import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
 public class QuizView extends View {
 
     private static final Logger log = Logger.getLogger(QuizView.class.getName());
-    public static final int ONE_HOUR = 60 * 60 * 1000;
-    public static final int ONE_SECOND = 1000;
+    private static final int ONE_HOUR = 60 * 60 * 1000;
+    private static final int ONE_SECOND = 1000;
+    private static NumberFormat formatter = NumberFormat.getFormat("00");
 
-    private CardPanel cardPanel;
     private QuizDelegateAsync delegate;
     private QuestionRpcProxy proxy;
     private ListLoader<ListLoadResult<QuestionModel>> loader;
+    private List<QuestionModel> models;
+
     private LayoutContainer main;
     private LayoutContainer header;
     private LayoutContainer footer;
-
-    private static NumberFormat formatter = NumberFormat.getFormat("00");
-    private Timer t;
-    private Integer now = 60 * 60 * 1000;
+    private CardPanel cardPanel;
     private Html timer;
     private Html counter;
+
+    private Timer t;
+    private int now = 60 * 60 * 1000;
     private int currentStep = 0;
-    private int questionIndex = 0;
+    private int questionIndex = 0; // zero-based index!
 
     public QuizView(Controller controller) {
         super(controller);
@@ -79,7 +84,6 @@ public class QuizView extends View {
         }
     }
 
-
     private void onInitApplication() {
         final Dispatcher dispatcher = Dispatcher.get();
         Viewport viewport = new Viewport();
@@ -94,13 +98,18 @@ public class QuizView extends View {
 
 
     private void onInitQuiz() {
-        // load question
         loader.load(new BaseListLoadConfig());
-        loader.addLoadListener(new LoadListener() {
+        initListener();
+        initTimer();
+    }
+
+    private void initListener() {
+        loader.addListener(Loader.Load, new Listener<LoadEvent>() {
             @Override
-            public void loaderLoad(LoadEvent le) {
-                ListLoadResult<QuestionModel> data = le.<ListLoadResult<QuestionModel>>getData();
-                List<QuestionModel> models = data.getData();
+            public void handleEvent(LoadEvent be) {
+                log.info("handleEvent.Loaded");
+                ListLoadResult<QuestionModel> data = be.getData();
+                models = data.getData();
                 for (QuestionModel model : models) {
                     ++questionIndex;
                     createQuestionPanel(questionIndex, model);
@@ -109,43 +118,49 @@ public class QuizView extends View {
             }
         });
 
-        // timer
-        t = new Timer() {
-            public void run() {
-                t.schedule(ONE_SECOND);
-                if (now == ONE_HOUR)
-                    timer.fireEvent(QuizEvents.TimerStart);
-                if (now != 0)
-                    timer.fireEvent(QuizEvents.TimerUpdate);
-                else
-                    timer.fireEvent(QuizEvents.TimerEnd);
-            }
-        };
-        t.schedule(1000);
-        initListener();
-    }
-
-    private void initListener() {
-        timer.addListener(QuizEvents.TimerUpdate, new Listener<BaseEvent>() {
+        timer.addListener(QuizEvents.TimerUpdate, new Listener<TimerEvent>() {
             @Override
-            public void handleEvent(BaseEvent be) {
+            public void handleEvent(TimerEvent be) {
                 now -= ONE_SECOND;
                 timer.setHtml(formattedNow());
                 counter.setHtml((currentStep + 1) + "/" + cardPanel.getItemCount());
             }
         });
 
-        cardPanel.addListener(QuizEvents.QuestionNext, new Listener<BaseEvent>() {
+        cardPanel.addListener(QuizEvents.QuizNavigate, new Listener<QuizNavigateEvent>() {
             @Override
-            public void handleEvent(BaseEvent be) {
-                counter.setHtml((currentStep + 1) + "/" + cardPanel.getItemCount());
+            public void handleEvent(QuizNavigateEvent be) {
+                updateCounter(be.getNextQuestionIndex());
+                updateAnswer(be.getPreviousAnswerIndex(), "TODO");
             }
         });
+    }
 
-        cardPanel.addListener(QuizEvents.QuestionPrev, new Listener<BaseEvent>() {
+    private void initTimer() {
+        t = new Timer() {
+            public void run() {
+                t.schedule(ONE_SECOND);
+                timer.fireEvent(QuizEvents.TimerUpdate, new TimerEvent(this, now - ONE_SECOND));
+            }
+        };
+        t.schedule(ONE_SECOND);
+    }
+
+    private void updateCounter(int nextQuestionIndex) {
+        counter.setHtml(nextQuestionIndex + "/" + cardPanel.getItemCount());
+    }
+
+    private void updateAnswer(int questionIndex, String answerKey) {
+        QuestionModel model = models.get(questionIndex);
+        delegate.updateAnswer(model, answerKey, new AsyncCallback<Void>() {
             @Override
-            public void handleEvent(BaseEvent be) {
-                counter.setHtml((currentStep + 1) + "/" + cardPanel.getItemCount());
+            public void onFailure(Throwable caught) {
+                // TODO:
+            }
+
+            @Override
+            public void onSuccess(Void result) {
+                // TODO:
             }
         });
     }
@@ -314,14 +329,16 @@ public class QuizView extends View {
     }
 
     class NextSelectionListener extends SelectionListener<ButtonEvent> {
-
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
-
+            int previousStep = currentStep;
             if ((currentStep + 1) < cardPanel.getItemCount()) {
                 currentStep += 1;
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
-                cardPanel.fireEvent(QuizEvents.QuestionNext);
+                cardPanel.fireEvent(
+                        QuizEvents.QuizNavigate,
+                        new QuizNavigateEvent(this, currentStep, previousStep)
+                );
             }
         }
     }
@@ -329,10 +346,14 @@ public class QuizView extends View {
     class PreviousSelectionListener extends SelectionListener<ButtonEvent> {
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
+            int previousStep = currentStep;
             if ((currentStep - 1) > 0) {
                 currentStep -= 1;
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
-                cardPanel.fireEvent(QuizEvents.QuestionNext);
+                cardPanel.fireEvent(
+                        QuizEvents.QuizNavigate,
+                        new QuizNavigateEvent(this, currentStep, previousStep)
+                );
             }
         }
     }
