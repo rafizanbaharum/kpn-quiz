@@ -16,10 +16,6 @@ public class AbstractController {
     protected final String MSG_SUCCESS = "msgSuccess";
     protected final String MSG_ERROR = "msgSuccess";
 
-    @Autowired
-    protected Transformer transformer;
-
-    @ModelAttribute("currentUser")
     protected QaUser getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth.getPrincipal() instanceof UserDetails) {
