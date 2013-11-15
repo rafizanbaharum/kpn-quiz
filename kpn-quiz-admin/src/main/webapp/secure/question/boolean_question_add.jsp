@@ -1,5 +1,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -10,7 +9,6 @@
 <!-- start: HEAD -->
 <head>
     <title>ASEAN QUIZ - KPN</title>
-    <!-- start: META -->
     <meta charset="utf-8"/>
     <!--[if IE]>
     <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1"/><![endif]-->
@@ -22,7 +20,7 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico"/>
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/style.css">
@@ -45,24 +43,17 @@
 <body class="footer-fixed layout-boxed">
 <!-- start: HEADER -->
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <!-- start: TOP NAVIGATION CONTAINER -->
     <div class="container">
         <div class="navbar-header">
-            <!-- start: RESPONSIVE MENU TOGGLER -->
             <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
                 <span class="clip-list-2"></span>
             </button>
-            <!-- end: RESPONSIVE MENU TOGGLER -->
-            <!-- start: LOGO -->
             <a class="navbar-brand" href="${pageContext.request.contextPath}/secure/index">
                 ASEAN QUIZ
             </a>
-            <!-- end: LOGO -->
         </div>
         <div class="navbar-tools">
-            <!-- start: TOP NAVIGATION MENU -->
             <ul class="nav navbar-right">
-                <!-- start: USER DROPDOWN -->
                 <li class="dropdown current-user">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <img src="" class="circle-img" alt="">
@@ -84,26 +75,17 @@
                         </li>
                     </ul>
                 </li>
-                <!-- end: USER DROPDOWN -->
             </ul>
-            <!-- end: TOP NAVIGATION MENU -->
         </div>
     </div>
-    <!-- end: TOP NAVIGATION CONTAINER -->
 </div>
-<!-- end: HEADER -->
-<!-- start: MAIN CONTAINER -->
 <div class="main-container">
     <div class="navbar-content">
-        <!-- start: SIDEBAR -->
         <div class="main-navigation navbar-collapse collapse">
-            <!-- start: MAIN MENU TOGGLER BUTTON -->
             <div class="navigation-toggler">
                 <i class="clip-chevron-left"></i>
                 <i class="clip-chevron-right"></i>
             </div>
-            <!-- end: MAIN MENU TOGGLER BUTTON -->
-            <!-- start: MAIN NAVIGATION MENU -->
             <ul class="main-navigation-menu">
                 <li>
                     <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
@@ -132,11 +114,8 @@
                 </li>
 
             </ul>
-            <!-- end: MAIN NAVIGATION MENU -->
         </div>
-        <!-- end: SIDEBAR -->
     </div>
-    <!-- start: PAGE -->
     <div class="main-content">
         <div class="container">
             <div class="row">
@@ -149,121 +128,72 @@
                             </a>
                         </li>
                         <li class="active">
-                            Student List
-                        </li>
-                        <li class="search-box">
-                            <form class="sidebar-search">
-                                <div class="form-group">
-                                    <input type="text" placeholder="Start Searching...">
-                                    <button class="submit">
-                                        <i class="clip-search-3"></i>
-                                    </button>
-                                </div>
-                            </form>
+                            Register Student
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Student List </h1>
+                        <h1>Student Registration </h1>
                     </div>
                 </div>
             </div>
-            <!-- start: PAGE CONTENT -->
             <div class="row">
                 <div class="col-md-12">
-                    <!-- start: BASIC TABLE PANEL -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            List of registered students
-                            <div class="panel-tools">
-                                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
-                                </a>
-                                <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
-                                    <i class="icon-wrench"></i>
-                                </a>
-                                <a class="btn btn-xs btn-link panel-refresh" href="#">
-                                    <i class="icon-refresh"></i>
-                                </a>
-                                <a class="btn btn-xs btn-link panel-expand" href="#">
-                                    <i class="icon-resize-full"></i>
-                                </a>
-                                <a class="btn btn-xs btn-link panel-close" href="#">
-                                    <i class="icon-remove"></i>
-                                </a>
-                            </div>
+                            Create a question
                         </div>
                         <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Name</th>
-                                    <th class="hidden-xs">NRIC</th>
-                                    <th class="hidden-xs">Username</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="round" items="${studentModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.name}</td>
-                                        <td>${round.nric}</td>
-                                        <td class="hidden-xs">${round.username}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="#" class="btn btn-teal tooltips" data-placement="top"
-                                                   data-original-title="Edit"><i
-                                                        class="icon-edit"></i></a>
-                                                <a href="#" class="btn btn-green tooltips" data-placement="top"
-                                                   data-original-title="Share"><i
-                                                        class="icon-share"></i></a>
-                                                <a href="#" class="btn btn-bricky tooltips" data-placement="top"
-                                                   data-original-title="Remove"><i
-                                                        class="icon-remove icon-white"></i></a>
-                                            </div>
-                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle btn-sm"
-                                                       data-toggle="dropdown"
-                                                       href="#">
-                                                        <i class="icon-cog"></i> <span class="caret"></span>
-                                                    </a>
-                                                    <ul role="menu" class="dropdown-menu pull-right">
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-edit"></i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-share"></i> Share
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-remove"></i> Remove
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                            <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
+
+                            <hr>
+                            <form:form id="form" commandName="studentModel"
+                                       action="${pageContext.request.contextPath}/question/add"
+                                       method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <div class="successHandler alert alert-success no-display">
+                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Statement <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="statement" placeholder="Insert question statement"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <span class="symbol required"></span>Required Fields
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Add <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form:form>
                         </div>
                     </div>
-                    <!-- end: BASIC TABLE PANEL -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
-<!-- start: FOOTER -->
+
 <div class="footer clearfix">
     <div class="footer-inner">
         2013 &copy; ASEAN QUIZ

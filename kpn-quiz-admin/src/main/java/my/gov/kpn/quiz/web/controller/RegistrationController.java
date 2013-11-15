@@ -39,7 +39,7 @@ public class RegistrationController extends AbstractController {
 
     @RequestMapping(method = {RequestMethod.GET})
     public String go(@ModelAttribute("registration") RegistrationModel registrationModel, ModelMap model, HttpServletRequest request) {
-        Map<String, String> value = transformer.transformToDropDown(quizHelper.getStateList());
+        Map<String, String> value = transformer.transformStatesToDropDown(quizHelper.getStateList());
         model.put("states", value);
         return "register";
     }

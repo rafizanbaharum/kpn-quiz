@@ -36,7 +36,7 @@ public class InstructorController extends AbstractController {
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         studentModel.setInstructorId(getCurrentInstructorId());
-        return "secure/studentRegister";
+        return "secure/student/student_register";
     }
 
     @RequestMapping(value = "/instructor", method = {RequestMethod.GET})
@@ -48,12 +48,12 @@ public class InstructorController extends AbstractController {
     public String studentList(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
         model.addAttribute("studentModels", transformer.transformStudents(students));
-        return "secure/studentList";
+        return "secure/student/student_list";
     }
 
     @RequestMapping(value = "/round_list", method = {RequestMethod.GET})
     public String roundList(ModelMap model) {
         model.addAttribute("roundModels", transformer.transformRounds(quizManager.findRounds()));
-        return "secure/round_list";
+        return "secure/round/round_list";
     }
 }
