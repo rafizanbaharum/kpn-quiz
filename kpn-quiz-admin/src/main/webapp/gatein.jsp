@@ -42,12 +42,9 @@
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<!-- end: HEAD -->
-<!-- start: BODY -->
 <body class="login example2">
 <div class="main-login col-sm-4 col-sm-offset-4">
     <div class="logo"><h2>ASEAN QUIZ</h2></div>
-    <!-- start: LOGIN BOX -->
     <div class="box-login">
         <h3>Sign in to your account</h3>
 
@@ -82,12 +79,6 @@
                                 </a> </span>
                 </div>
                 <div class="form-actions">
-                    <%--
-                                        <label for="remember" class="checkbox-inline">
-                                            <input type="checkbox" class="grey remember" id="remember" name="remember">
-                                            Keep me signed in
-                                        </label>
-                    --%>
                     <button type="submit" class="btn btn-bricky pull-right">
                         Login <i class="icon-circle-arrow-right"></i>
                     </button>
@@ -101,8 +92,6 @@
             </fieldset>
         </form>
     </div>
-    <!-- end: LOGIN BOX -->
-    <!-- start: FORGOT BOX -->
     <div class="box-forgot">
         <h3>Forget Password?</h3>
 
@@ -131,12 +120,9 @@
             </fieldset>
         </form>
     </div>
-    <!-- end: FORGOT BOX -->
-    <!-- start: COPYRIGHT -->
     <div class="copyright">
         2013 &copy; ASEAN QUIZ
     </div>
-    <!-- end: COPYRIGHT -->
 </div>
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>

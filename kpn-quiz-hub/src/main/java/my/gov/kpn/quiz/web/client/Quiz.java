@@ -39,7 +39,7 @@ public class Quiz implements EntryPoint {
 
         Dispatcher dispatcher = Dispatcher.get();
         dispatcher.addController(new QuizController());
-        dispatcher.dispatch(QuizEvents.InitApp);
+        dispatcher.dispatch(QuizEvents.AppInit);
     }
 
     /**

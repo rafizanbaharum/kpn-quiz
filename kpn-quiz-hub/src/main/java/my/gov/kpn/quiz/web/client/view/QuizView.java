@@ -59,6 +59,7 @@ public class QuizView extends View {
     private CardPanel cardPanel;
     private Html timer;
     private Html counter;
+    private Html level;
 
     private Timer t;
     private int now = 60 * 60 * 1000;
@@ -77,9 +78,9 @@ public class QuizView extends View {
 
     @Override
     protected void handleEvent(AppEvent appEvent) {
-        if (appEvent.getType() == QuizEvents.InitApp) {
+        if (appEvent.getType() == QuizEvents.AppInit) {
             onInitApplication();
-        } else if (appEvent.getType() == QuizEvents.InitQuiz) {
+        } else if (appEvent.getType() == QuizEvents.QuizInit) {
             onInitQuiz();
         }
     }
@@ -93,7 +94,7 @@ public class QuizView extends View {
         createMain(viewport);
         createFooter(viewport);
         RootPanel.get().add(viewport);
-        dispatcher.dispatch(QuizEvents.InitQuiz);
+        dispatcher.dispatch(QuizEvents.QuizInit);
     }
 
 
@@ -151,7 +152,7 @@ public class QuizView extends View {
     }
 
     private void updateAnswer(int questionIndex, String answerKey) {
-        QuestionModel model = models.get(questionIndex);
+        QuestionModel model = getQuestion(questionIndex);
         delegate.updateAnswer(model, answerKey, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -207,6 +208,8 @@ public class QuizView extends View {
         counter = new Html();
         counter.setId("quiz-counter");
         counter.setHtml("Initializing...");
+        level.setId("quiz-level");
+        level.setHtml("Initializing...");
         LayoutContainer panel = new LayoutContainer();
         panel.setLayout(new HBoxLayout());
         panel.add(timer, new HBoxLayoutData(0, 0, 0, 20));
@@ -362,6 +365,10 @@ public class QuizView extends View {
         int minutes = now / (60 * 1000);
         int seconds = (now / 1000) % 60;
         return formatter.format(minutes) + ":" + formatter.format(seconds);
+    }
+
+    private QuestionModel getQuestion(int questionIndex) {
+        return models.get(questionIndex);
     }
 }
 

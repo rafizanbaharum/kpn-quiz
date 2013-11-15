@@ -25,8 +25,8 @@ public class QuizController extends Controller {
     protected View view;
 
     public QuizController() {
-        registerEventTypes(QuizEvents.InitApp);
-        registerEventTypes(QuizEvents.InitQuiz);
+        registerEventTypes(QuizEvents.AppInit);
+        registerEventTypes(QuizEvents.QuizInit);
     }
 
     @Override
@@ -41,9 +41,9 @@ public class QuizController extends Controller {
 
     public void handleEvent(AppEvent event) {
         EventType type = event.getType();
-        if (type == QuizEvents.InitApp) {
+        if (type == QuizEvents.AppInit) {
             forwardToView(view, event);
-        } else if (type == QuizEvents.InitQuiz) {
+        } else if (type == QuizEvents.QuizInit) {
             forwardToView(view, event);
         }
     }
