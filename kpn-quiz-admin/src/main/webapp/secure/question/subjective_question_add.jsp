@@ -62,7 +62,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/profile">
+                            <a href="${pageContext.request.contextPath}/secure/user/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -106,7 +106,7 @@
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                            <a href="${pageContext.request.contextPath}/secure/student_list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>

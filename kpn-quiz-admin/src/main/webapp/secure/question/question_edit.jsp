@@ -106,7 +106,7 @@
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                            <a href="${pageContext.request.contextPath}/secure/student_list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>

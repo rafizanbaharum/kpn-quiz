@@ -2,6 +2,7 @@ package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.biz.manager.QuizManager;
+import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.common.Transformer;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller("SecureInstructorController")
-@RequestMapping("/secure/instructor")
-public class InstructorController extends AbstractController {
+import java.util.List;
+
+@Controller("SecureStudentController")
+@RequestMapping("/secure/student")
+public class StudentController extends AbstractController {
 
     @Autowired
     private InstructorManager instructorManager;
@@ -31,14 +34,10 @@ public class InstructorController extends AbstractController {
         return "secure/student/student_register";
     }
 
-    @RequestMapping(method = {RequestMethod.GET})
-    public String go(ModelMap model) {
-        return "secure/instructor/instructor_view";
-    }
-
-    @RequestMapping(value = "/round_list", method = {RequestMethod.GET})
-    public String roundList(ModelMap model) {
-        model.addAttribute("roundModels", transformer.transformRounds(quizManager.findRounds()));
-        return "secure/round/round_list";
+    @RequestMapping(value = "/studentList", method = {RequestMethod.GET})
+    public String studentList(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
+        List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
+        model.addAttribute("studentModels", transformer.transformStudents(students));
+        return "secure/student/student_list";
     }
 }

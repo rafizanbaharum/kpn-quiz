@@ -57,7 +57,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/user/profile">
+                            <a href="${pageContext.request.contextPath}/user/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -70,10 +70,15 @@
                         </li>
                     </ul>
                 </li>
+                <!-- end: USER DROPDOWN -->
             </ul>
+            <!-- end: TOP NAVIGATION MENU -->
         </div>
     </div>
+    <!-- end: TOP NAVIGATION CONTAINER -->
 </div>
+<!-- end: HEADER -->
+<!-- start: MAIN CONTAINER -->
 <div class="main-container">
     <div class="navbar-content">
         <div class="main-navigation navbar-collapse collapse">
@@ -94,14 +99,14 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/register">
+                            <a href="${pageContext.request.contextPath}/secure/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/list">
+                            <a href="${pageContext.request.contextPath}/secure/studentList">
                                 <span class="title">Student List</span>
                             </a>
                         </li>
@@ -114,14 +119,14 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
+                            <a href="${pageContext.request.contextPath}/secure/round_list">
                                 <span class="title">Round List</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
+                            <a href="${pageContext.request.contextPath}/secure/round_list">
                                 <span class="title">Quiz List</span>
                             </a>
                         </li>
@@ -148,7 +153,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
+                            <a href="${pageContext.request.contextPath}/secure/round_list">
                                 <span class="title">Round List</span>
                             </a>
                         </li>
@@ -171,6 +176,16 @@
                         <li class="active">
                             Dashboard
                         </li>
+                        <li class="search-box">
+                            <form class="sidebar-search">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Start Searching...">
+                                    <button class="submit">
+                                        <i class="clip-search-3"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </li>
                     </ol>
                     <div class="page-header">
                         <h1>Dashboard
@@ -179,6 +194,8 @@
                     </div>
                 </div>
             </div>
+            <!-- end: PAGE HEADER -->
+            <!-- start: PAGE CONTENT -->
             <div class="row">
                 <div class="col-sm-4">
                     <div class="core-box">
@@ -232,9 +249,13 @@
                     </div>
                 </div>
             </div>
+            <!-- end: PAGE CONTENT-->
         </div>
     </div>
+    <!-- end: PAGE -->
 </div>
+<!-- end: MAIN CONTAINER -->
+<!-- start: FOOTER -->
 <div class="footer clearfix">
     <div class="footer-inner">
         2013 &copy; ASEAN QUIZ
@@ -243,7 +264,6 @@
         <span class="go-top"><i class="clip-chevron-up"></i></span>
     </div>
 </div>
-
 
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>

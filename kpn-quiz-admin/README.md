@@ -25,9 +25,11 @@ Instructor Registration
 
 ----------------------------------------------------------------------
 
-student_list        > studentList
-student_register    > studentRegister
-student_edit        > studentUpdate
+VERB: LIST, ADD, EDIT, REMOVE, PROCESS
+student/list
+student/add
+student/edit
+student/remove
 
 question_add        > questionCreate
 question_edit       > questionUpdate
@@ -35,6 +37,7 @@ question_remove     > questionDelete
 
 round_process       > roundProcess
 
+----------------------------------------------------------------------
 
 
 

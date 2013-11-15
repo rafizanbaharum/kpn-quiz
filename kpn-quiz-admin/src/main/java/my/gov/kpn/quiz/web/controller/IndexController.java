@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author rafizan.baharum
  * @since 9/14/13
  */
-@Controller
+@Controller("IndexController")
 @RequestMapping("/index")
 public class IndexController {
 
