@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -34,6 +36,8 @@
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="/assets/plugins/summernote/build/summernote.css">
+    <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
@@ -57,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/user/profile">
+                            <a href="${pageContext.request.contextPath}/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -82,12 +86,12 @@
                 <i class="clip-chevron-right"></i>
             </div>
             <ul class="main-navigation-menu">
-                <li class="active open">
+                <li>
                     <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li>
+                <li class="">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Student Management </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
@@ -107,7 +111,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Quiz Management </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
@@ -154,6 +158,7 @@
                         </li>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -163,23 +168,22 @@
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li>
-                            <i class="clip-home-3"></i>
+                            <i class="clip-pencil"></i>
                             <a href="#">
-                                Home
+                                Quiz Management
                             </a>
                         </li>
                         <li class="active">
-                            Profile
+                            Round List
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Profile
-                            <small>My profile</small>
-                        </h1>
+                        <h1>Round </h1>
                     </div>
                 </div>
             </div>
             <div class="row">
+                ${roundModel.id}
             </div>
         </div>
     </div>
@@ -192,6 +196,7 @@
         <span class="go-top"><i class="clip-chevron-up"></i></span>
     </div>
 </div>
+
 
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
@@ -208,12 +213,16 @@
 <script src="/assets/js/main.js"></script>
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="/assets/js/index.js"></script>
+<script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/assets/plugins/summernote/build/summernote.min.js"></script>
+<script src="/assets/plugins/ckeditor/ckeditor.js"></script>
+<script src="/assets/plugins/ckeditor/adapters/jquery.js"></script>
+<script src="/assets/js/form-validation.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        Index.init();
+        FormValidator.init();
     });
 </script>
 </body>

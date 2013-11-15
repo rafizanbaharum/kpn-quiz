@@ -4,7 +4,7 @@ package my.gov.kpn.quiz.web.model;
  * @author rafizan.baharum
  * @since 11/15/13
  */
-public class RoundModel {
+public class RoundModel extends MetaModel{
 
     private boolean processed;
     private boolean locked;

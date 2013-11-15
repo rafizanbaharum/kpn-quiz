@@ -40,24 +40,16 @@
     <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<!-- end: HEAD -->
-<!-- start: BODY -->
 <body class="footer-fixed layout-boxed">
-<!-- start: HEADER -->
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <!-- start: TOP NAVIGATION CONTAINER -->
     <div class="container">
         <div class="navbar-header">
-            <!-- start: RESPONSIVE MENU TOGGLER -->
             <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
                 <span class="clip-list-2"></span>
             </button>
-            <!-- end: RESPONSIVE MENU TOGGLER -->
-            <!-- start: LOGO -->
             <a class="navbar-brand" href="${pageContext.request.contextPath}/secure/index">
                 ASEAN QUIZ
             </a>
-            <!-- end: LOGO -->
         </div>
         <div class="navbar-tools">
             <ul class="nav navbar-right">
@@ -86,8 +78,6 @@
         </div>
     </div>
 </div>
-<!-- end: HEADER -->
-<!-- start: MAIN CONTAINER -->
 <div class="main-container">
     <div class="navbar-content">
         <div class="main-navigation navbar-collapse collapse">
@@ -128,28 +118,28 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
                                 <span class="title">Quiz List</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_create">
+                            <a href="${pageContext.request.contextPath}/secure/question/add">
                                 <span class="title">Create Question</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_list">
+                            <a href="${pageContext.request.contextPath}/secure/question/list">
                                 <span class="title">Question List</span>
                             </a>
                         </li>
@@ -162,7 +152,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
                             </a>
                         </li>
@@ -209,38 +199,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="question" items="${roundModels}" varStatus="idx">
+                                <c:forEach var="round" items="${roundModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.processed}</td>
+                                        <td class="hidden-xs">${round.processed}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="#" class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
+                                                <a href="${pageContext.request.contextPath}/secure/round/view/${round.id}"
+                                                   class="btn btn-green tooltips" data-placement="top"
+                                                   data-original-title="View"><i
+                                                        class="icon-info"></i></a>
                                                 <a href="#" class="btn btn-bricky tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>
-                                            </div>
-                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle btn-sm"
-                                                       data-toggle="dropdown"
-                                                       href="#">
-                                                        <i class="icon-cog"></i> <span class="caret"></span>
-                                                    </a>
-                                                    <ul role="menu" class="dropdown-menu pull-right">
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-edit"></i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-remove"></i> Remove
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                             </div>
                                         </td>
                                     </tr>
@@ -249,15 +222,11 @@
                             </table>
                         </div>
                     </div>
-                    <!-- end: BASIC TABLE PANEL -->
                 </div>
             </div>
         </div>
     </div>
-    <!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
-<!-- start: FOOTER -->
 <div class="footer clearfix">
     <div class="footer-inner">
         2013 &copy; ASEAN QUIZ
@@ -266,7 +235,8 @@
         <span class="go-top"><i class="clip-chevron-up"></i></span>
     </div>
 </div>
-<!-- end: FOOTER -->
+
+
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
 <script src="/assets/plugins/respond.min.js"></script>

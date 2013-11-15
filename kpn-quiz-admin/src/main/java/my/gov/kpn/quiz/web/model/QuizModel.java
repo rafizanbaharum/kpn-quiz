@@ -6,7 +6,7 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 11/15/13
  */
-public class QuizModel {
+public class QuizModel extends MetaModel{
 
     private String title;
     private Date startDate;

@@ -24,6 +24,8 @@ public interface QuizManager {
 
     QaQuiz findQuizById(Long id);
 
+    QaRound findRoundById(Long id);
+
     QaQuestion findQuestionById(Long id);
 
     List<QaRound> findRounds();

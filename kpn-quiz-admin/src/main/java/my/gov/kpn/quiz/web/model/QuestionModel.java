@@ -4,7 +4,7 @@ package my.gov.kpn.quiz.web.model;
  * @author rafizan.baharum
  * @since 11/15/13
  */
-public class QuestionModel {
+public class QuestionModel extends MetaModel{
 
     private String statement;
     private int weight;

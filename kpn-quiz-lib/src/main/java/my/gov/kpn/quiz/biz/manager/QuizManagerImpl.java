@@ -65,6 +65,11 @@ public class QuizManagerImpl implements QuizManager {
     }
 
     @Override
+    public QaRound findRoundById(Long id) {
+        return roundDao.findById(id);
+    }
+
+    @Override
     public QaQuestion findQuestionById(Long id) {
         return questionDao.findById(id);
     }

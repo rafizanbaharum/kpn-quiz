@@ -199,10 +199,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="question" items="${questionModels}" varStatus="idx">
+                                <c:forEach var="round" items="${questionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.statement}</td>
+                                        <td class="hidden-xs">${round.statement}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="#" class="btn btn-teal tooltips" data-placement="top"

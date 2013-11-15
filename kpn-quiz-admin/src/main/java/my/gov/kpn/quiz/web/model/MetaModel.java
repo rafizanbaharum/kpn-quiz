@@ -7,12 +7,21 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 10/20/13
  */
-public class MetaModel implements Serializable{
+public class MetaModel implements Serializable {
 
+    private Long id;
     private String metaState;
     private Date createdDate;
     private Date modifiedDate;
     private Date deletedDate;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getMetaState() {
         return metaState;
