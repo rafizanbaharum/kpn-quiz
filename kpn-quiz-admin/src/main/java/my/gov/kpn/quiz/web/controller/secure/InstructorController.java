@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.biz.manager.RegistrationManager;
+import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.common.Transformer;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -21,6 +21,9 @@ public class InstructorController extends AbstractController {
 
     @Autowired
     private InstructorManager instructorManager;
+
+    @Autowired
+    private QuizManager quizManager;
 
     @Autowired
     private Transformer transformer;
@@ -43,11 +46,14 @@ public class InstructorController extends AbstractController {
 
     @RequestMapping(value = "/studentList", method = {RequestMethod.GET})
     public String studentList(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
-
         List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
-        List<StudentModel> studentModels = transformer.transform(students);
-        model.addAttribute("studentModels", studentModels);
-
+        model.addAttribute("studentModels", transformer.transformStudents(students));
         return "secure/studentList";
+    }
+
+    @RequestMapping(value = "/round_list", method = {RequestMethod.GET})
+    public String roundList(ModelMap model) {
+        model.addAttribute("roundModels", transformer.transformRounds(quizManager.findRounds()));
+        return "secure/round_list";
     }
 }

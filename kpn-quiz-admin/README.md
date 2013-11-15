@@ -23,6 +23,24 @@ Instructor Registration
 * List members
 * Reset member password
 
+----------------------------------------------------------------------
+
+student_list        > studentList
+student_register    > studentRegister
+student_edit        > studentUpdate
+
+question_add        > questionCreate
+question_edit       > questionUpdate
+question_remove     > questionDelete
+
+round_process       > roundProcess
+
+
+
+
+
+
+
 
 http://ms.wikipedia.org/wiki/Senarai_sekolah_menengah_di_Malaysia
 

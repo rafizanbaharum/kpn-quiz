@@ -29,6 +29,16 @@ public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> imple
     }
 
     @Override
+    public List<QaRound> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaRound a where " +
+                "a.metadata.state = :state " +
+                "order by a.id");
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return query.list();
+    }
+
+    @Override
     public List<QaRound> find(Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaRound a where " +

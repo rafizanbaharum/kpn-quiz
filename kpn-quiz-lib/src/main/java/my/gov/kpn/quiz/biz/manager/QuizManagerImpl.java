@@ -1,9 +1,6 @@
 package my.gov.kpn.quiz.biz.manager;
 
-import my.gov.kpn.quiz.core.dao.QaGradebookDao;
-import my.gov.kpn.quiz.core.dao.QaParticipantDao;
-import my.gov.kpn.quiz.core.dao.QaQuestionDao;
-import my.gov.kpn.quiz.core.dao.QaQuizDao;
+import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +19,9 @@ public class QuizManagerImpl implements QuizManager {
 
     @Autowired
     private QaQuizDao quizDao;
+
+    @Autowired
+    private QaRoundDao roundDao;
 
     @Autowired
     private QaQuestionDao questionDao;
@@ -67,6 +67,11 @@ public class QuizManagerImpl implements QuizManager {
     @Override
     public QaQuestion findQuestionById(Long id) {
         return questionDao.findById(id);
+    }
+
+    @Override
+    public List<QaRound> findRounds() {
+        return roundDao.findAll();
     }
 
     @Override

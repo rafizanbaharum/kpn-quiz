@@ -15,6 +15,8 @@ public interface QaRoundDao {
 
     QaRound findById(Long id);
 
+    List<QaRound> findAll();
+
     List<QaRound> find(Integer offset, Integer limit);
 
     Integer count();

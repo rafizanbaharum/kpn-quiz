@@ -80,15 +80,11 @@ public class RegistrationController extends AbstractController {
     }
 
     @RequestMapping(value = "/resetStudentPassword", method = {RequestMethod.POST})
-    public String addStudent(
+    public String resetStudentPassword(
             @RequestParam("password") String password,
-            @RequestParam("passwordAgain") String passwordAgaian,
+            @RequestParam("passwordAgain") String passwordAgain,
             @RequestParam("instructorId") String instructorId,
             ModelMap model) {
-
-//        registrationManager.register(username, password,
-//                name, nricNo, email, phone, fax,
-//                stateId, districtId, institutionId);
         return "registered";
     }
 }

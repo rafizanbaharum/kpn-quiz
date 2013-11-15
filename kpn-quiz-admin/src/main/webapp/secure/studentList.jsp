@@ -71,7 +71,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="pages_user_profile.html">
+                            <a href="${pageContext.request.contextPath}/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -138,39 +138,9 @@
     </div>
     <!-- start: PAGE -->
     <div class="main-content">
-        <!-- start: PANEL CONFIGURATION MODAL FORM -->
-        <div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                            &times;
-                        </button>
-                        <h4 class="modal-title">Panel Configuration</h4>
-                    </div>
-                    <div class="modal-body">
-                        Here will be a configuration form
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                            Save changes
-                        </button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
-        <!-- end: SPANEL CONFIGURATION MODAL FORM -->
         <div class="container">
-            <!-- start: PAGE HEADER -->
             <div class="row">
                 <div class="col-sm-12">
-                    <!-- start: PAGE TITLE & BREADCRUMB -->
                     <ol class="breadcrumb">
                         <li>
                             <i class="clip-pencil"></i>
@@ -195,10 +165,8 @@
                     <div class="page-header">
                         <h1>Student List </h1>
                     </div>
-                    <!-- end: PAGE TITLE & BREADCRUMB -->
                 </div>
             </div>
-            <!-- end: PAGE HEADER -->
             <!-- start: PAGE CONTENT -->
             <div class="row">
                 <div class="col-md-12">
@@ -236,12 +204,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="student" items="${studentModels}" varStatus="idx">
+                                <c:forEach var="round" items="${studentModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${student.name}</td>
-                                        <td>${student.nric}</td>
-                                        <td class="hidden-xs">${student.username}</td>
+                                        <td class="hidden-xs">${round.name}</td>
+                                        <td>${round.nric}</td>
+                                        <td class="hidden-xs">${round.username}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="#" class="btn btn-teal tooltips" data-placement="top"

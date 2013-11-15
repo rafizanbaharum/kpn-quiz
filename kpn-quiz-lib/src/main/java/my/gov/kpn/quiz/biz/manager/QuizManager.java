@@ -26,6 +26,8 @@ public interface QuizManager {
 
     QaQuestion findQuestionById(Long id);
 
+    List<QaRound> findRounds();
+
     List<QaQuestion> findQuestions(QaQuiz quiz);
 
     void updateAnswer(QaParticipant participant, QaQuestion question);
