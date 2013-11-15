@@ -65,26 +65,4 @@ public class RegistrationController extends AbstractController {
         return "registered";
     }
 
-    @RequestMapping(value = "/addStudent", method = {RequestMethod.POST})
-    public String addStudent(@ModelAttribute("studentModel") StudentModel studentModel,
-                             ModelMap model) {
-
-        if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
-            model.addAttribute(MSG_SUCCESS,"Password not match");
-            return "secure/studentRegister";
-        }
-
-        registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
-                studentModel.getName(), studentModel.getNric(), studentModel.getInstructorId());
-        return "secure/studentRegister";
-    }
-
-    @RequestMapping(value = "/resetStudentPassword", method = {RequestMethod.POST})
-    public String resetStudentPassword(
-            @RequestParam("password") String password,
-            @RequestParam("passwordAgain") String passwordAgain,
-            @RequestParam("instructorId") String instructorId,
-            ModelMap model) {
-        return "registered";
-    }
 }

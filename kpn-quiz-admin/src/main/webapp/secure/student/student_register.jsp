@@ -97,14 +97,14 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/secure/student/register">
+                        <a href="${pageContext.request.contextPath}/secure/instructor/register">
                             <span class="title">Register</span>
                         </a>
                     </li>
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/secure/student/list">
+                        <a href="${pageContext.request.contextPath}/secure/instructor/list">
                             <span class="title">Student List</span>
                         </a>
                     </li>
