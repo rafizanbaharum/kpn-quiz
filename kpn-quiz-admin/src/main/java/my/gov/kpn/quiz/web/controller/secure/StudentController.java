@@ -3,7 +3,6 @@ package my.gov.kpn.quiz.web.controller.secure;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.core.model.QaStudent;
-import my.gov.kpn.quiz.web.common.Transformer;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,6 @@ public class StudentController extends AbstractController {
 
     @Autowired
     private QuizManager quizManager;
-
-    @Autowired
-    private Transformer transformer;
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {

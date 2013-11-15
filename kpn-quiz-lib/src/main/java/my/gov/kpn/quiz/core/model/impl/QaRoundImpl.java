@@ -20,6 +20,9 @@ public class QaRoundImpl implements QaRound, Serializable {
     @SequenceGenerator(name = "SEQ_QA_ROND", sequenceName = "SEQ_QA_ROND", allocationSize = 1)
     private Long id;
 
+    @Column(name = "NAME")
+    private String name;
+
     @Column(name = "PROCESSED")
     private boolean processed;
 
@@ -45,6 +48,14 @@ public class QaRoundImpl implements QaRound, Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public boolean isLocked() {

@@ -202,6 +202,7 @@
                                 <c:forEach var="round" items="${roundModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
+                                        <td class="hidden-xs">${round.name}</td>
                                         <td class="hidden-xs">${round.processed}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">

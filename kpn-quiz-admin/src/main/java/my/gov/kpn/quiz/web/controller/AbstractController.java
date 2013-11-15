@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 public class AbstractController {
 
     protected final String MSG_SUCCESS = "msgSuccess";
     protected final String MSG_ERROR = "msgSuccess";
+
+    @Autowired
+    protected Transformer transformer;
 
     protected QaUser getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -28,10 +30,10 @@ public class AbstractController {
     protected QaInstructor getCurrentInstructor() {
 
         QaUser user = getCurrentUser();
-        if (null != user){
+        if (null != user) {
             QaActor actor = user.getActor();
             if (null != actor && actor instanceof QaInstructor)
-                return (QaInstructor)actor;
+                return (QaInstructor) actor;
         }
         return null;
     }
@@ -39,7 +41,7 @@ public class AbstractController {
     protected Long getCurrentInstructorId() {
 
         QaUser user = getCurrentUser();
-        if (null != user){
+        if (null != user) {
             QaActor actor = user.getActor();
             if (null != actor && actor instanceof QaInstructor)
                 return actor.getId();

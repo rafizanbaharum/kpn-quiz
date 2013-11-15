@@ -9,6 +9,14 @@ import java.util.List;
 public interface QaRound extends QaMetaObject{
 
     /**
+     *
+     * @return
+     */
+    String getName();
+
+    void setName(String name);
+
+    /**
      * @return
      */
     boolean isProcessed();

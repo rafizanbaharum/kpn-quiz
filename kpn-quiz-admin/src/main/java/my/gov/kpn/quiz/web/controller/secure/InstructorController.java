@@ -4,7 +4,6 @@ import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.core.model.QaStudent;
-import my.gov.kpn.quiz.web.common.Transformer;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +29,6 @@ public class InstructorController extends AbstractController {
     @Autowired
     private QuizManager quizManager;
 
-    @Autowired
-    private Transformer transformer;
-
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         studentModel.setInstructorId(getCurrentInstructorId());
@@ -41,7 +37,6 @@ public class InstructorController extends AbstractController {
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String studentList(ModelMap model) {
-
         List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
         List<StudentModel> studentModels = transformer.transformStudents(students);
         model.addAttribute("studentModels",studentModels);
@@ -51,12 +46,6 @@ public class InstructorController extends AbstractController {
     @RequestMapping(method = {RequestMethod.GET})
     public String go(ModelMap model) {
         return "secure/instructor/instructor_view";
-    }
-
-    @RequestMapping(value = "/round_list", method = {RequestMethod.GET})
-    public String roundList(ModelMap model) {
-        model.addAttribute("roundModels", transformer.transformRounds(quizManager.findRounds()));
-        return "secure/round/round_list";
     }
 
     @RequestMapping(value = "/addStudent", method = {RequestMethod.POST})

@@ -183,7 +183,58 @@
                 </div>
             </div>
             <div class="row">
-                ${roundModel.id}
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            Edit a round
+                        </div>
+                        <div class="panel-body">
+                            <h2><i class="icon-edit-sign teal"></i> EDIT</h2>
+
+                            <hr>
+                            <form:form id="form" commandName="roundModel"
+                                       action="${pageContext.request.contextPath}/round/update"
+                                       method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <div class="successHandler alert alert-success no-display">
+                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Name <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="name" placeholder="Insert name"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <span class="symbol required"></span>Required Fields
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Update <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form:form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

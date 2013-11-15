@@ -110,13 +110,9 @@
                     </li>
                 </ul>
             </li>
-
         </ul>
-        <!-- end: MAIN NAVIGATION MENU -->
     </div>
-    <!-- end: SIDEBAR -->
 </div>
-<!-- start: PAGE -->
 <div class="main-content">
     <div class="container">
         <div class="row">
@@ -135,14 +131,10 @@
                 <div class="page-header">
                     <h1>Student Registration </h1>
                 </div>
-                <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
         </div>
-        <!-- end: PAGE HEADER -->
-        <!-- start: PAGE CONTENT -->
         <div class="row">
             <div class="col-md-12">
-                <!-- start: FORM VALIDATION 1 PANEL -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="icon-external-link-sign"></i>

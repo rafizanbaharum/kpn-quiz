@@ -103,6 +103,7 @@ public class Transformer {
     public RoundModel transform(QaRound round) {
         RoundModel model = new RoundModel();
         model.setId(round.getId());
+        model.setName(round.getName());
         model.setProcessed(round.isProcessed());
         model.setLocked(round.isLocked());
         return model;

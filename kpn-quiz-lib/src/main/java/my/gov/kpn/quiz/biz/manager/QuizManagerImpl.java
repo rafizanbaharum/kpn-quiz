@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.biz.manager;
 
+import my.gov.kpn.quiz.biz.util.Utils;
 import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
 import org.hibernate.SessionFactory;
@@ -16,6 +17,9 @@ import java.util.List;
 @Component("quizManager")
 @Transactional
 public class QuizManagerImpl implements QuizManager {
+
+    @Autowired
+    private QaCompetitionDao competitionDao;
 
     @Autowired
     private QaQuizDao quizDao;
@@ -65,6 +69,16 @@ public class QuizManagerImpl implements QuizManager {
     }
 
     @Override
+    public QaCompetition findCompetitionById(Long id) {
+        return competitionDao.findById(id);
+    }
+
+    @Override
+    public QaCompetition findCompetitionByYear(int year) {
+        return competitionDao.findByYear(year);
+    }
+
+    @Override
     public QaRound findRoundById(Long id) {
         return roundDao.findById(id);
     }
@@ -86,5 +100,10 @@ public class QuizManagerImpl implements QuizManager {
 
     @Override
     public void updateAnswer(QaParticipant participant, QaQuestion question) {
+    }
+
+    @Override
+    public void addRound(QaRound round) {
+        roundDao.save(round, Utils.getCurrentUser());
     }
 }
