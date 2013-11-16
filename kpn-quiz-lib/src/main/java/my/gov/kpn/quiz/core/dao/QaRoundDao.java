@@ -21,6 +21,8 @@ public interface QaRoundDao {
 
     Integer count();
 
+    Integer countParticipant(QaRound round);
+
     void save(QaRound round, QaUser user);
 
     void update(QaRound round, QaUser user);
@@ -34,4 +36,5 @@ public interface QaRoundDao {
     void addParticipant(QaRound round, QaParticipant participant, QaUser user);
 
     void removeParticipant(QaRound round, QaParticipant participant, QaUser user);
+
 }

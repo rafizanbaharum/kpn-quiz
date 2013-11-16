@@ -35,6 +35,7 @@ public class RoundController extends AbstractController {
         QaRound round = competitionManager.findRoundById(id);
         model.addAttribute("roundModel", transformer.transform(round));
         model.addAttribute("quizModels", transformer.transformQuizzes(competitionManager.findQuizzes(round)));
+        model.addAttribute("participantCount", competitionManager.countParticipant(round));
         return "secure/round/round_view";
     }
 
@@ -60,9 +61,19 @@ public class RoundController extends AbstractController {
     public String roundProcess(@ModelAttribute("roundModel") RoundModel roundModel,
                                ModelMap model) {
         QaRound round = competitionManager.findRoundById(roundModel.getId());
-        competitionManager.processRound(round);
+        competitionManager.processGradebook(round);
 
         model.addAttribute(MSG_SUCCESS, "Round successfully updated");
+        return "redirect:/secure/round/view/" + round.getId();
+    }
+
+    @RequestMapping(value = "/init/{id}", method = {RequestMethod.GET})
+    public String roundInit(@ModelAttribute("roundModel") RoundModel roundModel,
+                            ModelMap model) {
+        QaRound round = competitionManager.findRoundById(roundModel.getId());
+        competitionManager.processParticipant(round);
+
+        model.addAttribute(MSG_SUCCESS, "Round successfully inited");
         return "redirect:/secure/round/view/" + round.getId();
     }
 

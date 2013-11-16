@@ -40,7 +40,9 @@ public interface CompetitionManager {
 
     void updateRound(QaRound round);
 
-    void processRound(QaRound round);
+    void processGradebook(QaRound round);
+
+    void processParticipant(QaRound round);
 
     void saveQuiz(QaQuiz quiz);
 
@@ -54,4 +56,5 @@ public interface CompetitionManager {
 
     void updateAnswer(QaParticipant participant, QaQuestion question);
 
+    Integer countParticipant(QaRound round);
 }

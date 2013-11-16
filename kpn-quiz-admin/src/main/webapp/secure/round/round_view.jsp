@@ -79,180 +79,210 @@
     </div>
 </div>
 <div class="main-container">
-    <div class="navbar-content">
-        <div class="main-navigation navbar-collapse collapse">
-            <div class="navigation-toggler">
-                <i class="clip-chevron-left"></i>
-                <i class="clip-chevron-right"></i>
-            </div>
-            <ul class="main-navigation-menu">
-                <li>
-                    <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
-                        <span class="title"> Dashboard </span><span class="selected"></span>
-                    </a>
-                </li>
-                <li class="">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/register">
-                                <span class="title">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/list">
-                                <span class="title">Student List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="active open">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Rounds</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
-                                <span class="title">Results</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+<div class="navbar-content">
+    <div class="main-navigation navbar-collapse collapse">
+        <div class="navigation-toggler">
+            <i class="clip-chevron-left"></i>
+            <i class="clip-chevron-right"></i>
         </div>
+        <ul class="main-navigation-menu">
+            <li>
+                <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
+                    <span class="title"> Dashboard </span><span class="selected"></span>
+                </a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                    <span class="title"> Manage Student </span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/secure/student/register">
+                            <span class="title">Register</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/secure/student/list">
+                            <span class="title">Student List</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="active open">
+                <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                    <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
+                    <span class="selected"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/secure/round/list">
+                            <span class="title">Rounds</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/secure/gradebook/list">
+                            <span class="title">Results</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
-    <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="clip-pencil"></i>
-                            <a href="#">
-                                Manage Competition
-                            </a>
-                        </li>
-                        <li class="active">
-                            Round List
-                        </li>
-                    </ol>
-                    <div class="page-header">
-                        <h1>Round </h1>
+</div>
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li>
+                        <i class="clip-pencil"></i>
+                        <a href="#">
+                            Manage Competition
+                        </a>
+                    </li>
+                    <li class="active">
+                        Round List
+                    </li>
+                </ol>
+                <div class="page-header">
+                    <h1>Round </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="icon-external-link-sign"></i>
+                        View a round
+                    </div>
+                    <div class="panel-body">
+                        <h2><i class="icon-edit-sign teal"></i> VIEW </h2>
+                        <hr>
+                        <form:form id="form" commandName="roundModel"
+                                   action="${pageContext.request.contextPath}/secure/round/update"
+                                   method="POST">
+                            <form:hidden path="id"/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="errorHandler alert alert-danger no-display">
+                                        <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                        below.
+                                    </div>
+                                    <div class="successHandler alert alert-success no-display">
+                                        <i class="icon-ok"></i> Your form validation is successful!
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            Name <span class="symbol required"></span>
+                                        </label>
+                                        <form:input path="name" placeholder="Insert name" readonly="true"
+                                                    cssClass="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            Processed
+                                        </label>
+                                        <form:checkbox path="processed" readonly="true"
+                                                       cssClass="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            Locked
+                                        </label>
+                                        <form:checkbox path="locked" readonly="true"
+                                                       cssClass="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            Participant Count
+                                        </label>
+                                            ${participantCount}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button class="btn btn-yellow btn-block" type="submit">
+                                        Edit <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-blue btn-block" type="submit">
+                                        Process <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-red btn-block" type="submit">
+                                        Remove <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form:form>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            View a round
-                        </div>
-                        <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> VIEW</h2>
-
-                            <hr>
-                            <form:form id="form" commandName="roundModel"
-                                       action="${pageContext.request.contextPath}/secure/round/update"
-                                       method="POST">
-                                <form:hidden path="id"/>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="errorHandler alert alert-danger no-display">
-                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
-                                            below.
-                                        </div>
-                                        <div class="successHandler alert alert-success no-display">
-                                            <i class="icon-ok"></i> Your form validation is successful!
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Name <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="name" placeholder="Insert name" readonly="true"
-                                                        cssClass="form-control"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn btn-yellow btn-block" type="submit">
-                                            Edit <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-red btn-block" type="submit">
-                                            Remove <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form:form>
-                        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="icon-external-link-sign"></i>
+                        List of quizzes
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            List of quizzes
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
+                    <div class="panel-body">
+                        <table class="table table-hover" id="sample-table-1">
+                            <thead>
+                            <tr>
+                                <th class="center">#</th>
+                                <th>Title</th>
+                                <th>Current</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="round" items="${quizModels}" varStatus="idx">
                                 <tr>
-                                    <th class="center">#</th>
-                                    <th>Title</th>
-                                    <th>Current</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th></th>
+                                    <td class="center">${idx.count}</td>
+                                    <td class="hidden-xs">${round.title}</td>
+                                    <td class="hidden-xs">${round.current}</td>
+                                    <td class="hidden-xs">${round.startDate}</td>
+                                    <td class="hidden-xs">${round.endDate}</td>
+                                    <td class="center">
+                                        <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${round.id}"
+                                               class="btn btn-green tooltips" data-placement="top"
+                                               data-original-title="View"><i
+                                                    class="icon-info"></i></a>
+                                        </div>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="student" items="${quizModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${student.title}</td>
-                                        <td class="hidden-xs">${student.current}</td>
-                                        <td class="hidden-xs">${student.startDate}</td>
-                                        <td class="hidden-xs">${student.endDate}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${student.id}"
-                                                   class="btn btn-green tooltips" data-placement="top"
-                                                   data-original-title="View"><i
-                                                        class="icon-info"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 </div>
 <div class="footer clearfix">
     <div class="footer-inner">

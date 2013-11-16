@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookImpl;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookItemImpl;
+import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,9 @@ public class CompetitionManagerImpl implements CompetitionManager {
 
     @Autowired
     private QaCompetitionDao competitionDao;
+
+    @Autowired
+    private QaUserDao userDao;
 
     @Autowired
     private QaQuizDao quizDao;
@@ -119,6 +123,10 @@ public class CompetitionManagerImpl implements CompetitionManager {
     public void updateAnswer(QaParticipant participant, QaQuestion question) {
     }
 
+    @Override
+    public Integer countParticipant(QaRound round) {
+        return roundDao.countParticipant(round);
+    }
 
     @Override
     public void updateRound(QaRound round) {
@@ -126,7 +134,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public void processRound(QaRound round) {
+    public void processGradebook(QaRound round) {
         List<QaQuiz> quizzes = round.getQuizzes();
         for (QaQuiz quiz : quizzes) {
             // for every participant
@@ -155,6 +163,23 @@ public class CompetitionManagerImpl implements CompetitionManager {
         round.setProcessed(true);
         roundDao.update(round, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void processParticipant(QaRound round) {
+
+        // TODO: not scalable
+        // TODO: use chunk? or spring batch?
+        List<QaUser> all = userDao.findAll();
+        for (QaUser user : all) {
+            QaActor actor = user.getActor();
+            if (null != actor && actor.getActorType().equals(QaActorType.STUDENT)) {
+                QaParticipant participant = new QaParticipantImpl();
+                participant.setRound(round);
+                participant.setUser(user);
+                participantDao.save(participant, Utils.getCurrentUser());
+            }
+        }
     }
 
     @Override

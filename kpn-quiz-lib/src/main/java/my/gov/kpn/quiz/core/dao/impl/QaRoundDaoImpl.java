@@ -59,6 +59,17 @@ public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> imple
         return ((Long) query.uniqueResult()).intValue();
     }
 
+    @Override
+    public Integer countParticipant(QaRound round) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(a) from QaParticipant a where " +
+                "a.round = :round " +
+                "and a.metadata.state = :state");
+        query.setEntity("round", round);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
     // =============================================================================
     // CRUD METHODS
     // =============================================================================
