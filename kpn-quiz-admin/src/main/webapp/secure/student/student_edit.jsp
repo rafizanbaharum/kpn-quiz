@@ -1,5 +1,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -22,7 +21,7 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico"/>
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/style.css">
@@ -91,7 +90,7 @@
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li class="">
+                <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
@@ -111,26 +110,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="active open">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Rounds</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
-                                <span class="title">Results</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </div>
@@ -142,34 +121,35 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Manage Competition
+                                Manage Student
                             </a>
                         </li>
                         <li class="active">
-                            Round List
+                            Edit Student
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Round </h1>
+                        <h1>Student Edit </h1>
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            View a round
+                            Edit a student
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> VIEW</h2>
+                            <h2><i class="icon-edit-sign teal"></i> EDIT</h2>
 
                             <hr>
-                            <form:form id="form" commandName="roundModel"
-                                       action="${pageContext.request.contextPath}/secure/round/update"
+                            <form:form id="form" commandName="studentModel"
+                                       action="${pageContext.request.contextPath}/secure/student/update"
                                        method="POST">
                                 <form:hidden path="id"/>
+                                <form:hidden path="password"/>
+                                <form:hidden path="passwordAgain"/>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="errorHandler alert alert-danger no-display">
@@ -180,25 +160,113 @@
                                             <i class="icon-ok"></i> Your form validation is successful!
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Name <span class="symbol required"></span>
+                                                Student Name <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="name" placeholder="Insert name" readonly="true"
+                                            <form:input path="name" placeholder="Insert your student Name"
                                                         cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                NRIC <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="nric" placeholder="Identification number"
+                                                        cssClass="form-control"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Username <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="username" placeholder="Username" cssClass="form-control"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn btn-yellow btn-block" type="submit">
-                                            Edit <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Date of Birth <span class="symbol required"></span>
+                                            </label>
+
+                                            <div class="col-md-4">
+                                                <form:select path="dob_dd" cssClass="form-control">
+                                                    <option value="">DD</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                </form:select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <form:select path="dob_mm" cssClass="form-control">
+                                                    <option value="">MM</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </form:select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <form:input path="dob_yyyy" placeholder="YYYY" cssClass="form-control"/>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-red btn-block" type="submit">
-                                            Remove <i class="icon-circle-arrow-right"></i>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <span class="symbol required"></span>Required Fields
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Update <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -207,50 +275,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            List of quizzes
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Title</th>
-                                    <th>Current</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="student" items="${quizModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${student.title}</td>
-                                        <td class="hidden-xs">${student.current}</td>
-                                        <td class="hidden-xs">${student.startDate}</td>
-                                        <td class="hidden-xs">${student.endDate}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${student.id}"
-                                                   class="btn btn-green tooltips" data-placement="top"
-                                                   data-original-title="View"><i
-                                                        class="icon-info"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -262,8 +286,7 @@
         <span class="go-top"><i class="clip-chevron-up"></i></span>
     </div>
 </div>
-
-
+<!-- end: FOOTER -->
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
 <script src="/assets/plugins/respond.min.js"></script>

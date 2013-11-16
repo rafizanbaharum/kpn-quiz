@@ -125,11 +125,11 @@
                         </a>
                     </li>
                     <li class="active">
-                        Register Student
+                        View Student
                     </li>
                 </ol>
                 <div class="page-header">
-                    <h1>Student Registration </h1>
+                    <h1>Student View </h1>
                 </div>
             </div>
         </div>
@@ -138,19 +138,21 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="icon-external-link-sign"></i>
-                        Register a student
+                        View a student
                     </div>
                     <div class="panel-body">
-                        <h2><i class="icon-edit-sign teal"></i> REGISTER</h2>
+                        <h2><i class="icon-edit-sign teal"></i> VIEW</h2>
 
                         <hr>
                         <form:form id="form" commandName="studentModel"
-                                   action="${pageContext.request.contextPath}/secure/student/add"
+                                   action="${pageContext.request.contextPath}/secure/student/update"
                                    method="POST">
+                            <form:hidden path="id"/>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="errorHandler alert alert-danger no-display">
-                                        <i class="icon-remove-sign"></i> You have some form errors. Please check below.
+                                        <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                        below.
                                     </div>
                                     <div class="successHandler alert alert-success no-display">
                                         <i class="icon-ok"></i> Your form validation is successful!
@@ -162,35 +164,22 @@
                                             Student Name <span class="symbol required"></span>
                                         </label>
                                         <form:input path="name" placeholder="Insert your student Name"
-                                                    cssClass="form-control"/>
+                                                    cssClass="form-control" readonly="true"/>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">
                                             NRIC <span class="symbol required"></span>
                                         </label>
                                         <form:input path="nric" placeholder="Identification number"
-                                                    cssClass="form-control"/>
+                                                    cssClass="form-control" readonly="true"/>
 
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">
                                             Username <span class="symbol required"></span>
                                         </label>
-                                        <form:input path="username" placeholder="Username" cssClass="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            Password <span class="symbol required"></span>
-                                        </label>
-                                        <form:password path="password" cssClass="form-control"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            Confirm Password <span class="symbol required"></span>
-                                        </label>
-                                        <form:password path="passwordAgain" cssClass="form-control"/>
+                                        <form:input path="username" placeholder="Username" cssClass="form-control"
+                                                    readonly="true"/>
                                     </div>
                                 </div>
                             </div>
@@ -274,9 +263,19 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <button class="btn btn-yellow btn-block" type="submit">
-                                        Register <i class="icon-circle-arrow-right"></i>
+                                        Edit <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-blue btn-block" type="submit">
+                                        Reset <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-red btn-block" type="submit">
+                                        Remove <i class="icon-circle-arrow-right"></i>
                                     </button>
                                 </div>
                             </div>

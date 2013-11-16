@@ -1,6 +1,6 @@
 package my.gov.kpn.quiz.web.model;
 
-public class StudentModel extends MetaModel{
+public class StudentModel extends MetaModel {
 
     private String name;
     private String username;

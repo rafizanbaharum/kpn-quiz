@@ -9,7 +9,11 @@ import java.util.List;
 
 public interface InstructorManager {
 
-    public List<QaStudent> getStudents(QaInstructor instructor);
+
+    public QaStudent findStudentById(Long id);
 
     public QaUser findUserByActor(QaActor actor);
+
+    public List<QaStudent> getStudents(QaInstructor instructor);
+
 }

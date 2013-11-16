@@ -28,7 +28,6 @@ public class AbstractController {
     }
 
     protected QaInstructor getCurrentInstructor() {
-
         QaUser user = getCurrentUser();
         if (null != user) {
             QaActor actor = user.getActor();
@@ -37,16 +36,4 @@ public class AbstractController {
         }
         return null;
     }
-
-    protected Long getCurrentInstructorId() {
-
-        QaUser user = getCurrentUser();
-        if (null != user) {
-            QaActor actor = user.getActor();
-            if (null != actor && actor instanceof QaInstructor)
-                return actor.getId();
-        }
-        return null;
-    }
-
 }

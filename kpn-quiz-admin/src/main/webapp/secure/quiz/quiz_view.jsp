@@ -186,6 +186,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button class="btn btn-yellow btn-block" type="submit">
+                                        Edit <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-red btn-block" type="submit">
+                                        Remove <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,15 +221,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="round" items="${questionModels}" varStatus="idx">
+                                <c:forEach var="student" items="${questionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.statement}</td>
-                                        <td class="hidden-xs">${round.weight}</td>
-                                        <td class="hidden-xs">${round.difficulty}</td>
+                                        <td class="hidden-xs">${student.statement}</td>
+                                        <td class="hidden-xs">${student.weight}</td>
+                                        <td class="hidden-xs">${student.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${student.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>

@@ -34,6 +34,7 @@ public class QuestionController extends AbstractController {
     public String quizView(@PathVariable Long id, ModelMap model) {
         QaQuestion question = competitionManager.findQuestionById(id);
         model.addAttribute("questionModel", transformer.transform(question));
+        model.addAttribute("quizModel", transformer.transform(question.getQuiz()));
         return "secure/question/question_view";
     }
 

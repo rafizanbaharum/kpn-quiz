@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="core-box">
                         <div class="heading">
                             <i class="clip-user-4 circle-icon circle-green"></i>
@@ -97,45 +97,26 @@
                             <h2>Manage Users</h2>
                         </div>
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut
-                            laoreet dolore magna aliquam erat volutpat.
+                            Manage user Instructor, Student and Support person.
+                            View, edit or register new record.
                         </div>
-                        <a class="view-more" href="#">
+                        <a class="view-more" href="${pageContext.request.contextPath}/secure/user/list">
                             View More <i class="clip-arrow-right-2"></i>
                         </a>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="core-box">
                         <div class="heading">
                             <i class="clip-clip circle-icon circle-teal"></i>
 
-                            <h2>Manage Orders</h2>
+                            <h2>Manage Competition</h2>
                         </div>
                         <div class="content">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut
-                            laoreet dolore magna aliquam erat volutpat.
+                            Manage your Round, Quiz and Questions.
+                            View, edit or create new record.
                         </div>
-                        <a class="view-more" href="#">
-                            View More <i class="clip-arrow-right-2"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-database circle-icon circle-bricky"></i>
-
-                            <h2>Manage DataBase</h2>
-                        </div>
-                        <div class="content">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut
-                            laoreet dolore magna aliquam erat volutpat.
-                        </div>
-                        <a class="view-more" href="#">
+                        <a class="view-more" href="${pageContext.request.contextPath}/secure/round/list">
                             View More <i class="clip-arrow-right-2"></i>
                         </a>
                     </div>

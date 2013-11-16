@@ -1,12 +1,14 @@
 package my.gov.kpn.quiz.biz.manager;
 
-import my.gov.kpn.quiz.core.dao.*;
+import my.gov.kpn.quiz.core.dao.QaActorDao;
+import my.gov.kpn.quiz.core.dao.QaGroupDao;
+import my.gov.kpn.quiz.core.dao.QaPrincipalRoleDao;
+import my.gov.kpn.quiz.core.dao.QaUserDao;
 import my.gov.kpn.quiz.core.exception.LockedGroupException;
 import my.gov.kpn.quiz.core.exception.RecursiveGroupException;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
 import my.gov.kpn.quiz.core.model.impl.QaStudentImpl;
-import my.gov.kpn.quiz.core.model.impl.QaTeamImpl;
 import my.gov.kpn.quiz.core.model.impl.QaUserImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,7 +119,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                 String password,
                                 String name,
                                 String nricNo,
-                                Long instructorId) {
+                                QaInstructor instructor) {
 
         try {
 
@@ -137,9 +139,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(user);
 
-
             // add actor
-            QaInstructor instructor =  (QaInstructor)actorDao.findById(instructorId);
             QaStudent student = new QaStudentImpl();
             student.setName(name);
             student.setNricNo(nricNo);

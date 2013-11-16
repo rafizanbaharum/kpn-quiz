@@ -173,22 +173,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="round" items="${roundModels}" varStatus="idx">
+                                <c:forEach var="student" items="${roundModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.name}</td>
-                                        <td class="hidden-xs">${round.processed}</td>
-                                        <td class="hidden-xs">${round.locked}</td>
+                                        <td class="hidden-xs">${student.name}</td>
+                                        <td class="hidden-xs">${student.processed}</td>
+                                        <td class="hidden-xs">${student.locked}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/round/edit/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/round/edit/${student.id}"
                                                    class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/round/view/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/round/view/${student.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
                                                    data-original-title="View"><i
                                                         class="icon-info"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/round/process/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/round/process/${student.id}"
                                                    class="btn btn-orange tooltips" data-placement="top"
                                                    data-original-title="Process"><i
                                                         class="icon-cog"></i></a>

@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.QaPrincipalRole;
 import my.gov.kpn.quiz.core.model.QaRoleType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author rafizan.baharum
@@ -13,7 +14,7 @@ import javax.persistence.*;
  */
 @Table(name = "QA_PCPL_ROLE")
 @Entity(name = "QaPrincipalRole")
-public class QaPrincipalRoleImpl implements QaPrincipalRole {
+public class QaPrincipalRoleImpl implements QaPrincipalRole, Serializable {
 
     @Id
     @Column(name = "ID", nullable = false)

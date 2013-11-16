@@ -87,9 +87,12 @@ public class Transformer {
     public StudentModel transform(QaStudent student) {
         StudentModel model = new StudentModel();
         QaUser user = instructorManager.findUserByActor(student);
+        model.setId(student.getId());
         model.setName(student.getName());
         model.setNric(student.getNricNo());
         model.setUsername(user.getUsername());
+        model.setPassword(user.getPassword());
+        model.setPasswordAgain(user.getPassword());
         return model;
     }
 

@@ -34,6 +34,7 @@ public class QuizController extends AbstractController {
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String quizView(@PathVariable Long id, ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(id);
+        model.addAttribute("roundModel", transformer.transform(quiz.getRound()));
         model.addAttribute("quizModel", transformer.transform(quiz));
         model.addAttribute("questionModels", transformer.transformQuestions(competitionManager.findQuestions(quiz)));
         return "secure/quiz/quiz_view";

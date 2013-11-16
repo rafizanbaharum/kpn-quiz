@@ -199,9 +199,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <button class="btn btn-yellow btn-block" type="submit">
-                                            Update <i class="icon-circle-arrow-right"></i>
+                                            Edit <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-red btn-block" type="submit">
+                                            Remove <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>

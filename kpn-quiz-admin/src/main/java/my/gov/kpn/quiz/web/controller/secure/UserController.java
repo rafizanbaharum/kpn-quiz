@@ -23,7 +23,6 @@ public class UserController extends AbstractController {
 
     @RequestMapping(value = "/profile", method = {RequestMethod.GET})
     public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
-        studentModel.setInstructorId(getCurrentInstructorId());
         return "secure/user/user_profile";
     }
 }

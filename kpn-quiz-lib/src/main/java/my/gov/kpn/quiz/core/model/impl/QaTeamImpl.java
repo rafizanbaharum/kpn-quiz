@@ -12,6 +12,7 @@ import java.util.Set;
  */
 @Table(name = "QA_TEAM")
 @Entity(name = "QaTeam")
+@Deprecated
 public class QaTeamImpl implements QaTeam, Serializable {
 
     @Id

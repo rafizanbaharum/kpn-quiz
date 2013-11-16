@@ -1,5 +1,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -22,7 +21,7 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico"/>
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/style.css">
@@ -111,7 +110,6 @@
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -127,11 +125,11 @@
                             </a>
                         </li>
                         <li class="active">
-                            Student List
+                            Register Student
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Student List </h1>
+                        <h1>Student Registration </h1>
                     </div>
                 </div>
             </div>
@@ -140,72 +138,73 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            List of registered students
+                            Register a student
                         </div>
                         <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Name</th>
-                                    <th class="hidden-xs">NRIC</th>
-                                    <th class="hidden-xs">Username</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="student" items="${studentModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${student.name}</td>
-                                        <td>${student.nric}</td>
-                                        <td class="hidden-xs">${student.username}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/student/edit/${student.id}"
-                                                   class="btn btn-teal tooltips" data-placement="top"
-                                                   data-original-title="Edit"><i
-                                                        class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/reset/${student.id}"
-                                                   class="btn btn-green tooltips" data-placement="top"
-                                                   data-original-title="Reset"><i
-                                                        class="icon-refresh"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${student.id}"
-                                                   class="btn btn-bricky tooltips" data-placement="top"
-                                                   data-original-title="Remove"><i
-                                                        class="icon-remove icon-white"></i></a>
-                                            </div>
-                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle btn-sm"
-                                                       data-toggle="dropdown"
-                                                       href="#">
-                                                        <i class="icon-cog"></i> <span class="caret"></span>
-                                                    </a>
-                                                    <ul role="menu" class="dropdown-menu pull-right">
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-edit"></i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-share"></i> Share
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-remove"></i> Remove
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                            <h2><i class="icon-edit-sign teal"></i> REGISTER</h2>
+
+                            <hr>
+                            <form:form id="form" commandName="studentModel"
+                                       action="${pageContext.request.contextPath}/secure/student/update"
+                                       method="POST">
+                                <form:hidden path="id"/>
+                                <form:hidden path="name"/>
+                                <form:hidden path="nric"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <div class="successHandler alert alert-success no-display">
+                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Student Name <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="name" placeholder="Insert your student Name"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Password <span class="symbol required"></span>
+                                            </label>
+                                            <form:password path="password" cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Confirm Password <span class="symbol required"></span>
+                                            </label>
+                                            <form:password path="passwordAgain" cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <span class="symbol required"></span>Required Fields
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Reset <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form:form>
                         </div>
                     </div>
                 </div>
@@ -221,8 +220,7 @@
         <span class="go-top"><i class="clip-chevron-up"></i></span>
     </div>
 </div>
-
-
+<!-- end: FOOTER -->
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
 <script src="/assets/plugins/respond.min.js"></script>

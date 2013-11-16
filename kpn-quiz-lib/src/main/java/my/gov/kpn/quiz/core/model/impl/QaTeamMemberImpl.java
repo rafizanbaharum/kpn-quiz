@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 @Table(name = "QA_TEAM_MMBR")
 @Entity(name = "QaTeamMember")
+@Deprecated
 public class QaTeamMemberImpl implements QaTeamMember, Serializable {
 
     @Id

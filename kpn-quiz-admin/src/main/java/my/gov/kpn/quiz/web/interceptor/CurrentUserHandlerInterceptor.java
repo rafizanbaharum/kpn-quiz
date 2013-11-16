@@ -19,8 +19,10 @@ public class CurrentUserHandlerInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        if (null != request.getSession())
+        if (null != request.getSession()) {
             request.getSession().setAttribute("currentUser", getCurrentUser());
+            request.getSession().setAttribute("actorType", getCurrentUser().getActor().getActorType());
+        }
     }
 
     private QaUser getCurrentUser() {
