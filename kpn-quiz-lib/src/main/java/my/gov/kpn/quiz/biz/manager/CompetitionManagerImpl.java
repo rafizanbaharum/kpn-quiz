@@ -3,6 +3,8 @@ package my.gov.kpn.quiz.biz.manager;
 import my.gov.kpn.quiz.biz.util.Utils;
 import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
+import my.gov.kpn.quiz.core.model.impl.QaGradebookImpl;
+import my.gov.kpn.quiz.core.model.impl.QaGradebookItemImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,9 +16,9 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/10/13
  */
-@Component("quizManager")
+@Component("competitionManager")
 @Transactional
-public class QuizManagerImpl implements QuizManager {
+public class CompetitionManagerImpl implements CompetitionManager {
 
     @Autowired
     private QaCompetitionDao competitionDao;
@@ -107,6 +109,49 @@ public class QuizManagerImpl implements QuizManager {
     public void updateAnswer(QaParticipant participant, QaQuestion question) {
     }
 
+
+    @Override
+    public void updateRound(QaRound round) {
+        roundDao.update(round, Utils.getCurrentUser());
+    }
+
+    @Override
+    public void processRound(QaRound round) {
+        List<QaQuiz> quizzes = round.getQuizzes();
+        for (QaQuiz quiz : quizzes) {
+            // for every participant
+            // create a gradebook
+            List<QaParticipant> participants = round.getParticipants();
+            for (QaParticipant participant : participants) {
+                QaGradebook gradebook = new QaGradebookImpl();
+                gradebook.setQuiz(quiz);
+                gradebook.setParticipant(participant);
+                gradebookDao.save(gradebook, Utils.getCurrentUser());
+                sessionFactory.getCurrentSession().flush();
+                sessionFactory.getCurrentSession().refresh(gradebook);
+
+                List<QaQuestion> questions = quiz.getQuestions();
+                for (QaQuestion question : questions) {
+                    // create item for every question
+                    QaGradebookItem item = new QaGradebookItemImpl();
+                    item.setQuestion(question);
+                    gradebookDao.addItem(gradebook, item, Utils.getCurrentUser());
+                }
+                sessionFactory.getCurrentSession().flush();
+            }
+        }
+
+        // update round
+        round.setProcessed(true);
+        roundDao.update(round, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void saveRound(QaRound round) {
+        roundDao.save(round, Utils.getCurrentUser());
+    }
+
     @Override
     public void saveQuiz(QaQuiz quiz) {
         quizDao.save(quiz, Utils.getCurrentUser());
@@ -118,12 +163,12 @@ public class QuizManagerImpl implements QuizManager {
     }
 
     @Override
-    public void updateRound(QaRound round) {
-        roundDao.update(round, Utils.getCurrentUser());
+    public void saveQuestion(QaQuestion question) {
+        questionDao.save(question, Utils.getCurrentUser());
     }
 
     @Override
-    public void saveRound(QaRound round) {
-        roundDao.save(round, Utils.getCurrentUser());
+    public void updateQuestion(QaQuestion question) {
+        questionDao.update(question, Utils.getCurrentUser());
     }
 }

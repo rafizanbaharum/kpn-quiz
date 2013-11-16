@@ -93,7 +93,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
@@ -113,31 +113,24 @@
                 </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Quiz Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                                <span class="title">Rounds</span>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Result Management </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
+                                <span class="title">Results</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -149,7 +142,7 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Quiz Management
+                                Manage Competition
                             </a>
                         </li>
                         <li class="active">
@@ -170,25 +163,41 @@
                             View a round
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> View</h2>
+                            <h2><i class="icon-edit-sign teal"></i> VIEW</h2>
 
                             <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">Name</label>
-                                        ${roundModel.name}
+                            <form:form id="form" commandName="roundModel"
+                                       action="${pageContext.request.contextPath}/secure/round/update"
+                                       method="POST">
+                                <form:hidden path="id"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <div class="successHandler alert alert-success no-display">
+                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Processed</label>
-                                        ${roundModel.processed}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Locked</label>
-                                        ${roundModel.locked}
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Name <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="name" placeholder="Insert name" readonly="true"
+                                                        cssClass="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Edit <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form:form>
                         </div>
                     </div>
                 </div>
@@ -213,16 +222,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="question" items="${quizModels}" varStatus="idx">
+                                <c:forEach var="round" items="${quizModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.title}</td>
-                                        <td class="hidden-xs">${question.current}</td>
-                                        <td class="hidden-xs">${question.startDate}</td>
-                                        <td class="hidden-xs">${question.endDate}</td>
+                                        <td class="hidden-xs">${round.title}</td>
+                                        <td class="hidden-xs">${round.current}</td>
+                                        <td class="hidden-xs">${round.startDate}</td>
+                                        <td class="hidden-xs">${round.endDate}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${question.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${round.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
                                                    data-original-title="View"><i
                                                         class="icon-info"></i></a>

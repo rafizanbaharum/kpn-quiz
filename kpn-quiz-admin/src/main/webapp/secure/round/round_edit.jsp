@@ -93,7 +93,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
@@ -113,13 +113,20 @@
                 </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Quiz Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                                <span class="title">Rounds</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
+                                <span class="title">Results</span>
                             </a>
                         </li>
                     </ul>
@@ -131,8 +138,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
+                                <span class="title">Gradebook List</span>
                             </a>
                         </li>
                     </ul>
@@ -149,11 +156,11 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Quiz Management
+                                Manage Competition
                             </a>
                         </li>
                         <li class="active">
-                            Round List
+                            Rounds
                         </li>
                     </ol>
                     <div class="page-header">

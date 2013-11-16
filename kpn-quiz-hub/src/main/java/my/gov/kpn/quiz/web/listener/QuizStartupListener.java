@@ -1,6 +1,6 @@
 package my.gov.kpn.quiz.web.listener;
 
-import my.gov.kpn.quiz.biz.manager.QuizManager;
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.server.GlobalRegistry;
 import my.gov.kpn.quiz.web.common.AutoInjectingServletContextListener;
@@ -17,11 +17,11 @@ public class QuizStartupListener extends AutoInjectingServletContextListener {
     private static final Logger log = Logger.getLogger(QuizStartupListener.class);
 
     @Autowired
-    private QuizManager quizManager;
+    private CompetitionManager competitionManager;
 
     @Override
     protected void doContextInitialized() {
-        QaQuiz currentQuiz = quizManager.getCurrentQuiz();
+        QaQuiz currentQuiz = competitionManager.getCurrentQuiz();
         if (null != currentQuiz) {
             log.debug("loading quiz: " + currentQuiz.getTitle());
             GlobalRegistry.setQuiz(currentQuiz);

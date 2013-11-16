@@ -4,7 +4,7 @@ import my.gov.kpn.quiz.core.model.QaState;
 
 import java.util.List;
 
-public interface QuizHelper {
+public interface CompetitionHelper {
 
     List<QaState> getStateList();
 }

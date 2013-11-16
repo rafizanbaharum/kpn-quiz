@@ -61,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/profile">
+                            <a href="${pageContext.request.contextPath}/secure/user/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -93,19 +93,19 @@
                 </li>
                 <li class="">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/register">
+                            <a href="${pageContext.request.contextPath}/secure/student/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                            <a href="${pageContext.request.contextPath}/secure/student/list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>
@@ -113,31 +113,24 @@
                 </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Quiz Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                                <span class="title">Rounds</span>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Result Management </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
+                                <span class="title">Results</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -149,7 +142,7 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Quiz Management
+                                Manage Competition
                             </a>
                         </li>
                         <li class="active">
@@ -180,21 +173,25 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="question" items="${roundModels}" varStatus="idx">
+                                <c:forEach var="round" items="${roundModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.name}</td>
-                                        <td class="hidden-xs">${question.locked}</td>
-                                        <td class="hidden-xs">${question.processed}</td>
+                                        <td class="hidden-xs">${round.name}</td>
+                                        <td class="hidden-xs">${round.processed}</td>
+                                        <td class="hidden-xs">${round.locked}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/round/edit/${question.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/round/edit/${round.id}"
                                                    class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/round/view/${question.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/round/view/${round.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
                                                    data-original-title="View"><i
                                                         class="icon-info"></i></a>
+                                                <a href="${pageContext.request.contextPath}/secure/round/process/${round.id}"
+                                                   class="btn btn-orange tooltips" data-placement="top"
+                                                   data-original-title="Process"><i
+                                                        class="icon-cog"></i></a>
                                                 <a href="#" class="btn btn-bricky tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>

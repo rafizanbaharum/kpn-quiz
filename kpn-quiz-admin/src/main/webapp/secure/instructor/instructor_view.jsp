@@ -38,12 +38,8 @@
     <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<!-- end: HEAD -->
-<!-- start: BODY -->
 <body class="footer-fixed layout-boxed">
-<!-- start: HEADER -->
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <!-- start: TOP NAVIGATION CONTAINER -->
     <div class="container">
         <div class="navbar-header">
             <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
@@ -80,8 +76,6 @@
         </div>
     </div>
 </div>
-<!-- end: HEADER -->
-<!-- start: MAIN CONTAINER -->
 <div class="main-container">
 <div class="navbar-content">
     <div class="main-navigation navbar-collapse collapse">
@@ -97,7 +91,7 @@
             </li>
             <li class="active open">
                 <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                    <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                    <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
@@ -119,7 +113,7 @@
             <li>
                 <i class="clip-pencil"></i>
                 <a href="#">
-                    Student Management
+                    Manage Student
                 </a>
             </li>
             <li class="active">

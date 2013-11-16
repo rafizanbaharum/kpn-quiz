@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class UserController extends AbstractController {
     private InstructorManager instructorManager;
 
     @Autowired
-    private QuizManager quizManager;
+    private CompetitionManager competitionManager;
 
     @RequestMapping(value = "/profile", method = {RequestMethod.GET})
     public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {

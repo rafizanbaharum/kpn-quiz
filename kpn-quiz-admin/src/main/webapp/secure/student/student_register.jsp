@@ -92,19 +92,19 @@
             </li>
             <li class="active open">
                 <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                    <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                    <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                     <span class="selected"></span>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/secure/instructor/register">
+                        <a href="${pageContext.request.contextPath}/secure/student/register">
                             <span class="title">Register</span>
                         </a>
                     </li>
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/secure/instructor/list">
+                        <a href="${pageContext.request.contextPath}/secure/student/list">
                             <span class="title">Student List</span>
                         </a>
                     </li>
@@ -121,7 +121,7 @@
                     <li>
                         <i class="clip-pencil"></i>
                         <a href="#">
-                            Student Management
+                            Manage Student
                         </a>
                     </li>
                     <li class="active">
@@ -145,7 +145,7 @@
 
                         <hr>
                         <form:form id="form" commandName="studentModel"
-                                   action="${pageContext.request.contextPath}/register/addStudent"
+                                   action="${pageContext.request.contextPath}/student/register"
                                    method="POST">
                             <form:hidden path="instructorId"/>
                             <div class="row">
@@ -270,12 +270,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-8">
-                                    <p>
-                                        By clicking REGISTER, you are agreeing to the Policy and Terms &amp; Conditions.
-                                    </p>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <button class="btn btn-yellow btn-block" type="submit">
                                         Register <i class="icon-circle-arrow-right"></i>
                                     </button>
@@ -284,16 +279,11 @@
                         </form:form>
                     </div>
                 </div>
-                <!-- end: FORM VALIDATION 1 PANEL -->
             </div>
         </div>
-        <!-- end: PAGE CONTENT-->
     </div>
 </div>
-<!-- end: PAGE -->
 </div>
-<!-- end: MAIN CONTAINER -->
-<!-- start: FOOTER -->
 <div class="footer clearfix">
     <div class="footer-inner">
         2013 &copy; ASEAN QUIZ

@@ -93,19 +93,19 @@
                 </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/instructor/register">
+                            <a href="${pageContext.request.contextPath}/secure/student/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/instructor/list">
+                            <a href="${pageContext.request.contextPath}/secure/student/list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>
@@ -113,11 +113,8 @@
                 </li>
 
             </ul>
-            <!-- end: MAIN NAVIGATION MENU -->
         </div>
-        <!-- end: SIDEBAR -->
     </div>
-    <!-- start: PAGE -->
     <div class="main-content">
         <div class="container">
             <div class="row">
@@ -126,7 +123,7 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Student Management
+                                Manage Student
                             </a>
                         </li>
                         <li class="active">
@@ -157,12 +154,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="question" items="${studentModels}" varStatus="idx">
+                                <c:forEach var="round" items="${studentModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.name}</td>
-                                        <td>${question.nric}</td>
-                                        <td class="hidden-xs">${question.username}</td>
+                                        <td class="hidden-xs">${round.name}</td>
+                                        <td>${round.nric}</td>
+                                        <td class="hidden-xs">${round.username}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="#" class="btn btn-teal tooltips" data-placement="top"

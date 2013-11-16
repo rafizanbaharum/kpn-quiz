@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -22,26 +22,26 @@ public class QuizController extends AbstractController {
     private InstructorManager instructorManager;
 
     @Autowired
-    private QuizManager quizManager;
+    private CompetitionManager competitionManager;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String quizList(@ModelAttribute("quizModel") QuizModel quizModel, ModelMap model) {
-        QaQuiz quiz = quizManager.findQuizById(quizModel.getId());
-        model.addAttribute("quizModels", transformer.transformQuestions(quizManager.findQuestions(quiz)));
+        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
+        model.addAttribute("quizModels", transformer.transformQuestions(competitionManager.findQuestions(quiz)));
         return "secure/quiz/quiz_list";
     }
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String quizView(@PathVariable Long id, ModelMap model) {
-        QaQuiz quiz = quizManager.findQuizById(id);
+        QaQuiz quiz = competitionManager.findQuizById(id);
         model.addAttribute("quizModel", transformer.transform(quiz));
-        model.addAttribute("questionModels", transformer.transformQuestions(quizManager.findQuestions(quiz)));
+        model.addAttribute("questionModels", transformer.transformQuestions(competitionManager.findQuestions(quiz)));
         return "secure/quiz/quiz_view";
     }
 
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String quizEdit(@PathVariable Long id, ModelMap model) {
-        QaQuiz quiz = quizManager.findQuizById(id);
+        QaQuiz quiz = competitionManager.findQuizById(id);
         model.addAttribute("quizModel", transformer.transform(quiz));
         return "secure/quiz/quiz_edit";
     }
@@ -53,7 +53,7 @@ public class QuizController extends AbstractController {
         quiz.setTitle(quizModel.getTitle());
 //        quiz.setStartDate();
 //        quiz.setEndDate();
-        quizManager.saveQuiz(quiz);
+        competitionManager.saveQuiz(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully added");
         return "redirect:secure/quiz/view/" + quiz.getId();
@@ -63,11 +63,11 @@ public class QuizController extends AbstractController {
     @RequestMapping(value = "/update", method = {RequestMethod.POST})
     public String quizUpdate(@ModelAttribute("quizModel") QuizModel quizModel,
                              ModelMap model) {
-        QaQuiz quiz = quizManager.findQuizById(quizModel.getId());
+        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         quiz.setTitle(quizModel.getTitle());
 //        quiz.setStartDate();
 //        quiz.setEndDate();
-        quizManager.updateQuiz(quiz);
+        competitionManager.updateQuiz(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully updated");
         return "redirect:secure/quiz/view/" + quiz.getId();

@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.QuestionModel;
@@ -21,13 +21,20 @@ public class QuestionController extends AbstractController {
     private InstructorManager instructorManager;
 
     @Autowired
-    private QuizManager quizManager;
+    private CompetitionManager competitionManager;
 
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String quizEdit(@PathVariable Long id, ModelMap model) {
-        QaQuestion question = quizManager.findQuestionById(id);
+        QaQuestion question = competitionManager.findQuestionById(id);
         model.addAttribute("questionModel", transformer.transform(question));
         return "secure/question/question_edit";
+    }
+
+    @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
+    public String quizView(@PathVariable Long id, ModelMap model) {
+        QaQuestion question = competitionManager.findQuestionById(id);
+        model.addAttribute("questionModel", transformer.transform(question));
+        return "secure/question/question_view";
     }
 
     @RequestMapping(value = "/add", method = {RequestMethod.POST})
@@ -36,4 +43,16 @@ public class QuestionController extends AbstractController {
         model.addAttribute(MSG_SUCCESS, "Question successfully added");
         return "secure/question/question_TODO";
     }
+
+    @RequestMapping(value = "/update", method = {RequestMethod.POST})
+    public String questionUpdate(@ModelAttribute("questionModel") QuestionModel questionModel,
+                                 ModelMap model) {
+        QaQuestion question = competitionManager.findQuestionById(questionModel.getId());
+        question.setStatement(questionModel.getStatement());
+        competitionManager.updateQuestion(question);
+
+        model.addAttribute(MSG_SUCCESS, "Question successfully updated");
+        return "redirect:/secure/question/view/" + question.getId();
+    }
+
 }

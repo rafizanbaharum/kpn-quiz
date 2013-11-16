@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -34,6 +36,8 @@
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="/assets/plugins/summernote/build/summernote.css">
+    <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
@@ -82,12 +86,12 @@
                 <i class="clip-chevron-right"></i>
             </div>
             <ul class="main-navigation-menu">
-                <li class="active open">
+                <li>
                     <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li>
+                <li class="">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
@@ -107,7 +111,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
@@ -118,6 +122,8 @@
                                 <span class="title">Rounds</span>
                             </a>
                         </li>
+                    </ul>
+                    <ul class="sub-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/gradebook/list">
                                 <span class="title">Results</span>
@@ -134,23 +140,55 @@
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li>
-                            <i class="clip-home-3"></i>
+                            <i class="clip-pencil"></i>
                             <a href="#">
-                                Home
+                                Manage Competition
                             </a>
                         </li>
                         <li class="active">
-                            Profile
+                            Quiz List
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Profile
-                            <small>My profile</small>
-                        </h1>
+                        <h1>Quiz </h1>
                     </div>
                 </div>
             </div>
+
             <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            Edit a quiz
+                        </div>
+                        <div class="panel-body">
+                            <h2><i class="icon-edit-sign teal"></i> View</h2>
+
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Name</label>
+                                        ${quizModel.title}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Current</label>
+                                        ${quizModel.current}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Start Date</label>
+                                        ${quizModel.startDate}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">End Date</label>
+                                        ${quizModel.endDate}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -163,6 +201,7 @@
         <span class="go-top"><i class="clip-chevron-up"></i></span>
     </div>
 </div>
+
 
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
@@ -179,12 +218,16 @@
 <script src="/assets/js/main.js"></script>
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="/assets/js/index.js"></script>
+<script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/assets/plugins/summernote/build/summernote.min.js"></script>
+<script src="/assets/plugins/ckeditor/ckeditor.js"></script>
+<script src="/assets/plugins/ckeditor/adapters/jquery.js"></script>
+<script src="/assets/js/form-validation.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        Index.init();
+        FormValidator.init();
     });
 </script>
 </body>

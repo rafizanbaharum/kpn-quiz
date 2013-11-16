@@ -8,7 +8,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/10/13
  */
-public interface QuizManager {
+public interface CompetitionManager {
 
     /**
      * set this quiz current
@@ -41,12 +41,19 @@ public interface QuizManager {
 
     void updateAnswer(QaParticipant participant, QaQuestion question);
 
+    void saveRound(QaRound round);
+
+    void updateRound(QaRound round);
+
+    void processRound(QaRound round);
+
     void saveQuiz(QaQuiz quiz);
 
     void updateQuiz(QaQuiz quiz);
 
-    void saveRound(QaRound round);
+    void saveQuestion(QaQuestion question);
 
-    void updateRound(QaRound round);
+    void updateQuestion(QaQuestion question);
+
 
 }

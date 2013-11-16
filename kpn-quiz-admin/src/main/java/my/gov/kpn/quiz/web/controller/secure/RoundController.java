@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.core.model.QaRound;
 import my.gov.kpn.quiz.core.model.impl.QaRoundImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -22,32 +22,32 @@ public class RoundController extends AbstractController {
     private InstructorManager instructorManager;
 
     @Autowired
-    private QuizManager quizManager;
+    private CompetitionManager competitionManager;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String roundList(ModelMap model) {
-        model.addAttribute("roundModels", transformer.transformRounds(quizManager.findRounds()));
+        model.addAttribute("roundModels", transformer.transformRounds(competitionManager.findRounds()));
         return "secure/round/round_list";
     }
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String roundView(@PathVariable Long id, ModelMap model) {
-        QaRound round = quizManager.findRoundById(id);
+        QaRound round = competitionManager.findRoundById(id);
         model.addAttribute("roundModel", transformer.transform(round));
-        model.addAttribute("quizModels", transformer.transformQuizzes(quizManager.findQuizzes(round)));
+        model.addAttribute("quizModels", transformer.transformQuizzes(competitionManager.findQuizzes(round)));
         return "secure/round/round_view";
     }
 
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String roundEdit(@PathVariable Long id, ModelMap model) {
-        model.addAttribute("roundModel", transformer.transform(quizManager.findRoundById(id)));
+        model.addAttribute("roundModel", transformer.transform(competitionManager.findRoundById(id)));
         return "secure/round/round_edit";
     }
 
     @RequestMapping(value = "/update", method = {RequestMethod.POST})
     public String roundUpdate(@ModelAttribute("roundModel") RoundModel roundModel,
                               ModelMap model) {
-        QaRound round = quizManager.findRoundById(roundModel.getId());
+        QaRound round = competitionManager.findRoundById(roundModel.getId());
         round.setName(roundModel.getName());
         round.setProcessed(false);
         round.setLocked(false);
@@ -56,11 +56,22 @@ public class RoundController extends AbstractController {
         return "redirect:/secure/round/view/" + round.getId();
     }
 
+    @RequestMapping(value = "/process/{id}", method = {RequestMethod.GET})
+    public String roundProcess(@ModelAttribute("roundModel") RoundModel roundModel,
+                               ModelMap model) {
+        QaRound round = competitionManager.findRoundById(roundModel.getId());
+        competitionManager.processRound(round);
+
+        model.addAttribute(MSG_SUCCESS, "Round successfully updated");
+        return "redirect:/secure/round/view/" + round.getId();
+    }
+
+
     @RequestMapping(value = "/add", method = {RequestMethod.POST})
     public String roundAdd(@ModelAttribute("roundModel") RoundModel roundModel,
                            ModelMap model) {
         QaRound round = new QaRoundImpl();
-        round.setCompetition(quizManager.findCompetitionByYear(2013));
+        round.setCompetition(competitionManager.findCompetitionByYear(2013));
         round.setName(roundModel.getName());
         round.setProcessed(false);
         round.setLocked(false);

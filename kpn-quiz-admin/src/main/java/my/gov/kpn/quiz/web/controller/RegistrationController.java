@@ -1,10 +1,9 @@
 package my.gov.kpn.quiz.web.controller;
 
-import my.gov.kpn.quiz.biz.manager.QuizHelper;
+import my.gov.kpn.quiz.biz.manager.CompetitionHelper;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.web.common.Transformer;
 import my.gov.kpn.quiz.web.model.RegistrationModel;
-import my.gov.kpn.quiz.web.model.StudentModel;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -35,11 +34,11 @@ public class RegistrationController extends AbstractController {
     private Transformer transformer;
 
     @Autowired
-    private QuizHelper quizHelper;
+    private CompetitionHelper competitionHelper;
 
     @RequestMapping(method = {RequestMethod.GET})
     public String go(@ModelAttribute("registration") RegistrationModel registrationModel, ModelMap model, HttpServletRequest request) {
-        Map<String, String> value = transformer.transformStatesToDropDown(quizHelper.getStateList());
+        Map<String, String> value = transformer.transformStatesToDropDown(competitionHelper.getStateList());
         model.put("states", value);
         return "register";
     }

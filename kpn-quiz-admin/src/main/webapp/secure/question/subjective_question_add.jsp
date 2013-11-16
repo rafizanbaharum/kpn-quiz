@@ -94,12 +94,12 @@
                 </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/register">
+                            <a href="${pageContext.request.contextPath}/secure/student/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
@@ -124,7 +124,7 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Student Management
+                                Manage Student
                             </a>
                         </li>
                         <li class="active">

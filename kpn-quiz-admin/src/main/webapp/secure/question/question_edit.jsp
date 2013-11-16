@@ -91,19 +91,19 @@
                 </li>
                 <li>
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/register">
+                            <a href="${pageContext.request.contextPath}/secure/student/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/student_list">
+                            <a href="${pageContext.request.contextPath}/secure/student/list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>
@@ -111,31 +111,24 @@
                 </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Quiz Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                                <span class="title">Rounds</span>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Result Management </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
+                                <span class="title">Results</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -147,15 +140,15 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Student Management
+                                Manage Competition
                             </a>
                         </li>
                         <li class="active">
-                            Register Student
+                            Questions
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Student Registration </h1>
+                        <h1>Edit Question </h1>
                     </div>
                 </div>
             </div>
@@ -164,15 +157,16 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            Create a question
+                            Edit a question
                         </div>
                         <div class="panel-body">
                             <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
 
                             <hr>
-                            <form:form id="form" commandName="studentModel"
-                                       action="${pageContext.request.contextPath}/question/add"
+                            <form:form id="form" commandName="questionModel"
+                                       action="${pageContext.request.contextPath}/secure/question/update"
                                        method="POST">
+                                <form:hidden path="id"/>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="errorHandler alert alert-danger no-display">
@@ -188,8 +182,11 @@
                                             <label class="control-label">
                                                 Statement <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="statement" placeholder="Insert question statement"
-                                                        cssClass="form-control"/>
+                                            <form:textarea path="statement" placeholder="Insert question statement"
+                                                           rows="8"
+                                                           cols="100"
+
+                                                           cssClass="form-control"/>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +201,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button class="btn btn-yellow btn-block" type="submit">
-                                            Add <i class="icon-circle-arrow-right"></i>
+                                            Update <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>

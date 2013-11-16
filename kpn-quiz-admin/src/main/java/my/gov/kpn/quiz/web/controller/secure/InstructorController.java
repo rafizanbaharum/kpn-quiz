@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.biz.manager.QuizManager;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -27,7 +27,7 @@ public class InstructorController extends AbstractController {
     private InstructorManager instructorManager;
 
     @Autowired
-    private QuizManager quizManager;
+    private CompetitionManager competitionManager;
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {

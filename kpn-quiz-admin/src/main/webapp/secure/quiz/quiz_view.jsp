@@ -93,7 +93,7 @@
                 </li>
                 <li class="">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Student Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
@@ -113,31 +113,24 @@
                 </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Quiz Management </span><i class="icon-arrow"></i>
+                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                                <span class="title">Rounds</span>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Result Management </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Round List</span>
+                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
+                                <span class="title">Results</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
         </div>
     </div>
@@ -149,7 +142,7 @@
                         <li>
                             <i class="clip-pencil"></i>
                             <a href="#">
-                                Quiz Management
+                                Manage Competition
                             </a>
                         </li>
                         <li class="active">
@@ -216,15 +209,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="question" items="${questionModels}" varStatus="idx">
+                                <c:forEach var="round" items="${questionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.statement}</td>
-                                        <td class="hidden-xs">${question.weight}</td>
-                                        <td class="hidden-xs">${question.difficulty}</td>
+                                        <td class="hidden-xs">${round.statement}</td>
+                                        <td class="hidden-xs">${round.weight}</td>
+                                        <td class="hidden-xs">${round.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${question.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${round.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>
