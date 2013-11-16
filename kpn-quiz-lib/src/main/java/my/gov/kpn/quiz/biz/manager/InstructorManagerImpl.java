@@ -17,6 +17,7 @@ import java.util.List;
 @Transactional
 public class InstructorManagerImpl implements InstructorManager {
 
+
     @Autowired
     private QaActorDao actorDao;
 

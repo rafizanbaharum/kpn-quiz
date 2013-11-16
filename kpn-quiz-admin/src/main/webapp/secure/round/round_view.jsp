@@ -216,17 +216,22 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <button class="btn btn-yellow btn-block" type="submit">
                                         Edit <i class="icon-circle-arrow-right"></i>
                                     </button>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <button class="btn btn-purple btn-block" type="submit">
+                                        Init <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-3">
                                     <button class="btn btn-blue btn-block" type="submit">
                                         Process <i class="icon-circle-arrow-right"></i>
                                     </button>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <button class="btn btn-red btn-block" type="submit">
                                         Remove <i class="icon-circle-arrow-right"></i>
                                     </button>

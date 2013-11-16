@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookImpl;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookItemImpl;
 import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,8 @@ import java.util.List;
 @Component("competitionManager")
 @Transactional
 public class CompetitionManagerImpl implements CompetitionManager {
+
+    private static final Logger log = Logger.getLogger(CompetitionManagerImpl.class);
 
     @Autowired
     private QaCompetitionDao competitionDao;
@@ -135,11 +138,13 @@ public class CompetitionManagerImpl implements CompetitionManager {
 
     @Override
     public void processGradebook(QaRound round) {
+        log.debug("process gradebook");
         List<QaQuiz> quizzes = round.getQuizzes();
         for (QaQuiz quiz : quizzes) {
             // for every participant
             // create a gradebook
             List<QaParticipant> participants = round.getParticipants();
+            log.debug("participant: " + participants.size());
             for (QaParticipant participant : participants) {
                 QaGradebook gradebook = new QaGradebookImpl();
                 gradebook.setQuiz(quiz);
@@ -170,7 +175,9 @@ public class CompetitionManagerImpl implements CompetitionManager {
 
         // TODO: not scalable
         // TODO: use chunk? or spring batch?
+        // TODO: filter out non-student??
         List<QaUser> all = userDao.findAll();
+        log.debug("participant: " + all.size());
         for (QaUser user : all) {
             QaActor actor = user.getActor();
             if (null != actor && actor.getActorType().equals(QaActorType.STUDENT)) {

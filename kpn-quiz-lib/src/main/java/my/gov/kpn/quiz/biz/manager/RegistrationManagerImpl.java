@@ -10,6 +10,7 @@ import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
 import my.gov.kpn.quiz.core.model.impl.QaStudentImpl;
 import my.gov.kpn.quiz.core.model.impl.QaUserImpl;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -23,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("instructorRegistrationManager")
 @Transactional
 public class RegistrationManagerImpl implements RegistrationManager {
+
+    private static final Logger log = Logger.getLogger(RegistrationManagerImpl.class);
 
     public static final String ADMIN = "root";
     public static final String GROUP_INSTRUCTOR = "GROUP_INSTRUCTOR";
@@ -138,6 +141,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
             roleDao.grant(user, QaRoleType.ROLE_USER, root);
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(user);
+
 
             // add actor
             QaStudent student = new QaStudentImpl();
