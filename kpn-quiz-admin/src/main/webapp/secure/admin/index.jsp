@@ -99,27 +99,6 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Quiz List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_create">
-                                <span class="title">Create Question</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_list">
-                                <span class="title">Question List</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>

@@ -61,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/profile">
+                            <a href="${pageContext.request.contextPath}/secure/user/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -98,14 +98,14 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/register">
+                            <a href="${pageContext.request.contextPath}/secure/student/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                            <a href="${pageContext.request.contextPath}/secure/student/list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>
@@ -118,29 +118,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
-                                <span class="title">Quiz List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_create">
-                                <span class="title">Create Question</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_list">
-                                <span class="title">Question List</span>
                             </a>
                         </li>
                     </ul>
@@ -152,7 +131,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
                             </a>
                         </li>
@@ -174,11 +153,47 @@
                             </a>
                         </li>
                         <li class="active">
-                            Round List
+                            Quiz List
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Question List </h1>
+                        <h1>Quiz </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            View a quiz
+                        </div>
+                        <div class="panel-body">
+                            <h2><i class="icon-edit-sign teal"></i> View</h2>
+
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Name</label>
+                                        ${quizModel.title}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Current</label>
+                                        ${quizModel.current}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Start Date</label>
+                                        ${quizModel.startDate}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">End Date</label>
+                                        ${quizModel.endDate}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -194,7 +209,9 @@
                                 <thead>
                                 <tr>
                                     <th class="center">#</th>
-                                    <th>Question</th>
+                                    <th>Statement</th>
+                                    <th>Weight</th>
+                                    <th>Difficulty</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -203,34 +220,14 @@
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${question.statement}</td>
+                                        <td class="hidden-xs">${question.weight}</td>
+                                        <td class="hidden-xs">${question.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="#" class="btn btn-teal tooltips" data-placement="top"
-                                                   data-original-title="Edit"><i class="icon-edit"></i></a>
-                                                <a href="#" class="btn btn-bricky tooltips" data-placement="top"
-                                                   data-original-title="Remove"><i
-                                                        class="icon-remove icon-white"></i></a>
-                                            </div>
-                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle btn-sm"
-                                                       data-toggle="dropdown"
-                                                       href="#">
-                                                        <i class="icon-cog"></i> <span class="caret"></span>
-                                                    </a>
-                                                    <ul role="menu" class="dropdown-menu pull-right">
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-edit"></i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-remove"></i> Remove
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${question.id}"
+                                                   class="btn btn-green tooltips" data-placement="top"
+                                                   data-original-title="Edit"><i
+                                                        class="icon-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>

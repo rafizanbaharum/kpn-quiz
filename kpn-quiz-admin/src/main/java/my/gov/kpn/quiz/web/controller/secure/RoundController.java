@@ -32,12 +32,20 @@ public class RoundController extends AbstractController {
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String roundView(@PathVariable Long id, ModelMap model) {
-        model.addAttribute("roundModel", transformer.transform(quizManager.findRoundById(id)));
+        QaRound round = quizManager.findRoundById(id);
+        model.addAttribute("roundModel", transformer.transform(round));
+        model.addAttribute("quizModels", transformer.transformQuizzes(quizManager.findQuizzes(round)));
         return "secure/round/round_view";
     }
 
+    @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
+    public String roundEdit(@PathVariable Long id, ModelMap model) {
+        model.addAttribute("roundModel", transformer.transform(quizManager.findRoundById(id)));
+        return "secure/round/round_edit";
+    }
+
     @RequestMapping(value = "/update", method = {RequestMethod.POST})
-    public String updateRound(@ModelAttribute("roundModel") RoundModel roundModel,
+    public String roundUpdate(@ModelAttribute("roundModel") RoundModel roundModel,
                               ModelMap model) {
         QaRound round = quizManager.findRoundById(roundModel.getId());
         round.setName(roundModel.getName());
@@ -45,11 +53,11 @@ public class RoundController extends AbstractController {
         round.setLocked(false);
 
         model.addAttribute(MSG_SUCCESS, "Round successfully updated");
-        return "redirect:secure/round/view/" + round.getId();
+        return "redirect:/secure/round/view/" + round.getId();
     }
 
     @RequestMapping(value = "/add", method = {RequestMethod.POST})
-    public String addRound(@ModelAttribute("roundModel") RoundModel roundModel,
+    public String roundAdd(@ModelAttribute("roundModel") RoundModel roundModel,
                            ModelMap model) {
         QaRound round = new QaRoundImpl();
         round.setCompetition(quizManager.findCompetitionByYear(2013));

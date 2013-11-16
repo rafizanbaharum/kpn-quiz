@@ -2,6 +2,7 @@ package my.gov.kpn.quiz.core.dao;
 
 import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.core.model.QaQuiz;
+import my.gov.kpn.quiz.core.model.QaRound;
 import my.gov.kpn.quiz.core.model.QaUser;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface QaQuizDao {
     QaQuiz findCurrent();
 
     List<QaQuiz> findAll();
+
+    List<QaQuiz> find(QaRound round);
 
     List<QaQuiz> find(Integer offset, Integer limit);
 

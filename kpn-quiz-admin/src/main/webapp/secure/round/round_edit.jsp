@@ -61,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/profile">
+                            <a href="${pageContext.request.contextPath}/secure/user/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -98,14 +98,14 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/register">
+                            <a href="${pageContext.request.contextPath}/secure/student/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                            <a href="${pageContext.request.contextPath}/secure/student/list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>
@@ -118,29 +118,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
-                                <span class="title">Quiz List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_create">
-                                <span class="title">Create Question</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_list">
-                                <span class="title">Question List</span>
                             </a>
                         </li>
                     </ul>
@@ -152,7 +131,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
                             </a>
                         </li>
@@ -178,7 +157,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Question List </h1>
+                        <h1>Round </h1>
                     </div>
                 </div>
             </div>
@@ -187,56 +166,52 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            List of questions
+                            Edit a round
                         </div>
                         <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Question</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="question" items="${questionModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.statement}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="#" class="btn btn-teal tooltips" data-placement="top"
-                                                   data-original-title="Edit"><i class="icon-edit"></i></a>
-                                                <a href="#" class="btn btn-bricky tooltips" data-placement="top"
-                                                   data-original-title="Remove"><i
-                                                        class="icon-remove icon-white"></i></a>
-                                            </div>
-                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle btn-sm"
-                                                       data-toggle="dropdown"
-                                                       href="#">
-                                                        <i class="icon-cog"></i> <span class="caret"></span>
-                                                    </a>
-                                                    <ul role="menu" class="dropdown-menu pull-right">
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-edit"></i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-remove"></i> Remove
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                            <h2><i class="icon-edit-sign teal"></i> EDIT</h2>
+
+                            <hr>
+                            <form:form id="form" commandName="roundModel"
+                                       action="${pageContext.request.contextPath}/secure/round/update"
+                                       method="POST">
+                                <form:hidden path="id"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <div class="successHandler alert alert-success no-display">
+                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Name <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="name" placeholder="Insert name"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <span class="symbol required"></span>Required Fields
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Update <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form:form>
                         </div>
                     </div>
                 </div>

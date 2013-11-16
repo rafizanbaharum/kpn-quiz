@@ -40,13 +40,24 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         return (QaQuiz) query.uniqueResult();
     }
 
-
     @Override
     public List<QaQuiz> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +
                 "a.metadata.state = :state " +
                 "order by a.id");
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return query.list();
+    }
+
+    @Override
+    public List<QaQuiz> find(QaRound round) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaQuiz a where " +
+                "a.round = :round " +
+                "and a.metadata.state = :state " +
+                "order by a.id");
+        query.setEntity("round", round);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return query.list();
     }

@@ -24,6 +24,7 @@ public interface QuizManager {
 
     QaQuiz findQuizById(Long id);
 
+
     QaCompetition findCompetitionById(Long id);
 
     QaCompetition findCompetitionByYear(int year);
@@ -34,10 +35,18 @@ public interface QuizManager {
 
     List<QaRound> findRounds();
 
+    List<QaQuiz> findQuizzes(QaRound round);
+
     List<QaQuestion> findQuestions(QaQuiz quiz);
 
     void updateAnswer(QaParticipant participant, QaQuestion question);
 
-    void addRound(QaRound round);
+    void saveQuiz(QaQuiz quiz);
+
+    void updateQuiz(QaQuiz quiz);
+
+    void saveRound(QaRound round);
+
+    void updateRound(QaRound round);
 
 }

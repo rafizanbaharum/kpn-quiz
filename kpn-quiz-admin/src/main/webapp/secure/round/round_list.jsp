@@ -123,27 +123,6 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
-                                <span class="title">Quiz List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question/add">
-                                <span class="title">Create Question</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question/list">
-                                <span class="title">Question List</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
@@ -195,20 +174,24 @@
                                 <tr>
                                     <th class="center">#</th>
                                     <th>Round</th>
+                                    <th>Processed</th>
+                                    <th>Locked</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="round" items="${roundModels}" varStatus="idx">
+                                <c:forEach var="question" items="${roundModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.name}</td>
-                                        <td class="hidden-xs">${round.processed}</td>
+                                        <td class="hidden-xs">${question.name}</td>
+                                        <td class="hidden-xs">${question.locked}</td>
+                                        <td class="hidden-xs">${question.processed}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="#" class="btn btn-teal tooltips" data-placement="top"
+                                                <a href="${pageContext.request.contextPath}/secure/round/edit/${question.id}"
+                                                   class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/round/view/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/round/view/${question.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
                                                    data-original-title="View"><i
                                                         class="icon-info"></i></a>

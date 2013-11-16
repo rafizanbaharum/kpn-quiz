@@ -6,9 +6,10 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 11/15/13
  */
-public class QuizModel extends MetaModel{
+public class QuizModel extends MetaModel {
 
     private String title;
+    private boolean current;
     private Date startDate;
     private Date endDate;
 
@@ -18,6 +19,14 @@ public class QuizModel extends MetaModel{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public boolean isCurrent() {
+        return current;
+    }
+
+    public void setCurrent(boolean current) {
+        this.current = current;
     }
 
     public Date getStartDate() {

@@ -38,10 +38,7 @@
     <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<!-- end: HEAD -->
-<!-- start: BODY -->
 <body class="footer-fixed layout-boxed">
-<!-- start: HEADER -->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -62,7 +59,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/profile">
+                            <a href="${pageContext.request.contextPath}/secure/user/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -92,7 +89,7 @@
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li class="active open">
+                <li>
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Student Management </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
@@ -108,6 +105,32 @@
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/student_list">
                                 <span class="title">Student List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active open">
+                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                        <span class="title"> Quiz Management </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
+                                <span class="title">Round List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
+                        <span class="title"> Result Management </span><i class="icon-arrow"></i>
+                        <span class="selected"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
+                                <span class="title">Round List</span>
                             </a>
                         </li>
                     </ul>

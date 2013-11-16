@@ -89,6 +89,11 @@ public class QuizManagerImpl implements QuizManager {
     }
 
     @Override
+    public List<QaQuiz> findQuizzes(QaRound round) {
+        return quizDao.find(round);
+    }
+
+    @Override
     public List<QaRound> findRounds() {
         return roundDao.findAll();
     }
@@ -103,7 +108,22 @@ public class QuizManagerImpl implements QuizManager {
     }
 
     @Override
-    public void addRound(QaRound round) {
+    public void saveQuiz(QaQuiz quiz) {
+        quizDao.save(quiz, Utils.getCurrentUser());
+    }
+
+    @Override
+    public void updateQuiz(QaQuiz quiz) {
+        quizDao.update(quiz, Utils.getCurrentUser());
+    }
+
+    @Override
+    public void updateRound(QaRound round) {
+        roundDao.update(round, Utils.getCurrentUser());
+    }
+
+    @Override
+    public void saveRound(QaRound round) {
         roundDao.save(round, Utils.getCurrentUser());
     }
 }

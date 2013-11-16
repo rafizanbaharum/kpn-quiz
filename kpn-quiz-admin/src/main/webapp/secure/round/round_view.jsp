@@ -61,7 +61,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/profile">
+                            <a href="${pageContext.request.contextPath}/secure/user/profile">
                                 <i class="clip-user-2"></i>
                                 &nbsp;My Profile
                             </a>
@@ -98,14 +98,14 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/register">
+                            <a href="${pageContext.request.contextPath}/secure/student/register">
                                 <span class="title">Register</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/studentList">
+                            <a href="${pageContext.request.contextPath}/secure/student/list">
                                 <span class="title">Student List</span>
                             </a>
                         </li>
@@ -118,29 +118,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
-                                <span class="title">Quiz List</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_create">
-                                <span class="title">Create Question</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/question_list">
-                                <span class="title">Question List</span>
                             </a>
                         </li>
                     </ul>
@@ -152,7 +131,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round_list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Round List</span>
                             </a>
                         </li>
@@ -182,60 +161,82 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            Edit a round
+                            View a round
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> EDIT</h2>
+                            <h2><i class="icon-edit-sign teal"></i> View</h2>
 
                             <hr>
-                            <form:form id="form" commandName="roundModel"
-                                       action="${pageContext.request.contextPath}/round/update"
-                                       method="POST">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="errorHandler alert alert-danger no-display">
-                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
-                                            below.
-                                        </div>
-                                        <div class="successHandler alert alert-success no-display">
-                                            <i class="icon-ok"></i> Your form validation is successful!
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Name</label>
+                                        ${roundModel.name}
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Name <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="name" placeholder="Insert name"
-                                                        cssClass="form-control"/>
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Processed</label>
+                                        ${roundModel.processed}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Locked</label>
+                                        ${roundModel.locked}
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div>
-                                            <span class="symbol required"></span>Required Fields
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-yellow btn-block" type="submit">
-                                            Update <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            List of quizzes
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover" id="sample-table-1">
+                                <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th>Title</th>
+                                    <th>Current</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="question" items="${quizModels}" varStatus="idx">
+                                    <tr>
+                                        <td class="center">${idx.count}</td>
+                                        <td class="hidden-xs">${question.title}</td>
+                                        <td class="hidden-xs">${question.current}</td>
+                                        <td class="hidden-xs">${question.startDate}</td>
+                                        <td class="hidden-xs">${question.endDate}</td>
+                                        <td class="center">
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${question.id}"
+                                                   class="btn btn-green tooltips" data-placement="top"
+                                                   data-original-title="View"><i
+                                                        class="icon-info"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

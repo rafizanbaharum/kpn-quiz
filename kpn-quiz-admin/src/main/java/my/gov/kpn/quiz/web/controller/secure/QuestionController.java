@@ -2,13 +2,14 @@ package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.biz.manager.QuizManager;
-import my.gov.kpn.quiz.core.model.QaQuiz;
+import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.web.controller.AbstractController;
-import my.gov.kpn.quiz.web.model.QuizModel;
+import my.gov.kpn.quiz.web.model.QuestionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,10 +23,17 @@ public class QuestionController extends AbstractController {
     @Autowired
     private QuizManager quizManager;
 
-    @RequestMapping(value = "/list", method = {RequestMethod.GET})
-    public String roundList(@ModelAttribute("quizModel") QuizModel quizModel, ModelMap model) {
-        QaQuiz quiz = quizManager.findQuizById(quizModel.getId());
-        model.addAttribute("questionModels", transformer.transformQuestions(quizManager.findQuestions(quiz)));
-        return "secure/question/question_list";
+    @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
+    public String quizEdit(@PathVariable Long id, ModelMap model) {
+        QaQuestion question = quizManager.findQuestionById(id);
+        model.addAttribute("questionModel", transformer.transform(question));
+        return "secure/question/question_edit";
+    }
+
+    @RequestMapping(value = "/add", method = {RequestMethod.POST})
+    public String quizAdd(@ModelAttribute("questionModel") QuestionModel questionModel,
+                          ModelMap model) {
+        model.addAttribute(MSG_SUCCESS, "Question successfully added");
+        return "secure/question/question_TODO";
     }
 }
