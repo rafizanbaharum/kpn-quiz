@@ -1,7 +1,13 @@
+update QA_USER set ACTOR_ID = null;
+delete from QA_INTR;
+delete from QA_STDN;
+delete from QA_ACTR;
 
-
-
-
+delete from QA_GROP_MMBR;
+delete from QA_GROP;
+delete from QA_USER;
+delete from QA_PCPL_ROLE;
+delete from QA_PCPL;
 
 -- 6367c48dd193d56ea7b0baad25b19455e529f5ee
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, LOCKED, M_ST, C_ID, C_TS) values (1, 'root', 0, true, 1, 0, CURRENT_TIMESTAMP );

@@ -243,6 +243,13 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-yellow btn-block" type="submit">
+                        Add Question <i class="icon-circle-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>

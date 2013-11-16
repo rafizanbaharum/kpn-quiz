@@ -24,14 +24,14 @@ public class QuestionController extends AbstractController {
     private CompetitionManager competitionManager;
 
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
-    public String quizEdit(@PathVariable Long id, ModelMap model) {
+    public String questionEdit(@PathVariable Long id, ModelMap model) {
         QaQuestion question = competitionManager.findQuestionById(id);
         model.addAttribute("questionModel", transformer.transform(question));
         return "secure/question/question_edit";
     }
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
-    public String quizView(@PathVariable Long id, ModelMap model) {
+    public String questionView(@PathVariable Long id, ModelMap model) {
         QaQuestion question = competitionManager.findQuestionById(id);
         model.addAttribute("questionModel", transformer.transform(question));
         model.addAttribute("quizModel", transformer.transform(question.getQuiz()));
@@ -39,8 +39,8 @@ public class QuestionController extends AbstractController {
     }
 
     @RequestMapping(value = "/add", method = {RequestMethod.POST})
-    public String quizAdd(@ModelAttribute("questionModel") QuestionModel questionModel,
-                          ModelMap model) {
+    public String questionAdd(@ModelAttribute("questionModel") QuestionModel questionModel,
+                              ModelMap model) {
         model.addAttribute(MSG_SUCCESS, "Question successfully added");
         return "secure/question/question_TODO";
     }
@@ -55,5 +55,4 @@ public class QuestionController extends AbstractController {
         model.addAttribute(MSG_SUCCESS, "Question successfully updated");
         return "redirect:/secure/question/view/" + question.getId();
     }
-
 }
