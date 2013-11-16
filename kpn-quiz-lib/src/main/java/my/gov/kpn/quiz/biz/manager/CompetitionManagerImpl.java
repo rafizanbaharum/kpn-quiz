@@ -91,6 +91,16 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
+    public QaGradebook findGradebook(QaParticipant participant, QaQuiz quiz) {
+        return gradebookDao.find(participant, quiz);
+    }
+
+    @Override
+    public QaGradebookItem findGradebookItem(QaParticipant participant, QaQuiz quiz, QaQuestion question) {
+        return gradebookDao.findItem(participant, quiz, question);
+    }
+
+    @Override
     public List<QaQuiz> findQuizzes(QaRound round) {
         return quizDao.find(round);
     }

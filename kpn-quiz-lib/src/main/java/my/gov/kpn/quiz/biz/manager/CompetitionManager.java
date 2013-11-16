@@ -10,20 +10,6 @@ import java.util.List;
  */
 public interface CompetitionManager {
 
-    /**
-     * set this quiz current
-     * and all others false
-     *
-     * @param quiz
-     */
-    void setCurrentQuiz(QaQuiz quiz);
-
-    QaQuiz getCurrentQuiz();
-
-    QaParticipant findParticipant(QaQuiz quiz, QaUser user);
-
-    QaQuiz findQuizById(Long id);
-
 
     QaCompetition findCompetitionById(Long id);
 
@@ -31,7 +17,17 @@ public interface CompetitionManager {
 
     QaRound findRoundById(Long id);
 
+    QaQuiz findQuizById(Long id);
+
+    QaQuiz getCurrentQuiz();
+
+    QaParticipant findParticipant(QaQuiz quiz, QaUser user);
+
     QaQuestion findQuestionById(Long id);
+
+    QaGradebook findGradebook(QaParticipant participant, QaQuiz quiz);
+
+    QaGradebookItem findGradebookItem(QaParticipant participant, QaQuiz quiz, QaQuestion question);
 
     List<QaRound> findRounds();
 
@@ -39,7 +35,6 @@ public interface CompetitionManager {
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
 
-    void updateAnswer(QaParticipant participant, QaQuestion question);
 
     void saveRound(QaRound round);
 
@@ -55,5 +50,8 @@ public interface CompetitionManager {
 
     void updateQuestion(QaQuestion question);
 
+    void setCurrentQuiz(QaQuiz quiz);
+
+    void updateAnswer(QaParticipant participant, QaQuestion question);
 
 }

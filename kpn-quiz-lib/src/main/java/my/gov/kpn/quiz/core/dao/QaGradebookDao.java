@@ -12,11 +12,18 @@ public interface QaGradebookDao {
 
     QaGradebook findById(Long id);
 
+    QaGradebook find(QaParticipant participant, QaQuiz quiz);
+
+    QaGradebookItem findItem(QaParticipant participant, QaQuiz quiz, QaQuestion question);
+
     List<QaGradebook> find(QaQuiz quiz);
 
-    List<QaGradebook> find(QaParticipant participant, QaQuiz quiz);
 
     List<QaGradebook> find(QaParticipant participant, QaQuiz quiz, QaQuestion question);
+
+    List<QaGradebookItem> find(QaGradebook gradebook);
+
+    List<QaGradebookItem> find(QaGradebook participant, QaQuiz quiz);
 
     Integer count(QaQuiz quiz);
 

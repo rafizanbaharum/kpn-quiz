@@ -1,8 +1,6 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaAnswer;
-import my.gov.kpn.quiz.core.model.QaGradebookItem;
-import my.gov.kpn.quiz.core.model.QaQuestion;
+import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,6 +27,13 @@ public class QaGradebookItemImpl implements QaGradebookItem, Serializable {
     @JoinColumn(name = "ANSWER_ID")
     private QaAnswer answer;
 
+    @OneToOne(targetEntity = QaGradebookImpl.class)
+    @JoinColumn(name = "GRADEBOOK_ID")
+    private QaGradebook gradebook;
+
+    @Embedded
+    private QaMetadata metadata = new QaMetadata();
+
     public Long getId() {
         return id;
     }
@@ -51,5 +56,22 @@ public class QaGradebookItemImpl implements QaGradebookItem, Serializable {
 
     public void setAnswer(QaAnswer answer) {
         this.answer = answer;
+    }
+
+    public QaGradebook getGradebook() {
+        return gradebook;
+    }
+
+    public void setGradebook(QaGradebook gradebook) {
+        this.gradebook = gradebook;
+    }
+
+
+    public QaMetadata getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(QaMetadata metadata) {
+        this.metadata = metadata;
     }
 }
