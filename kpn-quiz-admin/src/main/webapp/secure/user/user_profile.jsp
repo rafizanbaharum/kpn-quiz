@@ -151,6 +151,60 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            My Profile
+                        </div>
+                        <div class="panel-body">
+                            <h2><i class="icon-edit-sign teal"></i> PROFILE</h2>
+
+                            <hr>
+                            <form:form id="form" commandName="userModel"
+                                       action="${pageContext.request.contextPath}/secure/user/update"
+                                       method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="errorHandler alert alert-danger">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <div class="successHandler alert alert-success">
+                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Username <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="username" cssClass="form-control"
+                                                        readonly="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Edit <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button class="btn btn-blue btn-block" type="submit">
+                                            Reset <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form:form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

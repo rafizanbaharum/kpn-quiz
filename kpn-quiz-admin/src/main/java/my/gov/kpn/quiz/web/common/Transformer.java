@@ -84,6 +84,17 @@ public class Transformer {
         return models;
     }
 
+    public UserModel transform(QaUser user) {
+        UserModel model = new UserModel();
+        model.setId(user.getId());
+        model.setName(user.getName());
+        model.setUsername(user.getUsername());
+        model.setPassword(user.getPassword());
+        model.setPasswordAgain(user.getPassword());
+        return model;
+    }
+
+
     public StudentModel transform(QaStudent student) {
         StudentModel model = new StudentModel();
         QaUser user = instructorManager.findUserByActor(student);
