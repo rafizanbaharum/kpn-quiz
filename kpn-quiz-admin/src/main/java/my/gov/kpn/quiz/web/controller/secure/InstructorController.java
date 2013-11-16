@@ -29,17 +29,19 @@ public class InstructorController extends AbstractController {
     @Autowired
     private CompetitionManager competitionManager;
 
+    // TODO: pindah ke StudentController
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String registerStudent(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         studentModel.setInstructorId(getCurrentInstructorId());
         return "secure/student/student_register";
     }
 
+    // TODO: pindah ke StudentController
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String studentList(ModelMap model) {
         List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
         List<StudentModel> studentModels = transformer.transformStudents(students);
-        model.addAttribute("studentModels",studentModels);
+        model.addAttribute("studentModels", studentModels);
         return "secure/student/student_list";
     }
 
@@ -53,7 +55,7 @@ public class InstructorController extends AbstractController {
                              ModelMap model) {
 
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
-            model.addAttribute(MSG_SUCCESS,"Password not match");
+            model.addAttribute(MSG_SUCCESS, "Password not match");
             return "secure/studentRegister";
         }
 
@@ -70,5 +72,4 @@ public class InstructorController extends AbstractController {
             ModelMap model) {
         return "registered";
     }
-
 }
