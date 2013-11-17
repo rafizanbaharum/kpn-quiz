@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -34,6 +36,8 @@
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <link rel="stylesheet" href="/assets/plugins/summernote/build/summernote.css">
+    <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
@@ -82,46 +86,26 @@
                 <i class="clip-chevron-right"></i>
             </div>
             <ul class="main-navigation-menu">
-                <li class="active open">
+                <li>
                     <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/instructor/register">
-                                <span class="title">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/instructor/list">
-                                <span class="title">Student List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
+                <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                         <span class="selected"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
+                            <a href="${pageContext.request.contextPath}/secure/round/list">
                                 <span class="title">Quizzes</span>
                             </a>
                         </li>
                     </ul>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
+                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
                                 <span class="title">Results</span>
                             </a>
                         </li>
@@ -136,53 +120,63 @@
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li>
-                            <i class="clip-home-3"></i>
+                            <i class="clip-pencil"></i>
                             <a href="#">
-                                Home
+                                Manage Competition
                             </a>
                         </li>
                         <li class="active">
-                            Dashboard
+                            Quiz List
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Dashboard
-                            <small>overview &amp; stats</small>
-                        </h1>
+                        <h1>Quiz List </h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-user-4 circle-icon circle-green"></i>
-
-                            <h2>Manage Users</h2>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            List of quizzes
                         </div>
-                        <div class="content">
-                            Manage user Instructor, Student and Support person.
-                            View, edit or register new record.
+                        <div class="panel-body">
+                            <table class="table table-hover" id="sample-table-1">
+                                <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th>Name</th>
+                                    <th>Processed</th>
+                                    <th>Locked</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="quiz" items="${quizModels}" varStatus="idx">
+                                    <tr>
+                                        <td class="center">${idx.count}</td>
+                                        <td class="hidden-xs">${quiz.title}</td>
+                                        <td class="hidden-xs">${quiz.processed}</td>
+                                        <td class="hidden-xs">${quiz.locked}</td>
+                                        <td class="center">
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quiz.id}"
+                                                   class="btn btn-teal tooltips" data-placement="top"
+                                                   data-original-title="View"><i class="icon-archive"></i></a>
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quiz.id}"
+                                                   class="btn btn-teal tooltips" data-placement="top"
+                                                   data-original-title="Edit"><i class="icon-edit"></i></a>
+                                                <a href="#" class="btn btn-bricky tooltips" data-placement="top"
+                                                   data-original-title="Remove"><i
+                                                        class="icon-remove icon-white"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
-                        <a class="view-more" href="${pageContext.request.contextPath}/secure/user/list">
-                            View More <i class="clip-arrow-right-2"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-clip circle-icon circle-teal"></i>
-
-                            <h2>Manage Competition</h2>
-                        </div>
-                        <div class="content">
-                            Manage your,Quiz and Questions.
-                            View, edit or create new record.
-                        </div>
-                        <a class="view-more" href="${pageContext.request.contextPath}/secure/quiz/list">
-                            View More <i class="clip-arrow-right-2"></i>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -214,12 +208,16 @@
 <script src="/assets/js/main.js"></script>
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="/assets/js/index.js"></script>
+<script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/assets/plugins/summernote/build/summernote.min.js"></script>
+<script src="/assets/plugins/ckeditor/ckeditor.js"></script>
+<script src="/assets/plugins/ckeditor/adapters/jquery.js"></script>
+<script src="/assets/js/form-validation.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        Index.init();
+        FormValidator.init();
     });
 </script>
 </body>

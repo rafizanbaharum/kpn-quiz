@@ -27,7 +27,7 @@ public interface CompetitionManager {
 
     QaGradebookItem findGradebookItem(QaParticipant participant, QaQuiz quiz, QaQuestion question);
 
-    List<QaQuiz> findQuizzes(QaCompetition competition);
+    List<QaQuiz> findQuizzes();
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
 

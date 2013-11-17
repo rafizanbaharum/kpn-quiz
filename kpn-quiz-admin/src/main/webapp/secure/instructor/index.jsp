@@ -157,10 +157,10 @@
                             <h2>Manage Competition</h2>
                         </div>
                         <div class="content">
-                            Manage your Round, Quiz and Questions.
+                            Manage your Quiz and Questions.
                             View, edit or create new record.
                         </div>
-                        <a class="view-more" href="${pageContext.request.contextPath}/secure/round/list">
+                        <a class="view-more" href="${pageContext.request.contextPath}/secure/quiz/list">
                             View More <i class="clip-arrow-right-2"></i>
                         </a>
                     </div>

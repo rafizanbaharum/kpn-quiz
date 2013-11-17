@@ -118,8 +118,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Rounds</span>
+                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
+                                <span class="title">Quizzes</span>
                             </a>
                         </li>
                     </ul>

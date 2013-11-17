@@ -53,17 +53,6 @@ public class Transformer {
         return models;
     }
 
-    public List<RoundModel> transformRounds(List<QaRound> rounds) {
-        List<RoundModel> models = new ArrayList<RoundModel>();
-        if (null != rounds) {
-            for (QaRound student : rounds) {
-                models.add(transform(student));
-            }
-        }
-        return models;
-    }
-
-
     public List<QuestionModel> transformQuestions(List<QaQuestion> questions) {
         List<QuestionModel> models = new ArrayList<QuestionModel>();
         if (null != questions) {
@@ -114,21 +103,15 @@ public class Transformer {
         return model;
     }
 
-    public RoundModel transform(QaRound round) {
-        RoundModel model = new RoundModel();
-        model.setId(round.getId());
-        model.setName(round.getName());
-        model.setProcessed(round.isProcessed());
-        model.setLocked(round.isLocked());
-        return model;
-    }
-
     public QuizModel transform(QaQuiz quiz) {
         QuizModel model = new QuizModel();
         model.setId(quiz.getId());
         model.setTitle(quiz.getTitle());
         model.setStartDate(quiz.getStartDate());
         model.setEndDate(quiz.getEndDate());
+        model.setCurrent(quiz.isCurrent());
+        model.setProcessed(quiz.isProcessed());
+        model.setLocked(quiz.isLocked());
         return model;
     }
 

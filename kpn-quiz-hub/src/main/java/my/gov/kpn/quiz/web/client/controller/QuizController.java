@@ -48,6 +48,8 @@ public class QuizController extends Controller {
         }
     }
 
+
+
     protected void onError(AppEvent ae) {
         log.severe("error: " + ae.toString());
     }

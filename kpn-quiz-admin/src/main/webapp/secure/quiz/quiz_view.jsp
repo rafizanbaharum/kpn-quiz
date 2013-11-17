@@ -91,26 +91,6 @@
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/register">
-                                <span class="title">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/list">
-                                <span class="title">Student List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
@@ -118,8 +98,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Rounds</span>
+                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
+                                <span class="title">Quizzes</span>
                             </a>
                         </li>
                     </ul>
@@ -177,6 +157,14 @@
                                         ${quizModel.current}
                                     </div>
                                     <div class="form-group">
+                                        <label class="control-label">Processed</label>
+                                        ${quizModel.processed}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Locked</label>
+                                        ${quizModel.locked}
+                                    </div>
+                                    <div class="form-group">
                                         <label class="control-label">Start Date</label>
                                         ${quizModel.startDate}
                                     </div>
@@ -187,12 +175,22 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <button class="btn btn-yellow btn-block" type="submit">
                                         Edit <i class="icon-circle-arrow-right"></i>
                                     </button>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <button class="btn btn-blue btn-block" type="submit">
+                                        Init <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-purple btn-block" type="submit">
+                                        Process <i class="icon-circle-arrow-right"></i>
+                                    </button>
+                                </div>
+                                <div class="col-md-3">
                                     <button class="btn btn-red btn-block" type="submit">
                                         Remove <i class="icon-circle-arrow-right"></i>
                                     </button>

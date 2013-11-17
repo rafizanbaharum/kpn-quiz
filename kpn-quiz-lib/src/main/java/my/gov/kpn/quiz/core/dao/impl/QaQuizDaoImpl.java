@@ -54,10 +54,10 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     public List<QaQuiz> find(QaCompetition competition) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +
-                "a.competiton = :competiton " +
+                "a.competition = :competition " +
                 "and a.metadata.state = :state " +
                 "order by a.id");
-        query.setEntity("competiton", competition);
+        query.setEntity("competition", competition);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return query.list();
     }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller("SecureRoundController")
 @RequestMapping("/secure/round")
+@Deprecated
 public class RoundController extends AbstractController {
 
     @Autowired

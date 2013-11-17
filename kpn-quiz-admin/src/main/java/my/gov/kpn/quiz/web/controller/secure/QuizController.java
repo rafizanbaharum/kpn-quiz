@@ -26,8 +26,7 @@ public class QuizController extends AbstractController {
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String quizList(@ModelAttribute("quizModel") QuizModel quizModel, ModelMap model) {
-        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
-        model.addAttribute("quizModels", transformer.transformQuestions(competitionManager.findQuestions(quiz)));
+        model.addAttribute("quizModels", transformer.transformQuizzes(competitionManager.findQuizzes()));
         return "secure/quiz/quiz_list";
     }
 
@@ -51,7 +50,10 @@ public class QuizController extends AbstractController {
     public String quizAdd(@ModelAttribute("quizModel") QuizModel quizModel,
                           ModelMap model) {
         QaQuiz quiz = new QaQuizImpl();
+        quiz.setCompetition(competitionManager.findCompetitionByYear(2013));
         quiz.setTitle(quizModel.getTitle());
+        quiz.setProcessed(false);
+        quiz.setLocked(false);
 //        quiz.setStartDate();
 //        quiz.setEndDate();
         competitionManager.saveQuiz(quiz);
@@ -83,5 +85,27 @@ public class QuizController extends AbstractController {
         model.addAttribute(MSG_SUCCESS, "Quiz successfully tabulated");
         return "redirect:secure/quiz/view/" + quiz.getId();
     }
+
+
+    @RequestMapping(value = "/process/{id}", method = {RequestMethod.GET})
+    public String roundProcess(@ModelAttribute("quizModel") QuizModel quizModel,
+                               ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
+        competitionManager.processGradebook(quiz);
+
+        model.addAttribute(MSG_SUCCESS, "Quiz successfully processed");
+        return "redirect:/secure/round/view/";// + round.getId();
+    }
+
+    @RequestMapping(value = "/init/{id}", method = {RequestMethod.GET})
+    public String roundInit(@ModelAttribute("quizModel") QuizModel quizModel,
+                            ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
+        competitionManager.processParticipant(quiz);
+
+        model.addAttribute(MSG_SUCCESS, "Quiz successfully inited");
+        return "redirect:/secure/quiz/view/" + quiz.getId();
+    }
+
 
 }
