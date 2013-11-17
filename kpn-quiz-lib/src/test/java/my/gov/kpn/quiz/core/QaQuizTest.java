@@ -35,9 +35,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
     private QaUserDao userDao;
 
     @Autowired
-    private QaInstitutionDao institutionDao;
-
-    @Autowired
     private QaCompetitionDao competitionDao;
 
     @Autowired

@@ -1,7 +1,6 @@
 package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.QaActorType;
-import my.gov.kpn.quiz.core.model.QaInstitution;
 import my.gov.kpn.quiz.core.model.QaInstructor;
 import my.gov.kpn.quiz.core.model.QaStudent;
 
@@ -15,9 +14,6 @@ import javax.persistence.*;
 @Entity(name = "QaStudent")
 public class QaStudentImpl extends QaActorImpl implements QaStudent {
 
-//    @OneToOne(targetEntity = QaInstitutionImpl.class)
-//    @JoinColumn(name = "INSTITUTION_ID")
-//    private QaInstitution institution;
 
     @ManyToOne(targetEntity = QaInstructorImpl.class)
     @JoinColumn(name = "INSTRUCTOR_ID")

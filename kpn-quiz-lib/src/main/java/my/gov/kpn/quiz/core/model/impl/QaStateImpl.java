@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaInstitution;
 import my.gov.kpn.quiz.core.model.QaMetadata;
 import my.gov.kpn.quiz.core.model.QaState;
 
