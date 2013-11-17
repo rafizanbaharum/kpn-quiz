@@ -33,6 +33,8 @@ public class StudentController extends AbstractController {
     public String studentEdit(@PathVariable Long id, ModelMap model) {
         QaStudent student = instructorManager.findStudentById(id);
         model.addAttribute("studentModel", transformer.transform(student));
+        model.put(BREADCRUMB,"Update Student Details");
+        model.put(TITLE,"Update Student Details");
         return "secure/student/student_edit";
     }
 

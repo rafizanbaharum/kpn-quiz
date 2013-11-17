@@ -75,7 +75,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">
-                                            Student Name ${STUDENT_BREADCRUMB} <span class="symbol required"></span>
+                                            Student Name <span class="symbol required"></span>
                                         </label>
                                         <form:input path="name" placeholder="Insert your student Name"
                                                     cssClass="form-control"/>
