@@ -8,11 +8,11 @@
                         </a>
                     </li>
                     <li class="active">
-                        Register Student
+                        ${param.BREADCRUMB}
                     </li>
                 </ol>
                 <div class="page-header">
-                    <h1>Student Registration </h1>
+                    <h1>${param.TITLE}</h1>
                 </div>
             </div>
         </div>

@@ -17,6 +17,9 @@ import java.util.List;
 @RequestMapping("/secure/student")
 public class StudentController extends AbstractController {
 
+    private final String BREADCRUMB = "STUDENT_BREADCRUMB";
+    private final String TITLE = "STUDENT_TITLE";
+
     @Autowired
     private InstructorManager instructorManager;
 
@@ -42,6 +45,8 @@ public class StudentController extends AbstractController {
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String studentRegister(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
+        model.put(BREADCRUMB,"Register Student");
+        model.put(TITLE,"Student Registration");
         return "secure/student/student_register";
     }
 
@@ -64,6 +69,8 @@ public class StudentController extends AbstractController {
     public String studentList(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
         model.addAttribute("studentModels", transformer.transformStudents(students));
+        model.put(BREADCRUMB,"Student List");
+        model.put(TITLE,"Student List");
         return "secure/student/student_list";
     }
 

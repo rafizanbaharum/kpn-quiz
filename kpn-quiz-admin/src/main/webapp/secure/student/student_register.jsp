@@ -45,7 +45,10 @@
     <jsp:include page="/secure/include/student_leftbar.jsp" />
     <div class="main-content">
     <div class="container">
-        <jsp:include page="/secure/include/student_breadcrumb.jsp" />
+        <jsp:include page="/secure/include/student_breadcrumb.jsp" >
+            <jsp:param name="BREADCRUMB" value="${STUDENT_BREADCRUMB}" />
+            <jsp:param name="TITLE" value="${STUDENT_TITLE}" />
+        </jsp:include>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -72,7 +75,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">
-                                            Student Name <span class="symbol required"></span>
+                                            Student Name ${STUDENT_BREADCRUMB} <span class="symbol required"></span>
                                         </label>
                                         <form:input path="name" placeholder="Insert your student Name"
                                                     cssClass="form-control"/>
