@@ -19,7 +19,7 @@ public interface CompetitionManager {
 
     QaQuiz getCurrentQuiz();
 
-    QaParticipant findParticipant(QaQuiz quiz, QaUser user);
+    QaParticipant findCurrentParticipant(QaQuiz quiz);
 
     QaQuestion findQuestionById(Long id);
 

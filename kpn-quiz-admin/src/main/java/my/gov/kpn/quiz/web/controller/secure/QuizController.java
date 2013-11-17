@@ -94,7 +94,7 @@ public class QuizController extends AbstractController {
         competitionManager.processGradebook(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully processed");
-        return "redirect:/secure/round/view/";// + round.getId();
+        return "redirect:/secure/round/view/" + quiz.getId();
     }
 
     @RequestMapping(value = "/init/{id}", method = {RequestMethod.GET})

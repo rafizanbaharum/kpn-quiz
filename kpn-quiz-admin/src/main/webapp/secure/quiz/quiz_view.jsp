@@ -175,25 +175,17 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-3">
-                                    <button class="btn btn-yellow btn-block" type="submit">
-                                        Edit <i class="icon-circle-arrow-right"></i>
-                                    </button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-blue btn-block" type="submit">
-                                        Init <i class="icon-circle-arrow-right"></i>
-                                    </button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-purple btn-block" type="submit">
-                                        Process <i class="icon-circle-arrow-right"></i>
-                                    </button>
-                                </div>
-                                <div class="col-md-3">
-                                    <button class="btn btn-red btn-block" type="submit">
-                                        Remove <i class="icon-circle-arrow-right"></i>
-                                    </button>
+                                <div class="col-md-12">
+                                    <div class="btn-group btn-group-justified">
+                                        <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
+                                           class="btn btn-dark-beige">Edit</a>
+                                        <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
+                                           class="btn btn-dark-beige">Init</a>
+                                        <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
+                                           class="btn btn-dark-beige">Process</a>
+                                        <a href="${pageContext.request.contextPath}/secure/quiz/remove"
+                                           class="btn btn-dark-beige">Remove</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,6 @@ import com.extjs.gxt.ui.client.data.BaseListLoadResult;
 import com.extjs.gxt.ui.client.data.ListLoadResult;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.util.Utils;
-import my.gov.kpn.quiz.core.dao.QaQuizDao;
 import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.core.model.QaQuiz;
@@ -50,9 +49,7 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
         QaQuestion question = competitionManager.findQuestionById(model.getId());
         QaQuiz quiz = GlobalRegistry.getQuiz();
-        QaUser user = Utils.getCurrentUser();
-        QaParticipant participant = competitionManager.findParticipant(quiz, user);
-
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
         competitionManager.updateAnswer(participant, question, answerIndex);
     }
 
@@ -63,8 +60,7 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
         QaQuestion question = competitionManager.findQuestionById(model.getId());
         QaQuiz quiz = GlobalRegistry.getQuiz();
-        QaUser user = Utils.getCurrentUser();
-        QaParticipant participant = competitionManager.findParticipant(quiz, user);
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
 
         competitionManager.updateAnswer(participant, question, answerResponse);
     }

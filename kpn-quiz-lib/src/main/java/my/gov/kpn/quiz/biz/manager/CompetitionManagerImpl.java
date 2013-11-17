@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.rmi.CORBA.Util;
 import java.util.List;
 
 /**
@@ -66,8 +67,8 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public QaParticipant findParticipant(QaQuiz quiz, QaUser user) {
-        return participantDao.find(quiz, user);
+    public QaParticipant findCurrentParticipant(QaQuiz quiz) {
+        return participantDao.find(quiz, Utils.getCurrentUser());
     }
 
     @Override

@@ -50,6 +50,7 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
                 "and a.participant = :participant " +
                 "and a.metadata.state = :state ");
         query.setEntity("quiz", quiz);
+        query.setEntity("participant", participant);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return (QaGradebook) query.uniqueResult();
     }

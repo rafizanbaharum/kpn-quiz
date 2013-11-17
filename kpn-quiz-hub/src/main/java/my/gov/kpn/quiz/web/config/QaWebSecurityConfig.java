@@ -27,7 +27,6 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/resources/**")
-                .antMatchers("/quiz/**")
                 .antMatchers("/gxt/**");
     }
 
@@ -41,7 +40,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
                 .antMatchers("/gxt/**").permitAll()
-                .antMatchers("/quiz/**").permitAll()
+                .antMatchers("/quiz/**").hasRole("USER")
                 .antMatchers("/secure/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
