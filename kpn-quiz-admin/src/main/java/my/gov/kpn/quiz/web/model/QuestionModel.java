@@ -4,9 +4,10 @@ package my.gov.kpn.quiz.web.model;
  * @author rafizan.baharum
  * @since 11/15/13
  */
-public class QuestionModel extends MetaModel{
+public class QuestionModel extends MetaModel {
 
     private String statement;
+    private String answerKey;
     private int weight;
     private int difficulty;
 
@@ -32,5 +33,13 @@ public class QuestionModel extends MetaModel{
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public String getAnswerKey() {
+        return answerKey;
+    }
+
+    public void setAnswerKey(String answerKey) {
+        this.answerKey = answerKey;
     }
 }

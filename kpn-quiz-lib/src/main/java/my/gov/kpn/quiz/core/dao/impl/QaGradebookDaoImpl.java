@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.impl.QaGradebookImpl;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
@@ -41,6 +42,7 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     }
 
     @Override
+    @Cacheable(value = "gradebookRegion")
     public QaGradebook find(QaParticipant participant, QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaGradebook a where " +
@@ -127,12 +129,29 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     }
 
     @Override
+    public void updateItem(QaGradebook gradebook, QaGradebookItem item, QaUser user) {
+        Validate.notNull(gradebook, "Gradebook should not be null");
+        Validate.notNull(item, "Item should not be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        item.setGradebook(gradebook);
+
+        // prepare metadata
+        QaMetadata metadata = item.getMetadata();
+        metadata.setState(QaMetaState.ACTIVE);
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifier(user.getId());
+        item.setMetadata(metadata);
+        session.update(item);
+    }
+
+    @Override
     public void removeItem(QaGradebook gradebook, QaGradebookItem item, QaUser user) {
-        // TODO
+        throw new UnsupportedOperationException(); // TODO
     }
 
     @Override
     public void deleteItem(QaGradebook Gradebook, QaGradebookItem item, QaUser user) {
-        // TODO
+        throw new UnsupportedOperationException(); // TODO
     }
 }

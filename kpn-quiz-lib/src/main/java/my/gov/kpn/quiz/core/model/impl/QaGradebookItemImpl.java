@@ -19,13 +19,15 @@ public class QaGradebookItemImpl implements QaGradebookItem, Serializable {
     @SequenceGenerator(name = "SEQ_QA_GRBI", sequenceName = "SEQ_QA_GRBI", allocationSize = 1)
     private Long id;
 
+    @Column(name = "ANSWER_INDEX")
+    private Integer answerIndex;
+
+    @Column(name = "ANSWER_RESPONSE")
+    private String answerResponse;
+
     @OneToOne(targetEntity = QaQuestionImpl.class)
     @JoinColumn(name = "QUESTION_ID")
     private QaQuestion question;
-
-    @OneToOne(targetEntity = QaAnswerImpl.class)
-    @JoinColumn(name = "ANSWER_ID")
-    private QaAnswer answer;
 
     @OneToOne(targetEntity = QaGradebookImpl.class)
     @JoinColumn(name = "GRADEBOOK_ID")
@@ -50,12 +52,20 @@ public class QaGradebookItemImpl implements QaGradebookItem, Serializable {
         this.question = question;
     }
 
-    public QaAnswer getAnswer() {
-        return answer;
+    public Integer getAnswerIndex() {
+        return answerIndex;
     }
 
-    public void setAnswer(QaAnswer answer) {
-        this.answer = answer;
+    public void setAnswerIndex(Integer answerIndex) {
+        this.answerIndex = answerIndex;
+    }
+
+    public String getAnswerResponse() {
+        return answerResponse;
+    }
+
+    public void setAnswerResponse(String answerResponse) {
+        this.answerResponse = answerResponse;
     }
 
     public QaGradebook getGradebook() {

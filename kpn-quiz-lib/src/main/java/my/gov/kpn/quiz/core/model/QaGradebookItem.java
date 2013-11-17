@@ -4,7 +4,7 @@ package my.gov.kpn.quiz.core.model;
  * @author rafizan.baharum
  * @since 11/8/13
  */
-public interface QaGradebookItem extends QaMetaObject{
+public interface QaGradebookItem extends QaMetaObject {
 
     /**
      * @return
@@ -16,10 +16,16 @@ public interface QaGradebookItem extends QaMetaObject{
     /**
      * @return
      */
-    QaAnswer getAnswer();
+    Integer getAnswerIndex();
 
-    void setAnswer(QaAnswer answer);
+    void setAnswerIndex(Integer answerIndex);
 
+    /**
+     * @return
+     */
+    String getAnswerResponse();
+
+    void setAnswerResponse(String answerResponse);
 
     /**
      * @return
@@ -27,6 +33,5 @@ public interface QaGradebookItem extends QaMetaObject{
     QaGradebook getGradebook();
 
     void setGradebook(QaGradebook gradebook);
-
 
 }

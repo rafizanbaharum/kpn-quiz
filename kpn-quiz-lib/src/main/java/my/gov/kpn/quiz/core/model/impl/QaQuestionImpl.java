@@ -30,9 +30,6 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
     @Column(name = "ANSWER_INDEX")
     private Integer answerIndex;
 
-    @Column(name = "ANSWER_KEY")
-    private String answerKey;
-
     @Column(name = "DIFFICULTY")
     private QaDifficulty difficulty;
 
@@ -84,14 +81,6 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
 
     public void setAnswerIndex(Integer answerIndex) {
         this.answerIndex = answerIndex;
-    }
-
-    public String getAnswerKey() {
-        return answerKey;
-    }
-
-    public void setAnswerKey(String answerKey) {
-        this.answerKey = answerKey;
     }
 
     public QaQuestionType getQuestionType() {

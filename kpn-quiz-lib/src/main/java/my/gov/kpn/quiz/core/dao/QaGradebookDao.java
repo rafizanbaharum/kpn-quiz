@@ -27,15 +27,17 @@ public interface QaGradebookDao {
 
     Integer count(QaQuiz quiz);
 
-    void save(QaGradebook Gradebook, QaUser user);
+    void save(QaGradebook gradebook, QaUser user);
 
-    void update(QaGradebook Gradebook, QaUser user);
+    void update(QaGradebook gradebook, QaUser user);
 
-    void deactivate(QaGradebook Gradebook, QaUser user);
+    void deactivate(QaGradebook gradebook, QaUser user);
 
-    void addItem(QaGradebook Gradebook, QaGradebookItem item, QaUser user);
+    void addItem(QaGradebook gradebook, QaGradebookItem item, QaUser user);
 
-    void removeItem(QaGradebook Gradebook, QaGradebookItem item, QaUser user);
+    void updateItem(QaGradebook gradebook, QaGradebookItem item, QaUser user);
 
-    void deleteItem(QaGradebook Gradebook, QaGradebookItem item, QaUser user);
+    void removeItem(QaGradebook gradebook, QaGradebookItem item, QaUser user);
+
+    void deleteItem(QaGradebook gradebook, QaGradebookItem item, QaUser user);
 }

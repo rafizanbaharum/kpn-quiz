@@ -35,7 +35,6 @@ public interface CompetitionManager {
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
 
-
     void saveRound(QaRound round);
 
     void updateRound(QaRound round);
@@ -54,7 +53,9 @@ public interface CompetitionManager {
 
     void setCurrentQuiz(QaQuiz quiz);
 
-    void updateAnswer(QaParticipant participant, QaQuestion question);
+    void updateAnswer(QaParticipant participant, QaQuestion question, Integer answerIndex);
+
+    void updateAnswer(QaParticipant participant, QaQuestion question, String answerResponse);
 
     Integer countParticipant(QaRound round);
 }

@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookImpl;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookItemImpl;
 import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
+import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,7 +124,26 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public void updateAnswer(QaParticipant participant, QaQuestion question) {
+    public void updateAnswer(QaParticipant participant, QaQuestion question, Integer answerIndex) {
+        QaQuiz currentQuiz = getCurrentQuiz();
+        QaGradebook gradebook = gradebookDao.find(participant, currentQuiz);
+        QaGradebookItem item = gradebookDao.findItem(participant, currentQuiz, question);
+
+        Validate.notNull(item, "Item should not be null");
+        item.setAnswerIndex(answerIndex);
+        gradebookDao.updateItem(gradebook, item, Utils.getCurrentUser());
+    }
+
+    @Override
+    public void updateAnswer(QaParticipant participant, QaQuestion question, String answerResponse) {
+        QaQuiz currentQuiz = getCurrentQuiz();
+        QaGradebook gradebook = gradebookDao.find(participant, currentQuiz);
+        QaGradebookItem item = gradebookDao.findItem(participant, currentQuiz, question);
+
+        Validate.notNull(item, "Item should not be null");
+        item.setAnswerResponse(answerResponse);
+        gradebookDao.updateItem(gradebook, item, Utils.getCurrentUser());
+
     }
 
     @Override

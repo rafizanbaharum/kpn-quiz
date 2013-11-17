@@ -14,18 +14,23 @@ public interface QaQuestion extends QaMetaObject {
     void setStatement(String statement);
 
     /**
+     * For MultipleChoiceQuestion
+     * 1-A
+     * 2-B
+     * 3-C
+     * 4-D
+     * <p/>
+     * For BooleanQuestion
+     * O-FALSE
+     * 1-TRUE
+     * <p/>
+     * N/A to SubjectiveQuestion
+     *
      * @return
      */
     Integer getAnswerIndex();
 
     void setAnswerIndex(Integer answerIndex);
-
-    /**
-     * @return
-     */
-    String getAnswerKey();
-
-    void setAnswerKey(String answerKey);
 
     /**
      * @return

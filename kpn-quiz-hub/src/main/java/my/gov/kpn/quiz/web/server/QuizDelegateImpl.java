@@ -70,7 +70,5 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
         QaParticipant participant = competitionManager.findParticipant(quiz, user);
 
         competitionManager.updateAnswer(participant, question);
-
-
     }
 }

@@ -100,7 +100,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question1.setChoice2("Vietnam");
         question1.setChoice3("Myanmar");
         question1.setChoice4("Timor-Leste");
-        question1.setAnswerKey("D");
         question1.setAnswerIndex(4);
         log.debug("adding question to quiz");
         quizDao.addQuestion(quiz, question1, root);
@@ -113,7 +112,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question2.setChoice2("Kyat");
         question2.setChoice3("Peso");
         question2.setChoice4("Dong");
-        question2.setAnswerKey("A");
         question2.setAnswerIndex(1);
         quizDao.addQuestion(quiz, question2, root);
 
@@ -125,7 +123,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question3.setChoice2("Malaysia");
         question3.setChoice3("Vietnam");
         question3.setChoice4("Cambodia");
-        question3.setAnswerKey("A");
         question3.setAnswerIndex(1);
         quizDao.addQuestion(quiz, question3, root);
 
@@ -138,7 +135,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question4.setChoice2("Zone of Punctuality, Freedom and Nobility");
         question4.setChoice3("Zone of Peace, Freedom and Neutrality");
         question4.setChoice4("Zone of Prosperity, Free trade and Navigation");
-        question4.setAnswerKey("D");
         question4.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question4, root);
 
@@ -150,7 +146,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question5.setChoice2("ASEAN Ministerial Meeting on Social, Women and Development.");
         question5.setChoice3("ASEAN Ministerial Meeting on Society, Welfare and Development");
         question5.setChoice4("ASEAN Ministerial Meeting on Society, Women and Developmen");
-        question5.setAnswerKey("A");
         question5.setAnswerIndex(1);
         quizDao.addQuestion(quiz, question5, root);
 
@@ -162,7 +157,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question6.setChoice2("Myanmar");
         question6.setChoice3("Laos");
         question6.setChoice4("Brunei");
-        question6.setAnswerKey("A");
         question6.setAnswerIndex(1);
         quizDao.addQuestion(quiz, question6, root);
 
@@ -175,7 +169,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question7.setChoice2("Gloria Macapagal Arroyo");
         question7.setChoice3("Corazon Aquino");
         question7.setChoice4("Joseph Estrada");
-        question7.setAnswerKey("A");
         question7.setAnswerIndex(1);
         quizDao.addQuestion(quiz, question7, root);
 
@@ -188,7 +181,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question8.setChoice2("Presidential");
         question8.setChoice3("Socialist");
         question8.setChoice4("Monarchy");
-        question8.setAnswerKey("C");
         question8.setAnswerIndex(3);
         quizDao.addQuestion(quiz, question8, root);
 
@@ -201,7 +193,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question9.setChoice2("Sabah");
         question9.setChoice3("Singapore");
         question9.setChoice4("Perlis");
-        question9.setAnswerKey("C");
         question9.setAnswerIndex(3);
         quizDao.addQuestion(quiz, question9, root);
 
@@ -214,7 +205,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question10.setChoice2("Brunei hosted its first SEA Games");
         question10.setChoice3("Brunei gained its independence");
         question10.setChoice4("Brunei introduced its first constitution");
-        question10.setAnswerKey("C");
         question10.setAnswerIndex(3);
         quizDao.addQuestion(quiz, question10, root);
 
@@ -226,7 +216,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question11.setChoice2("Water");
         question11.setChoice3("Land");
         question11.setChoice4("Sound");
-        question11.setAnswerKey("D");
         question11.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question11, root);
 
@@ -238,7 +227,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question12.setChoice2("ASEAN Specialised Meteorology Centre");
         question12.setChoice3("ASEAN Coordinating Centre for Humanitarian Assistance in Disaster Management.");
         question12.setChoice4("ASEAN Centre for Biodiversity");
-        question12.setAnswerKey("A");
         question12.setAnswerIndex(1);
         quizDao.addQuestion(quiz, question12, root);
 
@@ -250,7 +238,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question13.setChoice2("Dragon Boat Races");
         question13.setChoice3("That Luang Festival");
         question13.setChoice4("La Tomatina");
-        question13.setAnswerKey("D");
         question13.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question13, root);
 
@@ -263,7 +250,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question14.setChoice2("Mingalaba");
         question14.setChoice3("Kwahaup");
         question14.setChoice4("Sawaddee");
-        question14.setAnswerKey("C");
         question14.setAnswerIndex(3);
         quizDao.addQuestion(quiz, question14, root);
 
@@ -276,7 +262,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question15.setChoice2("Singapore");
         question15.setChoice3("Myanmar");
         question15.setChoice4("Indonesia");
-        question15.setAnswerKey("D");
         question15.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question15, root);
 
@@ -289,7 +274,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question16.setChoice2("Singapore");
         question16.setChoice3("Thailand");
         question16.setChoice4("Brunei");
-        question16.setAnswerKey("D");
         question16.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question16, root);
 
@@ -301,7 +285,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question17.setChoice2("Japan");
         question17.setChoice3("United States");
         question17.setChoice4("China");
-        question17.setAnswerKey("D");
         question17.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question17, root);
 
@@ -313,7 +296,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question18.setChoice2("Bangkok Treaty");
         question18.setChoice3("Peace Treaty");
         question18.setChoice4("Bali Concord");
-        question18.setAnswerKey("B");
         question18.setAnswerIndex(2);
         quizDao.addQuestion(quiz, question18, root);
 
@@ -325,7 +307,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question19.setChoice2("High Human Development");
         question19.setChoice3("Medium Human Development");
         question19.setChoice4("Low Human Development");
-        question19.setAnswerKey("B");
         question19.setAnswerIndex(2);
         quizDao.addQuestion(quiz, question19, root);
 
@@ -337,7 +318,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question20.setChoice2("400,000");
         question20.setChoice3("700,000");
         question20.setChoice4("1 Million");
-        question20.setAnswerKey("B");
         question20.setAnswerIndex(2);
         quizDao.addQuestion(quiz, question20, root);
 
@@ -349,7 +329,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question21.setChoice2("Medan");
         question21.setChoice3("Surabaya");
         question21.setChoice4("Jogjakarta");
-        question21.setAnswerKey("C");
         question21.setAnswerIndex(3);
         quizDao.addQuestion(quiz, question21, root);
 
@@ -361,7 +340,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question22.setChoice2("1989");
         question22.setChoice3("1999");
         question22.setChoice4("2009");
-        question22.setAnswerKey("B");
         question22.setAnswerIndex(2);
         quizDao.addQuestion(quiz, question22, root);
 
@@ -373,7 +351,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question23.setChoice2("BJ Habibie");
         question23.setChoice3("Abdul Rahman Wahid");
         question23.setChoice4("Amien Rais");
-        question23.setAnswerKey("D");
         question23.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question23, root);
 
@@ -385,7 +362,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question24.setChoice2("Cambodia");
         question24.setChoice3("Malaysia");
         question24.setChoice4("Myanmar");
-        question24.setAnswerKey("D");
         question24.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question24, root);
 
@@ -399,7 +375,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question25.setChoice2("Cambodia");
         question25.setChoice3("Malaysia");
         question25.setChoice4("Myanmar");
-        question25.setAnswerKey("D");
         question25.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question25, root);
 
@@ -411,7 +386,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question26.setChoice2("Cambodia");
         question26.setChoice3("Malaysia");
         question26.setChoice4("Myanmar");
-        question26.setAnswerKey("D");
         question26.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question26, root);
 
@@ -423,7 +397,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question27.setChoice2("Cambodia");
         question27.setChoice3("Malaysia");
         question27.setChoice4("Myanmar");
-        question27.setAnswerKey("D");
         question27.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question27, root);
 
@@ -435,7 +408,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question28.setChoice2("Cambodia");
         question28.setChoice3("Malaysia");
         question28.setChoice4("Myanmar");
-        question28.setAnswerKey("D");
         question28.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question28, root);
 
@@ -447,7 +419,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question29.setChoice2("Cambodia");
         question29.setChoice3("Malaysia");
         question29.setChoice4("Myanmar");
-        question29.setAnswerKey("D");
         question29.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question29, root);
 
@@ -459,7 +430,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question30.setChoice2("Cambodia");
         question30.setChoice3("Malaysia");
         question30.setChoice4("Myanmar");
-        question30.setAnswerKey("D");
         question30.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question30, root);
 
@@ -471,7 +441,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question31.setChoice2("Cambodia");
         question31.setChoice3("Malaysia");
         question31.setChoice4("Myanmar");
-        question31.setAnswerKey("D");
         question31.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question31, root);
 
@@ -484,7 +453,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question32.setChoice2("Cambodia");
         question32.setChoice3("Malaysia");
         question32.setChoice4("Myanmar");
-        question32.setAnswerKey("D");
         question32.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question32, root);
 
@@ -496,7 +464,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question33.setChoice2("Cambodia");
         question33.setChoice3("Malaysia");
         question33.setChoice4("Myanmar");
-        question33.setAnswerKey("D");
         question33.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question33, root);
 
@@ -508,7 +475,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question34.setChoice2("Cambodia");
         question34.setChoice3("Malaysia");
         question34.setChoice4("Myanmar");
-        question34.setAnswerKey("D");
         question34.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question34, root);
 
@@ -520,7 +486,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question35.setChoice2("Cambodia");
         question35.setChoice3("Malaysia");
         question35.setChoice4("Myanmar");
-        question35.setAnswerKey("D");
         question35.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question35, root);
 
@@ -532,7 +497,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question36.setChoice2("Cambodia");
         question36.setChoice3("Malaysia");
         question36.setChoice4("Myanmar");
-        question36.setAnswerKey("D");
         question36.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question36, root);
 
@@ -544,7 +508,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question37.setChoice2("Cambodia");
         question37.setChoice3("Malaysia");
         question37.setChoice4("Myanmar");
-        question37.setAnswerKey("D");
         question37.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question37, root);
 
@@ -556,7 +519,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question38.setChoice2("Cambodia");
         question38.setChoice3("Malaysia");
         question38.setChoice4("Myanmar");
-        question38.setAnswerKey("D");
         question38.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question38, root);
 
@@ -568,7 +530,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question39.setChoice2("Cambodia");
         question39.setChoice3("Malaysia");
         question39.setChoice4("Myanmar");
-        question39.setAnswerKey("D");
         question39.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question39, root);
 
@@ -580,7 +541,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question40.setChoice2("Cambodia");
         question40.setChoice3("Malaysia");
         question40.setChoice4("Myanmar");
-        question40.setAnswerKey("D");
         question40.setAnswerIndex(4);
         quizDao.addQuestion(quiz, question40, root);
 
@@ -592,7 +552,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question41.setWeight(1D);
         question41.setStatement("Australia is one of ASEAN’s Dialogue Partners.");
         question41.setAnswerIndex(1);
-        question41.setAnswerKey("TRUE");
         quizDao.addQuestion(quiz, question41, root);
 
         QaBooleanQuestion question42 = new QaBooleanQuestionImpl();
@@ -600,7 +559,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question42.setWeight(1D);
         question42.setStatement("Chinese Muslims in Myanmar are called ‘Pantay’");
         question42.setAnswerIndex(1);
-        question42.setAnswerKey("TRUE");
         quizDao.addQuestion(quiz, question42, root);
 
         QaBooleanQuestion question43 = new QaBooleanQuestionImpl();
@@ -608,70 +566,59 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         question43.setWeight(1D);
         question43.setStatement("India is ASEAN’s largest export market.");
         question43.setAnswerIndex(0);
-        question43.setAnswerKey("FALSE");
         quizDao.addQuestion(quiz, question43, root);
 
-       QaBooleanQuestion question44 = new QaBooleanQuestionImpl();
+        QaBooleanQuestion question44 = new QaBooleanQuestionImpl();
         question44.setDifficulty(QaDifficulty.EASY);
         question44.setWeight(1D);
         question44.setStatement("The Mulu National Park is located in the Philippines.");
         question44.setAnswerIndex(0);
-        question44.setAnswerKey("FALSE");
         quizDao.addQuestion(quiz, question44, root);
 
-       QaBooleanQuestion question45 = new QaBooleanQuestionImpl();
+        QaBooleanQuestion question45 = new QaBooleanQuestionImpl();
         question45.setDifficulty(QaDifficulty.EASY);
         question45.setWeight(1D);
         question45.setStatement("One of the principles of ASEAN Charter is upholding international law with respect to human rights & social justice.");
         question45.setAnswerIndex(1);
-        question45.setAnswerKey("TRUE");
         quizDao.addQuestion(quiz, question45, root);
 
-       QaBooleanQuestion question46 = new QaBooleanQuestionImpl();
+        QaBooleanQuestion question46 = new QaBooleanQuestionImpl();
         question46.setDifficulty(QaDifficulty.EASY);
         question46.setWeight(1D);
         question46.setStatement("Lorentz National Park is one of the ASEAN heritage parks located in Myanmar.");
         question46.setAnswerIndex(0);
-        question46.setAnswerKey("FALSE");
         quizDao.addQuestion(quiz, question46, root);
 
-       QaBooleanQuestion question47 = new QaBooleanQuestionImpl();
+        QaBooleanQuestion question47 = new QaBooleanQuestionImpl();
         question47.setDifficulty(QaDifficulty.EASY);
         question47.setWeight(1D);
         question47.setStatement("There are only three aspects under the ASEAN Socio-Cultural Community pillar.");
         question47.setAnswerIndex(0);
-        question47.setAnswerKey("FALSE");
         quizDao.addQuestion(quiz, question47, root);
 
-       QaBooleanQuestion question48 = new QaBooleanQuestionImpl();
+        QaBooleanQuestion question48 = new QaBooleanQuestionImpl();
         question48.setDifficulty(QaDifficulty.EASY);
         question48.setWeight(1D);
         question48.setStatement("The Presidential Democracy political system is practiced in Thailand.");
         question48.setAnswerIndex(0);
-        question48.setAnswerKey("FALSE");
         quizDao.addQuestion(quiz, question48, root);
 
-       QaBooleanQuestion question49 = new QaBooleanQuestionImpl();
+        QaBooleanQuestion question49 = new QaBooleanQuestionImpl();
         question49.setDifficulty(QaDifficulty.DIFFICULT);
         question49.setWeight(1D);
         question49.setStatement("The official tourism slogan for Laos is “Simply Beautiful”");
         question49.setAnswerIndex(1);
-        question49.setAnswerKey("TRUE");
         quizDao.addQuestion(quiz, question49, root);
     }
 
     private void subjectiveQuestion(QaQuiz quiz) {
-
-
         QaSubjectiveQuestion question4 = new QaSubjectiveQuestionImpl();
         question4.setDifficulty(QaDifficulty.DIFFICULT);
         question4.setWeight(1D);
         question4.setStatement("Describe the security and foreign policies of the Federation of Malaya under Prime Minister Tunku Abdul Rahman");
         question4.setAnswerIndex(0);
-        question4.setAnswerKey("N/A");
         question4.setAnswerGuide("Answer guideline here");
         quizDao.addQuestion(quiz, question4, root);
-
     }
 
 

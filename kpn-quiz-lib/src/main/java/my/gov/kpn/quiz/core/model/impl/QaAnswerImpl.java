@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Table(name = "QA_ANSR")
 @Entity(name = "QaAnswer")
 @Inheritance(strategy = InheritanceType.JOINED)
+@Deprecated
 public abstract class QaAnswerImpl implements QaAnswer, Serializable {
 
     @Id
