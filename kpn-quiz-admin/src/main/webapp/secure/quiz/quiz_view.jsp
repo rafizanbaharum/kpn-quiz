@@ -183,6 +183,8 @@
                                            class="btn btn-dark-beige">Init</a>
                                         <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
                                            class="btn btn-dark-beige">Process</a>
+                                        <a href="${pageContext.request.contextPath}/secure/quiz/tabulates/${quizModel.id}"
+                                           class="btn btn-dark-beige">Process</a>
                                         <a href="${pageContext.request.contextPath}/secure/quiz/remove"
                                            class="btn btn-dark-beige">Remove</a>
                                     </div>

@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.rmi.CORBA.Util;
 import java.util.List;
 
 /**
@@ -139,7 +138,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public void calculateResult(QaQuiz quiz) {
+    public void tabulateResult(QaQuiz quiz) {
         // TODO: not scalable
         // TODO: use chunk? or spring batch?
         List<QaGradebook> gradebooks = gradebookDao.find(quiz);
