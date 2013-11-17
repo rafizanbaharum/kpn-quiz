@@ -15,8 +15,6 @@ public interface CompetitionManager {
 
     QaCompetition findCompetitionByYear(int year);
 
-    QaRound findRoundById(Long id);
-
     QaQuiz findQuizById(Long id);
 
     QaQuiz getCurrentQuiz();
@@ -29,19 +27,13 @@ public interface CompetitionManager {
 
     QaGradebookItem findGradebookItem(QaParticipant participant, QaQuiz quiz, QaQuestion question);
 
-    List<QaRound> findRounds();
-
-    List<QaQuiz> findQuizzes(QaRound round);
+    List<QaQuiz> findQuizzes(QaCompetition competition);
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
 
-    void saveRound(QaRound round);
+    void processGradebook(QaQuiz quiz);
 
-    void updateRound(QaRound round);
-
-    void processGradebook(QaRound round);
-
-    void processParticipant(QaRound round);
+    void processParticipant(QaQuiz quiz);
 
     void saveQuiz(QaQuiz quiz);
 
@@ -57,7 +49,7 @@ public interface CompetitionManager {
 
     void updateAnswer(QaParticipant participant, QaQuestion question, String answerResponse);
 
-    Integer countParticipant(QaRound round);
+    Integer countParticipant(QaQuiz quiz);
 
-    void calculateResult(QaRound round, QaQuiz quiz);
+    void calculateResult(QaQuiz quiz);
 }

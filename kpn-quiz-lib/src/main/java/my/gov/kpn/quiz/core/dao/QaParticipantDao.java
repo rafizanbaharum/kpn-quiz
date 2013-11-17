@@ -12,11 +12,11 @@ public interface QaParticipantDao {
 
     QaParticipant findById(Long id);
 
-    QaParticipant find(QaRound round, QaUser user);
+    QaParticipant find(QaQuiz quiz, QaUser user);
 
-    List<QaParticipant> findAll(QaRound round);
+    List<QaParticipant> findAll(QaQuiz quiz);
 
-    List<QaParticipant> find(QaRound round, Integer offset, Integer limit);
+    List<QaParticipant> find(QaQuiz quiz, Integer offset, Integer limit);
 
     Integer count();
 

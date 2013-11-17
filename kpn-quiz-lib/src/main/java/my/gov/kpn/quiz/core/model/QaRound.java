@@ -6,6 +6,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/7/13
  */
+@Deprecated
 public interface QaRound extends QaMetaObject{
 
     /**

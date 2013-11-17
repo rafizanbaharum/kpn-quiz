@@ -9,9 +9,9 @@ public interface QaParticipant extends QaMetaObject {
     /**
      * @return
      */
-    QaRound getRound();
+    QaQuiz getQuiz();
 
-    void setRound(QaRound round);
+    void setQuiz(QaQuiz quiz);
 
     /**
      * @return

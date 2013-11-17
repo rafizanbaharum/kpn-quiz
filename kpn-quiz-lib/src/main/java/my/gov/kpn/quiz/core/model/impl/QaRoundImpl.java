@@ -10,8 +10,9 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 7/10/13
  */
-@Table(name = "QA_ROND")
-@Entity(name = "QaRound")
+//@Table(name = "QA_ROND")
+//@Entity(name = "QaRound")
+@Deprecated
 public class QaRoundImpl implements QaRound, Serializable {
 
     @Id

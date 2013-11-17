@@ -18,13 +18,6 @@ public interface QaGradebook extends QaMetaObject {
     /**
      * @return
      */
-    QaRound getRound();
-
-    void setRound(QaRound round);
-
-    /**
-     * @return
-     */
     QaParticipant getParticipant();
 
     void setParticipant(QaParticipant participant);
@@ -35,5 +28,4 @@ public interface QaGradebook extends QaMetaObject {
     List<QaGradebookItem> getItems();
 
     void setItems(List<QaGradebookItem> items);
-
 }

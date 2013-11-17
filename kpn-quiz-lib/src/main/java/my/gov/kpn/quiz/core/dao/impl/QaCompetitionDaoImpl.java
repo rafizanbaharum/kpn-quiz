@@ -29,15 +29,15 @@ public class QaCompetitionDaoImpl extends DaoSupport<Long, QaCompetition, QaComp
     }
 
     @Override
-        public QaCompetition findByYear(Integer year) {
-            Session session = sessionFactory.getCurrentSession();
-            Query query = session.createQuery("select a from QaCompetition a where " +
-                    "a.year = :year " +
-                    "and a.metadata.state = :state ");
-            query.setInteger("year", year);
-            query.setInteger("state", QaMetaState.ACTIVE.ordinal());
-            return (QaCompetition) query.uniqueResult();
-        }
+    public QaCompetition findByYear(Integer year) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaCompetition a where " +
+                "a.year = :year " +
+                "and a.metadata.state = :state ");
+        query.setInteger("year", year);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return (QaCompetition) query.uniqueResult();
+    }
 
     @Override
     public List<QaCompetition> find(Integer offset, Integer limit) {
@@ -66,37 +66,37 @@ public class QaCompetitionDaoImpl extends DaoSupport<Long, QaCompetition, QaComp
 
 
     @Override
-    public void addRound(QaCompetition competition, QaRound round, QaUser user) {
+    public void addQuiz(QaCompetition competition, QaQuiz quiz, QaUser user) {
         Validate.notNull(competition, "Competition should not be null");
-        Validate.notNull(round, "Round should not be null");
+        Validate.notNull(quiz, "Quiz should not be null");
 
         Session session = sessionFactory.getCurrentSession();
-        round.setCompetition(competition);
+        quiz.setCompetition(competition);
 
         // prepare metadata
         QaMetadata metadata = new QaMetadata();
         metadata.setState(QaMetaState.ACTIVE);
         metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         metadata.setCreator(user.getId());
-        round.setMetadata(metadata);
-        session.save(round);
+        quiz.setMetadata(metadata);
+        session.save(quiz);
     }
 
     @Override
-    public void removeRound(QaCompetition competition, QaRound round, QaUser user) {
+    public void removeQuiz(QaCompetition competition, QaQuiz quiz, QaUser user) {
         Validate.notNull(competition, "Competition should not be null");
-        Validate.notNull(round, "Round should not be null");
+        Validate.notNull(quiz, "Quiz should not be null");
 
         Session session = sessionFactory.getCurrentSession();
-        round.setCompetition(competition);
+        quiz.setCompetition(competition);
 
         // prepare metadata
-        QaMetadata metadata = round.getMetadata();
+        QaMetadata metadata = quiz.getMetadata();
         metadata.setState(QaMetaState.INACTIVE);
         metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
         metadata.setDeleter(user.getId());
-        round.setMetadata(metadata);
-        session.update(round);
+        quiz.setMetadata(metadata);
+        session.update(quiz);
     }
 }
 

@@ -24,10 +24,6 @@ public class QaGradebookImpl implements QaGradebook, Serializable {
     @JoinColumn(name = "QUIZ_ID")
     private QaQuiz quiz;
 
-    @OneToOne(targetEntity = QaQuizImpl.class)
-    @JoinColumn(name = "ROUND_ID")
-    private QaRound round;
-
     @OneToOne(targetEntity = QaParticipantImpl.class)
     @JoinColumn(name = "PARTICIPANT_ID")
     private QaParticipant participant;
@@ -52,14 +48,6 @@ public class QaGradebookImpl implements QaGradebook, Serializable {
 
     public void setQuiz(QaQuiz quiz) {
         this.quiz = quiz;
-    }
-
-    public QaRound getRound() {
-        return round;
-    }
-
-    public void setRound(QaRound round) {
-        this.round = round;
     }
 
     public QaParticipant getParticipant() {

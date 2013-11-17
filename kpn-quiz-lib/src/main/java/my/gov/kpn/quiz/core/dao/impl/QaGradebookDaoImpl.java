@@ -103,21 +103,12 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     }
 
     @Override
-    public List<QaGradebook> find(QaRound round) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select a from QaGradebook a where " +
-                "a.round = :round" +
-                "and a.metadata.state = :state ");
-        query.setEntity("round", round);
-        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
-        return query.list();
-    }
-
-    @Override
     public Integer count(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(a) from QaGradebook a where " +
-                "a.metadata.state = :state");
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state");
+        query.setEntity("quiz", quiz);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();
     }

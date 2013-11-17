@@ -2,7 +2,7 @@ package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaMetadata;
-import my.gov.kpn.quiz.core.model.QaRound;
+import my.gov.kpn.quiz.core.model.QaQuiz;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,8 +28,8 @@ public class QaCompetitionImpl implements QaCompetition, Serializable {
     @Column(name = "LOCKED")
     private boolean locked;
 
-    @OneToMany(targetEntity = QaRoundImpl.class, mappedBy = "competition")
-    private List<QaRound> rounds;
+    @OneToMany(targetEntity = QaQuizImpl.class, mappedBy = "competition")
+    private List<QaQuiz> quizzes;
 
     @Embedded
     private QaMetadata metadata = new QaMetadata();
@@ -58,12 +58,12 @@ public class QaCompetitionImpl implements QaCompetition, Serializable {
         this.locked = locked;
     }
 
-    public List<QaRound> getRounds() {
-        return rounds;
+    public List<QaQuiz> getQuizzes() {
+        return quizzes;
     }
 
-    public void setRounds(List<QaRound> rounds) {
-        this.rounds = rounds;
+    public void setQuizzes(List<QaQuiz> quizzes) {
+        this.quizzes = quizzes;
     }
 
     public QaMetadata getMetadata() {

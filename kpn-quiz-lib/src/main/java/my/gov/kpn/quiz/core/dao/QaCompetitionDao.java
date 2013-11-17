@@ -1,7 +1,7 @@
 package my.gov.kpn.quiz.core.dao;
 
 import my.gov.kpn.quiz.core.model.QaCompetition;
-import my.gov.kpn.quiz.core.model.QaRound;
+import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaUser;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public interface QaCompetitionDao {
 
     void deactivate(QaCompetition competition, QaUser user);
 
-    void addRound(QaCompetition competition, QaRound round, QaUser user);
+    void addQuiz(QaCompetition competition, QaQuiz quiz, QaUser user);
 
-    void removeRound(QaCompetition competition, QaRound round, QaUser user);
+    void removeQuiz(QaCompetition competition, QaQuiz quiz, QaUser user);
 }

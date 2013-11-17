@@ -40,9 +40,23 @@ public interface QaQuiz extends QaMetaObject {
     /**
      * @return
      */
-    QaRound getRound();
+    boolean isProcessed();
 
-    void setRound(QaRound round);
+    void setProcessed(boolean processed);
+
+    /**
+     * @return
+     */
+    boolean isLocked();
+
+    void setLocked(boolean locked);
+
+    /**
+     * @return
+     */
+    QaCompetition getCompetition();
+
+    void setCompetition(QaCompetition competition);
 
 
     /**
@@ -51,4 +65,21 @@ public interface QaQuiz extends QaMetaObject {
     List<QaQuestion> getQuestions();
 
     void setQuestions(List<QaQuestion> questions);
+
+    /**
+     * @return
+     */
+    List<QaParticipant> getParticipants();
+
+    void setParticipants(List<QaParticipant> participants);
+
+
+    /**
+     * @return
+     */
+    List<QaGradebook> getGradebooks();
+
+    void setGradebooks(List<QaGradebook> gradebooks);
+
 }
+

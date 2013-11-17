@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.core.dao;
 
-import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaRound;
 import my.gov.kpn.quiz.core.model.QaUser;
@@ -11,6 +10,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/9/13
  */
+@Deprecated
 public interface QaRoundDao {
 
     QaRound findById(Long id);
@@ -32,9 +32,5 @@ public interface QaRoundDao {
     void addQuiz(QaRound round, QaQuiz quiz, QaUser user);
 
     void removeQuiz(QaRound round, QaQuiz quiz, QaUser user);
-
-    void addParticipant(QaRound round, QaParticipant participant, QaUser user);
-
-    void removeParticipant(QaRound round, QaParticipant participant, QaUser user);
 
 }

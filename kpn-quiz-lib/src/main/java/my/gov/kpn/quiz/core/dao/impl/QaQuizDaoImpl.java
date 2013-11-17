@@ -51,13 +51,13 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     }
 
     @Override
-    public List<QaQuiz> find(QaRound round) {
+    public List<QaQuiz> find(QaCompetition competition) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +
-                "a.round = :round " +
+                "a.competiton = :competiton " +
                 "and a.metadata.state = :state " +
                 "order by a.id");
-        query.setEntity("round", round);
+        query.setEntity("competiton", competition);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return query.list();
     }
@@ -93,6 +93,17 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(a) from QaQuiz a where " +
                 "a.metadata.state = :state");
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public Integer countParticipant(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(a) from QaParticipant a where " +
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state");
+        query.setEntity("quiz", quiz);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();
     }
@@ -135,5 +146,40 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         question.setMetadata(metadata);
         session.update(question);
     }
+
+    @Override
+    public void addParticipant(QaQuiz quiz, QaParticipant participant, QaUser user) {
+        Validate.notNull(quiz, "Quiz should not be null");
+        Validate.notNull(participant, "Participant should not be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        participant.setQuiz(quiz);
+
+//        prepare metadata
+        QaMetadata metadata = new QaMetadata();
+        metadata.setState(QaMetaState.ACTIVE);
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreator(user.getId());
+        participant.setMetadata(metadata);
+        session.save(participant);
+    }
+
+    @Override
+    public void removeParticipant(QaQuiz quiz, QaParticipant participant, QaUser user) {
+        Validate.notNull(quiz, "Quiz should not be null");
+        Validate.notNull(participant, "Participant should not be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        participant.setQuiz(quiz);
+
+//        prepare metadata
+        QaMetadata metadata = quiz.getMetadata();
+        metadata.setState(QaMetaState.INACTIVE);
+        metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setDeleter(user.getId());
+        participant.setMetadata(metadata);
+        session.update(participant);
+    }
+
 }
 

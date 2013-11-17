@@ -1,9 +1,6 @@
 package my.gov.kpn.quiz.core.dao;
 
-import my.gov.kpn.quiz.core.model.QaQuestion;
-import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.core.model.QaRound;
-import my.gov.kpn.quiz.core.model.QaUser;
+import my.gov.kpn.quiz.core.model.*;
 
 import java.util.List;
 
@@ -19,13 +16,15 @@ public interface QaQuizDao {
 
     List<QaQuiz> findAll();
 
-    List<QaQuiz> find(QaRound round);
+    List<QaQuiz> find(QaCompetition competition);
 
     List<QaQuiz> find(Integer offset, Integer limit);
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
 
     Integer count();
+
+    Integer countParticipant(QaQuiz quiz);
 
     void save(QaQuiz quiz, QaUser user);
 
@@ -36,4 +35,9 @@ public interface QaQuizDao {
     void addQuestion(QaQuiz quiz, QaQuestion question, QaUser user);
 
     void removeQuestion(QaQuiz quiz, QaQuestion question, QaUser user);
+
+    void addParticipant(QaQuiz quiz, QaParticipant participant, QaUser user);
+
+    void removeParticipant(QaQuiz quiz, QaParticipant participant, QaUser user);
+
 }

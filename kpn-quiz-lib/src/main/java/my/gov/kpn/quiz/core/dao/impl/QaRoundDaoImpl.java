@@ -16,6 +16,7 @@ import java.util.List;
  * @since 11/9/13
  */
 @Repository("roundDao")
+@Deprecated
 public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> implements QaRoundDao {
 
     // =============================================================================
@@ -81,7 +82,7 @@ public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> imple
         Validate.notNull(round, "Round should not be null");
 
         Session session = sessionFactory.getCurrentSession();
-        quiz.setRound(round);
+//        quiz.setRound(round);
 
         // prepare metadata
         QaMetadata metadata = new QaMetadata();
@@ -98,7 +99,7 @@ public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> imple
         Validate.notNull(quiz, "Quiz should not be null");
 
         Session session = sessionFactory.getCurrentSession();
-        quiz.setRound(round);
+//        quiz.setRound(round);
 
         // prepare metadata
         QaMetadata metadata = round.getMetadata();
@@ -110,38 +111,38 @@ public class QaRoundDaoImpl extends DaoSupport<Long, QaRound, QaRoundImpl> imple
     }
 
 
-    @Override
-    public void addParticipant(QaRound round, QaParticipant participant, QaUser user) {
-        Validate.notNull(round, "Round should not be null");
-        Validate.notNull(round, "Round should not be null");
-
-        Session session = sessionFactory.getCurrentSession();
-        participant.setRound(round);
-
-        // prepare metadata
-        QaMetadata metadata = new QaMetadata();
-        metadata.setState(QaMetaState.ACTIVE);
-        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        metadata.setCreator(user.getId());
-        participant.setMetadata(metadata);
-        session.save(participant);
-    }
-
-    @Override
-    public void removeParticipant(QaRound round, QaParticipant participant, QaUser user) {
-        Validate.notNull(round, "Round should not be null");
-        Validate.notNull(participant, "Participant should not be null");
-
-        Session session = sessionFactory.getCurrentSession();
-        participant.setRound(round);
-
-        // prepare metadata
-        QaMetadata metadata = round.getMetadata();
-        metadata.setState(QaMetaState.INACTIVE);
-        metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
-        metadata.setDeleter(user.getId());
-        participant.setMetadata(metadata);
-        session.update(participant);
-    }
+//    @Override
+//    public void addParticipant(QaRound round, QaParticipant participant, QaUser user) {
+//        Validate.notNull(round, "Round should not be null");
+//        Validate.notNull(round, "Round should not be null");
+//
+//        Session session = sessionFactory.getCurrentSession();
+//        participant.setRound(round);
+//
+//        prepare metadata
+//        QaMetadata metadata = new QaMetadata();
+//        metadata.setState(QaMetaState.ACTIVE);
+//        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+//        metadata.setCreator(user.getId());
+//        participant.setMetadata(metadata);
+//        session.save(participant);
+//    }
+//
+//    @Override
+//    public void removeParticipant(QaRound round, QaParticipant participant, QaUser user) {
+//        Validate.notNull(round, "Round should not be null");
+//        Validate.notNull(participant, "Participant should not be null");
+//
+//        Session session = sessionFactory.getCurrentSession();
+//        participant.setRound(round);
+//
+//        prepare metadata
+//        QaMetadata metadata = round.getMetadata();
+//        metadata.setState(QaMetaState.INACTIVE);
+//        metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
+//        metadata.setDeleter(user.getId());
+//        participant.setMetadata(metadata);
+//        session.update(participant);
+//    }
 }
 

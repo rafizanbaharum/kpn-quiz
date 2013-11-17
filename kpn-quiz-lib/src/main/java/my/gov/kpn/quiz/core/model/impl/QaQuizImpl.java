@@ -27,6 +27,9 @@ public class QaQuizImpl implements QaQuiz, Serializable {
     @Column(name = "LOCKED")
     private boolean locked;
 
+    @Column(name = "PROCESSED")
+    private boolean processed;
+
     @Column(name = "CURRENT")
     private boolean current;
 
@@ -36,12 +39,18 @@ public class QaQuizImpl implements QaQuiz, Serializable {
     @Column(name = "END_DATE")
     private Date endDate;
 
-    @OneToOne(targetEntity = QaRoundImpl.class)
-    @JoinColumn(name = "ROUND_ID")
-    private QaRound round;
+    @OneToOne(targetEntity = QaCompetitionImpl.class)
+    @JoinColumn(name = "COMPETITION_ID")
+    private QaCompetition competition;
 
     @OneToMany(targetEntity = QaQuestionImpl.class, mappedBy = "quiz")
     private List<QaQuestion> questions;
+
+    @OneToMany(targetEntity = QaParticipantImpl.class, mappedBy = "quiz")
+    private List<QaParticipant> participants;
+
+    @OneToMany(targetEntity = QaGradebookImpl.class, mappedBy = "quiz")
+    private List<QaGradebook> gradebooks;
 
     @Embedded
     private QaMetadata metadata = new QaMetadata();
@@ -86,6 +95,14 @@ public class QaQuizImpl implements QaQuiz, Serializable {
         this.locked = locked;
     }
 
+    public boolean isProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(boolean processed) {
+        this.processed = processed;
+    }
+
     public boolean isCurrent() {
         return current;
     }
@@ -94,20 +111,37 @@ public class QaQuizImpl implements QaQuiz, Serializable {
         this.current = current;
     }
 
-    public QaRound getRound() {
-        return round;
-    }
-
-    public void setRound(QaRound round) {
-        this.round = round;
-    }
-
     public List<QaQuestion> getQuestions() {
         return questions;
     }
 
     public void setQuestions(List<QaQuestion> questions) {
         this.questions = questions;
+    }
+
+
+    public QaCompetition getCompetition() {
+        return competition;
+    }
+
+    public void setCompetition(QaCompetition competition) {
+        this.competition = competition;
+    }
+
+    public List<QaParticipant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<QaParticipant> participants) {
+        this.participants = participants;
+    }
+
+    public List<QaGradebook> getGradebooks() {
+        return gradebooks;
+    }
+
+    public void setGradebooks(List<QaGradebook> gradebooks) {
+        this.gradebooks = gradebooks;
     }
 
     public QaMetadata getMetadata() {

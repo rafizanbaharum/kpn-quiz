@@ -41,9 +41,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
     private QaCompetitionDao competitionDao;
 
     @Autowired
-    private QaRoundDao roundDao;
-
-    @Autowired
     private QaQuizDao quizDao;
 
     @Autowired
@@ -66,19 +63,15 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         competition.setYear(2013);
         competitionDao.save(competition, root);
 
-        QaRound round1 = new QaRoundImpl();
-        round1.setLocked(false);
-        round1.setProcessed(false);
-        round1.setCompetition(competition);
-        competitionDao.addRound(competition, round1, root);
-
         QaQuiz quiz = new QaQuizImpl();
         quiz.setTitle("PRELIMINARY ROUND ASEAN QUIZ 2012 MALAYSIA");
-        quiz.setRound(round1);
-        quiz.setStartDate(new Date("09:00:00 22/01/2012")); // TODO???
+        quiz.setCompetition(competition);
+        quiz.setStartDate(new Date("09:00:00 22/01/2012"));
         quiz.setEndDate(new Date("10:00:00 22/01/2012"));
         quiz.setCurrent(true);
-        roundDao.addQuiz(round1, quiz, root);
+        quiz.setProcessed(false);
+        quiz.setLocked(false);
+        competitionDao.addQuiz(competition, quiz, root);
     }
 
     @Test

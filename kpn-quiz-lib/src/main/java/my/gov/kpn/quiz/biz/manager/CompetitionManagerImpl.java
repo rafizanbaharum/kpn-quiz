@@ -35,9 +35,6 @@ public class CompetitionManagerImpl implements CompetitionManager {
     private QaQuizDao quizDao;
 
     @Autowired
-    private QaRoundDao roundDao;
-
-    @Autowired
     private QaQuestionDao questionDao;
 
     @Autowired
@@ -70,7 +67,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
 
     @Override
     public QaParticipant findParticipant(QaQuiz quiz, QaUser user) {
-        return participantDao.find(quiz.getRound(), user);
+        return participantDao.find(quiz, user);
     }
 
     @Override
@@ -89,11 +86,6 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public QaRound findRoundById(Long id) {
-        return roundDao.findById(id);
-    }
-
-    @Override
     public QaQuestion findQuestionById(Long id) {
         return questionDao.findById(id);
     }
@@ -109,13 +101,8 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public List<QaQuiz> findQuizzes(QaRound round) {
-        return quizDao.find(round);
-    }
-
-    @Override
-    public List<QaRound> findRounds() {
-        return roundDao.findAll();
+    public List<QaQuiz> findQuizzes(QaCompetition competition) {
+        return quizDao.find(competition);
     }
 
     @Override
@@ -147,15 +134,15 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public Integer countParticipant(QaRound round) {
-        return roundDao.countParticipant(round);
+    public Integer countParticipant(QaQuiz quiz) {
+        return quizDao.countParticipant(quiz);
     }
 
     @Override
-    public void calculateResult(QaRound round, QaQuiz quiz) {
+    public void calculateResult(QaQuiz quiz) {
         // TODO: not scalable
         // TODO: use chunk? or spring batch?
-        List<QaGradebook> gradebooks = gradebookDao.find(round);
+        List<QaGradebook> gradebooks = gradebookDao.find(quiz);
         for (QaGradebook gradebook : gradebooks) {
             Integer result = 0;
             List<QaGradebookItem> items = gradebook.getItems();
@@ -184,48 +171,39 @@ public class CompetitionManagerImpl implements CompetitionManager {
         }
     }
 
-    @Override
-    public void updateRound(QaRound round) {
-        roundDao.update(round, Utils.getCurrentUser());
-    }
 
     @Override
-    public void processGradebook(QaRound round) {
+    public void processGradebook(QaQuiz quiz) {
         log.debug("process gradebook");
-        List<QaQuiz> quizzes = round.getQuizzes();
-        for (QaQuiz quiz : quizzes) {
-            // for every participant
-            // create a gradebook
-            List<QaParticipant> participants = round.getParticipants();
-            log.debug("participant: " + participants.size());
-            for (QaParticipant participant : participants) {
-                QaGradebook gradebook = new QaGradebookImpl();
-                gradebook.setQuiz(quiz);
-                gradebook.setRound(round);
-                gradebook.setParticipant(participant);
-                gradebookDao.save(gradebook, Utils.getCurrentUser());
-                sessionFactory.getCurrentSession().flush();
-                sessionFactory.getCurrentSession().refresh(gradebook);
+        // for every participant
+        // create a gradebook
+        List<QaParticipant> participants = quiz.getParticipants();
+        log.debug("participant: " + participants.size());
+        for (QaParticipant participant : participants) {
+            QaGradebook gradebook = new QaGradebookImpl();
+            gradebook.setQuiz(quiz);
+            gradebook.setParticipant(participant);
+            gradebookDao.save(gradebook, Utils.getCurrentUser());
+            sessionFactory.getCurrentSession().flush();
+            sessionFactory.getCurrentSession().refresh(gradebook);
 
-                List<QaQuestion> questions = quiz.getQuestions();
-                for (QaQuestion question : questions) {
-                    // create item for every question
-                    QaGradebookItem item = new QaGradebookItemImpl();
-                    item.setQuestion(question);
-                    gradebookDao.addItem(gradebook, item, Utils.getCurrentUser());
-                }
-                sessionFactory.getCurrentSession().flush();
+            List<QaQuestion> questions = quiz.getQuestions();
+            for (QaQuestion question : questions) {
+                // create item for every question
+                QaGradebookItem item = new QaGradebookItemImpl();
+                item.setQuestion(question);
+                gradebookDao.addItem(gradebook, item, Utils.getCurrentUser());
             }
+            sessionFactory.getCurrentSession().flush();
         }
 
-        // update round
-        round.setProcessed(true);
-        roundDao.update(round, Utils.getCurrentUser());
+        quiz.setProcessed(true);
+        quizDao.update(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void processParticipant(QaRound round) {
+    public void processParticipant(QaQuiz quiz) {
         // TODO: not scalable
         // TODO: use chunk? or spring batch?
         // TODO: filter out non-student??
@@ -235,17 +213,13 @@ public class CompetitionManagerImpl implements CompetitionManager {
             QaActor actor = user.getActor();
             if (null != actor && actor.getActorType().equals(QaActorType.STUDENT)) {
                 QaParticipant participant = new QaParticipantImpl();
-                participant.setRound(round);
+                participant.setQuiz(quiz);
                 participant.setUser(user);
                 participantDao.save(participant, Utils.getCurrentUser());
             }
         }
     }
 
-    @Override
-    public void saveRound(QaRound round) {
-        roundDao.save(round, Utils.getCurrentUser());
-    }
 
     @Override
     public void saveQuiz(QaQuiz quiz) {

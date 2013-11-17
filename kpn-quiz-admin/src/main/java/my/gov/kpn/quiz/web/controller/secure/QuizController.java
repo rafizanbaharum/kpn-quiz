@@ -3,7 +3,6 @@ package my.gov.kpn.quiz.web.controller.secure;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.core.model.QaRound;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.QuizModel;
@@ -35,7 +34,7 @@ public class QuizController extends AbstractController {
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String quizView(@PathVariable Long id, ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(id);
-        model.addAttribute("roundModel", transformer.transform(quiz.getRound()));
+//        model.addAttribute("roundModel", transformer.transform(quiz.getRound()));
         model.addAttribute("quizModel", transformer.transform(quiz));
         model.addAttribute("questionModels", transformer.transformQuestions(competitionManager.findQuestions(quiz)));
         return "secure/quiz/quiz_view";
@@ -79,8 +78,7 @@ public class QuizController extends AbstractController {
     public String quizTabulate(@ModelAttribute("quizModel") QuizModel quizModel,
                                ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
-        QaRound round = quiz.getRound();
-        competitionManager.calculateResult(round, quiz);
+        competitionManager.calculateResult(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully tabulated");
         return "redirect:secure/quiz/view/" + quiz.getId();

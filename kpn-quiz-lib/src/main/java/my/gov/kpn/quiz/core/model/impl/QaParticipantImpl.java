@@ -1,9 +1,6 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaMetadata;
-import my.gov.kpn.quiz.core.model.QaParticipant;
-import my.gov.kpn.quiz.core.model.QaRound;
-import my.gov.kpn.quiz.core.model.QaUser;
+import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,9 +22,9 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
     @Column(name = "RESULT")
     private Integer result = 0;
 
-    @OneToOne(targetEntity = QaRoundImpl.class)
-    @JoinColumn(name = "ROUND_ID")
-    private QaRound round;
+    @OneToOne(targetEntity = QaQuizImpl.class)
+    @JoinColumn(name = "QUIZ_ID")
+    private QaQuiz quiz;
 
     @OneToOne(targetEntity = QaUserImpl.class)
     @JoinColumn(name = "USER_ID")
@@ -52,12 +49,12 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
         this.result = result;
     }
 
-    public QaRound getRound() {
-        return round;
+    public QaQuiz getQuiz() {
+        return quiz;
     }
 
-    public void setRound(QaRound round) {
-        this.round = round;
+    public void setQuiz(QaQuiz quiz) {
+        this.quiz = quiz;
     }
 
     public QaUser getUser() {

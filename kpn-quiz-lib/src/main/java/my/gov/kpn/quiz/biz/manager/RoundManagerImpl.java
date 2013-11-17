@@ -41,7 +41,6 @@ public class RoundManagerImpl implements RoundManager {
         List<QaUser> users = userDao.findAll();
         for (QaUser user : users) {
             QaParticipant participant = new QaParticipantImpl();
-            participant.setRound(round);
             participant.setUser(user);
             sessionFactory.getCurrentSession().flush();
         }

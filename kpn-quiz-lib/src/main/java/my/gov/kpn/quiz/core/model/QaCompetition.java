@@ -6,7 +6,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/7/13
  */
-public interface QaCompetition extends QaMetaObject{
+public interface QaCompetition extends QaMetaObject {
 
     /**
      * @return
@@ -25,7 +25,7 @@ public interface QaCompetition extends QaMetaObject{
     /**
      * @return
      */
-    List<QaRound> getRounds();
+    List<QaQuiz> getQuizzes();
 
-    void setRounds(List<QaRound> rounds);
+    void setQuizzes(List<QaQuiz> quizzes);
 }
