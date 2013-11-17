@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.QaRound;
  * @author rafizan.baharum
  * @since 11/9/13
  */
+@Deprecated
 public interface RoundManager {
 
     void processRound(QaRound round);

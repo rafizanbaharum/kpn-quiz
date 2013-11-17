@@ -130,7 +130,6 @@ public class CompetitionManagerImpl implements CompetitionManager {
         Validate.notNull(item, "Item should not be null");
         item.setAnswerResponse(answerResponse);
         gradebookDao.updateItem(gradebook, item, Utils.getCurrentUser());
-
     }
 
     @Override
@@ -218,6 +217,10 @@ public class CompetitionManagerImpl implements CompetitionManager {
                 participantDao.save(participant, Utils.getCurrentUser());
             }
         }
+
+//        quiz.setProcessed(true);
+        quizDao.update(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
 
