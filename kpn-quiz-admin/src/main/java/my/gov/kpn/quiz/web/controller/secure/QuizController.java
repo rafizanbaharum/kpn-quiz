@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.controller.secure;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
+import my.gov.kpn.quiz.core.model.QaRound;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.QuizModel;
@@ -71,6 +72,17 @@ public class QuizController extends AbstractController {
         competitionManager.updateQuiz(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully updated");
+        return "redirect:secure/quiz/view/" + quiz.getId();
+    }
+
+    @RequestMapping(value = "/tabulate", method = {RequestMethod.POST})
+    public String quizTabulate(@ModelAttribute("quizModel") QuizModel quizModel,
+                               ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
+        QaRound round = quiz.getRound();
+        competitionManager.calculateResult(round, quiz);
+
+        model.addAttribute(MSG_SUCCESS, "Quiz successfully tabulated");
         return "redirect:secure/quiz/view/" + quiz.getId();
     }
 

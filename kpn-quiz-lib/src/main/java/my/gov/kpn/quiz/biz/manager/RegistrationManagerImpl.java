@@ -64,6 +64,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
             user.setUsername(username);
             user.setPassword(password);
             user.setRealname(name);
+            user.setEnabled(true);
             user.setLocked(true);
             user.setPrincipalType(QaPrincipalType.USER);
             userDao.save(user, root);
@@ -101,15 +102,6 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(group);
-
-            //create new team
-//            QaTeam team = new QaTeamImpl();
-//            team.setLeader(user);
-//            teamDao.save(team,root);
-//
-//            sessionFactory.getCurrentSession().flush();
-//            sessionFactory.getCurrentSession().refresh(team);
-
         } catch (RecursiveGroupException e) {
             e.printStackTrace();
         } catch (LockedGroupException e) {
@@ -131,6 +123,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
             user.setUsername(username);
             user.setPassword(password);
             user.setRealname(name);
+            user.setEnabled(true);
             user.setLocked(true);
             user.setPrincipalType(QaPrincipalType.USER);
             userDao.save(user, root);

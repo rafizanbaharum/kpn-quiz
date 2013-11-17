@@ -58,4 +58,6 @@ public interface CompetitionManager {
     void updateAnswer(QaParticipant participant, QaQuestion question, String answerResponse);
 
     Integer countParticipant(QaRound round);
+
+    void calculateResult(QaRound round, QaQuiz quiz);
 }

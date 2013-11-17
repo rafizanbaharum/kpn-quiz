@@ -18,6 +18,8 @@ public interface QaGradebookDao {
 
     List<QaGradebook> find(QaQuiz quiz);
 
+    List<QaGradebook> find(QaRound round);
+
 
     List<QaGradebook> find(QaParticipant participant, QaQuiz quiz, QaQuestion question);
 

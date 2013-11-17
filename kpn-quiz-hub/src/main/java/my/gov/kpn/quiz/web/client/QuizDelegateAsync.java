@@ -18,5 +18,10 @@ public interface QuizDelegateAsync {
 
     void findCurrentQuestions(AsyncCallback<ListLoadResult<QuestionModel>> async);
 
-    void updateAnswer(QuestionModel model, String answerIndex, AsyncCallback<Void> async);
+    // for multiple choice and boolean
+    void updateAnswer(QuestionModel model, Integer answerIndex, AsyncCallback<Void> async);
+
+    // for subjective
+    void updateAnswer(QuestionModel model, String answerResponse, AsyncCallback<Void> async);
+
 }

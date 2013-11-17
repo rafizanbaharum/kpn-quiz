@@ -152,6 +152,39 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
+    public void calculateResult(QaRound round, QaQuiz quiz) {
+        // TODO: not scalable
+        // TODO: use chunk? or spring batch?
+        List<QaGradebook> gradebooks = gradebookDao.find(round);
+        for (QaGradebook gradebook : gradebooks) {
+            Integer result = 0;
+            List<QaGradebookItem> items = gradebook.getItems();
+            for (QaGradebookItem item : items) {
+                QaQuestion question = item.getQuestion();
+                switch (question.getQuestionType()) {
+                    case MULTIPLE_CHOICE:
+                        if (item.getAnswerIndex().equals(question.getAnswerIndex())) {
+                            result += 1;
+                        }
+                        break;
+                    case BOOLEAN:
+                        if (item.getAnswerIndex().equals(question.getAnswerIndex())) {
+                            result += 1;
+                        }
+                        break;
+                    case SUBJECTIVE:
+                        // do nothing
+                        break;
+                }
+            }
+            QaParticipant participant = gradebook.getParticipant();
+            participant.setResult(result);
+            participantDao.update(participant, Utils.getCurrentUser());
+            sessionFactory.getCurrentSession().flush();
+        }
+    }
+
+    @Override
     public void updateRound(QaRound round) {
         roundDao.update(round, Utils.getCurrentUser());
     }
@@ -168,6 +201,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
             for (QaParticipant participant : participants) {
                 QaGradebook gradebook = new QaGradebookImpl();
                 gradebook.setQuiz(quiz);
+                gradebook.setRound(round);
                 gradebook.setParticipant(participant);
                 gradebookDao.save(gradebook, Utils.getCurrentUser());
                 sessionFactory.getCurrentSession().flush();
@@ -192,7 +226,6 @@ public class CompetitionManagerImpl implements CompetitionManager {
 
     @Override
     public void processParticipant(QaRound round) {
-
         // TODO: not scalable
         // TODO: use chunk? or spring batch?
         // TODO: filter out non-student??

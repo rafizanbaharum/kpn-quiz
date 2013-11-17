@@ -27,6 +27,9 @@ public class QaPrincipalImpl implements QaPrincipal, Serializable {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "ENABLED")
+    private boolean enabled = true; // default to enabled
+
     @Column(name = "LOCKED")
     private boolean locked;
 
@@ -54,6 +57,14 @@ public class QaPrincipalImpl implements QaPrincipal, Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public boolean isLocked() {

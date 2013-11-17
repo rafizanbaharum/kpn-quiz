@@ -12,6 +12,10 @@ public interface QaPrincipal extends QaMetaObject {
 
     void setName(String name);
 
+    boolean isEnabled();
+
+    void setEnabled(boolean enabled);
+
     boolean isLocked();
 
     void setLocked(boolean locked);

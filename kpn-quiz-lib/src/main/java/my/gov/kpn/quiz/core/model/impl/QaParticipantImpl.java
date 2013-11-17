@@ -22,6 +22,9 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
     @SequenceGenerator(name = "SEQ_QA_PRCT", sequenceName = "SEQ_QA_PRCT", allocationSize = 1)
     private Long id;
 
+    @Column(name = "RESULT")
+    private Integer result = 0;
+
     @OneToOne(targetEntity = QaRoundImpl.class)
     @JoinColumn(name = "ROUND_ID")
     private QaRound round;
@@ -39,6 +42,14 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Integer getResult() {
+        return result;
+    }
+
+    public void setResult(Integer result) {
+        this.result = result;
     }
 
     public QaRound getRound() {

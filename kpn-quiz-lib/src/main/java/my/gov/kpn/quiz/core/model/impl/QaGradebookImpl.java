@@ -1,12 +1,10 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaGradebook;
-import my.gov.kpn.quiz.core.model.QaMetadata;
-import my.gov.kpn.quiz.core.model.QaParticipant;
-import my.gov.kpn.quiz.core.model.QaQuiz;
+import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author rafizan.baharum
@@ -26,9 +24,16 @@ public class QaGradebookImpl implements QaGradebook, Serializable {
     @JoinColumn(name = "QUIZ_ID")
     private QaQuiz quiz;
 
+    @OneToOne(targetEntity = QaQuizImpl.class)
+    @JoinColumn(name = "ROUND_ID")
+    private QaRound round;
+
     @OneToOne(targetEntity = QaParticipantImpl.class)
     @JoinColumn(name = "PARTICIPANT_ID")
     private QaParticipant participant;
+
+    @OneToMany(targetEntity = QaGradebookItemImpl.class, mappedBy = "gradebook")
+    private List<QaGradebookItem> items;
 
     @Embedded
     private QaMetadata metadata = new QaMetadata();
@@ -49,12 +54,28 @@ public class QaGradebookImpl implements QaGradebook, Serializable {
         this.quiz = quiz;
     }
 
+    public QaRound getRound() {
+        return round;
+    }
+
+    public void setRound(QaRound round) {
+        this.round = round;
+    }
+
     public QaParticipant getParticipant() {
         return participant;
     }
 
     public void setParticipant(QaParticipant participant) {
         this.participant = participant;
+    }
+
+    public List<QaGradebookItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<QaGradebookItem> items) {
+        this.items = items;
     }
 
     public QaMetadata getMetadata() {

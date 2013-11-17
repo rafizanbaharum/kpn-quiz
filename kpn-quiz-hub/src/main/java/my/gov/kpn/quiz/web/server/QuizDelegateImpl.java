@@ -60,7 +60,7 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
     }
 
     @Override
-    public void updateAnswer(QuestionModel model, String answerIndex) {
+    public void updateAnswer(QuestionModel model, Integer answerIndex) {
         log.debug("question: " + model.getStatement());
         log.debug("answer: " + answerIndex);
 
@@ -69,6 +69,19 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
         QaUser user = Utils.getCurrentUser();
         QaParticipant participant = competitionManager.findParticipant(quiz, user);
 
-        competitionManager.updateAnswer(participant, question);
+        competitionManager.updateAnswer(participant, question, answerIndex);
+    }
+
+    @Override
+    public void updateAnswer(QuestionModel model, String answerResponse) {
+        log.debug("question: " + model.getStatement());
+        log.debug("answer: " + answerResponse);
+
+        QaQuestion question = competitionManager.findQuestionById(model.getId());
+        QaQuiz quiz = GlobalRegistry.getQuiz();
+        QaUser user = Utils.getCurrentUser();
+        QaParticipant participant = competitionManager.findParticipant(quiz, user);
+
+        competitionManager.updateAnswer(participant, question, answerResponse);
     }
 }

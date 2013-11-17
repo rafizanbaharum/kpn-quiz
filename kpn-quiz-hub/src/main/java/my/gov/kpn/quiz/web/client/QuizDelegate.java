@@ -18,5 +18,7 @@ public interface QuizDelegate extends RemoteService {
 
     ListLoadResult<QuestionModel> findCurrentQuestions();
 
-    void updateAnswer(QuestionModel model, String answerIndex);
+    void updateAnswer(QuestionModel model, Integer answerIndex);
+
+    void updateAnswer(QuestionModel model, String answerResponse);
 }

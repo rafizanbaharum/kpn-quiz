@@ -132,7 +132,18 @@ public class QuizView extends View {
             @Override
             public void handleEvent(QuizNavigateEvent be) {
                 updateCounter(be.getNextQuestionIndex());
-                updateAnswer(be.getPreviousAnswerIndex(), "TODO");
+                QuestionModel questionModel = getQuestion(be.getPreviousQuestionIndex());
+                switch (questionModel.getQuestionType()) {
+                    case MULTIPLE_CHOICE:
+                        updateAnswer(questionModel, 0); // TODO
+                        break;
+                    case BOOLEAN:
+                        updateAnswer(questionModel, 0); // TODO
+                        break;
+                    case SUBJECTIVE:
+                        updateAnswer(questionModel, "TODO"); // TODO
+                        break;
+                }
             }
         });
     }
@@ -151,9 +162,24 @@ public class QuizView extends View {
         counter.setHtml(nextQuestionIndex + "/" + cardPanel.getItemCount());
     }
 
-    private void updateAnswer(int questionIndex, String answerKey) {
-        QuestionModel model = getQuestion(questionIndex);
-        delegate.updateAnswer(model, answerKey, new AsyncCallback<Void>() {
+    // subjective
+    private void updateAnswer(QuestionModel questionModel, String answerKey) {
+        delegate.updateAnswer(questionModel, answerKey, new AsyncCallback<Void>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                // TODO:
+            }
+
+            @Override
+            public void onSuccess(Void result) {
+                // TODO:
+            }
+        });
+    }
+
+    // multiplechoice + boolean
+    private void updateAnswer(QuestionModel questionModel, Integer answerKey) {
+        delegate.updateAnswer(questionModel, answerKey, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
                 // TODO:
@@ -208,6 +234,7 @@ public class QuizView extends View {
         counter = new Html();
         counter.setId("quiz-counter");
         counter.setHtml("Initializing...");
+        level = new Html();
         level.setId("quiz-level");
         level.setHtml("Initializing...");
         LayoutContainer panel = new LayoutContainer();

@@ -39,6 +39,9 @@ public class QaRoundImpl implements QaRound, Serializable {
     @OneToMany(targetEntity = QaParticipantImpl.class, mappedBy = "round")
     private List<QaParticipant> participants;
 
+    @OneToMany(targetEntity = QaGradebookImpl.class, mappedBy = "round")
+    private List<QaGradebook> gradebooks;
+
     @Embedded
     private QaMetadata metadata = new QaMetadata();
 
@@ -96,6 +99,15 @@ public class QaRoundImpl implements QaRound, Serializable {
 
     public void setParticipants(List<QaParticipant> participants) {
         this.participants = participants;
+
+    }
+
+    public List<QaGradebook> getGradebooks() {
+        return gradebooks;
+    }
+
+    public void setGradebooks(List<QaGradebook> gradebooks) {
+        this.gradebooks = gradebooks;
     }
 
     public QaMetadata getMetadata() {
