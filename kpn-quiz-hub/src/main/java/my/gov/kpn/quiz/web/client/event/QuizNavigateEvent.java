@@ -11,6 +11,8 @@ public class QuizNavigateEvent extends BaseEvent {
 
     public QuizNavigateEvent(Object source, int nextQuestionIndex, int prevQuestionIndex) {
         super(source);
+        this.nextQuestionIndex = nextQuestionIndex;
+        this.previousQuestionIndex = prevQuestionIndex;
     }
 
     private int nextQuestionIndex;
