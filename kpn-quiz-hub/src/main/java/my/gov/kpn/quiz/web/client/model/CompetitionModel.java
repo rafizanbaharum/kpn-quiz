@@ -36,14 +36,6 @@ public class CompetitionModel extends MetaModel {
         set(LOCKED, locked);
     }
 
-    public List<RoundModel> getRounds() {
-        return get(ROUND_MODEL);
-    }
-
-    public void setRounds(List<RoundModel> roundModels) {
-        set(ROUND_MODEL, roundModels);
-    }
-
     public String toString() {
         return isProcessed() + " " + isLocked();
     }

@@ -1,7 +1,6 @@
 package my.gov.kpn.quiz.web.server;
 
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
-import my.gov.kpn.quiz.biz.manager.RoundManager;
 import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
 import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.web.client.model.*;
@@ -17,9 +16,6 @@ public class QuizConverter {
 
     @Autowired
     private CompetitionManager competitionManager;
-
-    @Autowired
-    private RoundManager roundManager;
 
     public QuestionModel convert(QaQuestion question) {
         QuestionModel model = newInstance(question);

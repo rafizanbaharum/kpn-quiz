@@ -5,7 +5,7 @@ public class ParticipantModel extends MetaModel {
 
     public static final String ID = "id";
     public static final String STATE_ID = "stateId";
-    public static final String ROUND_MODEL = "roundModel";
+    public static final String QUIZ_MODEL = "roundModel";
     public static final String USER_MODEL = "userModel";
 
     public Long getId() {
@@ -16,12 +16,12 @@ public class ParticipantModel extends MetaModel {
         set(ID, id);
     }
 
-    public RoundModel getRound() {
-        return get(ROUND_MODEL);
+    public QuizModel getQuiz() {
+        return get(QUIZ_MODEL);
     }
 
-    public void setRound(RoundModel roundModel) {
-        set(ROUND_MODEL, roundModel);
+    public void setQuiz(QuizModel quizModel) {
+        set(QUIZ_MODEL, quizModel);
     }
 
     public UserModel getUser() {

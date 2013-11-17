@@ -9,7 +9,7 @@ public class QuizModel extends MetaModel {
     public static final String LOCKED = "locked";
     public static final String START_DATE = "startDate";
     public static final String END_DATE = "endDate";
-    public static final String ROUND_MODEL = "roundModel";
+    public static final String COMPETITION_MODEL = "roundModel";
 
     public Long getId() {
         return get(ID);
@@ -51,12 +51,12 @@ public class QuizModel extends MetaModel {
         set(END_DATE, endDate);
     }
 
-    public RoundModel getRound() {
-        return get(ROUND_MODEL);
+    public CompetitionModel getCompetition() {
+        return get(COMPETITION_MODEL);
     }
 
-    public void setRound(RoundModel roundModel) {
-        set(ROUND_MODEL, roundModel);
+    public void setCompetition(CompetitionModel competitionModel) {
+        set(COMPETITION_MODEL, competitionModel);
     }
 
     public String toString() {
