@@ -25,7 +25,7 @@
                     <ul class="sub-menu">
                         <li>
                             <a href="${pageContext.request.contextPath}/secure/student/list">
-                                <span class="title">Students</span>
+                                <span class="title">Student List</span>
                             </a>
                         </li>
                     </ul>

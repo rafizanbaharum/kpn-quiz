@@ -1,9 +1,6 @@
 package my.gov.kpn.quiz.biz.manager;
 
-import my.gov.kpn.quiz.core.dao.QaActorDao;
-import my.gov.kpn.quiz.core.dao.QaGroupDao;
-import my.gov.kpn.quiz.core.dao.QaPrincipalRoleDao;
-import my.gov.kpn.quiz.core.dao.QaUserDao;
+import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.exception.LockedGroupException;
 import my.gov.kpn.quiz.core.exception.RecursiveGroupException;
 import my.gov.kpn.quiz.core.model.*;
@@ -16,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 /**
  * @author rafizan.baharum
@@ -114,6 +113,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                 String password,
                                 String name,
                                 String nricNo,
+                                Date dob,
                                 QaInstructor instructor) {
 
         try {
@@ -141,6 +141,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
             student.setName(name);
             student.setNricNo(nricNo);
             student.setInstructor(instructor);
+            student.setDob(dob);
             actorDao.save(student, root);
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(student);
@@ -159,6 +160,32 @@ public class RegistrationManagerImpl implements RegistrationManager {
         } catch (LockedGroupException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void updateStudent(QaStudent student,
+                              String username,
+                              String password,
+                              String name,
+                              String nricNo,
+                              Date dob) {
+
+        log.debug("Update = " + student);
+
+        QaUser root = userDao.findByUsername(ADMIN);
+        QaUser user = userDao.findByUsername(username);
+        user.setUsername(username);
+        user.setPassword(password);
+        userDao.update(user, root);
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(user);
+
+        student.setName(name);
+        student.setNricNo(nricNo);
+        student.setDob(dob);
+        actorDao.update(student, root);
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(student);
     }
 
     public boolean isExists(String username) {

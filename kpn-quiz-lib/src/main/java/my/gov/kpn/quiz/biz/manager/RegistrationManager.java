@@ -2,6 +2,9 @@ package my.gov.kpn.quiz.biz.manager;
 
 
 import my.gov.kpn.quiz.core.model.QaInstructor;
+import my.gov.kpn.quiz.core.model.QaStudent;
+
+import java.util.Date;
 
 /**
  * @author rafizan.baharum
@@ -20,8 +23,11 @@ public interface RegistrationManager {
      * @param nricNo
      * @param instructor
      */
-    void registerStudent(String username, String password, String name, String nricNo, QaInstructor instructor);
+    void registerStudent(String username, String password, String name, String nricNo,
+                         Date dob, QaInstructor instructor);
+
+    void updateStudent(QaStudent student, String username, String password, String name,
+                       String nricNo, Date dob);
 
     boolean isExists(String username);
-
 }

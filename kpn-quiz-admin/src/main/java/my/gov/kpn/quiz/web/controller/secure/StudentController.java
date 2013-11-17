@@ -6,11 +6,16 @@ import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller("SecureStudentController")
@@ -32,23 +37,28 @@ public class StudentController extends AbstractController {
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String studentEdit(@PathVariable Long id, ModelMap model) {
         QaStudent student = instructorManager.findStudentById(id);
-        model.addAttribute("studentModel", transformer.transform(student));
-        model.put(BREADCRUMB,"Update Student Details");
-        model.put(TITLE,"Update Student Details");
+        StudentModel transform = transformer.transform(student);
+
+        model.addAttribute("studentModel", transform);
+        model.put(BREADCRUMB, "Update Student Details");
+        model.put(TITLE, "Update Student Details");
         return "secure/student/student_edit";
     }
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String studentView(@PathVariable Long id, ModelMap model) {
         QaStudent student = instructorManager.findStudentById(id);
+
         model.addAttribute("studentModel", transformer.transform(student));
+        model.put(BREADCRUMB, "View Student Details");
+        model.put(TITLE, "View Student Details");
         return "secure/student/student_view";
     }
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String studentRegister(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
-        model.put(BREADCRUMB,"Register Student");
-        model.put(TITLE,"Student Registration");
+        model.put(BREADCRUMB, "Register Student");
+        model.put(TITLE, "Student Registration");
         return "secure/student/student_register";
     }
 
@@ -62,8 +72,10 @@ public class StudentController extends AbstractController {
             return "secure/student/student_register";
         }
 
+        Date dob = extractDob(studentModel);
+
         registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
-                studentModel.getName(), studentModel.getNric(), getCurrentInstructor());
+                studentModel.getName(), studentModel.getNric(), dob, getCurrentInstructor());
         return "redirect:/secure/student/list";
     }
 
@@ -71,8 +83,8 @@ public class StudentController extends AbstractController {
     public String studentList(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
         model.addAttribute("studentModels", transformer.transformStudents(students));
-        model.put(BREADCRUMB,"Student List");
-        model.put(TITLE,"Student List");
+        model.put(BREADCRUMB, "Student List");
+        model.put(TITLE, "Student List");
         return "secure/student/student_list";
     }
 
@@ -87,8 +99,10 @@ public class StudentController extends AbstractController {
     public String studentUpdate(@ModelAttribute("studentModel") StudentModel studentModel,
                                 ModelMap model) {
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
-        student.setName(studentModel.getName());
-        student.setNricNo(studentModel.getNric());
+        Date dob = extractDob(studentModel);
+
+        registrationManager.updateStudent(student, studentModel.getUsername(), studentModel.getPassword(),
+                studentModel.getName(), studentModel.getNric(), dob);
 
         // check if password does not match
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
@@ -98,5 +112,17 @@ public class StudentController extends AbstractController {
 
         model.addAttribute(MSG_SUCCESS, "Student successfully updated");
         return "redirect:/secure/student/view/" + student.getId();
+    }
+
+    /**
+     * Split DOB into year, month and day
+     *
+     * @param studentModel
+     * @return
+     */
+    private static Date extractDob(StudentModel studentModel) {
+        return new LocalDate(Integer.parseInt(studentModel.getDob_yyyy()),
+                Integer.parseInt(studentModel.getDob_mm()),
+                Integer.parseInt(studentModel.getDob_dd())).toDate();
     }
 }

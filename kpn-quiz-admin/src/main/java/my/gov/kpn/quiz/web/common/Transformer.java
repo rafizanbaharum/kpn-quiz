@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.common;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.web.model.*;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -95,6 +96,7 @@ public class Transformer {
 
 
     public StudentModel transform(QaStudent student) {
+        LocalDate dob = new LocalDate(student.getDob());
         StudentModel model = new StudentModel();
         QaUser user = instructorManager.findUserByActor(student);
         model.setId(student.getId());
@@ -103,6 +105,9 @@ public class Transformer {
         model.setUsername(user.getUsername());
         model.setPassword(user.getPassword());
         model.setPasswordAgain(user.getPassword());
+        model.setDob_dd(String.valueOf(dob.getDayOfMonth()));
+        model.setDob_mm(String.valueOf(dob.getMonthOfYear()));
+        model.setDob_yyyy(String.valueOf(dob.getYear()));
         return model;
     }
 

@@ -12,8 +12,8 @@
             <ul class="nav navbar-right">
                 <li class="dropdown current-user">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="" class="circle-img" alt="">
-                        <span class="username">User</span>
+                        <img src="/assets/images/logo/profile_logo_small.png" class="circle-img" alt="">
+                        <span class="username">${SPRING_SECURITY_LAST_USERNAME}</span>
                         <i class="clip-chevron-down"></i>
                     </a>
                     <ul class="dropdown-menu">

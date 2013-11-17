@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -40,252 +41,132 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                <span class="clip-list-2"></span>
-            </button>
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/secure/index">
-                ASEAN QUIZ
-            </a>
-        </div>
-        <div class="navbar-tools">
-            <ul class="nav navbar-right">
-                <li class="dropdown current-user">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="" class="circle-img" alt="">
-                        <span class="username">User</span>
-                        <i class="clip-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/user/profile">
-                                <i class="clip-user-2"></i>
-                                &nbsp;My Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/gate/out">
-                                <i class="clip-exit"></i>
-                                &nbsp;Log Out
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
-<div class="navbar-content">
-    <div class="main-navigation navbar-collapse collapse">
-        <div class="navigation-toggler">
-            <i class="clip-chevron-left"></i>
-            <i class="clip-chevron-right"></i>
-        </div>
-        <ul class="main-navigation-menu">
-            <li>
-                <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
-                    <span class="title"> Dashboard </span><span class="selected"></span>
-                </a>
-            </li>
-            <li class="active open">
-                <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                    <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                    <span class="selected"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/secure/student/register">
-                            <span class="title">Register</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/secure/student/list">
-                            <span class="title">Student List</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="main-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="clip-pencil"></i>
-                        <a href="#">
-                            Manage Student
-                        </a>
-                    </li>
-                    <li class="active">
-                        View Student
-                    </li>
-                </ol>
-                <div class="page-header">
-                    <h1>Student View </h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="icon-external-link-sign"></i>
-                        View a student
-                    </div>
-                    <div class="panel-body">
-                        <h2><i class="icon-edit-sign teal"></i> VIEW</h2>
+    <jsp:include page="/secure/include/student_leftbar.jsp"/>
+    <div class="main-content">
+        <div class="container">
+            <jsp:include page="/secure/include/student_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="${STUDENT_BREADCRUMB}"/>
+                <jsp:param name="TITLE" value="${STUDENT_TITLE}"/>
+            </jsp:include>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            View a student
+                        </div>
+                        <div class="panel-body">
+                            <h2><i class="icon-edit-sign teal"></i> VIEW</h2>
 
-                        <hr>
-                        <form:form id="form" commandName="studentModel"
-                                   action="${pageContext.request.contextPath}/secure/student/update"
-                                   method="POST">
-                            <form:hidden path="id"/>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="errorHandler alert alert-danger no-display">
-                                        <i class="icon-remove-sign"></i> You have some form errors. Please check
-                                        below.
-                                    </div>
-                                    <div class="successHandler alert alert-success no-display">
-                                        <i class="icon-ok"></i> Your form validation is successful!
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            Student Name <span class="symbol required"></span>
-                                        </label>
-                                        <form:input path="name" placeholder="Insert your student Name"
-                                                    cssClass="form-control" readonly="true"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            NRIC <span class="symbol required"></span>
-                                        </label>
-                                        <form:input path="nric" placeholder="Identification number"
-                                                    cssClass="form-control" readonly="true"/>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            Username <span class="symbol required"></span>
-                                        </label>
-                                        <form:input path="username" placeholder="Username" cssClass="form-control"
-                                                    readonly="true"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">
-                                            Date of Birth <span class="symbol required"></span>
-                                        </label>
-
-                                        <div class="col-md-4">
-                                            <form:select path="dob_dd" cssClass="form-control">
-                                                <option value="">DD</option>
-                                                <option value="01">1</option>
-                                                <option value="02">2</option>
-                                                <option value="03">3</option>
-                                                <option value="04">4</option>
-                                                <option value="05">5</option>
-                                                <option value="06">6</option>
-                                                <option value="07">7</option>
-                                                <option value="08">8</option>
-                                                <option value="09">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                                <option value="13">13</option>
-                                                <option value="14">14</option>
-                                                <option value="15">15</option>
-                                                <option value="16">16</option>
-                                                <option value="17">17</option>
-                                                <option value="18">18</option>
-                                                <option value="19">19</option>
-                                                <option value="20">20</option>
-                                                <option value="21">21</option>
-                                                <option value="22">22</option>
-                                                <option value="23">23</option>
-                                                <option value="24">24</option>
-                                                <option value="25">25</option>
-                                                <option value="26">26</option>
-                                                <option value="27">27</option>
-                                                <option value="28">28</option>
-                                                <option value="29">29</option>
-                                                <option value="30">30</option>
-                                                <option value="31">31</option>
-                                            </form:select>
+                            <hr>
+                            <form:form id="form" commandName="studentModel"
+                                       action="${pageContext.request.contextPath}/secure/student/update"
+                                       method="POST">
+                                <form:hidden path="id"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
                                         </div>
-                                        <div class="col-md-4">
-                                            <form:select path="dob_mm" cssClass="form-control">
-                                                <option value="">MM</option>
-                                                <option value="01">1</option>
-                                                <option value="02">2</option>
-                                                <option value="03">3</option>
-                                                <option value="04">4</option>
-                                                <option value="05">5</option>
-                                                <option value="06">6</option>
-                                                <option value="07">7</option>
-                                                <option value="08">8</option>
-                                                <option value="09">9</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </form:select>
+                                        <div class="successHandler alert alert-success no-display">
+                                            <i class="icon-ok"></i> Your form validation is successful!
                                         </div>
-                                        <div class="col-md-4">
-                                            <form:input path="dob_yyyy" placeholder="YYYY" cssClass="form-control"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Student Name <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="name" placeholder="Insert your student Name"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                NRIC <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="nric" placeholder="Identification number"
+                                                        cssClass="form-control" readonly="true"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Username <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="username" placeholder="Username" cssClass="form-control"
+                                                        readonly="true"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group connected-group">
+                                            <label class="control-label">
+                                                Date of Birth <span class="symbol required"></span>
+                                            </label>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <form:select path="dob_dd" cssClass="form-control" disabled="true">
+                                                        <option value="">DD</option>
+                                                        <c:forEach begin="1" end="31" var="dd">
+                                                            <option value="${dd}" ${dd == studentModel.dob_dd ? 'selected' : ''}>${dd}</option>
+                                                        </c:forEach>
+                                                    </form:select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <form:select path="dob_mm" cssClass="form-control" disabled="true">
+                                                        <option value="">MM</option>
+                                                        <c:forEach begin="1" end="12" var="mm">
+                                                            <option value="${mm}" ${mm == studentModel.dob_mm ? 'selected' : ''}>${mm}</option>
+                                                        </c:forEach>
+                                                    </form:select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <form:input path="dob_yyyy" placeholder="YYYY"
+                                                                cssClass="form-control" disabled="true"/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <br/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div>
-                                        <span class="symbol required"></span>Required Fields
-                                        <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <button class="btn btn-yellow btn-block" type="submit">
-                                        Edit <i class="icon-circle-arrow-right"></i>
-                                    </button>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <span class="symbol required"></span>Required Fields
+                                            <hr>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <button class="btn btn-blue btn-block" type="submit">
-                                        Reset <i class="icon-circle-arrow-right"></i>
-                                    </button>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Edit <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-blue btn-block" type="submit">
+                                            Reset <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-red btn-block" type="submit">
+                                            Remove <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <button class="btn btn-red btn-block" type="submit">
-                                        Remove <i class="icon-circle-arrow-right"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form:form>
+                            </form:form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <div class="footer clearfix">
     <div class="footer-inner">
@@ -319,8 +200,8 @@
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
-        Main.init();
-        FormValidator.init();
+//        Main.init();
+//        FormValidator.init();
     });
 </script>
 </body>

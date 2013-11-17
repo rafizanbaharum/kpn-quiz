@@ -338,6 +338,11 @@
             <artifactId>ehcache-core</artifactId>
             <version>2.1.1</version>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>kpn-quiz-admin</finalName>
