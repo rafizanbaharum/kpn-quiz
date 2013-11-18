@@ -33,11 +33,38 @@ public class QuizController extends AbstractController {
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String quizView(@PathVariable Long id, ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(id);
-//        model.addAttribute("roundModel", transformer.transform(quiz.getRound()));
         model.addAttribute("quizModel", transformer.transform(quiz));
         model.addAttribute("questionModels", transformer.transformQuestions(competitionManager.findQuestions(quiz)));
         return "secure/quiz/quiz_view";
     }
+
+    @RequestMapping(value = "/view/{id}/participant/list", method = {RequestMethod.GET})
+    public String quizViewParticipantList(@PathVariable Long id, ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(id);
+        model.addAttribute("quizModel", transformer.transform(quiz));
+        model.addAttribute("participantModels", transformer.transformParticipants(competitionManager.findParticipants(quiz)));
+        return "secure/participant/participant_list";
+    }
+
+    @RequestMapping(value = "/view/{id}/participant/select/{selection}", method = {RequestMethod.GET})
+    public String quizViewParticipantSelect(@PathVariable Long id, @PathVariable String selection, ModelMap model) {
+        // select next round
+        QaQuiz quiz = competitionManager.findQuizById(id);
+        QaQuiz nextQuiz = competitionManager.finQuizByRound(quiz.getRound() + 1);
+
+        if (selection.equals("random50")) {
+            competitionManager.selectRandomParticipants(quiz, nextQuiz, 50);
+        } else if (selection.equals("top50")) {
+            competitionManager.selectTopParticipants(quiz, nextQuiz, 50);
+        } else if (selection.equals("fairplay")) {
+            competitionManager.selectFairPlayParticipants(quiz, nextQuiz, 50);
+        } else if (selection.equals("reset")) {
+            competitionManager.removeParticipants(quiz);
+        }
+        model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
+        return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
+    }
+
 
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String quizEdit(@PathVariable Long id, ModelMap model) {
@@ -51,7 +78,6 @@ public class QuizController extends AbstractController {
                           ModelMap model) {
         return "secure/quiz/quiz_add";
     }
-
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
     public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel,

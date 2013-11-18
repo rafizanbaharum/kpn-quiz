@@ -60,15 +60,32 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         competition.setYear(2013);
         competitionDao.save(competition, root);
 
-        QaQuiz quiz = new QaQuizImpl();
-        quiz.setTitle("PRELIMINARY ROUND ASEAN QUIZ 2012 MALAYSIA");
-        quiz.setCompetition(competition);
-        quiz.setStartDate(new Date("09:00:00 22/01/2012"));
-        quiz.setEndDate(new Date("10:00:00 22/01/2012"));
-        quiz.setCurrent(true);
-        quiz.setProcessed(false);
-        quiz.setLocked(false);
-        competitionDao.addQuiz(competition, quiz, root);
+        QaQuiz quiz1 = new QaQuizImpl();
+        quiz1.setTitle("PRELIMINARY ROUND ASEAN QUIZ 2012 MALAYSIA");
+        quiz1.setRound(1);
+        quiz1.setCompetition(competition);
+        quiz1.setStartDate(new Date("09:00:00 22/01/2012"));
+        quiz1.setEndDate(new Date("10:00:00 22/01/2012"));
+        quiz1.setCurrent(true);
+        quiz1.setProcessed(false);
+        quiz1.setLocked(false);
+        competitionDao.addQuiz(competition, quiz1, root);
+
+        QaQuiz quiz2 = new QaQuizImpl();
+        quiz2.setTitle("SECOND ROUND ASEAN QUIZ 2012 MALAYSIA");
+        quiz2.setRound(2);
+        quiz2.setCompetition(competition);
+        quiz2.setStartDate(new Date("09:00:00 22/01/2012"));
+        quiz2.setEndDate(new Date("10:00:00 22/01/2012"));
+        quiz2.setCurrent(false);
+        quiz2.setProcessed(false);
+        quiz2.setLocked(false);
+        competitionDao.addQuiz(competition, quiz2, root);
+    }
+
+    @Test
+    @Rollback(value = false)
+    public void testRound2() {
     }
 
     @Test

@@ -30,6 +30,17 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     }
 
     @Override
+    public QaQuiz findByRound(Integer round) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaQuiz a where " +
+                "a.round = :round " +
+                "and a.metadata.state = :state");
+        query.setInteger("round", round);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return (QaQuiz) query.uniqueResult();
+    }
+
+    @Override
     public QaQuiz findCurrent() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +
@@ -45,7 +56,7 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +
                 "a.metadata.state = :state " +
-                "order by a.id");
+                "order by a.round asc");
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return query.list();
     }
@@ -56,7 +67,7 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         Query query = session.createQuery("select a from QaQuiz a where " +
                 "a.competition = :competition " +
                 "and a.metadata.state = :state " +
-                "order by a.id");
+                "order by a.round asc");
         query.setEntity("competition", competition);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return query.list();
@@ -67,7 +78,7 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaQuiz a where " +
                 "a.metadata.state = :state " +
-                "order by a.id");
+                "order by a.round asc");
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
         query.setMaxResults(limit);
@@ -89,6 +100,32 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     }
 
     @Override
+    public List<QaParticipant> findParticipants(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaParticipant a where " +
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state " +
+                "order by a.result");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return query.list();
+    }
+
+    @Override
+    public List<QaParticipant> findParticipants(QaQuiz quiz, Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaParticipant a where " +
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state " +
+                "order by a.result");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        return query.list();
+    }
+
+    @Override
     public Integer count() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(a) from QaQuiz a where " +
@@ -101,6 +138,18 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     public Integer countParticipant(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(a) from QaParticipant a where " +
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+
+    @Override
+    public Integer countQuestion(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(a) from QaQuestion a where " +
                 "a.quiz = :quiz " +
                 "and a.metadata.state = :state");
         query.setEntity("quiz", quiz);

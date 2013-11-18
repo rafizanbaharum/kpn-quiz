@@ -17,6 +17,8 @@ public interface CompetitionManager {
 
     QaQuiz findQuizById(Long id);
 
+    QaQuiz finQuizByRound(Integer round);
+
     QaQuiz getCurrentQuiz();
 
     QaParticipant findCurrentParticipant(QaQuiz quiz);
@@ -30,6 +32,8 @@ public interface CompetitionManager {
     List<QaQuiz> findQuizzes();
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
+
+    List<QaParticipant> findParticipants(QaQuiz quiz);
 
     void processGradebook(QaQuiz quiz);
 
@@ -51,5 +55,15 @@ public interface CompetitionManager {
 
     Integer countParticipant(QaQuiz quiz);
 
+    void removeParticipants(QaQuiz quiz);
+
     void tabulateResult(QaQuiz quiz);
+
+    void selectRandomParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
+
+    void selectTopParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
+
+    void selectFairPlayParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
+
+
 }

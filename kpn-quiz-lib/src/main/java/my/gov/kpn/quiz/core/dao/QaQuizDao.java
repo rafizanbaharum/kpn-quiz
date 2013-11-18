@@ -12,6 +12,8 @@ public interface QaQuizDao {
 
     QaQuiz findById(Long id);
 
+    QaQuiz findByRound(Integer round);
+
     QaQuiz findCurrent();
 
     List<QaQuiz> findAll();
@@ -22,9 +24,15 @@ public interface QaQuizDao {
 
     List<QaQuestion> findQuestions(QaQuiz quiz);
 
+    List<QaParticipant> findParticipants(QaQuiz quiz);
+
+    List<QaParticipant> findParticipants(QaQuiz quiz, Integer offset, Integer limit);
+
     Integer count();
 
     Integer countParticipant(QaQuiz quiz);
+
+    Integer countQuestion(QaQuiz quiz);
 
     void save(QaQuiz quiz, QaUser user);
 

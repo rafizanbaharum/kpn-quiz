@@ -33,6 +33,9 @@ public class QaQuizImpl implements QaQuiz, Serializable {
     @Column(name = "CURRENT")
     private boolean current;
 
+    @Column(name = "ROUND")
+    private Integer round;
+
     @Column(name = "START_DATE")
     private Date startDate;
 
@@ -71,6 +74,14 @@ public class QaQuizImpl implements QaQuiz, Serializable {
         this.title = title;
     }
 
+    public Integer getRound() {
+        return round;
+    }
+
+    public void setRound(Integer round) {
+        this.round = round;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
@@ -94,6 +105,7 @@ public class QaQuizImpl implements QaQuiz, Serializable {
     public void setLocked(boolean locked) {
         this.locked = locked;
     }
+
 
     public boolean isProcessed() {
         return processed;

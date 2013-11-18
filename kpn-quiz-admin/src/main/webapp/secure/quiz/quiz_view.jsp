@@ -134,7 +134,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -159,6 +158,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
+                                                Round <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="round" placeholder="Insert round"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
                                                 Start Date <span class="symbol required"></span>
                                             </label>
                                             <form:input path="startDate" placeholder="Insert start date"
@@ -178,14 +184,22 @@
                                         <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
                                                class="btn btn-dark-beige">Edit</a>
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
+                                               class="btn btn-dark-beige">Remove</a>
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/list"
+                                               class="btn btn-dark-beige">Participants</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
                                                class="btn btn-dark-beige">Init</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
                                                class="btn btn-dark-beige">Process</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
                                                class="btn btn-dark-beige">Tabulate</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/remove"
-                                               class="btn btn-dark-beige">Remove</a>
                                         </div>
                                     </div>
                                 </div>

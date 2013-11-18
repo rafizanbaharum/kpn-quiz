@@ -91,26 +91,6 @@
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/register">
-                                <span class="title">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/list">
-                                <span class="title">Student List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
@@ -118,8 +98,8 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
-                                <span class="title">Rounds</span>
+                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
+                                <span class="title">Quizzes</span>
                             </a>
                         </li>
                     </ul>
@@ -146,11 +126,13 @@
                             </a>
                         </li>
                         <li class="active">
-                            Round List
+                            Participant List
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Round List </h1>
+                        <h1>Participant List
+                            <small>${quizModel.title}</small>
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -159,40 +141,29 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            List of rounds
+                            List of quiz participants
                         </div>
                         <div class="panel-body">
+
                             <table class="table table-hover" id="sample-table-1">
                                 <thead>
                                 <tr>
                                     <th class="center">#</th>
-                                    <th>Round</th>
-                                    <th>Processed</th>
-                                    <th>Locked</th>
+                                    <th>Name</th>
+                                    <th>Result</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="round" items="${roundModels}" varStatus="idx">
+                                <c:forEach var="participant" items="${participantModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.name}</td>
-                                        <td class="hidden-xs">${round.processed}</td>
-                                        <td class="hidden-xs">${round.locked}</td>
+                                        <td class="hidden-xs">${participant.name}</td>
+                                        <td class="hidden-xs">${participant.result}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/round/view/${round.id}"
-                                                   class="btn btn-teal tooltips" data-placement="top"
-                                                   data-original-title="View"><i class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/round/process/${round.id}"
-                                                   class="btn btn-orange tooltips" data-placement="top"
-                                                   data-original-title="Process"><i
-                                                        class="icon-cog"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/round/init/${round.id}"
-                                                   class="btn btn-orange tooltips" data-placement="top"
-                                                   data-original-title="Init"><i
-                                                        class="icon-cog"></i></a>
-                                                <a href="#" class="btn btn-bricky tooltips" data-placement="top"
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/remove/${participant.id}"
+                                                   class="btn btn-bricky tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>
                                             </div>
@@ -202,6 +173,28 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-justified">
+                        <a href="${pageContext.request.contextPath}/secure/quiz/add"
+                           class="btn btn-dark-beige">Browse</a>
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/notify"
+                           class="btn btn-dark-beige">Notify</a>
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/reset"
+                           class="btn btn-dark-beige">Reset</a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-justified">
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/top50"
+                           class="btn btn-dark-beige">Top50</a>
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/random50"
+                           class="btn btn-dark-beige">Random15</a>
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/fairplay"
+                           class="btn btn-dark-beige">FairPlay</a>
                     </div>
                 </div>
             </div>

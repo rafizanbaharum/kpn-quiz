@@ -19,6 +19,13 @@ public interface QaQuiz extends QaMetaObject {
     /**
      * @return
      */
+    Integer getRound();
+
+    void setRound(Integer round);
+
+    /**
+     * @return
+     */
     Date getStartDate();
 
     void setStartDate(Date startDate);

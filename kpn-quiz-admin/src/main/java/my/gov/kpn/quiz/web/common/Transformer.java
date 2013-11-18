@@ -63,6 +63,16 @@ public class Transformer {
         return models;
     }
 
+    public List<ParticipantModel> transformParticipants(List<QaParticipant> participants) {
+        List<ParticipantModel> models = new ArrayList<ParticipantModel>();
+        if (null != participants) {
+            for (QaParticipant participant : participants) {
+                models.add(transform(participant));
+            }
+        }
+        return models;
+    }
+
     public List<QuizModel> transformQuizzes(List<QaQuiz> quizzes) {
         List<QuizModel> models = new ArrayList<QuizModel>();
         if (null != quizzes) {
@@ -107,6 +117,7 @@ public class Transformer {
         QuizModel model = new QuizModel();
         model.setId(quiz.getId());
         model.setTitle(quiz.getTitle());
+        model.setRound(quiz.getRound());
         model.setStartDate(quiz.getStartDate());
         model.setEndDate(quiz.getEndDate());
         model.setCurrent(quiz.isCurrent());
@@ -119,6 +130,17 @@ public class Transformer {
         QuestionModel model = new QuestionModel();
         model.setId(question.getId());
         model.setStatement(question.getStatement());
+        return model;
+    }
+
+    public ParticipantModel transform(QaParticipant participant) {
+        ParticipantModel model = new ParticipantModel();
+        model.setId(participant.getId());
+        model.setName(participant.getUser().getActor().getName());
+        model.setAddress1(participant.getUser().getActor().getAddress1());
+        model.setAddress2(participant.getUser().getActor().getAddress2());
+        model.setAddress3(participant.getUser().getActor().getAddress3());
+        model.setResult(participant.getResult());
         return model;
     }
 }

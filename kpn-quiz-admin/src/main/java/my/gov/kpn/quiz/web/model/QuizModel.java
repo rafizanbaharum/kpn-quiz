@@ -9,6 +9,7 @@ import java.util.Date;
 public class QuizModel extends MetaModel {
 
     private String title;
+    private Integer round;
     private boolean current;
     private boolean processed;
     private boolean locked;
@@ -21,6 +22,14 @@ public class QuizModel extends MetaModel {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Integer getRound() {
+        return round;
+    }
+
+    public void setRound(Integer round) {
+        this.round = round;
     }
 
     public boolean isCurrent() {

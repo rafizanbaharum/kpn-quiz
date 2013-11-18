@@ -98,7 +98,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/round/list">
+                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
                                 <span class="title">Quizzes</span>
                             </a>
                         </li>
@@ -146,7 +146,8 @@
                                 <thead>
                                 <tr>
                                     <th class="center">#</th>
-                                    <th>Name</th>
+                                    <th>Title</th>
+                                    <th>Round</th>
                                     <th>Processed</th>
                                     <th>Locked</th>
                                     <th></th>
@@ -157,6 +158,7 @@
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${quiz.title}</td>
+                                        <td class="hidden-xs">${quiz.round}</td>
                                         <td class="hidden-xs">${quiz.processed}</td>
                                         <td class="hidden-xs">${quiz.locked}</td>
                                         <td class="center">
@@ -167,9 +169,6 @@
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quiz.id}"
                                                    class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
-                                                <a href="#" class="btn btn-bricky tooltips" data-placement="top"
-                                                   data-original-title="Remove"><i
-                                                        class="icon-remove icon-white"></i></a>
                                             </div>
                                         </td>
                                     </tr>
