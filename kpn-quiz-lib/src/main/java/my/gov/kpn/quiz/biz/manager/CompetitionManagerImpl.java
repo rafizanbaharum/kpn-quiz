@@ -141,7 +141,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
     public void tabulateResult(QaQuiz quiz) {
         // TODO: not scalable
         // TODO: use chunk? or spring batch?
-        List<QaGradebook> gradebooks = gradebookDao.find(quiz);
+        List<QaGradebook> gradebooks = gradebookDao.find(quiz); // todo chunking
         for (QaGradebook gradebook : gradebooks) {
             Integer result = 0;
             List<QaGradebookItem> items = gradebook.getItems();
@@ -149,12 +149,19 @@ public class CompetitionManagerImpl implements CompetitionManager {
                 QaQuestion question = item.getQuestion();
                 switch (question.getQuestionType()) {
                     case MULTIPLE_CHOICE:
-                        if (item.getAnswerIndex().equals(question.getAnswerIndex())) {
+                        log.debug("answer:" + question.getAnswerIndex());
+                        log.debug("response:" + item.getAnswerIndex());
+
+                        if (null != item.getAnswerIndex() &&
+                                null != question.getAnswerIndex() && // just in case
+                                item.getAnswerIndex().equals(question.getAnswerIndex())) {
                             result += 1;
                         }
                         break;
                     case BOOLEAN:
-                        if (item.getAnswerIndex().equals(question.getAnswerIndex())) {
+                        if (null != item.getAnswerIndex() &&
+                                null != question.getAnswerIndex() && // just in case
+                                item.getAnswerIndex().equals(question.getAnswerIndex())) {
                             result += 1;
                         }
                         break;
@@ -163,6 +170,8 @@ public class CompetitionManagerImpl implements CompetitionManager {
                         break;
                 }
             }
+
+            log.debug("result: " + result);
             QaParticipant participant = gradebook.getParticipant();
             participant.setResult(result);
             participantDao.update(participant, Utils.getCurrentUser());

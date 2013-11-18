@@ -96,7 +96,7 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     public List<QaGradebook> find(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaGradebook a where " +
-                "a.quiz = :quiz" +
+                "a.quiz = :quiz " +
                 "and a.metadata.state = :state ");
         query.setEntity("quiz", quiz);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());

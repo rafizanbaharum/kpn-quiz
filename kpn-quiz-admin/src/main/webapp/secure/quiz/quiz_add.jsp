@@ -140,13 +140,14 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            View a quiz
+                            Add a quiz
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> View</h2>
+                            <h2><i class="icon-edit-sign teal"></i> Add</h2>
+
                             <hr>
                             <form:form id="form" commandName="quizModel"
-                                       action="${pageContext.request.contextPath}/secure/quiz/update"
+                                       action="${pageContext.request.contextPath}/secure/round/save"
                                        method="POST">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -175,71 +176,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="btn-group btn-group-justified">
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
-                                               class="btn btn-dark-beige">Edit</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
-                                               class="btn btn-dark-beige">Init</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
-                                               class="btn btn-dark-beige">Process</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
-                                               class="btn btn-dark-beige">Tabulate</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/remove"
-                                               class="btn btn-dark-beige">Remove</a>
-                                        </div>
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Add <i class="icon-circle-arrow-right"></i>
+                                        </button>
                                     </div>
                                 </div>
                             </form:form>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            List of questions
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Statement</th>
-                                    <th>Weight</th>
-                                    <th>Difficulty</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="round" items="${questionModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.statement}</td>
-                                        <td class="hidden-xs">${round.weight}</td>
-                                        <td class="hidden-xs">${round.difficulty}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${round.id}"
-                                                   class="btn btn-green tooltips" data-placement="top"
-                                                   data-original-title="Edit"><i
-                                                        class="icon-edit"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <button class="btn btn-yellow btn-block" type="submit">
-                        Add Question <i class="icon-circle-arrow-right"></i>
-                    </button>
                 </div>
             </div>
         </div>

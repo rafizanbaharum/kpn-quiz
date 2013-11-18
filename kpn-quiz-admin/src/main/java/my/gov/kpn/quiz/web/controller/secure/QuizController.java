@@ -46,9 +46,16 @@ public class QuizController extends AbstractController {
         return "secure/quiz/quiz_edit";
     }
 
-    @RequestMapping(value = "/add", method = {RequestMethod.POST})
+    @RequestMapping(value = "/add", method = {RequestMethod.GET})
     public String quizAdd(@ModelAttribute("quizModel") QuizModel quizModel,
                           ModelMap model) {
+        return "secure/quiz/quiz_add";
+    }
+
+
+    @RequestMapping(value = "/save", method = {RequestMethod.POST})
+    public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel,
+                           ModelMap model) {
         QaQuiz quiz = new QaQuizImpl();
         quiz.setCompetition(competitionManager.findCompetitionByYear(2013));
         quiz.setTitle(quizModel.getTitle());
@@ -58,8 +65,8 @@ public class QuizController extends AbstractController {
 //        quiz.setEndDate();
         competitionManager.saveQuiz(quiz);
 
-        model.addAttribute(MSG_SUCCESS, "Quiz successfully added");
-        return "redirect:secure/quiz/view/" + quiz.getId();
+        model.addAttribute(MSG_SUCCESS, "Quiz successfully saved");
+        return "redirect:/secure/quiz/list";
     }
 
 
@@ -73,17 +80,17 @@ public class QuizController extends AbstractController {
         competitionManager.updateQuiz(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully updated");
-        return "redirect:secure/quiz/view/" + quiz.getId();
+        return "redirect:/secure/quiz/view/" + quiz.getId();
     }
 
-    @RequestMapping(value = "/tabulate", method = {RequestMethod.POST})
+    @RequestMapping(value = "/tabulate/{id}", method = {RequestMethod.GET})
     public String quizTabulate(@ModelAttribute("quizModel") QuizModel quizModel,
                                ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         competitionManager.tabulateResult(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully tabulated");
-        return "redirect:secure/quiz/view/" + quiz.getId();
+        return "redirect:/secure/quiz/view/" + quiz.getId();
     }
 
 

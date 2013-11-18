@@ -91,26 +91,6 @@
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
-                <li class="">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/register">
-                                <span class="title">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/list">
-                                <span class="title">Student List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="active open">
                     <a href="javascript:void(0)"><i class="clip-pencil"></i>
                         <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
@@ -166,26 +146,42 @@
                             <h2><i class="icon-edit-sign teal"></i> View</h2>
 
                             <hr>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="control-label">Name</label>
-                                        ${quizModel.title}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Current</label>
-                                        ${quizModel.current}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Start Date</label>
-                                        ${quizModel.startDate}
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">End Date</label>
-                                        ${quizModel.endDate}
+                            <form:form id="form" commandName="quizModel"
+                                       action="${pageContext.request.contextPath}/secure/quiz/update"
+                                       method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Title <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="title" placeholder="Insert title"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Start Date <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="startDate" placeholder="Insert start date"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                End Date <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="endDate" placeholder="Insert end date"
+                                                        cssClass="form-control"/>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-yellow btn-block" type="submit">
+                                            Update <i class="icon-circle-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form:form>
                         </div>
                     </div>
                 </div>
