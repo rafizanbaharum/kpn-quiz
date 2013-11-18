@@ -51,5 +51,5 @@ public interface CompetitionManager {
 
     Integer countParticipant(QaQuiz quiz);
 
-    void calculateResult(QaQuiz quiz);
+    void tabulateResult(QaQuiz quiz);
 }
