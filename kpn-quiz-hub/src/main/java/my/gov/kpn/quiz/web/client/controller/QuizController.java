@@ -27,6 +27,7 @@ public class QuizController extends Controller {
     public QuizController() {
         registerEventTypes(QuizEvents.AppInit);
         registerEventTypes(QuizEvents.QuizInit);
+        registerEventTypes(QuizEvents.QuizInited);
     }
 
     @Override
@@ -47,7 +48,6 @@ public class QuizController extends Controller {
             forwardToView(view, event);
         }
     }
-
 
 
     protected void onError(AppEvent ae) {

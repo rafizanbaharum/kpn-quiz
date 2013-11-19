@@ -39,6 +39,12 @@ import java.util.logging.Logger;
 import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
 
 /**
+ * Event sequence:
+ * <p/>
+ * AppInit
+ * QuizInit
+ * QuizInited
+ *
  * @author : alif haikal razak
  */
 public class QuizView extends View {
@@ -80,9 +86,13 @@ public class QuizView extends View {
     @Override
     protected void handleEvent(AppEvent appEvent) {
         if (appEvent.getType() == QuizEvents.AppInit) {
+            log.info("application init");
             onInitApplication();
         } else if (appEvent.getType() == QuizEvents.QuizInit) {
+            log.info("quiz init");
             onInitQuiz();
+        } else if (appEvent.getType() == QuizEvents.QuizInited) {
+            log.info("quiz inited");
         }
     }
 
@@ -100,12 +110,14 @@ public class QuizView extends View {
 
 
     private void onInitQuiz() {
-        loader.load(new BaseListLoadConfig());
+        final Dispatcher dispatcher = Dispatcher.get();
         initListener();
         initTimer();
+        loader.load(new BaseListLoadConfig());
     }
 
     private void initListener() {
+        log.info("init listener");
         loader.addListener(Loader.Load, new Listener<LoadEvent>() {
             @Override
             public void handleEvent(LoadEvent be) {
@@ -117,6 +129,7 @@ public class QuizView extends View {
                     createQuestionPanel(questionIndex, model);
                 }
                 cardPanel.layout();
+                cardPanel.fireEvent(QuizEvents.QuizNavigate, new QuizNavigateEvent(this, 0, -1));
             }
         });
 
@@ -124,36 +137,42 @@ public class QuizView extends View {
             @Override
             public void handleEvent(TimerEvent be) {
                 now -= ONE_SECOND;
-                timer.setHtml(formattedNow());
-                counter.setHtml((currentStep + 1) + "/" + cardPanel.getItemCount());
+                updateTimer();
             }
         });
 
         cardPanel.addListener(QuizEvents.QuizNavigate, new Listener<QuizNavigateEvent>() {
             @Override
             public void handleEvent(QuizNavigateEvent be) {
-                updateCounter(be.getNextQuestionIndex());
-                QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
-                QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
-                switch (prevQuestion.getQuestionType()) {
-                    case MULTIPLE_CHOICE:
-                        updateAnswer(prevQuestion, 0); // TODO
-                        loadAnswerIndex(nextQuestion);
-                        break;
-                    case BOOLEAN:
-                        updateAnswer(prevQuestion, 0); // TODO
-                        loadAnswerIndex(nextQuestion);
-                        break;
-                    case SUBJECTIVE:
-                        updateAnswer(prevQuestion, "TODO"); // TODO
-                        loadAnswerResponse(nextQuestion);
-                        break;
+                if (be.getPreviousQuestionIndex() == -1) { // first time load
+                    updateCounter(1);
+                    QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
+                    if (null != nextQuestion) loadAnswerIndex(nextQuestion);
+                } else { // subsequent load
+                    updateCounter(be.getNextQuestionIndex());
+                    QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
+                    QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
+                    switch (prevQuestion.getQuestionType()) {
+                        case MULTIPLE_CHOICE:
+                            updateAnswer(prevQuestion, 0); // TODO
+                            loadAnswerIndex(nextQuestion);
+                            break;
+                        case BOOLEAN:
+                            updateAnswer(prevQuestion, 0); // TODO
+                            loadAnswerIndex(nextQuestion);
+                            break;
+                        case SUBJECTIVE:
+                            updateAnswer(prevQuestion, "TODO"); // TODO
+                            loadAnswerResponse(nextQuestion);
+                            break;
+                    }
                 }
             }
         });
     }
 
     private void initTimer() {
+        log.info("init timer");
         t = new Timer() {
             public void run() {
                 t.schedule(ONE_SECOND);
@@ -169,6 +188,10 @@ public class QuizView extends View {
 
     private void updateStatus(String stat) {
         status.setHtml(stat);
+    }
+
+    private void updateTimer() {
+        timer.setHtml(formattedNow());
     }
 
     // subjective
