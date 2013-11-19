@@ -65,7 +65,7 @@ public class StudentController extends AbstractController {
         return "secure/student/student_remove";
     }
 
-    @RequestMapping(value = "/remove/confirm/{id}", method = {RequestMethod.GET})
+    @RequestMapping(value = "/remove/confirm/{id}", method = {RequestMethod.POST})
     public String studentConfirmRemove(@PathVariable Long id, ModelMap model) {
         QaStudent student = instructorManager.findStudentById(id);
 
