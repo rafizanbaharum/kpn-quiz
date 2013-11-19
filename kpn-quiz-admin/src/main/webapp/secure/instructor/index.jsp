@@ -39,7 +39,7 @@
 <body class="footer-fixed layout-boxed">
 <jsp:include page="/secure/include/topbar.jsp" />
 <div class="main-container">
-   <jsp:include page="/secure/include/instructor_leftbar.jsp" />
+   <jsp:include page="/secure/include/instructor_navbar.jsp" />
     <div class="main-content">
         <div class="container">
            <jsp:include page="/secure/include/instructor_breadcrumb.jsp" />

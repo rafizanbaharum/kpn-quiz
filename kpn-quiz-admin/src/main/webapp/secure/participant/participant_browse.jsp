@@ -109,26 +109,10 @@
     </div>
     <div class="main-content">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="clip-pencil"></i>
-                            <a href="#">
-                                Manage Competition
-                            </a>
-                        </li>
-                        <li class="active">
-                            Participant List
-                        </li>
-                    </ol>
-                    <div class="page-header">
-                        <h1>Participant List
-                            <small>${quizModel.title}</small>
-                        </h1>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="/secure/include/participant_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="TODO"/>
+                <jsp:param name="TITLE" value="TODO"/>
+            </jsp:include>
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -187,43 +171,7 @@
         </div>
     </div>
 </div>
-<div class="footer clearfix">
-    <div class="footer-inner">
-        2013 &copy; ASEAN QUIZ
-    </div>
-    <div class="footer-items">
-        <span class="go-top"><i class="clip-chevron-up"></i></span>
-    </div>
-</div>
-
-
-<!-- start: MAIN JAVASCRIPTS -->
-<!--[if lt IE 9]>
-<script src="/assets/plugins/respond.min.js"></script>
-<script src="/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script src="/assets/js/jquery-1.10.2.min.js"></script>
-<script src="/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="/assets/js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="/assets/plugins/summernote/build/summernote.min.js"></script>
-<script src="/assets/plugins/ckeditor/ckeditor.js"></script>
-<script src="/assets/plugins/ckeditor/adapters/jquery.js"></script>
-<script src="/assets/js/form-validation.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    jQuery(document).ready(function () {
-        Main.init();
-        FormValidator.init();
-    });
-</script>
+<jsp:include page="/secure/include/footer.jsp"/>
+<jsp:include page="/secure/include/footer_script.jsp"/>
 </body>
-<!-- end: BODY -->
 </html>
