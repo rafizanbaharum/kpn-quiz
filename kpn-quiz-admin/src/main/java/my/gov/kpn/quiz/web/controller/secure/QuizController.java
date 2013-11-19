@@ -113,7 +113,7 @@ public class QuizController extends AbstractController {
     public String quizTabulate(@ModelAttribute("quizModel") QuizModel quizModel,
                                ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
-//        competitionManager.tabulateResult(quiz);
+        competitionManager.tabulateResult(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully tabulated");
         return "redirect:/secure/quiz/view/" + quiz.getId();
@@ -139,6 +139,4 @@ public class QuizController extends AbstractController {
         model.addAttribute(MSG_SUCCESS, "Quiz successfully inited");
         return "redirect:/secure/quiz/view/" + quiz.getId();
     }
-
-
 }
