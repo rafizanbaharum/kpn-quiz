@@ -77,74 +77,15 @@
     </div>
 </div>
 <div class="main-container">
-    <div class="navbar-content">
-        <div class="main-navigation navbar-collapse collapse">
-            <div class="navigation-toggler">
-                <i class="clip-chevron-left"></i>
-                <i class="clip-chevron-right"></i>
-            </div>
-            <ul class="main-navigation-menu">
-                <li>
-                    <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
-                        <span class="title"> Dashboard </span><span class="selected"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/register">
-                                <span class="title">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/list">
-                                <span class="title">Student List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="active open">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
-                                <span class="title">Quizzes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <jsp:include page="/secure/include/question_navbar.jsp"/>
+
     <div class="main-content">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="clip-pencil"></i>
-                            <a href="#">
-                                Manage Competition
-                            </a>
-                        </li>
-                        <li class="active">
-                            Questions
-                        </li>
-                    </ol>
-                    <div class="page-header">
-                        <h1>Edit Question </h1>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="/secure/include/question_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="TODO"/>
+                <jsp:param name="TITLE" value="TODO"/>
+            </jsp:include>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">

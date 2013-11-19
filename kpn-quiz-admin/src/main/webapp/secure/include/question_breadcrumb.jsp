@@ -8,11 +8,11 @@
                 </a>
             </li>
             <li class="active">
-                Questions
+                Quiz List
             </li>
         </ol>
         <div class="page-header">
-            <h1>View Question </h1>
+            <h1>Quiz </h1>
         </div>
     </div>
 </div>
