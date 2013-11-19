@@ -7,6 +7,7 @@ import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.QuizModel;
 import org.apache.log4j.Logger;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Date;
 
 @Controller("SecureQuizController")
 @RequestMapping("/secure/quiz")
@@ -137,22 +140,21 @@ public class QuizController extends AbstractController {
         quiz.setTitle(quizModel.getTitle());
         quiz.setProcessed(false);
         quiz.setLocked(false);
-//        quiz.setStartDate();
-//        quiz.setEndDate();
+        quiz.setStartDate(extractStartDate(quizModel));
+        quiz.setEndDate(extractEndDate(quizModel));
         competitionManager.saveQuiz(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully saved");
         return "redirect:/secure/quiz/list";
     }
 
-
     @RequestMapping(value = "/update", method = {RequestMethod.POST})
     public String quizUpdate(@ModelAttribute("quizModel") QuizModel quizModel,
                              ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         quiz.setTitle(quizModel.getTitle());
-//        quiz.setStartDate();
-//        quiz.setEndDate();
+        quiz.setStartDate(extractStartDate(quizModel));
+        quiz.setEndDate(extractEndDate(quizModel));
         competitionManager.updateQuiz(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully updated");
@@ -188,5 +190,18 @@ public class QuizController extends AbstractController {
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully inited");
         return "redirect:/secure/quiz/view/" + quiz.getId();
+    }
+
+
+    private static Date extractStartDate(QuizModel quizModel) {
+        return new LocalDate(Integer.parseInt(quizModel.getStartDate_yyyy()),
+                Integer.parseInt(quizModel.getStartDate_mm()),
+                Integer.parseInt(quizModel.getStartDate_dd())).toDate();
+    }
+
+    private static Date extractEndDate(QuizModel quizModel) {
+        return new LocalDate(Integer.parseInt(quizModel.getEndDate_yyyy()),
+                Integer.parseInt(quizModel.getEndDate_mm()),
+                Integer.parseInt(quizModel.getEndDate_dd())).toDate();
     }
 }

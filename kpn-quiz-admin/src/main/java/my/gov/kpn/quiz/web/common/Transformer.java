@@ -119,6 +119,8 @@ public class Transformer {
     }
 
     public QuizModel transform(QaQuiz quiz) {
+        LocalDate startDate = new LocalDate(quiz.getStartDate());
+        LocalDate endDate = new LocalDate(quiz.getEndDate());
         QuizModel model = new QuizModel();
         model.setId(quiz.getId());
         model.setTitle(quiz.getTitle());
@@ -128,6 +130,14 @@ public class Transformer {
         model.setCurrent(quiz.isCurrent());
         model.setProcessed(quiz.isProcessed());
         model.setLocked(quiz.isLocked());
+        model.setStartDate_dd(String.valueOf(startDate.getDayOfMonth()));
+        model.setStartDate_mm(String.valueOf(startDate.getMonthOfYear()));
+        model.setStartDate_yyyy(String.valueOf(startDate.getYear()));
+
+        model.setEndDate_dd(String.valueOf(endDate.getDayOfMonth()));
+        model.setEndDate_mm(String.valueOf(endDate.getMonthOfYear()));
+        model.setEndDate_yyyy(String.valueOf(endDate.getYear()));
+
         return model;
     }
 

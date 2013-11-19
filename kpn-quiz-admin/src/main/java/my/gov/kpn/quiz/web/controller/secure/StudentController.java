@@ -72,7 +72,7 @@ public class StudentController extends AbstractController {
         model.addAttribute("studentModel", transformer.transform(student));
         model.put(BREADCRUMB, "View Student Details");
         model.put(TITLE, "View Student Details");
-        model.put(MSG_SUCCESS,"Student Removed");
+        model.put(MSG_SUCCESS, "Student Removed");
         return studentList(new StudentModel(), model);
     }
 
@@ -93,10 +93,8 @@ public class StudentController extends AbstractController {
             return "secure/student/student_register";
         }
 
-        Date dob = extractDob(studentModel);
-
         registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
-                studentModel.getName(), studentModel.getNric(), dob, getCurrentInstructor());
+                studentModel.getName(), studentModel.getNric(), extractDob(studentModel), getCurrentInstructor());
         return "redirect:/secure/student/list";
     }
 
