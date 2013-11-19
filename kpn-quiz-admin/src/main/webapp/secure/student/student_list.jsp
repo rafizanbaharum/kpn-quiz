@@ -53,6 +53,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
+                        <jsp:include page="/secure/include/msg.jsp"/>
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
                             List of registered students
