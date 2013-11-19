@@ -133,7 +133,6 @@ public class Transformer {
         model.setStartDate_dd(String.valueOf(startDate.getDayOfMonth()));
         model.setStartDate_mm(String.valueOf(startDate.getMonthOfYear()));
         model.setStartDate_yyyy(String.valueOf(startDate.getYear()));
-
         model.setEndDate_dd(String.valueOf(endDate.getDayOfMonth()));
         model.setEndDate_mm(String.valueOf(endDate.getMonthOfYear()));
         model.setEndDate_yyyy(String.valueOf(endDate.getYear()));

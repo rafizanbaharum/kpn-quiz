@@ -140,6 +140,7 @@ public class QuizController extends AbstractController {
         quiz.setTitle(quizModel.getTitle());
         quiz.setProcessed(false);
         quiz.setLocked(false);
+        quiz.setRound(quizModel.getRound());
         quiz.setStartDate(extractStartDate(quizModel));
         quiz.setEndDate(extractEndDate(quizModel));
         competitionManager.saveQuiz(quiz);
@@ -153,6 +154,7 @@ public class QuizController extends AbstractController {
                              ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         quiz.setTitle(quizModel.getTitle());
+        quiz.setRound(quizModel.getRound());
         quiz.setStartDate(extractStartDate(quizModel));
         quiz.setEndDate(extractEndDate(quizModel));
         competitionManager.updateQuiz(quiz);
@@ -173,8 +175,8 @@ public class QuizController extends AbstractController {
 
 
     @RequestMapping(value = "/process/{id}", method = {RequestMethod.GET})
-    public String roundProcess(@ModelAttribute("quizModel") QuizModel quizModel,
-                               ModelMap model) {
+    public String quizProcess(@ModelAttribute("quizModel") QuizModel quizModel,
+                              ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         competitionManager.processGradebook(quiz);
 
@@ -183,8 +185,8 @@ public class QuizController extends AbstractController {
     }
 
     @RequestMapping(value = "/init/{id}", method = {RequestMethod.GET})
-    public String roundInit(@ModelAttribute("quizModel") QuizModel quizModel,
-                            ModelMap model) {
+    public String quizInit(@ModelAttribute("quizModel") QuizModel quizModel,
+                           ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         competitionManager.processParticipant(quiz);
 

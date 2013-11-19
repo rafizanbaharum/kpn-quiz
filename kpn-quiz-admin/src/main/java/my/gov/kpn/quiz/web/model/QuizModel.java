@@ -14,10 +14,14 @@ public class QuizModel extends MetaModel {
     private boolean processed;
     private boolean locked;
     private Date startDate;
+    private String startDate_ss;
+    private String startDate_MM;
     private String startDate_dd;
     private String startDate_mm;
     private String startDate_yyyy;
     private Date endDate;
+    private String endDate_ss;
+    private String endDate_MM;
     private String endDate_dd;
     private String endDate_mm;
     private String endDate_yyyy;
@@ -125,5 +129,37 @@ public class QuizModel extends MetaModel {
 
     public void setEndDate_yyyy(String endDate_yyyy) {
         this.endDate_yyyy = endDate_yyyy;
+    }
+
+    public String getStartDate_ss() {
+        return startDate_ss;
+    }
+
+    public void setStartDate_ss(String startDate_ss) {
+        this.startDate_ss = startDate_ss;
+    }
+
+    public String getStartDate_MM() {
+        return startDate_MM;
+    }
+
+    public void setStartDate_MM(String startDate_MM) {
+        this.startDate_MM = startDate_MM;
+    }
+
+    public String getEndDate_ss() {
+        return endDate_ss;
+    }
+
+    public void setEndDate_ss(String endDate_ss) {
+        this.endDate_ss = endDate_ss;
+    }
+
+    public String getEndDate_MM() {
+        return endDate_MM;
+    }
+
+    public void setEndDate_MM(String endDate_MM) {
+        this.endDate_MM = endDate_MM;
     }
 }
