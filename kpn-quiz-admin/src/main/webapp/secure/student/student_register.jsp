@@ -63,7 +63,7 @@
                             <form:form id="form" commandName="studentModel"
                                        action="${pageContext.request.contextPath}/secure/student/add"
                                        method="POST">
-                                <div class="row">                     test test test
+                                <div class="row">
                                     <jsp:include page = "/secure/include/msg.jsp"/>
                                     <div class="col-md-12">
                                         <div class="errorHandler alert alert-danger no-display">
