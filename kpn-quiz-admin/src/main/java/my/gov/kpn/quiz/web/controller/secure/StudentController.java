@@ -55,6 +55,27 @@ public class StudentController extends AbstractController {
         return "secure/student/student_view";
     }
 
+    @RequestMapping(value = "/remove/{id}", method = {RequestMethod.GET})
+    public String studentRemove(@PathVariable Long id, ModelMap model) {
+        QaStudent student = instructorManager.findStudentById(id);
+
+        model.addAttribute("studentModel", transformer.transform(student));
+        model.put(BREADCRUMB, "Confirm Remove Student");
+        model.put(TITLE, "Confirm Remove Student");
+        return "secure/student/student_remove";
+    }
+
+    @RequestMapping(value = "/remove/confirm/{id}", method = {RequestMethod.GET})
+    public String studentConfirmRemove(@PathVariable Long id, ModelMap model) {
+        QaStudent student = instructorManager.findStudentById(id);
+
+        model.addAttribute("studentModel", transformer.transform(student));
+        model.put(BREADCRUMB, "View Student Details");
+        model.put(TITLE, "View Student Details");
+        model.put(MSG_SUCCESS,"Student Removed");
+        return studentList(new StudentModel(), model);
+    }
+
     @RequestMapping(value = "/register", method = {RequestMethod.GET})
     public String studentRegister(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
         model.put(BREADCRUMB, "Register Student");
@@ -106,7 +127,7 @@ public class StudentController extends AbstractController {
 
         // check if password does not match
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
-            model.addAttribute(MSG_SUCCESS, "Password does not match");
+            model.addAttribute(MSG_ERROR, "Password does not match");
             return "secure/student/student_register";
         }
 
