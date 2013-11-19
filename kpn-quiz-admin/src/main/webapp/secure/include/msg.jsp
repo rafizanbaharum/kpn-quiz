@@ -4,17 +4,16 @@
     <c:choose>
         <c:when test="${null != msgSuccess}">
             <%--<div class="errorHandler alert alert-danger no-display">--%>
-            <div class="errorHandler alert alert-danger">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check
-                below.
+            <div class="successHandler alert alert-success">
+                <i class="icon-remove-sign"></i> ${msgSuccess}
             </div>
         </c:when>
     </c:choose>
 
     <c:choose>
         <c:when test="${null != msgError}">
-            <div class="successHandler alert alert-success">
-                <i class="icon-ok"></i> Your form validation is successful!
+            <div class="errorHandler alert alert-danger">
+                <i class="icon-ok"></i> ${msgError}
             </div>
         </c:when>
     </c:choose>
