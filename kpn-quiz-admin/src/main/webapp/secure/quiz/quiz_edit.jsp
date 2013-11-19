@@ -143,6 +143,7 @@
                                        action="${pageContext.request.contextPath}/secure/quiz/update"
                                        method="POST">
                                 <div class="row">
+                                    <jsp:include page = "/secure/include/msg.jsp"/>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">

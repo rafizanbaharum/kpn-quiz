@@ -161,6 +161,7 @@
                                        method="POST">
                                 <form:hidden path="id"/>
                                 <div class="row">
+                                    <jsp:include page="/secure/include/msg.jsp"/>
                                     <div class="col-md-12">
                                         <div class="errorHandler alert alert-danger no-display">
                                             <i class="icon-remove-sign"></i> You have some form errors. Please check

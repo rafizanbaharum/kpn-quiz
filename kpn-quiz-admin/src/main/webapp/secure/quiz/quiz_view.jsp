@@ -141,6 +141,7 @@
                                        action="${pageContext.request.contextPath}/secure/quiz/update"
                                        method="POST">
                                 <div class="row">
+                                    <jsp:include page="/secure/include/msg.jsp"/>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
@@ -229,10 +230,10 @@
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/question/view/${question.id}"
-                                                   class="btn btn-green tooltips" data-placement="top"
+                                                   class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="View"><i class="icon-archive"></i></a>
                                                 <a href="${pageContext.request.contextPath}/secure/question/edit/${question.id}"
-                                                   class="btn btn-green tooltips" data-placement="top"
+                                                   class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
                                             </div>
                                         </td>
