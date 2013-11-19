@@ -15,4 +15,10 @@ public interface QuizDelegate extends RemoteService {
     void updateAnswer(QuestionModel model, Integer answerIndex);
 
     void updateAnswer(QuestionModel model, String answerResponse);
+
+    // for multiple choice and boolean
+    Integer loadAnswerIndex(QuestionModel model);
+
+    // for subjective
+    String loadAnswerResponse(QuestionModel model);
 }

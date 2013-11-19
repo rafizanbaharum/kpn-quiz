@@ -60,6 +60,7 @@ public class QuizView extends View {
     private Html timer;
     private Html counter;
     private Html level;
+    private Html status;
 
     private Timer t;
     private int now = 60 * 60 * 1000;
@@ -132,16 +133,20 @@ public class QuizView extends View {
             @Override
             public void handleEvent(QuizNavigateEvent be) {
                 updateCounter(be.getNextQuestionIndex());
-                QuestionModel questionModel = getQuestion(be.getPreviousQuestionIndex());
-                switch (questionModel.getQuestionType()) {
+                QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
+                QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
+                switch (prevQuestion.getQuestionType()) {
                     case MULTIPLE_CHOICE:
-                        updateAnswer(questionModel, 0); // TODO
+                        updateAnswer(prevQuestion, 0); // TODO
+                        loadAnswerIndex(nextQuestion);
                         break;
                     case BOOLEAN:
-                        updateAnswer(questionModel, 0); // TODO
+                        updateAnswer(prevQuestion, 0); // TODO
+                        loadAnswerIndex(nextQuestion);
                         break;
                     case SUBJECTIVE:
-                        updateAnswer(questionModel, "TODO"); // TODO
+                        updateAnswer(prevQuestion, "TODO"); // TODO
+                        loadAnswerResponse(nextQuestion);
                         break;
                 }
             }
@@ -160,6 +165,10 @@ public class QuizView extends View {
 
     private void updateCounter(int nextQuestionIndex) {
         counter.setHtml(nextQuestionIndex + "/" + cardPanel.getItemCount());
+    }
+
+    private void updateStatus(String stat) {
+        status.setHtml(stat);
     }
 
     // subjective
@@ -188,6 +197,38 @@ public class QuizView extends View {
             @Override
             public void onSuccess(Void result) {
                 // TODO:
+            }
+        });
+    }
+
+    private void loadAnswerIndex(QuestionModel questionModel) {
+        delegate.loadAnswerIndex(questionModel, new AsyncCallback<Integer>() {
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(Integer result) {
+                if (null != result)
+                    updateStatus("Answered");
+                else
+                    updateStatus("Unanswered");
+            }
+        });
+    }
+
+    private void loadAnswerResponse(QuestionModel questionModel) {
+        delegate.loadAnswerIndex(questionModel, new AsyncCallback<Integer>() {
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(Integer result) {
+                if (null != result)
+                    updateStatus("Answered");
+                else
+                    updateStatus("Unanswered");
             }
         });
     }
@@ -237,10 +278,14 @@ public class QuizView extends View {
         level = new Html();
         level.setId("quiz-level");
         level.setHtml("Initializing...");
+        status = new Html();
+        status.setId("quiz-status");
+        status.setHtml("Initializing...");
         LayoutContainer panel = new LayoutContainer();
         panel.setLayout(new HBoxLayout());
         panel.add(timer, new HBoxLayoutData(0, 0, 0, 20));
         panel.add(counter, new HBoxLayoutData(0, 0, 0, 20));
+        panel.add(status, new HBoxLayoutData(0, 0, 0, 20));
         header.add(panel, new MarginData(30, 0, 0, 0));
     }
 
