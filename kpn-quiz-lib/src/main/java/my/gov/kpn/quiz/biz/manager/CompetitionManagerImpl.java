@@ -154,6 +154,19 @@ public class CompetitionManagerImpl implements CompetitionManager {
         return quizDao.countParticipant(quiz);
     }
 
+    public boolean hasQuestion(QaQuiz quiz) {
+        return quizDao.hasQuestion(quiz);
+    }
+
+    public boolean hasParticipant(QaQuiz quiz) {
+        return quizDao.hasParticipant(quiz);
+    }
+
+    @Override
+    public boolean hasGradebookItem(QaQuestion question) {
+        return questionDao.hasGradebookItem(question);
+    }
+
     @Override
     public void tabulateResult(QaQuiz quiz) {
         // TODO: not scalable
@@ -313,6 +326,12 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
+    public void removeQuiz(QaQuiz quiz) {
+        quizDao.deactivate(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
     public void saveQuestion(QaQuestion question) {
         questionDao.save(question, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -321,6 +340,12 @@ public class CompetitionManagerImpl implements CompetitionManager {
     @Override
     public void updateQuestion(QaQuestion question) {
         questionDao.update(question, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeQuestion(QaQuestion question) {
+        questionDao.deactivate(question, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 }

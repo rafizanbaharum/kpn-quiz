@@ -147,28 +147,28 @@
                                                 Title <span class="symbol required"></span>
                                             </label>
                                             <form:input path="title" placeholder="Insert title"
-                                                        cssClass="form-control"/>
+                                                        cssClass="form-control" readonly="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Round <span class="symbol required"></span>
                                             </label>
                                             <form:input path="round" placeholder="Insert round"
-                                                        cssClass="form-control"/>
+                                                        cssClass="form-control" readonly="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Start Date <span class="symbol required"></span>
                                             </label>
                                             <form:input path="startDate" placeholder="Insert start date"
-                                                        cssClass="form-control"/>
+                                                        cssClass="form-control" readonly="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 End Date <span class="symbol required"></span>
                                             </label>
                                             <form:input path="endDate" placeholder="Insert end date"
-                                                        cssClass="form-control"/>
+                                                        cssClass="form-control" readonly="true"/>
                                         </div>
                                     </div>
                                 </div>
@@ -220,18 +220,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="round" items="${questionModels}" varStatus="idx">
+                                <c:forEach var="question" items="${questionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.statement}</td>
-                                        <td class="hidden-xs">${round.weight}</td>
-                                        <td class="hidden-xs">${round.difficulty}</td>
+                                        <td class="hidden-xs">${question.statement}</td>
+                                        <td class="hidden-xs">${question.weight}</td>
+                                        <td class="hidden-xs">${question.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/question/view/${question.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
-                                                   data-original-title="Edit"><i
-                                                        class="icon-edit"></i></a>
+                                                   data-original-title="View"><i class="icon-archive"></i></a>
+                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${question.id}"
+                                                   class="btn btn-green tooltips" data-placement="top"
+                                                   data-original-title="Edit"><i class="icon-edit"></i></a>
                                             </div>
                                         </td>
                                     </tr>

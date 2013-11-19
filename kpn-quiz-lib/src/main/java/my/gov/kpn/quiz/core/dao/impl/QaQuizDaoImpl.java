@@ -157,6 +157,24 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         return ((Long) query.uniqueResult()).intValue();
     }
 
+    @Override
+    public boolean hasQuestion(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from QaQuestion u where " +
+                "u.quiz = :quiz");
+        query.setEntity("quiz", quiz);
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public boolean hasParticipant(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from QaParticipant u where " +
+                "u.quiz = :quiz");
+        query.setEntity("quiz", quiz);
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+
     // =============================================================================
     // CRUD METHODS
     // =============================================================================

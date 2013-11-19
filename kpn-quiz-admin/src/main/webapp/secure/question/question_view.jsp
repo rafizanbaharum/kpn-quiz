@@ -141,7 +141,7 @@
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Edit Question </h1>
+                        <h1>View Question </h1>
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            Edit a question
+                            View a question
                         </div>
                         <div class="panel-body">
                             <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
@@ -192,15 +192,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn btn-yellow btn-block" type="submit">
-                                            Edit <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-red btn-block" type="submit">
-                                            Remove <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                    <div class="col-md-12">
+                                        <div class="btn-group btn-group-justified">
+                                            <a href="${pageContext.request.contextPath}/secure/question/edit/${quizModel.id}"
+                                               class="btn btn-dark-beige">Edit</a>
+                                            <a href="${pageContext.request.contextPath}/secure/question/remove/${questionModel.id}"
+                                               class="btn btn-dark-beige">remove</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form:form>

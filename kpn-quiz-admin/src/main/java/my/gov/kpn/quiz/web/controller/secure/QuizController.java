@@ -41,6 +41,21 @@ public class QuizController extends AbstractController {
         return "secure/quiz/quiz_view";
     }
 
+    @RequestMapping(value = "/remove/{id}", method = {RequestMethod.GET})
+    public String quizRemove(@PathVariable Long id, ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(id);
+
+        // check
+        if (competitionManager.hasQuestion(quiz) && competitionManager.hasParticipant(quiz)) {
+            model.addAttribute(MSG_ERROR, "Quiz cannot be removed");
+            return "redirect:/secure/quiz/view/" + quiz.getId();
+        } else {
+            competitionManager.removeQuiz(quiz);
+            model.addAttribute(MSG_SUCCESS, "Quiz successfully removed");
+            return "redirect:/secure/quiz/list";
+        }
+    }
+
     @RequestMapping(value = "/view/{id}/participant/list", method = {RequestMethod.GET})
     public String quizViewParticipantList(@PathVariable Long id, ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(id);

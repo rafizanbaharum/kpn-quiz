@@ -34,6 +34,10 @@ public interface QaQuizDao {
 
     Integer countQuestion(QaQuiz quiz);
 
+    boolean hasQuestion(QaQuiz quiz);
+
+    boolean hasParticipant(QaQuiz quiz);
+
     void save(QaQuiz quiz, QaUser user);
 
     void update(QaQuiz quiz, QaUser user);

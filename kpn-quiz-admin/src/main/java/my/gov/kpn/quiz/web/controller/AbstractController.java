@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 public class AbstractController {
 
     protected final String MSG_SUCCESS = "msgSuccess";
-    protected final String MSG_ERROR = "msgSuccess";
+    protected final String MSG_ERROR = "msgError";
 
     @Autowired
     protected Transformer transformer;

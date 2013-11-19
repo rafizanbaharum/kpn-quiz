@@ -69,23 +69,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="round" items="${studentModels}" varStatus="idx">
+                                <c:forEach var="question" items="${studentModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${round.name}</td>
-                                        <td>${round.nric}</td>
-                                        <td class="hidden-xs">${round.username}</td>
+                                        <td class="hidden-xs">${question.name}</td>
+                                        <td>${question.nric}</td>
+                                        <td class="hidden-xs">${question.username}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/student/edit/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/student/edit/${question.id}"
                                                    class="btn btn-teal tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/reset/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/student/reset/${question.id}"
                                                    class="btn btn-green tooltips" data-placement="top"
                                                    data-original-title="Reset"><i
                                                         class="icon-refresh"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${round.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${question.id}"
                                                    class="btn btn-bricky tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>

@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.controller.secure;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.QaQuestion;
+import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.QuestionModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,22 @@ public class QuestionController extends AbstractController {
 
         model.addAttribute(MSG_SUCCESS, "Question successfully updated");
         return "redirect:/secure/question/view/" + question.getId();
+    }
+
+
+    @RequestMapping(value = "/remove/{id}", method = {RequestMethod.GET})
+    public String questionRemove(@PathVariable Long id, ModelMap model) {
+        QaQuestion question = competitionManager.findQuestionById(id);
+        QaQuiz quiz = question.getQuiz();
+
+        // check
+        if (competitionManager.hasGradebookItem(question)) {
+            model.addAttribute(MSG_ERROR, "Question cannot be removed");
+            return "redirect:/secure/question/view/" + question.getId();
+        } else {
+            competitionManager.removeQuestion(question);
+            model.addAttribute(MSG_SUCCESS, "Question successfully removed");
+            return "redirect:/secure/quiz/view/" + quiz.getId();
+        }
     }
 }

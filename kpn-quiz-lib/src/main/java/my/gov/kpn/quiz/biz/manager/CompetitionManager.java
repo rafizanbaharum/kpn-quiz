@@ -37,6 +37,12 @@ public interface CompetitionManager {
 
     List<QaParticipant> findParticipants(QaQuiz quiz, Integer limit, Integer offset);
 
+    boolean hasQuestion(QaQuiz quiz);
+
+    boolean hasParticipant(QaQuiz quiz);
+
+    boolean hasGradebookItem(QaQuestion question);
+
     void processGradebook(QaQuiz quiz);
 
     void processParticipant(QaQuiz quiz);
@@ -45,9 +51,13 @@ public interface CompetitionManager {
 
     void updateQuiz(QaQuiz quiz);
 
+    void removeQuiz(QaQuiz quiz);
+
     void saveQuestion(QaQuestion question);
 
     void updateQuestion(QaQuestion question);
+
+    void removeQuestion(QaQuestion question);
 
     void setCurrentQuiz(QaQuiz quiz);
 
@@ -66,6 +76,5 @@ public interface CompetitionManager {
     void selectTopParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
 
     void selectFairPlayParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
-
 
 }

@@ -49,6 +49,16 @@ public class QaQuestionDaoImpl extends DaoSupport<Long, QaQuestion, QaQuestionIm
         return ((Long) query.uniqueResult()).intValue();
     }
 
+
+    @Override
+    public boolean hasGradebookItem(QaQuestion question) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from QaGradebookItem u where " +
+                "u.question = :question");
+        query.setEntity("question", question);
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+
     // =============================================================================
     // CRUD METHODS
     // =============================================================================

@@ -17,9 +17,12 @@ public interface QaQuestionDao {
 
     Integer count();
 
+    boolean hasGradebookItem(QaQuestion question);
+
     void save(QaQuestion question, QaUser user);
 
     void update(QaQuestion question, QaUser user);
 
     void deactivate(QaQuestion question, QaUser user);
+
 }
