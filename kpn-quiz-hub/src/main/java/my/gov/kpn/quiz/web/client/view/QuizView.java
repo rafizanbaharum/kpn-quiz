@@ -3,24 +3,24 @@ package my.gov.kpn.quiz.web.client.view;
 import com.extjs.gxt.ui.client.Registry;
 import com.extjs.gxt.ui.client.Style;
 import com.extjs.gxt.ui.client.data.*;
-import com.extjs.gxt.ui.client.event.*;
+import com.extjs.gxt.ui.client.event.ButtonEvent;
+import com.extjs.gxt.ui.client.event.Listener;
+import com.extjs.gxt.ui.client.event.SelectionListener;
 import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.mvc.View;
 import com.extjs.gxt.ui.client.util.Margins;
-import com.extjs.gxt.ui.client.widget.CardPanel;
-import com.extjs.gxt.ui.client.widget.Html;
-import com.extjs.gxt.ui.client.widget.LayoutContainer;
-import com.extjs.gxt.ui.client.widget.Viewport;
+import com.extjs.gxt.ui.client.widget.*;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ButtonBar;
+import com.extjs.gxt.ui.client.widget.form.Radio;
+import com.extjs.gxt.ui.client.widget.form.RadioGroup;
 import com.extjs.gxt.ui.client.widget.form.TextArea;
 import com.extjs.gxt.ui.client.widget.layout.*;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.RootPanel;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
@@ -43,7 +43,6 @@ import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
  * <p/>
  * AppInit
  * QuizInit
- * QuizInited
  *
  * @author : alif haikal razak
  */
@@ -91,8 +90,6 @@ public class QuizView extends View {
         } else if (appEvent.getType() == QuizEvents.QuizInit) {
             log.info("quiz init");
             onInitQuiz();
-        } else if (appEvent.getType() == QuizEvents.QuizInited) {
-            log.info("quiz inited");
         }
     }
 
@@ -152,17 +149,40 @@ public class QuizView extends View {
                     updateCounter(be.getNextQuestionIndex());
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
+
+                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(currentStep);
+                    LayoutContainer box = (LayoutContainer) container.getItemByItemId("quiz-question-box");
                     switch (prevQuestion.getQuestionType()) {
                         case MULTIPLE_CHOICE:
-                            updateAnswer(prevQuestion, 0); // TODO
+                            Radio mcRadio0 = (Radio) box.getItemByItemId("0");
+                            Radio mcRadio1 = (Radio) box.getItemByItemId("1");
+                            Radio mcRadio2 = (Radio) box.getItemByItemId("2");
+                            Radio mcRadio3 = (Radio) box.getItemByItemId("3");
+
+                            // TODO: simplify
+                            Integer mcAnswer = -1;
+                            if (mcRadio0.getValue()) mcAnswer = 0;
+                            if (mcRadio1.getValue()) mcAnswer = 1;
+                            if (mcRadio2.getValue()) mcAnswer = 2;
+                            if (mcRadio3.getValue()) mcAnswer = 3;
+                            if (mcAnswer != -1) updateAnswer(prevQuestion, mcAnswer);
                             loadAnswerIndex(nextQuestion);
                             break;
                         case BOOLEAN:
-                            updateAnswer(prevQuestion, 0); // TODO
+                            Radio blRadio0 = (Radio) box.getItemByItemId("0");
+                            Radio blRadio1 = (Radio) box.getItemByItemId("1");
+
+                            // TODO: simplify
+                            Integer blAnswer = -1;
+                            if (blRadio0.getValue()) blAnswer = 0;
+                            if (blRadio1.getValue()) blAnswer = 1;
+
+                            if (blAnswer != -1) updateAnswer(prevQuestion, blAnswer);
                             loadAnswerIndex(nextQuestion);
                             break;
                         case SUBJECTIVE:
-                            updateAnswer(prevQuestion, "TODO"); // TODO
+                            TextArea textArea = (TextArea) box.getItemByItemId("quiz-question-response");
+                            updateAnswer(prevQuestion, textArea.getValue());
                             loadAnswerResponse(nextQuestion);
                             break;
                     }
@@ -195,8 +215,9 @@ public class QuizView extends View {
     }
 
     // subjective
-    private void updateAnswer(QuestionModel questionModel, String answerKey) {
-        delegate.updateAnswer(questionModel, answerKey, new AsyncCallback<Void>() {
+    private void updateAnswer(QuestionModel questionModel, String answerResponse) {
+        log.info("updating answer: " + answerResponse);
+        delegate.updateAnswer(questionModel, answerResponse, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
                 // TODO:
@@ -210,8 +231,9 @@ public class QuizView extends View {
     }
 
     // multiplechoice + boolean
-    private void updateAnswer(QuestionModel questionModel, Integer answerKey) {
-        delegate.updateAnswer(questionModel, answerKey, new AsyncCallback<Void>() {
+    private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
+        log.info("updating answer: " + answerIndex);
+        delegate.updateAnswer(questionModel, answerIndex, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
                 // TODO:
@@ -224,7 +246,7 @@ public class QuizView extends View {
         });
     }
 
-    private void loadAnswerIndex(QuestionModel questionModel) {
+    private void loadAnswerIndex(final QuestionModel questionModel) {
         delegate.loadAnswerIndex(questionModel, new AsyncCallback<Integer>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -232,26 +254,58 @@ public class QuizView extends View {
 
             @Override
             public void onSuccess(Integer result) {
-                if (null != result)
+                if (null != result) {
                     updateStatus("Answered");
-                else
+                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(currentStep);
+                    LayoutContainer box = (LayoutContainer) container.getItemByItemId("quiz-question-box");
+                    switch (questionModel.getQuestionType()) {
+                        case MULTIPLE_CHOICE:
+                            log.info("result: " + result);
+                            Radio radioMulti = (Radio) box.getItemByItemId(result.toString()); // 0-A, 1-B, 2-C, 3-D
+                            radioMulti.setValue(Boolean.TRUE);
+                            break;
+                        case BOOLEAN:
+                            Radio radioBoolean = (Radio) box.getItemByItemId(result.toString()); // 0-FALSE, 1-TRUE
+                            radioBoolean.setValue(Boolean.TRUE);
+                            break;
+                        case SUBJECTIVE:
+                            // N/A
+                            break;
+                    }
+                } else {
                     updateStatus("Unanswered");
+                }
             }
         });
     }
 
-    private void loadAnswerResponse(QuestionModel questionModel) {
-        delegate.loadAnswerIndex(questionModel, new AsyncCallback<Integer>() {
+    private void loadAnswerResponse(final QuestionModel questionModel) {
+        delegate.loadAnswerResponse(questionModel, new AsyncCallback<String>() {
             @Override
             public void onFailure(Throwable caught) {
             }
 
             @Override
-            public void onSuccess(Integer result) {
-                if (null != result)
+            public void onSuccess(String result) {
+                if (null != result) {
                     updateStatus("Answered");
-                else
+                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(currentStep);
+                    LayoutContainer box = (LayoutContainer) container.getItemByItemId("quiz-question-box");
+                    switch (questionModel.getQuestionType()) {
+                        case MULTIPLE_CHOICE:
+                            // N/A
+                            break;
+                        case BOOLEAN:
+                            // N/A
+                            break;
+                        case SUBJECTIVE:
+                            TextArea textArea = (TextArea) box.getItemByItemId("quiz-question-response");
+                            textArea.setValue(result);
+                            break;
+                    }
+                } else {
                     updateStatus("Unanswered");
+                }
             }
         });
     }
@@ -353,25 +407,39 @@ public class QuizView extends View {
 
     private void createMultipleChoiceQuestionPanel(int questionIndex, MultipleChoiceQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
+        panel.setId("quiz-question-panel");
         panel.setStyleName("quiz-question");
 
         LayoutContainer box = new LayoutContainer();
+        box.setItemId("quiz-question-box");
         box.setLayout(new VBoxLayout());
+
         Html statement = new Html();
         statement.setId("quiz-question-statement");
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
-        RadioButton button1 = new RadioButton("A");
+
+        RadioGroup group = new RadioGroup();
+        Radio button1 = new Radio();
+        button1.setItemId("0");
         button1.setStyleName("quiz-question-choice");
-        button1.setText(model.getChoice1());
-        RadioButton button2 = new RadioButton("B");
+        button1.setBoxLabel(model.getChoice1());
+        Radio button2 = new Radio();
+        button2.setItemId("1");
+        button2.setItemId("1");
         button2.setStyleName("quiz-question-choice");
-        button2.setText(model.getChoice2());
-        RadioButton button3 = new RadioButton("C");
+        button2.setBoxLabel(model.getChoice2());
+        Radio button3 = new Radio();
+        button3.setItemId("2");
         button3.setStyleName("quiz-question-choice");
-        button3.setText(model.getChoice3());
-        RadioButton button4 = new RadioButton("D");
+        button3.setBoxLabel(model.getChoice3());
+        Radio button4 = new Radio();
+        button4.setItemId("3");
         button4.setStyleName("quiz-question-choice");
-        button4.setText(model.getChoice4());
+        button4.setBoxLabel(model.getChoice4());
+        group.add(button1);
+        group.add(button2);
+        group.add(button3);
+        group.add(button4);
 
         box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
         box.add(button1, new VBoxLayoutData(0, 0, 10, 0));
@@ -384,18 +452,28 @@ public class QuizView extends View {
 
     private void createBooleanQuestionPanel(int questionIndex, BooleanQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
+        panel.setItemId("quiz-question-panel");
         panel.setStyleName("quiz-question");
+
         LayoutContainer box = new LayoutContainer();
+        box.setItemId("quiz-question-box");
         box.setLayout(new VBoxLayout());
+
         Html statement = new Html();
         statement.setId("quiz-question-statement");
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
-        RadioButton button1 = new RadioButton("TRUE");
+
+        RadioGroup group = new RadioGroup();
+        Radio button1 = new Radio();
+        button1.setItemId("0");
         button1.setStyleName("quiz-question-choice");
-        button1.setText("TRUE");
-        RadioButton button2 = new RadioButton("FALSE");
+        button1.setBoxLabel("TRUE");
+        Radio button2 = new Radio();
+        button2.setItemId("1");
         button2.setStyleName("quiz-question-choice");
-        button2.setText("FALSE");
+        button2.setBoxLabel("FALSE");
+        group.add(button1);
+        group.add(button2);
 
         box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
         box.add(button1, new VBoxLayoutData(0, 0, 10, 0));
@@ -415,6 +493,7 @@ public class QuizView extends View {
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
         TextArea area = new TextArea();
         area.setId("answer");
+        area.setItemId("quiz-question-response");
         area.setName("answer");
         area.setFieldLabel("");
         area.setHeight(250);

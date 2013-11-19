@@ -27,7 +27,6 @@ public class QuizController extends Controller {
     public QuizController() {
         registerEventTypes(QuizEvents.AppInit);
         registerEventTypes(QuizEvents.QuizInit);
-        registerEventTypes(QuizEvents.QuizInited);
     }
 
     @Override
