@@ -118,11 +118,6 @@
                                 <span class="title">Quizzes</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
-                                <span class="title">Results</span>
-                            </a>
-                        </li>
                     </ul>
                 </li>
             </ul>

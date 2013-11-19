@@ -22,13 +22,6 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/gradebook/list">
-                                <span class="title">Results</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>
