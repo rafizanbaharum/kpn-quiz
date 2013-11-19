@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.QuizModel;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller("SecureQuizController")
 @RequestMapping("/secure/quiz")
 public class QuizController extends AbstractController {
+
+    private static final Logger log = Logger.getLogger(QuizController.class);
 
     @Autowired
     private InstructorManager instructorManager;
@@ -56,9 +59,18 @@ public class QuizController extends AbstractController {
         model.addAttribute("page", page);
         model.addAttribute("next", page + 1);
         model.addAttribute("previous", page - 1);
-        model.addAttribute("hasNext", page <= count ? true : false);
-        model.addAttribute("hasPrevious", page > 1   ? true : false);
+        model.addAttribute("hasNext", page < count ? true : false);
+        model.addAttribute("hasPrevious", page > 1 ? true : false);
         model.addAttribute("participantModel", transformer.transform(competitionManager.findParticipants(quiz, 1, page).get(0)));
+
+        log.debug("count: " + count);
+        log.debug("page: " + page);
+        log.debug("previous: " + (page - 1));
+        log.debug("next: " + (page + 1));
+        log.debug("hasPrev: " + (page > 1 ? true : false));
+        log.debug("hasNext: " + (page < count ? true : false));
+
+
         return "secure/participant/participant_browse";
     }
 
@@ -70,15 +82,22 @@ public class QuizController extends AbstractController {
 
         if (selection.equals("random50")) {
             competitionManager.selectRandomParticipants(quiz, nextQuiz, 50);
+            model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
+            return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
         } else if (selection.equals("top50")) {
             competitionManager.selectTopParticipants(quiz, nextQuiz, 50);
+            model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
+            return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
         } else if (selection.equals("fairplay")) {
             competitionManager.selectFairPlayParticipants(quiz, nextQuiz, 50);
+            model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
+            return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
         } else if (selection.equals("reset")) {
-            competitionManager.removeParticipants(quiz);
+            competitionManager.resetParticipants(quiz);
+            model.addAttribute(MSG_SUCCESS, "Participant successfully reset");
+            return "redirect:/secure/quiz/view/" + quiz.getId() + "/participant/list";
         }
-        model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
-        return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
+        return "redirect:/secure/quiz/view/" + quiz.getId();
     }
 
 

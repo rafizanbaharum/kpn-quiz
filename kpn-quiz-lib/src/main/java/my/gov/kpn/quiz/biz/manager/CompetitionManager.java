@@ -57,7 +57,7 @@ public interface CompetitionManager {
 
     Integer countParticipant(QaQuiz quiz);
 
-    void removeParticipants(QaQuiz quiz);
+    void resetParticipants(QaQuiz quiz);
 
     void tabulateResult(QaQuiz quiz);
 

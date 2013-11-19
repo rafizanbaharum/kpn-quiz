@@ -166,11 +166,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
-                                            <c:if test="${hasPrev}">
+                                            <c:if test="${hasPrevious}">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${previous}"
                                                    class="btn btn-dark-beige">Previous</a>
                                             </c:if>
-                                            <c:if test="${!hasPrev}">
+                                            <c:if test="${!hasPrevious}">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${previous}"
                                                    class="btn btn-dark-beige disabled">Previous</a>
                                             </c:if>

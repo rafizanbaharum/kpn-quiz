@@ -48,4 +48,5 @@ public interface QaQuizDao {
 
     void removeParticipant(QaQuiz quiz, QaParticipant participant, QaUser user);
 
+    void resetParticipants(QaQuiz quiz, QaUser currentUser);
 }

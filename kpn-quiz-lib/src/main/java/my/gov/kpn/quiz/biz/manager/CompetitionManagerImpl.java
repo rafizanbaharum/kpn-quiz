@@ -295,27 +295,32 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public void removeParticipants(QaQuiz quiz) {
-        quizDao.removeParticipant(quiz, null, Utils.getCurrentUser()); // TODO: just delete them all using HQL delete!
+    public void resetParticipants(QaQuiz quiz) {
+        quizDao.resetParticipants(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void saveQuiz(QaQuiz quiz) {
         quizDao.save(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateQuiz(QaQuiz quiz) {
         quizDao.update(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void saveQuestion(QaQuestion question) {
         questionDao.save(question, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateQuestion(QaQuestion question) {
         questionDao.update(question, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 }

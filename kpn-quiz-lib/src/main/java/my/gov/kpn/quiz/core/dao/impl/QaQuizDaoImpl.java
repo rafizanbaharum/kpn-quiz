@@ -230,5 +230,13 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         session.update(participant);
     }
 
+
+    @Override
+    public void resetParticipants(QaQuiz quiz, QaUser currentUser) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("delete from QaParticipant p where p.quiz = :quiz");
+        query.setEntity("quiz", quiz);
+        query.executeUpdate();
+    }
 }
 

@@ -179,7 +179,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-group btn-group-justified">
-                        <a href="${pageContext.request.contextPath}/secure/quiz/add"
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/1"
                            class="btn btn-dark-beige">Browse</a>
                         <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/notify"
                            class="btn btn-dark-beige">Notify</a>
