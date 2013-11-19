@@ -32,19 +32,6 @@
     </servlet-mapping>
 
     <!-- ====================================================================================== -->
-    <!-- SESSION EXPIRED FILTER  -->
-    <!-- ====================================================================================== -->
-
-    <filter>
-        <filter-name>springSessionExpiredFilterChain</filter-name>
-        <filter-class>my.gov.kpn.quiz.web.filter.SessionExpiredFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSessionExpiredFilterChain</filter-name>
-        <url-pattern>/secure/*</url-pattern>
-    </filter-mapping>
-
-    <!-- ====================================================================================== -->
     <!-- HIBERNATE FILTER  -->
     <!-- ====================================================================================== -->
 
