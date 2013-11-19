@@ -46,6 +46,22 @@ public class QuizController extends AbstractController {
         return "secure/participant/participant_list";
     }
 
+    // page is one-based
+    @RequestMapping(value = "/view/{id}/participant/browse/{page}", method = {RequestMethod.GET})
+    public String quizViewParticipantBrowse(@PathVariable Long id, @PathVariable Integer page, ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(id);
+        Integer count = competitionManager.countParticipant(quiz);
+        model.addAttribute("quizModel", transformer.transform(quiz));
+        model.addAttribute("count", count);
+        model.addAttribute("page", page);
+        model.addAttribute("next", page + 1);
+        model.addAttribute("previous", page - 1);
+        model.addAttribute("hasNext", page <= count ? true : false);
+        model.addAttribute("hasPrevious", page > 1   ? true : false);
+        model.addAttribute("participantModel", transformer.transform(competitionManager.findParticipants(quiz, 1, page).get(0)));
+        return "secure/participant/participant_browse";
+    }
+
     @RequestMapping(value = "/view/{id}/participant/select/{selection}", method = {RequestMethod.GET})
     public String quizViewParticipantSelect(@PathVariable Long id, @PathVariable String selection, ModelMap model) {
         // select next round

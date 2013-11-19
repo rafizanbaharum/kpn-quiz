@@ -35,6 +35,8 @@ public interface CompetitionManager {
 
     List<QaParticipant> findParticipants(QaQuiz quiz);
 
+    List<QaParticipant> findParticipants(QaQuiz quiz, Integer limit, Integer offset);
+
     void processGradebook(QaQuiz quiz);
 
     void processParticipant(QaQuiz quiz);
