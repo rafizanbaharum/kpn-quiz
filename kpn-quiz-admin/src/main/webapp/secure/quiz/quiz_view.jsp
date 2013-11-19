@@ -109,24 +109,10 @@
     </div>
     <div class="main-content">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="clip-pencil"></i>
-                            <a href="#">
-                                Manage Competition
-                            </a>
-                        </li>
-                        <li class="active">
-                            Quiz List
-                        </li>
-                    </ol>
-                    <div class="page-header">
-                        <h1>Quiz </h1>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="/secure/include/quiz_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="TODO"/>
+                <jsp:param name="TITLE" value="TODO"/>
+            </jsp:include>
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
