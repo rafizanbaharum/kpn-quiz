@@ -63,7 +63,8 @@
                             <form:form id="form" commandName="studentModel"
                                        action="${pageContext.request.contextPath}/secure/student/add"
                                        method="POST">
-                                <div class="row">
+                                <div class="row">                     test test test
+                                    <jsp:include page = "/secure/include/msg.jsp"/>
                                     <div class="col-md-12">
                                         <div class="errorHandler alert alert-danger no-display">
                                             <i class="icon-remove-sign"></i> You have some form errors. Please check
