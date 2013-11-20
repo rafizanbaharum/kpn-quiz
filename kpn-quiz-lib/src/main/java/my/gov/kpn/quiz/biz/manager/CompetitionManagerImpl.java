@@ -314,9 +314,11 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public void saveQuiz(QaQuiz quiz) {
+    public QaQuiz saveQuiz(QaQuiz quiz) {
         quizDao.save(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(quiz);
+        return quiz;
     }
 
     @Override
@@ -332,9 +334,12 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public void saveQuestion(QaQuestion question) {
+    public QaQuestion saveQuestion(QaQuestion question) {
         questionDao.save(question, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(question);
+        return question;
+
     }
 
     @Override

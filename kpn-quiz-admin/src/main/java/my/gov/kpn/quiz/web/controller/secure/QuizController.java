@@ -5,7 +5,7 @@ import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
-import my.gov.kpn.quiz.web.model.QuizModel;
+import my.gov.kpn.quiz.web.model.*;
 import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +58,53 @@ public class QuizController extends AbstractController {
             return "redirect:/secure/quiz/list";
         }
     }
+
+
+    @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
+    public String quizEdit(@PathVariable Long id, ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(id);
+        model.addAttribute("quizModel", transformer.transform(quiz));
+        return "secure/quiz/quiz_edit";
+    }
+
+    @RequestMapping(value = "/add", method = {RequestMethod.GET})
+    public String quizAdd(@ModelAttribute("quizModel") QuizModel quizModel,
+                          ModelMap model) {
+        return "secure/quiz/quiz_add";
+    }
+
+    @RequestMapping(value = "/save", method = {RequestMethod.POST})
+    public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel,
+                           ModelMap model) {
+        QaQuiz quiz = new QaQuizImpl();
+        quiz.setCompetition(competitionManager.findCompetitionByYear(2013));
+        quiz.setTitle(quizModel.getTitle());
+        quiz.setProcessed(false);
+        quiz.setLocked(false);
+        quiz.setRound(quizModel.getRound());
+        quiz.setStartDate(extractStartDate(quizModel));
+        quiz.setEndDate(extractEndDate(quizModel));
+        QaQuiz savedQuiz = competitionManager.saveQuiz(quiz);
+
+        model.addAttribute(MSG_SUCCESS, "Quiz successfully saved");
+        return "redirect:/secure/quiz/view/" + savedQuiz.getId();
+    }
+
+
+    @RequestMapping(value = "/update", method = {RequestMethod.POST})
+    public String quizUpdate(@ModelAttribute("quizModel") QuizModel quizModel,
+                             ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
+        quiz.setTitle(quizModel.getTitle());
+        quiz.setRound(quizModel.getRound());
+        quiz.setStartDate(extractStartDate(quizModel));
+        quiz.setEndDate(extractEndDate(quizModel));
+        competitionManager.updateQuiz(quiz);
+
+        model.addAttribute(MSG_SUCCESS, "Quiz successfully updated");
+        return "redirect:/secure/quiz/view/" + quiz.getId();
+    }
+
 
     @RequestMapping(value = "/view/{id}/participant/list", method = {RequestMethod.GET})
     public String quizViewParticipantList(@PathVariable Long id, ModelMap model) {
@@ -118,51 +165,6 @@ public class QuizController extends AbstractController {
         return "redirect:/secure/quiz/view/" + quiz.getId();
     }
 
-
-    @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
-    public String quizEdit(@PathVariable Long id, ModelMap model) {
-        QaQuiz quiz = competitionManager.findQuizById(id);
-        model.addAttribute("quizModel", transformer.transform(quiz));
-        return "secure/quiz/quiz_edit";
-    }
-
-    @RequestMapping(value = "/add", method = {RequestMethod.GET})
-    public String quizAdd(@ModelAttribute("quizModel") QuizModel quizModel,
-                          ModelMap model) {
-        return "secure/quiz/quiz_add";
-    }
-
-    @RequestMapping(value = "/save", method = {RequestMethod.POST})
-    public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel,
-                           ModelMap model) {
-        QaQuiz quiz = new QaQuizImpl();
-        quiz.setCompetition(competitionManager.findCompetitionByYear(2013));
-        quiz.setTitle(quizModel.getTitle());
-        quiz.setProcessed(false);
-        quiz.setLocked(false);
-        quiz.setRound(quizModel.getRound());
-        quiz.setStartDate(extractStartDate(quizModel));
-        quiz.setEndDate(extractEndDate(quizModel));
-        competitionManager.saveQuiz(quiz);
-
-        model.addAttribute(MSG_SUCCESS, "Quiz successfully saved");
-        return "redirect:/secure/quiz/list";
-    }
-
-    @RequestMapping(value = "/update", method = {RequestMethod.POST})
-    public String quizUpdate(@ModelAttribute("quizModel") QuizModel quizModel,
-                             ModelMap model) {
-        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
-        quiz.setTitle(quizModel.getTitle());
-        quiz.setRound(quizModel.getRound());
-        quiz.setStartDate(extractStartDate(quizModel));
-        quiz.setEndDate(extractEndDate(quizModel));
-        competitionManager.updateQuiz(quiz);
-
-        model.addAttribute(MSG_SUCCESS, "Quiz successfully updated");
-        return "redirect:/secure/quiz/view/" + quiz.getId();
-    }
-
     @RequestMapping(value = "/tabulate/{id}", method = {RequestMethod.GET})
     public String quizTabulate(@ModelAttribute("quizModel") QuizModel quizModel,
                                ModelMap model) {
@@ -171,6 +173,37 @@ public class QuizController extends AbstractController {
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully tabulated");
         return "redirect:/secure/quiz/view/" + quiz.getId();
+    }
+
+    @RequestMapping(value = "/view/{id}/question/add/{type}", method = {RequestMethod.GET})
+    public String quizViewQuestionAdd(@PathVariable Long id,
+                                      @PathVariable String type, ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(id);
+        QuizModel quizModel = transformer.transform(quiz);
+        model.addAttribute("quizModel", quizModel);
+
+        QuestionModel questionModel;
+        if (type.equals("multiplechoice")) {
+            questionModel = new MultipleChoiceQuestionModel();
+            questionModel.setQuiz(quizModel);
+            model.addAttribute("questionModel", questionModel);
+            return "secure/question/multiplechoice_question_add";
+        } else if (type.equals("boolean")) {
+            questionModel = new BooleanQuestionModel();
+            questionModel.setQuiz(quizModel);
+            model.addAttribute("questionModel", questionModel);
+            return "secure/question/boolean_question_add";
+        } else if (type.equals("subjective")) {
+            questionModel = new SubjectiveQuestionModel();
+            questionModel.setQuiz(quizModel);
+            model.addAttribute("questionModel", questionModel);
+            return "secure/question/subjective_question_add";
+        } else {
+            questionModel = new MultipleChoiceQuestionModel();
+            questionModel.setQuiz(quizModel);
+            model.addAttribute("questionModel", questionModel);
+            return "secure/question/multiplechoice_question_add";
+        }
     }
 
 

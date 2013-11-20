@@ -4,12 +4,13 @@ package my.gov.kpn.quiz.web.model;
  * @author rafizan.baharum
  * @since 11/15/13
  */
-public class QuestionModel extends MetaModel {
+public abstract class QuestionModel extends MetaModel {
 
     private String statement;
-    private String answerKey;
-    private int weight;
+    private Integer answerIndex;
+    private Double weight;
     private int difficulty;
+    private QuizModel quiz;
 
     public String getStatement() {
         return statement;
@@ -19,11 +20,11 @@ public class QuestionModel extends MetaModel {
         this.statement = statement;
     }
 
-    public int getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
@@ -35,11 +36,26 @@ public class QuestionModel extends MetaModel {
         this.difficulty = difficulty;
     }
 
-    public String getAnswerKey() {
-        return answerKey;
+    public Integer getAnswerIndex() {
+        return answerIndex;
     }
 
-    public void setAnswerKey(String answerKey) {
-        this.answerKey = answerKey;
+    public void setAnswerIndex(Integer answerIndex) {
+        this.answerIndex = answerIndex;
+    }
+
+    public QuizModel getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(QuizModel quiz) {
+        this.quiz = quiz;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionModel{" +
+                "id='" + getId() + '\'' +
+                '}';
     }
 }

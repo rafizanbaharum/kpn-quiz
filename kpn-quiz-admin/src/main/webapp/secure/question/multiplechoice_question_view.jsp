@@ -98,7 +98,7 @@
 
                             <hr>
                             <form:form id="form" commandName="questionModel"
-                                       action="${pageContext.request.contextPath}/secure/question/savesubjective"
+                                       action="${pageContext.request.contextPath}/secure/question/savemultiplechoice"
                                        method="POST">
                                 <form:hidden path="quiz.id"/>
                                 <div class="row">
@@ -116,11 +116,46 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Answer Guide <span class="symbol required"></span>
+                                                Choice 1 <span class="symbol required"></span>
                                             </label>
-                                            <form:textarea path="answerGuide" placeholder="Insert question answerGuide"
-                                                           rows="16"  cols="100"
-                                                           cssClass="form-control"/>
+                                            <form:input path="choice1" placeholder="Insert question choice1"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Choice 2 <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="choice2" placeholder="Insert question choice2"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Choice 3 <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="choice3" placeholder="Insert question choice3"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Choice 4 <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="choice4" placeholder="Insert question choice4"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Answer Index <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="answerIndex" placeholder="Insert question answerIndex"
+                                                        cssClass="form-control"/>
                                         </div>
                                     </div>
                                 </div>

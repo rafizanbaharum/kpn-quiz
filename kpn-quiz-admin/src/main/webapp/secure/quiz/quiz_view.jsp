@@ -156,6 +156,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="btn-group btn-group-justified">
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/multiplechoice"
+                                               class="btn btn-primary">Multiple Choice</a>
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/boolean"
+                                               class="btn btn-primary">Boolean</a>
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/subjective"
+                                               class="btn btn-primary">Subjective</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </form:form>
                         </div>
                     </div>

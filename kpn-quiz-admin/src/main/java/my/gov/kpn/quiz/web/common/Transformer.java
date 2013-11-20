@@ -141,9 +141,28 @@ public class Transformer {
     }
 
     public QuestionModel transform(QaQuestion question) {
-        QuestionModel model = new QuestionModel();
+        QuestionModel model = null;
+        switch (question.getQuestionType()) {
+            case MULTIPLE_CHOICE:
+                model = new MultipleChoiceQuestionModel();
+                ((MultipleChoiceQuestionModel) model).setChoice1(((QaMultipleChoiceQuestion) question).getChoice1());
+                ((MultipleChoiceQuestionModel) model).setChoice2(((QaMultipleChoiceQuestion) question).getChoice2());
+                ((MultipleChoiceQuestionModel) model).setChoice3(((QaMultipleChoiceQuestion) question).getChoice3());
+                ((MultipleChoiceQuestionModel) model).setChoice4(((QaMultipleChoiceQuestion) question).getChoice4());
+                break;
+            case BOOLEAN:
+                model = new BooleanQuestionModel();
+                break;
+            case SUBJECTIVE:
+                model = new SubjectiveQuestionModel();
+                ((SubjectiveQuestionModel) model).setAnswerGuide(((QaSubjectiveQuestion) question).getAnswerGuide());
+                break;
+        }
         model.setId(question.getId());
         model.setStatement(question.getStatement());
+        model.setWeight(question.getWeight());
+        model.setAnswerIndex(question.getAnswerIndex());
+        model.setDifficulty(question.getDifficulty().ordinal());
         return model;
     }
 

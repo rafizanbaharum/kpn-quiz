@@ -47,13 +47,13 @@ public interface CompetitionManager {
 
     void processParticipant(QaQuiz quiz);
 
-    void saveQuiz(QaQuiz quiz);
+    QaQuiz saveQuiz(QaQuiz quiz);
 
     void updateQuiz(QaQuiz quiz);
 
     void removeQuiz(QaQuiz quiz);
 
-    void saveQuestion(QaQuestion question);
+    QaQuestion saveQuestion(QaQuestion question);
 
     void updateQuestion(QaQuestion question);
 

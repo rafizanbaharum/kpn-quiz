@@ -38,10 +38,7 @@
     <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<!-- end: HEAD -->
-<!-- start: BODY -->
 <body class="footer-fixed layout-boxed">
-<!-- start: HEADER -->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -80,62 +77,15 @@
     </div>
 </div>
 <div class="main-container">
-    <div class="navbar-content">
-        <div class="main-navigation navbar-collapse collapse">
-            <div class="navigation-toggler">
-                <i class="clip-chevron-left"></i>
-                <i class="clip-chevron-right"></i>
-            </div>
-            <ul class="main-navigation-menu">
-                <li>
-                    <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
-                        <span class="title"> Dashboard </span><span class="selected"></span>
-                    </a>
-                </li>
-                <li class="active open">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Student </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/register">
-                                <span class="title">Register</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/student/list">
-                                <span class="title">Student List</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+    <jsp:include page="/secure/include/question_navbar.jsp"/>
 
-            </ul>
-        </div>
-    </div>
     <div class="main-content">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="clip-pencil"></i>
-                            <a href="#">
-                                Manage Student
-                            </a>
-                        </li>
-                        <li class="active">
-                            Register Student
-                        </li>
-                    </ol>
-                    <div class="page-header">
-                        <h1>Student Registration </h1>
-                    </div>
-                </div>
-            </div>
+            <jsp:include page="/secure/include/question_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="TODO"/>
+                <jsp:param name="TITLE" value="TODO"/>
+            </jsp:include>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
@@ -147,25 +97,28 @@
                             <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
 
                             <hr>
-                            <form:form id="form" commandName="studentModel"
-                                       action="${pageContext.request.contextPath}/question/add"
+                            <form:form id="form" commandName="questionModel"
+                                       action="${pageContext.request.contextPath}/secure/question/saveboolean"
                                        method="POST">
+                                <form:hidden path="quiz.id"/>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="errorHandler alert alert-danger no-display">
-                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
-                                            below.
-                                        </div>
-                                        <div class="successHandler alert alert-success no-display">
-                                            <i class="icon-ok"></i> Your form validation is successful!
-                                        </div>
-                                    </div>
+                                    <jsp:include page="/secure/include/msg.jsp"/>
+
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Statement <span class="symbol required"></span>
                                             </label>
                                             <form:input path="statement" placeholder="Insert question statement"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Answer Index <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="answerIndex" placeholder="Insert question answerIndex"
                                                         cssClass="form-control"/>
                                         </div>
                                     </div>
@@ -193,43 +146,7 @@
         </div>
     </div>
 </div>
-
-<div class="footer clearfix">
-    <div class="footer-inner">
-        2013 &copy; ASEAN QUIZ
-    </div>
-    <div class="footer-items">
-        <span class="go-top"><i class="clip-chevron-up"></i></span>
-    </div>
-</div>
-<!-- end: FOOTER -->
-<!-- start: MAIN JAVASCRIPTS -->
-<!--[if lt IE 9]>
-<script src="/assets/plugins/respond.min.js"></script>
-<script src="/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script src="/assets/js/jquery-1.10.2.min.js"></script>
-<script src="/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="/assets/js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="/assets/plugins/summernote/build/summernote.min.js"></script>
-<script src="/assets/plugins/ckeditor/ckeditor.js"></script>
-<script src="/assets/plugins/ckeditor/adapters/jquery.js"></script>
-<script src="/assets/js/form-validation.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    jQuery(document).ready(function () {
-        Main.init();
-        FormValidator.init();
-    });
-</script>
+<jsp:include page="/secure/include/footer.jsp"/>
+<jsp:include page="/secure/include/footer_script.jsp"/>
 </body>
-<!-- end: BODY -->
 </html>
