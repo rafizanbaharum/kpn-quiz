@@ -312,7 +312,7 @@
                             </p>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-yellow btn-block" type="submit">
+                            <button class="btn btn-primary btn-block" type="submit">
                                 Register <i class="icon-circle-arrow-right"></i>
                             </button>
                         </div>

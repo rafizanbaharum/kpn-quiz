@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <button class="btn btn-yellow btn-block" type="button" onclick="location.href='${pageContext.request.contextPath}/secure/student/list';">
+                                        <button class="btn btn-primary btn-block" type="button" onclick="location.href='${pageContext.request.contextPath}/secure/student/list';">
                                             Cancel <i class="icon-circle-arrow-left"></i>
                                         </button>
                                     </div>

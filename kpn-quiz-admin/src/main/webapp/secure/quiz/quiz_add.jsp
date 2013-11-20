@@ -257,7 +257,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button class="btn btn-yellow btn-block" type="submit">
+                                        <button class="btn btn-primary btn-block" type="submit">
                                             Add <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>

@@ -145,19 +145,19 @@
                                         <div class="btn-group btn-group-justified">
                                             <c:if test="${hasPrevious}">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${previous}"
-                                                   class="btn btn-dark-beige">Previous</a>
+                                                   class="btn btn-primary">Previous</a>
                                             </c:if>
                                             <c:if test="${!hasPrevious}">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${previous}"
-                                                   class="btn btn-dark-beige disabled">Previous</a>
+                                                   class="btn btn-primary disabled">Previous</a>
                                             </c:if>
                                             <c:if test="${hasNext}">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${next}"
-                                                   class="btn btn-dark-beige">Next</a>
+                                                   class="btn btn-primary">Next</a>
                                             </c:if>
                                             <c:if test="${!hasNext}">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${next}"
-                                                   class="btn btn-dark-beige disabled">Next</a>
+                                                   class="btn btn-primary disabled">Next</a>
                                             </c:if>
                                         </div>
                                     </div>

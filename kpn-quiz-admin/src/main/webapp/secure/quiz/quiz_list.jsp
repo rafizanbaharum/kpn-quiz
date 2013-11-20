@@ -118,10 +118,10 @@
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quiz.id}"
-                                                   class="btn btn-teal tooltips" data-placement="top"
+                                                   class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i class="icon-archive"></i></a>
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quiz.id}"
-                                                   class="btn btn-teal tooltips" data-placement="top"
+                                                   class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
                                             </div>
                                         </td>
@@ -137,7 +137,7 @@
                 <div class="col-md-12">
                     <div class="btn-group btn-group-justified">
                         <a href="${pageContext.request.contextPath}/secure/quiz/add"
-                           class="btn btn-dark-beige">Add Quiz</a>
+                           class="btn btn-primary">Add Quiz</a>
                     </div>
                 </div>
             </div>

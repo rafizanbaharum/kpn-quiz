@@ -164,21 +164,21 @@
                 <div class="col-md-12">
                     <div class="btn-group btn-group-justified">
                         <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/1"
-                           class="btn btn-dark-beige">Browse</a>
+                           class="btn btn-primary">Browse</a>
                         <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/notify"
-                           class="btn btn-dark-beige">Notify</a>
+                           class="btn btn-primary">Notify</a>
                         <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/reset"
-                           class="btn btn-dark-beige">Reset</a>
+                           class="btn btn-primary">Reset</a>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="btn-group btn-group-justified">
                         <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/top50"
-                           class="btn btn-dark-beige">Top50</a>
+                           class="btn btn-primary">Top50</a>
                         <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/random50"
-                           class="btn btn-dark-beige">Random15</a>
+                           class="btn btn-primary">Random15</a>
                         <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/fairplay"
-                           class="btn btn-dark-beige">FairPlay</a>
+                           class="btn btn-primary">FairPlay</a>
                     </div>
                 </div>
             </div>

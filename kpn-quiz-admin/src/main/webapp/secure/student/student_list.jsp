@@ -79,7 +79,7 @@
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/student/edit/${question.id}"
-                                                   class="btn btn-teal tooltips" data-placement="top"
+                                                   class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>
                                                 <a href="${pageContext.request.contextPath}/secure/student/reset/${question.id}"

@@ -136,9 +136,9 @@
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/question/edit/${quizModel.id}"
-                                               class="btn btn-dark-beige">Edit</a>
+                                               class="btn btn-primary">Edit</a>
                                             <a href="${pageContext.request.contextPath}/secure/question/remove/${questionModel.id}"
-                                               class="btn btn-dark-beige">remove</a>
+                                               class="btn btn-primary">remove</a>
                                         </div>
                                     </div>
                                 </div>

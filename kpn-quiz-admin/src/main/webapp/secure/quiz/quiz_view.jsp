@@ -136,11 +136,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
-                                               class="btn btn-dark-beige">Edit</a>
+                                               class="btn btn-primary">Edit</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
-                                               class="btn btn-dark-beige">Remove</a>
+                                               class="btn btn-primary">Remove</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/list"
-                                               class="btn btn-dark-beige">Participants</a>
+                                               class="btn btn-primary">Participants</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,11 +148,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
-                                               class="btn btn-dark-beige">Init</a>
+                                               class="btn btn-primary">Init</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
-                                               class="btn btn-dark-beige">Process</a>
+                                               class="btn btn-primary">Process</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
-                                               class="btn btn-dark-beige">Tabulate</a>
+                                               class="btn btn-primary">Tabulate</a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,10 +189,10 @@
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/question/view/${question.id}"
-                                                   class="btn btn-teal tooltips" data-placement="top"
+                                                   class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i class="icon-archive"></i></a>
                                                 <a href="${pageContext.request.contextPath}/secure/question/edit/${question.id}"
-                                                   class="btn btn-teal tooltips" data-placement="top"
+                                                   class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
                                             </div>
                                         </td>
@@ -206,7 +206,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <button class="btn btn-yellow btn-block" type="submit">
+                    <button class="btn btn-primary btn-block" type="submit">
                         Add Question <i class="icon-circle-arrow-right"></i>
                     </button>
                 </div>
