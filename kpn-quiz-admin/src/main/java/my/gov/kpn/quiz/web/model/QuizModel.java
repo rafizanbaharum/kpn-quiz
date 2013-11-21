@@ -162,4 +162,12 @@ public class QuizModel extends MetaModel {
     public void setEndDate_MM(String endDate_MM) {
         this.endDate_MM = endDate_MM;
     }
+
+    @Override
+    public String toString() {
+        return "QuizModel{" +
+                "id='" + getId() + '\'' +
+                '}';
+    }
+
 }
