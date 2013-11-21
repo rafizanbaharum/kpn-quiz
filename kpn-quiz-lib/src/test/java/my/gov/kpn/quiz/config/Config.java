@@ -37,7 +37,7 @@ public class Config {
                 .buildSessionFactory();
     }
 
-    @Bean
+    @Bean(name = "txManager")
     public PlatformTransactionManager transactionManager() {
         HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager(sessionFactory());
         return hibernateTransactionManager;
@@ -50,6 +50,7 @@ public class Config {
         properties.put("hibernate.show_sql", "true");
         properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.format_sql", "true");
+//        properties.put("hibernate.current_session_context_class", "thread");
         properties.put("javax.persistence.validation.mode", "none");
 
         //properties.put("hibernate.connection.pool_size", "1");
