@@ -150,12 +150,12 @@
                                         </button>
                                     </div>
                                     <div class="col-md-4">
-                                        <button class="btn btn-blue btn-block" type="submit">
+                                        <button class="btn btn-primary btn-block" type="submit">
                                             Reset <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                     <div class="col-md-4">
-                                        <button class="btn btn-red btn-block" type="submit">
+                                        <button class="btn btn-primary btn-block" type="submit">
                                             Remove <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>

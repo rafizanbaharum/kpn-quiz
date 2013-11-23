@@ -78,6 +78,10 @@
                                         <td class="hidden-xs">${question.username}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                <a href="${pageContext.request.contextPath}/secure/student/view/${question.id}"
+                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                   data-original-title="View"><i
+                                                        class="icon-archive"></i></a>
                                                 <a href="${pageContext.request.contextPath}/secure/student/edit/${question.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
