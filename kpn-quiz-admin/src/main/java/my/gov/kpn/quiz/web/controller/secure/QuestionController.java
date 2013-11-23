@@ -7,18 +7,12 @@ import my.gov.kpn.quiz.core.model.impl.QaBooleanQuestionImpl;
 import my.gov.kpn.quiz.core.model.impl.QaMultipleChoiceQuestionImpl;
 import my.gov.kpn.quiz.core.model.impl.QaSubjectiveQuestionImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
-import my.gov.kpn.quiz.web.model.BooleanQuestionModel;
-import my.gov.kpn.quiz.web.model.MultipleChoiceQuestionModel;
-import my.gov.kpn.quiz.web.model.QuestionModel;
-import my.gov.kpn.quiz.web.model.SubjectiveQuestionModel;
+import my.gov.kpn.quiz.web.model.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller("SecureQuestionController")
 @RequestMapping("/secure/question")
@@ -32,34 +26,38 @@ public class QuestionController extends AbstractController {
     @Autowired
     private CompetitionManager competitionManager;
 
-    @InitBinder
-    public void initBinder(WebDataBinder binder, HttpServletRequest request) {
-        if (request.getParameter("questionType").equals("multiplechoice")) {
-            log.debug("found a multiple choice");
-            request.setAttribute("questionModel", new MultipleChoiceQuestionModel());
-        }
-    }
-
-    @RequestMapping(value = "/test", method = {RequestMethod.POST})
-    public String questionTest(@ModelAttribute("questionModel") QuestionModel questionModel,
-                               ModelMap model) {
-
-        log.debug("question: " + questionModel);
-        return "";
-    }
-
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String questionEdit(@PathVariable Long id, ModelMap model) {
         QaQuestion question = competitionManager.findQuestionById(id);
-        model.addAttribute("questionModel", transformer.transform(question));
-        return "secure/question/question_edit";
+        QuestionModel questionModel = transformer.transform(question);
+        QuizModel quizModel = transformer.transform(question.getQuiz());
+        questionModel.setQuiz(quizModel);
+        model.addAttribute("questionModel", questionModel);
+        model.addAttribute("quizModel", quizModel);
+
+        String action = null;
+        switch (question.getQuestionType()) {
+            case MULTIPLE_CHOICE:
+                action = "secure/question/multiplechoice_question_edit";
+                break;
+            case BOOLEAN:
+                action = "secure/question/boolean_question_edit";
+                break;
+            case SUBJECTIVE:
+                action = "secure/question/subjective_question_edit";
+                break;
+        }
+        return action;
     }
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String questionView(@PathVariable Long id, ModelMap model) {
         QaQuestion question = competitionManager.findQuestionById(id);
-        model.addAttribute("questionModel", transformer.transform(question));
-        model.addAttribute("quizModel", transformer.transform(question.getQuiz()));
+        QuestionModel questionModel = transformer.transform(question);
+        QuizModel quizModel = transformer.transform(question.getQuiz());
+        questionModel.setQuiz(quizModel);
+        model.addAttribute("questionModel", questionModel);
+        model.addAttribute("quizModel", quizModel);
 
         String action = null;
         switch (question.getQuestionType()) {
@@ -79,19 +77,19 @@ public class QuestionController extends AbstractController {
     @RequestMapping(value = "/savemultiplechoice", method = {RequestMethod.POST})
     public String questionSaveMultipleChoice(@ModelAttribute("questionModel") MultipleChoiceQuestionModel questionModel,
                                              ModelMap model) {
-        model.addAttribute(MSG_SUCCESS, "Question successfully added");
+
         QaMultipleChoiceQuestion question = new QaMultipleChoiceQuestionImpl();
         question.setStatement(questionModel.getStatement());
         question.setDifficulty(QaDifficulty.EASY);
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
-        question.setWeight(1D);
         question.setChoice1(questionModel.getChoice1());
         question.setChoice2(questionModel.getChoice2());
         question.setChoice3(questionModel.getChoice3());
         question.setChoice4(questionModel.getChoice4());
         question.setAnswerIndex(questionModel.getAnswerIndex());
-        question.setAnswerIndex(1);
         QaQuestion savedQuestion = competitionManager.saveQuestion(question);
+
+        model.addAttribute(MSG_SUCCESS, "Question successfully added");
         return "redirect:/secure/question/view/" + savedQuestion.getId();
     }
 
@@ -99,43 +97,82 @@ public class QuestionController extends AbstractController {
     @RequestMapping(value = "/saveboolean", method = {RequestMethod.POST})
     public String questionSaveBoolean(@ModelAttribute("questionModel") BooleanQuestionModel questionModel,
                                       ModelMap model) {
-        model.addAttribute(MSG_SUCCESS, "Question successfully added");
         QaBooleanQuestion question = new QaBooleanQuestionImpl();
         question.setStatement(questionModel.getStatement());
         question.setDifficulty(QaDifficulty.EASY);
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
-        question.setWeight(1D);
         question.setAnswerIndex(questionModel.getAnswerIndex());
         QaQuestion savedQuestion = competitionManager.saveQuestion(question);
+
+        model.addAttribute(MSG_SUCCESS, "Question successfully added");
         return "redirect:/secure/question/view/" + savedQuestion.getId();
     }
 
     @RequestMapping(value = "/savesubjective", method = {RequestMethod.POST})
     public String questionSaveSubjective(@ModelAttribute("questionModel") SubjectiveQuestionModel questionModel,
                                          ModelMap model) {
-        model.addAttribute(MSG_SUCCESS, "Question successfully added");
         QaSubjectiveQuestion question = new QaSubjectiveQuestionImpl();
         question.setStatement(questionModel.getStatement());
         question.setDifficulty(QaDifficulty.EASY);
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
-        question.setWeight(1D);
         question.setAnswerIndex(questionModel.getAnswerIndex());
         question.setAnswerGuide(questionModel.getAnswerGuide());
         QaQuestion savedQuestion = competitionManager.saveQuestion(question);
+
+        model.addAttribute(MSG_SUCCESS, "Question successfully added");
         return "redirect:/secure/question/view/" + savedQuestion.getId();
     }
 
-    @RequestMapping(value = "/update", method = {RequestMethod.POST})
-    public String questionUpdate(@ModelAttribute("questionModel") QuestionModel questionModel,
-                                 ModelMap model) {
-        QaQuestion question = competitionManager.findQuestionById(questionModel.getId());
+
+    @RequestMapping(value = "/updatemultiplechoice", method = {RequestMethod.POST})
+    public String questionUpdateMultipleChoice(@ModelAttribute("questionModel") MultipleChoiceQuestionModel questionModel,
+                                               ModelMap model) {
+
+        QaMultipleChoiceQuestion question = (QaMultipleChoiceQuestion) competitionManager.findQuestionById(questionModel.getId());
         question.setStatement(questionModel.getStatement());
+        question.setDifficulty(QaDifficulty.EASY);
+        question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
+        question.setChoice1(questionModel.getChoice1());
+        question.setChoice2(questionModel.getChoice2());
+        question.setChoice3(questionModel.getChoice3());
+        question.setChoice4(questionModel.getChoice4());
+        question.setAnswerIndex(questionModel.getAnswerIndex());
         competitionManager.updateQuestion(question);
 
         model.addAttribute(MSG_SUCCESS, "Question successfully updated");
         return "redirect:/secure/question/view/" + question.getId();
     }
 
+
+    @RequestMapping(value = "/updateboolean", method = {RequestMethod.POST})
+    public String questionUpdateBoolean(@ModelAttribute("questionModel") BooleanQuestionModel questionModel,
+                                        ModelMap model) {
+        QaBooleanQuestion question = (QaBooleanQuestion) competitionManager.findQuestionById(questionModel.getId());
+        question.setStatement(questionModel.getStatement());
+        question.setDifficulty(QaDifficulty.EASY);
+        question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
+        question.setAnswerIndex(questionModel.getAnswerIndex());
+        competitionManager.updateQuestion(question);
+
+        model.addAttribute(MSG_SUCCESS, "Question successfully updated");
+        return "redirect:/secure/question/view/" + question.getId();
+    }
+
+
+    @RequestMapping(value = "/updatesubjective", method = {RequestMethod.POST})
+    public String questionUpdateSubjective(@ModelAttribute("questionModel") SubjectiveQuestionModel questionModel,
+                                           ModelMap model) {
+        QaSubjectiveQuestion question = (QaSubjectiveQuestion) competitionManager.findQuestionById(questionModel.getId());
+        question.setStatement(questionModel.getStatement());
+        question.setDifficulty(QaDifficulty.EASY);
+        question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
+        question.setAnswerIndex(questionModel.getAnswerIndex());
+        question.setAnswerGuide(questionModel.getAnswerGuide());
+        competitionManager.updateQuestion(question);
+
+        model.addAttribute(MSG_SUCCESS, "Question successfully updated");
+        return "redirect:/secure/question/view/" + question.getId();
+    }
 
     @RequestMapping(value = "/remove/{id}", method = {RequestMethod.GET})
     public String questionRemove(@PathVariable Long id, ModelMap model) {

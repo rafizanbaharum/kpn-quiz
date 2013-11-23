@@ -114,13 +114,25 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Answer Index <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="answerIndex" placeholder="Insert question answerIndex"
-                                                        cssClass="form-control"/>
-                                        </div>
+                                        <label class="control-label">
+                                            Difficulty <span class="symbol required"></span>
+                                        </label>
+                                        <form:select path="difficulty" cssClass="form-control">
+                                            <option value="">Select Level of Difficulty</option>
+                                            <option value="1">Easy</option>
+                                            <option value="2">Intermedia</option>
+                                            <option value="3">Difficult</option>
+                                        </form:select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="control-label">
+                                            Answer Index <span class="symbol required"></span>
+                                        </label>
+                                        <form:select path="answerIndex" cssClass="form-control">
+                                            <option value="">Select Answer Key Index</option>
+                                            <option value="0">TRUE</option>
+                                            <option value="1">FALSE</option>
+                                        </form:select>
                                     </div>
                                 </div>
                                 <div class="row">

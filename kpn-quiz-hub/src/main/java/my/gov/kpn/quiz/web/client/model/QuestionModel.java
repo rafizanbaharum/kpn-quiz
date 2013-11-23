@@ -8,7 +8,6 @@ public class QuestionModel extends MetaModel {
     public static final String ID = "id";
     public static final String STATEMENT = "statement";
     public static final String QUESTION_TYPE = "questionType";
-    public static final String WEIGHT = "weight";
     public static final String DIFFICULTY = "difficulty";
 
     private QuestionType questionType;

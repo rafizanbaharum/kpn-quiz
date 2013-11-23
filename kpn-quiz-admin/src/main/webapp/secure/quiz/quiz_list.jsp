@@ -111,7 +111,7 @@
                                 <c:forEach var="quiz" items="${quizModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${quiz.title}</td>
+                                        <td class="hidden-xs">${quiz.titleAbbreviated}</td>
                                         <td class="hidden-xs">${quiz.round}</td>
                                         <td class="hidden-xs">${quiz.processed}</td>
                                         <td class="hidden-xs">${quiz.locked}</td>

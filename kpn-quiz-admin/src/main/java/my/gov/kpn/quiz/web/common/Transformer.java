@@ -160,8 +160,9 @@ public class Transformer {
         }
         model.setId(question.getId());
         model.setStatement(question.getStatement());
-        model.setWeight(question.getWeight());
         model.setAnswerIndex(question.getAnswerIndex());
+        model.setQuestionType(question.getQuestionType().ordinal());
+        model.setQuestionTypeString(question.getQuestionType().name());
         model.setDifficulty(question.getDifficulty().ordinal());
         return model;
     }

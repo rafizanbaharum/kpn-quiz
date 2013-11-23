@@ -97,8 +97,9 @@
                             <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
 
                             <hr>
-                            <form:form id="form" commandName="questionModel"
-                                       action="${pageContext.request.contextPath}/secure/question/savesubjective"
+                            <form:form id="form"
+                                       commandName="questionModel"
+                                       action="${pageContext.request.contextPath}/secure/question/updatemultiplechoice"
                                        method="POST">
                                 <form:hidden path="quiz.id"/>
                                 <div class="row">
@@ -125,13 +126,51 @@
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">
+                                        <label class="control-label">
+                                            Answer Index <span class="symbol required"></span>
+                                        </label>
+                                        <form:select path="answerIndex" cssClass="form-control">
+                                            <option value="">Select Answer Key Index</option>
+                                            <option value="0">A</option>
+                                            <option value="1">B</option>
+                                            <option value="2">C</option>
+                                            <option value="3">D</option>
+                                        </form:select>
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Answer Guide <span class="symbol required"></span>
+                                                Choice A <span class="symbol required"></span>
                                             </label>
-                                            <form:textarea path="answerGuide" placeholder="Insert question answerGuide"
-                                                           rows="16" cols="100"
-                                                           cssClass="form-control"/>
+                                            <form:input path="choice1" placeholder="Insert question choice1"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Choice B <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="choice2" placeholder="Insert question choice2"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Choice C <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="choice3" placeholder="Insert question choice3"
+                                                        cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Choice D <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="choice4" placeholder="Insert question choice4"
+                                                        cssClass="form-control"/>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +185,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button class="btn btn-primary btn-block" type="submit">
-                                            Add <i class="icon-circle-arrow-right"></i>
+                                            Update <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>

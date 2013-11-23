@@ -98,7 +98,7 @@
 
                             <hr>
                             <form:form id="form" commandName="questionModel"
-                                       action="${pageContext.request.contextPath}/secure/question/savemultiplechoice"
+                                       action="${pageContext.request.contextPath}/secure/question/updatemultiplechoice"
                                        method="POST">
                                 <form:hidden path="quiz.id"/>
                                 <div class="row">
@@ -114,9 +114,32 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
+                                        <label class="control-label">
+                                            Select Level of Difficulty <span class="symbol required"></span>
+                                        </label>
+                                        <form:select path="difficulty" cssClass="form-control">
+                                            <option value="">Difficulty</option>
+                                            <option value="1">Easy</option>
+                                            <option value="2">Intermediate</option>
+                                            <option value="3">Difficult</option>
+                                        </form:select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="control-label">
+                                            Answer Index <span class="symbol required"></span>
+                                        </label>
+                                        <form:select path="answerIndex" cssClass="form-control">
+                                            <option value="">Select Answer Key Index</option>
+                                            <option value="0">A</option>
+                                            <option value="1">B</option>
+                                            <option value="2">C</option>
+                                            <option value="3">D</option>
+                                        </form:select>
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Choice 1 <span class="symbol required"></span>
+                                                Choice A <span class="symbol required"></span>
                                             </label>
                                             <form:input path="choice1" placeholder="Insert question choice1"
                                                         cssClass="form-control"/>
@@ -125,7 +148,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Choice 2 <span class="symbol required"></span>
+                                                Choice B <span class="symbol required"></span>
                                             </label>
                                             <form:input path="choice2" placeholder="Insert question choice2"
                                                         cssClass="form-control"/>
@@ -134,7 +157,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Choice 3 <span class="symbol required"></span>
+                                                Choice C <span class="symbol required"></span>
                                             </label>
                                             <form:input path="choice3" placeholder="Insert question choice3"
                                                         cssClass="form-control"/>
@@ -143,7 +166,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Choice 4 <span class="symbol required"></span>
+                                                Choice D <span class="symbol required"></span>
                                             </label>
                                             <form:input path="choice4" placeholder="Insert question choice4"
                                                         cssClass="form-control"/>
@@ -169,9 +192,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button class="btn btn-primary btn-block" type="submit">
-                                            Add <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                        <div class="btn-group btn-group-justified">
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}"
+                                               class="btn btn-primary">Back to Quiz</a>
+                                            <a href="${pageContext.request.contextPath}/secure/question/edit/${questionModel.id}"
+                                               class="btn btn-primary">Edit</a>
+                                            <a href="${pageContext.request.contextPath}/secure/question/remove/${questionModel.id}"
+                                               class="btn btn-primary">Remove</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form:form>

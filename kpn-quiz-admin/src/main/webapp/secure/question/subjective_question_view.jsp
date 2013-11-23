@@ -120,7 +120,7 @@
                                         <form:select path="difficulty" cssClass="form-control">
                                             <option value="">Difficulty</option>
                                             <option value="1">Easy</option>
-                                            <option value="2">Intermediate</option>
+                                            <option value="2">Intermedia</option>
                                             <option value="3">Difficult</option>
                                         </form:select>
                                     </div>
@@ -145,9 +145,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button class="btn btn-primary btn-block" type="submit">
-                                            Add <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                        <div class="btn-group btn-group-justified">
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}"
+                                               class="btn btn-primary">Back to Quiz</a>
+                                            <a href="${pageContext.request.contextPath}/secure/question/edit/${questionModel.id}"
+                                               class="btn btn-primary">Edit</a>
+                                            <a href="${pageContext.request.contextPath}/secure/question/remove/${questionModel.id}"
+                                               class="btn btn-primary">Remove</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form:form>

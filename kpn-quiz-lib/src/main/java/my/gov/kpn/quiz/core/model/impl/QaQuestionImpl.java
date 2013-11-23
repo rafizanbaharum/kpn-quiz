@@ -24,9 +24,6 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
     @Column(name = "STATEMENT")
     private String statement;
 
-    @Column(name = "WEIGHT")
-    private Double weight;
-
     @Column(name = "ANSWER_INDEX")
     private Integer answerIndex;
 
@@ -65,14 +62,6 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
 
     public void setDifficulty(QaDifficulty difficulty) {
         this.difficulty = difficulty;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
     }
 
     public Integer getAnswerIndex() {

@@ -15,10 +15,10 @@ public interface QaQuestion extends QaMetaObject {
 
     /**
      * For MultipleChoiceQuestion
-     * 1-A
-     * 2-B
-     * 3-C
-     * 4-D
+     * 0-A
+     * 1-B
+     * 2-C
+     * 3-D
      * <p/>
      * For BooleanQuestion
      * O-FALSE
@@ -31,13 +31,6 @@ public interface QaQuestion extends QaMetaObject {
     Integer getAnswerIndex();
 
     void setAnswerIndex(Integer answerIndex);
-
-    /**
-     * @return
-     */
-    Double getWeight();
-
-    void setWeight(Double weight);
 
     /**
      * @return

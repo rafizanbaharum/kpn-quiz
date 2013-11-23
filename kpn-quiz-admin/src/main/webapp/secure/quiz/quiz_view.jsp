@@ -160,11 +160,11 @@
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/multiplechoice"
-                                               class="btn btn-primary">Multiple Choice</a>
+                                               class="btn btn-primary">Add Multiple Choice</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/boolean"
-                                               class="btn btn-primary">Boolean</a>
+                                               class="btn btn-primary">Add Boolean</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/subjective"
-                                               class="btn btn-primary">Subjective</a>
+                                               class="btn btn-primary">Add Subjective</a>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                 <tr>
                                     <th class="center">#</th>
                                     <th>Statement</th>
-                                    <th>Weight</th>
+                                    <th>Type</th>
                                     <th>Difficulty</th>
                                     <th></th>
                                 </tr>
@@ -195,8 +195,8 @@
                                 <c:forEach var="question" items="${questionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${question.statement}</td>
-                                        <td class="hidden-xs">${question.weight}</td>
+                                        <td class="hidden-xs">${question.statementAbbreviated}</td>
+                                        <td class="hidden-xs">${question.questionTypeString}</td>
                                         <td class="hidden-xs">${question.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">

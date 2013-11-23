@@ -1,5 +1,8 @@
 package my.gov.kpn.quiz.web.model;
 
+
+import org.apache.commons.lang.StringUtils;
+
 /**
  * @author rafizan.baharum
  * @since 11/15/13
@@ -7,8 +10,10 @@ package my.gov.kpn.quiz.web.model;
 public abstract class QuestionModel extends MetaModel {
 
     private String statement;
-    private Integer answerIndex;
-    private Double weight;
+    private String statementAbbreviated;
+    private int questionType;
+    private String questionTypeString;
+    private int answerIndex;
     private int difficulty;
     private QuizModel quiz;
 
@@ -18,14 +23,15 @@ public abstract class QuestionModel extends MetaModel {
 
     public void setStatement(String statement) {
         this.statement = statement;
+        this.setStatementAbbreviated(StringUtils.abbreviate(statement, 40));
     }
 
-    public Double getWeight() {
-        return weight;
+    public String getStatementAbbreviated() {
+        return statementAbbreviated;
     }
 
-    public void setWeight(Double weight) {
-        this.weight = weight;
+    public void setStatementAbbreviated(String statementAbbreviated) {
+        this.statementAbbreviated = statementAbbreviated;
     }
 
     public int getDifficulty() {
@@ -36,12 +42,28 @@ public abstract class QuestionModel extends MetaModel {
         this.difficulty = difficulty;
     }
 
-    public Integer getAnswerIndex() {
+    public int getAnswerIndex() {
         return answerIndex;
     }
 
-    public void setAnswerIndex(Integer answerIndex) {
+    public void setAnswerIndex(int answerIndex) {
         this.answerIndex = answerIndex;
+    }
+
+    public int getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(int questionType) {
+        this.questionType = questionType;
+    }
+
+    public String getQuestionTypeString() {
+        return questionTypeString;
+    }
+
+    public void setQuestionTypeString(String questionTypeString) {
+        this.questionTypeString = questionTypeString;
     }
 
     public QuizModel getQuiz() {

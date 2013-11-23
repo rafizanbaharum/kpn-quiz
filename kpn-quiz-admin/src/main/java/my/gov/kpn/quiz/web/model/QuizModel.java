@@ -1,5 +1,8 @@
 package my.gov.kpn.quiz.web.model;
 
+
+import org.apache.commons.lang.StringUtils;
+
 import java.util.Date;
 
 /**
@@ -9,6 +12,7 @@ import java.util.Date;
 public class QuizModel extends MetaModel {
 
     private String title;
+    private String titleAbbreviated;
     private Integer round;
     private boolean current;
     private boolean processed;
@@ -32,6 +36,15 @@ public class QuizModel extends MetaModel {
 
     public void setTitle(String title) {
         this.title = title;
+        this.titleAbbreviated = StringUtils.abbreviate(title, 40);
+    }
+
+    public String getTitleAbbreviated() {
+        return titleAbbreviated;
+    }
+
+    public void setTitleAbbreviated(String titleAbbreviated) {
+        this.titleAbbreviated = titleAbbreviated;
     }
 
     public Integer getRound() {

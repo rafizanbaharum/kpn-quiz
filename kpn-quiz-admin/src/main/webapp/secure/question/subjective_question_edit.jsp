@@ -98,7 +98,7 @@
 
                             <hr>
                             <form:form id="form" commandName="questionModel"
-                                       action="${pageContext.request.contextPath}/secure/question/savesubjective"
+                                       action="${pageContext.request.contextPath}/secure/question/updatesubjective"
                                        method="POST">
                                 <form:hidden path="quiz.id"/>
                                 <div class="row">
@@ -146,7 +146,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button class="btn btn-primary btn-block" type="submit">
-                                            Add <i class="icon-circle-arrow-right"></i>
+                                            Update <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>
