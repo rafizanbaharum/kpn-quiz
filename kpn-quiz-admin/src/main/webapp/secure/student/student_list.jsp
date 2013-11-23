@@ -83,39 +83,13 @@
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>
                                                 <a href="${pageContext.request.contextPath}/secure/student/reset/${question.id}"
-                                                   class="btn btn-green tooltips" data-placement="top"
+                                                   class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Reset"><i
                                                         class="icon-refresh"></i></a>
                                                 <a href="${pageContext.request.contextPath}/secure/student/remove/${question.id}"
-                                                   class="btn btn-bricky tooltips" data-placement="top"
+                                                   class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>
-                                            </div>
-                                            <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary dropdown-toggle btn-sm"
-                                                       data-toggle="dropdown"
-                                                       href="#">
-                                                        <i class="icon-cog"></i> <span class="caret"></span>
-                                                    </a>
-                                                    <ul role="menu" class="dropdown-menu pull-right">
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-edit"></i> Edit
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-share"></i> Share
-                                                            </a>
-                                                        </li>
-                                                        <li role="presentation">
-                                                            <a role="menuitem" tabindex="-1" href="#">
-                                                                <i class="icon-remove"></i> Remove
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                             </div>
                                         </td>
                                     </tr>

@@ -63,6 +63,11 @@
                         <span class="title"> Dashboard </span><span class="selected"></span>
                     </a>
                 </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/gate/in"><i class="clip-locked"></i>
+                        <span class="title"> Login </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
