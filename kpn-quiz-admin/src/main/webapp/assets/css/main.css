@@ -428,6 +428,10 @@ a.bricky:hover {
     position: relative !important;
 }
 
+.navbar > .container {
+    background: url('/assets/images/logo/header_transparent_logo.png') -13px -21px no-repeat;
+}
+
 .navbar > .container .navbar-brand, .logo {
     padding: 14px 10px 12px;
     margin-left: 0;
