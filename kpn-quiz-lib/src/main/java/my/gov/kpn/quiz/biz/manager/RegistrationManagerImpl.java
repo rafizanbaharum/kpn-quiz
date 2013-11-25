@@ -191,13 +191,16 @@ public class RegistrationManagerImpl implements RegistrationManager {
     @Override
     public void removeStudent(QaStudent student) {
 
-//        actorDao.deactivate();
-//        userDao.remove(student.);
+        QaUser root = userDao.findByUsername(ADMIN);
+
+        userDao.remove( userDao.findById(student.getId()),root);
+        actorDao.remove(student,root);
 
     }
 
 
     public boolean isExists(String username) {
-        return false;  // TODO:
+        QaUser root = userDao.findByUsername(username);
+        return (root != null);
     }
 }

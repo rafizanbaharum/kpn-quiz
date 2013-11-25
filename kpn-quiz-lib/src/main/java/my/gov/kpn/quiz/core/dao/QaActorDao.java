@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core.dao;
 
 import my.gov.kpn.quiz.core.model.*;
+import my.gov.kpn.quiz.core.model.impl.QaActorImpl;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * @author rafizan.baharum
  * @since 11/9/13
  */
-public interface QaActorDao {
+public interface QaActorDao extends DaoSupport<Long, QaActor, QaActorImpl> {
 
     QaActor findById(Long id);
 
