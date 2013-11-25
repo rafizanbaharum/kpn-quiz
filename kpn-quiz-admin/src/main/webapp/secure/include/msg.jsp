@@ -5,7 +5,7 @@
         <c:when test="${null != msgSuccess}">
             <%--<div class="errorHandler alert alert-danger no-display">--%>
             <div class="successHandler alert alert-success">
-                <i class="icon-remove-sign"></i> ${msgSuccess}
+                <i class="icon-ok"></i> ${msgSuccess}
             </div>
         </c:when>
     </c:choose>
@@ -13,7 +13,7 @@
     <c:choose>
         <c:when test="${null != msgError}">
             <div class="errorHandler alert alert-danger">
-                <i class="icon-ok"></i> ${msgError}
+                <i class="icon-remove-sign"></i> ${msgError}
             </div>
         </c:when>
     </c:choose>
