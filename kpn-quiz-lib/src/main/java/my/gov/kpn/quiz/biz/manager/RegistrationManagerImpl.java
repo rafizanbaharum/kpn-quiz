@@ -188,6 +188,15 @@ public class RegistrationManagerImpl implements RegistrationManager {
         sessionFactory.getCurrentSession().refresh(student);
     }
 
+    @Override
+    public void removeStudent(QaStudent student) {
+
+//        actorDao.deactivate();
+//        userDao.remove(student.);
+
+    }
+
+
     public boolean isExists(String username) {
         return false;  // TODO:
     }

@@ -29,5 +29,7 @@ public interface RegistrationManager {
     void updateStudent(QaStudent student, String username, String password, String name,
                        String nricNo, Date dob);
 
+    void removeStudent(QaStudent student);
+
     boolean isExists(String username);
 }
