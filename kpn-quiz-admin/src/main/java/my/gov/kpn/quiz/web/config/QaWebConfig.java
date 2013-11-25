@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
@@ -78,5 +79,14 @@ public class QaWebConfig {
         dataSource.setMaxActive(5);
         dataSource.setMaxWait(5000);
         return dataSource;
+    }
+
+    @Bean
+    public ResourceBundleMessageSource messageSource(){
+
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("message");
+
+        return messageSource;
     }
 }

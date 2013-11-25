@@ -13,7 +13,7 @@ public class QuizModel extends MetaModel {
 
     private String title;
     private String titleAbbreviated;
-    private Integer round;
+    private String round;
     private boolean current;
     private boolean processed;
     private boolean locked;
@@ -47,11 +47,11 @@ public class QuizModel extends MetaModel {
         this.titleAbbreviated = titleAbbreviated;
     }
 
-    public Integer getRound() {
+    public String getRound() {
         return round;
     }
 
-    public void setRound(Integer round) {
+    public void setRound(String round) {
         this.round = round;
     }
 

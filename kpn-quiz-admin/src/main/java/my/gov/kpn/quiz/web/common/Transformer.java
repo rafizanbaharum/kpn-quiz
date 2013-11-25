@@ -124,7 +124,7 @@ public class Transformer {
         QuizModel model = new QuizModel();
         model.setId(quiz.getId());
         model.setTitle(quiz.getTitle());
-        model.setRound(quiz.getRound());
+        model.setRound(quiz.getRound().toString());
         model.setStartDate(quiz.getStartDate());
         model.setEndDate(quiz.getEndDate());
         model.setCurrent(quiz.isCurrent());

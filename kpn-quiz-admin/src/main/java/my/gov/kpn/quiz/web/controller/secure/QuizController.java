@@ -6,11 +6,15 @@ import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.*;
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +33,9 @@ public class QuizController extends AbstractController {
 
     @Autowired
     private CompetitionManager competitionManager;
+
+    @Autowired
+    private ResourceBundleMessageSource messageSource;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String quizList(@ModelAttribute("quizModel") QuizModel quizModel, ModelMap model) {
@@ -74,14 +81,26 @@ public class QuizController extends AbstractController {
     }
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
-    public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel,
+    public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel,  BindingResult bindingResult,
                            ModelMap model) {
+
+
+        if (!NumberUtils.isNumber(quizModel.getRound())) {
+            FieldError fieldError = new FieldError("quizModel", "round", messageSource.getMessage("Integer.quizModel.round", null, null));
+            bindingResult.addError(fieldError);
+        }
+
+        if (bindingResult.hasErrors()) {
+            model.put(MSG_ERROR,"Error! Please check your data.");
+            return quizAdd(quizModel, model);
+        }
+
         QaQuiz quiz = new QaQuizImpl();
         quiz.setCompetition(competitionManager.findCompetitionByYear(2013));
         quiz.setTitle(quizModel.getTitle());
         quiz.setProcessed(false);
         quiz.setLocked(false);
-        quiz.setRound(quizModel.getRound());
+        quiz.setRound(Integer.valueOf(quizModel.getRound()));
         quiz.setStartDate(extractStartDate(quizModel));
         quiz.setEndDate(extractEndDate(quizModel));
         QaQuiz savedQuiz = competitionManager.saveQuiz(quiz);
@@ -96,7 +115,7 @@ public class QuizController extends AbstractController {
                              ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         quiz.setTitle(quizModel.getTitle());
-        quiz.setRound(quizModel.getRound());
+        quiz.setRound(Integer.valueOf(quizModel.getRound()));
         quiz.setStartDate(extractStartDate(quizModel));
         quiz.setEndDate(extractEndDate(quizModel));
         competitionManager.updateQuiz(quiz);
