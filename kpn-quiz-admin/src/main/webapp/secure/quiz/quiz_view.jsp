@@ -1,5 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -84,15 +86,13 @@
                                             <label class="control-label">
                                                 Start Date <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="startDate" placeholder="Insert start date"
-                                                        cssClass="form-control" readonly="true"/>
+                                            <input type="text" class="form-control" readonly="true" value=<fmt:formatDate value="${quizModel.startDate}" pattern="dd/MM/yyyy"/>  />
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 End Date <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="endDate" placeholder="Insert end date"
-                                                        cssClass="form-control" readonly="true"/>
+                                            <input type="text" class="form-control" readonly="true" value=<fmt:formatDate value="${quizModel.endDate}" pattern="dd/MM/yyyy"/>  />
                                         </div>
                                     </div>
                                 </div>
