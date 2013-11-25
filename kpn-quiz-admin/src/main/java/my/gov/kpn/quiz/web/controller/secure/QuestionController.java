@@ -14,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller("SecureQuestionController")
 @RequestMapping("/secure/question")
 public class QuestionController extends AbstractController {
@@ -26,6 +29,19 @@ public class QuestionController extends AbstractController {
     @Autowired
     private CompetitionManager competitionManager;
 
+    private enum MultipleChoiceAnswerType {
+        D,
+        C,
+        B,
+        A
+    }
+
+    private enum DifficultiesType {
+        Difficult,
+        Intermediate,
+        Easy
+    }
+
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String questionEdit(@PathVariable Long id, ModelMap model) {
         QaQuestion question = competitionManager.findQuestionById(id);
@@ -34,6 +50,8 @@ public class QuestionController extends AbstractController {
         questionModel.setQuiz(quizModel);
         model.addAttribute("questionModel", questionModel);
         model.addAttribute("quizModel", quizModel);
+        model.addAttribute("answerMap",multipleAnswerMap());
+        model.addAttribute("difficultiesMap",difficultiesMap());
 
         String action = null;
         switch (question.getQuestionType()) {
@@ -56,8 +74,11 @@ public class QuestionController extends AbstractController {
         QuestionModel questionModel = transformer.transform(question);
         QuizModel quizModel = transformer.transform(question.getQuiz());
         questionModel.setQuiz(quizModel);
+
         model.addAttribute("questionModel", questionModel);
         model.addAttribute("quizModel", quizModel);
+        model.addAttribute("answerMap",multipleAnswerMap());
+        model.addAttribute("difficultiesMap",difficultiesMap());
 
         String action = null;
         switch (question.getQuestionType()) {
@@ -190,4 +211,45 @@ public class QuestionController extends AbstractController {
             return "redirect:/secure/quiz/view/" + quiz.getId();
         }
     }
+
+    public String addQuestion(String type, ModelMap model){
+
+        model.addAttribute("answerMap",multipleAnswerMap());
+        model.addAttribute("difficultiesMap",difficultiesMap());
+
+        if (type.equals("multiplechoice")) {
+            return "secure/question/multiplechoice_question_add";
+        } else if (type.equals("boolean")) {
+            return "secure/question/boolean_question_add";
+        } else if (type.equals("subjective")) {
+            return "secure/question/subjective_question_add";
+        } else {
+            return "secure/question/multiplechoice_question_add";
+        }
+    }
+
+    private Map<String,String> multipleAnswerMap(){
+
+        Map<String,String> map = new HashMap<String, String>();
+        for (MultipleChoiceAnswerType type : MultipleChoiceAnswerType.values()) {
+            map.put(String.valueOf(type.ordinal()),type.name());
+        }
+
+        return map;
+
+    }
+
+    private Map<String,String> difficultiesMap(){
+
+        Map<String,String> map = new HashMap<String, String>();
+        for (DifficultiesType type : DifficultiesType.values()) {
+            map.put(String.valueOf(type.ordinal()),type.name());
+        }
+
+        return map;
+
+    }
+
+
+
 }

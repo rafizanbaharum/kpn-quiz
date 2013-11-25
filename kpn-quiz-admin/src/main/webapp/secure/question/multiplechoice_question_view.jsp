@@ -39,43 +39,7 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
-                <span class="clip-list-2"></span>
-            </button>
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/secure/index">
-                ASEAN QUIZ
-            </a>
-        </div>
-        <div class="navbar-tools">
-            <ul class="nav navbar-right">
-                <li class="dropdown current-user">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="" class="circle-img" alt="">
-                        <span class="username">User</span>
-                        <i class="clip-chevron-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/user/profile">
-                                <i class="clip-user-2"></i>
-                                &nbsp;My Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="${pageContext.request.contextPath}/gate/out">
-                                <i class="clip-exit"></i>
-                                &nbsp;Log Out
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
     <jsp:include page="/secure/include/question_navbar.jsp"/>
 
@@ -119,9 +83,7 @@
                                         </label>
                                         <form:select path="difficulty" cssClass="form-control">
                                             <option value="">Difficulty</option>
-                                            <option value="1">Easy</option>
-                                            <option value="2">Intermediate</option>
-                                            <option value="3">Difficult</option>
+                                            <form:options items="${difficultiesMap}" />
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">
@@ -130,10 +92,7 @@
                                         </label>
                                         <form:select path="answerIndex" cssClass="form-control">
                                             <option value="">Select Answer Key Index</option>
-                                            <option value="0">A</option>
-                                            <option value="1">B</option>
-                                            <option value="2">C</option>
-                                            <option value="3">D</option>
+                                            <form:options items="${answerMap}" />
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">
@@ -169,15 +128,6 @@
                                                 Choice D <span class="symbol required"></span>
                                             </label>
                                             <form:input path="choice4" placeholder="Insert question choice4"
-                                                        cssClass="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Answer Index <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="answerIndex" placeholder="Insert question answerIndex"
                                                         cssClass="form-control"/>
                                         </div>
                                     </div>

@@ -37,6 +37,9 @@ public class QuizController extends AbstractController {
     @Autowired
     private ResourceBundleMessageSource messageSource;
 
+    @Autowired
+    private QuestionController questionController;
+
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String quizList(@ModelAttribute("quizModel") QuizModel quizModel, ModelMap model) {
         model.addAttribute("quizModels", transformer.transformQuizzes(competitionManager.findQuizzes()));
@@ -204,25 +207,18 @@ public class QuizController extends AbstractController {
         QuestionModel questionModel;
         if (type.equals("multiplechoice")) {
             questionModel = new MultipleChoiceQuestionModel();
-            questionModel.setQuiz(quizModel);
-            model.addAttribute("questionModel", questionModel);
-            return "secure/question/multiplechoice_question_add";
         } else if (type.equals("boolean")) {
             questionModel = new BooleanQuestionModel();
-            questionModel.setQuiz(quizModel);
-            model.addAttribute("questionModel", questionModel);
-            return "secure/question/boolean_question_add";
         } else if (type.equals("subjective")) {
             questionModel = new SubjectiveQuestionModel();
-            questionModel.setQuiz(quizModel);
-            model.addAttribute("questionModel", questionModel);
-            return "secure/question/subjective_question_add";
         } else {
             questionModel = new MultipleChoiceQuestionModel();
-            questionModel.setQuiz(quizModel);
-            model.addAttribute("questionModel", questionModel);
-            return "secure/question/multiplechoice_question_add";
         }
+
+        questionModel.setQuiz(quizModel);
+        model.addAttribute("questionModel", questionModel);
+        return questionController.addQuestion(type,model);
+
     }
 
 
