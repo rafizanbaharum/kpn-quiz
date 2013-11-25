@@ -18,8 +18,9 @@ import org.springframework.security.web.header.writers.frameoptions.XFrameOption
 @EnableWebSecurity
 public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    // only allow student
     @Autowired
-    @Qualifier(value = "userDetailService")
+    @Qualifier(value = "studentDetailService")
     private UserDetailsService userDetailService;
 
     @Override
