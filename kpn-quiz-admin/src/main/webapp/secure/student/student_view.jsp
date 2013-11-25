@@ -145,12 +145,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <button class="btn btn-primary btn-block" type="button" onclick="location.href='${pageContext.request.contextPath}/secure/student/edit/${studentModel.id}'">
+                                        <button class="btn btn-primary btn-block" type="button"
+                                                onclick="location.href='${pageContext.request.contextPath}/secure/student/edit/${studentModel.id}'">
                                             Edit <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                     <div class="col-md-4">
-                                        <button class="btn btn-primary btn-block" type="submit">
+                                        <button class="btn btn-primary btn-block" type="button"
+                                                onclick="location.href='${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}'">
                                             Remove <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>

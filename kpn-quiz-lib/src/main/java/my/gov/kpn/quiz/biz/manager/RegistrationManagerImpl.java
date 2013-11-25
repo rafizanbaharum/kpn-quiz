@@ -173,7 +173,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
         log.debug("Update = " + student);
 
         QaUser root = userDao.findByUsername(ADMIN);
-        QaUser user = userDao.findByUsername(username);
+        QaUser user = userDao.findById(student.getId());
         user.setUsername(username);
         user.setPassword(password);
         userDao.update(user, root);
