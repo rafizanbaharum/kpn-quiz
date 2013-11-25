@@ -100,6 +100,7 @@
                             <form:form id="form" commandName="questionModel"
                                        action="${pageContext.request.contextPath}/secure/question/updateboolean"
                                        method="POST">
+                                <form:hidden path="id"/>
                                 <form:hidden path="quiz.id"/>
                                 <div class="row">
                                     <jsp:include page="/secure/include/msg.jsp"/>

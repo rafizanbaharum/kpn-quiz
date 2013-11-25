@@ -13,5 +13,4 @@ public enum Difficulty {
     public static Difficulty get(int index) {
         return values()[index];
     }
-
 }

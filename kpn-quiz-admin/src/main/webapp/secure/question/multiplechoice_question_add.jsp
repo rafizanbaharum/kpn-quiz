@@ -119,7 +119,7 @@
                                             Difficulty <span class="symbol required"></span>
                                         </label>
                                         <form:select path="difficulty" cssClass="form-control">
-                                            <option value="">Difficulty</option>
+                                            <option value="">Select level of Difficulty</option>
                                             <option value="1">Easy</option>
                                             <option value="2">Intermediate</option>
                                             <option value="3">Difficult</option>

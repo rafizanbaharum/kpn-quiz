@@ -78,9 +78,10 @@ public class QuestionController extends AbstractController {
     public String questionSaveMultipleChoice(@ModelAttribute("questionModel") MultipleChoiceQuestionModel questionModel,
                                              ModelMap model) {
 
+        log.debug("savemultiplechoice");
         QaMultipleChoiceQuestion question = new QaMultipleChoiceQuestionImpl();
         question.setStatement(questionModel.getStatement());
-        question.setDifficulty(QaDifficulty.EASY);
+        question.setDifficulty(QaDifficulty.get(questionModel.getDifficulty()));
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
         question.setChoice1(questionModel.getChoice1());
         question.setChoice2(questionModel.getChoice2());
@@ -113,9 +114,9 @@ public class QuestionController extends AbstractController {
                                          ModelMap model) {
         QaSubjectiveQuestion question = new QaSubjectiveQuestionImpl();
         question.setStatement(questionModel.getStatement());
-        question.setDifficulty(QaDifficulty.EASY);
+        question.setDifficulty(QaDifficulty.get(questionModel.getDifficulty()));
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
-        question.setAnswerIndex(questionModel.getAnswerIndex());
+        question.setAnswerIndex(0);
         question.setAnswerGuide(questionModel.getAnswerGuide());
         QaQuestion savedQuestion = competitionManager.saveQuestion(question);
 
@@ -130,7 +131,7 @@ public class QuestionController extends AbstractController {
 
         QaMultipleChoiceQuestion question = (QaMultipleChoiceQuestion) competitionManager.findQuestionById(questionModel.getId());
         question.setStatement(questionModel.getStatement());
-        question.setDifficulty(QaDifficulty.EASY);
+        question.setDifficulty(QaDifficulty.get(questionModel.getDifficulty()));
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
         question.setChoice1(questionModel.getChoice1());
         question.setChoice2(questionModel.getChoice2());
@@ -149,7 +150,7 @@ public class QuestionController extends AbstractController {
                                         ModelMap model) {
         QaBooleanQuestion question = (QaBooleanQuestion) competitionManager.findQuestionById(questionModel.getId());
         question.setStatement(questionModel.getStatement());
-        question.setDifficulty(QaDifficulty.EASY);
+        question.setDifficulty(QaDifficulty.get(questionModel.getDifficulty()));
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
         question.setAnswerIndex(questionModel.getAnswerIndex());
         competitionManager.updateQuestion(question);
@@ -164,9 +165,9 @@ public class QuestionController extends AbstractController {
                                            ModelMap model) {
         QaSubjectiveQuestion question = (QaSubjectiveQuestion) competitionManager.findQuestionById(questionModel.getId());
         question.setStatement(questionModel.getStatement());
-        question.setDifficulty(QaDifficulty.EASY);
+        question.setDifficulty(QaDifficulty.get(questionModel.getDifficulty()));
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
-        question.setAnswerIndex(questionModel.getAnswerIndex());
+        question.setAnswerIndex(0);
         question.setAnswerGuide(questionModel.getAnswerGuide());
         competitionManager.updateQuestion(question);
 
