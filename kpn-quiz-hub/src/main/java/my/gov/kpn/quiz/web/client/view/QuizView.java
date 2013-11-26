@@ -53,6 +53,24 @@ public class QuizView extends View {
     private static final int ONE_SECOND = 1000;
     private static NumberFormat formatter = NumberFormat.getFormat("00");
 
+    public static final String QUIZ_APP_HEADER = "quiz-app-header";
+    public static final String QUIZ_APP_MAIN = "quiz-app-main";
+    public static final String QUIZ_APP_FOOTER = "quiz-app-footer";
+    public static final String QUIZ_CLOCK = "quiz-clock";
+    public static final String QUIZ_COUNTER = "quiz-counter";
+    public static final String QUIZ_LEVEL = "quiz-level";
+    public static final String QUIZ_STATUS = "quiz-status";
+    public static final String QUIZ_NAV_BUTTON = "quiz-nav-button";
+    public static final String UNANSWERED = "Unanswered";
+    public static final String ANSWERED = "Answered";
+    public static final String QUIZ_QUESTION_PANEL = "quiz-question-panel";
+    public static final String QUIZ_QUESTION = "quiz-question";
+    public static final String QUIZ_QUESTION_BOX = "quiz-question-box";
+    public static final String QUIZ_QUESTION_STATEMENT = "quiz-question-statement";
+    public static final String QUIZ_QUESTION_CHOICE = "quiz-question-choice";
+    public static final String QUIZ_QUESTION_RESPONSE = "quiz-question-response";
+    public static final String INITIALIZING = "Initializing...";
+
     private QuizDelegateAsync delegate;
     private QuestionRpcProxy proxy;
     private ListLoader<ListLoadResult<QuestionModel>> loader;
@@ -181,7 +199,7 @@ public class QuizView extends View {
                             loadAnswerIndex(nextQuestion);
                             break;
                         case SUBJECTIVE:
-                            TextArea textArea = (TextArea) box.getItemByItemId("quiz-question-response");
+                            TextArea textArea = (TextArea) box.getItemByItemId(QUIZ_QUESTION_RESPONSE);
                             updateAnswer(prevQuestion, textArea.getValue());
                             loadAnswerResponse(nextQuestion);
                             break;
@@ -255,12 +273,11 @@ public class QuizView extends View {
             @Override
             public void onSuccess(Integer result) {
                 if (null != result) {
-                    updateStatus("Answered");
+                    updateStatus(ANSWERED);
                     LayoutContainer container = (LayoutContainer) cardPanel.getItem(currentStep);
-                    LayoutContainer box = (LayoutContainer) container.getItemByItemId("quiz-question-box");
+                    LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
                     switch (questionModel.getQuestionType()) {
                         case MULTIPLE_CHOICE:
-                            log.info("result: " + result);
                             Radio radioMulti = (Radio) box.getItemByItemId(result.toString()); // 0-A, 1-B, 2-C, 3-D
                             radioMulti.setValue(Boolean.TRUE);
                             break;
@@ -273,7 +290,7 @@ public class QuizView extends View {
                             break;
                     }
                 } else {
-                    updateStatus("Unanswered");
+                    updateStatus(UNANSWERED);
                 }
             }
         });
@@ -288,9 +305,9 @@ public class QuizView extends View {
             @Override
             public void onSuccess(String result) {
                 if (null != result) {
-                    updateStatus("Answered");
+                    updateStatus(ANSWERED);
                     LayoutContainer container = (LayoutContainer) cardPanel.getItem(currentStep);
-                    LayoutContainer box = (LayoutContainer) container.getItemByItemId("quiz-question-box");
+                    LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
                     switch (questionModel.getQuestionType()) {
                         case MULTIPLE_CHOICE:
                             // N/A
@@ -299,12 +316,12 @@ public class QuizView extends View {
                             // N/A
                             break;
                         case SUBJECTIVE:
-                            TextArea textArea = (TextArea) box.getItemByItemId("quiz-question-response");
+                            TextArea textArea = (TextArea) box.getItemByItemId(QUIZ_QUESTION_RESPONSE);
                             textArea.setValue(result);
                             break;
                     }
                 } else {
-                    updateStatus("Unanswered");
+                    updateStatus(UNANSWERED);
                 }
             }
         });
@@ -314,7 +331,7 @@ public class QuizView extends View {
     // header
     private void createHeader(Viewport view) {
         header = new LayoutContainer();
-        header.setId("quiz-app-header");
+        header.setId(QUIZ_APP_HEADER);
         header.setLayout(new FlowLayout());
         BorderLayoutData northData = new BorderLayoutData(Style.LayoutRegion.NORTH, 0.16f);
         northData.setMargins(new Margins(0, 0, 0, 0));
@@ -325,7 +342,7 @@ public class QuizView extends View {
     // main
     private void createMain(Viewport view) {
         main = new LayoutContainer();
-        main.setId("quiz-app-main");
+        main.setId(QUIZ_APP_MAIN);
         main.setLayout(new FitLayout());
         BorderLayoutData centerData = new BorderLayoutData(Style.LayoutRegion.CENTER, 0.70f);
         centerData.setMargins(new Margins(0, 0, 0, 0));
@@ -336,7 +353,7 @@ public class QuizView extends View {
     // footer
     private void createFooter(Viewport view) {
         footer = new LayoutContainer();
-        footer.setId("quiz-app-footer");
+        footer.setId(QUIZ_APP_FOOTER);
         footer.setLayout(new FitLayout());
         BorderLayoutData westData = new BorderLayoutData(Style.LayoutRegion.SOUTH, 0.14f);
         westData.setMargins(new Margins(0, 0, 0, 0));
@@ -347,17 +364,17 @@ public class QuizView extends View {
 
     private void createToolBar() {
         timer = new Html();
-        timer.setId("quiz-clock");
-        timer.setHtml("Initializing...");
+        timer.setId(QUIZ_CLOCK);
+        timer.setHtml(INITIALIZING);
         counter = new Html();
-        counter.setId("quiz-counter");
-        counter.setHtml("Initializing...");
+        counter.setId(QUIZ_COUNTER);
+        counter.setHtml(INITIALIZING);
         level = new Html();
-        level.setId("quiz-level");
-        level.setHtml("Initializing...");
+        level.setId(QUIZ_LEVEL);
+        level.setHtml(INITIALIZING);
         status = new Html();
-        status.setId("quiz-status");
-        status.setHtml("Initializing...");
+        status.setId(QUIZ_STATUS);
+        status.setHtml(INITIALIZING);
         LayoutContainer panel = new LayoutContainer();
         panel.setLayout(new HBoxLayout());
         panel.add(timer, new HBoxLayoutData(0, 0, 0, 20));
@@ -368,12 +385,12 @@ public class QuizView extends View {
 
     private void createButtonBar() {
         Button next = new Button("Next");
-        next.addStyleName("quiz-nav-button");
+        next.addStyleName(QUIZ_NAV_BUTTON);
         next.setScale(Style.ButtonScale.LARGE);
         next.setMinWidth(100);
         next.addSelectionListener(new NextSelectionListener());
         Button prev = new Button("Prev");
-        prev.addStyleName("quiz-nav-button");
+        prev.addStyleName(QUIZ_NAV_BUTTON);
         prev.setScale(Style.ButtonScale.LARGE);
         prev.setMinWidth(100);
         prev.addSelectionListener(new PreviousSelectionListener());
@@ -407,34 +424,34 @@ public class QuizView extends View {
 
     private void createMultipleChoiceQuestionPanel(int questionIndex, MultipleChoiceQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
-        panel.setId("quiz-question-panel");
-        panel.setStyleName("quiz-question");
+        panel.setId(QUIZ_QUESTION_PANEL);
+        panel.setStyleName(QUIZ_QUESTION);
 
         LayoutContainer box = new LayoutContainer();
-        box.setItemId("quiz-question-box");
+        box.setItemId(QUIZ_QUESTION_BOX);
         box.setLayout(new VBoxLayout());
 
         Html statement = new Html();
-        statement.setId("quiz-question-statement");
+        statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
 
         RadioGroup group = new RadioGroup();
         Radio button1 = new Radio();
         button1.setItemId("0");
-        button1.setStyleName("quiz-question-choice");
+        button1.setStyleName(QUIZ_QUESTION_CHOICE);
         button1.setBoxLabel(model.getChoice1());
         Radio button2 = new Radio();
         button2.setItemId("1");
         button2.setItemId("1");
-        button2.setStyleName("quiz-question-choice");
+        button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel(model.getChoice2());
         Radio button3 = new Radio();
         button3.setItemId("2");
-        button3.setStyleName("quiz-question-choice");
+        button3.setStyleName(QUIZ_QUESTION_CHOICE);
         button3.setBoxLabel(model.getChoice3());
         Radio button4 = new Radio();
         button4.setItemId("3");
-        button4.setStyleName("quiz-question-choice");
+        button4.setStyleName(QUIZ_QUESTION_CHOICE);
         button4.setBoxLabel(model.getChoice4());
         group.add(button1);
         group.add(button2);
@@ -452,25 +469,25 @@ public class QuizView extends View {
 
     private void createBooleanQuestionPanel(int questionIndex, BooleanQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
-        panel.setItemId("quiz-question-panel");
-        panel.setStyleName("quiz-question");
+        panel.setItemId(QUIZ_QUESTION_PANEL);
+        panel.setStyleName(QUIZ_QUESTION);
 
         LayoutContainer box = new LayoutContainer();
-        box.setItemId("quiz-question-box");
+        box.setItemId(QUIZ_QUESTION_BOX);
         box.setLayout(new VBoxLayout());
 
         Html statement = new Html();
-        statement.setId("quiz-question-statement");
+        statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
 
         RadioGroup group = new RadioGroup();
         Radio button1 = new Radio();
         button1.setItemId("0");
-        button1.setStyleName("quiz-question-choice");
+        button1.setStyleName(QUIZ_QUESTION_CHOICE);
         button1.setBoxLabel("TRUE");
         Radio button2 = new Radio();
         button2.setItemId("1");
-        button2.setStyleName("quiz-question-choice");
+        button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel("FALSE");
         group.add(button1);
         group.add(button2);
@@ -484,17 +501,17 @@ public class QuizView extends View {
 
     private void createSubjectiveQuestionPanel(int questionIndex, SubjectiveQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
-        panel.setStyleName("quiz-question");
+        panel.setStyleName(QUIZ_QUESTION);
 
         LayoutContainer box = new LayoutContainer();
         box.setLayout(new VBoxLayout());
         Html statement = new Html();
-        statement.setId("quiz-question-statement");
+        statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
         TextArea area = new TextArea();
         area.setId("answer");
-        area.setItemId("quiz-question-response");
         area.setName("answer");
+        area.setItemId(QUIZ_QUESTION_RESPONSE);
         area.setFieldLabel("");
         area.setHeight(250);
         area.setWidth(1000);
