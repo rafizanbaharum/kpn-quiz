@@ -43,12 +43,9 @@
     <link rel="stylesheet" href="/assets/plugins/select2/select2.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<!-- end: HEAD -->
-<!-- start: BODY -->
 <body class="login example2">
 <div class="main-login col-sm-4 col-sm-offset-4">
     <div class="logo"><h2>ASEAN QUIZ</h2></div>
-    <!-- start: LOGIN BOX -->
     <div class="box-register">
         <h3>Sign Up</h3>
 
@@ -115,25 +112,15 @@
                 <div class="form-group">
  							<span class="input-icon">
  								<input type="password" class="form-control" id="password" name="password"
-                                       placeholder="Password">
+                                        placeholder="Password">
  								<i class="icon-lock"></i> </span>
                 </div>
                 <div class="form-group">
  							<span class="input-icon">
  								<input type="password" class="form-control" name="passwordAgain"
-                                       placeholder="Password Again">
+                                        placeholder="Password Again">
  								<i class="icon-lock"></i> </span>
                 </div>
-                <%--
-                                <div class="form-group">
-                                    <div>
-                                        <label for="agree" class="checkbox-inline">
-                                            <input type="checkbox" class="grey agree" id="agree" name="agree">
-                                            I agree to the Terms of Service and Privacy Policy
-                                        </label>
-                                    </div>
-                                </div>
-                --%>
                 <div class="form-actions">
                     <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = '/gate/in'">
                         <i class="icon-circle-arrow-left"></i> Back
@@ -145,12 +132,9 @@
             </fieldset>
         </form>
     </div>
-    <!-- end: LOGIN BOX -->
-    <!-- start: COPYRIGHT -->
     <div class="copyright">
         2013 &copy; ASEAN QUIZ
     </div>
-    <!-- end: COPYRIGHT -->
 </div>
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
