@@ -94,7 +94,7 @@
                                         </label>
                                         <form:select path="answerIndex" cssClass="form-control">
                                             <option value="">Select Answer Key Index</option>
-                                            <form:options items="${answerMap}" />
+                                            <form:options items="${multipleAnswerMap}" />
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">

@@ -119,10 +119,8 @@
                                             Difficulty <span class="symbol required"></span>
                                         </label>
                                         <form:select path="difficulty" cssClass="form-control">
-                                            <option value="">Select Level of Difficulty</option>
-                                            <option value="1">Easy</option>
-                                            <option value="2">Intermediate</option>
-                                            <option value="3">Difficult</option>
+                                            <option value="">Select level of Difficulty</option>
+                                            <form:options items="${difficultiesMap}"/>
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">
@@ -131,8 +129,7 @@
                                         </label>
                                         <form:select path="answerIndex" cssClass="form-control">
                                             <option value="">Select Answer Key Index</option>
-                                            <option value="0">TRUE</option>
-                                            <option value="1">FALSE</option>
+                                            <form:options items="${booleanAnswerMap}"/>
                                         </form:select>
                                     </div>
                                 </div>

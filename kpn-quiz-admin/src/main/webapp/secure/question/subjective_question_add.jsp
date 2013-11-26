@@ -119,9 +119,7 @@
                                         </label>
                                         <form:select path="difficulty" cssClass="form-control">
                                             <option value="">Select level of Difficulty</option>
-                                            <option value="1">Easy</option>
-                                            <option value="2">Intermediate</option>
-                                            <option value="3">Difficult</option>
+                                            <form:options items="${difficultiesMap}"/>
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">

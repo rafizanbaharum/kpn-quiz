@@ -82,10 +82,8 @@
                                             Difficulty <span class="symbol required"></span>
                                         </label>
                                         <form:select path="difficulty" cssClass="form-control">
-                                            <option value="">Difficulty</option>
-                                            <option value="1">Easy</option>
-                                            <option value="2">Intermedia</option>
-                                            <option value="3">Difficult</option>
+                                            <option value="">Select level of Difficulty</option>
+                                            <form:options items="${difficultiesMap}"/>
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">

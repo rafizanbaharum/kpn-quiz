@@ -29,14 +29,19 @@ public class QuestionController extends AbstractController {
     @Autowired
     private CompetitionManager competitionManager;
 
-    private enum MultipleChoiceAnswerType {
+    public enum MultipleChoiceAnswerType {
         D,
         C,
         B,
         A
     }
 
-    private enum DifficultiesType {
+    public enum BooleanChoiceAnswerType {
+        FALSE,
+        TRUE,
+    }
+
+    public enum DifficultiesType {
         Difficult,
         Intermediate,
         Easy
@@ -50,8 +55,6 @@ public class QuestionController extends AbstractController {
         questionModel.setQuiz(quizModel);
         model.addAttribute("questionModel", questionModel);
         model.addAttribute("quizModel", quizModel);
-        model.addAttribute("answerMap",multipleAnswerMap());
-        model.addAttribute("difficultiesMap",difficultiesMap());
 
         String action = null;
         switch (question.getQuestionType()) {
@@ -77,8 +80,6 @@ public class QuestionController extends AbstractController {
 
         model.addAttribute("questionModel", questionModel);
         model.addAttribute("quizModel", quizModel);
-        model.addAttribute("answerMap",multipleAnswerMap());
-        model.addAttribute("difficultiesMap",difficultiesMap());
 
         String action = null;
         switch (question.getQuestionType()) {
@@ -212,11 +213,7 @@ public class QuestionController extends AbstractController {
         }
     }
 
-    public String addQuestion(String type, ModelMap model){
-
-        model.addAttribute("answerMap",multipleAnswerMap());
-        model.addAttribute("difficultiesMap",difficultiesMap());
-
+    public String addQuestion(String type, ModelMap model) {
         if (type.equals("multiplechoice")) {
             return "secure/question/multiplechoice_question_add";
         } else if (type.equals("boolean")) {
@@ -228,28 +225,30 @@ public class QuestionController extends AbstractController {
         }
     }
 
-    private Map<String,String> multipleAnswerMap(){
-
-        Map<String,String> map = new HashMap<String, String>();
+    @ModelAttribute("multipleAnswerMap")
+    public Map<String, String> multipleAnswerMap() {
+        Map<String, String> map = new HashMap<String, String>();
         for (MultipleChoiceAnswerType type : MultipleChoiceAnswerType.values()) {
-            map.put(String.valueOf(type.ordinal()),type.name());
+            map.put(String.valueOf(type.ordinal()), type.name());
         }
-
         return map;
-
     }
 
-    private Map<String,String> difficultiesMap(){
+    @ModelAttribute("booleanAnswerMap")
+    public Map<String, String> booleanAnswerMap() {
+        Map<String, String> map = new HashMap<String, String>();
+        for (BooleanChoiceAnswerType type : BooleanChoiceAnswerType.values()) {
+            map.put(String.valueOf(type.ordinal()), type.name());
+        }
+        return map;
+    }
 
-        Map<String,String> map = new HashMap<String, String>();
+    @ModelAttribute("difficultiesMap")
+    public Map<String, String> difficultiesMap() {
+        Map<String, String> map = new HashMap<String, String>();
         for (DifficultiesType type : DifficultiesType.values()) {
-            map.put(String.valueOf(type.ordinal()),type.name());
+            map.put(String.valueOf(type.ordinal()), type.name());
         }
-
         return map;
-
     }
-
-
-
 }
