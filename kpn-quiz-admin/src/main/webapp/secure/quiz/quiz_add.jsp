@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                         <jsp:include page="/secure/include/msg.jsp"/>
+                        <jsp:include page="/secure/include/msg.jsp"/>
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
                             Add a quiz
@@ -84,7 +84,8 @@
                                             </label>
                                             <form:input path="round" placeholder="Insert round"
                                                         cssClass="form-control"/>
-                                            <form:errors path='round' cssClass="has-error control-label input-group-addon simpleError" />
+                                            <form:errors path='round'
+                                                         cssClass="has-error control-label input-group-addon simpleError"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -103,10 +104,10 @@
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form:select path="startDate_mm" cssClass="form-control">
+                                                    <form:select path="startDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
-                                                        <c:forEach begin="1" end="12" var="mm">
-                                                            <form:option value="${mm}"/>
+                                                        <c:forEach begin="1" end="12" var="MM">
+                                                            <form:option value="${MM}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>

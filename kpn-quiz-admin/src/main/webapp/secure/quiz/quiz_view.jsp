@@ -86,17 +86,13 @@
                                             <label class="control-label">
                                                 Start Date <span class="symbol required"></span>
                                             </label>
-                                            <input type="text" class="form-control" readonly="true" value=
-                                                    <fmt:formatDate value="${quizModel.startDate}"
-                                                                    pattern="dd/MM/yyyy"/>/>
+                                            <input type="text" class="form-control" readonly="true" value="${quizModel.startDateFormatted}"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 End Date <span class="symbol required"></span>
                                             </label>
-                                            <input type="text" class="form-control" readonly="true" value=
-                                                    <fmt:formatDate value="${quizModel.endDate}"
-                                                                    pattern="dd/MM/yyyy"/>/>
+                                            <input type="text" class="form-control" readonly="true" value="${quizModel.endDateFormatted}"/>
                                         </div>
                                     </div>
                                 </div>

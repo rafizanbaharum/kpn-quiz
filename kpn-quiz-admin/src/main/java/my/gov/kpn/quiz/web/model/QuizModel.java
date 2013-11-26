@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.model;
 
 import org.apache.commons.lang.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -18,17 +19,21 @@ public class QuizModel extends MetaModel {
     private boolean processed;
     private boolean locked;
     private Date startDate;
-    private String startDate_ss;
-    private String startDate_MM;
+    private String startDateFormatted;
+    private String startDate_hh = "9";// default
+    private String startDate_mm = "0";// default
     private String startDate_dd;
-    private String startDate_mm;
+    private String startDate_MM;
     private String startDate_yyyy;
     private Date endDate;
-    private String endDate_ss;
-    private String endDate_MM;
+    private String endDateFormatted;
+    private String endDate_hh = "10";// default
+    private String endDate_mm = "0"; // default
     private String endDate_dd;
-    private String endDate_mm;
+    private String endDate_MM;
     private String endDate_yyyy;
+
+    private static SimpleDateFormat format = new SimpleDateFormat("hh:mm dd/MM/yyyy");
 
     public String getTitle() {
         return title;
@@ -86,6 +91,23 @@ public class QuizModel extends MetaModel {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+        this.startDateFormatted = format.format(startDate);
+    }
+
+    public String getStartDateFormatted() {
+        return startDateFormatted;
+    }
+
+    public void setStartDateFormatted(String startDateFormatted) {
+        this.startDateFormatted = startDateFormatted;
+    }
+
+    public String getEndDateFormatted() {
+        return endDateFormatted;
+    }
+
+    public void setEndDateFormatted(String endDateFormatted) {
+        this.endDateFormatted = endDateFormatted;
     }
 
     public Date getEndDate() {
@@ -94,6 +116,15 @@ public class QuizModel extends MetaModel {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+        this.endDateFormatted = format.format(endDate);
+    }
+
+    public String getStartDate_hh() {
+        return startDate_hh;
+    }
+
+    public void setStartDate_hh(String startDate_hh) {
+        this.startDate_hh = startDate_hh;
     }
 
     public String getStartDate_dd() {
@@ -120,6 +151,14 @@ public class QuizModel extends MetaModel {
         this.startDate_yyyy = startDate_yyyy;
     }
 
+    public String getEndDate_hh() {
+        return endDate_hh;
+    }
+
+    public void setEndDate_hh(String endDate_hh) {
+        this.endDate_hh = endDate_hh;
+    }
+
     public String getEndDate_dd() {
         return endDate_dd;
     }
@@ -144,28 +183,12 @@ public class QuizModel extends MetaModel {
         this.endDate_yyyy = endDate_yyyy;
     }
 
-    public String getStartDate_ss() {
-        return startDate_ss;
-    }
-
-    public void setStartDate_ss(String startDate_ss) {
-        this.startDate_ss = startDate_ss;
-    }
-
     public String getStartDate_MM() {
         return startDate_MM;
     }
 
     public void setStartDate_MM(String startDate_MM) {
         this.startDate_MM = startDate_MM;
-    }
-
-    public String getEndDate_ss() {
-        return endDate_ss;
-    }
-
-    public void setEndDate_ss(String endDate_ss) {
-        this.endDate_ss = endDate_ss;
     }
 
     public String getEndDate_MM() {
@@ -182,5 +205,4 @@ public class QuizModel extends MetaModel {
                 "id='" + getId() + '\'' +
                 '}';
     }
-
 }

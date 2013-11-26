@@ -4,6 +4,7 @@ import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.web.model.*;
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -119,8 +120,8 @@ public class Transformer {
     }
 
     public QuizModel transform(QaQuiz quiz) {
-        LocalDate startDate = new LocalDate(quiz.getStartDate());
-        LocalDate endDate = new LocalDate(quiz.getEndDate());
+        LocalDateTime startDate = new LocalDateTime(quiz.getStartDate());
+        LocalDateTime endDate = new LocalDateTime(quiz.getEndDate());
         QuizModel model = new QuizModel();
         model.setId(quiz.getId());
         model.setTitle(quiz.getTitle());
@@ -130,11 +131,15 @@ public class Transformer {
         model.setCurrent(quiz.isCurrent());
         model.setProcessed(quiz.isProcessed());
         model.setLocked(quiz.isLocked());
+        model.setStartDate_hh(String.valueOf(startDate.getHourOfDay()));
+        model.setStartDate_mm(String.valueOf(startDate.getMinuteOfHour()));
         model.setStartDate_dd(String.valueOf(startDate.getDayOfMonth()));
-        model.setStartDate_mm(String.valueOf(startDate.getMonthOfYear()));
+        model.setStartDate_MM(String.valueOf(startDate.getMonthOfYear()));
         model.setStartDate_yyyy(String.valueOf(startDate.getYear()));
+        model.setEndDate_hh(String.valueOf(endDate.getHourOfDay()));
+        model.setEndDate_mm(String.valueOf(endDate.getMinuteOfHour()));
         model.setEndDate_dd(String.valueOf(endDate.getDayOfMonth()));
-        model.setEndDate_mm(String.valueOf(endDate.getMonthOfYear()));
+        model.setEndDate_MM(String.valueOf(endDate.getMonthOfYear()));
         model.setEndDate_yyyy(String.valueOf(endDate.getYear()));
 
         return model;

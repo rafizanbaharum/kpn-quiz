@@ -102,10 +102,10 @@
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form:select path="startDate_mm" cssClass="form-control">
+                                                    <form:select path="startDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
-                                                        <c:forEach begin="1" end="12" var="mm">
-                                                            <form:option value="${mm}"/>
+                                                        <c:forEach begin="1" end="12" var="MM">
+                                                            <form:option value="${MM}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -133,10 +133,10 @@
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form:select path="endDate_mm" cssClass="form-control">
+                                                    <form:select path="endDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
-                                                        <c:forEach begin="1" end="12" var="mm">
-                                                            <form:option value="${mm}"/>
+                                                        <c:forEach begin="1" end="12" var="MM">
+                                                            <form:option value="${MM}"/>
                                                         </c:forEach>
 
                                                     </form:select>

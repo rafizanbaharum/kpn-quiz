@@ -8,7 +8,7 @@ import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.*;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.log4j.Logger;
-import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
@@ -84,7 +84,7 @@ public class QuizController extends AbstractController {
     }
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
-    public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel,  BindingResult bindingResult,
+    public String quizSave(@ModelAttribute("quizModel") QuizModel quizModel, BindingResult bindingResult,
                            ModelMap model) {
 
 
@@ -94,7 +94,7 @@ public class QuizController extends AbstractController {
         }
 
         if (bindingResult.hasErrors()) {
-            model.put(MSG_ERROR,"Error! Please check your data.");
+            model.put(MSG_ERROR, "Error! Please check your data.");
             return quizAdd(quizModel, model);
         }
 
@@ -217,7 +217,7 @@ public class QuizController extends AbstractController {
 
         questionModel.setQuiz(quizModel);
         model.addAttribute("questionModel", questionModel);
-        return questionController.addQuestion(type,model);
+        return questionController.addQuestion(type, model);
 
     }
 
@@ -255,14 +255,22 @@ public class QuizController extends AbstractController {
 
 
     private static Date extractStartDate(QuizModel quizModel) {
-        return new LocalDate(Integer.parseInt(quizModel.getStartDate_yyyy()),
-                Integer.parseInt(quizModel.getStartDate_mm()),
-                Integer.parseInt(quizModel.getStartDate_dd())).toDate();
+        return new LocalDateTime(
+                Integer.parseInt(quizModel.getStartDate_yyyy()),
+                Integer.parseInt(quizModel.getStartDate_MM()),
+                Integer.parseInt(quizModel.getStartDate_dd()),
+                Integer.parseInt(quizModel.getStartDate_hh()),
+                Integer.parseInt(quizModel.getStartDate_mm()))
+                .toDate();
     }
 
     private static Date extractEndDate(QuizModel quizModel) {
-        return new LocalDate(Integer.parseInt(quizModel.getEndDate_yyyy()),
-                Integer.parseInt(quizModel.getEndDate_mm()),
-                Integer.parseInt(quizModel.getEndDate_dd())).toDate();
+        return new LocalDateTime(
+                Integer.parseInt(quizModel.getEndDate_yyyy()),
+                Integer.parseInt(quizModel.getEndDate_MM()),
+                Integer.parseInt(quizModel.getEndDate_dd()),
+                Integer.parseInt(quizModel.getEndDate_hh()),
+                Integer.parseInt(quizModel.getEndDate_mm()))
+                .toDate();
     }
 }
