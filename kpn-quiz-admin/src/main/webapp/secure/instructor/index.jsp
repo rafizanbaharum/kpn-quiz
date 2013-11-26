@@ -37,41 +37,24 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="/secure/include/topbar.jsp" />
+<jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
-   <jsp:include page="/secure/include/instructor_navbar.jsp" />
+    <jsp:include page="/secure/include/instructor_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
-           <jsp:include page="/secure/include/instructor_breadcrumb.jsp" />
+            <jsp:include page="/secure/include/instructor_breadcrumb.jsp"/>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="core-box">
                         <div class="heading">
                             <i class="clip-user-4 circle-icon circle-green"></i>
-
-                            <h2>Manage Users</h2>
+                            <h2>Manage Students</h2>
                         </div>
                         <div class="content">
-                            Manage user Instructor, Student and Support person.
+                            Manage your profile, Students.
                             View, edit or register new record.
                         </div>
                         <a class="view-more" href="${pageContext.request.contextPath}/secure/user/list">
-                            View More <i class="clip-arrow-right-2"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-clip circle-icon circle-teal"></i>
-
-                            <h2>Manage Competition</h2>
-                        </div>
-                        <div class="content">
-                            Manage your Quiz and Questions.
-                            View, edit or create new record.
-                        </div>
-                        <a class="view-more" href="${pageContext.request.contextPath}/secure/quiz/list">
                             View More <i class="clip-arrow-right-2"></i>
                         </a>
                     </div>

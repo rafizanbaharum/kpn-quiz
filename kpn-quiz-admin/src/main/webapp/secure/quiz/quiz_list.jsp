@@ -66,6 +66,7 @@
                                     <th class="center">#</th>
                                     <th>Title</th>
                                     <th>Round</th>
+                                    <th>Current</th>
                                     <th>Processed</th>
                                     <th>Locked</th>
                                     <th></th>
@@ -77,6 +78,7 @@
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${quiz.titleAbbreviated}</td>
                                         <td class="hidden-xs">${quiz.round}</td>
+                                        <td class="hidden-xs">${quiz.current}</td>
                                         <td class="hidden-xs">${quiz.processed}</td>
                                         <td class="hidden-xs">${quiz.locked}</td>
                                         <td class="center">

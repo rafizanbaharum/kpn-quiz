@@ -229,7 +229,18 @@ public class QuizController extends AbstractController {
         competitionManager.processGradebook(quiz);
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully processed");
-        return "redirect:/secure/round/view/" + quiz.getId();
+        return "redirect:/secure/quiz/view/" + quiz.getId();
+    }
+
+
+    @RequestMapping(value = "/current/{id}", method = {RequestMethod.GET})
+    public String quizCurrent(@ModelAttribute("quizModel") QuizModel quizModel,
+                              ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
+        competitionManager.setCurrentQuiz(quiz);
+
+        model.addAttribute(MSG_SUCCESS, "Quiz successfully set to current");
+        return "redirect:/secure/quiz/view/" + quiz.getId();
     }
 
     @RequestMapping(value = "/init/{id}", method = {RequestMethod.GET})

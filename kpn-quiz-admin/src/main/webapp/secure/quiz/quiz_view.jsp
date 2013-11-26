@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
@@ -86,13 +86,17 @@
                                             <label class="control-label">
                                                 Start Date <span class="symbol required"></span>
                                             </label>
-                                            <input type="text" class="form-control" readonly="true" value=<fmt:formatDate value="${quizModel.startDate}" pattern="dd/MM/yyyy"/>  />
+                                            <input type="text" class="form-control" readonly="true" value=
+                                                    <fmt:formatDate value="${quizModel.startDate}"
+                                                                    pattern="dd/MM/yyyy"/>/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 End Date <span class="symbol required"></span>
                                             </label>
-                                            <input type="text" class="form-control" readonly="true" value=<fmt:formatDate value="${quizModel.endDate}" pattern="dd/MM/yyyy"/>  />
+                                            <input type="text" class="form-control" readonly="true" value=
+                                                    <fmt:formatDate value="${quizModel.endDate}"
+                                                                    pattern="dd/MM/yyyy"/>/>
                                         </div>
                                     </div>
                                 </div>
@@ -100,23 +104,27 @@
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
-                                               class="btn btn-primary">Edit</a>
+                                               class="btn btn-primary" title="Edit quiz">Edit</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
-                                               class="btn btn-primary">Remove</a>
+                                               class="btn btn-primary" title="Remove quiz">Remove</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/list"
-                                               class="btn btn-primary">Participants</a>
+                                               class="btn btn-primary" title="View quiz participants">Participants</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/current/${quizModel.id}"
+                                               class="btn btn-primary"
+                                               title="Make this quiz current">Current</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
-                                               class="btn btn-primary">Init</a>
+                                               class="btn btn-primary"
+                                               title="Initialize quiz with participants">Init</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
-                                               class="btn btn-primary">Process</a>
+                                               class="btn btn-primary" title="Process quiz gradebooks">Process</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
-                                               class="btn btn-primary">Tabulate</a>
+                                               class="btn btn-primary" title="Tabulate quiz results">Tabulate</a>
                                         </div>
                                     </div>
                                 </div>
@@ -124,11 +132,13 @@
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/multiplechoice"
-                                               class="btn btn-primary">Add Multiple Choice</a>
+                                               class="btn btn-primary" title="Add multiple choice question">Add Multiple
+                                                Choice</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/boolean"
-                                               class="btn btn-primary">Add Boolean</a>
+                                               class="btn btn-primary" title="Add boolean question">Add Boolean</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/subjective"
-                                               class="btn btn-primary">Add Subjective</a>
+                                               class="btn btn-primary" title="Add subjective question">Add
+                                                Subjective</a>
                                         </div>
                                     </div>
                                 </div>
