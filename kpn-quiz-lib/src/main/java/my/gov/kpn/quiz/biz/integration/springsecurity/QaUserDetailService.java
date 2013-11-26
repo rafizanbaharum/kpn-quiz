@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.type.IntegerType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
@@ -48,7 +49,7 @@ public class QaUserDetailService implements UserDetailsService {
                 "and a.actorType in (:actorTypes) " +
                 "and u.metadata.state = :state");
         query.setString("username", s);
-        query.setParameterList("actorTypes", new Integer[]{0, 2});
+        query.setParameterList("actorTypes", new Integer[]{0, 2}, IntegerType.INSTANCE);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         user = (QaUser) query.uniqueResult();
         if (user == null)

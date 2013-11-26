@@ -50,6 +50,7 @@ public abstract class QaActorImpl implements QaActor, Serializable {
     @Column(name = "FAX")
     private String fax;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "ACTOR_TYPE")
     private QaActorType actorType;
 
