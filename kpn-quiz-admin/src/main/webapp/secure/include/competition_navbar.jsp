@@ -17,7 +17,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/secure/competition/register">
+                        <a href="${pageContext.request.contextPath}/secure/competition/add">
                             <span class="title">Register</span>
                         </a>
                     </li>

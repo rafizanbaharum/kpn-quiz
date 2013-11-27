@@ -58,14 +58,14 @@ public class CompetitionController extends AbstractController {
         return "secure/competition/competition_view";
     }
 
-    @RequestMapping(value = "/register", method = {RequestMethod.GET})
+    @RequestMapping(value = "/add", method = {RequestMethod.GET})
     public String competitionRegister(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
         model.put(BREADCRUMB, "Register Competition");
         model.put(TITLE, "Competition Registration");
-        return "secure/competition/competition_register";
+        return "secure/competition/competition_add";
     }
 
-    @RequestMapping(value = "/add", method = {RequestMethod.POST})
+    @RequestMapping(value = "/save", method = {RequestMethod.POST})
     public String competitionAdd(@ModelAttribute("competitionModel") CompetitionModel competitionModel) {
         QaCompetition competition = new QaCompetitionImpl();
         competition.setStartDate(combineStartDate(competitionModel));

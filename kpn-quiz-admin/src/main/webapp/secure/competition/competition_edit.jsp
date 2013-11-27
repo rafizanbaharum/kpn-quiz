@@ -43,7 +43,7 @@
 <body class="footer-fixed layout-boxed">
 <jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="/secure/include/competition_navbar.jsp"/>
+    <jsp:include page="/secure/include/quiz_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
             <jsp:include page="/secure/include/competition_breadcrumb.jsp">

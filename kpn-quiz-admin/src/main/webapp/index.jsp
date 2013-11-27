@@ -48,6 +48,19 @@
                 ASEAN QUIZ
             </a>
         </div>
+        <div class="navbar-tools">
+            <!-- start: TOP NAVIGATION MENU -->
+            <ul class="nav navbar-right">
+                <!-- start: TO-DO DROPDOWN -->
+                <li class="dropdown">
+                    <a href="${pageContext.request.contextPath}/gate/in"><i class="clip-locked"></i>
+                        <span class="title"> Login </span>
+                    </a>
+                </li>
+                <!-- end: TO-DO DROPDOWN-->
+            </ul>
+            <!-- end: TOP NAVIGATION MENU -->
+        </div>
     </div>
 </div>
 <div class="main-container">
@@ -61,11 +74,6 @@
                 <li class="active open">
                     <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
                         <span class="title"> Dashboard </span><span class="selected"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="${pageContext.request.contextPath}/gate/in"><i class="clip-locked"></i>
-                        <span class="title"> Login </span>
                     </a>
                 </li>
             </ul>

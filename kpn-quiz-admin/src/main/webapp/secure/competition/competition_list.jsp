@@ -44,7 +44,7 @@
 <body class="footer-fixed layout-boxed">
 <jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="/secure/include/competition_navbar.jsp"/>
+    <jsp:include page="/secure/include/quiz_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
             <jsp:include page="/secure/include/competition_breadcrumb.jsp">
@@ -106,6 +106,14 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-justified">
+                        <a href="${pageContext.request.contextPath}/secure/competition/add"
+                           class="btn btn-primary">Add Competition</a>
                     </div>
                 </div>
             </div>
