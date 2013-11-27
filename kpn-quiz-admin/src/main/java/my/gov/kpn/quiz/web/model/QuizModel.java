@@ -91,7 +91,7 @@ public class QuizModel extends MetaModel {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
-        this.startDateFormatted = format.format(startDate);
+        if (null != startDate) this.startDateFormatted = format.format(startDate);
     }
 
     public String getStartDateFormatted() {
@@ -116,7 +116,7 @@ public class QuizModel extends MetaModel {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-        this.endDateFormatted = format.format(endDate);
+        if (null != endDate) this.endDateFormatted = format.format(endDate);
     }
 
     public String getStartDate_hh() {
