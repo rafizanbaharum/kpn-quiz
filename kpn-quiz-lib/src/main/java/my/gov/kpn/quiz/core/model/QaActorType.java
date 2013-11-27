@@ -5,8 +5,7 @@ package my.gov.kpn.quiz.core.model;
  * @since 7/10/13
  */
 public enum QaActorType {
-    INSTRUCTOR,
-    STUDENT,
-    PROCTOR,
-    SUPPORT;
+    INSTRUCTOR, // 0
+    STUDENT,    // 1
+    SUPPORT;    // 2
 }

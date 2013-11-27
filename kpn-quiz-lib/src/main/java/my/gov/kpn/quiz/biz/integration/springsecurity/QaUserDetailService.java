@@ -42,9 +42,13 @@ public class QaUserDetailService implements UserDetailsService {
         log.debug("loading username: " + s);
         QaUser user = null;
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select u from QaUser u where u.name = :username " +
+        Query query = session.createQuery("select u from QaUser u " +
+                "inner join u.actor a " +
+                "where u.name = :username " +
+                "and a.actorType in (:actorTypes) " +
                 "and u.metadata.state = :state");
         query.setString("username", s);
+        query.setParameterList("actorTypes", new Integer[]{0, 2});
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         user = (QaUser) query.uniqueResult();
         if (user == null)
@@ -56,12 +60,12 @@ public class QaUserDetailService implements UserDetailsService {
     private Set<GrantedAuthority> loadGrantedAuthoritiesFor(QaUser user) {
         Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
 //        try {
-            //load all roles which ties to user
-            for (QaPrincipalRole role : user.getRoles()) {
-                grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleType().name()));
-            }
-            log.info("load auth for " + user.getName() + "#" + user.getId());
-         // XXX: will hook this up later
+        //load all roles which ties to user
+        for (QaPrincipalRole role : user.getRoles()) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleType().name()));
+        }
+        log.info("load auth for " + user.getName() + "#" + user.getId());
+        // XXX: will hook this up later
 //            grantedAuthorities.addAll(principalDao.loadEffectiveAuthorities(user));
 //        } catch (RecursiveGroupException e) {
 //            log.error(e.getMessage());
