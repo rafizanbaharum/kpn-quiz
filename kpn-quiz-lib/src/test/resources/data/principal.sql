@@ -40,8 +40,8 @@ values (10, 'Cikgu Ahmad', 'abc123', 'rafizan.baharum@gmail.com', null);
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(10, 1, 1, 1, 1, CURRENT_TIMESTAMP );
 insert into QA_ACTR (ID, ACTOR_TYPE, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
 values (1, 0, 'Lorong 1 ', 'Taman Midah', 'Cheras', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
-insert into QA_INTR(ID, SCHOOL_NAME, DISTRICT_NAME, STATE_ID)
-values (1, 'Sekolah Bandar Tun Razak', 'Cheras', 1);
+insert into QA_INTR(ID, SCHOOL_NAME, SCHOOL_TYPE, DISTRICT_NAME, STATE_ID)
+values (1, 'Sekolah Bandar Tun Razak', 0, 'Cheras', 1);
 update QA_USER set ACTOR_ID = 1 where ID = 10;
 
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (11, 'student1', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
