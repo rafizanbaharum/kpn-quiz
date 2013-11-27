@@ -100,9 +100,16 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
+                            <div class="btn-group btn-group-justified">
+                                <a href="${pageContext.request.contextPath}/secure/student/register"
+                                   class="btn btn-primary">Add Student</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <br/>
             </div>
         </div>
     </div>

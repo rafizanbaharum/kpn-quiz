@@ -95,19 +95,17 @@
                                 </c:forEach>
                                 </tbody>
                             </table>
+                            <div class="btn-group btn-group-justified">
+                                <a href="${pageContext.request.contextPath}/secure/quiz/add"
+                                   class="btn btn-primary">Add Quiz</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group btn-group-justified">
-                        <a href="${pageContext.request.contextPath}/secure/quiz/add"
-                           class="btn btn-primary">Add Quiz</a>
-                    </div>
-                </div>
+                <br/>
             </div>
-
         </div>
     </div>
 </div>
