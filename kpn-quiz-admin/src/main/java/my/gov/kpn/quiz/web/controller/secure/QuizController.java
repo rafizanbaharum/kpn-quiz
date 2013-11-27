@@ -161,32 +161,6 @@ public class QuizController extends AbstractController {
         return "secure/participant/participant_browse";
     }
 
-    @RequestMapping(value = "/view/{id}/participant/select/{selection}", method = {RequestMethod.GET})
-    public String quizViewParticipantSelect(@PathVariable Long id, @PathVariable String selection, ModelMap model) {
-        // select next round
-        QaQuiz quiz = competitionManager.findQuizById(id);
-        QaQuiz nextQuiz = competitionManager.finQuizByRound(quiz.getRound() + 1);
-
-        if (selection.equals("random50")) {
-            competitionManager.selectRandomParticipants(quiz, nextQuiz, 50);
-            model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
-            return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
-        } else if (selection.equals("top50")) {
-            competitionManager.selectTopParticipants(quiz, nextQuiz, 50);
-            model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
-            return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
-        } else if (selection.equals("fairplay")) {
-            competitionManager.selectFairPlayParticipants(quiz, nextQuiz, 50);
-            model.addAttribute(MSG_SUCCESS, "Participant successfully selected");
-            return "redirect:/secure/quiz/view/" + nextQuiz.getId() + "/participant/list";
-        } else if (selection.equals("reset")) {
-            competitionManager.resetParticipants(quiz);
-            model.addAttribute(MSG_SUCCESS, "Participant successfully reset");
-            return "redirect:/secure/quiz/view/" + quiz.getId() + "/participant/list";
-        }
-        return "redirect:/secure/quiz/view/" + quiz.getId();
-    }
-
     @RequestMapping(value = "/tabulate/{id}", method = {RequestMethod.GET})
     public String quizTabulate(@ModelAttribute("quizModel") QuizModel quizModel,
                                ModelMap model) {

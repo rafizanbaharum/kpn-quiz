@@ -13,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @author rafizan.baharum
@@ -260,51 +258,6 @@ public class CompetitionManagerImpl implements CompetitionManager {
 //        quiz.setProcessed(true);
         quizDao.update(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-    }
-
-
-    @Override
-    public void selectRandomParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit) {
-        log.debug("randomly select 15 from  top " + limit);
-
-        // pick x
-        // randomly select 15
-        List<QaParticipant> selected = quizDao.findParticipants(quiz, 0, limit);
-        List<QaParticipant> selections = new ArrayList<QaParticipant>();
-        for (int i = 0; i < 15; i++) {
-            Random random = new Random();
-            int r = random.nextInt(selected.size());// could be less than 100
-            QaParticipant participant = selected.get(r);
-            selections.add(participant);
-        }
-
-        for (QaParticipant selection : selections) {
-            QaParticipant newParticipant = new QaParticipantImpl();
-            newParticipant.setQuiz(nextQuiz);
-            newParticipant.setUser(selection.getUser());
-            participantDao.save(newParticipant, Utils.getCurrentUser());
-        }
-        quizDao.update(quiz, Utils.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void selectTopParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit) {
-        log.debug("selecting top " + limit);
-        List<QaParticipant> participants = quizDao.findParticipants(quiz, 0, limit);
-        for (QaParticipant participant : participants) {
-            QaParticipant newParticipant = new QaParticipantImpl();
-            newParticipant.setQuiz(nextQuiz);
-            newParticipant.setUser(participant.getUser());
-            participantDao.save(newParticipant, Utils.getCurrentUser());
-        }
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void selectFairPlayParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit) {
-        // TODO: be fair
-        // TODO: fair no of participant per state?
     }
 
     @Override

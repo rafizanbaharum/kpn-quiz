@@ -171,22 +171,9 @@
                            class="btn btn-primary">Reset</a>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="btn-group btn-group-justified">
-                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/top50"
-                           class="btn btn-primary">Top50</a>
-                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/random50"
-                           class="btn btn-primary">Random15</a>
-                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/fairplay"
-                           class="btn btn-primary">FairPlay</a>
-                    </div>
-                </div>
-
             </div>
         </div>
-
     </div>
-
 </div>
 <br/>
 <br/>

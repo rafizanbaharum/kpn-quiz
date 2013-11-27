@@ -70,11 +70,4 @@ public interface CompetitionManager {
     void resetParticipants(QaQuiz quiz);
 
     void tabulateResult(QaQuiz quiz);
-
-    void selectRandomParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
-
-    void selectTopParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
-
-    void selectFairPlayParticipants(QaQuiz quiz, QaQuiz nextQuiz, Integer limit);
-
 }
