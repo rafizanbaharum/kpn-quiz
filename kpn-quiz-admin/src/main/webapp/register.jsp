@@ -52,7 +52,7 @@
         <p>
             Enter your personal details below:
         </p>
-        <c:if test="${started == true}">
+        <c:if test="${started && !ended}">
             <form method="post" class="form-login" action="${pageContext.request.contextPath}/register">
                 <div class="errorHandler alert alert-danger no-display">
                     <i class="icon-remove-sign"></i> You have some form errors. Please check below.
@@ -141,6 +141,24 @@
                     </div>
                 </fieldset>
             </form>
+        </c:if>
+
+        <c:if test="${started && ended}">
+            <c:choose>
+                <c:when test="${!started}">
+                    <div class="errorHandler alert alert-danger">
+                        <i class="icon-remove-sign"></i> Sorry the registration has not started yet. Please come back again.
+                    </div>
+                </c:when>
+            </c:choose>
+            <c:choose>
+                <c:when test="${ended}">
+                    <div class="errorHandler alert alert-danger">
+                        <i class="icon-remove-sign"></i> Sorry the registration has ended.
+                    </div>
+                </c:when>
+            </c:choose>
+
         </c:if>
     </div>
     <div class="copyright">
