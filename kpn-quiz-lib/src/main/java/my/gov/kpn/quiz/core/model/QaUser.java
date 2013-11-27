@@ -1,5 +1,7 @@
 package my.gov.kpn.quiz.core.model;
 
+import java.util.List;
+
 /**
  * @author rafizan.baharum
  * @since 7/10/13
@@ -25,5 +27,9 @@ public interface QaUser extends QaPrincipal {
     QaActor getActor();
 
     void setActor(QaActor actor);
+
+    List<QaParticipant> getParticipants();
+
+    void setParticipants(List<QaParticipant> participants);
 
 }

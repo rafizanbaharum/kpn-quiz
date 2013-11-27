@@ -1,9 +1,11 @@
 package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.QaActor;
+import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaUser;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author rafizan.baharum
@@ -25,6 +27,9 @@ public class QaUserImpl extends QaPrincipalImpl implements QaUser {
     @OneToOne(targetEntity = QaActorImpl.class)
     @JoinColumn(name = "ACTOR_ID")
     private QaActor actor;
+
+    @OneToMany(targetEntity = QaParticipantImpl.class, mappedBy = "user")
+    private List<QaParticipant> participants;
 
     public String getUsername() {
         return getName();
@@ -64,6 +69,14 @@ public class QaUserImpl extends QaPrincipalImpl implements QaUser {
 
     public void setActor(QaActor actor) {
         this.actor = actor;
+    }
+
+    public List<QaParticipant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<QaParticipant> participants) {
+        this.participants = participants;
     }
 
     @Override
