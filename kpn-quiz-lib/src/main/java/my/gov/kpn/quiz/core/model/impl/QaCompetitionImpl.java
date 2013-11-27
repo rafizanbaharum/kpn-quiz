@@ -41,6 +41,10 @@ public class QaCompetitionImpl implements QaCompetition, Serializable {
     @Embedded
     private QaMetadata metadata = new QaMetadata();
 
+    public QaCompetitionImpl() {
+        locked = false;
+    }
+
     public Long getId() {
         return id;
     }

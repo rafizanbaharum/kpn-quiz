@@ -15,6 +15,8 @@ public interface CompetitionManager {
 
     QaCompetition findCompetitionByYear(int year);
 
+    List<QaCompetition> findAll();
+
     QaQuiz findQuizById(Long id);
 
     QaQuiz finQuizByRound(Integer round);
@@ -46,6 +48,12 @@ public interface CompetitionManager {
     void processGradebook(QaQuiz quiz);
 
     void processParticipant(QaQuiz quiz);
+
+    QaCompetition saveCompetition(QaCompetition competition);
+
+    void updateCompetition(QaCompetition competition);
+
+    void removeCompetition(QaCompetition competition);
 
     QaQuiz saveQuiz(QaQuiz quiz);
 

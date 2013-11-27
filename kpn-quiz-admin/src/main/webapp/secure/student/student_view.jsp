@@ -109,8 +109,8 @@
                                                 <div class="col-md-4">
                                                     <form:select path="dob_dd" cssClass="form-control" disabled="true">
                                                         <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="dd">
-                                                            <option value="${dd}" ${dd == studentModel.dob_dd ? 'selected' : ''}>${dd}</option>
+                                                        <c:forEach begin="1" end="31" var="yyyy">
+                                                            <option value="${yyyy}" ${yyyy == studentModel.dob_dd ? 'selected' : ''}>${yyyy}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>

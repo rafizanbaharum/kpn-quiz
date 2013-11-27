@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.biz.manager;
 import my.gov.kpn.quiz.biz.util.Utils;
 import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
+import my.gov.kpn.quiz.core.model.impl.QaCompetitionImpl;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookImpl;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookItemImpl;
 import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
@@ -88,6 +89,11 @@ public class CompetitionManagerImpl implements CompetitionManager {
     @Override
     public QaCompetition findCompetitionByYear(int year) {
         return competitionDao.findByYear(year);
+    }
+
+    @Override
+    public List<QaCompetition> findAll() {
+        return competitionDao.find(0, 9999);
     }
 
     @Override
@@ -263,6 +269,26 @@ public class CompetitionManagerImpl implements CompetitionManager {
     @Override
     public void resetParticipants(QaQuiz quiz) {
         quizDao.resetParticipants(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public QaCompetition saveCompetition(QaCompetition competition) {
+        competitionDao.save(competition, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(competition);
+        return competition;
+    }
+
+    @Override
+    public void updateCompetition(QaCompetition competition) {
+        competitionDao.update(competition, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeCompetition(QaCompetition competition) {
+        competitionDao.deactivate(competition, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

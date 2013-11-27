@@ -113,9 +113,20 @@ public class Transformer {
     }
 
     public CompetitionModel transform(QaCompetition competition) {
+        LocalDateTime startDate = new LocalDateTime(competition.getStartDate());
+        LocalDateTime endDate = new LocalDateTime(competition.getEndDate());
         CompetitionModel model = new CompetitionModel();
         model.setId(competition.getId());
         model.setYear(competition.getYear());
+        model.setStartDate(competition.getStartDate());
+        model.setEndDate(competition.getEndDate());
+        model.setStartDate_dd(String.valueOf(startDate.getDayOfMonth()));
+        model.setStartDate_MM(String.valueOf(startDate.getMonthOfYear()));
+        model.setStartDate_yyyy(String.valueOf(startDate.getYear()));
+        model.setEndDate_dd(String.valueOf(endDate.getDayOfMonth()));
+        model.setEndDate_MM(String.valueOf(endDate.getMonthOfYear()));
+        model.setEndDate_yyyy(String.valueOf(endDate.getYear()));
+        model.setLocked(competition.isLocked());
         return model;
     }
 

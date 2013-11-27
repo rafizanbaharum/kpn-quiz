@@ -122,8 +122,8 @@
                                                 <div class="col-md-4">
                                                     <form:select path="dob_dd" cssClass="form-control">
                                                         <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="dd">
-                                                            <form:option value="${dd}"/>
+                                                        <c:forEach begin="1" end="31" var="yyyy">
+                                                            <form:option value="${yyyy}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>

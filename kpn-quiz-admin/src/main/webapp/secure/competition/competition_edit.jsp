@@ -22,7 +22,7 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico"/>
     <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/style.css">
@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="/assets/plugins/iCheck/skins/all.css">
     <link rel="stylesheet" href="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="/assets/css/theme_light.css" id="skin_color">
-    <link rel="stylesheet" href="/assets/css/quiz.css">
     <!--[if IE 7]>
     <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
@@ -44,70 +43,59 @@
 <body class="footer-fixed layout-boxed">
 <jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="/secure/include/quiz_navbar.jsp"/>
-
+    <jsp:include page="/secure/include/competition_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
-            <jsp:include page="/secure/include/quiz_breadcrumb.jsp">
-                <jsp:param name="BREADCRUMB" value="TODO"/>
-                <jsp:param name="TITLE" value="TODO"/>
+            <jsp:include page="/secure/include/competition_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="${COMPETITION_BREADCRUMB}"/>
+                <jsp:param name="TITLE" value="${COMPETITION_TITLE}"/>
             </jsp:include>
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                        <jsp:include page="/secure/include/msg.jsp"/>
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            Add a quiz
+                            Update a competition
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> Add</h2>
+                            <h2><i class="icon-edit-sign teal"></i> EDIT COMPETITION</h2>
 
                             <hr>
-                            <form:form id="form" commandName="quizModel"
-                                       action="${pageContext.request.contextPath}/secure/quiz/save"
+                            <form:form id="form" commandName="competitionModel"
+                                       action="${pageContext.request.contextPath}/secure/competition/update"
                                        method="POST">
+                                <form:hidden path="id"/>
                                 <div class="row">
+                                    <jsp:include page="/secure/include/msg.jsp"/>
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Title <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="title" placeholder="Insert title"
-                                                        cssClass="form-control"/>
+                                        <div class="errorHandler alert alert-danger no-display">
+                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                            below.
+                                        </div>
+                                        <div class="successHandler alert alert-success no-display">
+                                            <i class="icon-ok"></i> Your form validation is successful!
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Round <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="round" placeholder="Insert round"
-                                                        cssClass="form-control"/>
-                                            <form:errors path='round'
-                                                         cssClass="has-error control-label input-group-addon simpleError"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group connected-group">
                                             <label class="control-label">
-                                                Start Date <span class="symbol required"></span>
+                                                Start <span class="symbol required"></span>
                                             </label>
 
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <form:select path="startDate_dd" cssClass="form-control">
                                                         <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="yyyy">
-                                                            <form:option value="${yyyy}"/>
+                                                        <c:forEach begin="1" end="31" var="dd">
+                                                            <option value="${dd}" ${dd == competitionModel.startDate_dd ? 'selected' : ''}>${dd}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form:select path="startDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
-                                                        <c:forEach begin="1" end="12" var="MM">
-                                                            <form:option value="${MM}"/>
+                                                        <c:forEach begin="1" end="12" var="mm">
+                                                            <option value="${mm}" ${mm == competitionModel.startDate_MM ? 'selected' : ''}>${mm}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -117,27 +105,25 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
                                         <div class="form-group connected-group">
                                             <label class="control-label">
-                                                End Date <span class="symbol required"></span>
+                                                End <span class="symbol required"></span>
                                             </label>
 
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <form:select path="endDate_dd" cssClass="form-control">
                                                         <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="yyyy">
-                                                            <form:option value="${yyyy}"/>
+                                                        <c:forEach begin="1" end="31" var="dd">
+                                                            <option value="${dd}" ${dd == competitionModel.endDate_MM ? 'selected' : ''}>${dd}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form:select path="endDate_mm" cssClass="form-control">
+                                                    <form:select path="endDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="mm">
-                                                            <form:option value="${mm}"/>
+                                                            <option value="${mm}" ${mm == competitionModel.endDate_MM ? 'selected' : ''}>${mm}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -147,12 +133,54 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group connected-group">
+                                            <label class="control-label">
+                                                Year <span class="symbol required"></span>
+                                            </label>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <form:select path="year" cssClass="form-control">
+                                                        <c:forEach begin="2013" end="2020" var="yyyy">
+                                                            <option value=${yyyy}>${yyyy}</option>
+                                                        </c:forEach>
+                                                    </form:select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group connected-group">
+                                            <label class="control-label">
+                                                Locked <span class="symbol required"></span>
+                                            </label>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <form:select path="locked" cssClass="form-control">
+                                                        <option value="false" selected>No</option>
+                                                        <option value="true">Yes</option>
+                                                    </form:select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            <span class="symbol required"></span>Required Fields
+                                            <hr>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button class="btn btn-primary btn-block" type="submit">
-                                            Add <i class="icon-circle-arrow-right"></i>
+                                            Update <i class="icon-circle-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -43,12 +44,12 @@
 <body class="footer-fixed layout-boxed">
 <jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="/secure/include/student_navbar.jsp"/>
+    <jsp:include page="/secure/include/competition_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
-            <jsp:include page="/secure/include/student_breadcrumb.jsp">
-                <jsp:param name="BREADCRUMB" value="${STUDENT_BREADCRUMB}"/>
-                <jsp:param name="TITLE" value="${STUDENT_TITLE}"/>
+            <jsp:include page="/secure/include/competition_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="${COMPETITION_BREADCRUMB}"/>
+                <jsp:param name="TITLE" value="${COMPETITION_TITLE}"/>
             </jsp:include>
             <div class="row">
                 <div class="col-md-12">
@@ -56,41 +57,45 @@
                         <jsp:include page="/secure/include/msg.jsp"/>
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            List of registered students
+                            List of registered competitions
                         </div>
                         <div class="panel-body">
                             <table class="table table-hover" id="sample-table-1">
                                 <thead>
                                 <tr>
                                     <th class="center">#</th>
-                                    <th>Name</th>
-                                    <th class="hidden-xs">NRIC</th>
-                                    <th class="hidden-xs">Username</th>
+                                    <th>Start</th>
+                                    <th class="hidden-xs">End</th>
+                                    <th class="hidden-xs">Year</th>
+                                    <th class="hidden-xs">Locked</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="competition" items="${studentModels}" varStatus="idx">
+                                <c:forEach var="competition" items="${competitionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${competition.name}</td>
-                                        <td>${competition.nric}</td>
-                                        <td class="hidden-xs">${competition.username}</td>
+                                        <td class="hidden-xs"><fmt:formatDate type="date" pattern="dd/MM/yyyy"
+                                                                              value='${competition.startDate}'/></td>
+                                        <td><fmt:formatDate type="date" pattern="dd/MM/yyyy"
+                                                            value='${competition.endDate}'/></td>
+                                        <td class="hidden-xs">${competition.year}</td>
+                                        <td class="hidden-xs">${competition.locked}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/student/view/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/view/${competition.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i
                                                         class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/edit/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/edit/${competition.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/reset/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/reset/${competition.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Reset"><i
                                                         class="icon-refresh"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/remove/${competition.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>

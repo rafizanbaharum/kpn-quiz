@@ -21,8 +21,13 @@ public class CompetitionModel extends MetaModel {
     private String endDate_dd;
     private String endDate_MM;
     private String endDate_yyyy;
+    private boolean locked;
 
     private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+    public CompetitionModel() {
+        locked = false;
+    }
 
     public int getYear() {
         return year;
@@ -38,7 +43,7 @@ public class CompetitionModel extends MetaModel {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
-        this.startDateFormatted = format.format(startDate);
+        if (null != startDate) this.startDateFormatted = format.format(startDate);
     }
 
     public String getStartDateFormatted() {
@@ -79,7 +84,7 @@ public class CompetitionModel extends MetaModel {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-        this.endDateFormatted = format.format(startDate);
+        if (null != endDate) this.endDateFormatted = format.format(endDate);
     }
 
     public String getEndDateFormatted() {
@@ -112,5 +117,13 @@ public class CompetitionModel extends MetaModel {
 
     public void setEndDate_yyyy(String endDate_yyyy) {
         this.endDate_yyyy = endDate_yyyy;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void setLocked(boolean locked) {
+        this.locked = locked;
     }
 }
