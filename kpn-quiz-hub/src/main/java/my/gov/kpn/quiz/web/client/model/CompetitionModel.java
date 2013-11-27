@@ -1,7 +1,5 @@
 package my.gov.kpn.quiz.web.client.model;
 
-import java.util.List;
-
 /**
  * @author : alif haikal razak
  */
@@ -11,6 +9,7 @@ public class CompetitionModel extends MetaModel {
     public static final String YEAR = "year";
     public static final String LOCKED = "locked";
     public static final String ROUND_MODEL = "roundModel";
+
 
     public Long getId() {
         return get(ID);

@@ -52,49 +52,49 @@
         <p>
             Enter your personal details below:
         </p>
-
-        <form method="post" class="form-login" action="${pageContext.request.contextPath}/register">
-            <div class="errorHandler alert alert-danger no-display">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-            </div>
-            <fieldset>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="fullName" placeholder="Full Name">
+        <c:if test="${started == true}">
+            <form method="post" class="form-login" action="${pageContext.request.contextPath}/register">
+                <div class="errorHandler alert alert-danger no-display">
+                    <i class="icon-remove-sign"></i> You have some form errors. Please check below.
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="phone" placeholder="Phone">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="address1" placeholder="Address">
-                </div>
-                <div class="form-group">
-                    <select id="form-field-select-1" name="stateId" class="form-control">
-                        <option value="">&nbsp;</option>
-                        <c:forEach items="${states}" var="state">
-                            <option value='${state.key}'>${state.value}</option>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="F" name="gender">
-                            Female
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" class="grey" value="M" name="gender">
-                            Male
-                        </label>
+                <fieldset>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="fullName" placeholder="Full Name">
                     </div>
-                </div>
-                <p>
-                    Enter your school details below:
-                </p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="phone" placeholder="Phone">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="address1" placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                        <select id="form-field-select-1" name="stateId" class="form-control">
+                            <option value="">&nbsp;</option>
+                            <c:forEach items="${states}" var="state">
+                                <option value='${state.key}'>${state.value}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <label class="radio-inline">
+                                <input type="radio" class="grey" value="F" name="gender">
+                                Female
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" class="grey" value="M" name="gender">
+                                Male
+                            </label>
+                        </div>
+                    </div>
+                    <p>
+                        Enter your school details below:
+                    </p>
 
-                <div class="form-group">
+                    <div class="form-group">
  							<span class="input-icon">
                                  <select id="schoolType" name="schoolType" class="form-control">
                                      <option value="">&nbsp;</option>
@@ -103,44 +103,45 @@
                                      </c:forEach>
                                  </select>
                             </span>
-                </div>
-                <div class="form-group">
+                    </div>
+                    <div class="form-group">
  							<span class="input-icon">
  								<input type="text" class="form-control" name="schoolName" placeholder="School Name">
  								<i class="icon-sitemap"></i> </span>
-                </div>
+                    </div>
 
-                <p>
-                    Enter your account details below:
-                </p>
+                    <p>
+                        Enter your account details below:
+                    </p>
 
-                <div class="form-group">
+                    <div class="form-group">
  							<span class="input-icon">
  								<input type="text" class="form-control" name="username" placeholder="Username">
  								<i class="icon-user"></i> </span>
-                </div>
-                <div class="form-group">
+                    </div>
+                    <div class="form-group">
  							<span class="input-icon">
  								<input type="password" class="form-control" id="password" name="password"
                                         placeholder="Password">
  								<i class="icon-lock"></i> </span>
-                </div>
-                <div class="form-group">
+                    </div>
+                    <div class="form-group">
  							<span class="input-icon">
  								<input type="password" class="form-control" name="passwordAgain"
                                         placeholder="Password Again">
  								<i class="icon-lock"></i> </span>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = '/gate/in'">
-                        <i class="icon-circle-arrow-left"></i> Back
-                    </button>
-                    <button type="submit" class="btn btn-bricky pull-right">
-                        Submit <i class="icon-circle-arrow-right"></i>
-                    </button>
-                </div>
-            </fieldset>
-        </form>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = '/gate/in'">
+                            <i class="icon-circle-arrow-left"></i> Back
+                        </button>
+                        <button type="submit" class="btn btn-bricky pull-right">
+                            Submit <i class="icon-circle-arrow-right"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </c:if>
     </div>
     <div class="copyright">
         2013 &copy; ASEAN QUIZ

@@ -1,11 +1,14 @@
 package my.gov.kpn.quiz.web.controller;
 
 import my.gov.kpn.quiz.biz.manager.CompetitionHelper;
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
+import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaState;
 import my.gov.kpn.quiz.web.common.Transformer;
 import my.gov.kpn.quiz.web.model.RegistrationModel;
 import org.apache.log4j.Logger;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -41,6 +45,9 @@ public class RegistrationController extends AbstractController {
 
     @Autowired
     private CompetitionHelper competitionHelper;
+
+    @Autowired
+    private CompetitionManager competitionManager;
 
     private enum SchoolType {
 
@@ -98,4 +105,21 @@ public class RegistrationController extends AbstractController {
         }
         return maps;
     }
+
+    @ModelAttribute("started")
+    public boolean started() {
+        QaCompetition competition = competitionManager.findCompetitionByYear(2013);
+        DateTime startDate = new DateTime(competition.getStartDate());
+        DateTime today = new DateTime(new Date());
+        return (today.isAfter(startDate));
+    }
+
+    @ModelAttribute("ended")
+    public boolean ended() {
+        QaCompetition competition = competitionManager.findCompetitionByYear(2013);
+        DateTime endDate = new DateTime(competition.getEndDate());
+        DateTime today = new DateTime(new Date());
+        return (today.isAfter(endDate));
+    }
+
 }

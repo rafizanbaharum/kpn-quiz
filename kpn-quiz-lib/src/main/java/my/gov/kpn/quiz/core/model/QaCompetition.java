@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.core.model;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,6 +15,21 @@ public interface QaCompetition extends QaMetaObject {
     Integer getYear();
 
     void setYear(Integer year);
+
+
+    /**
+     * @return
+     */
+    Date getStartDate();
+
+    void setStartDate(Date startDate);
+
+    /**
+     * @return
+     */
+    Date getEndDate();
+
+    void setEndDate(Date endDate);
 
     /**
      * @return
