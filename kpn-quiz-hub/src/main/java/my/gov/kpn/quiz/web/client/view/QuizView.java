@@ -159,6 +159,8 @@ public class QuizView extends View {
         cardPanel.addListener(QuizEvents.QuizNavigate, new Listener<QuizNavigateEvent>() {
             @Override
             public void handleEvent(QuizNavigateEvent be) {
+                log.info("prev index: " + be.getPreviousQuestionIndex());
+                log.info("next index: " + be.getNextQuestionIndex());
                 if (be.getPreviousQuestionIndex() == -1) { // first time load
                     updateCounter(1);
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
@@ -168,8 +170,8 @@ public class QuizView extends View {
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
 
-                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(currentStep);
-                    LayoutContainer box = (LayoutContainer) container.getItemByItemId("quiz-question-box");
+                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(be.getNextQuestionIndex());
+                    LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
                     switch (prevQuestion.getQuestionType()) {
                         case MULTIPLE_CHOICE:
                             Radio mcRadio0 = (Radio) box.getItemByItemId("0");
@@ -183,6 +185,12 @@ public class QuizView extends View {
                             if (mcRadio1.getValue()) mcAnswer = 1;
                             if (mcRadio2.getValue()) mcAnswer = 2;
                             if (mcRadio3.getValue()) mcAnswer = 3;
+                            log.info("r0: " + mcRadio0.getValue());
+                            log.info("r1: " + mcRadio1.getValue());
+                            log.info("r2: " + mcRadio2.getValue());
+                            log.info("r3: " + mcRadio3.getValue());
+
+
                             if (mcAnswer != -1) updateAnswer(prevQuestion, mcAnswer);
                             loadAnswerIndex(nextQuestion);
                             break;
@@ -250,6 +258,7 @@ public class QuizView extends View {
 
     // multiplechoice + boolean
     private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
+        log.info("updating answer: " + questionModel.getStatement());
         log.info("updating answer: " + answerIndex);
         delegate.updateAnswer(questionModel, answerIndex, new AsyncCallback<Void>() {
             @Override
@@ -272,6 +281,8 @@ public class QuizView extends View {
 
             @Override
             public void onSuccess(Integer result) {
+                log.info("loading answer: " + questionModel.getStatement());
+                log.info("loading answer: " + result);
                 if (null != result) {
                     updateStatus(ANSWERED);
                     LayoutContainer container = (LayoutContainer) cardPanel.getItem(currentStep);
@@ -279,10 +290,12 @@ public class QuizView extends View {
                     switch (questionModel.getQuestionType()) {
                         case MULTIPLE_CHOICE:
                             Radio radioMulti = (Radio) box.getItemByItemId(result.toString()); // 0-A, 1-B, 2-C, 3-D
+                            radioMulti.setFireChangeEventOnSetValue(true);
                             radioMulti.setValue(Boolean.TRUE);
                             break;
                         case BOOLEAN:
                             Radio radioBoolean = (Radio) box.getItemByItemId(result.toString()); // 0-FALSE, 1-TRUE
+                            radioBoolean.setFireChangeEventOnSetValue(true);
                             radioBoolean.setValue(Boolean.TRUE);
                             break;
                         case SUBJECTIVE:
@@ -440,19 +453,23 @@ public class QuizView extends View {
         button1.setItemId("0");
         button1.setStyleName(QUIZ_QUESTION_CHOICE);
         button1.setBoxLabel(model.getChoice1());
+        button1.setFireChangeEventOnSetValue(true);
         Radio button2 = new Radio();
         button2.setItemId("1");
         button2.setItemId("1");
         button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel(model.getChoice2());
+        button2.setFireChangeEventOnSetValue(true);
         Radio button3 = new Radio();
         button3.setItemId("2");
         button3.setStyleName(QUIZ_QUESTION_CHOICE);
         button3.setBoxLabel(model.getChoice3());
+        button3.setFireChangeEventOnSetValue(true);
         Radio button4 = new Radio();
         button4.setItemId("3");
         button4.setStyleName(QUIZ_QUESTION_CHOICE);
         button4.setBoxLabel(model.getChoice4());
+        button4.setFireChangeEventOnSetValue(true);
         group.add(button1);
         group.add(button2);
         group.add(button3);
@@ -485,10 +502,12 @@ public class QuizView extends View {
         button1.setItemId("0");
         button1.setStyleName(QUIZ_QUESTION_CHOICE);
         button1.setBoxLabel("TRUE");
+        button1.setFireChangeEventOnSetValue(true);
         Radio button2 = new Radio();
         button2.setItemId("1");
         button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel("FALSE");
+        button2.setFireChangeEventOnSetValue(true);
         group.add(button1);
         group.add(button2);
 
