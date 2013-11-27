@@ -88,7 +88,7 @@
                                                 <div class="col-md-4">
                                                     <form:select path="startDate_dd" cssClass="form-control"
                                                                  readonly="true">
-                                                                 disabled="true">
+                                                        disabled="true">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="dd">
                                                             <option value="${dd}" ${dd == competitionModel.startDate_dd ? 'selected' : ''}>${dd}</option>
@@ -106,11 +106,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form:input path="startDate_yyyy" placeholder="YYYY"
-<<<<<<< HEAD
                                                                 cssClass="form-control" disabled="true"/>
-=======
-                                                                cssClass="form-control" readonly="true"/>
->>>>>>> origin/master
                                                 </div>
                                             </div>
                                         </div>
