@@ -41,6 +41,8 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
+<c:set var="COMPETITION_BREADCRUMB" value="Competition List"/>
+<c:set var="COMPETITION_TITLE" value="View Competition"/>
 <jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
     <jsp:include page="/secure/include/quiz_navbar.jsp"/>
@@ -55,10 +57,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            Update a competition
+                            View a competition
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> EDIT COMPETITION</h2>
+                            <h2><i class="icon-edit-sign teal"></i> VIEW COMPETITION</h2>
 
                             <hr>
                             <form:form id="form" commandName="competitionModel"
@@ -85,6 +87,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <form:select path="startDate_dd" cssClass="form-control"
+                                                                 readonly="true">
                                                                  disabled="true">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="dd">
@@ -103,7 +106,11 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form:input path="startDate_yyyy" placeholder="YYYY"
+<<<<<<< HEAD
                                                                 cssClass="form-control" disabled="true"/>
+=======
+                                                                cssClass="form-control" readonly="true"/>
+>>>>>>> origin/master
                                                 </div>
                                             </div>
                                         </div>
