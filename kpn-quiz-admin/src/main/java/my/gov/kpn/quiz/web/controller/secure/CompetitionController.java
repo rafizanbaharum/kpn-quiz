@@ -2,8 +2,10 @@ package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.core.model.QaCompetition;
+import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.impl.QaCompetitionImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
+import my.gov.kpn.quiz.web.model.CompetitionModel;
 import my.gov.kpn.quiz.web.model.CompetitionModel;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +38,6 @@ public class CompetitionController extends AbstractController {
         return "secure/competition/competition_list";
     }
 
-    @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
-    public String competitionEdit(@PathVariable Long id, ModelMap model) {
-        QaCompetition competition = competitionManager.findCompetitionById(id);
-        CompetitionModel competitionModel = transformer.transform(competition);
-
-        model.addAttribute("competitionModel", competitionModel);
-        model.put(BREADCRUMB, "Update Competition Details");
-        model.put(TITLE, "Update Competition Details");
-        return "secure/competition/competition_edit";
-    }
-
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String competitionView(@PathVariable Long id, ModelMap model) {
         QaCompetition competition = competitionManager.findCompetitionById(id);
@@ -59,14 +50,14 @@ public class CompetitionController extends AbstractController {
     }
 
     @RequestMapping(value = "/add", method = {RequestMethod.GET})
-    public String competitionRegister(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
+    public String competitionAdd(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
         model.put(BREADCRUMB, "Register Competition");
         model.put(TITLE, "Competition Registration");
         return "secure/competition/competition_add";
     }
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
-    public String competitionAdd(@ModelAttribute("competitionModel") CompetitionModel competitionModel) {
+    public String competitionSave(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
         QaCompetition competition = new QaCompetitionImpl();
         competition.setStartDate(combineStartDate(competitionModel));
         competition.setEndDate(combineEndDate(competitionModel));
@@ -75,6 +66,17 @@ public class CompetitionController extends AbstractController {
 
         competitionManager.saveCompetition(competition);
         return "redirect:/secure/competition/list";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
+    public String competitionEdit(@PathVariable Long id, ModelMap model) {
+        QaCompetition competition = competitionManager.findCompetitionById(id);
+        CompetitionModel competitionModel = transformer.transform(competition);
+
+        model.addAttribute("competitionModel", competitionModel);
+        model.put(BREADCRUMB, "Update Competition Details");
+        model.put(TITLE, "Update Competition Details");
+        return "secure/competition/competition_edit";
     }
 
     @RequestMapping(value = "/update", method = {RequestMethod.POST})
@@ -94,6 +96,28 @@ public class CompetitionController extends AbstractController {
         model.addAttribute(MSG_SUCCESS, "Competition successfully updated");
         return "redirect:/secure/competition/view/" + competition.getId();
     }
+
+    @RequestMapping(value = "/remove/{id}", method = {RequestMethod.GET})
+    public String competitionRemove(@PathVariable Long id, ModelMap model) {
+        QaCompetition competition = competitionManager.findCompetitionById(id);
+
+        model.addAttribute("competitionModel", transformer.transform(competition));
+        model.put(BREADCRUMB, "Confirm Remove Competition");
+        model.put(TITLE, "Confirm Remove Competition");
+        return "secure/competition/competition_remove";
+    }
+
+    @RequestMapping(value = "/remove/confirm/{id}", method = {RequestMethod.POST})
+    public String competitionConfirmRemove(@PathVariable Long id, ModelMap model) {
+        QaCompetition competition = competitionManager.findCompetitionById(id);
+
+        model.addAttribute("competitionModel", transformer.transform(competition));
+        model.put(BREADCRUMB, "View Competition Details");
+        model.put(TITLE, "View Competition Details");
+        model.put(MSG_SUCCESS, "Competition Removed");
+        return competitionList(new CompetitionModel(), model);
+    }
+
 
     /**
      * @param competitionModel
