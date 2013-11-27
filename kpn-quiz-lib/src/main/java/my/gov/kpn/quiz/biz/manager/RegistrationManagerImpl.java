@@ -54,7 +54,10 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                    String nricNo,
                                    String email,
                                    String fax,
-                                   String phone, Long stateId, String schoolName) {
+                                   String phone, Long stateId,
+                                   String schoolName,
+                                   Integer schoolType
+    ) {
 
         try {
             QaUser root = userDao.findByUsername(ADMIN);
@@ -82,8 +85,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
             instructor.setEmail(email);
             instructor.setPhone(phone);
             instructor.setFax(fax);
-//            instructor.setStateName(stateId);
-//            instructor.setDistrictName(districtId);
+            instructor.setSchoolType(QaSchoolType.get(schoolType));
             instructor.setSchoolName(schoolName);
             actorDao.save(instructor, root);
             sessionFactory.getCurrentSession().flush();
@@ -193,8 +195,8 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
         QaUser root = userDao.findByUsername(ADMIN);
 
-        userDao.remove( userDao.findById(student.getId()),root);
-        actorDao.remove(student,root);
+        userDao.remove(userDao.findById(student.getId()), root);
+        actorDao.remove(student, root);
 
     }
 

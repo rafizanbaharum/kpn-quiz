@@ -9,23 +9,37 @@ import java.util.List;
 public interface QaInstructor extends QaActor {
 
     /**
-     * @return
+     * @param schoolName
      */
-//    QaInstitution getInstitution();
-//
-//    void setInstitution(QaInstitution institution);
-
     void setSchoolName(String schoolName);
 
     String getSchoolName();
 
+    /**
+     * @param schoolType
+     */
+    void setSchoolType(QaSchoolType schoolType);
+
+    QaSchoolType getSchoolType();
+
+    /**
+     * @param stateName
+     */
     void setState(QaState stateName);
+
     QaState getState();
 
+    /**
+     * @param districtName
+     */
     void setDistrictName(String districtName);
+
     String getDistrictName();
 
-
+    /**
+     * @return
+     */
     List<QaStudent> getStudents();
+
     void setStudents(List<QaStudent> students);
 }

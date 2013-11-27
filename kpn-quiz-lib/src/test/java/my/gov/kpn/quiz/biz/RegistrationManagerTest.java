@@ -2,7 +2,6 @@ package my.gov.kpn.quiz.biz;
 
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.config.Config;
-import my.gov.kpn.quiz.core.dao.QaStateDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,6 @@ public class RegistrationManagerTest  extends AbstractTransactionalJUnit4SpringC
     public void create(){
 
         registrationManager.registerInstructor("ali","abc123","ali","abc123","mail@mail.com"
-                ,"fax","phone",2L,"schoolName");
+                ,"fax","phone",2L,"schoolName", 0);
     }
 }

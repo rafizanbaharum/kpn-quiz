@@ -13,12 +13,11 @@ import java.util.List;
 @Entity(name = "QaInstructor")
 public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
 
-//    @OneToOne(targetEntity = QaInstitutionImpl.class)
-//    @JoinColumn(name = "INSTITUTION_ID")
-//    private QaInstitution institution;
-
     @Column(name = "SCHOOL_NAME")
     private String schoolName;
+
+    @Column(name = "SCHOOL_TYPE")
+    private QaSchoolType schoolType;
 
     @OneToOne(targetEntity = QaStateImpl.class)
     @JoinColumn(name = "STATE_ID")
@@ -34,15 +33,6 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
         setActorType(QaActorType.INSTRUCTOR);
     }
 
-//    public QaInstitution getInstitution() {
-//        return institution;
-//    }
-//
-//    public void setInstitution(QaInstitution institution) {
-//        this.institution = institution;
-//    }
-
-
     public String getDistrictName() {
         return districtName;
     }
@@ -57,6 +47,15 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+
+    public QaSchoolType getSchoolType() {
+        return schoolType;
+    }
+
+    public void setSchoolType(QaSchoolType schoolType) {
+        this.schoolType = schoolType;
     }
 
     public QaState getState() {

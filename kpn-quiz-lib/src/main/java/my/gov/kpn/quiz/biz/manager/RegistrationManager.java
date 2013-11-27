@@ -14,7 +14,7 @@ public interface RegistrationManager {
 
     void registerInstructor(String username, String password, String name, String nricNo,
                             String email, String fax, String phone,
-                            Long stateId, String schoolName);
+                            Long stateId, String schoolName, Integer schoolType);
 
     /**
      * @param username

@@ -96,6 +96,16 @@
 
                 <div class="form-group">
  							<span class="input-icon">
+                                 <select id="schoolType" name="schoolType" class="form-control">
+                                     <option value="">&nbsp;</option>
+                                     <c:forEach items="${schoolTypeMap}" var="schoolType">
+                                         <option value='${schoolType.key}'>${schoolType.value}</option>
+                                     </c:forEach>
+                                 </select>
+                            </span>
+                </div>
+                <div class="form-group">
+ 							<span class="input-icon">
  								<input type="text" class="form-control" name="schoolName" placeholder="School Name">
  								<i class="icon-sitemap"></i> </span>
                 </div>
