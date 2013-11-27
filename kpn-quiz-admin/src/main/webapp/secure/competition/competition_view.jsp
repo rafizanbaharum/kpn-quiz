@@ -42,7 +42,7 @@
 </head>
 <body class="footer-fixed layout-boxed">
 <c:set var="COMPETITION_BREADCRUMB" value="Competition List"/>
-<c:set var="COMPETITION_TITLE" value="Competition List"/>
+<c:set var="COMPETITION_TITLE" value="View Competition"/>
 <jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
     <jsp:include page="/secure/include/quiz_navbar.jsp"/>
@@ -57,10 +57,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            Update a competition
+                            View a competition
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> EDIT COMPETITION</h2>
+                            <h2><i class="icon-edit-sign teal"></i> VIEW COMPETITION</h2>
 
                             <hr>
                             <form:form id="form" commandName="competitionModel"
@@ -86,7 +86,8 @@
 
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <form:select path="startDate_dd" cssClass="form-control">
+                                                    <form:select path="startDate_dd" cssClass="form-control"
+                                                                 readonly="true">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="dd">
                                                             <option value="${dd}" ${dd == competitionModel.startDate_dd ? 'selected' : ''}>${dd}</option>
@@ -94,7 +95,8 @@
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form:select path="startDate_MM" cssClass="form-control">
+                                                    <form:select path="startDate_MM" cssClass="form-control"
+                                                                 readonly="true">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="mm">
                                                             <option value="${mm}" ${mm == competitionModel.startDate_MM ? 'selected' : ''}>${mm}</option>
@@ -103,7 +105,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form:input path="startDate_yyyy" placeholder="YYYY"
-                                                                cssClass="form-control"/>
+                                                                cssClass="form-control" readonly="true"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +116,8 @@
 
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <form:select path="endDate_dd" cssClass="form-control">
+                                                    <form:select path="endDate_dd" cssClass="form-control"
+                                                                 readonly="true">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="dd">
                                                             <option value="${dd}" ${dd == competitionModel.endDate_MM ? 'selected' : ''}>${dd}</option>
@@ -122,7 +125,8 @@
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form:select path="endDate_MM" cssClass="form-control">
+                                                    <form:select path="endDate_MM" cssClass="form-control"
+                                                                 readonly="true">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="mm">
                                                             <option value="${mm}" ${mm == competitionModel.endDate_MM ? 'selected' : ''}>${mm}</option>
@@ -131,7 +135,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form:input path="endDate_yyyy" placeholder="YYYY"
-                                                                cssClass="form-control"/>
+                                                                cssClass="form-control" readonly="true"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -142,7 +146,7 @@
 
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <form:select path="year" cssClass="form-control">
+                                                    <form:select path="year" cssClass="form-control" readonly="true">
                                                         <c:forEach begin="2013" end="2020" var="yyyy">
                                                             <option value=${yyyy}>${yyyy}</option>
                                                         </c:forEach>
@@ -157,7 +161,7 @@
 
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <form:select path="locked" cssClass="form-control">
+                                                    <form:select path="locked" cssClass="form-control" readonly="true">
                                                         <option value="false" selected>No</option>
                                                         <option value="true">Yes</option>
                                                     </form:select>

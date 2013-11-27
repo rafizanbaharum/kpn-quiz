@@ -21,9 +21,6 @@ import java.util.List;
 @RequestMapping("/secure/competition")
 public class CompetitionController extends AbstractController {
 
-    private final String BREADCRUMB = "COMPETITION_BREADCRUMB";
-    private final String TITLE = "COMPETITION_TITLE";
-
     @Autowired
     private CompetitionManager competitionManager;
 
@@ -31,8 +28,6 @@ public class CompetitionController extends AbstractController {
     public String competitionList(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
         List<QaCompetition> competitions = competitionManager.findAll();
         model.addAttribute("competitionModels", transformer.transformCompetitions(competitions));
-        model.put(BREADCRUMB, "Competition List");
-        model.put(TITLE, "Competition List");
         return "secure/competition/competition_list";
     }
 
@@ -42,8 +37,6 @@ public class CompetitionController extends AbstractController {
         CompetitionModel competitionModel = transformer.transform(competition);
 
         model.addAttribute("competitionModel", competitionModel);
-        model.put(BREADCRUMB, "Update Competition Details");
-        model.put(TITLE, "Update Competition Details");
         return "secure/competition/competition_edit";
     }
 
@@ -53,15 +46,11 @@ public class CompetitionController extends AbstractController {
         CompetitionModel competitionModel = transformer.transform(competition);
 
         model.addAttribute("competitionModel", competitionModel);
-        model.put(BREADCRUMB, "View Competition Details");
-        model.put(TITLE, "View Competition Details");
         return "secure/competition/competition_view";
     }
 
     @RequestMapping(value = "/add", method = {RequestMethod.GET})
     public String competitionRegister(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
-        model.put(BREADCRUMB, "Register Competition");
-        model.put(TITLE, "Competition Registration");
         return "secure/competition/competition_add";
     }
 

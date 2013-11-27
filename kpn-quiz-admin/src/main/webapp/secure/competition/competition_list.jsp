@@ -42,6 +42,8 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
+<c:set var="COMPETITION_BREADCRUMB" value="Competition List"/>
+<c:set var="COMPETITION_TITLE" value="Competition List"/>
 <jsp:include page="/secure/include/topbar.jsp"/>
 <div class="main-container">
     <jsp:include page="/secure/include/quiz_navbar.jsp"/>
