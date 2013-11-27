@@ -175,15 +175,6 @@
         </div>
     </div>
 </div>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
 <jsp:include page="/secure/include/footer.jsp"/>
 <jsp:include page="/secure/include/footer_script.jsp"/>
 </body>
