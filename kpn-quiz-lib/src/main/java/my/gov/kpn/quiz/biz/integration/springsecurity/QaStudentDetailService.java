@@ -45,11 +45,16 @@ public class QaStudentDetailService implements UserDetailsService {
         log.debug("loading username: " + s);
         QaUser user = null;
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select u from QaUser u inner join u.actor a " +
+        Query query = session.createQuery("select u from QaUser u " +
+                "inner join u.actor a " +
+                "inner join u.participants p " +
+                "inner join p.quiz q " +
                 "where u.name = :username " +
                 "and a.actorType = :actorType " +
+                "and q.current = :current " +
                 "and u.metadata.state = :state");
         query.setString("username", s);
+        query.setBoolean("current", true);
         query.setInteger("actorType", QaActorType.STUDENT.ordinal());
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         user = (QaUser) query.uniqueResult();
