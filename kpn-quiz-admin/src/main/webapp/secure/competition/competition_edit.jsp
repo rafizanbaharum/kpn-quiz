@@ -196,5 +196,12 @@
 </div>
 <jsp:include page="/secure/include/footer.jsp"/>
 <jsp:include page="/secure/include/footer_script.jsp"/>
+<script type="text/javascript" src="/assets/js/competition-form-validation.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        FormValidator.init();
+    });
+</script>
 </body>
 </html>

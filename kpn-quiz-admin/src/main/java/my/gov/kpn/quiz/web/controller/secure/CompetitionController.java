@@ -5,10 +5,14 @@ import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.impl.QaCompetitionImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.CompetitionModel;
+import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +25,14 @@ import java.util.List;
 @RequestMapping("/secure/competition")
 public class CompetitionController extends AbstractController {
 
+    private static final Logger log = Logger.getLogger(CompetitionController.class);
+
     @Autowired
     private CompetitionManager competitionManager;
+
+    @Autowired
+    private ResourceBundleMessageSource messageSource;
+
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String competitionList(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
@@ -47,13 +57,25 @@ public class CompetitionController extends AbstractController {
     }
 
     @RequestMapping(value = "/save", method = {RequestMethod.POST})
-    public String competitionSave(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap
-            model) {
+    public String competitionSave(@ModelAttribute("competitionModel") CompetitionModel competitionModel, BindingResult bindingResult,
+                                  ModelMap model) {
+
         QaCompetition competition = new QaCompetitionImpl();
         competition.setStartDate(combineStartDate(competitionModel));
         competition.setEndDate(combineEndDate(competitionModel));
         competition.setYear(competitionModel.getYear());
         competition.setLocked(competitionModel.isLocked());
+
+        if (competition.getStartDate().compareTo(competition.getEndDate()) > 0) {
+            FieldError fieldError = new FieldError("competitionModel", "startDate_dd",
+                    messageSource.getMessage("Date.competitionModel.dateRange", new Object[]{"End date", "Start date"}, null));
+            bindingResult.addError(fieldError);
+        }
+
+        if (bindingResult.hasErrors()) {
+            model.put(MSG_ERROR, "Error! Please check your data.");
+            return competitionAdd(competitionModel, model);
+        }
 
         competitionManager.saveCompetition(competition);
         return "redirect:/secure/competition/list";

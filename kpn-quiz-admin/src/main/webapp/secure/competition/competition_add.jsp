@@ -87,8 +87,8 @@
                                                 <div class="col-md-4">
                                                     <form:select path="startDate_dd" cssClass="form-control">
                                                         <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="yyyy">
-                                                            <option value=${yyyy}>${yyyy}</option>
+                                                        <c:forEach begin="1" end="31" var="dd">
+                                                            <option value="${dd}" ${dd == competitionModel.startDate_dd ? 'selected' : ''}>${dd}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -96,7 +96,7 @@
                                                     <form:select path="startDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="mm">
-                                                            <option value=${mm}>${mm}</option>
+                                                            <option value="${mm}" ${mm == competitionModel.startDate_MM ? 'selected' : ''}>${mm}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -115,8 +115,8 @@
                                                 <div class="col-md-4">
                                                     <form:select path="endDate_dd" cssClass="form-control">
                                                         <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="yyyy">
-                                                            <option value=${yyyy}>${yyyy}</option>
+                                                        <c:forEach begin="1" end="31" var="dd">
+                                                            <option value="${dd}" ${dd == competitionModel.endDate_MM ? 'selected' : ''}>${dd}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -124,7 +124,7 @@
                                                     <form:select path="endDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="mm">
-                                                            <option value=${mm}>${mm}</option>
+                                                            <option value="${mm}" ${mm == competitionModel.endDate_MM ? 'selected' : ''}>${mm}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -195,5 +195,12 @@
 </div>
 <jsp:include page="/secure/include/footer.jsp"/>
 <jsp:include page="/secure/include/footer_script.jsp"/>
+<script type="text/javascript" src="/assets/js/competition-form-validation.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        FormValidator.init();
+    });
+</script>
 </body>
 </html>
