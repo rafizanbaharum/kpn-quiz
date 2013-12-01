@@ -108,7 +108,7 @@ public class StudentController extends AbstractController {
         Integer year = Integer.valueOf(studentModel.getDob_yyyy());
         Integer currentYear = Calendar.getInstance().get(Calendar.YEAR);
         int diff = currentYear - year;
-        if (diff > 16 || diff < 15){
+        if (diff > 16 || diff < 15) {
             model.addAttribute(MSG_ERROR, "Not allowed to register because of age restriction!");
             return "secure/student/student_register";
         }
@@ -118,7 +118,7 @@ public class StudentController extends AbstractController {
         model.addAttribute(MSG_SUCCESS, "Student registered");
 
 //        return "redirect:/secure/student/list"; //redirect cause msg box not appear
-        return studentList(new StudentModel(),model);
+        return studentList(new StudentModel(), model);
     }
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})

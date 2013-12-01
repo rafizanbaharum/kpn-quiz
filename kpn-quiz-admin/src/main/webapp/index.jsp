@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="${pageContext.request.contextPath}/register">
+                    <a href="${pageContext.request.contextPath}/register"><i class="clip-user-plus"></i>
                         <span class="title"> Create an account </span>
                     </a>
                 </li>

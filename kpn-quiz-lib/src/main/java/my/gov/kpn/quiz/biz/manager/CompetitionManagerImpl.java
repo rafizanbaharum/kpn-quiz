@@ -160,6 +160,11 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
+    public List<QaParticipant> findParticipants(QaQuiz quiz, QaParticipantSortType sortType, Integer offset, Integer limit) {
+        return decorate(quiz, quizDao.findParticipants(quiz, sortType, offset, limit));
+    }
+
+    @Override
     public void updateAnswer(QaParticipant participant, QaQuestion question, Integer answerIndex) {
         QaQuiz currentQuiz = getCurrentQuiz();
         QaGradebook gradebook = gradebookDao.find(participant, currentQuiz);

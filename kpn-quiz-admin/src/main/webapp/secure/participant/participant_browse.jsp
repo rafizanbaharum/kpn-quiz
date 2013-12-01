@@ -95,7 +95,22 @@
                             List of quiz participants
                         </div>
                         <div class="panel-body">
-
+                            <form id="form"
+                                  action="${pageContext.request.contextPath}/secure/participant/browse/sort"
+                                  method="GET">
+                                <input type="hidden" name="page" value="${page}"/>
+                                <input type="hidden" name="quizId" value="${quizModel.id}"/>
+                                <div class="form-group">
+                                    <select id="form-field-select-1" class="form-control" name="sortOption">
+                                        <option value="">Please select</option>
+                                        <option value="0">School</option>
+                                        <option value="1">District</option>
+                                        <option value="2">State</option>
+                                    </select>
+                                </div>
+                                <input type="submit" value="Sort" class="btn btn-primary">
+                            </form>
+                            <br/>
                             <table class="table table-hover" id="sample-table-1">
                                 <thead>
                                 <tr>

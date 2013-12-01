@@ -23,7 +23,7 @@ public abstract class QaActorImpl implements QaActor, Serializable {
     @SequenceGenerator(name = "SEQ_QA_ACTR", sequenceName = "SEQ_QA_ACTR", allocationSize = 1)
     private Long id;
 
-    @Column(name = "NRIC_NO")
+    @Column(name = "NRIC_NO", unique = true)
     private String nricNo;
 
     @Column(name = "AGE")
@@ -155,7 +155,12 @@ public abstract class QaActorImpl implements QaActor, Serializable {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).toString();
+        return "QaActorImpl{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", nricNo='" + nricNo + '\'' +
+                ", actorType=" + actorType +
+                '}';
     }
 }
 

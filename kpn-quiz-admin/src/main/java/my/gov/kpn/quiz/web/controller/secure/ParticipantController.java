@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.controller.secure;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.QaParticipant;
+import my.gov.kpn.quiz.core.model.QaParticipantSortType;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import org.apache.log4j.Logger;
@@ -83,6 +84,25 @@ public class ParticipantController extends AbstractController {
         model.addAttribute("hasPrevious", page > 1 ? true : false);
         model.addAttribute("quizModel", transformer.transform(quiz));
         model.addAttribute("participantModels", transformer.transformParticipants(competitionManager.findParticipants(quiz, offset, LIMIT)));
+        printDebug();
+
+        return "secure/participant/participant_browse";
+    }
+
+    @RequestMapping(value = "/browse/sort", method = {RequestMethod.GET})
+    public String sort(@RequestParam Integer page, @RequestParam Long quizId, @RequestParam Integer sortOption, ModelMap model) {
+        QaParticipantSortType sortType = QaParticipantSortType.get(sortOption);
+        QaQuiz quiz = competitionManager.findQuizById(quizId);
+        Integer count = competitionManager.countParticipant(quiz) / 50;
+        Integer offset = (page - 1) * LIMIT;
+        model.addAttribute("count", count);
+        model.addAttribute("page", page);
+        model.addAttribute("next", page + 1);
+        model.addAttribute("previous", page - 1);
+        model.addAttribute("hasNext", page < count ? true : false);
+        model.addAttribute("hasPrevious", page > 1 ? true : false);
+        model.addAttribute("quizModel", transformer.transform(quiz));
+        model.addAttribute("participantModels", transformer.transformParticipants(competitionManager.findParticipants(quiz, sortType, offset, LIMIT)));
         printDebug();
 
         return "secure/participant/participant_browse";

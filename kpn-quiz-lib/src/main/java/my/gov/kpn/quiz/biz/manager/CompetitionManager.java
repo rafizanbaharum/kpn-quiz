@@ -41,6 +41,8 @@ public interface CompetitionManager {
 
     List<QaParticipant> findParticipants(QaQuiz quiz, Integer offset, Integer limit);
 
+    List<QaParticipant> findParticipants(QaQuiz quiz, QaParticipantSortType sortType, Integer offset, Integer limit);
+
     boolean hasQuestion(QaQuiz quiz);
 
     boolean hasParticipant(QaQuiz quiz);

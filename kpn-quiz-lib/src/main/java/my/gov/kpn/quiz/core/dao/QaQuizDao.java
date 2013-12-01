@@ -28,6 +28,8 @@ public interface QaQuizDao {
 
     List<QaParticipant> findParticipants(QaQuiz quiz, Integer offset, Integer limit);
 
+    List<QaParticipant> findParticipants(QaQuiz quiz, QaParticipantSortType sortType, Integer offset, Integer limit);
+
     Integer count();
 
     Integer countParticipant(QaQuiz quiz);

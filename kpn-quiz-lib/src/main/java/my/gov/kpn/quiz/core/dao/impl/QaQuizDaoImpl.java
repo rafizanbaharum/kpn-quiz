@@ -126,6 +126,47 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     }
 
     @Override
+    public List<QaParticipant> findParticipants(QaQuiz quiz, QaParticipantSortType sortType, Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = null;
+
+        switch (sortType) {
+            case SCHOOL:
+                query = session.createQuery("select a from QaParticipant a where " +
+                        "a.quiz = :quiz " +
+                        "and a.metadata.state = :state " +
+                        "order by a.user.actor.schoolName asc, a.result desc");
+                query.setEntity("quiz", quiz);
+                query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+                break;
+            case DISTRICT:
+                query = session.createQuery("select a from QaParticipant a where " +
+                        "a.quiz = :quiz " +
+                        "and a.metadata.state = :state " +
+                        "order by a.user.actor.districtName asc, a.result desc");
+                query.setEntity("quiz", quiz);
+                query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+                break;
+            case STATE:
+                query = session.createQuery("select a from QaParticipant a where " +
+                        "a.quiz = :quiz " +
+                        "and a.metadata.state = :state " +
+                        "order by a.user.actor.state.name asc, a.result desc");
+                query.setEntity("quiz", quiz);
+                query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+                break;
+            default:
+                query = session.createQuery("select a from QaParticipant a where " +
+                        "a.quiz = :quiz " +
+                        "and a.metadata.state = :state " +
+                        "order by a.result desc");
+                query.setEntity("quiz", quiz);
+                query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        }
+        return query.list();
+    }
+
+    @Override
     public Integer count() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(a) from QaQuiz a where " +
