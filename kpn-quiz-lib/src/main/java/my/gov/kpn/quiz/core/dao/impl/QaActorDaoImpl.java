@@ -142,7 +142,20 @@ public class QaActorDaoImpl extends DaoSupport<Long, QaActor, QaActorImpl> imple
                 "and a.metadata.state = :state");
         query.setEntity("instructor", instructor);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
-        return (List<QaStudent>)query.list();
+        return (List<QaStudent>) query.list();
+    }
+
+    @Override
+    public Boolean isCustodian(QaInstructor instructor, QaStudent student) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(a) from QaStudent a where " +
+                " a.instructor = :instructor " +
+                "and a.id = :studentId " +
+                "and a.metadata.state = :state");
+        query.setEntity("instructor", instructor);
+        query.setLong("studentId", student.getId());
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        return ((Long) query.uniqueResult()).intValue() > 0;
     }
 
     // =============================================================================

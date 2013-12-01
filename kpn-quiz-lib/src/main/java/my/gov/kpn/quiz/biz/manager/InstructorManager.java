@@ -16,4 +16,5 @@ public interface InstructorManager {
 
     public List<QaStudent> getStudents(QaInstructor instructor);
 
+    public Boolean isCustodian(QaInstructor instructor, QaStudent student);
 }

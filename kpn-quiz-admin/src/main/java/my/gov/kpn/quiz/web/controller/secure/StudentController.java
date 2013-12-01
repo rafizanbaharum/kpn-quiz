@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
+import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ import java.util.List;
 @RequestMapping("/secure/student")
 public class StudentController extends AbstractController {
 
+    private static final Logger log = Logger.getLogger(StudentController.class);
+
     private final String BREADCRUMB = "STUDENT_BREADCRUMB";
     private final String TITLE = "STUDENT_TITLE";
 
@@ -37,6 +40,14 @@ public class StudentController extends AbstractController {
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String studentEdit(@PathVariable Long id, ModelMap model) {
         QaStudent student = instructorManager.findStudentById(id);
+
+        // TODO : Any other implementation? Apply to all method later
+        Boolean isCustodian = instructorManager.isCustodian(getCurrentInstructor(), student);
+        if (!isCustodian) {
+            model.addAttribute(MSG_ERROR, "Invalid  student!");
+            return "redirect:/secure/student/list";
+        }
+
         StudentModel transform = transformer.transform(student);
 
         model.addAttribute("studentModel", transform);

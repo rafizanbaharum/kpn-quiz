@@ -41,4 +41,11 @@ public class InstructorManagerImpl implements InstructorManager {
         return actorDao.findStudent(instructor);
     }
 
+    @Override
+    public Boolean isCustodian(QaInstructor instructor, QaStudent student) {
+        if (null != student)
+            return actorDao.isCustodian(instructor, student);
+        return Boolean.FALSE;
+    }
+
 }

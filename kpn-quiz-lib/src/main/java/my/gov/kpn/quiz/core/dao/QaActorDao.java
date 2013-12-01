@@ -27,6 +27,8 @@ public interface QaActorDao extends DaoSupport<Long, QaActor, QaActorImpl> {
 
     List<QaStudent> findStudent(QaInstructor instructor);
 
+    Boolean isCustodian(QaInstructor instructor, QaStudent student);
+
     Integer count();
 
     Integer count(String filter);
