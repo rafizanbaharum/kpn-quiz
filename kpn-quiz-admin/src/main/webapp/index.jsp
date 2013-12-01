@@ -57,6 +57,11 @@
                         <span class="title"> Login </span>
                     </a>
                 </li>
+                <li class="dropdown">
+                    <a href="${pageContext.request.contextPath}/register">
+                        <span class="title"> Create an account </span>
+                    </a>
+                </li>
                 <!-- end: TO-DO DROPDOWN-->
             </ul>
             <!-- end: TOP NAVIGATION MENU -->

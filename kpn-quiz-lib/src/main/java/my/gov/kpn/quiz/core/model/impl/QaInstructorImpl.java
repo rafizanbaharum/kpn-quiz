@@ -21,7 +21,7 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
 
     @OneToOne(targetEntity = QaStateImpl.class)
     @JoinColumn(name = "STATE_ID")
-    private QaState stateName;
+    private QaState state;
 
     @Column(name = "DISTRICT_NAME")
     private String districtName;
@@ -59,11 +59,11 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
     }
 
     public QaState getState() {
-        return stateName;
+        return state;
     }
 
     public void setState(QaState state) {
-        this.stateName = stateName;
+        this.state = state;
     }
 
     public List<QaStudent> getStudents() {

@@ -87,11 +87,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Test
     @Rollback(value = false)
-    public void testRound2() {
-    }
-
-    @Test
-    @Rollback(value = false)
     public void testCreateQuestions() {
         QaQuiz quiz = quizDao.findCurrent();
         multipleChoiceQuestion(quiz);

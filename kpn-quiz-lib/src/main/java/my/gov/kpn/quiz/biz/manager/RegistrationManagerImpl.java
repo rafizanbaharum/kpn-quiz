@@ -43,6 +43,9 @@ public class RegistrationManagerImpl implements RegistrationManager {
     private QaActorDao actorDao;
 
     @Autowired
+    private QaStateDao stateDao;
+
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Autowired
@@ -87,6 +90,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
             instructor.setFax(fax);
             instructor.setSchoolType(QaSchoolType.get(schoolType));
             instructor.setSchoolName(schoolName);
+            instructor.setState(stateDao.findById(stateId));
             actorDao.save(instructor, root);
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(instructor);
@@ -144,6 +148,11 @@ public class RegistrationManagerImpl implements RegistrationManager {
             student.setNricNo(nricNo);
             student.setInstructor(instructor);
             student.setDob(dob);
+
+            student.setSchoolName(instructor.getSchoolName());
+            student.setSchoolType(instructor.getSchoolType());
+            student.setDistrictName(instructor.getDistrictName());
+            student.setState(instructor.getState());
             actorDao.save(student, root);
             sessionFactory.getCurrentSession().flush();
             sessionFactory.getCurrentSession().refresh(student);
