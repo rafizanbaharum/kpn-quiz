@@ -146,6 +146,17 @@ public class QuizController extends AbstractController {
         return "secure/participant/participant_view";
     }
 
+    @RequestMapping(value = "/view/{id}/participant/select/{participantId}", method = {RequestMethod.GET})
+    public String quizViewParticipantSelect(@PathVariable Long id, @PathVariable Long participantId, ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(id);
+        QaParticipant participant = competitionManager.findParticipantById(participantId);
+        competitionManager.selectParticipantForNextRound(quiz, participant);
+        model.addAttribute("quizModel", transformer.transform(quiz));
+        model.addAttribute("participantModel", transformer.transform(participant));
+
+        return "secure/participant/participant_view";
+    }
+
     // page is one-based
     @RequestMapping(value = "/view/{id}/participant/browse/{page}", method = {RequestMethod.GET})
     public String quizViewParticipantBrowse(@PathVariable Long id, @PathVariable Integer page, ModelMap model) {

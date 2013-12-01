@@ -229,6 +229,16 @@ public class CompetitionManagerImpl implements CompetitionManager {
         }
     }
 
+    @Override
+    public void selectParticipantForNextRound(QaQuiz quiz, QaParticipant participant) {
+        QaQuiz nextRound = quizDao.findByRound(quiz.getRound() + 1);
+        QaParticipant newParticipant = new QaParticipantImpl();
+        newParticipant.setQuiz(nextRound);
+        newParticipant.setUser(participant.getUser());
+        participantDao.save(participant, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
 
     @Override
     public void processGradebook(QaQuiz quiz) {

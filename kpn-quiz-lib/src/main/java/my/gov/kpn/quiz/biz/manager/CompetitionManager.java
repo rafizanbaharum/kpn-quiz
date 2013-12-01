@@ -81,4 +81,5 @@ public interface CompetitionManager {
 
     void tabulateResult(QaQuiz quiz);
 
+    void selectParticipantForNextRound(QaQuiz quiz, QaParticipant participant);
 }
