@@ -1,8 +1,6 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import my.gov.kpn.quiz.core.model.QaActorType;
-import my.gov.kpn.quiz.core.model.QaInstructor;
-import my.gov.kpn.quiz.core.model.QaStudent;
+import my.gov.kpn.quiz.core.model.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,6 +20,19 @@ public class QaStudentImpl extends QaActorImpl implements QaStudent {
 
     @Column(name = "DOB")
     private Date dob;
+
+    @Column(name = "SCHOOL_NAME")
+    private String schoolName;
+
+    @Column(name = "SCHOOL_TYPE")
+    private QaSchoolType schoolType;
+
+    @OneToOne(targetEntity = QaStateImpl.class)
+    @JoinColumn(name = "STATE_ID")
+    private QaState state;
+
+    @Column(name = "DISTRICT_NAME")
+    private String districtName;
 
     public QaStudentImpl() {
         setActorType(QaActorType.STUDENT);
@@ -52,5 +63,37 @@ public class QaStudentImpl extends QaActorImpl implements QaStudent {
     @Override
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    public String getDistrictName() {
+        return districtName;
+    }
+
+    public void setDistrictName(String districtName) {
+        this.districtName = districtName;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
+    public QaSchoolType getSchoolType() {
+        return schoolType;
+    }
+
+    public void setSchoolType(QaSchoolType schoolType) {
+        this.schoolType = schoolType;
+    }
+
+    public QaState getState() {
+        return state;
+    }
+
+    public void setState(QaState state) {
+        this.state = state;
     }
 }

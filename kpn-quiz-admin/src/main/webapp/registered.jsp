@@ -51,7 +51,8 @@
     <div class="box-register">
         <h3>Successful Registration</h3>
 
-        <p>Registration Successful - Congratulations!</p>
+        <p>Registration Successful - Congratulations!</p></br>
+        <p>Click <a href="/gate/in">here</a> to login</p>
     </div>
     <div class="copyright">
         2013 &copy; ASEAN QUIZ
