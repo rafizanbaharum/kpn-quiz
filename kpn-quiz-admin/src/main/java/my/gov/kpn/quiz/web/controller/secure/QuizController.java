@@ -2,7 +2,6 @@ package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -126,60 +125,6 @@ public class QuizController extends AbstractController {
 
         model.addAttribute(MSG_SUCCESS, "Quiz successfully updated");
         return "redirect:/secure/quiz/view/" + quiz.getId();
-    }
-
-
-    @RequestMapping(value = "/view/{id}/participant/list", method = {RequestMethod.GET})
-    public String quizViewParticipantList(@PathVariable Long id, ModelMap model) {
-        QaQuiz quiz = competitionManager.findQuizById(id);
-        model.addAttribute("quizModel", transformer.transform(quiz));
-        model.addAttribute("participantModels", transformer.transformParticipants(competitionManager.findParticipants(quiz)));
-        return "secure/participant/participant_list";
-    }
-
-    @RequestMapping(value = "/view/{id}/participant/view/{participantId}", method = {RequestMethod.GET})
-    public String quizViewParticipantView(@PathVariable Long id, @PathVariable Long participantId, ModelMap model) {
-        QaQuiz quiz = competitionManager.findQuizById(id);
-        QaParticipant participant = competitionManager.findParticipantById(participantId);
-        model.addAttribute("quizModel", transformer.transform(quiz));
-        model.addAttribute("participantModel", transformer.transform(participant));
-        return "secure/participant/participant_view";
-    }
-
-    @RequestMapping(value = "/view/{id}/participant/select/{participantId}", method = {RequestMethod.GET})
-    public String quizViewParticipantSelect(@PathVariable Long id, @PathVariable Long participantId, ModelMap model) {
-        QaQuiz quiz = competitionManager.findQuizById(id);
-        QaParticipant participant = competitionManager.findParticipantById(participantId);
-        competitionManager.selectParticipantForNextRound(quiz, participant);
-        model.addAttribute("quizModel", transformer.transform(quiz));
-        model.addAttribute("participantModel", transformer.transform(participant));
-
-        return "secure/participant/participant_view";
-    }
-
-    // page is one-based
-    @RequestMapping(value = "/view/{id}/participant/browse/{page}", method = {RequestMethod.GET})
-    public String quizViewParticipantBrowse(@PathVariable Long id, @PathVariable Integer page, ModelMap model) {
-        QaQuiz quiz = competitionManager.findQuizById(id);
-        Integer count = competitionManager.countParticipant(quiz);
-        model.addAttribute("quizModel", transformer.transform(quiz));
-        model.addAttribute("count", count);
-        model.addAttribute("page", page);
-        model.addAttribute("next", page + 1);
-        model.addAttribute("previous", page - 1);
-        model.addAttribute("hasNext", page < count ? true : false);
-        model.addAttribute("hasPrevious", page > 1 ? true : false);
-        model.addAttribute("participantModel", transformer.transform(competitionManager.findParticipants(quiz, 1, page).get(0)));
-
-        log.debug("count: " + count);
-        log.debug("page: " + page);
-        log.debug("previous: " + (page - 1));
-        log.debug("next: " + (page + 1));
-        log.debug("hasPrev: " + (page > 1 ? true : false));
-        log.debug("hasNext: " + (page < count ? true : false));
-
-
-        return "secure/participant/participant_browse";
     }
 
     @RequestMapping(value = "/tabulate/{id}", method = {RequestMethod.GET})

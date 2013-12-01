@@ -86,13 +86,15 @@
                                             <label class="control-label">
                                                 Start Date <span class="symbol required"></span>
                                             </label>
-                                            <input type="text" class="form-control" readonly="true" value="${quizModel.startDateFormatted}"/>
+                                            <input type="text" class="form-control" readonly="true"
+                                                   value="${quizModel.startDateFormatted}"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 End Date <span class="symbol required"></span>
                                             </label>
-                                            <input type="text" class="form-control" readonly="true" value="${quizModel.endDateFormatted}"/>
+                                            <input type="text" class="form-control" readonly="true"
+                                                   value="${quizModel.endDateFormatted}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +105,7 @@
                                                class="btn btn-primary" title="Edit quiz">Edit</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
                                                class="btn btn-primary" title="Remove quiz">Remove</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/list"
+                                            <a href="${pageContext.request.contextPath}/secure/participant/list?quizId=${quizModel.id}"
                                                class="btn btn-primary" title="View quiz participants">Participants</a>
                                         </div>
                                     </div>

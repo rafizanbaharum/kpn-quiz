@@ -67,7 +67,9 @@ public class CompetitionManagerImpl implements CompetitionManager {
 
     @Override
     public QaParticipant findParticipantById(Long id) {
-        return participantDao.findById(id);
+        QaParticipant participant = participantDao.findById(id);
+        QaQuiz quiz = participant.getQuiz();
+        return decorate(quiz, participant);
     }
 
     @Override
@@ -141,6 +143,15 @@ public class CompetitionManagerImpl implements CompetitionManager {
             }
         }
         return participants;
+    }
+
+
+    private QaParticipant decorate(QaQuiz quiz, QaParticipant participant) {
+        QaQuiz nextRound = quizDao.findByRound(quiz.getRound() + 1);
+        if (null != nextRound && null != participant.getUser()) {
+            participant.setSelected(quizDao.isParticipant(nextRound, participant.getUser()));
+        }
+        return participant;
     }
 
     @Override

@@ -146,10 +146,10 @@
                                         <td class="hidden-xs">${participant.result}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/view/${participant.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/participant/view/${participant.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/remove/${participant.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/participant/remove/${participant.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Remove"><i class="icon-remove"></i></a>
                                             </div>

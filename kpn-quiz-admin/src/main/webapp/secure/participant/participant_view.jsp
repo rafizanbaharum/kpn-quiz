@@ -140,6 +140,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
+                                                Selected
+                                            </label>
+                                            <form:input path="selected" cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
                                                 Answer
                                             </label>
                                             <form:textarea path="answerResponse"
@@ -151,7 +157,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/${participantModel.id}"
+                                            <a href="${pageContext.request.contextPath}/secure/participant/list?quizId=${quizModel.id}"
+                                               class="btn btn-primary">Back To List</a>
+                                            <a href="${pageContext.request.contextPath}/secure/participant/select/${participantModel.id}"
                                                class="btn btn-primary">Select This Participant For Next Round</a>
                                         </div>
                                     </div>
