@@ -52,6 +52,13 @@
         <h3>Successful Registration</h3>
 
         <p>Registration Successful - Congratulations!</p>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-bricky pull-right" onclick="parent.location.href='/gate/in'">
+                Login <i class="icon-circle-arrow-right"></i>
+            </button>
+        </div>
+
     </div>
     <div class="copyright">
         2013 &copy; ASEAN QUIZ
