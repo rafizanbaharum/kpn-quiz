@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import sun.plugin.cache.CacheUpdateHelper;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -100,13 +102,24 @@ public class StudentController extends AbstractController {
 
         // check if password does not match
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
-            model.addAttribute(MSG_SUCCESS, "Password does not match");
+            model.addAttribute(MSG_ERROR, "Password does not match");
+            return "secure/student/student_register";
+        }
+
+        Integer year = Integer.valueOf(studentModel.getDob_yyyy());
+        Integer currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        int diff = currentYear - year;
+        if (diff > 16 || diff < 15){
+            model.addAttribute(MSG_ERROR, "Not allowed to register because of age restriction!");
             return "secure/student/student_register";
         }
 
         registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
                 studentModel.getName(), studentModel.getNric(), extractDob(studentModel), getCurrentInstructor());
-        return "redirect:/secure/student/list";
+        model.addAttribute(MSG_SUCCESS, "Student registered");
+
+//        return "redirect:/secure/student/list"; //redirect cause msg box not appear
+        return studentList(new StudentModel(),model);
     }
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
