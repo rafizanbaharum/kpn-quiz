@@ -96,6 +96,8 @@
                                 </tbody>
                             </table>
                             <div class="btn-group btn-group-justified">
+                                <a href="${pageContext.request.contextPath}/secure/competition/view/${competitionModel.id}"
+                                   class="btn btn-primary">Back to Competition</a>
                                 <a href="${pageContext.request.contextPath}/secure/quiz/add"
                                    class="btn btn-primary">Add Quiz</a>
                             </div>

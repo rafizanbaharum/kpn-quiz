@@ -42,6 +42,7 @@ public class QuizController extends AbstractController {
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String quizList(@ModelAttribute("quizModel") QuizModel quizModel, ModelMap model) {
+        model.addAttribute("competitionModel", transformer.transform(competitionManager.findCompetitionByYear(2013)));
         model.addAttribute("quizModels", transformer.transformQuizzes(competitionManager.findQuizzes()));
         return "secure/quiz/quiz_list";
     }

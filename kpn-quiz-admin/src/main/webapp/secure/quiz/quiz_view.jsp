@@ -105,7 +105,7 @@
                                                class="btn btn-primary" title="Edit quiz">Edit</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
                                                class="btn btn-primary" title="Remove quiz">Remove</a>
-                                            <a href="${pageContext.request.contextPath}/secure/participant/list?quizId=${quizModel.id}"
+                                            <a href="${pageContext.request.contextPath}/secure/participant/browse?page=1&quizId=${quizModel.id}"
                                                class="btn btn-primary" title="View quiz participants">Participants</a>
                                         </div>
                                     </div>

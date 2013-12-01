@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ParticipantController extends AbstractController {
 
     private static final Logger log = Logger.getLogger(QuizController.class);
+    public static final int LIMIT = 50;
 
     @Autowired
     private InstructorManager instructorManager;
@@ -65,27 +66,36 @@ public class ParticipantController extends AbstractController {
     }
 
     // page is one-based
-    @RequestMapping(value = "/browse/{page}", method = {RequestMethod.GET})
-    public String browse(@PathVariable Integer page, @RequestParam Long quizId, ModelMap model) {
+
+    /**
+     * ?page=x&quizId=y
+     */
+    @RequestMapping(value = "/browse", method = {RequestMethod.GET})
+    public String browse(@RequestParam Integer page, @RequestParam Long quizId, ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(quizId);
-        Integer count = competitionManager.countParticipant(quiz);
-        model.addAttribute("quizModel", transformer.transform(quiz));
+        Integer count = competitionManager.countParticipant(quiz) / 50;
+        Integer offset = (page - 1) * LIMIT;
         model.addAttribute("count", count);
         model.addAttribute("page", page);
         model.addAttribute("next", page + 1);
         model.addAttribute("previous", page - 1);
         model.addAttribute("hasNext", page < count ? true : false);
         model.addAttribute("hasPrevious", page > 1 ? true : false);
-        model.addAttribute("participantModel", transformer.transform(competitionManager.findParticipants(quiz, 1, page).get(0)));
-
-        log.debug("count: " + count);
-        log.debug("page: " + page);
-        log.debug("previous: " + (page - 1));
-        log.debug("next: " + (page + 1));
-        log.debug("hasPrev: " + (page > 1 ? true : false));
-        log.debug("hasNext: " + (page < count ? true : false));
+        model.addAttribute("quizModel", transformer.transform(quiz));
+        model.addAttribute("participantModels", transformer.transformParticipants(competitionManager.findParticipants(quiz, offset, LIMIT)));
+        printDebug();
 
         return "secure/participant/participant_browse";
     }
 
+    private void printDebug() {
+        //        log.debug("count: " + count);
+//        log.debug("offset: " + offset);
+//        log.debug("limit: " + LIMIT);
+//        log.debug("page: " + page);
+//        log.debug("previous: " + (page - 1));
+//        log.debug("next: " + (page + 1));
+//        log.debug("hasPrev: " + (page > 1 ? true : false));
+//        log.debug("hasNext: " + (page < count ? true : false));
+    }
 }

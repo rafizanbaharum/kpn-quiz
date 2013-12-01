@@ -155,8 +155,8 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public List<QaParticipant> findParticipants(QaQuiz quiz, Integer limit, Integer offset) {
-        return quizDao.findParticipants(quiz, limit, offset);
+    public List<QaParticipant> findParticipants(QaQuiz quiz, Integer offset, Integer limit) {
+        return decorate(quiz, quizDao.findParticipants(quiz, offset, limit));
     }
 
     @Override
@@ -246,7 +246,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
         QaParticipant newParticipant = new QaParticipantImpl();
         newParticipant.setQuiz(nextRound);
         newParticipant.setUser(participant.getUser());
-        participantDao.save(participant, Utils.getCurrentUser());
+        participantDao.save(newParticipant, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

@@ -79,34 +79,8 @@
     </div>
 </div>
 <div class="main-container">
-    <div class="navbar-content">
-        <div class="main-navigation navbar-collapse collapse">
-            <div class="navigation-toggler">
-                <i class="clip-chevron-left"></i>
-                <i class="clip-chevron-right"></i>
-            </div>
-            <ul class="main-navigation-menu">
-                <li>
-                    <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
-                        <span class="title"> Dashboard </span><span class="selected"></span>
-                    </a>
-                </li>
-                <li class="active open">
-                    <a href="javascript:void(0)"><i class="clip-pencil"></i>
-                        <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
-                        <span class="selected"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/secure/quiz/list">
-                                <span class="title">Quizzes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <jsp:include page="/secure/include/participant_navbar.jsp"/>
+
     <div class="main-content">
         <div class="container">
             <jsp:include page="/secure/include/participant_breadcrumb.jsp">
@@ -121,50 +95,60 @@
                             List of quiz participants
                         </div>
                         <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i>${page}/${count}</h2>
-                            <hr>
-                            <form:form id="form" commandName="participantModel">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Name
-                                            </label>
-                                            <form:input path="name" cssClass="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Result
-                                            </label>
-                                            <form:input path="result" cssClass="form-control"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="btn-group btn-group-justified">
-                                            <c:if test="${hasPrevious}">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${previous}"
-                                                   class="btn btn-primary">Previous</a>
-                                            </c:if>
-                                            <c:if test="${!hasPrevious}">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${previous}"
-                                                   class="btn btn-primary disabled">Previous</a>
-                                            </c:if>
-                                            <c:if test="${hasNext}">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${next}"
-                                                   class="btn btn-primary">Next</a>
-                                            </c:if>
-                                            <c:if test="${!hasNext}">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/${next}"
-                                                   class="btn btn-primary disabled">Next</a>
-                                            </c:if>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form:form>
 
+                            <table class="table table-hover" id="sample-table-1">
+                                <thead>
+                                <tr>
+                                    <th class="center">#</th>
+                                    <th>Name</th>
+                                    <th class="center">Selected For Next Round</th>
+                                    <th class="center">Result</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="participant" items="${participantModels}" varStatus="idx">
+                                    <tr>
+                                        <td class="center">${idx.count}</td>
+                                        <td class="hidden-xs">${participant.name}</td>
+                                        <td class="hidden-xs center">
+                                            <i class=${participant.selected ? "icon-star": "icon-star-empty"}></i>
+                                        </td>
+                                        <td class="hidden-xs center">${participant.result}</td>
+                                        <td class="center">
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                <a href="${pageContext.request.contextPath}/secure/participant/view/${participant.id}"
+                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                   data-original-title="View"><i class="icon-archive"></i></a>
+                                                <a href="${pageContext.request.contextPath}/secure/participant/remove/${participant.id}"
+                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                   data-original-title="Remove"><i class="icon-remove"></i></a>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-justified">
+                        <a href="${pageContext.request.contextPath}/secure/participant/browse?page=${previous}&quizId=${quizModel.id}"
+                           class="btn btn-primary" ${!hasPrevious?"disabled":""}>Previous</a>
+                        <a href="${pageContext.request.contextPath}/secure/participant/browse?page=${next}&quizId=${quizModel.id}"
+                           class="btn btn-primary" ${!hasNext?"disabled":""}>Next</a>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-justified">
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}"
+                           class="btn btn-primary">Back To Quiz</a>
+                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/reset"
+                           class="btn btn-primary">Reset</a>
                     </div>
                 </div>
             </div>
@@ -175,3 +159,4 @@
 <jsp:include page="/secure/include/footer_script.jsp"/>
 </body>
 </html>
+
