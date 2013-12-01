@@ -175,6 +175,16 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         return 0 < ((Long) query.uniqueResult()).intValue();
     }
 
+    @Override
+    public boolean isParticipant(QaQuiz quiz, QaUser user) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from QaParticipant u where " +
+                "u.quiz = :quiz " +
+                "and u.user = :user");
+        query.setEntity("quiz", quiz);
+        query.setEntity("user", user);
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
     // =============================================================================
     // CRUD METHODS
     // =============================================================================

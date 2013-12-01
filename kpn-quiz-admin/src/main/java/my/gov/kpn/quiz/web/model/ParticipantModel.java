@@ -11,6 +11,8 @@ public class ParticipantModel extends MetaModel {
     private String address1;
     private String address2;
     private String address3;
+    private String answerResponse;
+    private boolean selected;
 
     public String getName() {
         return name;
@@ -50,5 +52,21 @@ public class ParticipantModel extends MetaModel {
 
     public void setAddress3(String address3) {
         this.address3 = address3;
+    }
+
+    public String getAnswerResponse() {
+        return answerResponse;
+    }
+
+    public void setAnswerResponse(String answerResponse) {
+        this.answerResponse = answerResponse;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

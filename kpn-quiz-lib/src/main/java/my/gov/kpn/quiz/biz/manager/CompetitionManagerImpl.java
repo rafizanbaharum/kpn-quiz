@@ -3,7 +3,6 @@ package my.gov.kpn.quiz.biz.manager;
 import my.gov.kpn.quiz.biz.util.Utils;
 import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
-import my.gov.kpn.quiz.core.model.impl.QaCompetitionImpl;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookImpl;
 import my.gov.kpn.quiz.core.model.impl.QaGradebookItemImpl;
 import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
@@ -67,6 +66,11 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
+    public QaParticipant findParticipantById(Long id) {
+        return participantDao.findById(id);
+    }
+
+    @Override
     public QaParticipant findCurrentParticipant(QaQuiz quiz) {
         return participantDao.find(quiz, Utils.getCurrentUser());
     }
@@ -123,7 +127,20 @@ public class CompetitionManagerImpl implements CompetitionManager {
 
     @Override
     public List<QaParticipant> findParticipants(QaQuiz quiz) {
-        return quizDao.findParticipants(quiz);
+        return decorate(quiz, quizDao.findParticipants(quiz));
+    }
+
+    private List<QaParticipant> decorate(QaQuiz quiz, List<QaParticipant> participants) {
+
+        // decorate with next quiz selection
+        // check if we have next quiz
+        for (QaParticipant participant : participants) {
+            QaQuiz nextRound = quizDao.findByRound(quiz.getRound() + 1);
+            if (null != nextRound && null != participant.getUser()) {
+                participant.setSelected(quizDao.isParticipant(nextRound, participant.getUser()));
+            }
+        }
+        return participants;
     }
 
     @Override
@@ -178,6 +195,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
         List<QaGradebook> gradebooks = gradebookDao.find(quiz); // todo chunking
         for (QaGradebook gradebook : gradebooks) {
             Integer result = 0;
+            QaParticipant participant = gradebook.getParticipant();
             List<QaGradebookItem> items = gradebook.getItems();
             for (QaGradebookItem item : items) {
                 QaQuestion question = item.getQuestion();
@@ -200,13 +218,11 @@ public class CompetitionManagerImpl implements CompetitionManager {
                         }
                         break;
                     case SUBJECTIVE:
-                        // do nothing
+                        participant.setAnswerResponse(item.getAnswerResponse());
                         break;
                 }
             }
-
             log.debug("result: " + result);
-            QaParticipant participant = gradebook.getParticipant();
             participant.setResult(result);
             participantDao.update(participant, Utils.getCurrentUser());
             sessionFactory.getCurrentSession().flush();

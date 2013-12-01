@@ -27,4 +27,20 @@ public interface QaParticipant extends QaMetaObject {
 
     void setResult(Integer result);
 
+    /**
+     * denormalize answer response from gradebookitem
+     *
+     * @return
+     */
+    String getAnswerResponse();
+
+    void setAnswerResponse(String answerResponse);
+
+
+    // transient
+    // NOTE: is selected for next round
+    boolean isSelected();
+
+    // transient
+    void setSelected(boolean participant);
 }

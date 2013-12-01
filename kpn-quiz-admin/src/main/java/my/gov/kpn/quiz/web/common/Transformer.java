@@ -191,6 +191,8 @@ public class Transformer {
         model.setAddress2(participant.getUser().getActor().getAddress2());
         model.setAddress3(participant.getUser().getActor().getAddress3());
         model.setResult(participant.getResult());
+        model.setSelected(participant.isSelected());
+        model.setAnswerResponse(participant.getAnswerResponse());
         return model;
     }
 }

@@ -22,6 +22,9 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
     @Column(name = "RESULT")
     private Integer result = 0;
 
+    @Column(name = "ANSWER_RESPONSE")
+    private String answerResponse;
+
     @OneToOne(targetEntity = QaQuizImpl.class)
     @JoinColumn(name = "QUIZ_ID")
     private QaQuiz quiz;
@@ -29,6 +32,9 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
     @OneToOne(targetEntity = QaUserImpl.class)
     @JoinColumn(name = "USER_ID")
     private QaUser user;
+
+    @Transient
+    private boolean selected;
 
     @Embedded
     private QaMetadata metadata = new QaMetadata();
@@ -47,6 +53,14 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
 
     public void setResult(Integer result) {
         this.result = result;
+    }
+
+    public String getAnswerResponse() {
+        return answerResponse;
+    }
+
+    public void setAnswerResponse(String answerResponse) {
+        this.answerResponse = answerResponse;
     }
 
     public QaQuiz getQuiz() {
@@ -71,6 +85,14 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
 
     public void setMetadata(QaMetadata metadata) {
         this.metadata = metadata;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     @Override

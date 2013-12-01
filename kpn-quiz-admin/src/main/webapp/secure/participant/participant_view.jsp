@@ -98,11 +98,6 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="${pageContext.request.contextPath}/secure/competition/list">
-                                <span class="title">Competitions</span>
-                            </a>
-                        </li>
-                        <li>
                             <a href="${pageContext.request.contextPath}/secure/quiz/list">
                                 <span class="title">Quizzes</span>
                             </a>
@@ -123,53 +118,46 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            List of quiz participants
+                            Participant
                         </div>
                         <div class="panel-body">
-
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Name</th>
-                                    <th>Selected For Next Round</th>
-                                    <th>Result</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="participant" items="${participantModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${participant.name}</td>
-                                        <td class="hidden-xs center">${participant.selected}</td>
-                                        <td class="hidden-xs">${participant.result}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/view/${participant.id}"
-                                                   class="btn btn-primary tooltips" data-placement="top"
-                                                   data-original-title="View"><i class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/remove/${participant.id}"
-                                                   class="btn btn-primary tooltips" data-placement="top"
-                                                   data-original-title="Remove"><i class="icon-remove"></i></a>
-                                            </div>
-                                        </td>
-
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                            <h2><i class="icon-edit-sign teal"></i>VIEW</h2>
+                            <hr>
+                            <form:form id="form" commandName="participantModel">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Name
+                                            </label>
+                                            <form:input path="name" cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Result
+                                            </label>
+                                            <form:input path="result" cssClass="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Answer
+                                            </label>
+                                            <form:textarea path="answerResponse"
+                                                           rows="16" cols="100"
+                                                           cssClass="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="btn-group btn-group-justified">
+                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/${participantModel.id}"
+                                               class="btn btn-primary">Select This Participant For Next Round</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form:form>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group btn-group-justified">
-                        <%--<a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/browse/1"--%>
-                        <%--class="btn btn-primary">Browse</a>--%>
-                        <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/participant/select/reset"
-                           class="btn btn-primary">Reset</a>
                     </div>
                 </div>
             </div>

@@ -23,6 +23,8 @@ public interface CompetitionManager {
 
     QaQuiz getCurrentQuiz();
 
+    QaParticipant findParticipantById(Long id);
+
     QaParticipant findCurrentParticipant(QaQuiz quiz);
 
     QaQuestion findQuestionById(Long id);
@@ -78,4 +80,5 @@ public interface CompetitionManager {
     void resetParticipants(QaQuiz quiz);
 
     void tabulateResult(QaQuiz quiz);
+
 }

@@ -38,6 +38,8 @@ public interface QaQuizDao {
 
     boolean hasParticipant(QaQuiz quiz);
 
+    boolean isParticipant(QaQuiz quiz, QaUser user);
+
     void save(QaQuiz quiz, QaUser user);
 
     void update(QaQuiz quiz, QaUser user);
@@ -53,4 +55,5 @@ public interface QaQuizDao {
     void removeParticipant(QaQuiz quiz, QaParticipant participant, QaUser user);
 
     void resetParticipants(QaQuiz quiz, QaUser currentUser);
+
 }

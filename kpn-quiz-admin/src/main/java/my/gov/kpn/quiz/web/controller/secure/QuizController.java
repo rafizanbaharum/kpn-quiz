@@ -2,6 +2,7 @@ package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
+import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -134,6 +135,15 @@ public class QuizController extends AbstractController {
         model.addAttribute("quizModel", transformer.transform(quiz));
         model.addAttribute("participantModels", transformer.transformParticipants(competitionManager.findParticipants(quiz)));
         return "secure/participant/participant_list";
+    }
+
+    @RequestMapping(value = "/view/{id}/participant/view/{participantId}", method = {RequestMethod.GET})
+    public String quizViewParticipantView(@PathVariable Long id, @PathVariable Long participantId, ModelMap model) {
+        QaQuiz quiz = competitionManager.findQuizById(id);
+        QaParticipant participant = competitionManager.findParticipantById(participantId);
+        model.addAttribute("quizModel", transformer.transform(quiz));
+        model.addAttribute("participantModel", transformer.transform(participant));
+        return "secure/participant/participant_view";
     }
 
     // page is one-based
