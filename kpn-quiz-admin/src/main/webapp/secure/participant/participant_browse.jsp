@@ -112,7 +112,7 @@
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${participant.name}</td>
                                         <td class="hidden-xs center">
-                                            <i class=${participant.selected ? "icon-star": "icon-star-empty"}></i>
+                                            <i class=${participant.selected ? "icon-check": "icon-check-empty"}></i>
                                         </td>
                                         <td class="hidden-xs center">${participant.result}</td>
                                         <td class="center">

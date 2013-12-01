@@ -114,9 +114,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Selected
+                                                Selected For Next Round?
                                             </label>
-                                            <form:input path="selected" cssClass="form-control"/>
+                                            <i class=${participantModel.selected ? "icon-check": "icon-check-empty"}></i>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">

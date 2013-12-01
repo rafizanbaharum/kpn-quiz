@@ -77,12 +77,12 @@
                                 <c:forEach var="competition" items="${competitionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs"><fmt:formatDate type="date" pattern="dd/MM/yyyy"
+                                        <td class="hidden-xs center"><fmt:formatDate type="date" pattern="dd/MM/yyyy"
                                                                               value='${competition.startDate}'/></td>
-                                        <td><fmt:formatDate type="date" pattern="dd/MM/yyyy"
+                                        <td class="hidden-xs center"><fmt:formatDate type="date" pattern="dd/MM/yyyy"
                                                             value='${competition.endDate}'/></td>
-                                        <td class="hidden-xs">${competition.year}</td>
-                                        <td class="hidden-xs">${competition.locked}</td>
+                                        <td class="hidden-xs center">${competition.year}</td>
+                                        <td class="hidden-xs center"><i class=${competition.locked ? "icon-check": "icon-check-empty"}></i></td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/competition/view/${competition.id}"

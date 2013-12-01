@@ -66,9 +66,9 @@
                                     <th class="center">#</th>
                                     <th>Title</th>
                                     <th>Round</th>
-                                    <th>Current</th>
-                                    <th>Processed</th>
-                                    <th>Locked</th>
+                                    <th class="center">Current</th>
+                                    <th class="center">Processed</th>
+                                    <th class="center">Locked</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -77,10 +77,10 @@
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${quiz.titleAbbreviated}</td>
-                                        <td class="hidden-xs">${quiz.round}</td>
-                                        <td class="hidden-xs">${quiz.current}</td>
-                                        <td class="hidden-xs">${quiz.processed}</td>
-                                        <td class="hidden-xs">${quiz.locked}</td>
+                                        <td class="hidden-xs center">${quiz.round}</td>
+                                        <td class="hidden-xs center"><i class=${quiz.current ? "icon-check": "icon-check-empty"}></i></td>
+                                        <td class="hidden-xs center"><i class=${quiz.processed ? "icon-check": "icon-check-empty"}></i></td>
+                                        <td class="hidden-xs center"><i class=${quiz.locked ? "icon-check": "icon-check-empty"}></i></td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/quiz/view/${quiz.id}"
