@@ -54,7 +54,7 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Test
     @Rollback(value = false)
-    public void test() {
+    public void createCompetitionAndQuiz() {
         QaCompetition competition = new QaCompetitionImpl();
         competition.setLocked(false);
         competition.setYear(2013);
@@ -81,11 +81,6 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         quiz2.setProcessed(false);
         quiz2.setLocked(false);
         competitionDao.addQuiz(competition, quiz2, root);
-    }
-
-    @Test
-    @Rollback(value = false)
-    public void testRound2() {
     }
 
     @Test

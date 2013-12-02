@@ -15,8 +15,7 @@ insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
 values (1, 'System Root', 'abc123', 'rafizan.baharum@gmail.com', null);
 insert into QA_ACTR (ID, ACTOR_TYPE, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
 values (0, 0, 'Lorong 1 ', 'Taman Midah', 'Cheras', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
-insert into QA_SPPT(ID)
-values(0)
+insert into QA_SPPT(ID) values(0);
 update QA_USER set ACTOR_ID = 0 where id = 1;
 
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(1, 0, 1, 1, 1, CURRENT_TIMESTAMP );
@@ -55,8 +54,7 @@ values (11, 'Ahmad', 'abc123', 'rafizan.baharum@gmail.com', null);
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(11, 1, 1, 1, 1, CURRENT_TIMESTAMP );
 insert into QA_ACTR (ID, ACTOR_TYPE, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
 values (2, 1, 'Lorong 1 ', 'Taman Midah', 'Cheras', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
-insert into QA_STDN (ID, INSTRUCTOR_ID)
-values (2, 10);
+insert into QA_STDN (ID, INSTRUCTOR_ID) values (2, 10);
 update QA_USER set ACTOR_ID = 2 where ID = 11;
 
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (12, 'student2', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
@@ -65,8 +63,7 @@ values (12, 'Ah Wong', 'abc123' , 'rafizan.baharum@gmail.com', null);
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(12, 1, 1, 1, 1, CURRENT_TIMESTAMP );
 insert into QA_ACTR (ID, ACTOR_TYPE, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
 values (3, 1, 'Lorong 1 ', 'Taman Midah', 'Cheras', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
-insert into QA_STDN (ID, INSTRUCTOR_ID)
-values (3, 10);
+insert into QA_STDN (ID, INSTRUCTOR_ID) values (3, 10);
 update QA_USER set ACTOR_ID = 3 where ID = 12;
 
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (13, 'student3', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
@@ -75,8 +72,7 @@ values (13, 'Muthu', 'abc123', 'rafizan.baharum@gmail.com', null);
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(13, 1, 1, 1, 1, CURRENT_TIMESTAMP );
 insert into QA_ACTR (ID, ACTOR_TYPE, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
 values (4, 1, 'Lorong 1 ', 'Taman Midah', 'Cheras', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
-insert into QA_STDN (ID, INSTRUCTOR_ID)
-values (4, 10);
+insert into QA_STDN (ID, INSTRUCTOR_ID) values (4, 10);
 update QA_USER set ACTOR_ID = 4 where ID = 13;
 
 
