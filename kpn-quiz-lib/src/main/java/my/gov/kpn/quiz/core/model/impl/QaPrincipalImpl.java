@@ -24,7 +24,7 @@ public class QaPrincipalImpl implements QaPrincipal, Serializable {
     @SequenceGenerator(name = "SEQ_QA_PCPL", sequenceName = "SEQ_QA_PCPL", allocationSize = 1)
     private Long id;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", unique = true)
     private String name;
 
     @Column(name = "ENABLED")

@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = {Config.class})
 @Transactional
 public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTests {
-    
+
     @Autowired
     private QaUserDao userDao;
 
@@ -29,19 +30,19 @@ public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTe
 
     @Autowired
     private QaActorDao actorDao;
-    
+
     private QaUser root;
-    
-    
+
+
     @Before
     public void setUp() {
 
         root = userDao.findByUsername("root");
     }
-    
+
     @Test
-    public void createInstructor(){
-        
+    public void createInstructor() {
+
         QaInstructor instructor = new QaInstructorImpl();
         instructor.setName("name");
         instructor.setNricNo("nricNo");
@@ -55,6 +56,5 @@ public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTe
         actorDao.save(instructor, root);
 
 
-        
     }
 }
