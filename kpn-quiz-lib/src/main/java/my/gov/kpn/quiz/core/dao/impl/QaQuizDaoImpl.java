@@ -105,7 +105,7 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         Query query = session.createQuery("select a from QaParticipant a where " +
                 "a.quiz = :quiz " +
                 "and a.metadata.state = :state " +
-                "order by a.result");
+                "order by a.result desc");
         query.setEntity("quiz", quiz);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return query.list();
@@ -117,7 +117,7 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         Query query = session.createQuery("select a from QaParticipant a where " +
                 "a.quiz = :quiz " +
                 "and a.metadata.state = :state " +
-                "order by a.result");
+                "order by a.result desc");
         query.setEntity("quiz", quiz);
         query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
