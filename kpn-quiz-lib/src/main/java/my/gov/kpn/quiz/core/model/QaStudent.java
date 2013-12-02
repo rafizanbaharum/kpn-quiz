@@ -23,4 +23,30 @@ public interface QaStudent extends QaActor {
     Date getDob();
 
     void setDob(Date dob);
+
+    void setSchoolName(String schoolName);
+
+    String getSchoolName();
+
+    /**
+     * @param schoolType
+     */
+    void setSchoolType(QaSchoolType schoolType);
+
+    QaSchoolType getSchoolType();
+
+    /**
+     * @param stateName
+     */
+    void setState(QaState state);
+
+    QaState getState();
+
+    /**
+     * @param districtName
+     */
+    void setDistrictName(String districtName);
+
+    String getDistrictName();
+
 }
