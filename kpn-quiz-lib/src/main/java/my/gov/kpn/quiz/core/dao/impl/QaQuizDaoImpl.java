@@ -132,27 +132,32 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
 
         switch (sortType) {
             case SCHOOL:
-                query = session.createQuery("select a from QaParticipant a " +
-                        "inner join a.user.actor b where " +
+                query = session.createQuery("select a from QaParticipant a, QaStudent s " +
+                        "where " +
                         "a.quiz = :quiz " +
+                        "and a.user.actor.id = s.id " +
                         "and a.metadata.state = :state " +
-                        "order by a.user.actor.schoolName asc, a.result desc");
+                        "order by s.schoolName asc, a.result desc");
                 query.setEntity("quiz", quiz);
                 query.setInteger("state", QaMetaState.ACTIVE.ordinal());
                 break;
             case DISTRICT:
-                query = session.createQuery("select a from QaParticipant a where " +
+                query = session.createQuery("select a from QaParticipant a, QaStudent s " +
+                        "where " +
                         "a.quiz = :quiz " +
+                        "and a.user.actor.id = s.id " +
                         "and a.metadata.state = :state " +
-                        "order by a.user.actor.districtName asc, a.result desc");
+                        "order by s.districtName asc, a.result desc");
                 query.setEntity("quiz", quiz);
                 query.setInteger("state", QaMetaState.ACTIVE.ordinal());
                 break;
             case STATE:
-                query = session.createQuery("select a from QaParticipant a where " +
+                query = session.createQuery("select a from QaParticipant a, QaStudent s " +
+                        "where " +
                         "a.quiz = :quiz " +
+                        "and a.user.actor.id = s.id " +
                         "and a.metadata.state = :state " +
-                        "order by a.user.actor.state.name asc, a.result desc");
+                        "order by s.state.name asc, a.result desc");
                 query.setEntity("quiz", quiz);
                 query.setInteger("state", QaMetaState.ACTIVE.ordinal());
                 break;

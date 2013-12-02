@@ -90,7 +90,11 @@ public class ParticipantController extends AbstractController {
     }
 
     @RequestMapping(value = "/browse/sort", method = {RequestMethod.GET})
-    public String sort(@RequestParam Integer page, @RequestParam Long quizId, @RequestParam Integer sortOption, ModelMap model) {
+    public String sort(@RequestParam Integer page, @RequestParam Long quizId,
+                       @RequestParam(value = "sortOption", required = false, defaultValue = "99") Integer sortOption, ModelMap model) {
+        // TODO Handle "Please Select"?
+        if (sortOption == 99) return browse(page, quizId, model);
+
         QaParticipantSortType sortType = QaParticipantSortType.get(sortOption);
         QaQuiz quiz = competitionManager.findQuizById(quizId);
         Integer count = competitionManager.countParticipant(quiz) / 50;
