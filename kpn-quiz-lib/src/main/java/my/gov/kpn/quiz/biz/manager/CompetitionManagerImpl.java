@@ -296,8 +296,8 @@ public class CompetitionManagerImpl implements CompetitionManager {
         quizDao.resetParticipants(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
 
+        int count = 0;
         List<QaUser> all = userDao.findAll();
-        log.debug("participant: " + all.size());
         for (QaUser user : all) {
             QaActor actor = user.getActor();
             if (null != actor && actor.getActorType().equals(QaActorType.STUDENT)) {
@@ -305,8 +305,10 @@ public class CompetitionManagerImpl implements CompetitionManager {
                 participant.setQuiz(quiz);
                 participant.setUser(user);
                 participantDao.save(participant, Utils.getCurrentUser());
+                count++;
             }
         }
+        log.debug("all participant: " + count);
         quizDao.update(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
