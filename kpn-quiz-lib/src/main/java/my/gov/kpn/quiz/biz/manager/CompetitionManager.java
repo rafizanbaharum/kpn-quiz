@@ -79,6 +79,8 @@ public interface CompetitionManager {
 
     void resetParticipants(QaQuiz quiz);
 
+    void resetGradebooks(QaQuiz quiz);
+
     void tabulateResult(QaQuiz quiz);
 
     void selectParticipantForNextRound(QaQuiz quiz, QaParticipant participant);

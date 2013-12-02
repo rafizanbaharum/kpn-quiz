@@ -254,6 +254,10 @@ public class CompetitionManagerImpl implements CompetitionManager {
     @Override
     public void processGradebook(QaQuiz quiz) {
         log.debug("process gradebook");
+
+        quizDao.resetGradebooks(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+
         // for every participant
         // create a gradebook
         List<QaParticipant> participants = quiz.getParticipants();
@@ -281,11 +285,17 @@ public class CompetitionManagerImpl implements CompetitionManager {
         sessionFactory.getCurrentSession().flush();
     }
 
+    /**
+     * TODO: not scalable
+     * TODO: use chunk? or spring batch?
+     *
+     * @param quiz
+     */
     @Override
     public void processParticipant(QaQuiz quiz) {
-        // TODO: not scalable
-        // TODO: use chunk? or spring batch?
-        // TODO: filter out non-student??
+        quizDao.resetParticipants(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+
         List<QaUser> all = userDao.findAll();
         log.debug("participant: " + all.size());
         for (QaUser user : all) {
@@ -297,8 +307,6 @@ public class CompetitionManagerImpl implements CompetitionManager {
                 participantDao.save(participant, Utils.getCurrentUser());
             }
         }
-
-//        quiz.setProcessed(true);
         quizDao.update(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -306,6 +314,12 @@ public class CompetitionManagerImpl implements CompetitionManager {
     @Override
     public void resetParticipants(QaQuiz quiz) {
         quizDao.resetParticipants(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void resetGradebooks(QaQuiz quiz) {
+        quizDao.resetGradebooks(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

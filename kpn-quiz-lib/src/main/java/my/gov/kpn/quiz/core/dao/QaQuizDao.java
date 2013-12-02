@@ -56,4 +56,5 @@ public interface QaQuizDao {
 
     void resetParticipants(QaQuiz quiz, QaUser currentUser);
 
+    void resetGradebooks(QaQuiz quiz, QaUser currentUser);
 }

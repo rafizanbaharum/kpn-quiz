@@ -258,11 +258,19 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
         session.update(participant);
     }
 
-
     @Override
     public void resetParticipants(QaQuiz quiz, QaUser currentUser) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("delete from QaParticipant p where p.quiz = :quiz");
+        query.setEntity("quiz", quiz);
+        query.executeUpdate();
+    }
+
+    @Override
+    public void resetGradebooks(QaQuiz quiz, QaUser currentUser) {
+        // TODO: need to delete gradebook_item first
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("delete from QaGradebook p where p.quiz = :quiz");
         query.setEntity("quiz", quiz);
         query.executeUpdate();
     }

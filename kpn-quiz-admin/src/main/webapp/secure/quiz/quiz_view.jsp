@@ -118,9 +118,9 @@
                                                title="Make this quiz current">Current</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
                                                class="btn btn-primary"
-                                               title="Initialize quiz with participants">Init</a>
+                                               title="Initialize quiz with participants">Process Participant</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
-                                               class="btn btn-primary" title="Process quiz gradebooks">Process</a>
+                                               class="btn btn-primary" title="Process quiz gradebooks">Process Gradebook</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
                                                class="btn btn-primary" title="Tabulate quiz results">Tabulate</a>
                                         </div>
