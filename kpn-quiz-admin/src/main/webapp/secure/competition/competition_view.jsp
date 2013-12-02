@@ -181,17 +181,15 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <button class="btn btn-primary btn-block" type="button"
-                                                onclick="location.href='${pageContext.request.contextPath}/secure/competition/edit/${competitionModel.id}'">
-                                            Edit <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <button class="btn btn-primary btn-block" type="button"
-                                                onclick="location.href='${pageContext.request.contextPath}/secure/competition/remove/${competitionModel.id}'">
-                                            Remove <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                    <div class="col-md-12">
+                                        <div class="btn-group btn-group-justified">
+                                            <a href="${pageContext.request.contextPath}/secure/competition/edit/${competitionModel.id}"
+                                               class="btn btn-primary" title="Edit competition">Edit</a>
+                                            <a href="${pageContext.request.contextPath}/secure/competition/remove/${competitionModel.id}"
+                                               class="btn btn-primary" title="Remove competition">Remove</a>
+                                            <a href="${pageContext.request.contextPath}/secure/competition/lock/${competitionModel.id}"
+                                               class="btn btn-primary" title="Locked competition">Locked</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form:form>

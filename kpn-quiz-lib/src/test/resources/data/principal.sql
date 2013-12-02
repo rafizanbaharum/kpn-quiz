@@ -14,7 +14,7 @@ insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS
 insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
 values (1, 'System Root', 'abc123', 'rafizan.baharum@gmail.com', null);
 insert into QA_ACTR (ID, ACTOR_TYPE, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
-values (0, 0, 'Lorong 1 ', 'Taman Midah', 'Cheras', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
+values (0, 2, 'Lorong 1 ', 'Taman Midah', 'Cheras', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
 insert into QA_SPPT(ID) values(0);
 update QA_USER set ACTOR_ID = 0 where id = 1;
 

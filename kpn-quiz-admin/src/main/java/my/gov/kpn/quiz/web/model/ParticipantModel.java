@@ -8,6 +8,9 @@ public class ParticipantModel extends MetaModel {
 
     private String name;
     private Integer result;
+    private String school;
+    private String district;
+    private String state;
     private String address1;
     private String address2;
     private String address3;
@@ -52,6 +55,30 @@ public class ParticipantModel extends MetaModel {
 
     public void setAddress3(String address3) {
         this.address3 = address3;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getAnswerResponse() {

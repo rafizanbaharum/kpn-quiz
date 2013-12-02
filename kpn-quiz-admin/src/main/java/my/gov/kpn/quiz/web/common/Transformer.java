@@ -185,14 +185,20 @@ public class Transformer {
 
     public ParticipantModel transform(QaParticipant participant) {
         ParticipantModel model = new ParticipantModel();
+        QaStudent student = (QaStudent) participant.getUser().getActor();
         model.setId(participant.getId());
-        model.setName(participant.getUser().getActor().getName());
-        model.setAddress1(participant.getUser().getActor().getAddress1());
-        model.setAddress2(participant.getUser().getActor().getAddress2());
-        model.setAddress3(participant.getUser().getActor().getAddress3());
         model.setResult(participant.getResult());
         model.setSelected(participant.isSelected());
         model.setAnswerResponse(participant.getAnswerResponse());
+        if (null != student) {
+            model.setName(student.getName());
+            model.setAddress1(student.getAddress1());
+            model.setAddress2(student.getAddress2());
+            model.setAddress3(student.getAddress3());
+            model.setSchool(student.getSchoolName());
+            model.setDistrict(student.getDistrictName());
+            model.setState(student.getState().getName());
+        }
         return model;
     }
 }

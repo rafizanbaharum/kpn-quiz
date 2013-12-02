@@ -132,7 +132,8 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
 
         switch (sortType) {
             case SCHOOL:
-                query = session.createQuery("select a from QaParticipant a where " +
+                query = session.createQuery("select a from QaParticipant a " +
+                        "inner join a.user.actor b where " +
                         "a.quiz = :quiz " +
                         "and a.metadata.state = :state " +
                         "order by a.user.actor.schoolName asc, a.result desc");

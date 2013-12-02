@@ -116,7 +116,9 @@
                                 <tr>
                                     <th class="center">#</th>
                                     <th>Name</th>
-                                    <th class="center">Selected For Next Round</th>
+                                    <th>School</th>
+                                    <th>State</th>
+                                    <th class="center">Next Round?</th>
                                     <th class="center">Result</th>
                                     <th></th>
                                 </tr>
@@ -126,6 +128,8 @@
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${participant.name}</td>
+                                        <td class="hidden-xs">${participant.school}</td>
+                                        <td class="hidden-xs">${participant.state}</td>
                                         <td class="hidden-xs center">
                                             <i class=${participant.selected ? "icon-check": "icon-check-empty"}></i>
                                         </td>

@@ -35,8 +35,10 @@ public interface QaStudent extends QaActor {
 
     QaSchoolType getSchoolType();
 
+
     /**
-     * @param stateName
+     *
+     * @param state
      */
     void setState(QaState state);
 
