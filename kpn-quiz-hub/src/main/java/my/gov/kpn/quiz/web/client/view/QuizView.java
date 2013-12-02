@@ -162,7 +162,7 @@ public class QuizView extends View {
                 log.info("prev index: " + be.getPreviousQuestionIndex());
                 log.info("next index: " + be.getNextQuestionIndex());
                 if (be.getPreviousQuestionIndex() == -1) { // first time load
-                    updateCounter(1);
+                    updateCounter(0);
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
                     if (null != nextQuestion) loadAnswerIndex(nextQuestion);
                 } else { // subsequent load
@@ -170,7 +170,7 @@ public class QuizView extends View {
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
 
-                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(be.getNextQuestionIndex());
+                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(be.getPreviousQuestionIndex());
                     LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
                     switch (prevQuestion.getQuestionType()) {
                         case MULTIPLE_CHOICE:
@@ -229,7 +229,7 @@ public class QuizView extends View {
     }
 
     private void updateCounter(int nextQuestionIndex) {
-        counter.setHtml(nextQuestionIndex + "/" + cardPanel.getItemCount());
+        counter.setHtml((nextQuestionIndex + 1) + "/" + cardPanel.getItemCount());
     }
 
     private void updateStatus(String stat) {
@@ -548,6 +548,8 @@ public class QuizView extends View {
             if ((currentStep + 1) < cardPanel.getItemCount()) {
                 currentStep += 1;
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
+                log.info("currentstep: " + currentStep);
+                log.info("previoustep: " + previousStep);
                 cardPanel.fireEvent(
                         QuizEvents.QuizNavigate,
                         new QuizNavigateEvent(this, currentStep, previousStep)
@@ -560,9 +562,12 @@ public class QuizView extends View {
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
             int previousStep = currentStep;
-            if ((currentStep - 1) > 0) {
+            if ((currentStep - 1) >= 0) {
                 currentStep -= 1;
                 cardPanel.setActiveItem(cardPanel.getItem(currentStep));
+
+                log.info("currentstep: " + currentStep);
+                log.info("previoustep: " + previousStep);
                 cardPanel.fireEvent(
                         QuizEvents.QuizNavigate,
                         new QuizNavigateEvent(this, currentStep, previousStep)
