@@ -94,7 +94,8 @@
                                             <label class="control-label">
                                                 Username <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="username" placeholder="Username" cssClass="form-control"/>
+                                            <form:input path="username" placeholder="Username" cssClass="form-control"
+                                                     autocomplete="off"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -102,13 +103,15 @@
                                             <label class="control-label">
                                                 Password <span class="symbol required"></span>
                                             </label>
-                                            <form:password path="password" cssClass="form-control"/>
+                                            <form:password path="password" cssClass="form-control"
+                                                     autocomplete="off"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Confirm Password <span class="symbol required"></span>
                                             </label>
-                                            <form:password path="passwordAgain" cssClass="form-control"/>
+                                            <form:password path="passwordAgain" cssClass="form-control"
+                                                     autocomplete="off"/>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

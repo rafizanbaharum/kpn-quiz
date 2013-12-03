@@ -116,19 +116,20 @@
 
                     <div class="form-group">
  							<span class="input-icon">
- 								<input type="text" class="form-control" name="username" placeholder="Username">
+ 								<input type="text" class="form-control" name="username" placeholder="Username"
+                                        autocomplete="off">
  								<i class="icon-user"></i> </span>
                     </div>
                     <div class="form-group">
  							<span class="input-icon">
  								<input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Password">
+                                        placeholder="Password" autocomplete="off">
  								<i class="icon-lock"></i> </span>
                     </div>
                     <div class="form-group">
  							<span class="input-icon">
  								<input type="password" class="form-control" name="passwordAgain"
-                                        placeholder="Password Again">
+                                        placeholder="Password Again" autocomplete="off">
  								<i class="icon-lock"></i> </span>
                     </div>
                     <div class="form-actions">
