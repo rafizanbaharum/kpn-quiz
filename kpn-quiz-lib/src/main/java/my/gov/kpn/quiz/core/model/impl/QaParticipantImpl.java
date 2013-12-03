@@ -33,8 +33,6 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
     @JoinColumn(name = "USER_ID")
     private QaUser user;
 
-    // TODO: flatkan school, district, state here
-
     @Transient
     private boolean selected;
 

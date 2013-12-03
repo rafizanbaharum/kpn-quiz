@@ -4,4 +4,4 @@ GRANT ALL PRIVILEGES ON DATABASE quiz to quiz;
 
 
 
-psql -Upostgres
+psql -Upostgres;

@@ -133,7 +133,7 @@
                                                class="btn btn-primary" title="Add multiple choice question">Add Multiple
                                                 Choice</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/boolean"
-                                               class="btn btn-primary" title="Add boolean question">Add Boolean</a>
+                                               class="btn btn-primary" title="Add true/false question">Add True/False</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/subjective"
                                                class="btn btn-primary" title="Add subjective question">Add
                                                 Subjective</a>
