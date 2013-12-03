@@ -77,6 +77,10 @@ public class RegistrationController extends AbstractController {
     public String register(@ModelAttribute("registration") RegistrationModel registrationModel,
                            ModelMap model) {
 
+        if (registrationManager.isExists(registrationModel.getUsername())) {
+            return "register";
+        }
+
         if (!registrationModel.getPassword().equals(registrationModel.getPasswordAgain())) {
             return "register";
         }
