@@ -47,7 +47,7 @@
 
     <div class="main-content">
         <div class="container">
-            <jsp:include page="/secure/include/quiz_breadcrumb.jsp">
+            <jsp:include page="../include/quiz_breadcrumb.jsp">
                 <jsp:param name="BREADCRUMB" value="TODO"/>
                 <jsp:param name="TITLE" value="TODO"/>
             </jsp:include>

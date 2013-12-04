@@ -46,7 +46,7 @@
     <jsp:include page="../include/quiz_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
-            <jsp:include page="/secure/include/competition_breadcrumb.jsp">
+            <jsp:include page="../include/competition_breadcrumb.jsp">
                 <jsp:param name="BREADCRUMB" value="${COMPETITION_BREADCRUMB}"/>
                 <jsp:param name="TITLE" value="${COMPETITION_TITLE}"/>
             </jsp:include>

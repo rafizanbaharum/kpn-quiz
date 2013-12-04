@@ -37,9 +37,9 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="/secure/include/topbar.jsp" />
+<jsp:include page="../include/topbar.jsp" />
 <div class="main-container">
-    <jsp:include page="/secure/include/instructor_navbar.jsp" />
+    <jsp:include page="../include/instructor_navbar.jsp" />
     <div class="main-content">
         <div class="container">
             <div class="row">

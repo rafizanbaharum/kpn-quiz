@@ -37,13 +37,13 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="/secure/include/topbar.jsp" />
+<jsp:include page="../include/topbar.jsp" />
 <div class="main-container">
-    <jsp:include page="/secure/include/admin_navbar.jsp" />
+    <jsp:include page="../include/admin_navbar.jsp" />
     <div class="main-content">
         <div class="container">
 
-           <jsp:include page="/secure/include/admin_breadcrumb.jsp" />
+           <jsp:include page="../include/admin_breadcrumb.jsp" />
 
             <div class="row">
                 <div class="col-sm-6">
@@ -82,7 +82,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="/secure/include/footer.jsp" />
+<jsp:include page="../include/footer.jsp" />
 
 
 <!-- start: MAIN JAVASCRIPTS -->

@@ -79,11 +79,11 @@
     </div>
 </div>
 <div class="main-container">
-    <jsp:include page="/secure/include/participant_navbar.jsp"/>
+    <jsp:include page="../include/participant_navbar.jsp"/>
 
     <div class="main-content">
         <div class="container">
-            <jsp:include page="/secure/include/participant_breadcrumb.jsp">
+            <jsp:include page="../include/participant_breadcrumb.jsp">
                 <jsp:param name="BREADCRUMB" value="TODO"/>
                 <jsp:param name="TITLE" value="TODO"/>
             </jsp:include>

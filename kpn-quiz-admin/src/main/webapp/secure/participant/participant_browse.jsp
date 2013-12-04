@@ -23,16 +23,20 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -79,11 +83,11 @@
     </div>
 </div>
 <div class="main-container">
-    <jsp:include page="/secure/include/participant_navbar.jsp"/>
+    <jsp:include page="../include/participant_navbar.jsp"/>
 
     <div class="main-content">
         <div class="container">
-            <jsp:include page="/secure/include/participant_breadcrumb.jsp">
+            <jsp:include page="../include/participant_breadcrumb.jsp">
                 <jsp:param name="BREADCRUMB" value="TODO"/>
                 <jsp:param name="TITLE" value="TODO"/>
             </jsp:include>
@@ -100,6 +104,7 @@
                                   method="GET">
                                 <input type="hidden" name="page" value="${page}"/>
                                 <input type="hidden" name="quizId" value="${quizModel.id}"/>
+
                                 <div class="form-group">
                                     <select id="form-field-select-1" class="form-control" name="sortOption">
                                         <option value="">Please select</option>
