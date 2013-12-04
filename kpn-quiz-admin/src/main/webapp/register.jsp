@@ -48,14 +48,13 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="login example2">
-<div class="main-login col-sm-4 col-sm-offset-4">
-    <div class="logo"><h2>ASEAN QUIZ</h2></div>
+<div class="main-login col-sm-6 col-sm-offset-3">
+    <div class="col-sm-offset-2">
+        <div class="logo"><h2>ASEAN QUIZ</h2></div>
+    </div>
     <div class="box-register">
         <h3>Sign Up</h3>
 
-        <p>
-            Enter your personal details below:
-        </p>
         <c:if test="${started && !ended}">
             <form:form method="post" class="form-login" commandName="registration"
                        action="${pageContext.request.contextPath}/register">
@@ -64,80 +63,100 @@
                     <i class="icon-remove-sign"></i> You have some form errors. Please check below.
                 </div>
                 <fieldset>
-                    <div class="form-group">
-                        <form:input type="text" class="form-control" path="fullName" placeholder="Full Name"/>
+                    <div class="col-md-6">
+                        <p>
+                            Enter your personal details below:
+                        </p>
+
+                        <div class="form-group">
+                            <form:input type="text" class="form-control" path="fullName" placeholder="Full Name"/>
+                        </div>
+                        <div class="form-group">
+                            <form:input type="text" class="form-control" path="email" placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <form:input type="text" class="form-control" path="phone" placeholder="Phone"/>
+                        </div>
+                        <div class="form-group">
+                            <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
+                        </div>
+                        <div class="form-group">
+                            <form:select id="form-field-select-1" path="stateId" class="form-control">
+                                <form:option value="">Select state</form:option>
+                                <c:forEach items="${states}" var="state">
+                                    <form:option value='${state.key}'>${state.value}</form:option>
+                                </c:forEach>
+                            </form:select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <form:input type="text" class="form-control" path="email" placeholder="Email"/>
-                    </div>
-                    <div class="form-group">
-                        <form:input type="text" class="form-control" path="phone" placeholder="Phone"/>
-                    </div>
-                    <div class="form-group">
-                        <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
-                    </div>
-                    <div class="form-group">
-                        <form:select id="form-field-select-1" path="stateId" class="form-control">
-                            <form:option value="">Select state</form:option>
-                            <c:forEach items="${states}" var="state">
-                                <form:option value='${state.key}'>${state.value}</form:option>
-                            </c:forEach>
-                        </form:select>
-                    </div>
-                    <p>
+                    <div class="col-md-6"><p>
                         Enter your school details below:
                     </p>
 
-                    <div class="form-group">
- 							<span class="input-icon">
-                                 <form:select id="schoolType" path="schoolType" class="form-control">
-                                     <form:option value="">Type of school</form:option>
-                                     <c:forEach items="${schoolTypeMap}" var="schoolType">
-                                         <form:option value='${schoolType.key}'>${schoolType.value}</form:option>
-                                     </c:forEach>
-                                 </form:select>
-                            </span>
-                    </div>
-                    <div class="form-group">
- 							<span class="input-icon">
- 								<form:input type="text" class="form-control" path="schoolName"
-                                            placeholder="School Name"/>
- 								<i class="icon-sitemap"></i> </span>
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                                                 <form:select id="schoolType" path="schoolType"
+                                                                              class="form-control">
+                                                                     <form:option value="">Type of school</form:option>
+                                                                     <c:forEach items="${schoolTypeMap}"
+                                                                                var="schoolType">
+                                                                         <form:option
+                                                                                 value='${schoolType.key}'>${schoolType.value}</form:option>
+                                                                     </c:forEach>
+                                                                 </form:select>
+                                                            </span>
+                        </div>
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:input type="text" class="form-control"
+                                                                            path="schoolName"
+                                                                            placeholder="School Name"/>
+                                 								<i class="icon-sitemap"></i> </span>
+                        </div>
+
+                        <p>
+                            Enter your account details below:
+                        </p>
+
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:input type="text" class="form-control"
+                                                                            path="nricNo" placeholder="NRIC"
+                                                                            autocomplete="off"/>
+                                 								<i class="icon-user"></i> </span>
+                        </div>
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:password class="form-control" id="password"
+                                                                               path="password"
+                                                                               placeholder="Password"
+                                                                               autocomplete="off"/>
+                                 								<i class="icon-lock"></i> </span>
+                        </div>
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:password class="form-control" path="passwordAgain"
+                                                                               placeholder="Password Again"
+                                                                               autocomplete="off"/>
+                                 								<i class="icon-lock"></i> </span>
+                        </div>
                     </div>
 
-                    <p>
-                        Enter your account details below:
-                    </p>
-
-                    <div class="form-group">
- 							<span class="input-icon">
- 								<form:input type="text" class="form-control" path="nricNo" placeholder="NRIC"
-                                            autocomplete="off"/>
- 								<i class="icon-user"></i> </span>
-                    </div>
-                    <div class="form-group">
- 							<span class="input-icon">
- 								<form:password class="form-control" id="password" path="password"
-                                               placeholder="Password" autocomplete="off"/>
- 								<i class="icon-lock"></i> </span>
-                    </div>
-                    <div class="form-group">
- 							<span class="input-icon">
- 								<form:password class="form-control" path="passwordAgain"
-                                               placeholder="Password Again" autocomplete="off"/>
- 								<i class="icon-lock"></i> </span>
-                    </div>
                     <div class="form-actions">
-                        <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = 'gate/in'">
+                        <button type="button" class="btn btn-light-grey go-back"
+                                onclick="parent.location = 'gate/in'">
                             <i class="icon-circle-arrow-left"></i> Back
                         </button>
                         <button type="submit" class="btn btn-bricky pull-right">
                             Submit <i class="icon-circle-arrow-right"></i>
                         </button>
                     </div>
+
+
                 </fieldset>
             </form:form>
         </c:if>
+
 
         <c:if test="${started && ended}">
             <c:choose>
