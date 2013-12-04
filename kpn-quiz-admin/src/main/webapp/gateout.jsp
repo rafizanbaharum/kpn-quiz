@@ -84,7 +84,7 @@
 								<i class="icon-envelope"></i> </span>
                 </div>
                 <div class="form-actions">
-                    <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = '/gate/in'">
+                    <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = 'gate/in'">
                         <i class="icon-circle-arrow-left"></i> Back
                     </button>
                     <button type="submit" class="btn btn-bricky pull-right">

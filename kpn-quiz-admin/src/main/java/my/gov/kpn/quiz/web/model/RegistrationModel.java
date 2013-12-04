@@ -6,7 +6,7 @@ public class RegistrationModel extends MetaModel {
 
     private String username;
     private String fullname;
-    private String nric;
+    private String nricNo;
     private String email;
     private String password;
     private String passwordAgain;
@@ -126,11 +126,11 @@ public class RegistrationModel extends MetaModel {
     }
 
     public String getNricNo() {
-        return nric;
+        return nricNo;
     }
 
-    public void setNricNo(String nric) {
-        this.nric = nric;
+    public void setNricNo(String nricNo) {
+        this.nricNo = nricNo;
     }
 
     public Long getStateId() {

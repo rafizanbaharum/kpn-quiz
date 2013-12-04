@@ -97,10 +97,19 @@ public class StudentController extends AbstractController {
 
     @RequestMapping(value = "/add", method = {RequestMethod.POST})
     public String studentAdd(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
-        // TODO: check if username exist
+
+        // NRIC as username. Just copy it.
+        studentModel.setUsername(studentModel.getNric());
+
+        if (registrationManager.isExists(studentModel.getUsername())) {
+            model.addAttribute(studentModel);
+            model.addAttribute(MSG_ERROR, "User already exists");
+            return "secure/student/student_register";
+        }
 
         // check if password does not match
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
+            model.addAttribute(studentModel);
             model.addAttribute(MSG_ERROR, "Password does not match");
             return "secure/student/student_register";
         }
@@ -109,6 +118,7 @@ public class StudentController extends AbstractController {
         Integer currentYear = Calendar.getInstance().get(Calendar.YEAR);
         int diff = currentYear - year;
         if (diff > 16 || diff < 15) {
+            model.addAttribute(studentModel);
             model.addAttribute(MSG_ERROR, "Not allowed to register because of age restriction!");
             return "secure/student/student_register";
         }

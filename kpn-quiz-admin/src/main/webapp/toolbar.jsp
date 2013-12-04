@@ -17,7 +17,7 @@
                         <div class="dropdown">
                             <ul>
                                 <li>
-                                    <a href="/gate/in">Login</a>
+                                    <a href="${pageContext.request.contextPath}/gate/in">Login</a>
                                 </li>
                             </ul>
                         </div>

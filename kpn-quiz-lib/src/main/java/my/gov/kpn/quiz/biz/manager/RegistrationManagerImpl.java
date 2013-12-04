@@ -209,9 +209,8 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
     }
 
-
     public boolean isExists(String username) {
-        QaUser root = userDao.findByUsername(username);
-        return (root != null);
+        QaUser user = userDao.findByUsername(username);
+        return (user != null);
     }
 }

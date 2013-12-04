@@ -1,5 +1,10 @@
 var Register = function () {
     var runSetDefaultValidation = function () {
+        $.validator.addMethod('nricNo', function (value) {
+                return /^\d{12}$/.test(value);
+            },
+            'Please enter a valid NRIC no. wtihout dash. eg: 671218045678');
+
         $.validator.setDefaults({
             errorElement: "span", // contain the error msg in a small tag
             errorClass: 'help-block',
@@ -42,50 +47,60 @@ var Register = function () {
         });
     };
     var runRegisterValidator = function () {
-        var form3 = $('.form-register');
+        var form3 = $('.form-login');
         var errorHandler3 = $('.errorHandler', form3);
         form3.validate({
             rules: {
                 fullName: {
                     minlength: 2,
                     required: true
+                },
+                address1: {
+                    minlength: 2,
+                    required: true
+                },
+                city: {
+                    minlength: 2,
+                    required: true
+                },
+                phone: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                stateId: {
+                    required: true
+                },
+                schoolName: {
+                    minlength: 2,
+                    required: true
+                },
+                schoolType: {
+                    required: true
+                },
+                username: {
+                    minlength: 2,
+                    required: true
+                },
+                nricNo: {
+                    required: true,
+                    nricNo: true
+                },
+                password: {
+                    minlength: 6,
+                    required: true
+                },
+                passwordAgain: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#password"
                 }
-                /*
-                 address1: {
-                 minlength: 2,
-                 required: true
-                 },
-                 city: {
-                 minlength: 2,
-                 required: true
-                 },
-                 gender: {
-                 required: true
-                 },
-                 email: {
-                 required: true
-                 },
-                 username: {
-                 minlength: 2,
-                 required: true
-                 },
-                 password: {
-                 minlength: 6,
-                 required: true
-                 },
-                 passwordAgain: {
-                 required: true,
-                 minlength: 5,
-                 equalTo: "#password"
-                 }
-                 agree: {
-                 minlength: 1,
-                 required: true
-                 }
-                 */
             },
             submitHandler: function (form) {
                 errorHandler3.hide();
+                form.submit();
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 errorHandler3.show();

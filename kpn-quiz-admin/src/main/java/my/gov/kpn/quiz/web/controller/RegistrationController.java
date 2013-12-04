@@ -76,18 +76,25 @@ public class RegistrationController extends AbstractController {
     @RequestMapping(method = {RequestMethod.POST})
     public String register(@ModelAttribute("registration") RegistrationModel registrationModel,
                            ModelMap model) {
+        // NRIC as username. Just copy it.
+        registrationModel.setUsername(registrationModel.getNricNo());
 
         if (registrationManager.isExists(registrationModel.getUsername())) {
+            model.addAttribute(registrationModel);
+            model.addAttribute(MSG_ERROR, "User already exists");
             return "register";
         }
 
         if (!registrationModel.getPassword().equals(registrationModel.getPasswordAgain())) {
+            model.addAttribute(registrationModel);
+            model.addAttribute(MSG_ERROR, "Password does not match");
             return "register";
         }
 
         registrationManager.registerInstructor(registrationModel.getUsername(), registrationModel.getPassword(),
-                registrationModel.getFullName(), registrationModel.getNricNo(), registrationModel.getEmail(), registrationModel.getPhone(), registrationModel.getFax(),
-                registrationModel.getStateId(), registrationModel.getSchoolName(), Integer.parseInt(registrationModel.getSchoolType()));
+                registrationModel.getFullName(), registrationModel.getNricNo(), registrationModel.getEmail(),
+                registrationModel.getPhone(), registrationModel.getFax(), registrationModel.getStateId(),
+                registrationModel.getSchoolName(), Integer.parseInt(registrationModel.getSchoolType()));
         return "registered";
     }
 

@@ -27,16 +27,20 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -53,42 +57,32 @@
             Enter your personal details below:
         </p>
         <c:if test="${started && !ended}">
-            <form method="post" class="form-login" action="${pageContext.request.contextPath}/register">
+            <form:form method="post" class="form-login" commandName="registration"
+                       action="${pageContext.request.contextPath}/register">
+                <jsp:include page="secure/include/msg.jsp"/>
                 <div class="errorHandler alert alert-danger no-display">
                     <i class="icon-remove-sign"></i> You have some form errors. Please check below.
                 </div>
                 <fieldset>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="fullName" placeholder="Full Name">
+                        <form:input type="text" class="form-control" path="fullName" placeholder="Full Name"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Email">
+                        <form:input type="text" class="form-control" path="email" placeholder="Email"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="phone" placeholder="Phone">
+                        <form:input type="text" class="form-control" path="phone" placeholder="Phone"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="address1" placeholder="Address">
+                        <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
                     </div>
                     <div class="form-group">
-                        <select id="form-field-select-1" name="stateId" class="form-control">
-                            <option value="">&nbsp;</option>
+                        <form:select id="form-field-select-1" path="stateId" class="form-control">
+                            <form:option value="">Select state</form:option>
                             <c:forEach items="${states}" var="state">
-                                <option value='${state.key}'>${state.value}</option>
+                                <form:option value='${state.key}'>${state.value}</form:option>
                             </c:forEach>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div>
-                            <label class="radio-inline">
-                                <input type="radio" class="grey" value="F" name="gender">
-                                Female
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" class="grey" value="M" name="gender">
-                                Male
-                            </label>
-                        </div>
+                        </form:select>
                     </div>
                     <p>
                         Enter your school details below:
@@ -96,17 +90,18 @@
 
                     <div class="form-group">
  							<span class="input-icon">
-                                 <select id="schoolType" name="schoolType" class="form-control">
-                                     <option value="">&nbsp;</option>
+                                 <form:select id="schoolType" path="schoolType" class="form-control">
+                                     <form:option value="">Type of school</form:option>
                                      <c:forEach items="${schoolTypeMap}" var="schoolType">
-                                         <option value='${schoolType.key}'>${schoolType.value}</option>
+                                         <form:option value='${schoolType.key}'>${schoolType.value}</form:option>
                                      </c:forEach>
-                                 </select>
+                                 </form:select>
                             </span>
                     </div>
                     <div class="form-group">
  							<span class="input-icon">
- 								<input type="text" class="form-control" name="schoolName" placeholder="School Name">
+ 								<form:input type="text" class="form-control" path="schoolName"
+                                            placeholder="School Name"/>
  								<i class="icon-sitemap"></i> </span>
                     </div>
 
@@ -116,24 +111,24 @@
 
                     <div class="form-group">
  							<span class="input-icon">
- 								<input type="text" class="form-control" name="username" placeholder="Username"
-                                        autocomplete="off">
+ 								<form:input type="text" class="form-control" path="nricNo" placeholder="NRIC"
+                                            autocomplete="off"/>
  								<i class="icon-user"></i> </span>
                     </div>
                     <div class="form-group">
  							<span class="input-icon">
- 								<input type="password" class="form-control" id="password" name="password"
-                                        placeholder="Password" autocomplete="off">
+ 								<form:password class="form-control" id="password" path="password"
+                                               placeholder="Password" autocomplete="off"/>
  								<i class="icon-lock"></i> </span>
                     </div>
                     <div class="form-group">
  							<span class="input-icon">
- 								<input type="password" class="form-control" name="passwordAgain"
-                                        placeholder="Password Again" autocomplete="off">
+ 								<form:password class="form-control" path="passwordAgain"
+                                               placeholder="Password Again" autocomplete="off"/>
  								<i class="icon-lock"></i> </span>
                     </div>
                     <div class="form-actions">
-                        <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = '/gate/in'">
+                        <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = 'gate/in'">
                             <i class="icon-circle-arrow-left"></i> Back
                         </button>
                         <button type="submit" class="btn btn-bricky pull-right">
@@ -141,14 +136,15 @@
                         </button>
                     </div>
                 </fieldset>
-            </form>
+            </form:form>
         </c:if>
 
         <c:if test="${started && ended}">
             <c:choose>
                 <c:when test="${!started}">
                     <div class="errorHandler alert alert-danger">
-                        <i class="icon-remove-sign"></i> Sorry the registration has not started yet. Please come back again.
+                        <i class="icon-remove-sign"></i> Sorry the registration has not started yet. Please come back
+                        again.
                     </div>
                 </c:when>
             </c:choose>
@@ -182,7 +178,7 @@
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/login.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/register.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
 
@@ -190,7 +186,7 @@
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        Login.init();
+        Register.init();
     });
 </script>
 </body>
