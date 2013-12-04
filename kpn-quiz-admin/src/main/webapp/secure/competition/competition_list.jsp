@@ -74,30 +74,30 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="competition" items="${competitionModels}" varStatus="idx">
+                                <c:forEach var="studentModel" items="${competitionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs center"><fmt:formatDate type="date" pattern="dd/MM/yyyy"
-                                                                              value='${competition.startDate}'/></td>
+                                                                              value='${studentModel.startDate}'/></td>
                                         <td class="hidden-xs center"><fmt:formatDate type="date" pattern="dd/MM/yyyy"
-                                                            value='${competition.endDate}'/></td>
-                                        <td class="hidden-xs center">${competition.year}</td>
-                                        <td class="hidden-xs center"><i class=${competition.locked ? "icon-check": "icon-check-empty"}></i></td>
+                                                            value='${studentModel.endDate}'/></td>
+                                        <td class="hidden-xs center">${studentModel.year}</td>
+                                        <td class="hidden-xs center"><i class=${studentModel.locked ? "icon-check": "icon-check-empty"}></i></td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/competition/view/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/view/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i
                                                         class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/competition/edit/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/edit/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/competition/reset/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/reset/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Reset"><i
                                                         class="icon-refresh"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/competition/remove/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/competition/remove/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>

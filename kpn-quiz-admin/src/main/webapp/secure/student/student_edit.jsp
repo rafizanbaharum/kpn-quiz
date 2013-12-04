@@ -97,12 +97,6 @@
                                                         cssClass="form-control"/>
 
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Username <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="username" placeholder="Username" cssClass="form-control"/>
-                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -177,5 +171,13 @@
 </div>
 <jsp:include page="../include/footer.jsp"/>
 <jsp:include page="../include/footer_script.jsp"/>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        FormValidator.init();
+    });
+</script>
 </body>
 </html>

@@ -150,6 +150,10 @@ public class StudentController extends AbstractController {
     @RequestMapping(value = "/update", method = {RequestMethod.POST})
     public String studentUpdate(@ModelAttribute("studentModel") StudentModel studentModel,
                                 ModelMap model) {
+
+        // NRIC as username. Just copy it.
+        studentModel.setUsername(studentModel.getNric());
+
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
         Date dob = extractDob(studentModel);
 

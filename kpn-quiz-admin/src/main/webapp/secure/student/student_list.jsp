@@ -70,27 +70,27 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="competition" items="${studentModels}" varStatus="idx">
+                                <c:forEach var="studentModel" items="${studentModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${competition.name}</td>
-                                        <td>${competition.nric}</td>
-                                        <td class="hidden-xs">${competition.username}</td>
+                                        <td class="hidden-xs">${studentModel.name}</td>
+                                        <td>${studentModel.nric}</td>
+                                        <td class="hidden-xs">${studentModel.username}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/student/view/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/student/view/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i
                                                         class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/edit/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/student/edit/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i
                                                         class="icon-edit"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/reset/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/student/reset/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Reset"><i
                                                         class="icon-refresh"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Remove"><i
                                                         class="icon-remove icon-white"></i></a>

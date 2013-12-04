@@ -164,18 +164,18 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="competition" items="${questionModels}" varStatus="idx">
+                                <c:forEach var="studentModel" items="${questionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${competition.statementAbbreviated}</td>
-                                        <td class="hidden-xs">${competition.questionTypeString}</td>
-                                        <td class="hidden-xs">${competition.difficulty}</td>
+                                        <td class="hidden-xs">${studentModel.statementAbbreviated}</td>
+                                        <td class="hidden-xs">${studentModel.questionTypeString}</td>
+                                        <td class="hidden-xs">${studentModel.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/question/view/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/question/view/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${competition.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${studentModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
                                             </div>

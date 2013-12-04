@@ -173,5 +173,13 @@
 </div>
 <jsp:include page="../include/footer.jsp"/>
 <jsp:include page="../include/footer_script.jsp"/>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        FormValidator.init();
+    });
+</script>
 </body>
 </html>
