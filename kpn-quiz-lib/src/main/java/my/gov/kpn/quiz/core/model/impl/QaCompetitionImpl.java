@@ -23,7 +23,7 @@ public class QaCompetitionImpl implements QaCompetition, Serializable {
     @SequenceGenerator(name = "SEQ_QA_CMPN", sequenceName = "SEQ_QA_CMPN", allocationSize = 1)
     private Long id;
 
-    @Column(name = "YEAR")
+    @Column(name = "YEAR", unique = true)
     private Integer year;
 
     @Column(name = "START_DATE")

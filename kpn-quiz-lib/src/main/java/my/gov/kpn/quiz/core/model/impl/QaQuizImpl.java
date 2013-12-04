@@ -33,7 +33,7 @@ public class QaQuizImpl implements QaQuiz, Serializable {
     @Column(name = "CURRENT")
     private boolean current;
 
-    @Column(name = "ROUND")
+    @Column(name = "ROUND", unique = true)
     private Integer round;
 
     @Column(name = "START_DATE")
