@@ -52,7 +52,7 @@
             Please enter your name and password to log in.
         </p>
 
-        <form method="post" class="form-login" action="/login">
+        <form method="post" class="form-login" action="${pageContext.request.contextPath}/login">
             <c:if test="${not empty param.login_error}">
                 <div class="errorHandler alert alert-danger">
                     <i class="icon-remove-sign"></i>
