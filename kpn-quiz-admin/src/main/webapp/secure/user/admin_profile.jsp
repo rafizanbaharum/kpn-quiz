@@ -20,26 +20,30 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
-    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/fonts/style.css">
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/main-responsive.css">
-    <link rel="stylesheet" href="/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
-    <link rel="stylesheet" href="/assets/css/theme_light.css" id="skin_color">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="/secure/include/topbar.jsp" />
+<jsp:include page="../include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="/secure/include/admin_navbar.jsp" />
+    <jsp:include page="../include/admin_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
             <div class="row">
@@ -132,20 +136,20 @@
 
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
-<script src="/assets/plugins/respond.min.js"></script>
-<script src="/assets/plugins/excanvas.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
 <![endif]-->
-<script src="/assets/js/jquery-1.10.2.min.js"></script>
-<script src="/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="/assets/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="/assets/js/index.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {

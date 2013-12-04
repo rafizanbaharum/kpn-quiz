@@ -22,28 +22,28 @@
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico"/>
-    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/fonts/style.css">
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/main-responsive.css">
-    <link rel="stylesheet" href="/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
-    <link rel="stylesheet" href="/assets/css/theme_light.css" id="skin_color">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico"/>
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <link rel="stylesheet" href="/assets/plugins/summernote/build/summernote.css">
-    <link rel="stylesheet" href="/assets/plugins/ckeditor/contents.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/summernote/build/summernote.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/ckeditor/contents.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="/secure/include/topbar.jsp"/>
+<jsp:include page="../include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="/secure/include/quiz_navbar.jsp"/>
+    <jsp:include page="../include/quiz_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
             <jsp:include page="/secure/include/competition_breadcrumb.jsp">
@@ -156,7 +156,7 @@
         </div>
     </div>
 </div>
-<jsp:include page="/secure/include/footer.jsp"/>
-<jsp:include page="/secure/include/footer_script.jsp"/>
+<jsp:include page="../include/footer.jsp"/>
+<jsp:include page="../include/footer_script.jsp"/>
 </body>
 </html>

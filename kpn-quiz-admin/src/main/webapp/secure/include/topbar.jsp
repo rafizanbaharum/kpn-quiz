@@ -12,7 +12,7 @@
             <ul class="nav navbar-right">
                 <li class="dropdown current-user">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img src="/assets/images/logo/profile_logo_small.png" class="circle-img" alt="">
+                        <img src="${pageContext.request.contextPath}/assets/images/logo/profile_logo_small.png" class="circle-img" alt="">
                         <span class="username">${currentUser.name}</span>
                         <i class="clip-chevron-down"></i>
                     </a>
