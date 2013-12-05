@@ -48,82 +48,20 @@
 </head>
 <body class="login example2">
 <div class="main-login col-sm-4 col-sm-offset-4">
-    <div class="col-sm-offset-1">
-        <div class="logo"><h2>ASEAN QUIZ</h2></div>
-    </div>
+    <div class="logo"><h2>ASEAN QUIZ</h2></div>
     <div class="box-login">
-        <h3>Sign in to your account</h3>
+        <h3>Thank you for your request</h3>
 
-        <p>
-            Please enter your name and password to log in.
-        </p>
+        <p>An email has been sent to you with your password.</p>
 
-        <form method="post" class="form-login" action="${pageContext.request.contextPath}/login">
-            <c:if test="${not empty param.login_error}">
-                <div class="errorHandler alert alert-danger">
-                    <i class="icon-remove-sign"></i>
-                    Your login attempt was not successful, try again.<br/>
-                    Reason: ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}
-                </div>
-            </c:if>
-            <div class="errorHandler alert alert-danger no-display">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
+        <fieldset>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-bricky pull-right"
+                        onclick="parent.location='../gate/in'">
+                    Login <i class="icon-circle-arrow-right"></i>
+                </button>
             </div>
-            <fieldset>
-                <div class="form-group">
-							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="Username">
-								<i class="icon-user"></i> </span>
-                </div>
-                <div class="form-group form-actions">
-							<span class="input-icon">
-								<input type="password" class="form-control password" name="password"
-                                       placeholder="Password">
-								<i class="icon-lock"></i>
-								<a class="forgot" href="#">
-                                    I forgot my password
-                                </a> </span>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-bricky pull-right">
-                        Login <i class="icon-circle-arrow-right"></i>
-                    </button>
-                </div>
-                <div class="new-account">
-                    Don't have an account yet?
-                    <a href="${pageContext.request.contextPath}/register" class="register">
-                        Create an account
-                    </a>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-    <div class="box-forgot">
-        <h3>Forget Password?</h3>
-
-        <p>
-            Enter your e-mail address below to reset your password.
-        </p>
-
-        <form method="post" class="form-forgot" action="${pageContext.request.contextPath}/register/forgot_password">
-            <div class="errorHandler alert alert-danger no-display">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-            </div>
-            <fieldset>
-                <div class="form-group">
-							<span class="input-icon">
-								<input type="text" class="form-control" name="nricNo" placeholder="NRIC">
-								<i class="icon-envelope"></i> </span>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = 'gate/in'">
-                        <i class="icon-circle-arrow-left"></i> Back
-                    </button>
-                    <button type="submit" class="btn btn-bricky pull-right">
-                        Submit <i class="icon-circle-arrow-right"></i>
-                    </button>
-                </div>
-            </fieldset>
+        </fieldset>
         </form>
     </div>
     <div class="copyright">
@@ -157,3 +95,4 @@
 </body>
 <!-- end: BODY -->
 </html>
+

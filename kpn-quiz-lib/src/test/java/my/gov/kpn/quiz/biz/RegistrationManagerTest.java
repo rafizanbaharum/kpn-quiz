@@ -10,19 +10,19 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Config.class})
+@RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class RegistrationManagerTest  extends AbstractTransactionalJUnit4SpringContextTests {
+public class RegistrationManagerTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
     private RegistrationManager registrationManager;
 
 
     @Test
-    public void create(){
+    public void create() {
 
-        registrationManager.registerInstructor("ali","abc123","ali","abc123","mail@mail.com"
-                ,"fax","phone",2L,"schoolName", 0);
+        registrationManager.registerInstructor("ali", "abc123", "ali", "abc123", "mail@mail.com"
+                , "fax", "phone", 2L, "schoolName", 0);
     }
 }

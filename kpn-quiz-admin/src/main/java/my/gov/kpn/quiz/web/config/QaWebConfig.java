@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -27,7 +29,7 @@ import java.util.Properties;
 public class QaWebConfig {
 
     @Autowired
-    private Environment environment;
+    private Environment env;
 
     @Bean
     public SessionFactory sessionFactory() {
@@ -71,10 +73,10 @@ public class QaWebConfig {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUsername(environment.getProperty("db.username"));
-        dataSource.setPassword(environment.getProperty("db.password"));
-        dataSource.setUrl(environment.getProperty("db.url"));
-        dataSource.setDriverClassName(environment.getProperty("db.driver"));
+        dataSource.setUsername(env.getProperty("db.username"));
+        dataSource.setPassword(env.getProperty("db.password"));
+        dataSource.setUrl(env.getProperty("db.url"));
+        dataSource.setDriverClassName(env.getProperty("db.driver"));
         dataSource.setInitialSize(10);
         dataSource.setMaxActive(5);
         dataSource.setMaxWait(5000);
@@ -89,4 +91,22 @@ public class QaWebConfig {
 
         return messageSource;
     }
+
+    @Bean
+    public JavaMailSender mailSender() {
+        Properties properties = new Properties();
+        properties.put("mail.debug", env.getProperty("mail.debug"));
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost(env.getProperty("mail.host"));
+        mailSender.setPort(Integer.parseInt(env.getProperty("mail.port")));
+        mailSender.setProtocol(env.getProperty("mail.protocol"));
+        mailSender.setUsername(env.getProperty("mail.username"));
+        mailSender.setPassword(env.getProperty("mail.password"));
+        mailSender.setJavaMailProperties(properties);
+        return mailSender;
+    }
+
 }

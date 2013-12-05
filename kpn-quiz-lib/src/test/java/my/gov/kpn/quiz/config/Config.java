@@ -8,6 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -27,7 +29,7 @@ import java.util.Properties;
 public class Config {
 
     @Autowired
-    private Environment environment;
+    private Environment env;
 
     @Bean
     public SessionFactory sessionFactory() {
@@ -80,5 +82,22 @@ public class Config {
         dataSource.setMaxActive(5);
         dataSource.setMaxWait(5000);
         return dataSource;
+    }
+
+    @Bean
+    public JavaMailSender mailSender() {
+        Properties properties = new Properties();
+        properties.put("mail.debug", env.getProperty("mail.debug"));
+        properties.put("mail.smtp.auth", env.getProperty("mail.smtp.auth"));
+        properties.put("mail.smtp.starttls.enable", env.getProperty("mail.smtp.starttls.enable"));
+
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost(env.getProperty("mail.host"));
+        mailSender.setPort(Integer.parseInt(env.getProperty("mail.port")));
+        mailSender.setProtocol(env.getProperty("mail.protocol"));
+        mailSender.setUsername(env.getProperty("mail.username"));
+        mailSender.setPassword(env.getProperty("mail.password"));
+        mailSender.setJavaMailProperties(properties);
+        return mailSender;
     }
 }
