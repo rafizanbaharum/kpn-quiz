@@ -61,7 +61,7 @@
                             <h2><i class="icon-edit-sign teal"></i> EDIT</h2>
 
                             <hr>
-                            <form:form id="form" commandName="studentModel"
+                            <form:form id="form_student_edit" commandName="studentModel"
                                        action="${pageContext.request.contextPath}/secure/student/update"
                                        method="POST">
                                 <form:hidden path="id"/>

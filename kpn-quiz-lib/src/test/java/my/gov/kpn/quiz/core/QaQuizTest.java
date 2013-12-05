@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.*;
 import org.hibernate.SessionFactory;
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,8 +59,8 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
         QaCompetition competition = new QaCompetitionImpl();
         competition.setLocked(false);
         competition.setYear(2013);
-        competition.setStartDate(new Date()); // TODO Scenario?
-        competition.setEndDate(new Date());
+        competition.setStartDate(new LocalDate(2013, 1, 1).toDate()); // TODO Scenario?
+        competition.setEndDate(new LocalDate(2013, 12, 1).toDate());
         competitionDao.save(competition, root);
 
         QaQuiz quiz1 = new QaQuizImpl();

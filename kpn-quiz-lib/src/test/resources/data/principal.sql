@@ -17,8 +17,8 @@ insert into QA_ACTR (ID, ACTOR_TYPE, NAME, NRIC_NO, ADDRESS1, ADDRESS2, ADDRESS3
 values (0, 2, 'System Root', '000000000000', 'Kementerian Penerangan', 'Putrajaya', 'WPKL', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
 insert into QA_SPPT(ID) values(0);
 update QA_USER set ACTOR_ID = 0 where id = 0;
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(1, 0, 1, 1, 1, CURRENT_TIMESTAMP );
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(2, 1, 1, 1, 1, CURRENT_TIMESTAMP );
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(1, 0, 0, 1, 1, CURRENT_TIMESTAMP );
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(2, 1, 0, 1, 1, CURRENT_TIMESTAMP );
 
 
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (1, '1111111111', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
@@ -42,9 +42,13 @@ update QA_USER set ACTOR_ID = 2 where id = 2;
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(5, 1, 1, 1, 1, CURRENT_TIMESTAMP );
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(6, 1, 1, 1, 1, CURRENT_TIMESTAMP );
 
-setval('SEQ_QA_PCPL', 3, true);
-setval('SEQ_QA_ACTR', 3, true);
-setval('SEQ_QA_PCPL_ROLE', 7, true);
+ALTER SEQUENCE SEQ_QA_PCPL START WITH 3;
+ALTER SEQUENCE SEQ_QA_ACTR START WITH 3;
+ALTER SEQUENCE SEQ_QA_PCPL_ROLE START WITH 3;
+
+SELECT c.relname FROM pg_class c WHERE c.relkind = 'S';
+
+select 'select ''' || relname || ''' as sequence, last_value from ' || relname || ' union' FROM pg_catalog.pg_class c WHERE c.relkind IN ('S','');
 
 
 
