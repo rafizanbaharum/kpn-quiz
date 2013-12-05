@@ -35,8 +35,7 @@ public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTe
 
     @Before
     public void setUp() {
-
-        root = userDao.findByActor(0L);
+        root = userDao.findById(0L);
     }
 
     @Test

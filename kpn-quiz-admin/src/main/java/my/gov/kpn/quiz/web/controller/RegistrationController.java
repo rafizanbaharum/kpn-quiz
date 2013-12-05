@@ -83,9 +83,8 @@ public class RegistrationController extends AbstractController {
     }
 
     @RequestMapping(value = "/validate/", method = RequestMethod.GET)
-    public
     @ResponseBody
-    Boolean validateUsername(@RequestParam(value = "nricNo") String username, ModelMap model) {
+    public Boolean validateUsername(@RequestParam(value = "nricNo") String username, ModelMap model) {
         return !registrationManager.isExists(username);
     }
 
