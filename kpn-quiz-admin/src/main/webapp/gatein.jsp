@@ -102,7 +102,7 @@
         <h3>Forget Password?</h3>
 
         <p>
-            Enter your e-mail address below to reset your password.
+            Enter I/C no. below to reset your password.
         </p>
 
         <form method="post" class="form-forgot" action="${pageContext.request.contextPath}/register/forgot_password">
@@ -116,7 +116,7 @@
 								<i class="icon-envelope"></i> </span>
                 </div>
                 <div class="form-actions">
-                    <button type="button" class="btn btn-light-grey go-back" onclick="parent.location = 'gate/in'">
+                    <button type="button" class="btn btn-light-grey go-back">
                         <i class="icon-circle-arrow-left"></i> Back
                     </button>
                     <button type="submit" class="btn btn-bricky pull-right">
