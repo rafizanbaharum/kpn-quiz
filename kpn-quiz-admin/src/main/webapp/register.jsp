@@ -56,7 +56,7 @@
         <h3>Sign Up</h3>
 
         <c:if test="${started && !ended}">
-            <form:form method="post" class="form-login" commandName="registration"
+            <form:form method="post" class="form-register" commandName="registration"
                        action="${pageContext.request.contextPath}/register">
                 <jsp:include page="secure/include/msg.jsp"/>
                 <div class="errorHandler alert alert-danger no-display">
@@ -197,7 +197,7 @@
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/register.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
 
@@ -205,7 +205,7 @@
 <script>
     jQuery(document).ready(function () {
         Main.init();
-        Register.init();
+        Login.init();
     });
 </script>
 </body>
