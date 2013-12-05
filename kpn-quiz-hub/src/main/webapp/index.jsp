@@ -55,7 +55,8 @@
         <h3>Sign in to your account</h3>
 
         <p>
-            Please enter your name and password to log in.
+            You must be registered as a student to enter this competition.
+            Please enter your NRIC NO and password to log in.
         </p>
 
         <form method="post" class="form-login" action="${pageContext.request.contextPath}/login">
