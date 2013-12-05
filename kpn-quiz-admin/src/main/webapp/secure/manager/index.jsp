@@ -39,10 +39,10 @@
 <body class="footer-fixed layout-boxed">
 <jsp:include page="../include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="../include/instructor_navbar.jsp"/>
+    <jsp:include page="../include/manage_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
-            <jsp:include page="../include/instructor_breadcrumb.jsp"/>
+            <jsp:include page="../include/manage_breadcrumb.jsp"/>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="core-box">
