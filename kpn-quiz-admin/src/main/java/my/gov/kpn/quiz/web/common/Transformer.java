@@ -218,7 +218,9 @@ public class Transformer {
 
     public InstructorModel transform(QaInstructor instructor) {
         InstructorModel model = new InstructorModel();
+        QaUser user = instructorManager.findUserByActor(instructor);
         model.setId(instructor.getId());
+        model.setUsername(user.getUsername());
         model.setName(instructor.getName());
         model.setAddress1(instructor.getAddress1());
         model.setAddress2(instructor.getAddress2());

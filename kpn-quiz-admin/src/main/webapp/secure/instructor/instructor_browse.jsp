@@ -39,10 +39,6 @@
           href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
-    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/summernote/build/summernote.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/ckeditor/contents.css">
-    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -103,6 +99,7 @@
                                 <thead>
                                 <tr>
                                     <th class="center">#</th>
+                                    <th>Username</th>
                                     <th>Name</th>
                                     <th>School</th>
                                     <th>State</th>
@@ -113,6 +110,7 @@
                                 <c:forEach var="instructor" items="${instructorModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
+                                        <td class="hidden-xs">${instructor.username}</td>
                                         <td class="hidden-xs">${instructor.name}</td>
                                         <td class="hidden-xs">${instructor.schoolName}</td>
                                         <td class="hidden-xs">${instructor.stateName}</td>

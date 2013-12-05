@@ -2,6 +2,7 @@ package my.gov.kpn.quiz.web.model;
 
 public class ActorModel extends MetaModel {
 
+    private String username;
     private String name;
     private String nricNo;
     private String address1;
@@ -9,6 +10,14 @@ public class ActorModel extends MetaModel {
     private String address3;
     private String phone;
     private String fax;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getName() {
         return name;
@@ -48,5 +57,21 @@ public class ActorModel extends MetaModel {
 
     public void setAddress3(String address3) {
         this.address3 = address3;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
     }
 }

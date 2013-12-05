@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -37,7 +36,7 @@ public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTe
     @Before
     public void setUp() {
 
-        root = userDao.findByUsername("root");
+        root = userDao.findByUsername("administrator");
     }
 
     @Test
@@ -50,8 +49,6 @@ public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTe
         instructor.setPhone("phone");
         instructor.setFax("fax");
         instructor.setState(stateDao.findByCode("01"));
-//            instructor.setStateName(stateId);
-//            instructor.setDistrictName(districtId);
         instructor.setSchoolName("schoolName");
         actorDao.save(instructor, root);
 

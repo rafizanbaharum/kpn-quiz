@@ -50,15 +50,28 @@ public class RegistrationController extends AbstractController {
     private CompetitionManager competitionManager;
 
     private enum SchoolType {
+        SMK("SMK"),
+        PRIVATE("PRIVATE"),
+        SBP("SBP"),
+        SMK_TEKNIK("SMK TEKNIK"),
+        SMKJ_C("SMKJ(C)"),
+        SMKJ_T("SMKJ(T)"),
+        SMA("SMA"),
+        MRSM("MRSM");
 
-        SMK,
-        PRIVATEW,
-        SBP,
-        SMK_TEKNIK,
-        SMKJ_C,
-        SMKJ_T,
-        SMA,
-        MRSM;
+        private String description;
+
+        private SchoolType(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
     }
 
     @RequestMapping(method = {RequestMethod.GET})
@@ -103,7 +116,7 @@ public class RegistrationController extends AbstractController {
     public Map<String, String> schoolTypeMap() {
         Map<String, String> map = new HashMap<String, String>();
         for (SchoolType type : SchoolType.values()) {
-            map.put(String.valueOf(type.ordinal()), type.name());
+            map.put(String.valueOf(type.ordinal()), type.getDescription());
         }
         return map;
     }

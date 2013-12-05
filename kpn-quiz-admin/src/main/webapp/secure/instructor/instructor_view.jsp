@@ -41,10 +41,6 @@
           href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
-    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/summernote/build/summernote.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/ckeditor/contents.css">
-    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
 <jsp:include page="../include/topbar.jsp"/>
@@ -77,6 +73,13 @@
                                                 Name <span class="symbol required"></span>
                                             </label>
                                             <form:input path="name"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Username <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="username"
                                                         cssClass="form-control" readonly="true"/>
                                         </div>
                                         <div class="form-group">

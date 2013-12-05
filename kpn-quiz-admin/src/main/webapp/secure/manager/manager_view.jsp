@@ -33,10 +33,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
-    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/summernote/build/summernote.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/ckeditor/contents.css">
-    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -341,8 +337,6 @@
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/summernote/build/summernote.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/ckeditor/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/ckeditor/adapters/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/form-validation.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->

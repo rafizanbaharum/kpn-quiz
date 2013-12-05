@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class StudentModel extends ActorModel {
 
-    private String username;
     private String password;
     private String passwordAgain;
     private Date dob;
@@ -66,7 +65,7 @@ public class StudentModel extends ActorModel {
 
     public void setDob(Date dob) {
         this.dob = dob;
-        if(null != dob) dobFormatted = format.format(dob);
+        if (null != dob) dobFormatted = format.format(dob);
     }
 
     public String getDob_mm() {
@@ -83,14 +82,6 @@ public class StudentModel extends ActorModel {
 
     public void setDob_yyyy(String dob_yyyy) {
         this.dob_yyyy = dob_yyyy;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getSchoolName() {

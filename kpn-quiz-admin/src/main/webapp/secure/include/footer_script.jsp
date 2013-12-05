@@ -14,8 +14,6 @@
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/summernote/build/summernote.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/ckeditor/ckeditor.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/ckeditor/adapters/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/form-validation.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->

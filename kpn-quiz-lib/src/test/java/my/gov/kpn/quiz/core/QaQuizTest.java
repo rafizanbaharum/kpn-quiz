@@ -48,7 +48,7 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Before
     public void setUp() {
-        root = userDao.findByUsername("root");
+        root = userDao.findByUsername("administrator");
     }
 
 
