@@ -18,7 +18,7 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 11/9/13
  */
-@Service("systemManager")
+@Service("sysManager")
 @Transactional
 public class SysManagerImpl implements SysManager {
 

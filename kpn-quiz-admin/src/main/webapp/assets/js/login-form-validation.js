@@ -1,4 +1,10 @@
 var Login = function () {
+
+    $.validator.addMethod('nricNo', function (value) {
+            return /^\d{12}$/.test(value);
+        },
+        'Please enter a valid NRIC no. wtihout dash. eg: 671218045678');
+
     var runLoginButtons = function () {
         $('.forgot').bind('click', function () {
             $('.box-login').hide();
@@ -15,11 +21,6 @@ var Login = function () {
         });
     };
     var runSetDefaultValidation = function () {
-
-        $.validator.addMethod('nricNo', function (value) {
-                return /^\d{12}$/.test(value);
-            },
-            'Please enter a valid NRIC no. wtihout dash. eg: 671218045678');
 
         $.validator.setDefaults({
             errorElement: "span", // contain the error msg in a small tag
@@ -90,9 +91,9 @@ var Login = function () {
         var errorHandler2 = $('.errorHandler', form2);
         form2.validate({
             rules: {
-                email: {
+                nricNo: {
                     required: true,
-                    email: true
+                    nricNo: true
                 }
             },
             submitHandler: function (form) {
