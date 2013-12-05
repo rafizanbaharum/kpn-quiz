@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ParticipantController extends AbstractController {
 
     private static final Logger log = Logger.getLogger(QuizController.class);
-    public static final int LIMIT = 50;
+    private static final int LIMIT = 50;
 
     @Autowired
     private InstructorManager instructorManager;

@@ -99,7 +99,7 @@ public class StudentController extends AbstractController {
     public String studentAdd(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
 
         // NRIC as username. Just copy it.
-        studentModel.setUsername(studentModel.getNric());
+        studentModel.setUsername(studentModel.getNricNo());
 
         if (registrationManager.isExists(studentModel.getUsername())) {
             model.addAttribute(studentModel);
@@ -124,7 +124,7 @@ public class StudentController extends AbstractController {
         }
 
         registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
-                studentModel.getName(), studentModel.getNric(), extractDob(studentModel), getCurrentInstructor());
+                studentModel.getName(), studentModel.getNricNo(), extractDob(studentModel), getCurrentInstructor());
         model.addAttribute(MSG_SUCCESS, "Student registered");
 
 //        return "redirect:/secure/student/list"; //redirect cause msg box not appear
@@ -133,7 +133,7 @@ public class StudentController extends AbstractController {
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String studentList(@ModelAttribute("studentModel") StudentModel studentModel, ModelMap model) {
-        List<QaStudent> students = instructorManager.getStudents(getCurrentInstructor());
+        List<QaStudent> students = instructorManager.findStudents(getCurrentInstructor());
         model.addAttribute("studentModels", transformer.transformStudents(students));
         model.put(BREADCRUMB, "Student List");
         model.put(TITLE, "Student List");
@@ -152,13 +152,13 @@ public class StudentController extends AbstractController {
                                 ModelMap model) {
 
         // NRIC as username. Just copy it.
-        studentModel.setUsername(studentModel.getNric());
+        studentModel.setUsername(studentModel.getNricNo());
 
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
         Date dob = extractDob(studentModel);
 
         registrationManager.updateStudent(student, studentModel.getUsername(), studentModel.getPassword(),
-                studentModel.getName(), studentModel.getNric(), dob);
+                studentModel.getName(), studentModel.getNricNo(), dob);
 
         // check if password does not match
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {

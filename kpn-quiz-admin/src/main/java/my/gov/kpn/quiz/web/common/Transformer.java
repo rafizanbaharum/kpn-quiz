@@ -35,16 +35,6 @@ public class Transformer {
         return maps;
     }
 
-    public List<StudentModel> transformStudents(List<QaStudent> students) {
-        List<StudentModel> models = new ArrayList<StudentModel>();
-        if (null != students) {
-            for (QaStudent student : students) {
-                models.add(transform(student));
-            }
-        }
-        return models;
-    }
-
     public List<CompetitionModel> transformCompetitions(List<QaCompetition> competitions) {
         List<CompetitionModel> models = new ArrayList<CompetitionModel>();
         if (null != competitions) {
@@ -85,6 +75,26 @@ public class Transformer {
         return models;
     }
 
+    public List<StudentModel> transformStudents(List<QaStudent> students) {
+        List<StudentModel> models = new ArrayList<StudentModel>();
+        if (null != students) {
+            for (QaStudent student : students) {
+                models.add(transform(student));
+            }
+        }
+        return models;
+    }
+
+    public List<InstructorModel> transformInstructors(List<QaInstructor> instructors) {
+        List<InstructorModel> models = new ArrayList<InstructorModel>();
+        if (null != instructors) {
+            for (QaInstructor instructor : instructors) {
+                models.add(transform(instructor));
+            }
+        }
+        return models;
+    }
+
     public UserModel transform(QaUser user) {
         UserModel model = new UserModel();
         model.setId(user.getId());
@@ -95,22 +105,6 @@ public class Transformer {
         return model;
     }
 
-
-    public StudentModel transform(QaStudent student) {
-        LocalDate dob = new LocalDate(student.getDob());
-        StudentModel model = new StudentModel();
-        QaUser user = instructorManager.findUserByActor(student);
-        model.setId(student.getId());
-        model.setName(student.getName());
-        model.setNric(student.getNricNo());
-        model.setUsername(user.getUsername());
-        model.setPassword(user.getPassword());
-        model.setPasswordAgain(user.getPassword());
-        model.setDob_dd(String.valueOf(dob.getDayOfMonth()));
-        model.setDob_mm(String.valueOf(dob.getMonthOfYear()));
-        model.setDob_yyyy(String.valueOf(dob.getYear()));
-        return model;
-    }
 
     public CompetitionModel transform(QaCompetition competition) {
         LocalDateTime startDate = new LocalDateTime(competition.getStartDate());
@@ -199,6 +193,39 @@ public class Transformer {
             model.setDistrict(student.getDistrictName());
             model.setState(student.getState().getName());
         }
+        return model;
+    }
+
+    public StudentModel transform(QaStudent student) {
+        LocalDate dob = new LocalDate(student.getDob());
+        StudentModel model = new StudentModel();
+        QaUser user = instructorManager.findUserByActor(student);
+        model.setId(student.getId());
+        model.setName(student.getName());
+        model.setNricNo(student.getNricNo());
+        model.setUsername(user.getUsername());
+        model.setPassword(user.getPassword());
+        model.setPasswordAgain(user.getPassword());
+        model.setDob(student.getDob());
+        model.setDob_dd(String.valueOf(dob.getDayOfMonth()));
+        model.setDob_mm(String.valueOf(dob.getMonthOfYear()));
+        model.setDob_yyyy(String.valueOf(dob.getYear()));
+        model.setSchoolName(student.getSchoolName());
+        if (null != student.getState())
+            model.setStateName(student.getState().getName());
+        return model;
+    }
+
+    public InstructorModel transform(QaInstructor instructor) {
+        InstructorModel model = new InstructorModel();
+        model.setId(instructor.getId());
+        model.setName(instructor.getName());
+        model.setAddress1(instructor.getAddress1());
+        model.setAddress2(instructor.getAddress2());
+        model.setAddress3(instructor.getAddress3());
+        model.setSchoolName(instructor.getSchoolName());
+        if (null != instructor.getState())
+            model.setStateName(instructor.getState().getName());
         return model;
     }
 }

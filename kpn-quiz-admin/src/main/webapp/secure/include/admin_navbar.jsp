@@ -29,6 +29,13 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/secure/instructor/browse?page=1">
+                            <span class="title">Instructors</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

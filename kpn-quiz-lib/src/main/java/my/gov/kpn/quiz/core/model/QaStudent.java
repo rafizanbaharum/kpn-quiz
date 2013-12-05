@@ -11,19 +11,13 @@ public interface QaStudent extends QaActor {
     /**
      * @return
      */
-//    QaInstitution getInstitution();
-
-//    void setInstitution(QaInstitution institution);
-
-
-    void setInstructor(QaInstructor instructor);
-
-    QaInstructor getInstructor();
-
     Date getDob();
 
     void setDob(Date dob);
 
+    /**
+     * @param schoolName
+     */
     void setSchoolName(String schoolName);
 
     String getSchoolName();
@@ -37,18 +31,24 @@ public interface QaStudent extends QaActor {
 
 
     /**
-     *
-     * @param state
-     */
-    void setState(QaState state);
-
-    QaState getState();
-
-    /**
      * @param districtName
      */
     void setDistrictName(String districtName);
 
     String getDistrictName();
+
+    /**
+     * @param instructor
+     */
+    void setInstructor(QaInstructor instructor);
+
+    QaInstructor getInstructor();
+
+    /**
+     * @param state
+     */
+    void setState(QaState state);
+
+    QaState getState();
 
 }

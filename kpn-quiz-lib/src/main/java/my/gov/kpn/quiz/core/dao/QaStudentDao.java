@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.core.dao;
 
+import my.gov.kpn.quiz.core.model.QaInstructor;
 import my.gov.kpn.quiz.core.model.QaStudent;
 
 /**
@@ -10,4 +11,5 @@ public interface QaStudentDao {
 
     QaStudent findById(Long id);
 
+    Integer count(QaInstructor instructor);
 }

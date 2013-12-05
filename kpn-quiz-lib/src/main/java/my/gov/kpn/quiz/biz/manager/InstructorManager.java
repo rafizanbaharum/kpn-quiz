@@ -9,12 +9,22 @@ import java.util.List;
 
 public interface InstructorManager {
 
+    // finder
+    QaInstructor findInstructorById(Long id);
 
-    public QaStudent findStudentById(Long id);
+    QaStudent findStudentById(Long id);
 
-    public QaUser findUserByActor(QaActor actor);
+    QaUser findUserByActor(QaActor actor);
 
-    public List<QaStudent> getStudents(QaInstructor instructor);
+    List<QaInstructor> findInstructors(Integer offset, Integer limit);
 
-    public Boolean isCustodian(QaInstructor instructor, QaStudent student);
+    List<QaStudent> findStudents(QaInstructor instructor);
+
+
+    // helper
+    Boolean isCustodian(QaInstructor instructor, QaStudent student);
+
+    Integer countInstructor();
+
+
 }

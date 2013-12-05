@@ -74,7 +74,7 @@
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${studentModel.name}</td>
-                                        <td>${studentModel.nric}</td>
+                                        <td>${studentModel.nricNo}</td>
                                         <td class="hidden-xs">${studentModel.username}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">

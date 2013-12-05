@@ -1,16 +1,24 @@
 package my.gov.kpn.quiz.web.model;
 
-public class StudentModel extends MetaModel {
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    private String name;
+public class StudentModel extends ActorModel {
+
     private String username;
     private String password;
     private String passwordAgain;
+    private Date dob;
+    private String dobFormatted;
     private String dob_dd;
     private String dob_mm;
     private String dob_yyyy;
-    private String nric;
+    private String nricNo;
+    private String schoolName;
+    private String stateName;
     private Long instructorId;
+
+    private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     public String getDob_dd() {
         return dob_dd;
@@ -28,20 +36,12 @@ public class StudentModel extends MetaModel {
         this.instructorId = instructorId;
     }
 
-    public String getName() {
-        return name;
+    public String getNricNo() {
+        return nricNo;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNric() {
-        return nric;
-    }
-
-    public void setNric(String nric) {
-        this.nric = nric;
+    public void setNricNo(String nricNo) {
+        this.nricNo = nricNo;
     }
 
     public String getPassword() {
@@ -58,6 +58,15 @@ public class StudentModel extends MetaModel {
 
     public void setPasswordAgain(String passwordAgain) {
         this.passwordAgain = passwordAgain;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+        if(null != dob) dobFormatted = format.format(dob);
     }
 
     public String getDob_mm() {
@@ -82,5 +91,29 @@ public class StudentModel extends MetaModel {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
+    public String getStateName() {
+        return stateName;
+    }
+
+    public void setStateName(String stateName) {
+        this.stateName = stateName;
+    }
+
+    public String getDobFormatted() {
+        return dobFormatted;
+    }
+
+    public void setDobFormatted(String dobFormatted) {
+        this.dobFormatted = dobFormatted;
     }
 }
