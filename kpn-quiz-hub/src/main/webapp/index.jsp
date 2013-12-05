@@ -27,16 +27,20 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -47,7 +51,6 @@
 <body class="login example2">
 <div class="main-login col-sm-4 col-sm-offset-4">
     <div class="logo"><h2>ASEAN QUIZ</h2></div>
-    <!-- start: LOGIN BOX -->
     <div class="box-login">
         <h3>Sign in to your account</h3>
 
@@ -55,7 +58,7 @@
             Please enter your name and password to log in.
         </p>
 
-        <form method="post" class="form-login" action="/login">
+        <form method="post" class="form-login" action="${pageContext.request.contextPath}/login">
             <c:if test="${not empty param.login_error}">
                 <div class="errorHandler alert alert-danger">
                     <i class="icon-remove-sign"></i>
@@ -69,7 +72,7 @@
             <fieldset>
                 <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="Username">
+								<input type="text" class="form-control" name="username" placeholder="NRIC No">
 								<i class="icon-user"></i> </span>
                 </div>
                 <div class="form-group form-actions">
@@ -80,12 +83,6 @@
                             </span>
                 </div>
                 <div class="form-actions">
-                    <%--
-                                        <label for="remember" class="checkbox-inline">
-                                            <input type="checkbox" class="grey remember" id="remember" name="remember">
-                                            Keep me signed in
-                                        </label>
-                    --%>
                     <button type="submit" class="btn btn-bricky pull-right">
                         Login <i class="icon-circle-arrow-right"></i>
                     </button>
@@ -93,12 +90,9 @@
             </fieldset>
         </form>
     </div>
-    <!-- end: LOGIN BOX -->
-    <!-- start: COPYRIGHT -->
     <div class="copyright">
         2013 &copy; ASEAN QUIZ
     </div>
-    <!-- end: COPYRIGHT -->
 </div>
 <!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
@@ -125,5 +119,4 @@
     });
 </script>
 </body>
-<!-- end: BODY -->
 </html>
