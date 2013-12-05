@@ -1,4 +1,10 @@
 var Login = function () {
+
+    $.validator.addMethod('nricNo', function (value) {
+            return /^\d{12}$/.test(value);
+        },
+        'Please enter a valid NRIC No. wtihout dash. eg: 671218045678');
+
     var runLoginButtons = function () {
         $('.forgot').bind('click', function () {
             $('.box-login').hide();
@@ -15,6 +21,7 @@ var Login = function () {
         });
     };
     var runSetDefaultValidation = function () {
+
         $.validator.setDefaults({
             errorElement: "span", // contain the error msg in a small tag
             errorClass: 'help-block',
@@ -62,8 +69,9 @@ var Login = function () {
         form.validate({
             rules: {
                 username: {
-                    minlength: 2,
-                    required: true
+                    minlength: 12,
+                    required: true,
+                    nricNo: true
                 },
                 password: {
                     minlength: 6,
@@ -84,12 +92,14 @@ var Login = function () {
         var errorHandler2 = $('.errorHandler', form2);
         form2.validate({
             rules: {
-                email: {
-                    required: true
+                nricNo: {
+                    required: true,
+                    nricNo: true
                 }
             },
             submitHandler: function (form) {
                 errorHandler2.hide();
+                form.submit();
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 errorHandler2.show();
@@ -102,7 +112,7 @@ var Login = function () {
         form3.validate({
             rules: {
                 fullName: {
-                    minlength: 2,
+                    minlength: 12,
                     required: true
                 }
                 /*
@@ -141,6 +151,7 @@ var Login = function () {
             },
             submitHandler: function (form) {
                 errorHandler3.hide();
+                form.submit();
             },
             invalidHandler: function (event, validator) { //display error alert on form submit
                 errorHandler3.show();

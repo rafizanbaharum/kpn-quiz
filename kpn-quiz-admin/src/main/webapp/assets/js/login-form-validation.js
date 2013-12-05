@@ -3,7 +3,7 @@ var Login = function () {
     $.validator.addMethod('nricNo', function (value) {
             return /^\d{12}$/.test(value);
         },
-        'Please enter a valid NRIC no. wtihout dash. eg: 671218045678');
+        'Please enter a valid NRIC No. wtihout dash. eg: 671218045678');
 
     var runLoginButtons = function () {
         $('.forgot').bind('click', function () {
@@ -70,7 +70,8 @@ var Login = function () {
             rules: {
                 username: {
                     minlength: 12,
-                    required: true
+                    required: true,
+                    nricNo: true
                 },
                 password: {
                     minlength: 6,
