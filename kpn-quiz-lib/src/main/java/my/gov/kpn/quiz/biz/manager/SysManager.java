@@ -12,7 +12,7 @@ import java.util.Date;
  * @author rafizan.baharum
  * @since 11/9/13
  */
-public interface SystemManager {
+public interface SysManager {
 
     void recoverPassword(QaUser user);
 }

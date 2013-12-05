@@ -1,16 +1,9 @@
 package my.gov.kpn.quiz.biz.manager;
 
 import my.gov.kpn.quiz.core.dao.*;
-import my.gov.kpn.quiz.core.exception.LockedGroupException;
-import my.gov.kpn.quiz.core.exception.RecursiveGroupException;
 import my.gov.kpn.quiz.core.model.*;
-import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
-import my.gov.kpn.quiz.core.model.impl.QaStudentImpl;
-import my.gov.kpn.quiz.core.model.impl.QaUserImpl;
 import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
@@ -27,13 +20,9 @@ import java.util.Date;
  */
 @Service("systemManager")
 @Transactional
-public class SystemManagerImpl implements SystemManager {
+public class SysManagerImpl implements SysManager {
 
-    private static final Logger log = Logger.getLogger(SystemManagerImpl.class);
-
-    public static final String ADMIN = "root";
-    public static final String GROUP_INSTRUCTOR = "GROUP_INSTRUCTOR";
-    public static final String GROUP_STUDENT = "GROUP_STUDENT";
+    private static final Logger log = Logger.getLogger(SysManagerImpl.class);
 
     @Autowired
     private QaUserDao userDao;
@@ -57,7 +46,7 @@ public class SystemManagerImpl implements SystemManager {
                 mimeMessage.setRecipients(Message.RecipientType.TO, addresses);
                 mimeMessage.setSubject("Password Recovery");
                 mimeMessage.setSentDate(new Date());
-                mimeMessage.setText("Hello! \n This is your password: " + user.getPassword());
+                mimeMessage.setText("Hello!\nThis is your password: " + user.getPassword());
                 mimeMessage.saveChanges();
             }
         });

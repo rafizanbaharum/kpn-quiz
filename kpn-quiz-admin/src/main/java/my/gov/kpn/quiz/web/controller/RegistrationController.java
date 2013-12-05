@@ -3,10 +3,8 @@ package my.gov.kpn.quiz.web.controller;
 import my.gov.kpn.quiz.biz.manager.CompetitionHelper;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
-import my.gov.kpn.quiz.biz.manager.SystemManager;
-import my.gov.kpn.quiz.core.dao.QaActorDao;
+import my.gov.kpn.quiz.biz.manager.SysManager;
 import my.gov.kpn.quiz.core.dao.QaUserDao;
-import my.gov.kpn.quiz.core.model.QaActor;
 import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaState;
 import my.gov.kpn.quiz.core.model.QaUser;
@@ -40,7 +38,7 @@ public class RegistrationController extends AbstractController {
     private RegistrationManager registrationManager;
 
     @Autowired
-    private SystemManager sysManager;
+    private SysManager sysManager;
 
     @Autowired
     private Transformer transformer;
