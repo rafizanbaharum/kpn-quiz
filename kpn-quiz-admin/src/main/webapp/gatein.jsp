@@ -102,7 +102,7 @@
         <h3>Forget Password?</h3>
 
         <p>
-            Enter I/C no. below to reset your password.
+            Enter NRIC NO below to reset your password.
         </p>
 
         <form method="post" class="form-forgot" action="${pageContext.request.contextPath}/register/forgot_password">
@@ -112,7 +112,7 @@
             <fieldset>
                 <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="nricNo" placeholder="NRIC">
+								<input type="text" class="form-control" name="nricNo" placeholder="NRIC No">
 								<i class="icon-envelope"></i> </span>
                 </div>
                 <div class="form-actions">

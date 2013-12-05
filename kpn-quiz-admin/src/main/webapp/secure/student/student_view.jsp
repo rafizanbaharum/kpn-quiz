@@ -83,7 +83,7 @@
                                             <label class="control-label">
                                                 NRIC <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="nricNo" placeholder="Identification number"
+                                            <form:input path="nricNo" placeholder="NRIC No"
                                                         cssClass="form-control" readonly="true"/>
 
                                         </div>
