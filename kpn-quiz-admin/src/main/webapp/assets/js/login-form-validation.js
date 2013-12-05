@@ -146,7 +146,17 @@ var Login = function () {
                 },
                 nricNo: {
                     required: true,
-                    nricNo: true
+                    nricNo: true,
+                    remote: {
+                        url: "register/validate/",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            nricNo: function () {
+                                return $("#nricNo").val();
+                            }
+                        }
+                    }
                 },
                 password: {
                     minlength: 6,
@@ -156,6 +166,11 @@ var Login = function () {
                     required: true,
                     minlength: 5,
                     equalTo: "#password"
+                }
+            },
+            messages: {
+                nricNo: {
+                    remote: "ID is already taken"
                 }
             },
             submitHandler: function (form) {

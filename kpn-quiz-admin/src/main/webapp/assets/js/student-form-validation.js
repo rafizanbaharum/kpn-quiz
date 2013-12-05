@@ -35,9 +35,20 @@ var FormValidator = function () {
                     minlength: 2,
                     required: true
                 },
-                nric: {
+                nricNo: {
+                    minlength: 12,
                     required: true,
-                    nricNo: true
+                    nricNo: true,
+                    remote: {
+                        url: "../../register/validate/",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            nricNo: function () {
+                                return $("#nricNo").val();
+                            }
+                        }
+                    }
                 },
                 username: {
                     minlength: 2,
@@ -55,14 +66,13 @@ var FormValidator = function () {
                 dob_yyyy: "FullDate"
             },
             messages: {
-                name: "Please specify your first name"
+                name: "Please specify your first name",
+                nricNo: {
+                    remote: "ID is already taken"
+                }
             },
             groups: {
                 DateofBirth: "dd mm yyyy"
-            },
-            invalidHandler: function (event, validator) { //display error alert on form submit
-                successHandler1.hide();
-                errorHandler1.show();
             },
             highlight: function (element) {
                 $(element).closest('.help-block').removeClass('valid');
@@ -78,13 +88,14 @@ var FormValidator = function () {
                 label.addClass('help-block valid');
                 // mark the current input as valid and display OK icon
                 $(element).closest('.form-group').removeClass('has-error').addClass('has-success').find('.symbol').removeClass('required').addClass('ok');
+            },
+            submitHandler: function (form) {
+                errorHandler1.hide();
+                form.submit();
+            },
+            invalidHandler: function (event, validator) { //display error alert on form submit
+                errorHandler1.show();
             }
-            /*
-             submitHandler: function (form) {
-             successHandler1.show();
-             errorHandler1.hide();
-             }
-             */
         });
     };
     return {

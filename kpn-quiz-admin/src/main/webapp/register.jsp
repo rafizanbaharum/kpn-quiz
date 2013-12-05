@@ -124,6 +124,8 @@
                                                                             path="nricNo" placeholder="NRIC No"
                                                                             autocomplete="off"/>
                                  								<i class="icon-user"></i> </span>
+
+                            <div id="username_status"></div>
                         </div>
                         <div class="form-group">
                                  							<span class="input-icon">

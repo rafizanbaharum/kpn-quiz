@@ -82,11 +82,11 @@ public class RegistrationController extends AbstractController {
         return "register";
     }
 
-    @RequestMapping(value = "/validate/{username}", method = RequestMethod.GET)
-    public String validateUsername(@PathVariable String username, ModelMap model) {
-        boolean exists = registrationManager.isExists(username);
-        model.put("status", exists);
-        return "newUsernameStatus";
+    @RequestMapping(value = "/validate/", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Boolean validateUsername(@RequestParam(value = "nricNo") String username, ModelMap model) {
+        return !registrationManager.isExists(username);
     }
 
     @RequestMapping(method = {RequestMethod.POST})
