@@ -549,8 +549,7 @@ public class QuizView extends View {
                     wordCount.setHtml(wc + "/" + model.getWordLimit() + "Words");
                     if (wc > model.getWordLimit()) {
                         be.setCancelled(true);
-                        int lastIndex = area.getValue().lastIndexOf(" ");
-                        area.setValue(value.substring(0, lastIndex) + 1); // todo:
+                        area.setValue(value.substring(0, value.length() - 1));
                     }
                 }
             }
