@@ -24,7 +24,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
     private static final Logger log = Logger.getLogger(RegistrationManagerImpl.class);
 
-    public static final String ADMIN = "administrator";
+    public static final Long ADMIN = 0L;
 
     @Autowired
     private QaUserDao userDao;
@@ -55,7 +55,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                    Integer schoolType
     ) {
 
-        QaUser root = userDao.findByUsername(ADMIN);
+        QaUser root = userDao.findById(ADMIN);
         QaUser user = new QaUserImpl();
         user.setEmail(email);
         user.setUsername(username);
@@ -102,7 +102,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                 Date dob,
                                 QaInstructor instructor) {
 
-        QaUser root = userDao.findByUsername(ADMIN);
+        QaUser root = userDao.findById(ADMIN);
         QaUser user = new QaUserImpl();
         user.setUsername(username);
         user.setPassword(password);
@@ -151,7 +151,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
         log.debug("Update = " + student);
 
-        QaUser root = userDao.findByUsername(ADMIN);
+        QaUser root = userDao.findById(ADMIN);
         QaUser user = userDao.findByActor(student);
         log.debug("user = " + user);
         user.setUsername(username);
@@ -170,7 +170,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
     @Override
     public void removeStudent(QaStudent student) {
-        QaUser root = userDao.findByUsername(ADMIN);
+        QaUser root = userDao.findById(ADMIN);
         userDao.remove(userDao.findById(student.getId()), root);
         actorDao.remove(student, root);
     }
