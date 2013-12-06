@@ -3,9 +3,7 @@ package my.gov.kpn.quiz.web.client.view;
 import com.extjs.gxt.ui.client.Registry;
 import com.extjs.gxt.ui.client.Style;
 import com.extjs.gxt.ui.client.data.*;
-import com.extjs.gxt.ui.client.event.ButtonEvent;
-import com.extjs.gxt.ui.client.event.Listener;
-import com.extjs.gxt.ui.client.event.SelectionListener;
+import com.extjs.gxt.ui.client.event.*;
 import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
@@ -72,6 +70,7 @@ public class QuizView extends View {
     public static final String QUIZ_QUESTION = "quiz-question";
     public static final String QUIZ_QUESTION_BOX = "quiz-question-box";
     public static final String QUIZ_QUESTION_STATEMENT = "quiz-question-statement";
+    public static final String QUIZ_QUESTION_WORDCOUNT = "quiz-question-wordcount";
     public static final String QUIZ_QUESTION_CHOICE = "quiz-question-choice";
     public static final String QUIZ_QUESTION_RESPONSE = "quiz-question-response";
     public static final String INITIALIZING = "Initializing...";
@@ -523,7 +522,7 @@ public class QuizView extends View {
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
     }
 
-    private void createSubjectiveQuestionPanel(int questionIndex, SubjectiveQuestionModel model) {
+    private void createSubjectiveQuestionPanel(int questionIndex, final SubjectiveQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setStyleName(QUIZ_QUESTION);
 
@@ -532,15 +531,33 @@ public class QuizView extends View {
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
-        TextArea area = new TextArea();
+        final Html wordCount = new Html();
+        wordCount.setId(QUIZ_QUESTION_WORDCOUNT);
+        final TextArea area = new TextArea();
         area.setId("answer");
         area.setName("answer");
         area.setItemId(QUIZ_QUESTION_RESPONSE);
         area.setFieldLabel("");
         area.setHeight(250);
         area.setWidth(1000);
+        area.addListener(Events.KeyPress, new Listener<FieldEvent>() {
+            @Override
+            public void handleEvent(FieldEvent be) {
+                String value = (String) be.getField().getValue();
+                if (value != null) {
+                    int wc = getWordCount(value);
+                    wordCount.setHtml(wc + "/" + model.getWordLimit() + "Words");
+                    if (wc > model.getWordLimit()) {
+                        be.setCancelled(true);
+                        int lastIndex = area.getValue().lastIndexOf(" ");
+                        area.setValue(value.substring(0, lastIndex) + 1); // todo:
+                    }
+                }
+            }
+        });
 
         box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
+        box.add(wordCount, new VBoxLayoutData(0, 0, 20, 0));
         box.add(area, new VBoxLayoutData(0, 0, 10, 0));
         panel.add(box, new MarginData(50, 0, 0, 80));
         cardPanel.add(panel, new MarginData(0, 60, 0, 60));
@@ -594,6 +611,14 @@ public class QuizView extends View {
     private void logout() {
         Window.Location.assign(LOGOUT_URL);
     }
+
+    public native int getWordCount(String v) /*-{
+        if (v) {
+            var wc = v.match(/\b/g);
+            return wc ? wc.length / 2 : 0;
+        }
+        return 0;
+    }-*/;
 
 }
 

@@ -42,6 +42,10 @@ quiz-app-viewport
     font-size: 28px;
 }
 
+#quiz-question-wordcount {
+    font-size: 14px;
+}
+
 .quiz-question-choice  > input[type="radio"] {
     width: 2em;
     height: 2em;
