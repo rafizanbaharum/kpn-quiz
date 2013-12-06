@@ -16,12 +16,23 @@ import javax.persistence.Table;
 @Entity(name = "QaSubjectiveQuestion")
 public class QaSubjectiveQuestionImpl extends QaQuestionImpl implements QaSubjectiveQuestion {
 
+    @Column(name = "WORD_LIMIT")
+    private Integer wordLimit;
+
     @Lob
     @Column(name = "ANSWER_GUIDE")
     private String answerGuide;
 
     public QaSubjectiveQuestionImpl() {
         setQuestionType(QaQuestionType.SUBJECTIVE);
+    }
+
+    public Integer getWordLimit() {
+        return wordLimit;
+    }
+
+    public void setWordLimit(Integer wordLimit) {
+        this.wordLimit = wordLimit;
     }
 
     public String getAnswerGuide() {

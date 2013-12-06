@@ -7,6 +7,15 @@ package my.gov.kpn.quiz.core.model;
 public interface QaSubjectiveQuestion extends QaQuestion {
 
     /**
+     *
+     * @return
+     */
+    Integer getWordLimit();
+
+    void setWordLimit(Integer wordLimit);
+
+
+    /**
      * @return
      */
     String getAnswerGuide();

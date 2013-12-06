@@ -121,6 +121,13 @@
                                         </form:select>
                                     </div>
                                     <div class="col-md-12">
+                                        <label class="control-label">
+                                            Word Limit <span class="symbol required"></span>
+                                        </label>
+                                        <form:input path="wordLimit" placeholder="Insert word limit "
+                                                    cssClass="form-control"/>
+                                    </div>
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Answer Guide <span class="symbol required"></span>

@@ -138,6 +138,7 @@ public class QuestionController extends AbstractController {
         question.setStatement(questionModel.getStatement());
         question.setDifficulty(QaDifficulty.get(questionModel.getDifficulty()));
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
+        question.setWordLimit(questionModel.getWordLimit());
         question.setAnswerIndex(0);
         question.setAnswerGuide(questionModel.getAnswerGuide());
         QaQuestion savedQuestion = competitionManager.saveQuestion(question);
@@ -189,6 +190,7 @@ public class QuestionController extends AbstractController {
         question.setStatement(questionModel.getStatement());
         question.setDifficulty(QaDifficulty.get(questionModel.getDifficulty()));
         question.setQuiz(competitionManager.findQuizById(questionModel.getQuiz().getId()));
+        question.setWordLimit(questionModel.getWordLimit());
         question.setAnswerIndex(0);
         question.setAnswerGuide(questionModel.getAnswerGuide());
         competitionManager.updateQuestion(question);

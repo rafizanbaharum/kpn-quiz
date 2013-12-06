@@ -6,7 +6,16 @@ package my.gov.kpn.quiz.web.model;
  */
 public class SubjectiveQuestionModel extends QuestionModel {
 
+    private Integer wordLimit;
     private String answerGuide;
+
+    public Integer getWordLimit() {
+        return wordLimit;
+    }
+
+    public void setWordLimit(Integer wordLimit) {
+        this.wordLimit = wordLimit;
+    }
 
     public String getAnswerGuide() {
         return answerGuide;

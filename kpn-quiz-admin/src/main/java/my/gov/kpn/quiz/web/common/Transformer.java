@@ -166,6 +166,7 @@ public class Transformer {
             case SUBJECTIVE:
                 model = new SubjectiveQuestionModel();
                 ((SubjectiveQuestionModel) model).setAnswerGuide(((QaSubjectiveQuestion) question).getAnswerGuide());
+                ((SubjectiveQuestionModel) model).setWordLimit(((QaSubjectiveQuestion) question).getWordLimit());
                 break;
         }
         model.setId(question.getId());

@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.server;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
 import my.gov.kpn.quiz.core.model.QaQuestion;
+import my.gov.kpn.quiz.core.model.QaSubjectiveQuestion;
 import my.gov.kpn.quiz.web.client.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -40,6 +41,7 @@ public class QuizConverter {
                 break;
             case SUBJECTIVE:
                 model = new SubjectiveQuestionModel();
+                ((SubjectiveQuestionModel) model).setWordLimit(((QaSubjectiveQuestion) question).getWordLimit());
                 break;
         }
         return model;

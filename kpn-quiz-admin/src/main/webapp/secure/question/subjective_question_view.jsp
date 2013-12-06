@@ -21,16 +21,20 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico"/>
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
 </head>
@@ -70,17 +74,24 @@
                                                 Statement <span class="symbol required"></span>
                                             </label>
                                             <form:input path="statement" placeholder="Insert question statement"
-                                                        cssClass="form-control"/>
+                                                        cssClass="form-control" readonly="true"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <label class="control-label">
                                             Difficulty <span class="symbol required"></span>
                                         </label>
-                                        <form:select path="difficulty" cssClass="form-control">
+                                        <form:select path="difficulty" cssClass="form-control" readonly="true">
                                             <option value="">Select level of Difficulty</option>
                                             <form:options items="${difficultiesMap}"/>
                                         </form:select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="control-label">
+                                            Word Limit <span class="symbol required"></span>
+                                        </label>
+                                        <form:input path="wordLimit" placeholder="Insert word limit "
+                                                    cssClass="form-control" readonly="true"/>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -89,7 +100,7 @@
                                             </label>
                                             <form:textarea path="answerGuide" placeholder="Insert question answerGuide"
                                                            rows="16" cols="100"
-                                                           cssClass="form-control"/>
+                                                           cssClass="form-control" readonly="true"/>
                                         </div>
                                     </div>
                                 </div>
