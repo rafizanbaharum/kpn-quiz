@@ -10,7 +10,7 @@
 <!--[if IE 9]>
 <html class="ie9 no-js" lang="en"><![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" class="no-js" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<html lang="en" class="no-js">
 <!--<![endif]-->
 <!-- start: HEAD -->
 <head>
@@ -43,47 +43,25 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
+    <!-- end: MAIN CSS -->
+    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<!-- end: HEAD -->
-<!-- start: BODY -->
 <body class="login example2">
 <div class="main-login col-sm-4 col-sm-offset-4">
     <div class="logo"><h2>ASEAN QUIZ</h2></div>
     <div class="box-login">
-        <h3>Sign in to your account</h3>
+        <h3>Sign out from quiz</h3>
 
         <p>
-            You must be registered as a student to enter this competition.
-            Please enter your NRIC NO and password to log in.
+            Please click logout to log out.
         </p>
 
-        <form method="post" class="form-login" action="${pageContext.request.contextPath}/login">
-            <c:if test="${not empty param.login_error}">
-                <div class="errorHandler alert alert-danger">
-                    <i class="icon-remove-sign"></i>
-                    Your login attempt was not successful, try again.<br/>
-                    Reason: ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}
-                </div>
-            </c:if>
-            <div class="errorHandler alert alert-danger no-display">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-            </div>
+        <form method="post" class="form-login" action="${pageContext.request.contextPath}/logout">
             <fieldset>
-                <div class="form-group">
-							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="NRIC No">
-								<i class="icon-user"></i> </span>
-                </div>
-                <div class="form-group form-actions">
-							<span class="input-icon">
-								<input type="password" class="form-control password" name="password"
-                                       placeholder="Password">
-								<i class="icon-lock"></i>
-                            </span>
-                </div>
                 <div class="form-actions">
                     <button type="submit" class="btn btn-bricky pull-right">
-                        Login <i class="icon-circle-arrow-right"></i>
+                        Logout <i class="icon-circle-arrow-right"></i>
                     </button>
                 </div>
             </fieldset>
@@ -109,7 +87,7 @@
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/login.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
@@ -118,4 +96,6 @@
     });
 </script>
 </body>
+<!-- end: BODY -->
 </html>
+

@@ -30,7 +30,7 @@ public class SysManagerImpl implements SysManager {
     @Autowired
     private QaActorDao actorDao;
 
-    @Autowired
+    @Autowired(required = false)
     private JavaMailSender mailSender;
 
     @Override

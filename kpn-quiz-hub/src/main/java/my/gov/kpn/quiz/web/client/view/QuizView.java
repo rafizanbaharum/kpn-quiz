@@ -11,7 +11,10 @@ import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.mvc.View;
 import com.extjs.gxt.ui.client.util.Margins;
-import com.extjs.gxt.ui.client.widget.*;
+import com.extjs.gxt.ui.client.widget.CardPanel;
+import com.extjs.gxt.ui.client.widget.Html;
+import com.extjs.gxt.ui.client.widget.LayoutContainer;
+import com.extjs.gxt.ui.client.widget.Viewport;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ButtonBar;
 import com.extjs.gxt.ui.client.widget.form.Radio;
@@ -20,6 +23,7 @@ import com.extjs.gxt.ui.client.widget.form.TextArea;
 import com.extjs.gxt.ui.client.widget.layout.*;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import my.gov.kpn.quiz.web.client.QuizConstants;
@@ -49,6 +53,7 @@ import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
 public class QuizView extends View {
 
     private static final Logger log = Logger.getLogger(QuizView.class.getName());
+    private static final String LOGOUT_URL = "../logout.jsp";
     private static final int ONE_HOUR = 60 * 60 * 1000;
     private static final int ONE_SECOND = 1000;
     private static NumberFormat formatter = NumberFormat.getFormat("00");
@@ -585,6 +590,11 @@ public class QuizView extends View {
     private QuestionModel getQuestion(int questionIndex) {
         return models.get(questionIndex);
     }
+
+    private void logout() {
+        Window.Location.assign(LOGOUT_URL);
+    }
+
 }
 
 
