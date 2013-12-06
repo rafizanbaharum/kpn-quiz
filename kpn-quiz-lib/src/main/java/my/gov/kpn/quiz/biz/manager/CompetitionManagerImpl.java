@@ -298,6 +298,9 @@ public class CompetitionManagerImpl implements CompetitionManager {
      */
     @Override
     public void processParticipant(QaQuiz quiz) {
+        quizDao.resetGradebooks(quiz, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+
         quizDao.resetParticipants(quiz, Utils.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
 

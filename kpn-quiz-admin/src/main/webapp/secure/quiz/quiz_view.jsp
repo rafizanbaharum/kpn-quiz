@@ -25,16 +25,20 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
 </head>
@@ -114,9 +118,13 @@
                                                title="Make this quiz current">Current</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
                                                class="btn btn-primary"
-                                               title="Initialize quiz with participants">Process Participant</a>
+                                               title="Initialize quiz with participants"
+                                               onclick="return confirm('Are you sure? This will delete all gradebooks and participants')">
+                                                Process Participant</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
-                                               class="btn btn-primary" title="Process quiz gradebooks">Process Gradebook</a>
+                                               class="btn btn-primary" title="Process quiz gradebooks"
+                                               onclick="return confirm('Are you sure? This will delete all gradebooks')">
+                                                Process Gradebook</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
                                                class="btn btn-primary" title="Tabulate quiz results">Tabulate</a>
                                         </div>
@@ -129,7 +137,8 @@
                                                class="btn btn-primary" title="Add multiple choice question">Add Multiple
                                                 Choice</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/boolean"
-                                               class="btn btn-primary" title="Add true/false question">Add True/False</a>
+                                               class="btn btn-primary" title="Add true/false question">Add
+                                                True/False</a>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/subjective"
                                                class="btn btn-primary" title="Add subjective question">Add
                                                 Subjective</a>
