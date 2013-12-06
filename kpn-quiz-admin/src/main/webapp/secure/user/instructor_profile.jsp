@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -21,25 +25,29 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="../include/topbar.jsp" />
+<jsp:include page="../include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="../include/instructor_navbar.jsp" />
+    <jsp:include page="../include/instructor_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
             <div class="row">
@@ -73,44 +81,33 @@
                             <h2><i class="icon-edit-sign teal"></i> PROFILE</h2>
 
                             <hr>
-                            <form:form id="form" commandName="userModel"
+                            <form:form id="form" commandName="actorModel"
                                        action="${pageContext.request.contextPath}/secure/user/update"
                                        method="POST">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="errorHandler alert alert-danger">
-                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
-                                            below.
-                                        </div>
-                                        <div class="successHandler alert alert-success">
-                                            <i class="icon-ok"></i> Your form validation is successful!
-                                        </div>
-                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Username <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="username" cssClass="form-control"
-                                                        readonly="true"/>
+                                            <form:input path="username" cssClass="form-control" readonly="true"/>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-12">
-                                        <br/>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Name <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="name" cssClass="form-control" readonly="true"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn btn-primary btn-block" type="submit">
-                                            Edit <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-blue btn-block" type="submit">
-                                            Reset <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                NRIC NO <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="nricNo" cssClass="form-control" readonly="true"/>
+                                        </div>
                                     </div>
                                 </div>
                             </form:form>

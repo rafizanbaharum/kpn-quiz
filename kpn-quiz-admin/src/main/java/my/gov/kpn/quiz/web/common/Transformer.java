@@ -197,6 +197,22 @@ public class Transformer {
         return model;
     }
 
+    public ActorModel transform(QaActor actor) {
+        ActorModel model = null;
+        switch (actor.getActorType()) {
+            case INSTRUCTOR:
+                model = transform((QaInstructor) actor);
+                break;
+            case STUDENT:
+                model = transform((QaStudent) actor);
+                break;
+            case SUPPORT:
+                model = transform((QaSupport) actor);
+                break;
+        }
+        return model;
+    }
+
     public StudentModel transform(QaStudent student) {
         LocalDate dob = new LocalDate(student.getDob());
         StudentModel model = new StudentModel();
@@ -223,12 +239,26 @@ public class Transformer {
         model.setId(instructor.getId());
         model.setUsername(user.getUsername());
         model.setName(instructor.getName());
+        model.setNricNo(instructor.getNricNo());
         model.setAddress1(instructor.getAddress1());
         model.setAddress2(instructor.getAddress2());
         model.setAddress3(instructor.getAddress3());
         model.setSchoolName(instructor.getSchoolName());
         if (null != instructor.getState())
             model.setStateName(instructor.getState().getName());
+        return model;
+    }
+
+    public SupportModel transform(QaSupport support) {
+        SupportModel model = new SupportModel();
+        QaUser user = instructorManager.findUserByActor(support);
+        model.setId(support.getId());
+        model.setUsername(user.getUsername());
+        model.setName(support.getName());
+        model.setNricNo(support.getNricNo());
+        model.setAddress1(support.getAddress1());
+        model.setAddress2(support.getAddress2());
+        model.setAddress3(support.getAddress3());
         return model;
     }
 }

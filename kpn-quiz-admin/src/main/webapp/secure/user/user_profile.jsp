@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -161,39 +165,28 @@
                                        method="POST">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="errorHandler alert alert-danger">
-                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
-                                            below.
-                                        </div>
-                                        <div class="successHandler alert alert-success">
-                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Username <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="username" cssClass="form-control" readonly="true"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Username <span class="symbol required"></span>
+                                                Name <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="username" cssClass="form-control"
-                                                        readonly="true"/>
+                                            <form:input path="name" cssClass="form-control" readonly="true"/>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-12">
-                                        <br/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <button class="btn btn-primary btn-block" type="submit">
-                                            Edit <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-blue btn-block" type="submit">
-                                            Reset <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                NRIC NO <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="nricNo" cssClass="form-control" readonly="true"/>
+                                        </div>
                                     </div>
                                 </div>
                             </form:form>

@@ -25,10 +25,11 @@ public class UserController extends AbstractController {
     private CompetitionManager competitionManager;
 
     @RequestMapping(value = "/profile", method = {RequestMethod.GET})
-    public String userProfile(@ModelAttribute("userModel") UserModel userModel, ModelMap model) {
+    public String profile(@ModelAttribute("userModel") UserModel userModel, ModelMap model) {
         QaUser user = getCurrentUser();
         QaActor actor = user.getActor();
-        model.addAttribute("userModel", transformer.transform(user));
+        model.put("userModel", transformer.transform(user));
+        model.put("actorModel", transformer.transform(actor));
 
         if (actor instanceof QaInstructor)
             return "secure/user/instructor_profile";
