@@ -540,16 +540,17 @@ public class QuizView extends View {
         area.setFieldLabel("");
         area.setHeight(250);
         area.setWidth(1000);
-        area.addListener(Events.KeyPress, new Listener<FieldEvent>() {
+        area.addListener(Events.KeyUp, new Listener<FieldEvent>() {
             @Override
             public void handleEvent(FieldEvent be) {
                 String value = (String) be.getField().getValue();
                 if (value != null) {
                     int wc = getWordCount(value);
-                    wordCount.setHtml(wc + "/" + model.getWordLimit() + "Words");
                     if (wc > model.getWordLimit()) {
                         be.setCancelled(true);
                         area.setValue(value.substring(0, value.length() - 1));
+                    } else {
+                        wordCount.setHtml(wc + "/" + model.getWordLimit() + "Words");
                     }
                 }
             }
