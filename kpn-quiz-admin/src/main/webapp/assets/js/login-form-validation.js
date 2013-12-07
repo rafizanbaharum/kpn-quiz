@@ -87,7 +87,7 @@ var Login = function () {
                     required: true,
                     nricNo: true,
                     remote: {
-                        url: "/register/validate/",
+                        url: "../register/validate/",
                         type: "GET",
                         dataType: "json",
                         data: {
@@ -155,7 +155,7 @@ var Login = function () {
                     required: true,
                     nricNo: true,
                     remote: {
-                        url: "/register/validate/",
+                        url: "../register/validate/",
                         type: "GET",
                         dataType: "json",
                         data: {
