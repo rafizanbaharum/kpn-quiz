@@ -1,5 +1,7 @@
 var Login = function () {
 
+    var submit_btn = $('button[type="submit"]');
+
     $.validator.addMethod('nricNo', function (value) {
             return /^\d{12}$/.test(value);
         },
@@ -97,6 +99,14 @@ var Login = function () {
                         },
                         dataFilter: function (response) {
                             return response == 'true';
+                        },
+                        beforeSend: function () {
+                            submit_btn.attr('disabled', 'disabled');
+                            submit_btn.text("Please wait..");
+                        },
+                        complete: function () {
+                            submit_btn.removeAttr('disabled');
+                            submit_btn.html("Submit <i class=\"icon-circle-arrow-right\"></i>");
                         }
                     }
                 }
@@ -165,6 +175,14 @@ var Login = function () {
                         },
                         dataFilter: function (response) {
                             return response != 'true';
+                        },
+                        beforeSend: function () {
+                            submit_btn.attr('disabled', 'disabled');
+                            submit_btn.text("Please wait..");
+                        },
+                        complete: function () {
+                            submit_btn.removeAttr('disabled');
+                            submit_btn.html("Submit <i class=\"icon-circle-arrow-right\"></i>");
                         }
                     }
                 },

@@ -119,8 +119,8 @@
                     <button type="button" class="btn btn-light-grey go-back">
                         <i class="icon-circle-arrow-left"></i> Back
                     </button>
-                    <button type="submit" class="btn btn-bricky pull-right">
-                        Submit <i class="icon-circle-arrow-right"></i>
+                    <button id="btn-submit-forgot" type="submit" class="btn btn-bricky pull-right">
+                    Submit <i class="icon-circle-arrow-right"></i>
                     </button>
                 </div>
             </fieldset>

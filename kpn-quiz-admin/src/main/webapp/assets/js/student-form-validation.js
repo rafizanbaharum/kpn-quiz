@@ -1,5 +1,7 @@
 var FormValidator = function () {
-    // function to initiate Validation Sample 1
+
+    var submit_btn = $('button[type="submit"]');
+
     var runValidator1 = function () {
         var form1 = $('#form');
         var errorHandler1 = $('.errorHandler', form1);
@@ -50,6 +52,14 @@ var FormValidator = function () {
                         },
                         dataFilter: function (response) {
                             return response != 'true';
+                        },
+                        beforeSend: function () {
+                            submit_btn.attr('disabled', 'disabled');
+                            submit_btn.text("Please wait..");
+                        },
+                        complete: function () {
+                            submit_btn.removeAttr('disabled');
+                            submit_btn.html("Submit <i class=\"icon-circle-arrow-right\"></i>");
                         }
                     }
                 },
