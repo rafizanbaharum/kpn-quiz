@@ -3,7 +3,7 @@ var Login = function () {
     $.validator.addMethod('nricNo', function (value) {
             return /^\d{12}$/.test(value);
         },
-        'Please enter a valid NRIC No. wtihout dash. eg: 671218045678');
+        'Please enter a valid NRIC No. without dash. eg: 671218045678');
 
     var runLoginButtons = function () {
         $('.forgot').bind('click', function () {
@@ -50,16 +50,6 @@ var Login = function () {
                 label.addClass('help-block valid');
                 // mark the current input as valid and display OK icon
                 $(element).closest('.form-group').removeClass('has-error');
-            },
-            highlight: function (element) {
-                $(element).closest('.help-block').removeClass('valid');
-                // display OK icon
-                $(element).closest('.form-group').addClass('has-error');
-                // add the Bootstrap error class to the control group
-            },
-            unhighlight: function (element) { // revert the change done by hightlight
-                $(element).closest('.form-group').removeClass('has-error');
-                // set error class to the control group
             }
         });
     };
@@ -93,9 +83,26 @@ var Login = function () {
         form2.validate({
             rules: {
                 nricNo: {
+                    minlength: 12,
                     required: true,
-                    nricNo: true
+                    nricNo: true,
+                    remote: {
+                        url: "/register/validate/",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            nricNo: function () {
+                                return $("#nricNo").val();
+                            }
+                        },
+                        dataFilter: function (response) {
+                            return response == 'true';
+                        }
+                    }
                 }
+            },
+            messages: {
+                nricNo: {remote: "Invalid ID"}
             },
             submitHandler: function (form) {
                 errorHandler2.hide();
@@ -148,13 +155,16 @@ var Login = function () {
                     required: true,
                     nricNo: true,
                     remote: {
-                        url: "register/validate/",
+                        url: "/register/validate/",
                         type: "GET",
                         dataType: "json",
                         data: {
                             nricNo: function () {
                                 return $("#nricNo").val();
                             }
+                        },
+                        dataFilter: function (response) {
+                            return response != 'true';
                         }
                     }
                 },

@@ -47,6 +47,9 @@ var FormValidator = function () {
                             nricNo: function () {
                                 return $("#nricNo").val();
                             }
+                        },
+                        dataFilter: function (response) {
+                            return response != 'true';
                         }
                     }
                 },
