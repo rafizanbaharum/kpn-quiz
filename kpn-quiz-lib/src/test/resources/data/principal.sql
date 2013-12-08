@@ -1,13 +1,3 @@
-update QA_USER set ACTOR_ID = null;
-delete from QA_INTR;
-delete from QA_STDN;
-delete from QA_ACTR;
-
-delete from QA_GROP_MMBR;
-delete from QA_GROP;
-delete from QA_USER;
-delete from QA_PCPL_ROLE;
-delete from QA_PCPL;
 
 -- 6367c48dd193d56ea7b0baad25b19455e529f5ee
 insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (0, '000000000000', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
@@ -39,8 +29,8 @@ insert into QA_ACTR (ID, ACTOR_TYPE, NAME, NRIC_NO, ADDRESS1, ADDRESS2, ADDRESS3
 values (2, 2, 'System Support II', '222222222222',  'Kementerian Penerangan', 'Putrajaya', 'WPKL', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
 insert into QA_SPPT(ID) values(2);
 update QA_USER set ACTOR_ID = 2 where id = 2;
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(5, 1, 1, 1, 1, CURRENT_TIMESTAMP );
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(6, 1, 1, 1, 1, CURRENT_TIMESTAMP );
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(5, 1, 2, 1, 1, CURRENT_TIMESTAMP );
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(6, 1, 2, 1, 1, CURRENT_TIMESTAMP );
 
 ALTER SEQUENCE SEQ_QA_PCPL START WITH 3;
 ALTER SEQUENCE SEQ_QA_ACTR START WITH 3;

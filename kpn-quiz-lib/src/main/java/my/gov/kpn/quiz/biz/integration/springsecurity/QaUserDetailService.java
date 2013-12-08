@@ -59,19 +59,12 @@ public class QaUserDetailService implements UserDetailsService {
     }
 
     private Set<GrantedAuthority> loadGrantedAuthoritiesFor(QaUser user) {
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
-//        try {
         //load all roles which ties to user
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
         for (QaPrincipalRole role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleType().name()));
         }
         log.info("load auth for " + user.getName() + "#" + user.getId());
-        // XXX: will hook this up later
-//            grantedAuthorities.addAll(principalDao.loadEffectiveAuthorities(user));
-//        } catch (RecursiveGroupException e) {
-//            log.error(e.getMessage());
-//            grantedAuthorities.clear();
-//        }
         return grantedAuthorities;
     }
 
