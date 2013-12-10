@@ -18,7 +18,7 @@
                 <ul class="sub-menu">
                     <li>
                         <a href="${pageContext.request.contextPath}/secure/competition/list">
-                            <span class="title">Competition</span>
+                            <span class="title">Competitions</span>
                         </a>
                     </li>
                 </ul>

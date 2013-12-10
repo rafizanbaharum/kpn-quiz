@@ -44,11 +44,10 @@
 <jsp:include page="../include/topbar.jsp"/>
 <div class="main-container">
     <jsp:include page="../include/instructor_navbar.jsp"/>
-
     <div class="main-content">
         <div class="container">
-            <jsp:include page="../include/instructor_navbar.jsp">
-                <jsp:param name="BREADCRUMB" value="TODO"/>
+            <jsp:include page="../include/instructor_breadcrumb.jsp">
+            <jsp:param name="BREADCRUMB" value="TODO"/>
                 <jsp:param name="TITLE" value="TODO"/>
             </jsp:include>
             <div class="row">
