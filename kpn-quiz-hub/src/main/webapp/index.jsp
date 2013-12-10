@@ -48,7 +48,9 @@
 <!-- start: BODY -->
 <body class="login example2">
 <div class="main-login col-sm-4 col-sm-offset-4">
-    <div class="logo"><h2>ASEAN QUIZ</h2></div>
+    <div class="col-sm-offset-1">
+        <div class="logo"><h2>ASEAN QUIZ</h2></div>
+    </div>
     <div class="box-login">
         <h3>Sign in to your account</h3>
 
