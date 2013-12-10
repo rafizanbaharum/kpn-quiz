@@ -53,9 +53,8 @@
         <div class="logo"><h2>ASEAN QUIZ</h2></div>
     </div>
     <div class="box-register">
-        <h3>Sign Up</h3>
-
         <c:if test="${started && !ended}">
+            <h3>Sign Up</h3>
             <form:form method="post" class="form-register" commandName="registration"
                        action="${pageContext.request.contextPath}/register">
                 <jsp:include page="secure/include/msg.jsp"/>
@@ -158,25 +157,16 @@
                 </fieldset>
             </form:form>
         </c:if>
-
-
+        <c:if test="${!started}">
+            <div class="errorHandler alert alert-danger">
+                <i class="icon-remove-sign"></i> Sorry the registration has not started yet. Please come back
+                again.
+            </div>
+        </c:if>
         <c:if test="${started && ended}">
-            <c:choose>
-                <c:when test="${!started}">
-                    <div class="errorHandler alert alert-danger">
-                        <i class="icon-remove-sign"></i> Sorry the registration has not started yet. Please come back
-                        again.
-                    </div>
-                </c:when>
-            </c:choose>
-            <c:choose>
-                <c:when test="${ended}">
-                    <div class="errorHandler alert alert-danger">
-                        <i class="icon-remove-sign"></i> Sorry the registration has ended.
-                    </div>
-                </c:when>
-            </c:choose>
-
+            <div class="errorHandler alert alert-danger">
+                <i class="icon-remove-sign"></i> Sorry the registration has ended.
+            </div>
         </c:if>
     </div>
     <div class="copyright">
