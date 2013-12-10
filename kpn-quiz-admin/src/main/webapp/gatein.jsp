@@ -46,7 +46,7 @@
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
-<body class="login example2">
+<body class="login example2" onload='document.f.username.focus();'>
 <div class="main-login col-sm-4 col-sm-offset-4">
     <div class="col-sm-offset-1">
         <div class="logo"><h2>ASEAN QUIZ</h2></div>
@@ -58,7 +58,7 @@
             Please enter your name and password to log in.
         </p>
 
-        <form method="post" class="form-login" action="${pageContext.request.contextPath}/login">
+        <form name="f" method="post" class="form-login" action="${pageContext.request.contextPath}/login">
             <c:if test="${not empty param.login_error}">
                 <div class="errorHandler alert alert-danger">
                     <i class="icon-remove-sign"></i>
@@ -120,7 +120,7 @@
                         <i class="icon-circle-arrow-left"></i> Back
                     </button>
                     <button id="btn-submit-forgot" type="submit" class="btn btn-bricky pull-right">
-                    Submit <i class="icon-circle-arrow-right"></i>
+                        Submit <i class="icon-circle-arrow-right"></i>
                     </button>
                 </div>
             </fieldset>

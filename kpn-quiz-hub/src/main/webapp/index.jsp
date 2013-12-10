@@ -46,7 +46,7 @@
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
-<body class="login example2">
+<body class="login example2" onload="document.f.username.focus()">
 <div class="main-login col-sm-4 col-sm-offset-4">
     <div class="col-sm-offset-1">
         <div class="logo"><h2>ASEAN QUIZ</h2></div>
@@ -59,8 +59,8 @@
             Please enter your NRIC NO and password to log in.
         </p>
 
-        <form method="post" class="form-login" action="${pageContext.request.contextPath}/login">
-            <c:if test="${not empty param.login_error}">
+        <form name="f" method="post" class="form-login" action="${pageContext.request.contextPath}/login">
+        <c:if test="${not empty param.login_error}">
                 <div class="errorHandler alert alert-danger">
                     <i class="icon-remove-sign"></i>
                     Your login attempt was not successful, try again.<br/>
