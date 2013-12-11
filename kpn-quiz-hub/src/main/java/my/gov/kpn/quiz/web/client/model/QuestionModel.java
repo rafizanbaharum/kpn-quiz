@@ -7,6 +7,7 @@ public class QuestionModel extends MetaModel {
 
     public static final String ID = "id";
     public static final String STATEMENT = "statement";
+    public static final String STR_INDEX = "index";
     public static final String QUESTION_TYPE = "questionType";
     public static final String DIFFICULTY = "difficulty";
     public static final String IS_ANSWERED = "isAnswered";
@@ -27,6 +28,14 @@ public class QuestionModel extends MetaModel {
 
     public void setStatement(String statement) {
         set(STATEMENT, statement);
+    }
+
+    public String getIndex() {
+        return get(STR_INDEX);
+    }
+
+    public void setIndex(String index) {
+        set(STR_INDEX, index);
     }
 
     public QuestionType getQuestionType() {

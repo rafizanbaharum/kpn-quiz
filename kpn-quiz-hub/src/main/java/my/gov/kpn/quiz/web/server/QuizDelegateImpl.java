@@ -36,8 +36,11 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
         ArrayList<QuestionModel> models = new ArrayList<QuestionModel>();
         QaQuiz quiz = GlobalRegistry.getQuiz();
         List<QaQuestion> questions = competitionManager.findQuestions(quiz);
+        int index = 1;
         for (QaQuestion question : questions) {
-            models.add(quizConverter.convert(question));
+            QuestionModel convert = quizConverter.convert(question);
+            convert.setIndex("Question " + index++);
+            models.add(convert);
         }
         return new BaseListLoadResult(models);
     }

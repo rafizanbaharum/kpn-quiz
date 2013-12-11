@@ -95,6 +95,8 @@ public class QuizView extends View {
     private int now = 60 * 60 * 1000;
     private int currentStep = 0;
     private int questionIndex = 0; // zero-based index!
+    private ListStore<QuestionModel> questionStore;
+    private ComboBox<QuestionModel> c;
 
     public QuizView(Controller controller) {
         super(controller);
@@ -158,6 +160,7 @@ public class QuizView extends View {
                 log.info("handleEvent.Loaded");
                 ListLoadResult<QuestionModel> data = be.getData();
                 models = data.getData();
+                c.getStore().add(models);
                 for (QuestionModel model : models) {
                     ++questionIndex;
                     createQuestionPanel(questionIndex, model);
@@ -440,8 +443,11 @@ public class QuizView extends View {
 
     private void createButtonBar() {
 
-        ComboBox c = new ComboBox();
-        c.setStore(new ListStore());
+        c = new ComboBox<QuestionModel>();
+        questionStore = new ListStore<QuestionModel>();
+        c.setStore(questionStore);
+        c.setReadOnly(true);
+        c.setDisplayField(QuestionModel.STR_INDEX);
 
         Button next = new Button("Next");
         next.addStyleName(QUIZ_NAV_BUTTON);
