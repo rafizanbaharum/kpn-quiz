@@ -9,6 +9,7 @@ public class QuestionModel extends MetaModel {
     public static final String STATEMENT = "statement";
     public static final String QUESTION_TYPE = "questionType";
     public static final String DIFFICULTY = "difficulty";
+    public static final String IS_ANSWERED = "isAnswered";
 
     private QuestionType questionType;
 
@@ -42,6 +43,14 @@ public class QuestionModel extends MetaModel {
 
     public void setDifficulty(Difficulty difficulty) {
         set(DIFFICULTY, difficulty);
+    }
+
+    public Boolean isAnswered() {
+        return get(IS_ANSWERED);
+    }
+
+    public void setAnswered(Boolean answered) {
+        set(IS_ANSWERED, answered);
     }
 
     public String toString() {

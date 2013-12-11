@@ -8,6 +8,7 @@ import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.mvc.View;
+import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.util.Margins;
 import com.extjs.gxt.ui.client.widget.CardPanel;
 import com.extjs.gxt.ui.client.widget.Html;
@@ -15,6 +16,7 @@ import com.extjs.gxt.ui.client.widget.LayoutContainer;
 import com.extjs.gxt.ui.client.widget.Viewport;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ButtonBar;
+import com.extjs.gxt.ui.client.widget.form.ComboBox;
 import com.extjs.gxt.ui.client.widget.form.Radio;
 import com.extjs.gxt.ui.client.widget.form.RadioGroup;
 import com.extjs.gxt.ui.client.widget.form.TextArea;
@@ -191,36 +193,57 @@ public class QuizView extends View {
                     LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
                     switch (prevQuestion.getQuestionType()) {
                         case MULTIPLE_CHOICE:
-                            Radio mcRadio0 = (Radio) box.getItemByItemId("0");
-                            Radio mcRadio1 = (Radio) box.getItemByItemId("1");
-                            Radio mcRadio2 = (Radio) box.getItemByItemId("2");
-                            Radio mcRadio3 = (Radio) box.getItemByItemId("3");
 
-                            // TODO: simplify
-                            Integer mcAnswer = -1;
-                            if (mcRadio0.getValue()) mcAnswer = 0;
-                            if (mcRadio1.getValue()) mcAnswer = 1;
-                            if (mcRadio2.getValue()) mcAnswer = 2;
-                            if (mcRadio3.getValue()) mcAnswer = 3;
-                            log.info("r0: " + mcRadio0.getValue());
-                            log.info("r1: " + mcRadio1.getValue());
-                            log.info("r2: " + mcRadio2.getValue());
-                            log.info("r3: " + mcRadio3.getValue());
+                            for (int i = 0; i <= 3; i++){
+                                String val = String.valueOf(0);
+                                Radio mcRadio = (Radio) box.getItemByItemId(val);
+                                Integer mcAnswer = -1;
+                                if (mcRadio.getValue()) {
+                                    mcAnswer = i ;
+                                    updateAnswer(prevQuestion, mcAnswer);
+                                    break;
+                                }
+                            }
+//                            Radio mcRadio0 = (Radio) box.getItemByItemId("0");
+//                            Radio mcRadio1 = (Radio) box.getItemByItemId("1");
+//                            Radio mcRadio2 = (Radio) box.getItemByItemId("2");
+//                            Radio mcRadio3 = (Radio) box.getItemByItemId("3");
+//
+//                            // TODO: simplify
+//                            if (mcRadio1.getValue()) mcAnswer = 1;
+//                            if (mcRadio2.getValue()) mcAnswer = 2;
+//                            if (mcRadio3.getValue()) mcAnswer = 3;
+//                            log.info("r0: " + mcRadio0.getValue());
+//                            log.info("r1: " + mcRadio1.getValue());
+//                            log.info("r2: " + mcRadio2.getValue());
+//                            log.info("r3: " + mcRadio3.getValue());
 
 
-                            if (mcAnswer != -1) updateAnswer(prevQuestion, mcAnswer);
+//                            if (mcAnswer != -1) updateAnswer(prevQuestion, mcAnswer);
                             loadAnswerIndex(nextQuestion);
                             break;
                         case BOOLEAN:
-                            Radio blRadio0 = (Radio) box.getItemByItemId("0");
-                            Radio blRadio1 = (Radio) box.getItemByItemId("1");
 
-                            // TODO: simplify
-                            Integer blAnswer = -1;
-                            if (blRadio0.getValue()) blAnswer = 0;
-                            if (blRadio1.getValue()) blAnswer = 1;
+                            for (int i = 0; i <= 1; i++){
+                                String val = String.valueOf(0);
+                                Radio blRadio = (Radio) box.getItemByItemId(val);
+                                Integer mcAnswer = -1;
+                                if (blRadio.getValue()) {
+                                    mcAnswer = i ;
+                                    updateAnswer(prevQuestion, mcAnswer);
+                                    break;
+                                }
+                            }
 
-                            if (blAnswer != -1) updateAnswer(prevQuestion, blAnswer);
+//                            Radio blRadio0 = (Radio) box.getItemByItemId("0");
+//                            Radio blRadio1 = (Radio) box.getItemByItemId("1");
+//
+//                            // TODO: simplify
+//                            Integer blAnswer = -1;
+//                            if (blRadio0.getValue()) blAnswer = 0;
+//                            if (blRadio1.getValue()) blAnswer = 1;
+//
+//                            if (blAnswer != -1) updateAnswer(prevQuestion, blAnswer);
                             loadAnswerIndex(nextQuestion);
                             break;
                         case SUBJECTIVE:
@@ -260,6 +283,7 @@ public class QuizView extends View {
     // subjective
     private void updateAnswer(QuestionModel questionModel, String answerResponse) {
         log.info("updating answer: " + answerResponse);
+        questionModel.setAnswered(Boolean.TRUE);
         delegate.updateAnswer(questionModel, answerResponse, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -277,6 +301,7 @@ public class QuizView extends View {
     private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
         log.info("updating answer: " + questionModel.getStatement());
         log.info("updating answer: " + answerIndex);
+        questionModel.setAnswered(Boolean.TRUE);
         delegate.updateAnswer(questionModel, answerIndex, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
@@ -414,6 +439,10 @@ public class QuizView extends View {
     }
 
     private void createButtonBar() {
+
+        ComboBox c = new ComboBox();
+        c.setStore(new ListStore());
+
         Button next = new Button("Next");
         next.addStyleName(QUIZ_NAV_BUTTON);
         next.setScale(Style.ButtonScale.LARGE);
@@ -426,9 +455,11 @@ public class QuizView extends View {
         prev.addSelectionListener(new PreviousSelectionListener());
 
         ButtonBar buttonBar = new ButtonBar();
+        buttonBar.add(c);
         buttonBar.add(prev);
         buttonBar.add(next);
         buttonBar.setAlignment(CENTER);
+//        footer.add(c, new MarginData(5, 5, 5, 5));
         footer.add(buttonBar, new MarginData(20, 0, 0, 0));
     }
 
