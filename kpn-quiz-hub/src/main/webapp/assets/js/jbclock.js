@@ -12,6 +12,7 @@ function JBCountDown(settings) {
     glob.seconds = 60 - Math.floor((glob.endDate - glob.now) % 86400 % 3600 % 60);
 
     if (glob.now >= glob.endDate) {
+        window.location.replace("index.jsp");
         return;
     }
 
@@ -98,7 +99,7 @@ function JBCountDown(settings) {
                         clearInterval(cdown);
 
                         /* Countdown is complete */
-
+                        window.location.replace("index.jsp");
                         return;
                     }
                     glob.seconds = 1;
