@@ -60,8 +60,8 @@
         </p>
 
         <form name="f" method="post" class="form-login" action="${pageContext.request.contextPath}/login">
-        <c:if test="${not empty param.login_error}">
-                <div class="errorHandler alert alert-danger">
+            <c:if test="${not empty param.login_error}">
+            <div class="errorHandler alert alert-danger">
                     <i class="icon-remove-sign"></i>
                     Your login attempt was not successful, try again.<br/>
                     Reason: ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}

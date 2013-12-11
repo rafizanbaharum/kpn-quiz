@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,8 +26,8 @@
                 daysColor: "#378cff",
                 daysGlow: "none",
 
-                startDate: "1357041600",
-                endDate: "1388491200",
+                startDate: ${sessionScope.startDate},
+                endDate: ${sessionScope.endDate},
                 now: new Date() / 1000
             });
         });

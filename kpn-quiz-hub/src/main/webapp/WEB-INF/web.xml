@@ -30,6 +30,19 @@
     </filter-mapping>
 
     <!-- ====================================================================================== -->
+    <!-- QUIZ COUNTDOWN FILTER  -->
+    <!-- ====================================================================================== -->
+
+    <filter>
+        <filter-name>countdownFilter</filter-name>
+        <filter-class>my.gov.kpn.quiz.web.filter.QuizCountdownFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>countdownFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+    </filter-mapping>
+
+    <!-- ====================================================================================== -->
     <!-- QUIZ EXPIRED FILTER  -->
     <!-- ====================================================================================== -->
 
