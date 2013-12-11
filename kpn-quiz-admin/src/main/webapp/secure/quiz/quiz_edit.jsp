@@ -89,7 +89,7 @@
                                             </label>
 
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <form:select path="startDate_dd" cssClass="form-control">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="yyyy">
@@ -97,7 +97,7 @@
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <form:select path="startDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="MM">
@@ -105,8 +105,16 @@
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <form:input path="startDate_yyyy" placeholder="YYYY"
+                                                                cssClass="form-control"/>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form:input path="startDate_hh" placeholder="YYYY"
+                                                                cssClass="form-control"/>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form:input path="startDate_mm" placeholder="YYYY"
                                                                 cssClass="form-control"/>
                                                 </div>
                                             </div>
@@ -119,7 +127,7 @@
                                             </label>
 
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <form:select path="endDate_dd" cssClass="form-control">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="yyyy">
@@ -128,7 +136,7 @@
 
                                                     </form:select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <form:select path="endDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="MM">
@@ -137,8 +145,16 @@
 
                                                     </form:select>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-2">
                                                     <form:input path="endDate_yyyy" placeholder="YYYY"
+                                                                cssClass="form-control"/>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form:input path="endDate_hh" placeholder="YYYY"
+                                                                cssClass="form-control"/>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <form:input path="endDate_mm" placeholder="YYYY"
                                                                 cssClass="form-control"/>
                                                 </div>
                                             </div>

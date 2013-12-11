@@ -195,7 +195,7 @@ public class QuizController extends AbstractController {
     }
 
 
-    private static Date extractStartDate(QuizModel quizModel) {
+    private Date extractStartDate(QuizModel quizModel) {
         return new LocalDateTime(
                 Integer.parseInt(quizModel.getStartDate_yyyy()),
                 Integer.parseInt(quizModel.getStartDate_MM()),
@@ -205,7 +205,7 @@ public class QuizController extends AbstractController {
                 .toDate();
     }
 
-    private static Date extractEndDate(QuizModel quizModel) {
+    private Date extractEndDate(QuizModel quizModel) {
         return new LocalDateTime(
                 Integer.parseInt(quizModel.getEndDate_yyyy()),
                 Integer.parseInt(quizModel.getEndDate_MM()),
