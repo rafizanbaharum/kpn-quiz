@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.client;
 import com.extjs.gxt.ui.client.data.ListLoadResult;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import my.gov.kpn.quiz.web.client.model.QuestionModel;
+import my.gov.kpn.quiz.web.client.model.QuizModel;
 
 /**
  * @author rafizan.baharum
@@ -24,4 +25,5 @@ public interface QuizDelegateAsync {
     // for subjective
     void loadAnswerResponse(QuestionModel model, AsyncCallback<String> async);
 
+    void loadCurrentQuiz(AsyncCallback<QuizModel> async);
 }

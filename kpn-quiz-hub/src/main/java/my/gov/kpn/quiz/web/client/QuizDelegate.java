@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.client;
 import com.extjs.gxt.ui.client.data.ListLoadResult;
 import com.google.gwt.user.client.rpc.RemoteService;
 import my.gov.kpn.quiz.web.client.model.QuestionModel;
+import my.gov.kpn.quiz.web.client.model.QuizModel;
 
 /**
  * @author rafizan.baharum
@@ -11,6 +12,8 @@ import my.gov.kpn.quiz.web.client.model.QuestionModel;
 public interface QuizDelegate extends RemoteService {
 
     ListLoadResult<QuestionModel> findCurrentQuestions();
+
+    QuizModel loadCurrentQuiz();
 
     void updateAnswer(QuestionModel model, Integer answerIndex);
 

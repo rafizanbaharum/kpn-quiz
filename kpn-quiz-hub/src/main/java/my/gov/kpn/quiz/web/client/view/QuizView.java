@@ -24,16 +24,16 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
+import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.QuizEvents;
 import my.gov.kpn.quiz.web.client.event.QuizNavigateEvent;
 import my.gov.kpn.quiz.web.client.event.TimerEvent;
-import my.gov.kpn.quiz.web.client.model.BooleanQuestionModel;
-import my.gov.kpn.quiz.web.client.model.MultipleChoiceQuestionModel;
-import my.gov.kpn.quiz.web.client.model.QuestionModel;
-import my.gov.kpn.quiz.web.client.model.SubjectiveQuestionModel;
+import my.gov.kpn.quiz.web.client.model.*;
 import my.gov.kpn.quiz.web.client.rpc.QuestionRpcProxy;
+import my.gov.kpn.quiz.web.client.rpc.QuizRpcProxy;
+import my.gov.kpn.quiz.web.server.GlobalRegistry;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -133,6 +133,19 @@ public class QuizView extends View {
         initListener();
         initTimer();
         loader.load(new BaseListLoadConfig());
+
+        QuizRpcProxy quizProxy = new QuizRpcProxy(delegate);
+        Loader<QuizModel> quizLoader = new BaseLoader<QuizModel>(quizProxy);
+
+        quizLoader.addListener(Loader.Load, new Listener<LoadEvent>(){
+            @Override
+            public void handleEvent(LoadEvent be) {
+                QuizModel quiz = (QuizModel)be.getData();
+                now =  Long.valueOf(quiz.getEndDate().getTime() - quiz.getStartDate().getTime()).intValue();
+            }
+        });
+        quizLoader.load(new BaseListLoadConfig());
+
     }
 
     private void initListener() {

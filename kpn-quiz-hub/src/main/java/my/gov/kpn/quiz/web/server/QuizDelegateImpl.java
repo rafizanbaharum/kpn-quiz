@@ -9,6 +9,7 @@ import my.gov.kpn.quiz.core.model.QaQuestion;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.client.QuizDelegate;
 import my.gov.kpn.quiz.web.client.model.QuestionModel;
+import my.gov.kpn.quiz.web.client.model.QuizModel;
 import my.gov.kpn.quiz.web.common.AutoInjectingRemoteServiceServlet;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,12 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
             models.add(quizConverter.convert(question));
         }
         return new BaseListLoadResult(models);
+    }
+
+    @Override
+    public QuizModel loadCurrentQuiz() {
+        QaQuiz quiz = GlobalRegistry.getQuiz();
+        return quizConverter.convert(quiz);
     }
 
     @Override

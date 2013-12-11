@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.server;
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
 import my.gov.kpn.quiz.core.model.QaQuestion;
+import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.QaSubjectiveQuestion;
 import my.gov.kpn.quiz.web.client.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,4 +48,15 @@ public class QuizConverter {
         return model;
     }
 
+    public QuizModel convert(QaQuiz quiz) {
+
+        QuizModel model = new QuizModel();
+
+        model.setId(quiz.getId());
+        model.setStartDate(quiz.getStartDate());
+        model.setEndDate(quiz.getEndDate());
+
+        return model;
+
+    }
 }
