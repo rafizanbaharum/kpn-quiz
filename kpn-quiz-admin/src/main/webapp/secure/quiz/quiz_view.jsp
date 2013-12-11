@@ -169,12 +169,12 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="studentModel" items="${questionModels}" varStatus="idx">
+                                <c:forEach var="questionModel" items="${questionModels}" varStatus="idx">
                                     <tr>
                                         <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${studentModel.statementAbbreviated}</td>
-                                        <td class="hidden-xs">${studentModel.questionTypeString}</td>
-                                        <td class="hidden-xs">${studentModel.difficulty}</td>
+                                        <td class="hidden-xs">${questionModel.statementAbbreviated}</td>
+                                        <td class="hidden-xs">${questionModel.questionTypeString}</td>
+                                        <td class="hidden-xs">${questionModel.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/question/view/${studentModel.id}"

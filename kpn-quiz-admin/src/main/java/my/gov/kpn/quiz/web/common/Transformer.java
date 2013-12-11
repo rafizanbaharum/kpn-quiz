@@ -2,6 +2,18 @@ package my.gov.kpn.quiz.web.common;
 
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.*;
+import my.gov.kpn.quiz.core.model.QaActor;
+import my.gov.kpn.quiz.core.model.QaCompetition;
+import my.gov.kpn.quiz.core.model.QaInstructor;
+import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
+import my.gov.kpn.quiz.core.model.QaParticipant;
+import my.gov.kpn.quiz.core.model.QaQuestion;
+import my.gov.kpn.quiz.core.model.QaQuiz;
+import my.gov.kpn.quiz.core.model.QaState;
+import my.gov.kpn.quiz.core.model.QaStudent;
+import my.gov.kpn.quiz.core.model.QaSubjectiveQuestion;
+import my.gov.kpn.quiz.core.model.QaSupport;
+import my.gov.kpn.quiz.core.model.QaUser;
 import my.gov.kpn.quiz.web.model.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
@@ -173,7 +185,7 @@ public class Transformer {
         model.setStatement(question.getStatement());
         model.setAnswerIndex(question.getAnswerIndex());
         model.setQuestionType(question.getQuestionType().ordinal());
-        model.setQuestionTypeString(question.getQuestionType().name());
+        model.setQuestionTypeString(question.getQuestionType().getDesc());
         model.setDifficulty(question.getDifficulty().ordinal());
         return model;
     }
