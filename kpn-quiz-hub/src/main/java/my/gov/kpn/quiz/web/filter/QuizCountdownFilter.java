@@ -24,7 +24,7 @@ public class QuizCountdownFilter implements Filter {
             if (new Date().before(quiz.getStartDate())) {
                 request.getSession().setAttribute("startDate", quiz.getStartDate().getTime() / 1000);
                 request.getSession().setAttribute("endDate", quiz.getEndDate().getTime() / 1000);
-                response.sendRedirect("/countdown.jsp");
+                response.sendRedirect("countdown.jsp");
             }
         } catch (Exception e) {
             log.error(e);
