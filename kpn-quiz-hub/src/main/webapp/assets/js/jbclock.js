@@ -5,13 +5,13 @@ function JBCountDown(settings) {
         return (Math.PI / 180) * deg - (Math.PI / 180) * 90
     }
 
-    glob.total = Math.floor((glob.endDate - glob.startDate) / 86400);
-    glob.days = Math.floor((glob.endDate - glob.now ) / 86400);
-    glob.hours = 24 - Math.floor(((glob.endDate - glob.now) % 86400) / 3600);
-    glob.minutes = 60 - Math.floor((((glob.endDate - glob.now) % 86400) % 3600) / 60);
-    glob.seconds = 60 - Math.floor((glob.endDate - glob.now) % 86400 % 3600 % 60);
+    glob.total = Math.floor(20);
+    glob.days = Math.floor((glob.startDate - glob.now ) / 86400);
+    glob.hours = 24 - Math.floor(((glob.startDate - glob.now) % 86400) / 3600);
+    glob.minutes = 60 - Math.floor((((glob.startDate - glob.now) % 86400) % 3600) / 60);
+    glob.seconds = 60 - Math.floor((glob.startDate - glob.now) % 86400 % 3600 % 60);
 
-    if (glob.now >= glob.endDate) {
+    if (glob.now >= glob.startDate) {
         window.location.replace("index.jsp");
         return;
     }
@@ -30,7 +30,8 @@ function JBCountDown(settings) {
                 ctx.shadowOffsetY = 0;
                 ctx.shadowColor = glob.daysGlow;
 
-                ctx.arc(95, 95, 80, deg(0), deg((360 / glob.total) * (glob.total - glob.days)));
+                var endAngle = deg((360 / glob.total) * (glob.total - glob.days));
+                ctx.arc(95, 95, 80, deg(0), endAngle);
                 ctx.lineWidth = 12;
                 ctx.stroke();
                 $(".clock_days .val").text(glob.days);
