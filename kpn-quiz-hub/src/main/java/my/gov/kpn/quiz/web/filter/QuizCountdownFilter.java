@@ -1,8 +1,14 @@
 package my.gov.kpn.quiz.web.filter;
 
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.web.server.GlobalRegistry;
+import my.gov.kpn.quiz.web.common.AutoInjectingFilterListener;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
-public class QuizCountdownFilter implements Filter {
+@Component("quizCountdownFilter")
+public class QuizCountdownFilter extends AutoInjectingFilterListener {
+
+    @Autowired
+    private CompetitionManager competitionManager;
 
     private static final Logger log = Logger.getLogger(QuizCountdownFilter.class);
 
@@ -20,11 +30,13 @@ public class QuizCountdownFilter implements Filter {
             HttpServletRequest request = (HttpServletRequest) req;
             HttpServletResponse response = (HttpServletResponse) res;
 
-            QaQuiz quiz = GlobalRegistry.getQuiz();
+            QaQuiz quiz = competitionManager.getCurrentQuiz();
+            log.debug("quiz.getStartDate() = " + quiz.getStartDate());
+            log.debug("quiz.getEndDate() = " + quiz.getEndDate());
             if (new Date().before(quiz.getStartDate())) {
                 request.getSession().setAttribute("startDate", quiz.getStartDate().getTime() / 1000);
                 request.getSession().setAttribute("endDate", quiz.getEndDate().getTime() / 1000);
-                response.sendRedirect("countdown.jsp");
+                request.getRequestDispatcher("countdown.jsp").forward(request, response);
             }
         } catch (Exception e) {
             log.error(e);
@@ -32,9 +44,8 @@ public class QuizCountdownFilter implements Filter {
         chain.doFilter(req, res);
     }
 
-    public void init(FilterConfig config) throws ServletException {
-    }
-
+    @Override
     public void destroy() {
+
     }
 }

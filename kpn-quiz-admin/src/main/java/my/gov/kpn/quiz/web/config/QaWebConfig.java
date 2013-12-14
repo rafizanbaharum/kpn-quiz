@@ -96,8 +96,8 @@ public class QaWebConfig {
     public JavaMailSender mailSender() {
         Properties properties = new Properties();
         properties.put("mail.debug", env.getProperty("mail.debug"));
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.auth", env.getProperty("mail.smtp.auth"));
+        properties.put("mail.smtp.starttls.enable", env.getProperty("mail.smtp.starttls.enable"));
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost(env.getProperty("mail.host"));

@@ -34,11 +34,11 @@
     <!-- ====================================================================================== -->
 
     <filter>
-        <filter-name>countdownFilter</filter-name>
+        <filter-name>quizCountdownFilter</filter-name>
         <filter-class>my.gov.kpn.quiz.web.filter.QuizCountdownFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>countdownFilter</filter-name>
+        <filter-name>quizCountdownFilter</filter-name>
         <url-pattern>/index.jsp</url-pattern>
     </filter-mapping>
 
