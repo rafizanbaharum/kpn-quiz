@@ -10,10 +10,7 @@ import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.mvc.View;
 import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.util.Margins;
-import com.extjs.gxt.ui.client.widget.CardPanel;
-import com.extjs.gxt.ui.client.widget.Html;
-import com.extjs.gxt.ui.client.widget.LayoutContainer;
-import com.extjs.gxt.ui.client.widget.Viewport;
+import com.extjs.gxt.ui.client.widget.*;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ButtonBar;
 import com.extjs.gxt.ui.client.widget.form.ComboBox;
@@ -37,7 +34,9 @@ import my.gov.kpn.quiz.web.client.rpc.QuestionRpcProxy;
 import my.gov.kpn.quiz.web.client.rpc.QuizRpcProxy;
 import my.gov.kpn.quiz.web.server.GlobalRegistry;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
@@ -141,11 +140,11 @@ public class QuizView extends View {
         QuizRpcProxy quizProxy = new QuizRpcProxy(delegate);
         Loader<QuizModel> quizLoader = new BaseLoader<QuizModel>(quizProxy);
 
-        quizLoader.addListener(Loader.Load, new Listener<LoadEvent>(){
+        quizLoader.addListener(Loader.Load, new Listener<LoadEvent>() {
             @Override
             public void handleEvent(LoadEvent be) {
-                QuizModel quiz = (QuizModel)be.getData();
-                now =  Long.valueOf(quiz.getEndDate().getTime() - quiz.getStartDate().getTime()).intValue();
+                QuizModel quiz = (QuizModel) be.getData();
+                now = Long.valueOf(quiz.getEndDate().getTime() - quiz.getStartDate().getTime()).intValue();
             }
         });
         quizLoader.load(new BaseListLoadConfig());
@@ -194,62 +193,47 @@ public class QuizView extends View {
 
                     LayoutContainer container = (LayoutContainer) cardPanel.getItem(be.getPreviousQuestionIndex());
                     LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
+                    List<Component> items = box.getItems();
                     switch (prevQuestion.getQuestionType()) {
                         case MULTIPLE_CHOICE:
-
-                            for (int i = 0; i <= 3; i++){
-                                String val = String.valueOf(0);
-                                Radio mcRadio = (Radio) box.getItemByItemId(val);
-                                Integer mcAnswer = -1;
-                                if (mcRadio.getValue()) {
-                                    mcAnswer = i ;
-                                    updateAnswer(prevQuestion, mcAnswer);
-                                    break;
+                            int ansIdx = -1;
+                            for (Component item : items) {
+                                if (item instanceof Radio) {
+                                    ansIdx++;
+                                    Radio mcRadio = (Radio) item;
+                                    Integer mcAnswer;
+                                    if (mcRadio.getValue()) {
+                                        mcAnswer = ansIdx;
+                                        updateAnswer(prevQuestion, mcAnswer);
+                                        break;
+                                    }
                                 }
+
                             }
-//                            Radio mcRadio0 = (Radio) box.getItemByItemId("0");
-//                            Radio mcRadio1 = (Radio) box.getItemByItemId("1");
-//                            Radio mcRadio2 = (Radio) box.getItemByItemId("2");
-//                            Radio mcRadio3 = (Radio) box.getItemByItemId("3");
-//
-//                            // TODO: simplify
-//                            if (mcRadio1.getValue()) mcAnswer = 1;
-//                            if (mcRadio2.getValue()) mcAnswer = 2;
-//                            if (mcRadio3.getValue()) mcAnswer = 3;
-//                            log.info("r0: " + mcRadio0.getValue());
-//                            log.info("r1: " + mcRadio1.getValue());
-//                            log.info("r2: " + mcRadio2.getValue());
-//                            log.info("r3: " + mcRadio3.getValue());
-
-
-//                            if (mcAnswer != -1) updateAnswer(prevQuestion, mcAnswer);
                             loadAnswerIndex(nextQuestion);
                             break;
                         case BOOLEAN:
-
-                            for (int i = 0; i <= 1; i++){
-                                String val = String.valueOf(0);
-                                Radio blRadio = (Radio) box.getItemByItemId(val);
-                                Integer mcAnswer = -1;
-                                if (blRadio.getValue()) {
-                                    mcAnswer = i ;
-                                    updateAnswer(prevQuestion, mcAnswer);
-                                    break;
+                            items = box.getItems();
+                            ansIdx = -1;
+                            for (Component item : items) {
+                                if (item instanceof Radio) {
+                                    ansIdx++;
+                                    Radio mcRadio = (Radio) item;
+                                    Integer mcAnswer;
+                                    if (mcRadio.getValue()) {
+                                        mcAnswer = ansIdx;
+                                        updateAnswer(prevQuestion, mcAnswer);
+                                        break;
+                                    }
                                 }
-                            }
 
-//                            Radio blRadio0 = (Radio) box.getItemByItemId("0");
-//                            Radio blRadio1 = (Radio) box.getItemByItemId("1");
-//
-//                            // TODO: simplify
-//                            Integer blAnswer = -1;
-//                            if (blRadio0.getValue()) blAnswer = 0;
-//                            if (blRadio1.getValue()) blAnswer = 1;
-//
-//                            if (blAnswer != -1) updateAnswer(prevQuestion, blAnswer);
+                            }
                             loadAnswerIndex(nextQuestion);
                             break;
                         case SUBJECTIVE:
+                            for (Component item : items) {
+                                log.info("item.getClass() = " + item.getClass());
+                            }
                             TextArea textArea = (TextArea) box.getItemByItemId(QUIZ_QUESTION_RESPONSE);
                             updateAnswer(prevQuestion, textArea.getValue());
                             loadAnswerResponse(nextQuestion);
@@ -296,14 +280,14 @@ public class QuizView extends View {
             @Override
             public void onSuccess(Void result) {
                 // TODO:
+                Info.display("Saved!", "");
             }
         });
     }
 
     // multiplechoice + boolean
     private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
-        log.info("updating answer: " + questionModel.getStatement());
-        log.info("updating answer: " + answerIndex);
+        log.info("#" + questionModel.getIndex() + " " + questionModel.getStatement() + " Answer:" + answerIndex);
         questionModel.setAnswered(Boolean.TRUE);
         delegate.updateAnswer(questionModel, answerIndex, new AsyncCallback<Void>() {
             @Override
@@ -314,6 +298,7 @@ public class QuizView extends View {
             @Override
             public void onSuccess(Void result) {
                 // TODO:
+                Info.display("Saved!", "");
             }
         });
     }
@@ -577,7 +562,9 @@ public class QuizView extends View {
         panel.setStyleName(QUIZ_QUESTION);
 
         LayoutContainer box = new LayoutContainer();
+        box.setItemId(QUIZ_QUESTION_BOX);
         box.setLayout(new VBoxLayout());
+
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
@@ -590,20 +577,21 @@ public class QuizView extends View {
         area.setFieldLabel("");
         area.setHeight(250);
         area.setWidth(1000);
-        area.addListener(Events.KeyUp, new Listener<FieldEvent>() {
-            @Override
+        area.addListener(Events.OnKeyUp, new Listener<FieldEvent>() {
             public void handleEvent(FieldEvent be) {
-                String value = (String) be.getField().getValue();
-                if (value != null) {
+                TextArea t = (TextArea) be.getField();
+                String value = t.getValue();
+                if (null != value) {
                     int wc = getWordCount(value);
-                    if (wc > model.getWordLimit()) {
+                    if (wc > 20) {
                         be.setCancelled(true);
-                        area.setValue(value.substring(0, value.length() - 1));
+                        t.setValue(value.substring(0, value.length() - 1));
                     } else {
-                        wordCount.setHtml(wc + "/" + model.getWordLimit() + "Words");
+                        wordCount.setHtml(wc + (wc == 1 ? " Word" : " Words"));
                     }
                 }
             }
+
         });
 
         box.add(statement, new VBoxLayoutData(0, 0, 20, 0));
