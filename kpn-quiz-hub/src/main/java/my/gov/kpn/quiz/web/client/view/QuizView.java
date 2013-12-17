@@ -23,7 +23,6 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
-import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.QuizEvents;
@@ -32,11 +31,9 @@ import my.gov.kpn.quiz.web.client.event.TimerEvent;
 import my.gov.kpn.quiz.web.client.model.*;
 import my.gov.kpn.quiz.web.client.rpc.QuestionRpcProxy;
 import my.gov.kpn.quiz.web.client.rpc.QuizRpcProxy;
-import my.gov.kpn.quiz.web.server.GlobalRegistry;
+import my.gov.kpn.quiz.web.client.ui.field.DisablePasteTextArea;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.logging.Logger;
 
 import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
@@ -570,7 +567,8 @@ public class QuizView extends View {
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
         final Html wordCount = new Html();
         wordCount.setId(QUIZ_QUESTION_WORDCOUNT);
-        final TextArea area = new TextArea();
+
+        final TextArea area = new DisablePasteTextArea();
         area.setId("answer");
         area.setName("answer");
         area.setItemId(QUIZ_QUESTION_RESPONSE);
@@ -583,11 +581,11 @@ public class QuizView extends View {
                 String value = t.getValue();
                 if (null != value) {
                     int wc = getWordCount(value);
-                    if (wc > 20) {
+                    if (wc > model.getWordLimit()) {
                         be.setCancelled(true);
                         t.setValue(value.substring(0, value.length() - 1));
                     } else {
-                        wordCount.setHtml(wc + (wc == 1 ? " Word" : " Words"));
+                        wordCount.setHtml(wc + "/" + model.getWordLimit() + (wc == 1 ? " Word" : " Words"));
                     }
                 }
             }

@@ -8,6 +8,10 @@ public class SubjectiveQuestionModel extends QuestionModel {
 
     public static final String WORD_LIMIT = "wordLimit";
 
+    public SubjectiveQuestionModel() {
+        setWordLimit(500);
+    }
+
     public Integer getWordLimit() {
         return get(WORD_LIMIT);
     }
