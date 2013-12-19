@@ -2,18 +2,6 @@ package my.gov.kpn.quiz.web.common;
 
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.*;
-import my.gov.kpn.quiz.core.model.QaActor;
-import my.gov.kpn.quiz.core.model.QaCompetition;
-import my.gov.kpn.quiz.core.model.QaInstructor;
-import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
-import my.gov.kpn.quiz.core.model.QaParticipant;
-import my.gov.kpn.quiz.core.model.QaQuestion;
-import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.core.model.QaState;
-import my.gov.kpn.quiz.core.model.QaStudent;
-import my.gov.kpn.quiz.core.model.QaSubjectiveQuestion;
-import my.gov.kpn.quiz.core.model.QaSupport;
-import my.gov.kpn.quiz.core.model.QaUser;
 import my.gov.kpn.quiz.web.model.*;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
@@ -240,6 +228,8 @@ public class Transformer {
         model.setDob_mm(String.valueOf(dob.getMonthOfYear()));
         model.setDob_yyyy(String.valueOf(dob.getYear()));
         model.setSchoolName(student.getSchoolName());
+        model.setGenderType(student.getGenderType().name());
+        model.setRaceType(student.getRaceType().name());
         if (null != student.getState())
             model.setStateName(student.getState().getName());
         return model;

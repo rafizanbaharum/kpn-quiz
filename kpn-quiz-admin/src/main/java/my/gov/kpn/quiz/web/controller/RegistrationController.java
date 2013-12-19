@@ -51,32 +51,6 @@ public class RegistrationController extends AbstractController {
 
     @Autowired
     private QaUserDao userDao;
-
-    private enum SchoolType {
-        SMK("SMK"),
-        PRIVATE("PRIVATE"),
-        SBP("SBP"),
-        SMK_TEKNIK("SMK TEKNIK"),
-        SMKJ_C("SMKJ(C)"),
-        SMKJ_T("SMKJ(T)"),
-        SMA("SMA"),
-        MRSM("MRSM");
-
-        private String description;
-
-        private SchoolType(String description) {
-            this.description = description;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-    }
-
     @RequestMapping(method = {RequestMethod.GET})
     public String go(@ModelAttribute("registration") RegistrationModel registrationModel, ModelMap model, HttpServletRequest request) {
         return "register";
@@ -109,7 +83,9 @@ public class RegistrationController extends AbstractController {
         registrationManager.registerInstructor(registrationModel.getUsername(), registrationModel.getPassword(),
                 registrationModel.getFullName(), registrationModel.getNricNo(), registrationModel.getEmail(),
                 registrationModel.getPhone(), registrationModel.getFax(), registrationModel.getStateId(),
-                registrationModel.getSchoolName(), Integer.parseInt(registrationModel.getSchoolType()));
+                registrationModel.getSchoolName(),
+                registrationModel.getSchoolPhone(),
+                Integer.parseInt(registrationModel.getSchoolType()));
         return "registered";
     }
 
@@ -120,15 +96,6 @@ public class RegistrationController extends AbstractController {
         QaUser user = userDao.findByUsername(nricNo);
         sysManager.recoverPassword(user);
         return "forgot_password";
-    }
-
-    @ModelAttribute("schoolTypeMap")
-    public Map<String, String> schoolTypeMap() {
-        Map<String, String> map = new HashMap<String, String>();
-        for (SchoolType type : SchoolType.values()) {
-            map.put(String.valueOf(type.ordinal()), type.getDescription());
-        }
-        return map;
     }
 
     @ModelAttribute("states")

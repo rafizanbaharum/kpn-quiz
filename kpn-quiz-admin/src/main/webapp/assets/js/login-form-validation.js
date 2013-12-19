@@ -129,7 +129,7 @@ var Login = function () {
         form3.validate({
             rules: {
                 fullName: {
-                    minlength: 12,
+                    minlength: 5,
                     required: true
                 },
                 address1: {

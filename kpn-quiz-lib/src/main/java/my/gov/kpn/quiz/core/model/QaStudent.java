@@ -23,6 +23,20 @@ public interface QaStudent extends QaActor {
     String getSchoolName();
 
     /**
+     * @param gender
+     */
+    void setGenderType(QaGenderType gender);
+
+    QaGenderType getGenderType();
+
+    /**
+     * @param race
+     */
+    void setRaceType(QaRaceType race);
+
+    QaRaceType getRaceType();
+
+    /**
      * @param schoolType
      */
     void setSchoolType(QaSchoolType schoolType);

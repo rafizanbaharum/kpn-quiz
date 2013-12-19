@@ -62,6 +62,7 @@
                                     <th>Name</th>
                                     <th class="hidden-xs">NRIC</th>
                                     <th class="hidden-xs">Username</th>
+                                    <th class="hidden-xs">Gender</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -72,6 +73,7 @@
                                         <td class="hidden-xs">${studentModel.name}</td>
                                         <td>${studentModel.nricNo}</td>
                                         <td class="hidden-xs">${studentModel.username}</td>
+                                        <td class="hidden-xs">${studentModel.genderType}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/student/view/${studentModel.id}"

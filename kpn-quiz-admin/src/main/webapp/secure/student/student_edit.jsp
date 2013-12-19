@@ -93,6 +93,34 @@
                                                         cssClass="form-control"/>
 
                                         </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Gender <span class="symbol required"></span>
+                                            </label>
+                                            <form:select id="genderType" path="genderType"
+                                                         class="form-control">
+                                                <form:option value="">Choose gender</form:option>
+                                                <c:forEach items="${genderTypeMap}"
+                                                           var="genderType">
+                                                    <form:option
+                                                            value='${genderType.key}'>${genderType.value}</form:option>
+                                                </c:forEach>
+                                            </form:select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Race <span class="symbol required"></span>
+                                            </label>
+                                            <form:select id="raceType" path="raceType"
+                                                         class="form-control">
+                                                <form:option value="">Choose race</form:option>
+                                                <c:forEach items="${raceTypeMap}"
+                                                           var="raceType">
+                                                    <form:option
+                                                            value='${raceType.key}'>${raceType.value}</form:option>
+                                                </c:forEach>
+                                            </form:select>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">

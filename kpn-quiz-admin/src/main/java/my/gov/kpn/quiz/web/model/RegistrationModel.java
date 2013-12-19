@@ -13,6 +13,7 @@ public class RegistrationModel extends MetaModel {
     private String phone;
     private String fax;
     private String schoolName;
+    private String schoolPhone;
     private String schoolType;
     private String address1;
     private String address2;
@@ -107,6 +108,15 @@ public class RegistrationModel extends MetaModel {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+
+    public String getSchoolPhone() {
+        return schoolPhone;
+    }
+
+    public void setSchoolPhone(String schoolPhone) {
+        this.schoolPhone = schoolPhone;
     }
 
     public String getSchoolType() {

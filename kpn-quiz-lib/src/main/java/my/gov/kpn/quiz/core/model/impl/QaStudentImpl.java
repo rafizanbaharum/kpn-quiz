@@ -27,6 +27,12 @@ public class QaStudentImpl extends QaActorImpl implements QaStudent {
     @Column(name = "SCHOOL_TYPE")
     private QaSchoolType schoolType;
 
+    @Column(name = "GENDER_TYPE")
+    private QaGenderType genderType;
+
+    @Column(name = "RACE_TYPE")
+    private QaRaceType raceType;
+
     @OneToOne(targetEntity = QaStateImpl.class)
     @JoinColumn(name = "STATE_ID")
     private QaState state;
@@ -37,14 +43,6 @@ public class QaStudentImpl extends QaActorImpl implements QaStudent {
     public QaStudentImpl() {
         setActorType(QaActorType.STUDENT);
     }
-
-//    public QaInstitution getInstitution() {
-//        return institution;
-//    }
-
-//    public void setInstitution(QaInstitution institution) {
-//        this.institution = institution;
-//    }
 
 
     public QaInstructor getInstructor() {
@@ -79,6 +77,22 @@ public class QaStudentImpl extends QaActorImpl implements QaStudent {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+    public QaGenderType getGenderType() {
+        return genderType;
+    }
+
+    public void setGenderType(QaGenderType genderType) {
+        this.genderType = genderType;
+    }
+
+    public QaRaceType getRaceType() {
+        return raceType;
+    }
+
+    public void setRaceType(QaRaceType raceType) {
+        this.raceType = raceType;
     }
 
     public QaSchoolType getSchoolType() {

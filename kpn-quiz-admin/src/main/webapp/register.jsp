@@ -74,10 +74,8 @@
                             <form:input type="text" class="form-control" path="email" placeholder="Email"/>
                         </div>
                         <div class="form-group">
-                            <form:input type="text" class="form-control" path="phone" placeholder="Phone"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
+                            <form:input type="text" class="form-control" path="phone"
+                                        placeholder="Your cell phone number"/>
                         </div>
                         <div class="form-group">
                             <form:select id="form-field-select-1" path="stateId" class="form-control">
@@ -108,9 +106,21 @@
                         <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:input type="text" class="form-control"
-                                                                            path="schoolName"
-                                                                            placeholder="School Name"/>
+                                                                             path="schoolName"
+                                                                             placeholder="School Name"/>
                                  								<i class="icon-sitemap"></i> </span>
+                        </div>
+
+                        <div class="form-group">
+                            <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
+                        </div>
+
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:input type="text" class="form-control"
+                                                                             path="schoolPhone"
+                                                                             placeholder="School Phone"/>
+                                 								<i class="icon-phone"></i> </span>
                         </div>
 
                         <p>
@@ -120,8 +130,9 @@
                         <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:input type="text" class="form-control"
-                                                                            path="nricNo" placeholder="NRIC No"
-                                                                            autocomplete="off"/>
+                                                                             path="nricNo" placeholder="NRIC No"
+                                                                             maxlength="12"
+                                                                             autocomplete="off"/>
                                  								<i class="icon-user"></i> </span>
 
                             <div id="username_status"></div>
@@ -129,16 +140,17 @@
                         <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:password class="form-control" id="password"
-                                                                               path="password"
-                                                                               placeholder="Password"
-                                                                               autocomplete="off"/>
+                                                                                path="password"
+                                                                                placeholder="Password"
+                                                                                autocomplete="off"/>
                                  								<i class="icon-lock"></i> </span>
                         </div>
                         <div class="form-group">
                                  							<span class="input-icon">
-                                 								<form:password class="form-control" path="passwordAgain"
-                                                                               placeholder="Password Again"
-                                                                               autocomplete="off"/>
+                                 								<form:password class="form-control"
+                                                                                path="passwordAgain"
+                                                                                placeholder="Password Again"
+                                                                                autocomplete="off"/>
                                  								<i class="icon-lock"></i> </span>
                         </div>
                     </div>

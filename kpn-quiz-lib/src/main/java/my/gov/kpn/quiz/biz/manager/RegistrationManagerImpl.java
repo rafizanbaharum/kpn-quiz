@@ -52,6 +52,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                    String fax,
                                    String phone, Long stateId,
                                    String schoolName,
+                                   String schoolPhone,
                                    Integer schoolType
     ) {
 
@@ -82,6 +83,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
         instructor.setFax(fax);
         instructor.setSchoolType(QaSchoolType.get(schoolType));
         instructor.setSchoolName(schoolName);
+        instructor.setSchoolPhone(schoolPhone);
         instructor.setState(stateDao.findById(stateId));
         actorDao.save(instructor, root);
         sessionFactory.getCurrentSession().flush();
@@ -100,6 +102,8 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                 String name,
                                 String nricNo,
                                 Date dob,
+                                Integer genderType,
+                                Integer raceType,
                                 QaInstructor instructor) {
 
         QaUser root = userDao.findById(ADMIN);
@@ -125,6 +129,8 @@ public class RegistrationManagerImpl implements RegistrationManager {
         student.setNricNo(nricNo);
         student.setInstructor(instructor);
         student.setDob(dob);
+        student.setGenderType(QaGenderType.get(genderType));
+        student.setRaceType(QaRaceType.get(raceType));
 
         student.setSchoolName(instructor.getSchoolName());
         student.setSchoolType(instructor.getSchoolType());
@@ -147,7 +153,10 @@ public class RegistrationManagerImpl implements RegistrationManager {
                               String password,
                               String name,
                               String nricNo,
-                              Date dob) {
+                              Date dob,
+                              Integer genderType,
+                              Integer raceType
+    ) {
 
         log.debug("Update = " + student);
 
@@ -163,6 +172,8 @@ public class RegistrationManagerImpl implements RegistrationManager {
         student.setName(name);
         student.setNricNo(nricNo);
         student.setDob(dob);
+        student.setGenderType(QaGenderType.get(genderType));
+        student.setRaceType(QaRaceType.get(raceType));
         actorDao.update(student, root);
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(student);

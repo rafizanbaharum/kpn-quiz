@@ -123,11 +123,17 @@ public class StudentController extends AbstractController {
             return "secure/student/student_register";
         }
 
-        registrationManager.registerStudent(studentModel.getUsername(), studentModel.getPassword(),
-                studentModel.getName(), studentModel.getNricNo(), extractDob(studentModel), getCurrentInstructor());
-        model.addAttribute(MSG_SUCCESS, "Student registered");
+        registrationManager.registerStudent(
+                studentModel.getUsername(),
+                studentModel.getPassword(),
+                studentModel.getName(),
+                studentModel.getNricNo(),
+                extractDob(studentModel),
+                Integer.parseInt(studentModel.getGenderType()),
+                Integer.parseInt(studentModel.getRaceType()),
+                getCurrentInstructor());
 
-//        return "redirect:/secure/student/list"; //redirect cause msg box not appear
+        model.addAttribute(MSG_SUCCESS, "Student registered");
         return studentList(new StudentModel(), model);
     }
 
@@ -157,8 +163,16 @@ public class StudentController extends AbstractController {
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
         Date dob = extractDob(studentModel);
 
-        registrationManager.updateStudent(student, studentModel.getUsername(), studentModel.getPassword(),
-                studentModel.getName(), studentModel.getNricNo(), dob);
+        registrationManager.updateStudent(
+                student,
+                studentModel.getUsername(),
+                studentModel.getPassword(),
+                studentModel.getName(),
+                studentModel.getNricNo(),
+                dob,
+                Integer.parseInt(studentModel.getGenderType()),
+                Integer.parseInt(studentModel.getRaceType())
+        );
 
         // check if password does not match
         if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {

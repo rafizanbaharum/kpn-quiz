@@ -15,6 +15,8 @@ public class StudentModel extends ActorModel {
     private String nricNo;
     private String schoolName;
     private String stateName;
+    private String raceType;
+    private String genderType;
     private Long instructorId;
 
     private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -57,6 +59,22 @@ public class StudentModel extends ActorModel {
 
     public void setPasswordAgain(String passwordAgain) {
         this.passwordAgain = passwordAgain;
+    }
+
+    public String getGenderType() {
+        return genderType;
+    }
+
+    public void setGenderType(String genderType) {
+        this.genderType = genderType;
+    }
+
+    public String getRaceType() {
+        return raceType;
+    }
+
+    public void setRaceType(String raceType) {
+        this.raceType = raceType;
     }
 
     public Date getDob() {

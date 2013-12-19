@@ -23,6 +23,6 @@ public class RegistrationManagerTest extends AbstractTransactionalJUnit4SpringCo
     public void create() {
 
         registrationManager.registerInstructor("ali", "abc123", "ali", "abc123", "mail@mail.com"
-                , "fax", "phone", 2L, "schoolName", 0);
+                , "fax", "phone", 2L, "schoolName", "034578230", 1);
     }
 }

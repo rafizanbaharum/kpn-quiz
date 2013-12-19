@@ -14,20 +14,20 @@ public interface RegistrationManager {
 
     void registerInstructor(String username, String password, String name, String nricNo,
                             String email, String fax, String phone,
-                            Long stateId, String schoolName, Integer schoolType);
+                            Long stateId,
+                            String schoolName, String schoolPhone, Integer schoolType);
 
-    /**
-     * @param username
-     * @param password
-     * @param name
-     * @param nricNo
-     * @param instructor
-     */
     void registerStudent(String username, String password, String name, String nricNo,
-                         Date dob, QaInstructor instructor);
+                         Date dob,
+                         Integer genderType,
+                         Integer raceType,
+                         QaInstructor instructor);
 
     void updateStudent(QaStudent student, String username, String password, String name,
-                       String nricNo, Date dob);
+                       String nricNo, Date dob,
+                       Integer genderType,
+                       Integer raceType
+    );
 
     void removeStudent(QaStudent student);
 

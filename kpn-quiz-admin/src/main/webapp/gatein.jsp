@@ -55,7 +55,7 @@
         <h3>Sign in to your account</h3>
 
         <p>
-            Please enter your name and password to log in.
+            Please enter your NRIC No and password to log in.
         </p>
 
         <form name="f" method="post" class="form-login" action="${pageContext.request.contextPath}/login">
@@ -72,7 +72,7 @@
             <fieldset>
                 <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="NRIC No">
+								<input type="text" class="form-control" name="username" placeholder="NRIC No" maxlength="12">
 								<i class="icon-user"></i> </span>
                 </div>
                 <div class="form-group form-actions">

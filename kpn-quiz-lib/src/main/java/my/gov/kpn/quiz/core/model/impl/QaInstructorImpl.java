@@ -16,6 +16,9 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
     @Column(name = "SCHOOL_NAME")
     private String schoolName;
 
+    @Column(name = "SCHOOL_PHONE")
+    private String schoolPhone;
+
     @Column(name = "SCHOOL_TYPE")
     private QaSchoolType schoolType;
 
@@ -49,6 +52,13 @@ public class QaInstructorImpl extends QaActorImpl implements QaInstructor {
         this.schoolName = schoolName;
     }
 
+    public String getSchoolPhone() {
+        return schoolPhone;
+    }
+
+    public void setSchoolPhone(String schoolPhone) {
+        this.schoolPhone = schoolPhone;
+    }
 
     public QaSchoolType getSchoolType() {
         return schoolType;
