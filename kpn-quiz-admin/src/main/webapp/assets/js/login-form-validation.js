@@ -194,13 +194,13 @@ var Login = function () {
                 },
                 passwordAgain: {
                     required: true,
-                    minlength: 5,
+                    minlength: 6,
                     equalTo: "#password"
                 }
             },
             messages: {
                 nricNo: {
-                    remote: "ID is already taken"
+                    remote: "ID is already registered"
                 }
             },
             submitHandler: function (form) {

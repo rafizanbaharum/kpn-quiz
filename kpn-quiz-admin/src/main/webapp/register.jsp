@@ -77,14 +77,6 @@
                             <form:input type="text" class="form-control" path="phone"
                                         placeholder="Your cell phone number"/>
                         </div>
-                        <div class="form-group">
-                            <form:select id="form-field-select-1" path="stateId" class="form-control">
-                                <form:option value="">Select state</form:option>
-                                <c:forEach items="${states}" var="state">
-                                    <form:option value='${state.key}'>${state.value}</form:option>
-                                </c:forEach>
-                            </form:select>
-                        </div>
                     </div>
                     <div class="col-md-6"><p>
                         Enter your school details below:
@@ -116,6 +108,14 @@
                         </div>
 
                         <div class="form-group">
+                            <form:select id="form-field-select-1" path="stateId" class="form-control">
+                                <form:option value="">Select state</form:option>
+                                <c:forEach items="${states}" var="state">
+                                    <form:option value='${state.key}'>${state.value}</form:option>
+                                </c:forEach>
+                            </form:select>
+                        </div>
+                        <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:input type="text" class="form-control"
                                                                              path="schoolPhone"
@@ -137,6 +137,9 @@
 
                             <div id="username_status"></div>
                         </div>
+                        <p>
+                            Password is 6 - 8 character
+                        </p>
                         <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:password class="form-control" id="password"
