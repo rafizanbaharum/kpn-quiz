@@ -177,10 +177,10 @@
                                         <td class="hidden-xs">${questionModel.difficulty}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/question/view/${studentModel.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/question/view/${questionModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="View"><i class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${studentModel.id}"
+                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${questionModel.id}"
                                                    class="btn btn-primary tooltips" data-placement="top"
                                                    data-original-title="Edit"><i class="icon-edit"></i></a>
                                             </div>
