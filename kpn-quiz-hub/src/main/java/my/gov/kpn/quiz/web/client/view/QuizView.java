@@ -483,6 +483,7 @@ public class QuizView extends View {
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
+        statement.disableTextSelection(true);
 
         RadioGroup group = new RadioGroup();
         Radio button1 = new Radio();
@@ -532,6 +533,7 @@ public class QuizView extends View {
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
+        statement.disableTextSelection(true);
 
         RadioGroup group = new RadioGroup();
         Radio button1 = new Radio();
@@ -565,6 +567,8 @@ public class QuizView extends View {
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
         statement.setHtml(Integer.toString(questionIndex) + ". " + model.getStatement());
+        statement.disableTextSelection(true);
+
         final Html wordCount = new Html();
         wordCount.setId(QUIZ_QUESTION_WORDCOUNT);
 

@@ -112,7 +112,7 @@
             <fieldset>
                 <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" id="nricNo" name="nricNo" placeholder="NRIC No">
+								<input type="text" class="form-control" id="nricNo" name="nricNo" placeholder="NRIC No" maxlength="12">
 								<i class="icon-envelope"></i> </span>
                 </div>
                 <div class="form-actions">
