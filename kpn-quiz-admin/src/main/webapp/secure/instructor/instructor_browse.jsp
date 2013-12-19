@@ -64,6 +64,7 @@
                                     <th class="center">#</th>
                                     <th>Username</th>
                                     <th>Name</th>
+                                    <th>Type</th>
                                     <th>School</th>
                                     <th>State</th>
                                     <th></th>
@@ -75,6 +76,7 @@
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${instructor.username}</td>
                                         <td class="hidden-xs">${instructor.name}</td>
+                                        <td class="hidden-xs">${instructor.schoolType}</td>
                                         <td class="hidden-xs">${instructor.schoolName}</td>
                                         <td class="hidden-xs">${instructor.stateName}</td>
                                         <td class="center">

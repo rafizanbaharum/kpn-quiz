@@ -246,6 +246,8 @@ public class Transformer {
         model.setAddress2(instructor.getAddress2());
         model.setAddress3(instructor.getAddress3());
         model.setSchoolName(instructor.getSchoolName());
+        model.setSchoolPhone(instructor.getSchoolPhone());
+        model.setSchoolType(instructor.getSchoolType().name());
         if (null != instructor.getState())
             model.setStateName(instructor.getState().getName());
         return model;

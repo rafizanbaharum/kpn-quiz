@@ -2,8 +2,11 @@ package my.gov.kpn.quiz.web.model;
 
 public class InstructorModel extends ActorModel {
 
+    private String schoolType;
     private String schoolName;
+    private String schoolPhone;
     private String stateName;
+
 
     public String getSchoolName() {
         return schoolName;
@@ -11,6 +14,22 @@ public class InstructorModel extends ActorModel {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+    public String getSchoolPhone() {
+        return schoolPhone;
+    }
+
+    public void setSchoolPhone(String schoolPhone) {
+        this.schoolPhone = schoolPhone;
+    }
+
+    public String getSchoolType() {
+        return schoolType;
+    }
+
+    public void setSchoolType(String schoolType) {
+        this.schoolType = schoolType;
     }
 
     public String getStateName() {
