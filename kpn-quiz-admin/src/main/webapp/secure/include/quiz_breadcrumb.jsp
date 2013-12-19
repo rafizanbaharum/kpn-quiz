@@ -4,15 +4,15 @@
             <li>
                 <i class="clip-pencil"></i>
                 <a href="#">
-                    Manage Competition
+                    Manage Quizzes
                 </a>
             </li>
             <li class="active">
-                Questions
+                Quiz List
             </li>
         </ol>
         <div class="page-header">
-            <h1>View Question </h1>
+            <h1>Quiz List </h1>
         </div>
     </div>
 </div>
