@@ -23,6 +23,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
+import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.QuizEvents;
@@ -32,6 +33,7 @@ import my.gov.kpn.quiz.web.client.model.*;
 import my.gov.kpn.quiz.web.client.rpc.QuestionRpcProxy;
 import my.gov.kpn.quiz.web.client.rpc.QuizRpcProxy;
 import my.gov.kpn.quiz.web.client.ui.field.DisablePasteTextArea;
+import my.gov.kpn.quiz.web.client.ui.field.QuestionListComboBox;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -91,8 +93,7 @@ public class QuizView extends View {
     private int now = 60 * 60 * 1000;
     private int currentStep = 0;
     private int questionIndex = 0; // zero-based index!
-    private ListStore<QuestionModel> questionStore;
-    private ComboBox<QuestionModel> c;
+    private QuestionListComboBox questionListCbx;
 
     public QuizView(Controller controller) {
         super(controller);
@@ -156,7 +157,7 @@ public class QuizView extends View {
                 log.info("handleEvent.Loaded");
                 ListLoadResult<QuestionModel> data = be.getData();
                 models = data.getData();
-                c.getStore().add(models);
+                questionListCbx.getStore().add(models);
                 for (QuestionModel model : models) {
                     ++questionIndex;
                     createQuestionPanel(questionIndex, model);
@@ -177,6 +178,7 @@ public class QuizView extends View {
         cardPanel.addListener(QuizEvents.QuizNavigate, new Listener<QuizNavigateEvent>() {
             @Override
             public void handleEvent(QuizNavigateEvent be) {
+
                 log.info("prev index: " + be.getPreviousQuestionIndex());
                 log.info("next index: " + be.getNextQuestionIndex());
                 if (be.getPreviousQuestionIndex() == -1) { // first time load
@@ -188,57 +190,60 @@ public class QuizView extends View {
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
 
-                    LayoutContainer container = (LayoutContainer) cardPanel.getItem(be.getPreviousQuestionIndex());
-                    LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
-                    List<Component> items = box.getItems();
-                    switch (prevQuestion.getQuestionType()) {
-                        case MULTIPLE_CHOICE:
-                            int ansIdx = -1;
-                            for (Component item : items) {
-                                if (item instanceof Radio) {
-                                    ansIdx++;
-                                    Radio mcRadio = (Radio) item;
-                                    Integer mcAnswer;
-                                    if (mcRadio.getValue()) {
-                                        mcAnswer = ansIdx;
-                                        updateAnswer(prevQuestion, mcAnswer);
-                                        break;
-                                    }
-                                }
-
-                            }
-                            loadAnswerIndex(nextQuestion);
-                            break;
-                        case BOOLEAN:
-                            items = box.getItems();
-                            ansIdx = -1;
-                            for (Component item : items) {
-                                if (item instanceof Radio) {
-                                    ansIdx++;
-                                    Radio mcRadio = (Radio) item;
-                                    Integer mcAnswer;
-                                    if (mcRadio.getValue()) {
-                                        mcAnswer = ansIdx;
-                                        updateAnswer(prevQuestion, mcAnswer);
-                                        break;
-                                    }
-                                }
-
-                            }
-                            loadAnswerIndex(nextQuestion);
-                            break;
-                        case SUBJECTIVE:
-                            for (Component item : items) {
-                                log.info("item.getClass() = " + item.getClass());
-                            }
-                            TextArea textArea = (TextArea) box.getItemByItemId(QUIZ_QUESTION_RESPONSE);
-                            updateAnswer(prevQuestion, textArea.getValue());
-                            loadAnswerResponse(nextQuestion);
-                            break;
-                    }
+                    saveAnswer(be.getPreviousQuestionIndex(), prevQuestion);
+                    loadAnswer(nextQuestion);
                 }
             }
         });
+    }
+
+    private void saveAnswer(int prevQuestionIndex, QuestionModel prevQuestion) {
+
+        LayoutContainer container = (LayoutContainer) cardPanel.getItem(prevQuestionIndex);
+        LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
+        List<Component> items = box.getItems();
+        switch (prevQuestion.getQuestionType()) {
+            case MULTIPLE_CHOICE:
+                int ansIdx = -1;
+                for (Component item : items) {
+                    if (item instanceof Radio) {
+                        ansIdx++;
+                        Radio mcRadio = (Radio) item;
+                        Integer mcAnswer;
+                        if (mcRadio.getValue()) {
+                            mcAnswer = ansIdx;
+                            updateAnswer(prevQuestion, mcAnswer);
+                            break;
+                        }
+                    }
+
+                }
+                break;
+            case BOOLEAN:
+                items = box.getItems();
+                ansIdx = -1;
+                for (Component item : items) {
+                    if (item instanceof Radio) {
+                        ansIdx++;
+                        Radio mcRadio = (Radio) item;
+                        Integer mcAnswer;
+                        if (mcRadio.getValue()) {
+                            mcAnswer = ansIdx;
+                            updateAnswer(prevQuestion, mcAnswer);
+                            break;
+                        }
+                    }
+
+                }
+                break;
+            case SUBJECTIVE:
+                for (Component item : items) {
+                    log.info("item.getClass() = " + item.getClass());
+                }
+                TextArea textArea = (TextArea) box.getItemByItemId(QUIZ_QUESTION_RESPONSE);
+                updateAnswer(prevQuestion, textArea.getValue());
+                break;
+        }
     }
 
     private void initTimer() {
@@ -298,6 +303,13 @@ public class QuizView extends View {
                 Info.display("Saved!", "");
             }
         });
+    }
+
+    private void loadAnswer(final QuestionModel questionModel){
+        if (questionModel.getQuestionType().equals(QuestionType.SUBJECTIVE))
+            loadAnswerResponse(questionModel);
+        else
+            loadAnswerIndex(questionModel);
     }
 
     private void loadAnswerIndex(final QuestionModel questionModel) {
@@ -425,11 +437,26 @@ public class QuizView extends View {
 
     private void createButtonBar() {
 
-        c = new ComboBox<QuestionModel>();
-        questionStore = new ListStore<QuestionModel>();
-        c.setStore(questionStore);
-        c.setReadOnly(true);
-        c.setDisplayField(QuestionModel.STR_INDEX);
+        questionListCbx = new QuestionListComboBox();
+        questionListCbx.addSelectionChangedListener(new SelectionChangedListener<QuestionModel>() {
+            @Override
+            public void selectionChanged(SelectionChangedEvent<QuestionModel> se) {
+
+                log.info("Current Step:" + currentStep);
+                log.info("Current Question:" + getQuestion(currentStep));
+
+                saveAnswer(currentStep,getQuestion(currentStep));
+
+                currentStep = models.indexOf(se.getSelectedItem());
+                updateCounter(currentStep);
+                log.info("Next Step:" + currentStep);
+                log.info("Next Question:" + se.getSelectedItem());
+
+                cardPanel.setActiveItem(cardPanel.getItem(models.indexOf(se.getSelectedItem())));
+
+
+            }
+        });
 
         Button next = new Button("Next");
         next.addStyleName(QUIZ_NAV_BUTTON);
@@ -443,7 +470,7 @@ public class QuizView extends View {
         prev.addSelectionListener(new PreviousSelectionListener());
 
         ButtonBar buttonBar = new ButtonBar();
-        buttonBar.add(c);
+        buttonBar.add(questionListCbx);
         buttonBar.add(prev);
         buttonBar.add(next);
         buttonBar.setAlignment(CENTER);

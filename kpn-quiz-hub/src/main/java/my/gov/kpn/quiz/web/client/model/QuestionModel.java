@@ -5,14 +5,22 @@ package my.gov.kpn.quiz.web.client.model;
  */
 public class QuestionModel extends MetaModel {
 
+    private final String RED = "red";
+    private final String GREEN = "green";
+
     public static final String ID = "id";
     public static final String STATEMENT = "statement";
     public static final String STR_INDEX = "index";
     public static final String QUESTION_TYPE = "questionType";
     public static final String DIFFICULTY = "difficulty";
     public static final String IS_ANSWERED = "isAnswered";
+    public static final String COLOUR = "color";
 
     private QuestionType questionType;
+
+    public QuestionModel() {
+        setColour(RED);
+    }
 
     public Long getId() {
         return get(ID);
@@ -59,7 +67,16 @@ public class QuestionModel extends MetaModel {
     }
 
     public void setAnswered(Boolean answered) {
+        if (answered) setColour(GREEN);
         set(IS_ANSWERED, answered);
+    }
+
+    public String getColour() {
+        return get(COLOUR);
+    }
+
+    public void setColour(String colour) {
+        set(COLOUR, colour);
     }
 
     public String toString() {
