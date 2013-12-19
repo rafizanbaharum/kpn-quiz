@@ -67,6 +67,7 @@ var Login = function () {
                 },
                 password: {
                     minlength: 6,
+                    maxlength: 8,
                     required: true
                 }
             },
@@ -121,6 +122,7 @@ var Login = function () {
                 },
                 password: {
                     minlength: 6,
+                    maxlength: 8,
                     required: true
                 },
                 password_again: {

@@ -55,6 +55,7 @@ var FormWizard = function () {
                 },
                 password: {
                     minlength: 6,
+                    maxlength: 8,
                     required: true
                 },
                 password_again: {

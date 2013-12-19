@@ -41,6 +41,7 @@ var FormValidator = function () {
                 },
                 password: {
                     minlength: 6,
+                    maxlength: 8,
                     required: true
                 },
                 passwordAgain: {
@@ -75,12 +76,12 @@ var FormValidator = function () {
                 // mark the current input as valid and display OK icon
                 $(element).closest('.form-group').removeClass('has-error').addClass('has-success').find('.symbol').removeClass('required').addClass('ok');
             }
-/*
-            submitHandler: function (form) {
-                successHandler1.show();
-                errorHandler1.hide();
-            }
-*/
+            /*
+             submitHandler: function (form) {
+             successHandler1.show();
+             errorHandler1.hide();
+             }
+             */
         });
     };
     return {

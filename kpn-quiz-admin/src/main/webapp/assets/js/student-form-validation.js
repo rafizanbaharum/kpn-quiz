@@ -69,6 +69,7 @@ var FormValidator = function () {
                 },
                 password: {
                     minlength: 6,
+                    maxlength: 8,
                     required: true
                 },
                 passwordAgain: {
@@ -157,6 +158,7 @@ var FormValidator = function () {
                 },
                 password: {
                     minlength: 6,
+                    maxlength: 8,
                     required: true
                 },
                 passwordAgain: {
