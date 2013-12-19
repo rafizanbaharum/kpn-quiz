@@ -8,6 +8,8 @@ public enum QaRoleType {
 
     ROLE_ADMINISTRATOR("Administrator"),
     ROLE_USER("User"),
+    ROLE_REPORT("Report Viewer"),
+    ROLE_SUPPORT("Support Team"),
     ROLE_GUEST("Guest");
 
     private String description;

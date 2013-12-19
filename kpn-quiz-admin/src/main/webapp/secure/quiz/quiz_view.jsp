@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
@@ -101,10 +102,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
-                                               class="btn btn-primary" title="Edit quiz">Edit</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
-                                               class="btn btn-primary" title="Remove quiz">Remove</a>
+                                            <sec:authorize access="hasRole('ROLE_ADMINISTRATOR')">
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
+                                                   class="btn btn-primary" title="Edit quiz">Edit</a>
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
+                                                   class="btn btn-primary" title="Remove quiz">Remove</a>
+                                            </sec:authorize>
                                             <a href="${pageContext.request.contextPath}/secure/participant/browse?page=1&quizId=${quizModel.id}"
                                                class="btn btn-primary" title="View quiz participants">Participants</a>
                                         </div>
@@ -113,18 +116,20 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="btn-group btn-group-justified">
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/current/${quizModel.id}"
-                                               class="btn btn-primary"
-                                               title="Make this quiz current">Current</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
-                                               class="btn btn-primary"
-                                               title="Initialize quiz with participants"
-                                               onclick="return confirm('Are you sure? This will delete all gradebooks and participants')">
-                                                Process Participant</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
-                                               class="btn btn-primary" title="Process quiz gradebooks"
-                                               onclick="return confirm('Are you sure? This will delete all gradebooks')">
-                                                Process Gradebook</a>
+                                            <sec:authorize access="hasRole('ROLE_ADMINISTRATOR')">
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/current/${quizModel.id}"
+                                                   class="btn btn-primary"
+                                                   title="Make this quiz current">Current</a>
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
+                                                   class="btn btn-primary"
+                                                   title="Initialize quiz with participants"
+                                                   onclick="return confirm('Are you sure? This will delete all gradebooks and participants')">
+                                                    Process Participant</a>
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
+                                                   class="btn btn-primary" title="Process quiz gradebooks"
+                                                   onclick="return confirm('Are you sure? This will delete all gradebooks')">
+                                                    Process Gradebook</a>
+                                            </sec:authorize>
                                             <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
                                                class="btn btn-primary" title="Tabulate quiz results">Tabulate</a>
                                         </div>
