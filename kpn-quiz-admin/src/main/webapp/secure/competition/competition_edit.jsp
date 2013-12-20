@@ -158,23 +158,16 @@
 
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <form:select path="yearConstraint" cssClass="form-control">
-                                                        <c:forEach begin="2013" end="2020" var="yyyy">
-                                                            <option value=${yyyy}>${yyyy}</option>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                                <div class="col-md-4">
                                                     <form:select path="startConstraint" cssClass="form-control">
                                                         <c:forEach begin="15" end="17" var="startConstraint">
-                                                            <option value=${startConstraint}>${startConstraint}</option>
+                                                            <option value="${startConstraint}" ${startConstraint == competitionModel.startConstraint ? 'selected' : ''}>${startConstraint}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form:select path="endConstraint" cssClass="form-control">
                                                         <c:forEach begin="15" end="17" var="endConstraint">
-                                                            <option value=${endConstraint}>${endConstraint}</option>
+                                                            <option value="${endConstraint}" ${endConstraint == competitionModel.endConstraint ? 'selected' : ''}>${endConstraint}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>

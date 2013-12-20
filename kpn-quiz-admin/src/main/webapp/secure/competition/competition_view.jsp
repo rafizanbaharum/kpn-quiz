@@ -23,16 +23,20 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico"/>
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
 </head>
@@ -153,28 +157,24 @@
                                         </div>
                                         <div class="form-group connected-group">
                                             <label class="control-label">
-                                                Participation Restriction (Year/Age Constraint)<span class="symbol required"></span>
+                                                Participation Restriction (Year/Age Constraint)<span
+                                                    class="symbol required"></span>
                                             </label>
 
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <form:select path="yearConstraint" cssClass="form-control" disabled="true">
-                                                        <c:forEach begin="2013" end="2020" var="yyyy">
-                                                            <option value=${yyyy}>${yyyy}</option>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <form:select path="startConstraint" cssClass="form-control" disabled="true">
+                                                    <form:select path="startConstraint" cssClass="form-control"
+                                                                 disabled="true">
                                                         <c:forEach begin="15" end="17" var="startConstraint">
-                                                            <option value=${startConstraint}>${startConstraint}</option>
+                                                            <option value="${startConstraint}" ${startConstraint == competitionModel.startConstraint ? 'selected' : ''}>${startConstraint}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <form:select path="endConstraint" cssClass="form-control" disabled="true">
+                                                    <form:select path="endConstraint" cssClass="form-control"
+                                                                 disabled="true">
                                                         <c:forEach begin="15" end="17" var="endConstraint">
-                                                            <option value=${endConstraint}>${endConstraint}</option>
+                                                            <option value="${endConstraint}" ${endConstraint == competitionModel.endConstraint ? 'selected' : ''}>${endConstraint}</option>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -212,8 +212,8 @@
                                                class="btn btn-primary" title="Edit competition">Edit</a>
                                             <a href="${pageContext.request.contextPath}/secure/competition/remove/${competitionModel.id}"
                                                class="btn btn-primary" title="Remove competition">Remove</a>
-                                            <%--<a href="${pageContext.request.contextPath}/secure/competition/lock/${competitionModel.id}"--%>
-                                               <%--class="btn btn-primary" title="Locked competition">Locked</a>--%>
+                                                <%--<a href="${pageContext.request.contextPath}/secure/competition/lock/${competitionModel.id}"--%>
+                                                <%--class="btn btn-primary" title="Locked competition">Locked</a>--%>
                                         </div>
                                     </div>
                                 </div>

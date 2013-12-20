@@ -77,7 +77,7 @@ public class RegistrationController extends AbstractController {
 
     @ModelAttribute("started")
     public boolean started() {
-        QaCompetition competition = competitionManager.findCompetitionByYear(2013);
+        QaCompetition competition = competitionManager.findCompetitionByYear(2013);   // TODO hard coded?
         DateTime startDate = new DateTime(competition.getStartDate());
         DateTime today = new DateTime(new Date());
         return (today.isAfter(startDate));

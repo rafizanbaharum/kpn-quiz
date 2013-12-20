@@ -1,8 +1,8 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.CompetitionManager;
-import my.gov.kpn.quiz.biz.manager.InstructorManager;
-import my.gov.kpn.quiz.biz.manager.RegistrationManager;
+import my.gov.kpn.quiz.core.dao.QaCompetitionDao;
+import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Calendar;
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +28,12 @@ public class StudentController extends AbstractController {
 
     private final String BREADCRUMB = "STUDENT_BREADCRUMB";
     private final String TITLE = "STUDENT_TITLE";
+
+    @Autowired
+    private CompetitionManager competitionManager;
+
+    @Autowired
+    private QaCompetitionDao competitionDao;
 
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String studentEdit(@PathVariable Long id, ModelMap model) {
@@ -105,12 +111,20 @@ public class StudentController extends AbstractController {
             return "secure/student/student_register";
         }
 
-        Integer year = Integer.valueOf(studentModel.getDob_yyyy());
-        Integer currentYear = Calendar.getInstance().get(Calendar.YEAR);
-        int diff = currentYear - year;
-        if (diff > 16 || diff < 15) {
+        QaCompetition competition = competitionDao.findByYear(LocalDate.now().getYear());
+        log.debug("Year of competition = " + competition);
+        Integer competitionYear = competition.getYear();
+
+        Integer dobYear = Integer.valueOf(studentModel.getDob_yyyy());
+        int diff = competitionYear - dobYear;
+        log.debug("Diff DOB and competition year = " + diff);
+        log.debug(MessageFormat.format("Start constraint = {0} / End Constraint = {1}",
+                competition.getStartConstraint(), competition.getEndConstraint()));
+
+        if (!((diff >= competition.getStartConstraint()) && diff <= competition.getEndConstraint())) {
             model.addAttribute(studentModel);
-            model.addAttribute(MSG_ERROR, "Not allowed to register because of age restriction!");
+            model.addAttribute(MSG_ERROR, MessageFormat.format("Age must be between {0} and {1} on {2}",
+                    competition.getStartConstraint(), competition.getEndConstraint(), String.valueOf(competition.getYear())));
             return "secure/student/student_register";
         }
 

@@ -114,7 +114,6 @@ public class
         model.setId(competition.getId());
         model.setYear(competition.getYear());
         // restriction
-        model.setYearConstraint(competition.getYearConstraint());
         model.setStartConstraint(competition.getStartConstraint());
         model.setEndConstraint(competition.getEndConstraint());
 
@@ -234,11 +233,11 @@ public class
         model.setDob_mm(String.valueOf(dob.getMonthOfYear()));
         model.setDob_yyyy(String.valueOf(dob.getYear()));
         model.setSchoolName(student.getSchoolName());
-        if (null != student.getGenderType()){
+        if (null != student.getGenderType()) {
             model.setGenderType(String.valueOf(student.getGenderType().ordinal()));
             model.setGenderTypeName(student.getGenderType().getDescription());
         }
-        if (null != student.getRaceType()){
+        if (null != student.getRaceType()) {
             model.setRaceType(String.valueOf(student.getRaceType().ordinal()));
             model.setRaceTypeName(student.getRaceType().getDescription());
         }

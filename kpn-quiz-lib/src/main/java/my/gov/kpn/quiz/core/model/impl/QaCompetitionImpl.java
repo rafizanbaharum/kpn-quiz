@@ -32,9 +32,6 @@ public class QaCompetitionImpl implements QaCompetition, Serializable {
     @Column(name = "END_DATE")
     private Date endDate;
 
-    @Column(name = "YEAR_CONSTRAINT")
-    private Integer yearConstraint;
-
     @Column(name = "START_CONSTRAINT")
     private Integer startConstraint;
 
@@ -84,15 +81,6 @@ public class QaCompetitionImpl implements QaCompetition, Serializable {
 
     public void setYear(Integer year) {
         this.year = year;
-    }
-
-
-    public Integer getYearConstraint() {
-        return yearConstraint;
-    }
-
-    public void setYearConstraint(Integer yearConstraint) {
-        this.yearConstraint = yearConstraint;
     }
 
     public Integer getStartConstraint() {

@@ -54,7 +54,6 @@ public class CompetitionController extends AbstractController {
         competition.setStartDate(combineStartDate(competitionModel));
         competition.setEndDate(combineEndDate(competitionModel));
         competition.setYear(competitionModel.getYear());
-        competition.setYearConstraint(competitionModel.getYear());
         competition.setStartConstraint(competitionModel.getStartConstraint());
         competition.setEndConstraint(competitionModel.getEndConstraint());
         competition.setLocked(competitionModel.isLocked());
@@ -93,7 +92,6 @@ public class CompetitionController extends AbstractController {
         competition.setStartDate(startDate);
         competition.setEndDate(endDate);
         competition.setYear(competitionModel.getYear());
-        competition.setYearConstraint(competitionModel.getYearConstraint());
         competition.setStartConstraint(competitionModel.getStartConstraint());
         competition.setEndConstraint(competitionModel.getEndConstraint());
         competition.setLocked(competitionModel.isLocked());
