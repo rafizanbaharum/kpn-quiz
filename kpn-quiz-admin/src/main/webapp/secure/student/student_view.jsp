@@ -102,14 +102,14 @@
                                         <label class="control-label">
                                             Gender <span class="symbol required"></span>
                                         </label>
-                                        <form:input path="genderType" placeholder="Gender" cssClass="form-control"
+                                        <form:input path="genderTypeName" placeholder="Gender" cssClass="form-control"
                                                     readonly="true"/>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">
                                             Race <span class="symbol required"></span>
                                         </label>
-                                        <form:input path="raceType" placeholder="Race" cssClass="form-control"
+                                        <form:input path="raceTypeName" placeholder="Race" cssClass="form-control"
                                                     readonly="true"/>
                                     </div>
                                 </div>

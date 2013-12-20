@@ -16,7 +16,9 @@ public class StudentModel extends ActorModel {
     private String schoolName;
     private String stateName;
     private String raceType;
+    private String raceTypeName;
     private String genderType;
+    private String genderTypeName;
     private Long instructorId;
 
     private static SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -124,5 +126,21 @@ public class StudentModel extends ActorModel {
 
     public void setDobFormatted(String dobFormatted) {
         this.dobFormatted = dobFormatted;
+    }
+
+    public String getGenderTypeName() {
+        return genderTypeName;
+    }
+
+    public void setGenderTypeName(String genderTypeName) {
+        this.genderTypeName = genderTypeName;
+    }
+
+    public String getRaceTypeName() {
+        return raceTypeName;
+    }
+
+    public void setRaceTypeName(String raceTypeName) {
+        this.raceTypeName = raceTypeName;
     }
 }

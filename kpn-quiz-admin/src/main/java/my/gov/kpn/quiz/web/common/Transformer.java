@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 @Component("transformer")
-public class Transformer {
+public class
+        Transformer {
 
     @Autowired
     private InstructorManager instructorManager;
@@ -233,8 +234,14 @@ public class Transformer {
         model.setDob_mm(String.valueOf(dob.getMonthOfYear()));
         model.setDob_yyyy(String.valueOf(dob.getYear()));
         model.setSchoolName(student.getSchoolName());
-        model.setGenderType(student.getGenderType().name());
-        model.setRaceType(student.getRaceType().name());
+        if (null != student.getGenderType()){
+            model.setGenderType(String.valueOf(student.getGenderType().ordinal()));
+            model.setGenderTypeName(student.getGenderType().getDescription());
+        }
+        if (null != student.getRaceType()){
+            model.setRaceType(String.valueOf(student.getRaceType().ordinal()));
+            model.setRaceTypeName(student.getRaceType().getDescription());
+        }
         if (null != student.getState())
             model.setStateName(student.getState().getName());
         return model;

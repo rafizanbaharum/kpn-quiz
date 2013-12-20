@@ -5,11 +5,26 @@ package my.gov.kpn.quiz.core.model;
  * @since 12/19/13
  */
 public enum QaGenderType {
-    MALE,
-    FEMALE;
+    MALE("LELAKI"),
+    FEMALE("PEREMPUAN");
+
+    private String description;
+
+    private QaGenderType(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public static QaGenderType get(int index) {
         return values()[index];
     }
+
 
 }
