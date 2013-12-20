@@ -10,9 +10,9 @@ import java.util.Date;
 public class CompetitionModel extends MetaModel {
 
     private int year;
-    private int yearConstraint;
-    private int startConstraint;
-    private int endConstraint;
+    private Integer yearConstraint;
+    private Integer startConstraint;
+    private Integer endConstraint;
 
     private Date startDate;
     private String startDateFormatted;
@@ -40,27 +40,27 @@ public class CompetitionModel extends MetaModel {
         this.year = year;
     }
 
-    public int getYearConstraint() {
+    public Integer getYearConstraint() {
         return yearConstraint;
     }
 
-    public void setYearConstraint(int yearConstraint) {
+    public void setYearConstraint(Integer yearConstraint) {
         this.yearConstraint = yearConstraint;
     }
 
-    public int getStartConstraint() {
+    public Integer getStartConstraint() {
         return startConstraint;
     }
 
-    public void setStartConstraint(int startConstraint) {
+    public void setStartConstraint(Integer startConstraint) {
         this.startConstraint = startConstraint;
     }
 
-    public int getEndConstraint() {
+    public Integer getEndConstraint() {
         return endConstraint;
     }
 
-    public void setEndConstraint(int endConstraint) {
+    public void setEndConstraint(Integer endConstraint) {
         this.endConstraint = endConstraint;
     }
 
