@@ -29,15 +29,6 @@ public class QuizController extends AbstractController {
     private static final Logger log = Logger.getLogger(QuizController.class);
 
     @Autowired
-    private InstructorManager instructorManager;
-
-    @Autowired
-    private CompetitionManager competitionManager;
-
-    @Autowired
-    private ResourceBundleMessageSource messageSource;
-
-    @Autowired
     private QuestionController questionController;
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})

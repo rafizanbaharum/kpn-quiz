@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
-import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaParticipantSortType;
@@ -29,9 +28,6 @@ public class ParticipantController extends AbstractController {
 
     @Autowired
     private InstructorManager instructorManager;
-
-    @Autowired
-    private CompetitionManager competitionManager;
 
     @Autowired
     private ResourceBundleMessageSource messageSource;

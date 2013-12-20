@@ -100,7 +100,7 @@
                             </table>
                             <div class="btn-group btn-group-justified">
                                 <a href="${pageContext.request.contextPath}/secure/student/register"
-                                   class="btn btn-primary">Add Student</a>
+                                   class="btn btn-primary">Register Student</a>
                             </div>
                         </div>
                     </div>

@@ -1,24 +1,18 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
-import my.gov.kpn.quiz.biz.manager.CompetitionManager;
-import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.core.model.*;
-import my.gov.kpn.quiz.core.model.QaBooleanQuestion;
-import my.gov.kpn.quiz.core.model.QaDifficulty;
-import my.gov.kpn.quiz.core.model.QaMultipleChoiceQuestion;
-import my.gov.kpn.quiz.core.model.QaQuestion;
-import my.gov.kpn.quiz.core.model.QaQuiz;
-import my.gov.kpn.quiz.core.model.QaSubjectiveQuestion;
 import my.gov.kpn.quiz.core.model.impl.QaBooleanQuestionImpl;
 import my.gov.kpn.quiz.core.model.impl.QaMultipleChoiceQuestionImpl;
 import my.gov.kpn.quiz.core.model.impl.QaSubjectiveQuestionImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.*;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,12 +22,6 @@ import java.util.Map;
 public class QuestionController extends AbstractController {
 
     private static final Logger log = Logger.getLogger(QuestionController.class);
-
-    @Autowired
-    private InstructorManager instructorManager;
-
-    @Autowired
-    private CompetitionManager competitionManager;
 
     public enum MultipleChoiceAnswerType {
         D,

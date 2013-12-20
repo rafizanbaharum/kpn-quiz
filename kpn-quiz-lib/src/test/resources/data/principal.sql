@@ -32,31 +32,36 @@ insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(
 insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(6, 1, 2, 1, 1, CURRENT_TIMESTAMP );    -- USER
 
 
-insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (2, '222222222222', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
+insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (3, '333333333333', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
 insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
 values (3, 'Support', 'abc123', 'rafizan.baharum@gmail.com', null);
 insert into QA_ACTR (ID, ACTOR_TYPE, NAME, NRIC_NO, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
 values (3, 2, 'System Support II', '333333333333',  'Kementerian Penerangan', 'Putrajaya', 'WPKL', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
-insert into QA_SPPT(ID) values(2);
+insert into QA_SPPT(ID) values(3);
 update QA_USER set ACTOR_ID = 3 where id = 3;
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(5, 2, 3, 1, 1, CURRENT_TIMESTAMP );   -- SUPPORT
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(6, 1, 3, 1, 1, CURRENT_TIMESTAMP );    -- USER
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(7, 2, 3, 1, 1, CURRENT_TIMESTAMP );   -- SUPPORT
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(8, 1, 3, 1, 1, CURRENT_TIMESTAMP );    -- USER
 
-insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (2, '222222222222', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
+insert into QA_PCPL (ID, NAME, PRINCIPAL_TYPE, ENABLED, LOCKED, M_ST, C_ID, C_TS) values (4, '444444444444', 0, true, true, 1, 0, CURRENT_TIMESTAMP );
 insert into QA_USER (ID, REALNAME, PASSWORD, EMAIL, ACTOR_ID)
 values (4, 'Support', 'abc123', 'rafizan.baharum@gmail.com', null);
 insert into QA_ACTR (ID, ACTOR_TYPE, NAME, NRIC_NO, ADDRESS1, ADDRESS2, ADDRESS3, AGE, EMAIL, FAX, M_ST, C_ID, C_TS)
-values (4, 2, 'System Support II', '333333333333',  'Kementerian Penerangan', 'Putrajaya', 'WPKL', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
-insert into QA_SPPT(ID) values(2);
+values (4, 2, 'Report User', '444444444444',  'Kementerian Penerangan', 'Putrajaya', 'WPKL', 22, 'rafizan.baharum@gmail.com', 'fax', 1, 1, CURRENT_TIMESTAMP );
+insert into QA_SPPT(ID) values(4);
 update QA_USER set ACTOR_ID = 4 where id = 4;
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(5, 3, 4, 1, 1, CURRENT_TIMESTAMP );   -- REPORT
-insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(6, 1, 4, 1, 1, CURRENT_TIMESTAMP );    -- USER
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(9, 3, 4, 1, 1, CURRENT_TIMESTAMP );   -- REPORT
+insert into QA_PCPL_ROLE (ID, ROLE_TYPE, PRINCIPAL_ID, M_ST, C_ID, C_TS) values(10, 1, 4, 1, 1, CURRENT_TIMESTAMP );    -- USER
 
 
+
+SELECT setval('SEQ_QA_PCPL', 5, true);
+SELECT setval('SEQ_QA_ACTR', 5, true);
+SELECT setval('SEQ_QA_PCPL_ROLE', 11, true);
 
 ALTER SEQUENCE SEQ_QA_PCPL START WITH 5;
 ALTER SEQUENCE SEQ_QA_ACTR START WITH 5;
 ALTER SEQUENCE SEQ_QA_PCPL_ROLE START WITH 5;
+
 
 SELECT c.relname FROM pg_class c WHERE c.relkind = 'S';
 

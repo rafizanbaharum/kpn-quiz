@@ -78,7 +78,7 @@
                                             <label class="control-label">
                                                 Round <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="round" placeholder="Insert round"
+                                            <form:input path="round" placeholder="Insert round [1-9]"
                                                         cssClass="form-control"/>
                                             <form:errors path='round'
                                                          cssClass="has-error control-label input-group-addon simpleError"/>
@@ -141,7 +141,7 @@
                                                     <form:select path="endDate_MM" cssClass="form-control">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="MM">
-                                                            <form:option value="${mm}"/>
+                                                            <form:option value="${MM}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>

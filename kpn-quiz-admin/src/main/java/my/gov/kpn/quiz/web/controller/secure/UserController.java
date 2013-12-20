@@ -18,12 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/secure/user")
 public class UserController extends AbstractController {
 
-    @Autowired
-    private InstructorManager instructorManager;
-
-    @Autowired
-    private CompetitionManager competitionManager;
-
     @RequestMapping(value = "/profile", method = {RequestMethod.GET})
     public String profile(@ModelAttribute("userModel") UserModel userModel, ModelMap model) {
         QaUser user = getCurrentUser();

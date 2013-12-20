@@ -1,17 +1,22 @@
 package my.gov.kpn.quiz.web.controller;
 
 import my.gov.kpn.quiz.biz.integration.springsecurity.QaUserDetails;
+import my.gov.kpn.quiz.biz.manager.*;
 import my.gov.kpn.quiz.core.model.QaActor;
 import my.gov.kpn.quiz.core.model.QaInstructor;
+import my.gov.kpn.quiz.core.model.QaState;
 import my.gov.kpn.quiz.core.model.QaUser;
 import my.gov.kpn.quiz.web.common.Transformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class AbstractController {
@@ -20,8 +25,28 @@ public class AbstractController {
     protected final String MSG_ERROR = "msgError";
 
     @Autowired
+    protected ApplicationContext applicationContext;
+
+    @Autowired
+    protected CompetitionHelper competitionHelper;
+
+    @Autowired
+    protected CompetitionManager competitionManager;
+
+    @Autowired
+    protected RegistrationManager registrationManager;
+
+    @Autowired
+    protected InstructorManager instructorManager;
+
+    @Autowired
+    protected SysManager sysManager;
+
+    @Autowired
     protected Transformer transformer;
 
+    @Autowired
+    protected ResourceBundleMessageSource messageSource;
 
     private enum SchoolType {
         SMK("SMK"),
@@ -128,6 +153,15 @@ public class AbstractController {
         }
     }
 
+
+    @ModelAttribute("states")
+    public Map<String, String> states() {
+        Map<String, String> maps = new LinkedHashMap<String, String>();
+        for (QaState state : competitionHelper.getStateList()) {
+            maps.put(state.getId().toString(), state.getName());
+        }
+        return maps;
+    }
 
     protected QaInstructor getCurrentInstructor() {
         QaUser user = getCurrentUser();

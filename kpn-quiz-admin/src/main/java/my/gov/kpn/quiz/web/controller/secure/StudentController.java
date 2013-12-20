@@ -29,15 +29,6 @@ public class StudentController extends AbstractController {
     private final String BREADCRUMB = "STUDENT_BREADCRUMB";
     private final String TITLE = "STUDENT_TITLE";
 
-    @Autowired
-    private InstructorManager instructorManager;
-
-    @Autowired
-    private CompetitionManager competitionManager;
-
-    @Autowired
-    private RegistrationManager registrationManager;
-
     @RequestMapping(value = "/edit/{id}", method = {RequestMethod.GET})
     public String studentEdit(@PathVariable Long id, ModelMap model) {
         QaStudent student = instructorManager.findStudentById(id);

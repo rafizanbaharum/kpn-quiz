@@ -18,11 +18,6 @@ public class InstructorController extends AbstractController {
 
     private static final int LIMIT = 50;
 
-    @Autowired
-    private RegistrationManager registrationManager;
-
-    @Autowired
-    private InstructorManager instructorManager;
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String view(@PathVariable Long id, ModelMap model) {

@@ -27,13 +27,6 @@ public class CompetitionController extends AbstractController {
 
     private static final Logger log = Logger.getLogger(CompetitionController.class);
 
-    @Autowired
-    private CompetitionManager competitionManager;
-
-    @Autowired
-    private ResourceBundleMessageSource messageSource;
-
-
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String competitionList(@ModelAttribute("competitionModel") CompetitionModel competitionModel, ModelMap model) {
         List<QaCompetition> competitions = competitionManager.findAll();
