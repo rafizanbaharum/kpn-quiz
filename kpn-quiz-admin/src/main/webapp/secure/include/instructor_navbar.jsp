@@ -36,6 +36,13 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/secure/report/index">
+                            <span class="title">Reports</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
