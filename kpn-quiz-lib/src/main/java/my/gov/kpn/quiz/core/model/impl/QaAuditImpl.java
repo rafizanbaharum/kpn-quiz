@@ -20,10 +20,10 @@ public class QaAuditImpl implements QaAudit {
     @SequenceGenerator(name = "SEQ_QA_AUDT", sequenceName = "SEQ_QA_AUDT", allocationSize = 1)
     private Long id;
 
-    @Column(name = "USERNAME", unique = true)
+    @Column(name = "USERNAME")
     private String username;
 
-    @Column(name = "DATE_LOGGED", unique = true)
+    @Column(name = "DATE_LOGGED")
     private Date dateLogged;
 
     @Embedded
