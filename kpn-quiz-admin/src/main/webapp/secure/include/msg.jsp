@@ -17,4 +17,29 @@
             </div>
         </c:when>
     </c:choose>
+
+    <%
+       String msgSuccess = request.getParameter("msgSuccess");
+       if (null != msgSuccess){
+           %>
+           <div class="successHandler alert alert-success">
+               <i class="icon-ok"></i> <%=  msgSuccess %>
+           </div>
+    <%
+       }
+    %>
+
+
+    <%
+       String msgError = request.getParameter("msgError");
+       if (null != msgError){
+    %>
+            <div class="errorHandler alert alert-danger">
+                <i class="icon-remove-sign"></i>  <%= msgError %>
+            </div>
+    <%
+       }
+    %>
+
+
 </div>
