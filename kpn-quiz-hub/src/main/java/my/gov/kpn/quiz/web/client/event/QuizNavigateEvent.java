@@ -9,7 +9,7 @@ import my.gov.kpn.quiz.web.client.model.QuestionModel;
  */
 public class QuizNavigateEvent extends BaseEvent {
 
-    public QuizNavigateEvent(Object source, int nextQuestionIndex, int prevQuestionIndex) {
+    public QuizNavigateEvent(Object source, int prevQuestionIndex, int nextQuestionIndex) {
         super(source);
         this.nextQuestionIndex = nextQuestionIndex;
         this.previousQuestionIndex = prevQuestionIndex;

@@ -47,7 +47,7 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
     @Override
     public QuizModel loadCurrentQuiz() {
-        QaQuiz quiz = GlobalRegistry.getQuiz();
+        QaQuiz quiz = competitionManager.getCurrentQuiz();
         return quizConverter.convert(quiz);
     }
 

@@ -8,12 +8,10 @@ import com.extjs.gxt.ui.client.mvc.AppEvent;
 import com.extjs.gxt.ui.client.mvc.Controller;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.mvc.View;
-import com.extjs.gxt.ui.client.store.ListStore;
 import com.extjs.gxt.ui.client.util.Margins;
 import com.extjs.gxt.ui.client.widget.*;
 import com.extjs.gxt.ui.client.widget.button.Button;
 import com.extjs.gxt.ui.client.widget.button.ButtonBar;
-import com.extjs.gxt.ui.client.widget.form.ComboBox;
 import com.extjs.gxt.ui.client.widget.form.Radio;
 import com.extjs.gxt.ui.client.widget.form.RadioGroup;
 import com.extjs.gxt.ui.client.widget.form.TextArea;
@@ -23,7 +21,6 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
-import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.QuizEvents;
@@ -142,7 +139,7 @@ public class QuizView extends View {
             @Override
             public void handleEvent(LoadEvent be) {
                 QuizModel quiz = (QuizModel) be.getData();
-                now = Long.valueOf(quiz.getEndDate().getTime() - quiz.getStartDate().getTime()).intValue();
+                now = Long.valueOf(quiz.getEndDate().getTime() - System.currentTimeMillis()).intValue();
             }
         });
         quizLoader.load(new BaseListLoadConfig());
@@ -163,7 +160,7 @@ public class QuizView extends View {
                     createQuestionPanel(questionIndex, model);
                 }
                 cardPanel.layout();
-                cardPanel.fireEvent(QuizEvents.QuizNavigate, new QuizNavigateEvent(this, 0, -1));
+                cardPanel.fireEvent(QuizEvents.QuizNavigate, new QuizNavigateEvent(this, -1, 0));
             }
         });
 
@@ -305,7 +302,7 @@ public class QuizView extends View {
         });
     }
 
-    private void loadAnswer(final QuestionModel questionModel){
+    private void loadAnswer(final QuestionModel questionModel) {
         if (questionModel.getQuestionType().equals(QuestionType.SUBJECTIVE))
             loadAnswerResponse(questionModel);
         else
@@ -445,7 +442,7 @@ public class QuizView extends View {
                 log.info("Current Step:" + currentStep);
                 log.info("Current Question:" + getQuestion(currentStep));
 
-                saveAnswer(currentStep,getQuestion(currentStep));
+                saveAnswer(currentStep, getQuestion(currentStep));
 
                 currentStep = models.indexOf(se.getSelectedItem());
                 updateCounter(currentStep);
@@ -519,7 +516,6 @@ public class QuizView extends View {
         button1.setBoxLabel(model.getChoice1());
         button1.setFireChangeEventOnSetValue(true);
         Radio button2 = new Radio();
-        button2.setItemId("1");
         button2.setItemId("1");
         button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel(model.getChoice2());
@@ -641,7 +637,7 @@ public class QuizView extends View {
                 log.info("previoustep: " + previousStep);
                 cardPanel.fireEvent(
                         QuizEvents.QuizNavigate,
-                        new QuizNavigateEvent(this, currentStep, previousStep)
+                        new QuizNavigateEvent(this, previousStep, currentStep)
                 );
             }
         }
@@ -659,7 +655,7 @@ public class QuizView extends View {
                 log.info("previoustep: " + previousStep);
                 cardPanel.fireEvent(
                         QuizEvents.QuizNavigate,
-                        new QuizNavigateEvent(this, currentStep, previousStep)
+                        new QuizNavigateEvent(this, previousStep, currentStep)
                 );
             }
         }
