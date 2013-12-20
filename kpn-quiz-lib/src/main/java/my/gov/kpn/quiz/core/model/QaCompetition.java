@@ -16,7 +16,6 @@ public interface QaCompetition extends QaMetaObject {
 
     void setYear(Integer year);
 
-
     /**
      * @return
      */
@@ -30,6 +29,27 @@ public interface QaCompetition extends QaMetaObject {
     Date getEndDate();
 
     void setEndDate(Date endDate);
+
+    /**
+     * @return
+     */
+    Integer getYearConstraint();
+
+    void setYearConstraint(Integer yearConstraint);
+
+    /**
+     * @return
+     */
+    Integer getStartConstraint();
+
+    void setStartConstraint(Integer startConstraint);
+
+    /**
+     * @return
+     */
+    Integer getEndConstraint();
+
+    void setEndConstraint(Integer endConstraint);
 
     /**
      * @return

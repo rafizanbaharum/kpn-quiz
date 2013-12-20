@@ -112,6 +112,11 @@ public class Transformer {
         CompetitionModel model = new CompetitionModel();
         model.setId(competition.getId());
         model.setYear(competition.getYear());
+        // restriction
+        model.setYearConstraint(competition.getYearConstraint());
+        model.setStartConstraint(competition.getStartConstraint());
+        model.setEndConstraint(competition.getEndConstraint());
+
         model.setStartDate(competition.getStartDate());
         model.setEndDate(competition.getEndDate());
         model.setStartDate_dd(String.valueOf(startDate.getDayOfMonth()));

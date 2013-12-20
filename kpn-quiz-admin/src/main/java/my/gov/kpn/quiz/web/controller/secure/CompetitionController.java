@@ -1,14 +1,11 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
-import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.impl.QaCompetitionImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.CompetitionModel;
 import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -57,6 +54,9 @@ public class CompetitionController extends AbstractController {
         competition.setStartDate(combineStartDate(competitionModel));
         competition.setEndDate(combineEndDate(competitionModel));
         competition.setYear(competitionModel.getYear());
+        competition.setYearConstraint(competitionModel.getYear());
+        competition.setStartConstraint(competitionModel.getStartConstraint());
+        competition.setEndConstraint(competitionModel.getEndConstraint());
         competition.setLocked(competitionModel.isLocked());
 
         if (competition.getStartDate().compareTo(competition.getEndDate()) > 0) {
@@ -93,6 +93,9 @@ public class CompetitionController extends AbstractController {
         competition.setStartDate(startDate);
         competition.setEndDate(endDate);
         competition.setYear(competitionModel.getYear());
+        competition.setYearConstraint(competitionModel.getYearConstraint());
+        competition.setStartConstraint(competitionModel.getStartConstraint());
+        competition.setEndConstraint(competitionModel.getEndConstraint());
         competition.setLocked(competitionModel.isLocked());
 
         competitionManager.updateCompetition(competition);
