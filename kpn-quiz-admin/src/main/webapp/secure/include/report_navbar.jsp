@@ -17,22 +17,8 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/secure/competition/list">
-                            <span class="title">Competitions</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/secure/quiz/list">
-                            <span class="title">Quizzes</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/secure/instructor/browse?page=1">
-                            <span class="title">Instructors</span>
+                        <a href="${pageContext.request.contextPath}/secure/report/list">
+                            <span class="title">Reports</span>
                         </a>
                     </li>
                 </ul>

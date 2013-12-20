@@ -8,11 +8,11 @@
                 </a>
             </li>
             <li class="active">
-                Instructors
+                Reports
             </li>
         </ol>
         <div class="page-header">
-            <h1>View Instructor </h1>
+            <h1>View Reports </h1>
         </div>
     </div>
 </div>
