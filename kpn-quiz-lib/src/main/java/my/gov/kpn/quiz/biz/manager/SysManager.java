@@ -1,12 +1,8 @@
 package my.gov.kpn.quiz.biz.manager;
 
 
-import my.gov.kpn.quiz.core.model.QaActor;
-import my.gov.kpn.quiz.core.model.QaInstructor;
-import my.gov.kpn.quiz.core.model.QaStudent;
+import my.gov.kpn.quiz.core.model.QaAudit;
 import my.gov.kpn.quiz.core.model.QaUser;
-
-import java.util.Date;
 
 /**
  * @author rafizan.baharum
@@ -15,4 +11,6 @@ import java.util.Date;
 public interface SysManager {
 
     void recoverPassword(QaUser user);
+
+    void saveAudit(QaAudit audit);
 }

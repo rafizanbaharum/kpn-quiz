@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.biz.integration.springsecurity;
 
+import my.gov.kpn.quiz.biz.event.AuditEvent;
 import my.gov.kpn.quiz.core.dao.QaPrincipalDao;
 import my.gov.kpn.quiz.core.model.QaMetaState;
 import my.gov.kpn.quiz.core.model.QaPrincipalRole;
@@ -10,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.type.IntegerType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,6 +21,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,6 +34,9 @@ import java.util.Set;
 public class QaUserDetailService implements UserDetailsService {
 
     private static final Logger log = Logger.getLogger(QaUserDetailService.class);
+
+    @Autowired
+    private ApplicationContext context;
 
     @Autowired
     protected SessionFactory sessionFactory;
@@ -55,6 +61,7 @@ public class QaUserDetailService implements UserDetailsService {
         if (user == null)
             throw new UsernameNotFoundException("No such user");
         log.debug(user.getUsername() + " " + user.getPassword());
+        audit(user);
         return new QaUserDetails(user, loadGrantedAuthoritiesFor(user));
     }
 
@@ -68,5 +75,7 @@ public class QaUserDetailService implements UserDetailsService {
         return grantedAuthorities;
     }
 
-
+    private void audit(QaUser user) {
+        context.publishEvent(new AuditEvent(user, new Date()));
+    }
 }

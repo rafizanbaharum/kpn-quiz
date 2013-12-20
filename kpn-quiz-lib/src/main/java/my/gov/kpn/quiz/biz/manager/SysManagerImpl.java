@@ -1,8 +1,12 @@
 package my.gov.kpn.quiz.biz.manager;
 
-import my.gov.kpn.quiz.core.dao.*;
-import my.gov.kpn.quiz.core.model.*;
+import my.gov.kpn.quiz.core.dao.QaActorDao;
+import my.gov.kpn.quiz.core.dao.QaAuditDao;
+import my.gov.kpn.quiz.core.dao.QaUserDao;
+import my.gov.kpn.quiz.core.model.QaAudit;
+import my.gov.kpn.quiz.core.model.QaUser;
 import org.apache.log4j.Logger;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -24,11 +28,19 @@ public class SysManagerImpl implements SysManager {
 
     private static final Logger log = Logger.getLogger(SysManagerImpl.class);
 
+    public static final Long ADMIN = 0L;
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
     @Autowired
     private QaUserDao userDao;
 
     @Autowired
     private QaActorDao actorDao;
+
+    @Autowired
+    private QaAuditDao auditDao;
 
     @Autowired(required = false)
     private JavaMailSender mailSender;
@@ -50,5 +62,12 @@ public class SysManagerImpl implements SysManager {
                 mimeMessage.saveChanges();
             }
         });
+    }
+
+    @Override
+    public void saveAudit(QaAudit audit) {
+        QaUser root = userDao.findById(ADMIN);
+        auditDao.save(audit, root);
+        sessionFactory.getCurrentSession().flush();
     }
 }
