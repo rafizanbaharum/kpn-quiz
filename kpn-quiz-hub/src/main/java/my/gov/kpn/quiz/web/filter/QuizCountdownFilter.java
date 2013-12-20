@@ -14,6 +14,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.Date;
 
 @Component("quizCountdownFilter")
@@ -31,13 +32,17 @@ public class QuizCountdownFilter extends AutoInjectingFilterListener {
             HttpServletResponse response = (HttpServletResponse) res;
 
             QaQuiz quiz = competitionManager.getCurrentQuiz();
-            log.debug("quiz.getStartDate() = " + quiz.getStartDate());
-            log.debug("quiz.getEndDate() = " + quiz.getEndDate());
+            log.debug("Quiz start = " + DateFormat.getInstance().format(quiz.getStartDate()) +
+                    " / Quiz end = " + DateFormat.getInstance().format(quiz.getEndDate()));
             if (new Date().before(quiz.getStartDate())) {
                 request.getSession().setAttribute("startDate", quiz.getStartDate().getTime() / 1000);
                 request.getSession().setAttribute("endDate", quiz.getEndDate().getTime() / 1000);
                 request.getRequestDispatcher("countdown.jsp").forward(request, response);
+            } else if (new Date().after(quiz.getEndDate())) {
+                log.debug("Quiz has closed!");
+                request.getRequestDispatcher("close.jsp").forward(request, response);
             }
+
         } catch (Exception e) {
             log.error(e);
         }
