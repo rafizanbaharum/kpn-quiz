@@ -5,12 +5,12 @@
             <i class="clip-chevron-right"></i>
         </div>
         <ul class="main-navigation-menu">
-            <li class="active open">
+            <li>
                 <a href="${pageContext.request.contextPath}/secure/index"><i class="clip-home-3"></i>
                     <span class="title"> Dashboard </span><span class="selected"></span>
                 </a>
             </li>
-            <li>
+            <li class="active open">
                 <a href="javascript:void(0)"><i class="clip-pencil"></i>
                     <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                     <span class="selected"></span>

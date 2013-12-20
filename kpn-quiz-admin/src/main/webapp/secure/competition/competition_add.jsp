@@ -45,7 +45,7 @@
 <c:set var="COMPETITION_TITLE" value="Competition List"/>
 <jsp:include page="../include/topbar.jsp"/>
 <div class="main-container">
-    <jsp:include page="../include/quiz_navbar.jsp"/>
+    <jsp:include page="../include/competition_navbar.jsp"/>
     <div class="main-content">
         <div class="container">
             <jsp:include page="../include/competition_breadcrumb.jsp">
