@@ -45,6 +45,9 @@ public abstract class QaActorImpl implements QaActor, Serializable {
     private String address3;
 
     @Column(name = "ADDRESS4")
+    private String address4;
+
+    @Column(name = "PHONE")
     private String phone;
 
     @Column(name = "FAX")
