@@ -3,6 +3,8 @@ package my.gov.kpn.quiz.core.dao.impl;
 import my.gov.kpn.quiz.core.dao.QaInstructorDao;
 import my.gov.kpn.quiz.core.model.QaInstructor;
 import my.gov.kpn.quiz.core.model.QaMetaState;
+import my.gov.kpn.quiz.core.model.QaSchoolType;
+import my.gov.kpn.quiz.core.model.QaState;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -39,6 +41,26 @@ public class QaInstructorDaoImpl extends DaoSupport<Long, QaInstructor, QaInstru
         return query.list();
     }
 
+    @Override
+    public List<QaSchoolType> findRegisteredByState(QaState state) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select distinct(a.schoolType) from QaInstructor a where " +
+                "a.metadata.state = :state and a.state = :schoolState");
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        query.setEntity("schoolState", state);
+        return query.list();
+    }
+
+    @Override
+    public List<String> findSchoolRegisteredByStateAndType(QaState state, QaSchoolType schoolType) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select distinct(a.schoolName) from QaInstructor a where " +
+                "a.metadata.state = :state and a.state = :schoolState and a.schoolType = :schoolType");
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        query.setEntity("schoolState", state);
+        query.setLong("schoolState", schoolType.ordinal());
+        return query.list();
+    }
 
     @Override
     public Integer count() {

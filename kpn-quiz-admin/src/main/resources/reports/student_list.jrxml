@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student_list" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="052fe1ae-c7ba-4a4e-a530-6c191e1f41d9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="pmt_state" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="pmt_school" class="java.lang.String" isForPrompting="false"/>
+	<queryString language="SQL">
+		<![CDATA[select a.name,s.dob,gender_type(s.gender_type),extract (year from current_date) - extract (year from dob) age,race_type(s.race_type),school_type(s.school_type),s.school_name from QA_STDN s
+inner join QA_ACTR a on s.id = a.id]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="dob" class="java.sql.Timestamp"/>
+	<field name="gender_type" class="java.lang.String"/>
+	<field name="age" class="java.lang.Double"/>
+	<field name="race_type" class="java.lang.String"/>
+	<field name="school_type" class="java.lang.String"/>
+	<field name="school_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e66452b3-fa50-4dbc-bf70-8622903c134b" x="0" y="23" width="555" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Student List]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="a45f13a9-3889-44ff-8ab9-9ba834f37f58" x="455" y="3" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ccba0961-aeee-414d-9771-bec83221281f" x="0" y="0" width="44" height="17"/>
+				<textElement/>
+				<text><![CDATA[State :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5e552e6f-1699-4a20-b696-0252d5bb9ccc" x="44" y="0" width="220" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{pmt_state}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="52d39949-0f3b-4773-a23b-30a9a1c62c20" x="16" y="2" width="141" height="20"/>
+				<textElement/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2de567a5-91eb-4907-9623-fdd7229b101d" x="157" y="2" width="82" height="20"/>
+				<textElement/>
+				<text><![CDATA[D.O.B]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d8085c05-b0c7-4c06-a262-2c89eb058067" x="239" y="2" width="25" height="20"/>
+				<textElement/>
+				<text><![CDATA[Age]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2840a6c6-b807-4097-b919-244b71d40b04" x="264" y="2" width="44" height="20"/>
+				<textElement/>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="24390ba3-b670-415f-a0f8-0f67f3512b69" x="310" y="2" width="45" height="20"/>
+				<textElement/>
+				<text><![CDATA[Race]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22ea7a0e-6cf5-4d07-abce-cda77edf432c" x="355" y="2" width="200" height="20"/>
+				<textElement/>
+				<text><![CDATA[School]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement uuid="22fb30b1-278b-4597-a36f-222d717dfecd" x="0" y="0" width="16" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bb7bf489-a3ca-4bd3-8d86-9c4ec848bdc3" x="16" y="0" width="141" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="44819ff8-0df0-4b5c-9f28-3fcbfbd5f7b5" x="157" y="0" width="82" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement uuid="f2ef62c9-b7b9-44f4-b705-6535c1354541" x="239" y="0" width="25" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="205839f5-11a2-4103-b623-1412cc55d379" x="264" y="0" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{gender_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0341f1ee-4499-45cb-83f9-e411d65d7577" x="308" y="0" width="45" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{race_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cfb9639e-9f1d-4027-9e0b-57997e969047" x="355" y="0" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{school_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="72b6eb13-808d-4d93-aecb-2b99099fa668" x="411" y="0" width="144" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement uuid="9639d113-9c22-450a-a3c6-15c616c7cb82" x="515" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3ad2ea75-8871-4588-9d23-3366733ffedc" x="435" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

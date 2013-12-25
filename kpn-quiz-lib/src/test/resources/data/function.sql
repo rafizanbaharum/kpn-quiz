@@ -3,8 +3,8 @@ CREATE or replace FUNCTION public.gender_type
 RETURNS text AS $$
         BEGIN
         if val = 0 then
-                return 'PEREMPUAN';
-        elsif val = 1 then return 'LELAKI';
+                return 'M';
+        elsif val = 1 then return 'F';
         else
            RETURN '-';
         end if;

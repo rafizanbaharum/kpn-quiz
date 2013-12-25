@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core.dao;
 
 import my.gov.kpn.quiz.core.report.InstructorModel;
+import my.gov.kpn.quiz.core.report.StudentModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -43,6 +44,36 @@ public class ReportDao {
         return collection;
     }
 
+    public List<StudentModel> getStudentList(String state, String schoolType, String schoolName) {
+
+
+        String query = "select a.name,s.dob,gender_type(s.gender_type),extract (year from current_date) - extract (year from dob) age,race_type(s.race_type),school_type(s.school_type),s.school_name " +
+                "from QA_STDN s " +
+                "inner join QA_ACTR a on s.id = a.id ";
+
+        if (null != state && !state.isEmpty()){
+            query = query + " and s.state_id = " + state + " ";
+        }
+
+        if (null != schoolType && !schoolType.isEmpty()){
+            query = query + " and s.school_type = " + schoolType + " ";
+        }
+
+        if (null != schoolName && !schoolName.isEmpty()){
+            query = query + " and s.school_name = " + schoolName + " ";
+        }
+
+        query =query +  "order by s.school_name, a.name ";
+
+
+
+        List<StudentModel> collection = this.jdbcTemplate.query(
+                query,
+                new StudentRowMapper());
+
+        return collection;
+    }
+
 
     private class InstructorRowMapper implements RowMapper<InstructorModel>{
 
@@ -56,6 +87,24 @@ public class ReportDao {
             model.setSchool_phone(rs.getString("school_phone"));
             model.setEmail(rs.getString("email"));
             model.setStudent_count(rs.getLong("student_count"));
+            return model;
+        }
+    }
+
+    private class StudentRowMapper implements RowMapper<StudentModel>{
+
+        @Override
+        public StudentModel mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+            StudentModel model = new StudentModel();
+            model.setName(rs.getString("name"));
+            model.setAge(rs.getDouble("age"));
+            model.setDob(rs.getTimestamp("dob"));
+            model.setRace_type(rs.getString("race_type"));
+            model.setGender_type(rs.getString("gender_type"));
+            model.setSchool_type(rs.getString("school_type"));
+            model.setSchool_name(rs.getString("school_name"));
+
             return model;
         }
     }
