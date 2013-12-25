@@ -343,6 +343,11 @@
             <artifactId>joda-time</artifactId>
             <version>2.0</version>
         </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>${jasper.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>kpn-quiz-admin</finalName>
