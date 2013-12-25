@@ -2,11 +2,16 @@ package my.gov.kpn.quiz.core.dao;
 
 import my.gov.kpn.quiz.core.report.InstructorModel;
 import my.gov.kpn.quiz.core.report.StudentModel;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -14,10 +19,17 @@ import java.util.Collection;
 import java.util.List;
 
 @Repository("reportDao")
-public class ReportDao {
+public class ReportDao implements InitializingBean {
 
     @Autowired
+    private DataSource dataSource;
+
     private JdbcTemplate jdbcTemplate;
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     public List<InstructorModel> getInstructorList(String state) {
 
@@ -29,11 +41,11 @@ public class ReportDao {
                 "inner join QA_ACTR astd on s.id = astd.id " +
                 "where a.m_st = 1 and astd.m_st = 1 ";
 
-        if (null != state && !state.isEmpty()){
+        if (null != state && !state.isEmpty()) {
             query = query + " and i.state_id = " + state + " ";
         }
 
-        query =query +  "group by a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email " +
+        query = query + "group by a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email " +
                 "order by a.name";
 
 
@@ -51,20 +63,19 @@ public class ReportDao {
                 "from QA_STDN s " +
                 "inner join QA_ACTR a on s.id = a.id ";
 
-        if (null != state && !state.isEmpty()){
+        if (null != state && !state.isEmpty()) {
             query = query + " and s.state_id = " + state + " ";
         }
 
-        if (null != schoolType && !schoolType.isEmpty()){
+        if (null != schoolType && !schoolType.isEmpty()) {
             query = query + " and s.school_type = " + schoolType + " ";
         }
 
-        if (null != schoolName && !schoolName.isEmpty()){
+        if (null != schoolName && !schoolName.isEmpty()) {
             query = query + " and s.school_name = " + schoolName + " ";
         }
 
-        query =query +  "order by s.school_name, a.name ";
-
+        query = query + "order by s.school_name, a.name ";
 
 
         List<StudentModel> collection = this.jdbcTemplate.query(
@@ -75,7 +86,7 @@ public class ReportDao {
     }
 
 
-    private class InstructorRowMapper implements RowMapper<InstructorModel>{
+    private class InstructorRowMapper implements RowMapper<InstructorModel> {
 
         @Override
         public InstructorModel mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -91,7 +102,7 @@ public class ReportDao {
         }
     }
 
-    private class StudentRowMapper implements RowMapper<StudentModel>{
+    private class StudentRowMapper implements RowMapper<StudentModel> {
 
         @Override
         public StudentModel mapRow(ResultSet rs, int rowNum) throws SQLException {
