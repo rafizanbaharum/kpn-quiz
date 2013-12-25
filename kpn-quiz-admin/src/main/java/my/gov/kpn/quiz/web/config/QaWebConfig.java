@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.web.config;
 
+import javassist.ClassPath;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.view.XmlViewResolver;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -109,4 +113,19 @@ public class QaWebConfig {
         return mailSender;
     }
 
+    @Bean
+    public XmlViewResolver xmlViewResolver(){
+        XmlViewResolver xmlViewResolver = new XmlViewResolver();
+
+        xmlViewResolver.setLocation( new ClassPathResource("jasper-view.xml") );
+        xmlViewResolver.setOrder(0);
+
+        return xmlViewResolver;
+    }
+
+
+    @Bean
+    public JdbcTemplate jdbcTemplate(){
+        return new JdbcTemplate(dataSource());
+    }
 }
