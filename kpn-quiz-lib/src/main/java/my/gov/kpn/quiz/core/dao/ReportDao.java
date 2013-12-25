@@ -18,7 +18,7 @@ public class ReportDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<InstructorModel> getInstructorList() {
+    public List<InstructorModel> getInstructorList(String state) {
 
 
         String query = "select a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email,count(1) student_count " +
@@ -26,8 +26,13 @@ public class ReportDao {
                 "inner join QA_ACTR a on i.id = a.id " +
                 "inner join QA_STDN s on s.INSTRUCTOR_ID = i.id " +
                 "inner join QA_ACTR astd on s.id = astd.id " +
-                "where a.m_st = 1 and astd.m_st = 1 " +
-                "group by a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email " +
+                "where a.m_st = 1 and astd.m_st = 1 ";
+
+        if (null != state && !state.isEmpty()){
+            query = query + " and i.state_id = " + state + " ";
+        }
+
+        query =query +  "group by a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email " +
                 "order by a.name";
 
 

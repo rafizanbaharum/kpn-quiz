@@ -59,7 +59,7 @@
                             Manage your students registratoin report
                             Download your report here.
                         </div>
-                        <a class="view-more" href="${pageContext.request.contextPath}/secure/student/list">
+                        <a class="view-more" href="${pageContext.request.contextPath}/secure/report/list">
                             View More <i class="clip-arrow-right-2"></i>
                         </a>
                     </div>
