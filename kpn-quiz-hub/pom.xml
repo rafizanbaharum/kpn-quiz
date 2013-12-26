@@ -17,7 +17,7 @@
         <spring-security.version>3.2.0.RC1</spring-security.version>
         <spring-batch.version>2.2.1.RELEASE</spring-batch.version>
         <spring-web.version>3.2.3.RELEASE</spring-web.version>
-        <spring-webmvc.verion>3.2.3.RELEASE</spring-webmvc.verion>
+        <spring-webmvc.version>3.2.3.RELEASE</spring-webmvc.version>
         <gwt.version>2.3.0</gwt.version>
         <gxt.version>2.2.4</gxt.version>
     </properties>
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>my.gov.kpn.quiz</groupId>
             <artifactId>kpn-quiz-lib</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>javax.ejb</groupId>
@@ -106,7 +106,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring-webmvc.verion}</version>
+            <version>${spring-webmvc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -185,24 +185,9 @@
             <version>1.1</version>
         </dependency>
         <dependency>
-            <groupId>commons-chain</groupId>
-            <artifactId>commons-chain</artifactId>
-            <version>1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.2.2</version>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.opensymphony.quartz</groupId>
-            <artifactId>quartz</artifactId>
-            <version>1.6.1</version>
         </dependency>
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -256,11 +241,6 @@
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.beanshell</groupId>
-            <artifactId>bsh</artifactId>
-            <version>2.0b5</version>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>

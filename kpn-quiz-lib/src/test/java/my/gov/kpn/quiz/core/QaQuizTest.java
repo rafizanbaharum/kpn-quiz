@@ -236,7 +236,7 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
 
         QaMultipleChoiceQuestion question14 = new QaMultipleChoiceQuestionImpl();
         question14.setDifficulty(QaDifficulty.EASY);
-        question14.setStatement("All the following greetings mean “Welcome” in the different languages of ASEAN EXCEPT _____");
+        question14.setStatement("All the following greetings mean \"Welcome\" in the different languages of ASEAN EXCEPT _____");
         question14.setChoice1("Mabuhay");
         question14.setChoice2("Mingalaba");
         question14.setChoice3("Kwahaup");
@@ -562,7 +562,7 @@ public class QaQuizTest extends AbstractTransactionalJUnit4SpringContextTests {
 
         QaBooleanQuestion question49 = new QaBooleanQuestionImpl();
         question49.setDifficulty(QaDifficulty.DIFFICULT);
-        question49.setStatement("The official tourism slogan for Laos is “Simply Beautiful”");
+        question49.setStatement("The official tourism slogan for Laos is \"Simply Beautiful\"");
         question49.setAnswerIndex(1);
         quizDao.addQuestion(quiz, question49, root);
     }
