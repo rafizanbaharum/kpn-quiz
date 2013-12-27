@@ -114,18 +114,17 @@ public class QaWebConfig {
     }
 
     @Bean
-    public XmlViewResolver xmlViewResolver(){
+    public XmlViewResolver xmlViewResolver() {
         XmlViewResolver xmlViewResolver = new XmlViewResolver();
 
-        xmlViewResolver.setLocation( new ClassPathResource("jasper-view.xml") );
+        xmlViewResolver.setLocation(new ClassPathResource("jasper-view.xml"));
         xmlViewResolver.setOrder(0);
 
         return xmlViewResolver;
     }
 
-
     @Bean
-    public JdbcTemplate jdbcTemplate(){
+    public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
 }
