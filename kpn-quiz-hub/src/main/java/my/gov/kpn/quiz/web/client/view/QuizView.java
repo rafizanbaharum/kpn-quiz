@@ -45,6 +45,7 @@ import static com.extjs.gxt.ui.client.Style.HorizontalAlignment.CENTER;
  *
  * @author : alif haikal razak
  */
+@SuppressWarnings("GWTStyleCheck")
 public class QuizView extends View {
 
     private static final Logger log = Logger.getLogger(QuizView.class.getName());
@@ -664,6 +665,22 @@ public class QuizView extends View {
     private String formattedNow() {
         int minutes = now / (60 * 1000);
         int seconds = (now / 1000) % 60;
+        if (minutes <= 10) {
+            timer.setStyleAttribute("color", "red");
+            timer.addStyleName("blink_me");
+        }
+        if (minutes == 0 && seconds == 0) {
+            saveAnswer(currentStep, getQuestion(currentStep));
+            t.cancel();
+            MessageBox.alert("Time out!", "Sorry, you're out of time!", new Listener<MessageBoxEvent>() {
+                @Override
+                public void handleEvent(MessageBoxEvent be) {
+                    if (be.getButtonClicked().getText().equals("OK")) {
+                        logout();
+                    }
+                }
+            });
+        }
         return formatter.format(minutes) + ":" + formatter.format(seconds);
     }
 
