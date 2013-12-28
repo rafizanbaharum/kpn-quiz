@@ -27,6 +27,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
+                .antMatchers("/assets/**")
                 .antMatchers("/resources/**")
                 .antMatchers("/gxt/**");
     }
@@ -39,7 +40,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/*").permitAll()
                 .antMatchers("/gxt/**").permitAll()
                 .antMatchers("/quiz/**").hasRole("USER")
                 .antMatchers("/secure/**").hasRole("USER")
