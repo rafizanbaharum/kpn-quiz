@@ -64,16 +64,16 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
     @Override
     public List<QaPrincipal> findMembers(QaGroup group) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select gm.principal from QaGroupMember gm where " +
+        Query query = session.createQuery("select gm.member from QaGroupMember gm where " +
                 "gm.group = :group " +
-                "order by gm.principal.name");
+                "order by gm.member.name");
         query.setEntity("group", group);
         return (List<QaPrincipal>) query.list();
     }
 
     /**
      * XXX: ClassCastException issues
-     * XXX: select gm.principal wil get you abstract QaPrincipal
+     * XXX: select gm.member wil get you abstract QaPrincipal
      * XXX: not extension classes
      *
      * @param group
@@ -86,14 +86,14 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
         Query query = null;
 
         String selectGroup = "select g from QaGroup g where " +
-                "id in (select gm.principal.id from QaGroupMember gm where " +
+                "id in (select gm.member.id from QaGroupMember gm where " +
                 "gm.group = :group " +
-                "and gm.principal.principalType = :type )" +
+                "and gm.member.principalType = :type )" +
                 "order by g.name";
         String selectUser = "select u from QaUser u where " +
-                "id in (select gm.principal.id from QaGroupMember gm where " +
+                "id in (select gm.member.id from QaGroupMember gm where " +
                 "gm.group = :group " +
-                "and gm.principal.principalType = :type )" +
+                "and gm.member.principalType = :type )" +
                 "order by u.name";
         switch (type) {
             case USER:
@@ -111,8 +111,8 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
     @Override
     public List<QaGroup> findMemberships(QaPrincipal principal) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select gm.group from QaGroupMember gm inner join gm.principal where " +
-                "gm.principal = :principal");
+        Query query = session.createQuery("select gm.group from QaGroupMember gm inner join gm.member where " +
+                "gm.member = :principal");
         query.setEntity("principal", principal);
         return (List<QaGroup>) query.list();
     }
@@ -120,9 +120,9 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
     @Override
     public List<QaPrincipal> findMembers(QaGroup group, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select gm.principal from QaGroupMember gm where " +
+        Query query = session.createQuery("select gm.member from QaGroupMember gm where " +
                 "gm.group = :group " +
-                "order by gm.principal.name");
+                "order by gm.member.name");
         query.setEntity("group", group);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
@@ -155,7 +155,7 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
     @Override
     public List<QaGroup> findParentGroup(QaGroup group) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select g from QaGroup g inner join g.groupMembers m where m.principal = :group");
+        Query query = session.createQuery("select g from QaGroup g inner join g.members m where m.member = :group");
         query.setEntity("group", group);
         return (List<QaGroup>) query.list();
     }
@@ -206,7 +206,7 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(g) from QaGroupMember g where " +
                 "g.group = :group " +
-                "and g.principal = :principal");
+                "and g.member = :principal");
         query.setEntity("group", group);
         query.setEntity("principal", principal);
         return ((Long) query.uniqueResult()).intValue() >= 1;
@@ -217,7 +217,7 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select g from QaGroupMember g where " +
                 "g.group = :group " +
-                "and g.principal = :principal");
+                "and g.member = :principal");
         query.setEntity("group", group);
         query.setEntity("principal", principal);
         return (QaGroupMember) query.uniqueResult();
@@ -287,7 +287,7 @@ public class QaGroupDaoImpl extends DaoSupport<Long, QaGroup, QaGroupImpl> imple
     @Override
     public void removeMember(QaGroup group, QaPrincipal principal) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select g from QaGroupMember g where g.group = :group and g.principal = :principal");
+        Query query = session.createQuery("select g from QaGroupMember g where g.group = :group and g.member = :principal");
         query.setEntity("group", group);
         query.setEntity("principal", principal);
         QaGroupMember groupMember = (QaGroupMember) query.uniqueResult();
