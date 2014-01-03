@@ -8,7 +8,9 @@
                 </a>
             </li>
             <li class="active">
-                Quiz List
+                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}">
+                    Quiz List
+                </a>
             </li>
         </ol>
         <div class="page-header">

@@ -51,7 +51,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="icon-external-link-sign"></i>
-                            Create a question
+                            View a question
                         </div>
                         <div class="panel-body">
                             <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
