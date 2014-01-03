@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import my.gov.kpn.quiz.web.client.QuizConstants;
 import my.gov.kpn.quiz.web.client.QuizDelegateAsync;
 import my.gov.kpn.quiz.web.client.QuizEvents;
+import my.gov.kpn.quiz.web.client.event.QuizLoadEvent;
 import my.gov.kpn.quiz.web.client.event.QuizNavigateEvent;
 import my.gov.kpn.quiz.web.client.event.TimerEvent;
 import my.gov.kpn.quiz.web.client.model.*;
@@ -147,6 +148,10 @@ public class QuizView extends View {
 
     }
 
+    /**
+     * QuizLoaded > QuizNavigate
+     * TimerUpdate
+     */
     private void initListener() {
         log.info("init listener");
         loader.addListener(Loader.Load, new Listener<LoadEvent>() {
@@ -161,7 +166,7 @@ public class QuizView extends View {
                     createQuestionPanel(questionIndex, model);
                 }
                 cardPanel.layout();
-                cardPanel.fireEvent(QuizEvents.QuizNavigate, new QuizNavigateEvent(this, -1, 0));
+                cardPanel.fireEvent(QuizEvents.QuizLoaded, new QuizLoadEvent(this));
             }
         });
 
@@ -173,6 +178,14 @@ public class QuizView extends View {
             }
         });
 
+        cardPanel.addListener(QuizEvents.QuizLoaded, new Listener<QuizLoadEvent>() {
+            @Override
+            public void handleEvent(QuizLoadEvent be) {
+                loadResponseStatus();
+                cardPanel.fireEvent(QuizEvents.QuizNavigate, new QuizNavigateEvent(this, -1, 0));
+            }
+        });
+
         cardPanel.addListener(QuizEvents.QuizNavigate, new Listener<QuizNavigateEvent>() {
             @Override
             public void handleEvent(QuizNavigateEvent be) {
@@ -180,14 +193,12 @@ public class QuizView extends View {
                 log.info("prev index: " + be.getPreviousQuestionIndex());
                 log.info("next index: " + be.getNextQuestionIndex());
                 if (be.getPreviousQuestionIndex() == -1) { // first time load
-                    updateCounter(0);
+                    updateCounter("0/" + models.size());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
                     if (null != nextQuestion) loadAnswerIndex(nextQuestion);
                 } else { // subsequent load
-                    updateCounter(be.getNextQuestionIndex());
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
-
                     saveAnswer(be.getPreviousQuestionIndex(), prevQuestion);
                     loadAnswer(nextQuestion);
                 }
@@ -196,7 +207,6 @@ public class QuizView extends View {
     }
 
     private void saveAnswer(int prevQuestionIndex, QuestionModel prevQuestion) {
-
         LayoutContainer container = (LayoutContainer) cardPanel.getItem(prevQuestionIndex);
         LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
         List<Component> items = box.getItems();
@@ -255,12 +265,16 @@ public class QuizView extends View {
         t.schedule(ONE_SECOND);
     }
 
-    private void updateCounter(int nextQuestionIndex) {
-        counter.setHtml((nextQuestionIndex + 1) + "/" + cardPanel.getItemCount());
+    private void updateCounter(String stat) {
+        counter.setHtml(stat);
     }
 
     private void updateStatus(String stat) {
         status.setHtml(stat);
+    }
+
+    private void updateLevel(String lev) {
+        level.setHtml(lev);
     }
 
     private void updateTimer() {
@@ -304,10 +318,13 @@ public class QuizView extends View {
     }
 
     private void loadAnswer(final QuestionModel questionModel) {
-        if (questionModel.getQuestionType().equals(QuestionType.SUBJECTIVE))
+        if (questionModel.getQuestionType().equals(QuestionType.SUBJECTIVE)) {
             loadAnswerResponse(questionModel);
-        else
+            loadResponseStatus();
+        } else {
             loadAnswerIndex(questionModel);
+            loadResponseStatus();
+        }
     }
 
     private void loadAnswerIndex(final QuestionModel questionModel) {
@@ -373,6 +390,19 @@ public class QuizView extends View {
                 } else {
                     updateStatus(UNANSWERED);
                 }
+            }
+        });
+    }
+
+    private void loadResponseStatus() {
+        delegate.loadResponseStatus(new AsyncCallback<String>() {
+            @Override
+            public void onFailure(Throwable caught) {
+            }
+
+            @Override
+            public void onSuccess(String status) {
+                updateCounter(status);
             }
         });
     }
@@ -444,15 +474,12 @@ public class QuizView extends View {
                 log.info("Current Question:" + getQuestion(currentStep));
 
                 saveAnswer(currentStep, getQuestion(currentStep));
-
                 currentStep = models.indexOf(se.getSelectedItem());
-                updateCounter(currentStep);
+
                 log.info("Next Step:" + currentStep);
                 log.info("Next Question:" + se.getSelectedItem());
 
                 cardPanel.setActiveItem(cardPanel.getItem(models.indexOf(se.getSelectedItem())));
-
-
             }
         });
 
@@ -472,7 +499,6 @@ public class QuizView extends View {
         buttonBar.add(prev);
         buttonBar.add(next);
         buttonBar.setAlignment(CENTER);
-//        footer.add(c, new MarginData(5, 5, 5, 5));
         footer.add(buttonBar, new MarginData(20, 0, 0, 0));
     }
 

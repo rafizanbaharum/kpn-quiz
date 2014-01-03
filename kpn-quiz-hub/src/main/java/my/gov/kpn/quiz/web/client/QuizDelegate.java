@@ -24,4 +24,6 @@ public interface QuizDelegate extends RemoteService {
 
     // for subjective
     String loadAnswerResponse(QuestionModel model);
+
+    String loadResponseStatus();
 }

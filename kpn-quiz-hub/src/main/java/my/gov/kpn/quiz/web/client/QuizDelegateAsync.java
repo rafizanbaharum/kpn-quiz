@@ -26,4 +26,6 @@ public interface QuizDelegateAsync {
     void loadAnswerResponse(QuestionModel model, AsyncCallback<String> async);
 
     void loadCurrentQuiz(AsyncCallback<QuizModel> async);
+
+    void loadResponseStatus(AsyncCallback<String> async);
 }

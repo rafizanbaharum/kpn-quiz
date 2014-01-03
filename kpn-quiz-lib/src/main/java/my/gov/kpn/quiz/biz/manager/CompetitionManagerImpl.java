@@ -197,6 +197,21 @@ public class CompetitionManagerImpl implements CompetitionManager {
         return quizDao.countParticipant(quiz);
     }
 
+    @Override
+    public Integer countQuestion(QaQuiz quiz) {
+        return quizDao.countQuestion(quiz);
+    }
+
+    @Override
+    public Integer countAnsweredQuestion(QaQuiz quiz, QaParticipant participant) {
+        return quizDao.countAnsweredQuestion(quiz, participant);
+    }
+
+    @Override
+    public Integer countUnansweredQuestion(QaQuiz quiz, QaParticipant participant) {
+        return quizDao.countUnansweredQuestion(quiz, participant);
+    }
+
     public boolean hasQuestion(QaQuiz quiz) {
         return quizDao.hasQuestion(quiz);
     }

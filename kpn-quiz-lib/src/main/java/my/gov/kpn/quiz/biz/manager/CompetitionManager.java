@@ -81,6 +81,12 @@ public interface CompetitionManager {
 
     Integer countParticipant(QaQuiz quiz);
 
+    Integer countQuestion(QaQuiz quiz);
+
+    Integer countAnsweredQuestion(QaQuiz quiz, QaParticipant participant);
+
+    Integer countUnansweredQuestion(QaQuiz quiz, QaParticipant participant);
+
     void resetParticipants(QaQuiz quiz);
 
     void resetGradebooks(QaQuiz quiz);

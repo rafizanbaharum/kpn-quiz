@@ -36,6 +36,10 @@ public interface QaQuizDao {
 
     Integer countQuestion(QaQuiz quiz);
 
+    Integer countAnsweredQuestion(QaQuiz quiz, QaParticipant participant);
+
+    Integer countUnansweredQuestion(QaQuiz quiz, QaParticipant participant);
+
     boolean hasQuestion(QaQuiz quiz);
 
     boolean hasParticipant(QaQuiz quiz);
@@ -59,4 +63,5 @@ public interface QaQuizDao {
     void resetParticipants(QaQuiz quiz, QaUser currentUser);
 
     void resetGradebooks(QaQuiz quiz, QaUser currentUser);
+
 }

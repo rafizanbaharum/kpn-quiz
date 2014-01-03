@@ -87,6 +87,14 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
         QaGradebookItem item = competitionManager.findGradebookItem(participant, quiz, question);
         return item.getAnswerResponse();
+    }
 
+    @Override
+    public String loadResponseStatus() {
+        QaQuiz quiz = GlobalRegistry.getQuiz();
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
+        Integer questionCount = competitionManager.countQuestion(quiz);
+        Integer answeredCount = competitionManager.countAnsweredQuestion(quiz, participant);
+        return answeredCount + "/" + questionCount;
     }
 }
