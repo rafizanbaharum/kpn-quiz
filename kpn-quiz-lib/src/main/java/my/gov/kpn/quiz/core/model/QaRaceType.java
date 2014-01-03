@@ -6,12 +6,12 @@ package my.gov.kpn.quiz.core.model;
  */
 public enum QaRaceType {
 
-    MALAY("MELAYU"),
-    CHINESE("CINA"),
-    INDIAN("INDIA"),
-    NATIVE_SABAH("BUMIPUTERA SABAH"),
-    NATIVE_SARAWAK("BUMIPUTERA SARAWAK"),
-    OTHERS("LAIN LAIN");
+    MALAY("MALAY"),
+    CHINESE("CHINESE"),
+    INDIAN("INDIAN"),
+    NATIVE_SABAH("NATIVE SABAH"),
+    NATIVE_SARAWAK("NATIVE SARAWAK"),
+    OTHERS("OTHERS");
 
     String description;
 

@@ -75,12 +75,12 @@ public class AbstractController {
 
 
     private enum RaceType {
-        MALAY("MELAYU"),
-        CHINESE("CINA"),
-        INDIAN("INDIA"),
-        NATIVE_SABAH("BUMIPUTERA SABAH"),
-        NATIVE_SARAWAK("BUMIPUTERA SARAWAK"),
-        OTHERS("LAIN LAIN");
+        MALAY("MALAY"),
+        CHINESE("CHINESE"),
+        INDIAN("INDIAN"),
+        NATIVE_SABAH("NATIVE SABAH"),
+        NATIVE_SARAWAK("NATIVE SARAWAK"),
+        OTHERS("OTHERS");
 
         private String description;
 
@@ -98,8 +98,8 @@ public class AbstractController {
     }
 
     private enum GenderType {
-        MALE("LELAKI"),
-        FEMALE("PEREMPUAN");
+        MALE("MALE"),
+        FEMALE("FEMALE");
 
         private String description;
 
