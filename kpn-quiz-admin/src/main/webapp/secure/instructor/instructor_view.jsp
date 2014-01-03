@@ -169,7 +169,8 @@
                                     <th>Name</th>
                                     <th>NRIC NO</th>
                                     <th>Dob</th>
-                                    <th></th>
+                                    <th>Race</th>
+                                    <th>Gender</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -179,6 +180,8 @@
                                         <td class="hidden-xs">${studentModel.name}</td>
                                         <td class="hidden-xs">${studentModel.nricNo}</td>
                                         <td class="hidden-xs">${studentModel.dobFormatted}</td>
+                                        <td class="hidden-xs">${studentModel.raceTypeName}</td>
+                                        <td class="hidden-xs">${studentModel.genderTypeName}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
