@@ -36,7 +36,7 @@ public class ReportController extends AbstractController {
 
     @RequestMapping(value = "/index", method = {RequestMethod.GET})
     public String index(ModelMap model) {
-        return "secure/report/index";
+        return "secure/report/list";
     }
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})

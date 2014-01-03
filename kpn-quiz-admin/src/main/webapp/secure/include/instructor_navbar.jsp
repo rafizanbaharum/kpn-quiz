@@ -38,7 +38,7 @@
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a href="${pageContext.request.contextPath}/secure/report/index">
+                        <a href="${pageContext.request.contextPath}/secure/report/list">
                             <span class="title">Reports</span>
                         </a>
                     </li>
