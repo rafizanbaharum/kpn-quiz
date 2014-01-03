@@ -98,16 +98,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="btn-group btn-group-justified">
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
-                                               class="btn btn-primary" title="Edit quiz">Edit</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
-                                               class="btn btn-primary" title="Remove quiz">Remove</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <%--<div class="row">--%>
+                                    <%--<div class="col-md-12">--%>
+                                        <%--<div class="btn-group btn-group-justified">--%>
+                                            <%--<a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"--%>
+                                               <%--class="btn btn-primary" title="Edit quiz">Edit</a>--%>
+                                            <%--<a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"--%>
+                                               <%--class="btn btn-primary" title="Remove quiz">Remove</a>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
                             </form:form>
                         </div>
                     </div>
