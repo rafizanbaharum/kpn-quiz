@@ -5,6 +5,7 @@ public class InstructorModel extends ActorModel {
     private String schoolType;
     private String schoolName;
     private String schoolPhone;
+    private String schoolFax;
     private String stateName;
 
 
@@ -38,5 +39,13 @@ public class InstructorModel extends ActorModel {
 
     public void setStateName(String stateName) {
         this.stateName = stateName;
+    }
+
+    public String getSchoolFax() {
+        return schoolFax;
+    }
+
+    public void setSchoolFax(String schoolFax) {
+        this.schoolFax = schoolFax;
     }
 }

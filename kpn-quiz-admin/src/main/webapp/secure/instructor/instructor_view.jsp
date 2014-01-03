@@ -70,33 +70,74 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Name <span class="symbol required"></span>
+                                                Name
                                             </label>
                                             <form:input path="name"
                                                         cssClass="form-control" readonly="true"/>
                                         </div>
+                                     </div>
+                                      <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Username <span class="symbol required"></span>
+                                                NRIC
                                             </label>
-                                            <form:input path="username"
+                                            <form:input path="nricNo"
                                                         cssClass="form-control" readonly="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                                School Name <span class="symbol required"></span>
+                                                Mobile Number
+                                            </label>
+                                            <form:input path="phone"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                      </div>
+
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                School Type
+                                            </label>
+                                            <form:input path="schoolType"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                School Name
                                             </label>
                                             <form:input path="schoolName"
                                                         cssClass="form-control" readonly="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                                State Name <span class="symbol required"></span>
+                                                School Name
+                                            </label>
+                                            <form:input path="schoolName"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                School Phone
+                                            </label>
+                                            <form:input path="schoolPhone"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                School Fax
+                                            </label>
+                                            <form:input path="schoolFax"
+                                                        cssClass="form-control" readonly="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                State Name
                                             </label>
                                             <form:input path="stateName"
                                                         cssClass="form-control" readonly="true"/>
                                         </div>
-                                    </div>
+                                      </div>
+
                                 </div>
                                 <%--<div class="row">--%>
                                     <%--<div class="col-md-12">--%>

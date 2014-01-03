@@ -261,6 +261,7 @@ public class
         model.setAddress3(instructor.getAddress3());
         model.setSchoolName(instructor.getSchoolName());
         model.setSchoolPhone(instructor.getSchoolPhone());
+        model.setSchoolFax(instructor.getSchoolFax());
         model.setSchoolType(instructor.getSchoolType().name());
         if (null != instructor.getState())
             model.setStateName(instructor.getState().getName());
