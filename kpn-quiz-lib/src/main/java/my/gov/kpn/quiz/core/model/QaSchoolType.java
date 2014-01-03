@@ -7,7 +7,7 @@ package my.gov.kpn.quiz.core.model;
 public enum QaSchoolType {
 
     SMK,
-    PRIVATEW,
+    PRIVATE,
     SBP,
     SMK_TEKNIK,
     SMKJ_C,
