@@ -1,13 +1,18 @@
 package my.gov.kpn.quiz.web.client;
 
 import com.extjs.gxt.ui.client.GXT;
+import com.extjs.gxt.ui.client.event.ComponentEvent;
+import com.extjs.gxt.ui.client.event.Events;
+import com.extjs.gxt.ui.client.event.Listener;
 import com.extjs.gxt.ui.client.mvc.Dispatcher;
 import com.extjs.gxt.ui.client.util.Theme;
 import com.extjs.gxt.ui.client.util.ThemeManager;
+import com.extjs.gxt.ui.client.widget.Document;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.logging.impl.FormatterImpl;
+import com.google.gwt.user.client.Event;
 import my.gov.kpn.quiz.web.client.controller.QuizController;
 
 import java.util.logging.Handler;
@@ -28,6 +33,8 @@ public class Quiz implements EntryPoint {
     public void onModuleLoad() {
         ThemeManager.register(Theme.GRAY);
         GXT.setDefaultTheme(Theme.GRAY, true);
+
+        disableDefaultContextMenu();
 
         if (!GWT.isScript()) { // hosted
             GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
@@ -83,5 +90,17 @@ public class Quiz implements EntryPoint {
             s.append(": ");
             return s.toString();
         }
+    }
+
+    public static void disableDefaultContextMenu() {
+        Document.get().addListener(Events.OnContextMenu,
+                new Listener<ComponentEvent>() {
+                    @Override
+                    public void handleEvent(ComponentEvent baseEvent) {
+                        baseEvent.preventDefault();
+
+                    }
+                });
+        Document.get().sinkEvents(Event.ONCONTEXTMENU);
     }
 }

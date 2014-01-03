@@ -500,10 +500,13 @@ public class QuizView extends View {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setId(QUIZ_QUESTION_PANEL);
         panel.setStyleName(QUIZ_QUESTION);
+        panel.disableTextSelection(true);
 
         LayoutContainer box = new LayoutContainer();
         box.setItemId(QUIZ_QUESTION_BOX);
         box.setLayout(new VBoxLayout());
+        box.disableTextSelection(true);
+
 
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
@@ -549,10 +552,12 @@ public class QuizView extends View {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setItemId(QUIZ_QUESTION_PANEL);
         panel.setStyleName(QUIZ_QUESTION);
+        panel.disableTextSelection(true);
 
         LayoutContainer box = new LayoutContainer();
         box.setItemId(QUIZ_QUESTION_BOX);
         box.setLayout(new VBoxLayout());
+        box.disableTextSelection(true);
 
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
@@ -583,10 +588,12 @@ public class QuizView extends View {
     private void createSubjectiveQuestionPanel(int questionIndex, final SubjectiveQuestionModel model) {
         LayoutContainer panel = new LayoutContainer(new FitLayout());
         panel.setStyleName(QUIZ_QUESTION);
+        panel.disableTextSelection(true);
 
         LayoutContainer box = new LayoutContainer();
         box.setItemId(QUIZ_QUESTION_BOX);
         box.setLayout(new VBoxLayout());
+        box.disableTextSelection(true);
 
         Html statement = new Html();
         statement.setId(QUIZ_QUESTION_STATEMENT);
