@@ -2,8 +2,8 @@ var FormValidator = function () {
 
     var submit_btn = $('button[type="submit"]');
 
-    var runValidator1 = function () {
-        var form1 = $('#form');
+    var runRegistrationValidator = function () {
+        var form1 = $('#form-student-register');
         var errorHandler1 = $('.errorHandler', form1);
         var successHandler1 = $('.successHandler', form1);
         $.validator.addMethod('nricNo', function (value) {
@@ -67,6 +67,12 @@ var FormValidator = function () {
                     minlength: 2,
                     required: true
                 },
+                genderType: {
+                    required: true
+                },
+                raceType: {
+                    required: true
+                },
                 dob_yyyy: "FullDate"
             },
             messages: {
@@ -102,8 +108,8 @@ var FormValidator = function () {
             }
         });
     };
-    var runValidator2 = function () {
-        var form1 = $('#form_student_edit');
+    var runUpdateValidator = function () {
+        var form1 = $('#form-student-edit');
         var errorHandler1 = $('.errorHandler', form1);
         var successHandler1 = $('.successHandler', form1);
         $.validator.addMethod('nricNo', function (value) {
@@ -146,6 +152,12 @@ var FormValidator = function () {
                     minlength: 2,
                     required: true
                 },
+                genderType: {
+                    required: true
+                },
+                raceType: {
+                    required: true
+                },
                 dob_yyyy: "FullDate"
             },
             messages: {
@@ -184,8 +196,8 @@ var FormValidator = function () {
     return {
         //main function to initiate template pages
         init: function () {
-            runValidator1();
-            runValidator2();
+            runRegistrationValidator();
+            runUpdateValidator();
         }
     };
 }();

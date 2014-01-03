@@ -1,13 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]>
-<html class="ie8 no-js" lang="en"><![endif]-->
+<html class="ie8 no-js" lang="en">
+<![endif]-->
 <!--[if IE 9]>
-<html class="ie9 no-js" lang="en"><![endif]-->
+<html class="ie9 no-js" lang="en">
+<![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js">
 <!--<![endif]-->
@@ -17,7 +18,8 @@
     <!-- start: META -->
     <meta charset="utf-8"/>
     <!--[if IE]>
-    <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1"/><![endif]-->
+    <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1"/>
+    <![endif]-->
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -50,7 +52,9 @@
 <body class="login example2">
 <div class="main-login col-sm-6 col-sm-offset-3">
     <div class="col-sm-offset-2">
-        <div class="logo"><h2>ASEAN QUIZ</h2></div>
+        <div class="logo">
+            <h2>ASEAN QUIZ</h2>
+        </div>
     </div>
     <div class="box-register">
         <c:if test="${started && !ended}">
@@ -82,12 +86,13 @@
                         </p>
 
                         <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:input type="text" class="form-control"
-                                                                            path="nricNo" placeholder="NRIC No"
-                                                                            maxlength="12"
-                                                                            autocomplete="off"/>
-                                 								<i class="icon-user"></i> </span>
+                                 <span class="input-icon">
+                                    <form:input type="text" class="form-control"
+                                                path="nricNo" placeholder="NRIC No"
+                                                maxlength="12"
+                                                autocomplete="off"/>
+                                    <i class="icon-user"></i> 
+                                 </span>
 
                             <div id="username_status"></div>
                         </div>
@@ -96,20 +101,22 @@
                         </p>
 
                         <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:password class="form-control" id="password"
-                                                                               path="password"
-                                                                               placeholder="Password"
-                                                                               autocomplete="off"/>
-                                 								<i class="icon-lock"></i> </span>
+                                 <span class="input-icon">
+                                    <form:password class="form-control" id="password"
+                                                   path="password"
+                                                   placeholder="Password"
+                                                   autocomplete="off"/>
+                                    <i class="icon-lock"></i> 
+                                 </span>
                         </div>
                         <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:password class="form-control"
-                                                                               path="passwordAgain"
-                                                                               placeholder="Password Again"
-                                                                               autocomplete="off"/>
-                                 								<i class="icon-lock"></i> </span>
+                                 <span class="input-icon">
+                                    <form:password class="form-control"
+                                                   path="passwordAgain"
+                                                   placeholder="Password Again"
+                                                   autocomplete="off"/>
+                                    <i class="icon-lock"></i> 
+                                 </span>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -118,30 +125,29 @@
                         </p>
 
                         <div class="form-group">
-                                 							<span class="input-icon">
-                                                                 <form:select id="schoolType" path="schoolType"
-                                                                              class="form-control">
-                                                                     <form:option value="">Type of school</form:option>
-                                                                     <c:forEach items="${schoolTypeMap}"
-                                                                                var="schoolType">
-                                                                         <form:option
-                                                                                 value='${schoolType.key}'>${schoolType.value}</form:option>
-                                                                     </c:forEach>
-                                                                 </form:select>
-                                                            </span>
+                                 <span class="input-icon">
+                                    <form:select id="schoolType" path="schoolType"
+                                                 class="form-control">
+                                        <form:option value="">Type of school</form:option>
+                                        <c:forEach items="${schoolTypeMap}"
+                                                   var="schoolType">
+                                            <form:option
+                                                    value='${schoolType.key}'>${schoolType.value}</form:option>
+                                        </c:forEach>
+                                    </form:select>
+                                 </span>
                         </div>
                         <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:input type="text" class="form-control"
-                                                                            path="schoolName"
-                                                                            placeholder="School Name"/>
-                                 								<i class="icon-sitemap"></i> </span>
+                                 <span class="input-icon">
+                                    <form:input type="text" class="form-control"
+                                                path="schoolName"
+                                                placeholder="School Name"/>
+                                    <i class="icon-sitemap"></i> 
+                                 </span>
                         </div>
-
                         <div class="form-group">
                             <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
                         </div>
-
                         <div class="form-group">
                             <form:select id="form-field-select-1" path="stateId" class="form-control">
                                 <form:option value="">Select state</form:option>
@@ -151,18 +157,20 @@
                             </form:select>
                         </div>
                         <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:input type="text" class="form-control"
-                                                                            path="schoolPhone"
-                                                                            placeholder="School Phone"/>
-                                 								<i class="icon-phone"></i> </span>
+                                 <span class="input-icon">
+                                    <form:input type="text" class="form-control"
+                                                path="schoolPhone"
+                                                placeholder="School Phone"/>
+                                    <i class="icon-phone"></i> 
+                                 </span>
                         </div>
                         <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:input type="text" class="form-control"
-                                                                            path="schoolFax"
-                                                                            placeholder="School Fax"/>
-                                 								<i class="icon-phone-sign"></i> </span>
+                                 <span class="input-icon">
+                                    <form:input type="text" class="form-control"
+                                                path="schoolFax"
+                                                placeholder="School Fax"/>
+                                    <i class="icon-phone-sign"></i> 
+                                 </span>
                         </div>
                     </div>
                     <div class="row"></div>
@@ -175,8 +183,6 @@
                             Submit <i class="icon-circle-arrow-right"></i>
                         </button>
                     </div>
-
-
                 </fieldset>
             </form:form>
         </c:if>
@@ -215,7 +221,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
-
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {

@@ -2,8 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
-<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
-<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if IE 8]>
+<html class="ie8 no-js" lang="en">
+<![endif]-->
+<!--[if IE 9]>
+<html class="ie9 no-js" lang="en">
+<![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js">
 <!--<![endif]-->
@@ -13,7 +17,8 @@
     <!-- start: META -->
     <meta charset="utf-8"/>
     <!--[if IE]>
-    <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1"/><![endif]-->
+    <meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1"/>
+    <![endif]-->
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,9 +64,8 @@
                         </div>
                         <div class="panel-body">
                             <h2><i class="icon-edit-sign teal"></i> REGISTER</h2>
-
                             <hr>
-                            <form:form id="form" commandName="studentModel"
+                            <form:form id="form-student-register" commandName="studentModel"
                                        action="${pageContext.request.contextPath}/secure/student/add"
                                        method="POST">
                                 <div class="row">
@@ -91,7 +95,6 @@
                                                         cssClass="form-control"
                                                         maxlength="12"
                                                     />
-
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
@@ -108,7 +111,6 @@
                                             </form:select>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">
