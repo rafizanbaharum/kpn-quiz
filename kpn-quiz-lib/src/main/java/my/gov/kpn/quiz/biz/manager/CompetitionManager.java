@@ -15,6 +15,8 @@ public interface CompetitionManager {
 
     QaCompetition findCompetitionByYear(int year);
 
+    QaCompetition getCurrentYearCompetition();
+
     List<QaCompetition> findAll();
 
     QaQuiz findQuizById(Long id);

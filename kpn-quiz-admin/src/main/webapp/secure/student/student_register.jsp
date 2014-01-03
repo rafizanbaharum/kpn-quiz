@@ -107,6 +107,9 @@
                                                 </c:forEach>
                                             </form:select>
                                         </div>
+                                    </div>
+
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Race <span class="symbol required"></span>
@@ -121,26 +124,6 @@
                                                 </c:forEach>
                                             </form:select>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Password <span class="symbol required"></span>
-                                            </label>
-                                            <form:password path="password" cssClass="form-control"
-                                                           autocomplete="off"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Confirm Password <span class="symbol required"></span>
-                                            </label>
-                                            <form:password path="passwordAgain" cssClass="form-control"
-                                                           autocomplete="off"/>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
                                         <div class="form-group connected-group">
                                             <label class="control-label">
                                                 Date of Birth <span class="symbol required"></span>

@@ -105,19 +105,16 @@ public class StudentController extends AbstractController {
             return "secure/student/student_register";
         }
 
-        // check if password does not match
-        if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
+        QaCompetition competition = competitionDao.findByYear(LocalDate.now().getYear());
+        log.debug("Year of competition = " + competition);
+        if (null == competition) {
             model.addAttribute(studentModel);
-            model.addAttribute(MSG_ERROR, "Password does not match");
+            model.addAttribute(MSG_ERROR, "An error occured! Competition is not exist. Please contact system administrator.");
             return "secure/student/student_register";
         }
 
-        QaCompetition competition = competitionDao.findByYear(LocalDate.now().getYear());
-        log.debug("Year of competition = " + competition);
-        Integer competitionYear = competition.getYear();
-
         Integer dobYear = Integer.valueOf(studentModel.getDob_yyyy());
-        int diff = competitionYear - dobYear;
+        int diff = competition.getYear() - dobYear;
         log.debug("Diff DOB and competition year = " + diff);
         log.debug(MessageFormat.format("Start constraint = {0} / End Constraint = {1}",
                 competition.getStartConstraint(), competition.getEndConstraint()));
@@ -178,12 +175,6 @@ public class StudentController extends AbstractController {
                 Integer.parseInt(studentModel.getGenderType()),
                 Integer.parseInt(studentModel.getRaceType())
         );
-
-        // check if password does not match
-        if (!studentModel.getPassword().equals(studentModel.getPasswordAgain())) {
-            model.addAttribute(MSG_ERROR, "Password does not match");
-            return "secure/student/student_register";
-        }
 
         model.addAttribute(MSG_SUCCESS, "Student successfully updated");
         return "redirect:/secure/student/view/" + student.getId();

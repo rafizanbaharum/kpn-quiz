@@ -105,6 +105,8 @@
                                         <form:input path="genderTypeName" placeholder="Gender" cssClass="form-control"
                                                     readonly="true"/>
                                     </div>
+                                </div>
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">
                                             Race <span class="symbol required"></span>
@@ -112,8 +114,6 @@
                                         <form:input path="raceTypeName" placeholder="Race" cssClass="form-control"
                                                     readonly="true"/>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="form-group connected-group">
                                         <label class="control-label">
                                             Date of Birth <span class="symbol required"></span>

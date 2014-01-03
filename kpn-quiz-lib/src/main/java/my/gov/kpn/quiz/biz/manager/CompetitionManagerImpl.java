@@ -9,6 +9,7 @@ import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -95,6 +96,11 @@ public class CompetitionManagerImpl implements CompetitionManager {
     @Override
     public QaCompetition findCompetitionByYear(int year) {
         return competitionDao.findByYear(year);
+    }
+
+    @Override
+    public QaCompetition getCurrentYearCompetition() {
+        return competitionDao.findByYear(LocalDate.now().getYear());
     }
 
     @Override

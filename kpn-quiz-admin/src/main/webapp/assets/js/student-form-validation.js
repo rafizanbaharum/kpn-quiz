@@ -67,16 +67,6 @@ var FormValidator = function () {
                     minlength: 2,
                     required: true
                 },
-                password: {
-                    minlength: 6,
-                    maxlength: 8,
-                    required: true
-                },
-                passwordAgain: {
-                    required: true,
-                    minlength: 5,
-                    equalTo: "#password"
-                },
                 dob_yyyy: "FullDate"
             },
             messages: {
@@ -155,16 +145,6 @@ var FormValidator = function () {
                 username: {
                     minlength: 2,
                     required: true
-                },
-                password: {
-                    minlength: 6,
-                    maxlength: 8,
-                    required: true
-                },
-                passwordAgain: {
-                    required: true,
-                    minlength: 5,
-                    equalTo: "#password"
                 },
                 dob_yyyy: "FullDate"
             },
