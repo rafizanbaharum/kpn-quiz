@@ -98,7 +98,16 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                                Gender <span class="symbol required"></span>
+                                                Confirm NRIC <span class="symbol required"></span>
+                                            </label>
+                                            <form:input path="confirmNricNo" placeholder="Confirm NRIC No"
+                                                        cssClass="form-control"
+                                                        maxlength="12"
+                                                    />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                            Gender <span class="symbol required"></span>
                                             </label>
                                             <form:select id="genderType" path="genderType"
                                                          class="form-control">
@@ -189,6 +198,7 @@
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
 <script>
+    setContextRoots('<%= request.getContextPath() %>');
     jQuery(document).ready(function () {
         Main.init();
         FormValidator.init();

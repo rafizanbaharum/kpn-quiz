@@ -4,9 +4,17 @@ var isIE9 = false;
 var $windowWidth;
 var $windowHeight;
 var $pageArea;
+var CONTEXT_ROOT;
+
+var setContextRoots = function (contextRoot) {
+    CONTEXT_ROOT = contextRoot;
+};
+var getContextRoots = function () {
+    return CONTEXT_ROOT;
+};
 //Main Function
 var Main = function () {
-   //function to detect explorer browser and its version
+    //function to detect explorer browser and its version
     var runInit = function () {
         if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
             var ieversion = new Number(RegExp.$1);
@@ -25,6 +33,7 @@ var Main = function () {
         $('.sidebar-search input').removeAttr('style').removeClass('open');
         $('.sidebar-fixed .wrap-menu').css('height', $pageArea);
         runContainerHeight();
+        getContextRoots()
     };
     //function to adapt the Main Content height to the Main Navigation height 
     var runContainerHeight = function () {
@@ -34,7 +43,8 @@ var Main = function () {
             mainContainer.css('min-height', mainNavigation.outerHeight());
         } else {
             mainContainer.css('min-height', '760px');
-        };
+        }
+        ;
     };
     //function to activate the ToDo list, if present 
     var runToDoAction = function () {
@@ -79,7 +89,8 @@ var Main = function () {
                     $('a[href="' + tabToShow + '"]').tab('show');
                 }
             });
-        };
+        }
+        ;
         if (getParameterByName('tabId').length) {
             $('a[href="#' + getParameterByName('tabId') + '"]').tab('show');
         }
@@ -95,7 +106,7 @@ var Main = function () {
         }
         $(".accordion").collapse().height('auto');
         var lastClicked;
-        
+
         $('.accordion .accordion-toggle').bind('click', function () {
             currentTab = $(this);
             $('html,body').animate({
@@ -110,7 +121,8 @@ var Main = function () {
                 $('body').addClass('navigation-small');
             } else {
                 $('body').removeClass('navigation-small');
-            };
+            }
+            ;
         });
     };
     //function to activate the panel tools
@@ -142,7 +154,8 @@ var Main = function () {
                     wbox.addClass('panel-full-screen').css({
                         'max-height': $(window).height(),
                         'overflow': 'auto'
-                    });;
+                    });
+                    ;
                 });
             }
         });
@@ -180,7 +193,7 @@ var Main = function () {
             }
         });
     };
-   //function to activate the 3rd and 4th level menus
+    //function to activate the 3rd and 4th level menus
     var runNavigationMenu = function () {
         $('.main-navigation-menu li.active').addClass('open');
         $('.main-navigation-menu > li a').bind('click', function () {
@@ -347,7 +360,8 @@ var Main = function () {
                 radioClass: 'iradio_flat-yellow',
                 increaseArea: '10%' // optional
             });
-        };
+        }
+        ;
     };
     //Search Input function
     var runSearchInput = function () {
@@ -359,30 +373,30 @@ var Main = function () {
                 width: 200
             }, 200);
         }).blur(function () {
-            if ($(this).val() == "") {
-                if ($(this).hasClass('open')) {
-                    $(this).animate({
-                        width: 0,
-                        opacity: 0
-                    }, 200, function () {
-                        $(this).hide();
-                    });
-                } else {
-                    $(this).animate({
-                        width: $(this).attr('data-default')
-                    }, 200);
+                if ($(this).val() == "") {
+                    if ($(this).hasClass('open')) {
+                        $(this).animate({
+                            width: 0,
+                            opacity: 0
+                        }, 200, function () {
+                            $(this).hide();
+                        });
+                    } else {
+                        $(this).animate({
+                            width: $(this).attr('data-default')
+                        }, 200);
+                    }
                 }
-            }
-        });
+            });
         search_button.bind('click', function () {
             if ($(search_input).is(':hidden')) {
                 $(search_input).addClass('open').css({
                     width: 0,
                     opacity: 0
                 }).show().animate({
-                    width: 200,
-                    opacity: 1
-                }, 200).focus();
+                        width: 200,
+                        opacity: 1
+                    }, 200).focus();
             } else if ($(search_input).hasClass('open') && $(search_input).val() == '') {
                 $(search_input).removeClass('open').animate({
                     width: 0,

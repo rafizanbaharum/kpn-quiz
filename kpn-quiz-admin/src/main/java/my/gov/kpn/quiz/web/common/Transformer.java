@@ -226,6 +226,7 @@ public class
         model.setId(student.getId());
         model.setName(student.getName());
         model.setNricNo(student.getNricNo());
+        model.setConfirmNricNo(student.getNricNo());
         model.setUsername(user.getUsername());
         model.setPassword(user.getPassword());
         model.setPasswordAgain(user.getPassword());

@@ -13,6 +13,7 @@ public class StudentModel extends ActorModel {
     private String dob_mm;
     private String dob_yyyy;
     private String nricNo;
+    private String confirmNricNo;
     private String schoolName;
     private String stateName;
     private String raceType;
@@ -45,6 +46,14 @@ public class StudentModel extends ActorModel {
 
     public void setNricNo(String nricNo) {
         this.nricNo = nricNo;
+    }
+
+    public String getConfirmNricNo() {
+        return confirmNricNo;
+    }
+
+    public void setConfirmNricNo(String confirmNricNo) {
+        this.confirmNricNo = confirmNricNo;
     }
 
     public String getPassword() {

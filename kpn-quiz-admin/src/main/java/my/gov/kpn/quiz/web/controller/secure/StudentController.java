@@ -105,6 +105,12 @@ public class StudentController extends AbstractController {
             return "secure/student/student_register";
         }
 
+        if (!studentModel.getNricNo().equals(studentModel.getConfirmNricNo())) {
+            model.addAttribute(studentModel);
+            model.addAttribute(MSG_ERROR, "NRIC No does not match. Please re-enter the same value");
+            return "secure/student/student_register";
+        }
+
         QaCompetition competition = competitionDao.findByYear(LocalDate.now().getYear());
         log.debug("Year of competition = " + competition);
         if (null == competition) {
@@ -159,6 +165,12 @@ public class StudentController extends AbstractController {
     @RequestMapping(value = "/update", method = {RequestMethod.POST})
     public String studentUpdate(@ModelAttribute("studentModel") StudentModel studentModel,
                                 ModelMap model) {
+
+        if (!studentModel.getNricNo().equals(studentModel.getConfirmNricNo())) {
+            model.addAttribute(studentModel);
+            model.addAttribute(MSG_ERROR, "NRIC No does not match. Please re-enter the same value");
+            return "secure/student/student_register";
+        }
 
         // NRIC as username. Just copy it.
         studentModel.setUsername(studentModel.getNricNo());

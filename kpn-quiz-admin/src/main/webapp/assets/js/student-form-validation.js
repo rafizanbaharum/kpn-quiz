@@ -2,22 +2,24 @@ var FormValidator = function () {
 
     var submit_btn = $('button[type="submit"]');
 
+    $.validator.addMethod('nricNo', function (value) {
+            return /^\d{12}$/.test(value);
+        },
+        'Please enter a valid NRIC no. without dash. eg: 671218045678');
+
+    $.validator.addMethod("FullDate", function () {
+        //if all values are selected
+        if ($("#dob_dd").val() != "" && $("#dob_mm").val() != "" && $("#dob_yyyy").val() != "") {
+            return true;
+        } else {
+            return false;
+        }
+    }, 'Please select a day, month, and year');
+
     var runRegistrationValidator = function () {
         var form1 = $('#form-student-register');
         var errorHandler1 = $('.errorHandler', form1);
         var successHandler1 = $('.successHandler', form1);
-        $.validator.addMethod('nricNo', function (value) {
-                return /^\d{12}$/.test(value);
-            },
-            'Please enter a valid NRIC no. wtihout dash. eg: 671218045678');
-        $.validator.addMethod("FullDate", function () {
-            //if all values are selected
-            if ($("#dob_dd").val() != "" && $("#dob_mm").val() != "" && $("#dob_yyyy").val() != "") {
-                return true;
-            } else {
-                return false;
-            }
-        }, 'Please select a day, month, and year');
         form1.validate({
             errorElement: "span", // contain the error msg in a span tag
             errorClass: 'help-block',
@@ -42,7 +44,7 @@ var FormValidator = function () {
                     required: true,
                     nricNo: true,
                     remote: {
-                        url: "../../register/validate/",
+                        url: getContextRoots() + "/register/validate/",
                         type: "GET",
                         dataType: "json",
                         data: {
@@ -62,6 +64,10 @@ var FormValidator = function () {
                             submit_btn.html("Submit <i class=\"icon-circle-arrow-right\"></i>");
                         }
                     }
+                },
+                confirmNricNo: {
+                    required: true,
+                    equalTo: "#nricNo"
                 },
                 username: {
                     minlength: 2,
@@ -112,18 +118,6 @@ var FormValidator = function () {
         var form1 = $('#form-student-edit');
         var errorHandler1 = $('.errorHandler', form1);
         var successHandler1 = $('.successHandler', form1);
-        $.validator.addMethod('nricNo', function (value) {
-                return /^\d{12}$/.test(value);
-            },
-            'Please enter a valid NRIC no. wtihout dash. eg: 671218045678');
-        $.validator.addMethod("FullDate", function () {
-            //if all values are selected
-            if ($("#dob_dd").val() != "" && $("#dob_mm").val() != "" && $("#dob_yyyy").val() != "") {
-                return true;
-            } else {
-                return false;
-            }
-        }, 'Please select a day, month, and year');
         form1.validate({
             errorElement: "span", // contain the error msg in a span tag
             errorClass: 'help-block',
@@ -146,7 +140,32 @@ var FormValidator = function () {
                 nricNo: {
                     minlength: 12,
                     required: true,
-                    nricNo: true
+                    nricNo: true,
+                    remote: {
+                        url: getContextRoots() + "/register/validate/",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            nricNo: function () {
+                                return $("#nricNo").val();
+                            }
+                        },
+                        dataFilter: function (response) {
+                            return response != 'true';
+                        },
+                        beforeSend: function () {
+                            submit_btn.attr('disabled', 'disabled');
+                            submit_btn.text("Please wait..");
+                        },
+                        complete: function () {
+                            submit_btn.removeAttr('disabled');
+                            submit_btn.html("Submit <i class=\"icon-circle-arrow-right\"></i>");
+                        }
+                    }
+                },
+                confirmNricNo: {
+                    required: true,
+                    equalTo: "#nricNo"
                 },
                 username: {
                     minlength: 2,
