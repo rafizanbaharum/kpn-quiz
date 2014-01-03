@@ -192,6 +192,7 @@ public class
         model.setAnswerResponse(participant.getAnswerResponse());
         if (null != student) {
             model.setName(student.getName());
+            model.setNricNo(student.getNricNo());
             model.setAddress1(student.getAddress1());
             model.setAddress2(student.getAddress2());
             model.setAddress3(student.getAddress3());

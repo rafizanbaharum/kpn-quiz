@@ -97,6 +97,7 @@
                                 <tr>
                                     <th class="center">#</th>
                                     <th>Name</th>
+                                    <th>NRIC</th>
                                     <th>Selected For Next Round</th>
                                     <th>Result</th>
                                     <th></th>
@@ -107,6 +108,7 @@
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${participant.name}</td>
+                                        <td class="hidden-xs">${participant.nricNo}</td>
                                         <td class="hidden-xs center">${participant.selected}</td>
                                         <td class="hidden-xs">${participant.result}</td>
                                         <td class="center">

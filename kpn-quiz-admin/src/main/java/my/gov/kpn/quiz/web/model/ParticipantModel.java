@@ -7,6 +7,7 @@ package my.gov.kpn.quiz.web.model;
 public class ParticipantModel extends MetaModel {
 
     private String name;
+    private String nricNo;
     private Integer result;
     private String school;
     private String district;
@@ -23,6 +24,14 @@ public class ParticipantModel extends MetaModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNricNo() {
+        return nricNo;
+    }
+
+    public void setNricNo(String nricNo) {
+        this.nricNo = nricNo;
     }
 
     public Integer getResult() {

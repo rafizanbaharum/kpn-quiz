@@ -80,6 +80,7 @@
                                 <tr>
                                     <th class="center">#</th>
                                     <th>Name</th>
+                                    <th>NRIC</th>
                                     <th>School</th>
                                     <th>State</th>
                                     <th class="center">Next Round?</th>
@@ -92,6 +93,7 @@
                                     <tr>
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${participant.name}</td>
+                                        <td class="hidden-xs">${participant.nricNo}</td>
                                         <td class="hidden-xs">${participant.school}</td>
                                         <td class="hidden-xs">${participant.state}</td>
                                         <td class="hidden-xs center">
