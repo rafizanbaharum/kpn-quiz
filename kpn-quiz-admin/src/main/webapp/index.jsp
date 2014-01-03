@@ -21,16 +21,20 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -49,9 +53,7 @@
             </a>
         </div>
         <div class="navbar-tools">
-            <!-- start: TOP NAVIGATION MENU -->
             <ul class="nav navbar-right">
-                <!-- start: TO-DO DROPDOWN -->
                 <li class="dropdown">
                     <a href="${pageContext.request.contextPath}/gate/in"><i class="clip-locked"></i>
                         <span class="title"> Login </span>
@@ -62,9 +64,7 @@
                         <span class="title"> Create an account </span>
                     </a>
                 </li>
-                <!-- end: TO-DO DROPDOWN-->
             </ul>
-            <!-- end: TOP NAVIGATION MENU -->
         </div>
     </div>
 </div>
@@ -136,6 +136,36 @@
                         </div>
                         <a class="view-more" href="${pageContext.request.contextPath}/secure/competition/list">
                             View More <i class="clip-arrow-right-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="core-box">
+                        <div class="heading">
+                            <i class="clip-archive circle-icon circle-green"></i>
+
+                            <h2>Rules and Regulations</h2>
+                        </div>
+                        <div class="content">
+                            Download Asean Quiz Rules and Regulations
+                        </div>
+                        <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.doc">
+                            Download Here <i class="clip-arrow-right-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="core-box">
+                        <div class="heading">
+                            <i class="clip-settings circle-icon circle-teal"></i>
+
+                            <h2>Manual and Guidelines</h2>
+                        </div>
+                        <div class="content">
+                            Download Asean Quiz's manual for students.
+                        </div>
+                        <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.doc">
+                            Download Manual <i class="clip-arrow-right-2"></i>
                         </a>
                     </div>
                 </div>
