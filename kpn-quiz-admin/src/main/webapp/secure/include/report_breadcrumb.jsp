@@ -12,7 +12,7 @@
             </li>
         </ol>
         <div class="page-header">
-            <h1>View Reports </h1>
+            <h1>Reports List </h1>
         </div>
     </div>
 </div>
