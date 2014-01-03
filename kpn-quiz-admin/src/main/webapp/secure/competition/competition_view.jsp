@@ -91,7 +91,7 @@
                                                         disabled="true">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="dd">
-                                                            <option value="${dd}" ${dd == competitionModel.startDate_dd ? 'selected' : ''}>${dd}</option>
+                                                            <form:option value="${dd}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -100,7 +100,7 @@
                                                                  disabled="true">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="mm">
-                                                            <option value="${mm}" ${mm == competitionModel.startDate_MM ? 'selected' : ''}>${mm}</option>
+                                                            <form:option value="${mm}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -121,7 +121,7 @@
                                                                  disabled="true">
                                                         <option value="">DD</option>
                                                         <c:forEach begin="1" end="31" var="dd">
-                                                            <option value="${dd}" ${dd == competitionModel.endDate_MM ? 'selected' : ''}>${dd}</option>
+                                                            <form:option value="${dd}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -130,7 +130,7 @@
                                                                  disabled="true">
                                                         <option value="">MM</option>
                                                         <c:forEach begin="1" end="12" var="mm">
-                                                            <option value="${mm}" ${mm == competitionModel.endDate_MM ? 'selected' : ''}>${mm}</option>
+                                                            <form:option value="${mm}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -149,7 +149,7 @@
                                                 <div class="col-md-4">
                                                     <form:select path="year" cssClass="form-control" disabled="true">
                                                         <c:forEach begin="2013" end="2020" var="yyyy">
-                                                            <option value=${yyyy}>${yyyy}</option>
+                                                            <form:option value="${yyyy}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -166,7 +166,7 @@
                                                     <form:select path="startConstraint" cssClass="form-control"
                                                                  disabled="true">
                                                         <c:forEach begin="15" end="17" var="startConstraint">
-                                                            <option value="${startConstraint}" ${startConstraint == competitionModel.startConstraint ? 'selected' : ''}>${startConstraint}</option>
+                                                            <form:option value="${startConstraint}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
@@ -174,7 +174,7 @@
                                                     <form:select path="endConstraint" cssClass="form-control"
                                                                  disabled="true">
                                                         <c:forEach begin="15" end="17" var="endConstraint">
-                                                            <option value="${endConstraint}" ${endConstraint == competitionModel.endConstraint ? 'selected' : ''}>${endConstraint}</option>
+                                                            <form:option value="${endConstraint}"/>
                                                         </c:forEach>
                                                     </form:select>
                                                 </div>
