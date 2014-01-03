@@ -223,6 +223,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
+    setContextRoot('<%=request.getContextPath()%>');
     jQuery(document).ready(function () {
         Main.init();
         Login.init();

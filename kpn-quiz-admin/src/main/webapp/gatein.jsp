@@ -72,7 +72,8 @@
             <fieldset>
                 <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="NRIC No" maxlength="12">
+								<input type="text" class="form-control" name="username" placeholder="NRIC No"
+                                       maxlength="12">
 								<i class="icon-user"></i> </span>
                 </div>
                 <div class="form-group form-actions">
@@ -112,7 +113,8 @@
             <fieldset>
                 <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" id="nricNo" name="nricNo" placeholder="NRIC No" maxlength="12">
+								<input type="text" class="form-control" id="nricNo" name="nricNo" placeholder="NRIC No"
+                                       maxlength="12">
 								<i class="icon-envelope"></i> </span>
                 </div>
                 <div class="form-actions">
@@ -149,6 +151,7 @@
 <script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
+    setContextRoot('<%=request.getContextPath()%>');
     jQuery(document).ready(function () {
         Main.init();
         Login.init();

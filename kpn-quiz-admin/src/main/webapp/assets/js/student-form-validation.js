@@ -44,7 +44,7 @@ var FormValidator = function () {
                     required: true,
                     nricNo: true,
                     remote: {
-                        url: getContextRoots() + "/register/validate/",
+                        url: getContextRoot() + "/register/validate/",
                         type: "GET",
                         dataType: "json",
                         data: {
@@ -142,7 +142,7 @@ var FormValidator = function () {
                     required: true,
                     nricNo: true,
                     remote: {
-                        url: getContextRoots() + "/register/validate/",
+                        url: getContextRoot() + "/register/validate/",
                         type: "GET",
                         dataType: "json",
                         data: {

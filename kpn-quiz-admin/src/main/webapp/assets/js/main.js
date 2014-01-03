@@ -6,10 +6,10 @@ var $windowHeight;
 var $pageArea;
 var CONTEXT_ROOT;
 
-var setContextRoots = function (contextRoot) {
+var setContextRoot = function (contextRoot) {
     CONTEXT_ROOT = contextRoot;
 };
-var getContextRoots = function () {
+var getContextRoot = function () {
     return CONTEXT_ROOT;
 };
 //Main Function
@@ -33,7 +33,7 @@ var Main = function () {
         $('.sidebar-search input').removeAttr('style').removeClass('open');
         $('.sidebar-fixed .wrap-menu').css('height', $pageArea);
         runContainerHeight();
-        getContextRoots()
+        getContextRoot()
     };
     //function to adapt the Main Content height to the Main Navigation height 
     var runContainerHeight = function () {

@@ -107,7 +107,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
-                                            Gender <span class="symbol required"></span>
+                                                Gender <span class="symbol required"></span>
                                             </label>
                                             <form:select id="genderType" path="genderType"
                                                          class="form-control">
@@ -198,7 +198,7 @@
 <script type="text/javascript"
         src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
 <script>
-    setContextRoots('<%= request.getContextPath() %>');
+    setContextRoot('<%= request.getContextPath() %>');
     jQuery(document).ready(function () {
         Main.init();
         FormValidator.init();
