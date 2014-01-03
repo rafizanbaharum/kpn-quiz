@@ -1,6 +1,9 @@
 package my.gov.kpn.quiz.biz.manager;
 
-import my.gov.kpn.quiz.core.dao.*;
+import my.gov.kpn.quiz.core.dao.QaActorDao;
+import my.gov.kpn.quiz.core.dao.QaPrincipalRoleDao;
+import my.gov.kpn.quiz.core.dao.QaStateDao;
+import my.gov.kpn.quiz.core.dao.QaUserDao;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
 import my.gov.kpn.quiz.core.model.impl.QaStudentImpl;
@@ -13,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+
+import static org.apache.commons.lang.WordUtils.capitalize;
 
 /**
  * @author rafizan.baharum
@@ -44,25 +49,14 @@ public class RegistrationManagerImpl implements RegistrationManager {
     @Autowired
     private ApplicationContext applicationContext;
 
-    public void registerInstructor(String username,
-                                   String password,
-                                   String name,
-                                   String nricNo,
-                                   String email,
-                                   String fax,
-                                   String phone, Long stateId,
-                                   String schoolName,
-                                   String schoolPhone,
-                                   String schoolFax,
-                                   Integer schoolType
-    ) {
+    public void registerInstructor(InstructorInfo instructorInfo) {
 
         QaUser root = userDao.findById(ADMIN);
         QaUser user = new QaUserImpl();
-        user.setEmail(email);
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setRealname(name);
+        user.setEmail(instructorInfo.getEmail());
+        user.setUsername(instructorInfo.getUsername());
+        user.setPassword(instructorInfo.getPassword());
+        user.setRealname(instructorInfo.getName());
         user.setEnabled(true);
         user.setLocked(true);
         user.setPrincipalType(QaPrincipalType.USER);
@@ -77,16 +71,16 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
         // add actor
         QaInstructor instructor = new QaInstructorImpl();
-        instructor.setName(name);
-        instructor.setNricNo(nricNo);
-        instructor.setEmail(email);
-        instructor.setPhone(phone);
-        instructor.setFax(fax);
-        instructor.setSchoolType(QaSchoolType.get(schoolType));
-        instructor.setSchoolName(schoolName);
-        instructor.setSchoolPhone(schoolPhone);
-        instructor.setSchoolFax(schoolFax);
-        instructor.setState(stateDao.findById(stateId));
+        instructor.setName(capitalize(instructorInfo.getName()));
+        instructor.setNricNo(instructorInfo.getNricNo());
+        instructor.setEmail(instructorInfo.getEmail());
+        instructor.setPhone(instructorInfo.getPhone());
+        instructor.setFax(instructorInfo.getFax());
+        instructor.setSchoolType(QaSchoolType.get(instructorInfo.getSchoolType()));
+        instructor.setSchoolName(capitalize(instructorInfo.getSchoolName()));
+        instructor.setSchoolPhone(instructorInfo.getSchoolPhone());
+        instructor.setSchoolFax(instructorInfo.getSchoolFax());
+        instructor.setState(stateDao.findById(instructorInfo.getStateId()));
         actorDao.save(instructor, root);
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(instructor);
@@ -127,16 +121,16 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
         // add actor
         QaStudent student = new QaStudentImpl();
-        student.setName(name);
+        student.setName(capitalize(name));
         student.setNricNo(nricNo);
         student.setInstructor(instructor);
         student.setDob(dob);
         student.setGenderType(QaGenderType.get(genderType));
         student.setRaceType(QaRaceType.get(raceType));
 
-        student.setSchoolName(instructor.getSchoolName());
+        student.setSchoolName(capitalize(instructor.getSchoolName()));
         student.setSchoolType(instructor.getSchoolType());
-        student.setDistrictName(instructor.getDistrictName());
+        student.setDistrictName(capitalize(instructor.getDistrictName()));
         student.setState(instructor.getState());
         actorDao.save(student, root);
         sessionFactory.getCurrentSession().flush();

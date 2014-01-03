@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.biz;
 
+import my.gov.kpn.quiz.biz.manager.InstructorInfo;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.config.Config;
 import org.junit.Test;
@@ -22,7 +23,7 @@ public class RegistrationManagerTest extends AbstractTransactionalJUnit4SpringCo
     @Test
     public void create() {
 
-        registrationManager.registerInstructor("ali", "abc123", "ali", "abc123", "mail@mail.com"
-                , "fax", "phone", 2L, "schoolName", "034578230", "034578230", 1);
+        registrationManager.registerInstructor(
+                new InstructorInfo("ali", "abc123", "ali", "abc123", "mail@mail.com", "phone", "fax", 2L, "schoolName", "034578230", "034578230", 1));
     }
 }

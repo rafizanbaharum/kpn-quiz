@@ -1,6 +1,8 @@
 package my.gov.kpn.quiz.core;
 
 import my.gov.kpn.quiz.config.Config;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,8 +34,10 @@ public class QaSchemaTest extends AbstractTransactionalJUnit4SpringContextTests 
     }
 
     @Test
-    @Rollback(value = false)
+    @Rollback(value = true)
     public void test() {
+        String capitalize = WordUtils.capitalize("alif haikal abd razak");
+        log.debug("capitalize = " + capitalize);
     }
 
 }

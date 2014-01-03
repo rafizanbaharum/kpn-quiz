@@ -47,7 +47,7 @@
     <div class="main-content">
         <div class="container">
             <jsp:include page="../include/instructor_breadcrumb.jsp">
-            <jsp:param name="BREADCRUMB" value="TODO"/>
+                <jsp:param name="BREADCRUMB" value="TODO"/>
                 <jsp:param name="TITLE" value="TODO"/>
             </jsp:include>
             <div class="row">
@@ -64,9 +64,11 @@
                                     <th class="center">#</th>
                                     <th>Username</th>
                                     <th>Name</th>
+                                    <th>Phone</th>
                                     <th>Type</th>
                                     <th>School</th>
                                     <th>State</th>
+                                    <th>School Phone</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -76,9 +78,11 @@
                                         <td class="center">${idx.count}</td>
                                         <td class="hidden-xs">${instructor.username}</td>
                                         <td class="hidden-xs">${instructor.name}</td>
+                                        <td class="hidden-xs">${instructor.phone}</td>
                                         <td class="hidden-xs">${instructor.schoolType}</td>
                                         <td class="hidden-xs">${instructor.schoolName}</td>
                                         <td class="hidden-xs">${instructor.stateName}</td>
+                                        <td class="hidden-xs">${instructor.schoolPhone}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                 <a href="${pageContext.request.contextPath}/secure/instructor/view/${instructor.id}"

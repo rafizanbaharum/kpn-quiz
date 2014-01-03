@@ -142,14 +142,15 @@
                 <div class="col-sm-6">
                     <div class="core-box">
                         <div class="heading">
-                            <i class="clip-archive circle-icon circle-green"></i>
+                            <i class="clip-archive circle-icon circle-blue"></i>
 
                             <h2>Rules and Regulations</h2>
                         </div>
                         <div class="content">
                             Download Asean Quiz Rules and Regulations
                         </div>
-                        <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.doc">
+                        <a class="view-more"
+                           href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.doc">
                             Download Here <i class="clip-arrow-right-2"></i>
                         </a>
                     </div>
@@ -157,7 +158,7 @@
                 <div class="col-sm-6">
                     <div class="core-box">
                         <div class="heading">
-                            <i class="clip-settings circle-icon circle-teal"></i>
+                            <i class="clip-settings circle-icon circle-bricky"></i>
 
                             <h2>Manual and Guidelines</h2>
                         </div>

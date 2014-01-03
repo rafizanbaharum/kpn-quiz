@@ -255,6 +255,7 @@ public class
         model.setUsername(user.getUsername());
         model.setName(instructor.getName());
         model.setNricNo(instructor.getNricNo());
+        model.setPhone(instructor.getPhone());
         model.setAddress1(instructor.getAddress1());
         model.setAddress2(instructor.getAddress2());
         model.setAddress3(instructor.getAddress3());

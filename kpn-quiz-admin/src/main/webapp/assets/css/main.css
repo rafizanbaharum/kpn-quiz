@@ -4707,6 +4707,12 @@ body.lock-screen .user-info > span em {
     color: #ffffff;
 }
 
+.circle-icon.circle-blue {
+    background-color: #3966c8;
+    border-color: #0804b3;
+    color: #ffffff;
+}
+
 .core-box {
     margin-bottom: 20px;
     display: inline-block;

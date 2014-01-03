@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.web.controller;
 
+import my.gov.kpn.quiz.biz.manager.InstructorInfo;
 import my.gov.kpn.quiz.core.dao.QaUserDao;
 import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaUser;
@@ -57,13 +58,20 @@ public class RegistrationController extends AbstractController {
             return "register";
         }
 
-        registrationManager.registerInstructor(registrationModel.getUsername(), registrationModel.getPassword(),
-                registrationModel.getFullName(), registrationModel.getNricNo(), registrationModel.getEmail(),
-                registrationModel.getPhone(), registrationModel.getFax(), registrationModel.getStateId(),
-                registrationModel.getSchoolName(),
-                registrationModel.getSchoolPhone(),
-                registrationModel.getSchoolFax(),
-                Integer.parseInt(registrationModel.getSchoolType()));
+        registrationManager.registerInstructor(
+                new InstructorInfo(
+                        registrationModel.getUsername(),
+                        registrationModel.getPassword(),
+                        registrationModel.getFullName(),
+                        registrationModel.getNricNo(),
+                        registrationModel.getEmail(),
+                        registrationModel.getPhone(),
+                        registrationModel.getFax(),
+                        registrationModel.getStateId(),
+                        registrationModel.getSchoolName(),
+                        registrationModel.getSchoolPhone(),
+                        registrationModel.getSchoolFax(),
+                        Integer.parseInt(registrationModel.getSchoolType())));
         return "registered";
     }
 
