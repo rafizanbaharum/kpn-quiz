@@ -93,6 +93,17 @@
                                             </div>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="left">Registered Student Statistic</td>
+                                        <td class="right">
+                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                <a href="${pageContext.request.contextPath}/secure/report/studentStat/view/"
+                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                   data-original-title="View"><i
+                                                        class="icon-archive"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
 

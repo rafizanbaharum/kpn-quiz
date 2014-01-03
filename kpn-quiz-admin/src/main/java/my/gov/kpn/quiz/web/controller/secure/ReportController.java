@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.RegistrationModel;
 import my.gov.kpn.quiz.web.model.report.InstructorModel;
 import my.gov.kpn.quiz.web.model.report.StudentModel;
+import my.gov.kpn.quiz.web.model.report.StudentStatModel;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +89,31 @@ public class ReportController extends AbstractController {
         parameterMap.put("pmt_state", reportHelper.findStateNameById(studentModel.getState()));
         parameterMap.put("pmt_school", "ALL");
         modelAndView = new ModelAndView("studentList", parameterMap);
+
+        return modelAndView;
+
+    }
+
+    @RequestMapping(value = "/studentStat/view", method = RequestMethod.GET)
+    public String studentStatView(@ModelAttribute("studentStatModel") StudentStatModel studentStatModel,
+            ModelAndView modelAndView, ModelMap map) {
+
+        return "secure/report/report_student_stat_form";
+
+    }
+
+    @RequestMapping(value = "/studentStat/list", method = RequestMethod.GET)
+    public Object studentStatList(@ModelAttribute("studentStatModel") StudentStatModel studentStatModel,
+            ModelAndView modelAndView, ModelMap map) {
+
+
+//        JRBeanCollectionDataSource engine = new JRBeanCollectionDataSource(reportDao.getStudentList(studentModel.getState(),studentModel.getSchoolType(),studentModel.getSchoolType()));
+
+        Map<String, Object> parameterMap = new HashMap<String, Object>();
+//        parameterMap.put("datasource", engine);
+//        parameterMap.put("pmt_state", reportHelper.findStateNameById(studentModel.getState()));
+//        parameterMap.put("pmt_school", "ALL");
+        modelAndView = new ModelAndView("studentStatList", parameterMap);
 
         return modelAndView;
 
