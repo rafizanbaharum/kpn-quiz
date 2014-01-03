@@ -12,7 +12,7 @@
             </li>
         </ol>
         <div class="page-header">
-            <h1>View Instructor </h1>
+            <h1>List Instructor </h1>
         </div>
     </div>
 </div>
