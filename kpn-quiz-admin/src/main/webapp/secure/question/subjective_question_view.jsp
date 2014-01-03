@@ -73,8 +73,9 @@
                                             <label class="control-label">
                                                 Statement <span class="symbol required"></span>
                                             </label>
-                                            <form:input path="statement" placeholder="Insert question statement"
-                                                        cssClass="form-control" readonly="true"/>
+                                            <form:textarea path="statement" placeholder="Insert question statement"
+                                                           cols="100" rows="4"
+                                                           cssClass="form-control" readonly="true"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
