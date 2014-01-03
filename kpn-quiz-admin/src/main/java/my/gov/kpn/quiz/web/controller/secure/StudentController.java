@@ -6,6 +6,7 @@ import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,7 +131,7 @@ public class StudentController extends AbstractController {
 
         registrationManager.registerStudent(
                 studentModel.getUsername(),
-                studentModel.getPassword(),
+                generatePassword(studentModel.getNricNo()),
                 studentModel.getName(),
                 studentModel.getNricNo(),
                 extractDob(studentModel),
@@ -166,7 +167,6 @@ public class StudentController extends AbstractController {
         studentModel.setUsername(studentModel.getNricNo());
 
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
-        Date dob = extractDob(studentModel);
 
         registrationManager.updateStudent(
                 student,
@@ -174,7 +174,7 @@ public class StudentController extends AbstractController {
                 studentModel.getPassword(),
                 studentModel.getName(),
                 studentModel.getNricNo(),
-                dob,
+                extractDob(studentModel),
                 Integer.parseInt(studentModel.getGenderType()),
                 Integer.parseInt(studentModel.getRaceType())
         );
@@ -199,5 +199,15 @@ public class StudentController extends AbstractController {
         return new LocalDate(Integer.parseInt(studentModel.getDob_yyyy()),
                 Integer.parseInt(studentModel.getDob_mm()),
                 Integer.parseInt(studentModel.getDob_dd())).toDate();
+    }
+
+    /**
+     * Get the first 6 digit of nric no
+     *
+     * @param nricNo
+     * @return
+     */
+    private static String generatePassword(String nricNo) {
+        return StringUtils.substring(nricNo, 0, 6);
     }
 }
