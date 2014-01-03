@@ -5,8 +5,8 @@ package my.gov.kpn.quiz.core.model;
  * @since 12/19/13
  */
 public enum QaGenderType {
-    MALE("LELAKI"),
-    FEMALE("PEREMPUAN");
+    MALE("MALE"),
+    FEMALE("FEMALE");
 
     private String description;
 
