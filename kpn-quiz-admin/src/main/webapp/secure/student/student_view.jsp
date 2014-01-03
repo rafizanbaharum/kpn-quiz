@@ -123,8 +123,8 @@
                                             <div class="col-md-4">
                                                 <form:select path="dob_dd" cssClass="form-control" disabled="true">
                                                     <option value="">DD</option>
-                                                    <c:forEach begin="1" end="31" var="yyyy">
-                                                        <option value="${yyyy}" ${yyyy == studentModel.dob_dd ? 'selected' : ''}>${yyyy}</option>
+                                                    <c:forEach begin="1" end="31" var="dd">
+                                                        <form:option value="${dd}"/>
                                                     </c:forEach>
                                                 </form:select>
                                             </div>
@@ -132,7 +132,7 @@
                                                 <form:select path="dob_mm" cssClass="form-control" disabled="true">
                                                     <option value="">MM</option>
                                                     <c:forEach begin="1" end="12" var="mm">
-                                                        <option value="${mm}" ${mm == studentModel.dob_mm ? 'selected' : ''}>${mm}</option>
+                                                        <form:option value="${mm}"/>
                                                     </c:forEach>
                                                 </form:select>
                                             </div>
