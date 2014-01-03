@@ -77,10 +77,45 @@
                             <form:input type="text" class="form-control" path="phone"
                                         placeholder="Your cell phone number"/>
                         </div>
+                        <p>
+                            Enter your account details below:
+                        </p>
+
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:input type="text" class="form-control"
+                                                                            path="nricNo" placeholder="NRIC No"
+                                                                            maxlength="12"
+                                                                            autocomplete="off"/>
+                                 								<i class="icon-user"></i> </span>
+
+                            <div id="username_status"></div>
+                        </div>
+                        <p>
+                            Password is 6 - 8 character
+                        </p>
+
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:password class="form-control" id="password"
+                                                                               path="password"
+                                                                               placeholder="Password"
+                                                                               autocomplete="off"/>
+                                 								<i class="icon-lock"></i> </span>
+                        </div>
+                        <div class="form-group">
+                                 							<span class="input-icon">
+                                 								<form:password class="form-control"
+                                                                               path="passwordAgain"
+                                                                               placeholder="Password Again"
+                                                                               autocomplete="off"/>
+                                 								<i class="icon-lock"></i> </span>
+                        </div>
                     </div>
-                    <div class="col-md-6"><p>
-                        Enter your school details below:
-                    </p>
+                    <div class="col-md-6">
+                        <p>
+                            Enter your school details below:
+                        </p>
 
                         <div class="form-group">
                                  							<span class="input-icon">
@@ -98,8 +133,8 @@
                         <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:input type="text" class="form-control"
-                                                                             path="schoolName"
-                                                                             placeholder="School Name"/>
+                                                                            path="schoolName"
+                                                                            placeholder="School Name"/>
                                  								<i class="icon-sitemap"></i> </span>
                         </div>
 
@@ -118,46 +153,19 @@
                         <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:input type="text" class="form-control"
-                                                                             path="schoolPhone"
-                                                                             placeholder="School Phone"/>
+                                                                            path="schoolPhone"
+                                                                            placeholder="School Phone"/>
                                  								<i class="icon-phone"></i> </span>
                         </div>
-
-                        <p>
-                            Enter your account details below:
-                        </p>
-
                         <div class="form-group">
                                  							<span class="input-icon">
                                  								<form:input type="text" class="form-control"
-                                                                             path="nricNo" placeholder="NRIC No"
-                                                                             maxlength="12"
-                                                                             autocomplete="off"/>
-                                 								<i class="icon-user"></i> </span>
-
-                            <div id="username_status"></div>
-                        </div>
-                        <p>
-                            Password is 6 - 8 character
-                        </p>
-                        <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:password class="form-control" id="password"
-                                                                                path="password"
-                                                                                placeholder="Password"
-                                                                                autocomplete="off"/>
-                                 								<i class="icon-lock"></i> </span>
-                        </div>
-                        <div class="form-group">
-                                 							<span class="input-icon">
-                                 								<form:password class="form-control"
-                                                                                path="passwordAgain"
-                                                                                placeholder="Password Again"
-                                                                                autocomplete="off"/>
-                                 								<i class="icon-lock"></i> </span>
+                                                                            path="schoolFax"
+                                                                            placeholder="School Fax"/>
+                                 								<i class="icon-phone-sign"></i> </span>
                         </div>
                     </div>
-
+                    <div class="row"></div>
                     <div class="form-actions">
                         <button type="button" class="btn btn-light-grey go-back"
                                 onclick="parent.location = 'gate/in'">

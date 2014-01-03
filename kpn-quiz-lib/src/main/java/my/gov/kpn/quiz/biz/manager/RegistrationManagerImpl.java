@@ -53,6 +53,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
                                    String phone, Long stateId,
                                    String schoolName,
                                    String schoolPhone,
+                                   String schoolFax,
                                    Integer schoolType
     ) {
 
@@ -84,6 +85,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
         instructor.setSchoolType(QaSchoolType.get(schoolType));
         instructor.setSchoolName(schoolName);
         instructor.setSchoolPhone(schoolPhone);
+        instructor.setSchoolFax(schoolFax);
         instructor.setState(stateDao.findById(stateId));
         actorDao.save(instructor, root);
         sessionFactory.getCurrentSession().flush();

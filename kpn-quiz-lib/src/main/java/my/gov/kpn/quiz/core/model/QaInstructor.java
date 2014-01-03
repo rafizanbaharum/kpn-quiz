@@ -27,8 +27,11 @@ public interface QaInstructor extends QaActor {
      */
     void setSchoolType(QaSchoolType schoolType);
 
-    QaSchoolType getSchoolType();
+    String getSchoolFax();
 
+    void setSchoolFax(String schoolFax);
+
+    QaSchoolType getSchoolType();
 
     /**
      * @param stateName

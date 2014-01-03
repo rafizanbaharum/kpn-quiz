@@ -62,6 +62,7 @@ public class RegistrationController extends AbstractController {
                 registrationModel.getPhone(), registrationModel.getFax(), registrationModel.getStateId(),
                 registrationModel.getSchoolName(),
                 registrationModel.getSchoolPhone(),
+                registrationModel.getSchoolFax(),
                 Integer.parseInt(registrationModel.getSchoolType()));
         return "registered";
     }

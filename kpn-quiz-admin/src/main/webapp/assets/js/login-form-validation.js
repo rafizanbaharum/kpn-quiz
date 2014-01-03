@@ -7,6 +7,11 @@ var Login = function () {
         },
         'Please enter a valid NRIC No. without dash. eg: 671218045678');
 
+    $.validator.addMethod('validatePhoneAndFax', function (value) {
+            return /^\+?\d*$/.test(value);
+        },
+        'Please enter a valid phone no. eg: +6031234567');
+
     var runLoginButtons = function () {
         $('.forgot').bind('click', function () {
             $('.box-login').hide();
@@ -142,7 +147,12 @@ var Login = function () {
                     required: true
                 },
                 phone: {
-                    required: true
+                    required: true,
+                    validatePhoneAndFax: true
+                },
+                fax: {
+                    required: true,
+                    validatePhoneAndFax: true
                 },
                 email: {
                     required: true,
@@ -154,6 +164,14 @@ var Login = function () {
                 schoolName: {
                     minlength: 2,
                     required: true
+                },
+                schoolPhone: {
+                    required: true,
+                    validatePhoneAndFax: true
+                },
+                schoolFax: {
+                    required: true,
+                    validatePhoneAndFax: true
                 },
                 schoolType: {
                     required: true
