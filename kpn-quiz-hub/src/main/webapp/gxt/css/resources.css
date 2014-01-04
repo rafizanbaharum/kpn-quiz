@@ -48,7 +48,7 @@ quiz-app-viewport
 
 .quiz-question-choice > input[type="radio"] {
     width: 2em;
-    height: 3em;
+    height: 2em;
     vertical-align: middle;
 }
 
