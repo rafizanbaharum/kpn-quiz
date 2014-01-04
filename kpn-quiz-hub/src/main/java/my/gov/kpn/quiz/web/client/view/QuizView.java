@@ -149,7 +149,7 @@ public class QuizView extends View {
     }
 
     /**
-     * QuizLoaded > QuizNavigate
+     * QuizInit > QuizLoaded > QuizNavigate
      * TimerUpdate
      */
     private void initListener() {
@@ -195,12 +195,15 @@ public class QuizView extends View {
                 if (be.getPreviousQuestionIndex() == -1) { // first time load
                     updateCounter("0/" + models.size());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
-                    if (null != nextQuestion) loadAnswerIndex(nextQuestion);
+                    if (null != nextQuestion) {
+                        loadAnswerIndex(nextQuestion);
+                    }
                 } else { // subsequent load
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
                     saveAnswer(be.getPreviousQuestionIndex(), prevQuestion);
                     loadAnswer(nextQuestion);
+                    loadResponseStatus();
                 }
             }
         });
@@ -320,10 +323,8 @@ public class QuizView extends View {
     private void loadAnswer(final QuestionModel questionModel) {
         if (questionModel.getQuestionType().equals(QuestionType.SUBJECTIVE)) {
             loadAnswerResponse(questionModel);
-            loadResponseStatus();
         } else {
             loadAnswerIndex(questionModel);
-            loadResponseStatus();
         }
     }
 
@@ -335,7 +336,7 @@ public class QuizView extends View {
 
             @Override
             public void onSuccess(Integer result) {
-                log.info("loading answer: " + questionModel.getStatement());
+                log.info("loading answer for question # " + questionModel.getId());
                 log.info("loading answer: " + result);
                 if (null != result) {
                     updateStatus(ANSWERED);
@@ -402,6 +403,7 @@ public class QuizView extends View {
 
             @Override
             public void onSuccess(String status) {
+                log.info("loading response status: " + status);
                 updateCounter(status);
             }
         });

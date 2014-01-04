@@ -190,6 +190,7 @@ public class CompetitionManagerImpl implements CompetitionManager {
         Validate.notNull(item, "Item should not be null");
         item.setAnswerResponse(answerResponse);
         gradebookDao.updateItem(gradebook, item, Utils.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override

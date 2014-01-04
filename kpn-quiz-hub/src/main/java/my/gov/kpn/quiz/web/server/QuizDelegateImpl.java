@@ -61,13 +61,9 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
     @Override
     public void updateAnswer(QuestionModel model, String answerResponse) {
-        log.debug("question: " + model.getStatement());
-        log.debug("answer: " + answerResponse);
-
         QaQuestion question = competitionManager.findQuestionById(model.getId());
         QaQuiz quiz = GlobalRegistry.getQuiz();
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
-
         competitionManager.updateAnswer(participant, question, answerResponse);
     }
 
