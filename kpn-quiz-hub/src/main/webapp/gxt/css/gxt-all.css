@@ -1615,6 +1615,11 @@ fieldset.x-panel-collapsed .x-fieldset-bwrap {
     padding-right: 10px;
 }
 
+.x-form-cb-label-custom {
+    font: normal 20px tahoma, arial, helvetica, sans-serif;
+    padding-right: 10px;
+}
+
 .x-form-list {
     background: #FFFFFF url(../images/default/form/text-bg.gif) repeat-x scroll 0 0;
     border: 1px solid #B5B8C8;
@@ -3372,7 +3377,7 @@ a.x-grid3-hd-btn:hover {
     background: url(../images/gxt/tree/vnode_transparent.gif) no-repeat 0px -32px;
 }
 
-.my-tree-joint-over  .my-tree-open {
+.my-tree-joint-over .my-tree-open {
     background: url(../images/gxt/tree/vnode_transparent.gif) no-repeat 0px -48px;
 }
 
@@ -4880,7 +4885,7 @@ a.x-menu-item {
     background-position: 0 -126px;
 }
 
-.x-panel-btns .x-btn-click  .x-btn-right {
+.x-panel-btns .x-btn-click .x-btn-right {
     background-position: 0 -84px;
 }
 
@@ -6412,7 +6417,7 @@ body.ext-ie6.x-body-masked .x-window select {
     background: url(../images/gxt/tree/vnode_transparent.gif) no-repeat 0px -32px;
 }
 
-.my-treetbl-joint-over  .my-treetbl-open {
+.my-treetbl-joint-over .my-treetbl-open {
     background: url(../images/gxt/tree/vnode_transparent.gif) no-repeat 0px -48px;
 }
 

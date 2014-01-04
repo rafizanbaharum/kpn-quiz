@@ -48,14 +48,14 @@ quiz-app-viewport
 
 .quiz-question-choice > input[type="radio"] {
     width: 2em;
-    height: 2em;
+    height: 3em;
     vertical-align: middle;
 }
 
 .quiz-question-choice > label {
     display: inline-block;
     padding-left: 10px;
-    vertical-align: middle;
+    vertical-align: baseline;
 }
 
 #quiz-clock {

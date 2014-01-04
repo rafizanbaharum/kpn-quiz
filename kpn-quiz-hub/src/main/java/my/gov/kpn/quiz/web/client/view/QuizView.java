@@ -30,6 +30,7 @@ import my.gov.kpn.quiz.web.client.event.TimerEvent;
 import my.gov.kpn.quiz.web.client.model.*;
 import my.gov.kpn.quiz.web.client.rpc.QuestionRpcProxy;
 import my.gov.kpn.quiz.web.client.rpc.QuizRpcProxy;
+import my.gov.kpn.quiz.web.client.ui.field.CustomRadio;
 import my.gov.kpn.quiz.web.client.ui.field.DisablePasteTextArea;
 import my.gov.kpn.quiz.web.client.ui.field.QuestionListComboBox;
 
@@ -469,6 +470,7 @@ public class QuizView extends View {
     private void createButtonBar() {
 
         questionListCbx = new QuestionListComboBox();
+        questionListCbx.setEmptyText("Jump to question...");
         questionListCbx.addSelectionChangedListener(new SelectionChangedListener<QuestionModel>() {
             @Override
             public void selectionChanged(SelectionChangedEvent<QuestionModel> se) {
@@ -543,22 +545,22 @@ public class QuizView extends View {
         statement.disableTextSelection(true);
 
         RadioGroup group = new RadioGroup();
-        Radio button1 = new Radio();
+        Radio button1 = new CustomRadio();
         button1.setItemId("0");
         button1.setStyleName(QUIZ_QUESTION_CHOICE);
         button1.setBoxLabel(model.getChoice1());
         button1.setFireChangeEventOnSetValue(true);
-        Radio button2 = new Radio();
+        Radio button2 = new CustomRadio();
         button2.setItemId("1");
         button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel(model.getChoice2());
         button2.setFireChangeEventOnSetValue(true);
-        Radio button3 = new Radio();
+        Radio button3 = new CustomRadio();
         button3.setItemId("2");
         button3.setStyleName(QUIZ_QUESTION_CHOICE);
         button3.setBoxLabel(model.getChoice3());
         button3.setFireChangeEventOnSetValue(true);
-        Radio button4 = new Radio();
+        Radio button4 = new CustomRadio();
         button4.setItemId("3");
         button4.setStyleName(QUIZ_QUESTION_CHOICE);
         button4.setBoxLabel(model.getChoice4());
