@@ -120,9 +120,9 @@
                                             </label>
                                             <form:select path="difficulty" cssClass="form-control">
                                                 <option value="">Select Level of Difficulty</option>
-                                                <option value="1">Easy</option>
-                                                <option value="2">Intermedia</option>
-                                                <option value="3">Difficult</option>
+                                                <option value="0">Easy</option>
+                                                <option value="1">Intermedia</option>
+                                                <option value="2">Difficult</option>
                                             </form:select>
                                         </div>
                                         <div class="col-md-12">
