@@ -42,6 +42,8 @@ public interface QaQuizDao {
 
     boolean hasQuestion(QaQuiz quiz);
 
+    boolean hasAnswer(QaQuestion question, QaParticipant participant);
+
     boolean hasParticipant(QaQuiz quiz);
 
     boolean isParticipant(QaQuiz quiz, QaUser user);

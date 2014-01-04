@@ -40,6 +40,8 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
     @Embedded
     private QaMetadata metadata = new QaMetadata();
 
+    private Boolean answered;
+
     public Long getId() {
         return id;
     }
@@ -94,6 +96,14 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
 
     public void setMetadata(QaMetadata metadata) {
         this.metadata = metadata;
+    }
+
+    public Boolean isAnswered() {
+        return answered;
+    }
+
+    public void setAnswered(Boolean answered) {
+        this.answered = answered;
     }
 }
 

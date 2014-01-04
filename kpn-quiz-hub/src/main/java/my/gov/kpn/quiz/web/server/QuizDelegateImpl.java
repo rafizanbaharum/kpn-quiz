@@ -35,7 +35,8 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
     public ListLoadResult<QuestionModel> findCurrentQuestions() {
         ArrayList<QuestionModel> models = new ArrayList<QuestionModel>();
         QaQuiz quiz = GlobalRegistry.getQuiz();
-        List<QaQuestion> questions = competitionManager.findQuestions(quiz);
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
+        List<QaQuestion> questions = competitionManager.findQuestions(quiz, participant);
         int index = 1;
         for (QaQuestion question : questions) {
             QuestionModel convert = quizConverter.convert(question);

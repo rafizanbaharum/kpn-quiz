@@ -24,6 +24,7 @@ public class QuizConverter {
         model.setId(question.getId());
         model.setStatement(question.getStatement());
         model.setQuestionType(QuestionType.get(question.getQuestionType().ordinal()));
+        model.setAnswered(question.isAnswered());
         return model;
     }
 

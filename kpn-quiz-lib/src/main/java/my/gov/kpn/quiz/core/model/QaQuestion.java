@@ -55,4 +55,10 @@ public interface QaQuestion extends QaMetaObject {
 
     void setQuiz(QaQuiz quiz);
 
+
+    // transient
+    Boolean isAnswered();
+
+    void setAnswered(Boolean answered);
+
 }

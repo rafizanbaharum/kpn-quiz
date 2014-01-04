@@ -181,7 +181,6 @@ public class QuizView extends View {
         cardPanel.addListener(QuizEvents.QuizLoaded, new Listener<QuizLoadEvent>() {
             @Override
             public void handleEvent(QuizLoadEvent be) {
-                loadResponseStatus();
                 cardPanel.fireEvent(QuizEvents.QuizNavigate, new QuizNavigateEvent(this, -1, 0));
             }
         });
@@ -193,10 +192,10 @@ public class QuizView extends View {
                 log.info("prev index: " + be.getPreviousQuestionIndex());
                 log.info("next index: " + be.getNextQuestionIndex());
                 if (be.getPreviousQuestionIndex() == -1) { // first time load
-                    updateCounter("0/" + models.size());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
                     if (null != nextQuestion) {
                         loadAnswerIndex(nextQuestion);
+                        loadResponseStatus();
                     }
                 } else { // subsequent load
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
@@ -269,6 +268,7 @@ public class QuizView extends View {
     }
 
     private void updateCounter(String stat) {
+        log.info("updating counter: " + stat);
         counter.setHtml(stat);
     }
 
@@ -396,17 +396,18 @@ public class QuizView extends View {
     }
 
     private void loadResponseStatus() {
-        delegate.loadResponseStatus(new AsyncCallback<String>() {
-            @Override
-            public void onFailure(Throwable caught) {
+        // local counter
+        int answered = 0;
+        if (null == models) {
+            updateCounter("0/0");
+            return;
+        }
+        for (QuestionModel model : models) {
+            if (null != model.isAnswered() && model.isAnswered()) {
+                answered++;
             }
-
-            @Override
-            public void onSuccess(String status) {
-                log.info("loading response status: " + status);
-                updateCounter(status);
-            }
-        });
+            updateCounter(answered + "/" + models.size());
+        }
     }
 
 

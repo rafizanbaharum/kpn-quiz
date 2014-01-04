@@ -129,8 +129,15 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
-    public List<QaQuestion> findQuestions(QaQuiz quiz) {
-        return quizDao.findQuestions(quiz);
+    public List<QaQuestion> findQuestions(QaQuiz quiz, QaParticipant participant) {
+        return decorate(quizDao.findQuestions(quiz), participant);
+    }
+
+    private List<QaQuestion> decorate(List<QaQuestion> questions, QaParticipant participant) {
+        for (QaQuestion question : questions) {
+            question.setAnswered(quizDao.hasAnswer(question, participant));
+        }
+        return questions;
     }
 
     @Override

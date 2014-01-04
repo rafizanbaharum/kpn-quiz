@@ -238,6 +238,18 @@ public class QaQuizDaoImpl extends DaoSupport<Long, QaQuiz, QaQuizImpl> implemen
     }
 
     @Override
+    public boolean hasAnswer(QaQuestion question, QaParticipant participant) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(gi) from QaGradebookItem gi where " +
+                "gi.gradebook.participant = :participant " +
+                "and gi.question = :question " +
+                "and (gi.answerIndex is not null or gi.answerResponse is not null)");
+        query.setEntity("participant", participant);
+        query.setEntity("question", question);
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
     public boolean hasParticipant(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(*) from QaParticipant u where " +
