@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -108,26 +109,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="participant" items="${participantModels}" varStatus="idx">
-                                            <tr>
-                                                <td class="center">${idx.count}</td>
-                                                <td class="hidden-xs">${participant.name}</td>
-                                                <td class="hidden-xs">${participant.nricNo}</td>
-                                                <td class="hidden-xs center">${participant.selected}</td>
-                                                <td class="hidden-xs">${participant.result}</td>
-                                                <td class="center">
-                                                    <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                        <a href="${pageContext.request.contextPath}/secure/participant/view/${participant.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="View"><i class="icon-archive"></i></a>
-                                                        <a href="${pageContext.request.contextPath}/secure/participant/remove/${participant.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="Remove"><i class="icon-remove"></i></a>
-                                                    </div>
-                                                </td>
-
-                                            </tr>
-                                        </c:forEach>
+                                        <c:choose>
+                                            <c:when test="${fn:length(participantModels) gt 0}">
+                                                <c:forEach var="participant" items="${participantModels}"
+                                                           varStatus="idx">
+                                                    <tr>
+                                                        <td class="center">${idx.count}</td>
+                                                        <td class="hidden-xs">${participant.name}</td>
+                                                        <td class="hidden-xs">${participant.nricNo}</td>
+                                                        <td class="hidden-xs center">${participant.selected}</td>
+                                                        <td class="hidden-xs">${participant.result}</td>
+                                                        <td class="center">
+                                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                                <a href="${pageContext.request.contextPath}/secure/participant/view/${participant.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="View"><i
+                                                                        class="icon-archive"></i></a>
+                                                                <a href="${pageContext.request.contextPath}/secure/participant/remove/${participant.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="Remove"><i
+                                                                        class="icon-remove"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <tr>
+                                                    <td>Nothing to preview</td>
+                                                </tr>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tbody>
                                 </table>
                             </div>

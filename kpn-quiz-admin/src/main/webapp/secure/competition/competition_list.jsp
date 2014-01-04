@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -74,41 +75,51 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="studentModel" items="${competitionModels}" varStatus="idx">
-                                            <tr>
-                                                <td class="center">${idx.count}</td>
-                                                <td class="hidden-xs center"><fmt:formatDate type="date"
-                                                                                             pattern="dd/MM/yyyy"
-                                                                                             value='${studentModel.startDate}'/></td>
-                                                <td class="hidden-xs center"><fmt:formatDate type="date"
-                                                                                             pattern="dd/MM/yyyy"
-                                                                                             value='${studentModel.endDate}'/></td>
-                                                <td class="hidden-xs center">${studentModel.year}</td>
-                                                <td class="hidden-xs center"><i
-                                                        class=${studentModel.locked ? "icon-check": "icon-check-empty"}></i>
-                                                </td>
-                                                <td class="center">
-                                                    <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                        <a href="${pageContext.request.contextPath}/secure/competition/view/${studentModel.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="View"><i
-                                                                class="icon-archive"></i></a>
-                                                        <a href="${pageContext.request.contextPath}/secure/competition/edit/${studentModel.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="Edit"><i
-                                                                class="icon-edit"></i></a>
-                                                            <%--<a href="${pageContext.request.contextPath}/secure/competition/reset/${studentModel.id}"--%>
-                                                            <%--class="btn btn-primary tooltips" data-placement="top"--%>
-                                                            <%--data-original-title="Reset"><i--%>
-                                                            <%--class="icon-refresh"></i></a>--%>
-                                                        <a href="${pageContext.request.contextPath}/secure/competition/remove/${studentModel.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="Remove"><i
-                                                                class="icon-remove icon-white"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
+                                        <c:choose>
+                                            <c:when test="${fn:length(competitionModels) gt 0}">
+                                                <c:forEach var="studentModel" items="${competitionModels}"
+                                                           varStatus="idx">
+                                                    <tr>
+                                                        <td class="center">${idx.count}</td>
+                                                        <td class="hidden-xs center"><fmt:formatDate type="date"
+                                                                                                     pattern="dd/MM/yyyy"
+                                                                                                     value='${studentModel.startDate}'/></td>
+                                                        <td class="hidden-xs center"><fmt:formatDate type="date"
+                                                                                                     pattern="dd/MM/yyyy"
+                                                                                                     value='${studentModel.endDate}'/></td>
+                                                        <td class="hidden-xs center">${studentModel.year}</td>
+                                                        <td class="hidden-xs center"><i
+                                                                class=${studentModel.locked ? "icon-check": "icon-check-empty"}></i>
+                                                        </td>
+                                                        <td class="center">
+                                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                                <a href="${pageContext.request.contextPath}/secure/competition/view/${studentModel.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="View"><i
+                                                                        class="icon-archive"></i></a>
+                                                                <a href="${pageContext.request.contextPath}/secure/competition/edit/${studentModel.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="Edit"><i
+                                                                        class="icon-edit"></i></a>
+                                                                    <%--<a href="${pageContext.request.contextPath}/secure/competition/reset/${studentModel.id}"--%>
+                                                                    <%--class="btn btn-primary tooltips" data-placement="top"--%>
+                                                                    <%--data-original-title="Reset"><i--%>
+                                                                    <%--class="icon-refresh"></i></a>--%>
+                                                                <a href="${pageContext.request.contextPath}/secure/competition/remove/${studentModel.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="Remove"><i
+                                                                        class="icon-remove icon-white"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <tr>
+                                                    <td>Nothing to preview</td>
+                                                </tr>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tbody>
                                 </table>
                                 <div class="btn-group btn-group-justified">

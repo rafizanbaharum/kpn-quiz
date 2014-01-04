@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
@@ -71,35 +72,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach var="studentModel" items="${studentModels}" varStatus="idx">
-                                            <tr>
-                                                <td class="center">${idx.count}</td>
-                                                <td class="hidden-xs">${studentModel.name}</td>
-                                                <td>${studentModel.nricNo}</td>
-                                                <td class="hidden-xs">${studentModel.username}</td>
-                                                <td class="hidden-xs">${studentModel.genderTypeName}</td>
-                                                <td class="center">
-                                                    <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                        <a href="${pageContext.request.contextPath}/secure/student/view/${studentModel.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="View"><i
-                                                                class="icon-archive"></i></a>
-                                                        <a href="${pageContext.request.contextPath}/secure/student/edit/${studentModel.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="Edit"><i
-                                                                class="icon-edit"></i></a>
-                                                            <%--<a href="${pageContext.request.contextPath}/secure/student/reset/${studentModel.id}"--%>
-                                                            <%--class="btn btn-primary tooltips" data-placement="top"--%>
-                                                            <%--data-original-title="Reset"><i--%>
-                                                            <%--class="icon-refresh"></i></a>--%>
-                                                        <a href="${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="Remove"><i
-                                                                class="icon-remove icon-white"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
+                                        <c:choose>
+                                            <c:when test="${fn:length(studentModels) gt 0}">
+                                                <c:forEach var="studentModel" items="${studentModels}" varStatus="idx">
+                                                    <tr>
+                                                        <td class="center">${idx.count}</td>
+                                                        <td class="hidden-xs">${studentModel.name}</td>
+                                                        <td>${studentModel.nricNo}</td>
+                                                        <td class="hidden-xs">${studentModel.username}</td>
+                                                        <td class="hidden-xs">${studentModel.genderTypeName}</td>
+                                                        <td class="center">
+                                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                                <a href="${pageContext.request.contextPath}/secure/student/view/${studentModel.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="View"><i
+                                                                        class="icon-archive"></i></a>
+                                                                <a href="${pageContext.request.contextPath}/secure/student/edit/${studentModel.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="Edit"><i
+                                                                        class="icon-edit"></i></a>
+                                                                    <%--<a href="${pageContext.request.contextPath}/secure/student/reset/${studentModel.id}"--%>
+                                                                    <%--class="btn btn-primary tooltips" data-placement="top"--%>
+                                                                    <%--data-original-title="Reset"><i--%>
+                                                                    <%--class="icon-refresh"></i></a>--%>
+                                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}"
+                                                                   class="btn btn-primary tooltips" data-placement="top"
+                                                                   data-original-title="Remove"><i
+                                                                        class="icon-remove icon-white"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <tr>
+                                                    <td>Nothing to preview</td>
+                                                </tr>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tbody>
                                 </table>
                                 <div class="btn-group btn-group-justified">
