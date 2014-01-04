@@ -37,6 +37,8 @@ public interface CompetitionManager {
 
     List<QaQuiz> findQuizzes();
 
+    List<QaQuestion> findQuestions(QaQuiz quiz);
+
     List<QaQuestion> findQuestions(QaQuiz quiz, QaParticipant participant);
 
     List<QaParticipant> findParticipants(QaQuiz quiz);

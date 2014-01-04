@@ -1,7 +1,6 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
-import my.gov.kpn.quiz.biz.manager.CompetitionManager;
-import my.gov.kpn.quiz.biz.manager.InstructorManager;
+import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -10,7 +9,6 @@ import org.apache.commons.lang.math.NumberUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -41,8 +39,9 @@ public class QuizController extends AbstractController {
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
     public String quizView(@PathVariable Long id, ModelMap model) {
         QaQuiz quiz = competitionManager.findQuizById(id);
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
         model.addAttribute("quizModel", transformer.transform(quiz));
-        model.addAttribute("questionModels", transformer.transformQuestions(competitionManager.findQuestions(quiz)));
+        model.addAttribute("questionModels", transformer.transformQuestions(competitionManager.findQuestions(quiz, participant)));
         return "secure/quiz/quiz_view";
     }
 

@@ -129,6 +129,11 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
+    public List<QaQuestion> findQuestions(QaQuiz quiz) {
+        return quizDao.findQuestions(quiz);
+    }
+
+    @Override
     public List<QaQuestion> findQuestions(QaQuiz quiz, QaParticipant participant) {
         return decorate(quizDao.findQuestions(quiz), participant);
     }
