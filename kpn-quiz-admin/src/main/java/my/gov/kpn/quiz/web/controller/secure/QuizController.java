@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
-import my.gov.kpn.quiz.core.model.QaParticipant;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -158,7 +157,7 @@ public class QuizController extends AbstractController {
         QaQuiz quiz = competitionManager.findQuizById(quizModel.getId());
         competitionManager.processGradebook(quiz);
 
-        model.addAttribute(MSG_SUCCESS, "Quiz successfully processed");
+        model.addAttribute(MSG_SUCCESS, "Gradebook successfully processed");
         return "redirect:/secure/quiz/view/" + quiz.getId();
     }
 
