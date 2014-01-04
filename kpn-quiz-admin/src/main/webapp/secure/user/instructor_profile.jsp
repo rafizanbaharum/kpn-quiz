@@ -45,110 +45,110 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="../include/topbar.jsp"/>
-<div class="main-container">
-    <jsp:include page="../include/instructor_navbar.jsp"/>
-    <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="clip-home-3"></i>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li class="active">
-                            Profile
-                        </li>
-                    </ol>
-                    <div class="page-header">
-                        <h1>Profile
-                            <small>My profile</small>
-                        </h1>
+    <jsp:include page="../include/topbar.jsp"/>
+    <div class="main-container">
+        <jsp:include page="../include/instructor_navbar.jsp"/>
+        <div class="main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="clip-home-3"></i>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="active">
+                                Profile
+                            </li>
+                        </ol>
+                        <div class="page-header">
+                            <h1>Profile
+                                <small>My profile</small>
+                            </h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            My Profile
-                        </div>
-                        <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> PROFILE</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                My Profile
+                            </div>
+                            <div class="panel-body">
+                                <h2><i class="icon-edit-sign teal"></i> PROFILE</h2>
 
-                            <hr>
-                            <form:form id="form" commandName="actorModel"
-                                       action="${pageContext.request.contextPath}/secure/user/update"
-                                       method="POST">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Username <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="username" cssClass="form-control" readonly="true"/>
+                                <hr>
+                                <form:form id="form" commandName="actorModel"
+                                           action="${pageContext.request.contextPath}/secure/user/update"
+                                           method="POST">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Username <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="username" cssClass="form-control" readonly="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Name <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="name" cssClass="form-control" readonly="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    NRIC NO <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="nricNo" cssClass="form-control" readonly="true"/>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Name <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="name" cssClass="form-control" readonly="true"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                NRIC NO <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="nricNo" cssClass="form-control" readonly="true"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form:form>
+                                </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="footer clearfix">
-    <div class="footer-inner">
-        2013 &copy; ASEAN QUIZ
+    <div class="footer clearfix">
+        <div class="footer-inner">
+            2013 &copy; ASEAN QUIZ
+        </div>
+        <div class="footer-items">
+            <span class="go-top"><i class="clip-chevron-up"></i></span>
+        </div>
     </div>
-    <div class="footer-items">
-        <span class="go-top"><i class="clip-chevron-up"></i></span>
-    </div>
-</div>
 
-<!-- start: MAIN JAVASCRIPTS -->
-<!--[if lt IE 9]>
-<script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    jQuery(document).ready(function () {
-        Main.init();
-    });
-</script>
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+    <script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+        });
+    </script>
 </body>
 <!-- end: BODY -->
 </html>

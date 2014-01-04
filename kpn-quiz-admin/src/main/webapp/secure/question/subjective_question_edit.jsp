@@ -21,111 +21,116 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico"/>
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="../include/topbar.jsp"/>
-<div class="main-container">
-    <jsp:include page="../include/question_navbar.jsp"/>
+    <jsp:include page="../include/topbar.jsp"/>
+    <div class="main-container">
+        <jsp:include page="../include/question_navbar.jsp"/>
 
-    <div class="main-content">
-        <div class="container">
-            <jsp:include page="../include/question_breadcrumb.jsp">
-                <jsp:param name="BREADCRUMB" value="TODO"/>
-                <jsp:param name="TITLE" value="TODO"/>
-            </jsp:include>
+        <div class="main-content">
+            <div class="container">
+                <jsp:include page="../include/question_breadcrumb.jsp">
+                    <jsp:param name="BREADCRUMB" value="TODO"/>
+                    <jsp:param name="TITLE" value="TODO"/>
+                </jsp:include>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            Edit a question
-                        </div>
-                        <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                Edit a question
+                            </div>
+                            <div class="panel-body">
+                                <h2><i class="icon-edit-sign teal"></i> QUESTION</h2>
 
-                            <hr>
-                            <form:form id="form" commandName="questionModel"
-                                       action="${pageContext.request.contextPath}/secure/question/updatesubjective"
-                                       method="POST">
-                                <form:hidden path="id"/>
-                                <form:hidden path="quiz.id"/>
-                                <div class="row">
-                                    <jsp:include page="../include/msg.jsp"/>
+                                <hr>
+                                <form:form id="form" commandName="questionModel"
+                                           action="${pageContext.request.contextPath}/secure/question/updatesubjective"
+                                           method="POST">
+                                    <form:hidden path="id"/>
+                                    <form:hidden path="quiz.id"/>
+                                    <div class="row">
+                                        <jsp:include page="../include/msg.jsp"/>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Statement <span class="symbol required"></span>
+                                                </label>
+                                                <form:textarea path="statement" placeholder="Insert question statement"
+                                                               cols="100" rows="4"
+                                                               cssClass="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
                                             <label class="control-label">
-                                                Statement <span class="symbol required"></span>
+                                                Difficulty <span class="symbol required"></span>
                                             </label>
-                                            <form:textarea path="statement" placeholder="Insert question statement"
-                                                           cols="100" rows="4"
-                                                           cssClass="form-control"/>
+                                            <form:select path="difficulty" cssClass="form-control">
+                                                <option value="">Select level of Difficulty</option>
+                                                <form:options items="${difficultiesMap}"/>
+                                            </form:select>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="control-label">
-                                            Difficulty <span class="symbol required"></span>
-                                        </label>
-                                        <form:select path="difficulty" cssClass="form-control">
-                                            <option value="">Select level of Difficulty</option>
-                                            <form:options items="${difficultiesMap}"/>
-                                        </form:select>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="control-label">
-                                            Word Limit <span class="symbol required"></span>
-                                        </label>
-                                        <form:input path="wordLimit" placeholder="Insert word limit "
-                                                    cssClass="form-control"/>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
+                                        <div class="col-md-12">
                                             <label class="control-label">
-                                                Answer Guide <span class="symbol required"></span>
+                                                Word Limit <span class="symbol required"></span>
                                             </label>
-                                            <form:textarea path="answerGuide" placeholder="Insert question answerGuide"
-                                                           rows="16" cols="100"
-                                                           cssClass="form-control"/>
+                                            <form:input path="wordLimit" placeholder="Insert word limit "
+                                                        cssClass="form-control"/>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Answer Guide <span class="symbol required"></span>
+                                                </label>
+                                                <form:textarea path="answerGuide"
+                                                               placeholder="Insert question answerGuide"
+                                                               rows="16" cols="100"
+                                                               cssClass="form-control"/>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div>
-                                            <span class="symbol required"></span>Required Fields
-                                            <hr>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div>
+                                                <span class="symbol required"></span>Required Fields
+                                                <hr>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-primary btn-block" type="submit">
-                                            Update <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary btn-block" type="submit">
+                                                Update <i class="icon-circle-arrow-right"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form:form>
+                                </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<jsp:include page="../include/footer.jsp"/>
-<jsp:include page="../include/footer_script.jsp"/>
+    <jsp:include page="../include/footer.jsp"/>
+    <jsp:include page="../include/footer_script.jsp"/>
 </body>
 </html>

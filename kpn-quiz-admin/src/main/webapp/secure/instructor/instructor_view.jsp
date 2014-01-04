@@ -43,157 +43,157 @@
     <!-- end: MAIN CSS -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="../include/topbar.jsp"/>
-<div class="main-container">
-    <jsp:include page="../include/instructor_navbar.jsp"/>
-    <div class="main-content">
-        <div class="container">
-            <jsp:include page="../include/instructor_breadcrumb.jsp">
-                <jsp:param name="BREADCRUMB" value="TODO"/>
-                <jsp:param name="TITLE" value="TODO"/>
-            </jsp:include>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            View an instructor
-                        </div>
-                        <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> View</h2>
-                            <hr>
-                            <form:form id="form" commandName="instructorModel"
-                                       action="${pageContext.request.contextPath}/secure/instructor/update"
-                                       method="POST">
-                                <div class="row">
-                                    <jsp:include page="../include/msg.jsp"/>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Name
-                                            </label>
-                                            <form:input path="name"
-                                                        cssClass="form-control" readonly="true"/>
+    <jsp:include page="../include/topbar.jsp"/>
+    <div class="main-container">
+        <jsp:include page="../include/instructor_navbar.jsp"/>
+        <div class="main-content">
+            <div class="container">
+                <jsp:include page="../include/instructor_breadcrumb.jsp">
+                    <jsp:param name="BREADCRUMB" value="TODO"/>
+                    <jsp:param name="TITLE" value="TODO"/>
+                </jsp:include>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                View an instructor
+                            </div>
+                            <div class="panel-body">
+                                <h2><i class="icon-edit-sign teal"></i> View</h2>
+                                <hr>
+                                <form:form id="form" commandName="instructorModel"
+                                           action="${pageContext.request.contextPath}/secure/instructor/update"
+                                           method="POST">
+                                    <div class="row">
+                                        <jsp:include page="../include/msg.jsp"/>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Name
+                                                </label>
+                                                <form:input path="name"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
                                         </div>
-                                     </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                NRIC
-                                            </label>
-                                            <form:input path="nricNo"
-                                                        cssClass="form-control" readonly="true"/>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    NRIC
+                                                </label>
+                                                <form:input path="nricNo"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Mobile Number
+                                                </label>
+                                                <form:input path="phone"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Mobile Number
-                                            </label>
-                                            <form:input path="phone"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                      </div>
 
-                                      <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                School Type
-                                            </label>
-                                            <form:input path="schoolType"
-                                                        cssClass="form-control" readonly="true"/>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    School Type
+                                                </label>
+                                                <form:input path="schoolType"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    School Name
+                                                </label>
+                                                <form:input path="schoolName"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    School Name
+                                                </label>
+                                                <form:input path="schoolName"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    School Phone
+                                                </label>
+                                                <form:input path="schoolPhone"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    School Fax
+                                                </label>
+                                                <form:input path="schoolFax"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    State Name
+                                                </label>
+                                                <form:input path="stateName"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                School Name
-                                            </label>
-                                            <form:input path="schoolName"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                School Name
-                                            </label>
-                                            <form:input path="schoolName"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                School Phone
-                                            </label>
-                                            <form:input path="schoolPhone"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                School Fax
-                                            </label>
-                                            <form:input path="schoolFax"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                State Name
-                                            </label>
-                                            <form:input path="stateName"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                      </div>
 
-                                </div>
-                                <%--<div class="row">--%>
+                                    </div>
+                                    <%--<div class="row">--%>
                                     <%--<div class="col-md-12">--%>
-                                        <%--<div class="btn-group btn-group-justified">--%>
-                                            <%--<a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"--%>
-                                               <%--class="btn btn-primary" title="Edit quiz">Edit</a>--%>
-                                            <%--<a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"--%>
-                                               <%--class="btn btn-primary" title="Remove quiz">Remove</a>--%>
-                                        <%--</div>--%>
+                                    <%--<div class="btn-group btn-group-justified">--%>
+                                    <%--<a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"--%>
+                                    <%--class="btn btn-primary" title="Edit quiz">Edit</a>--%>
+                                    <%--<a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"--%>
+                                    <%--class="btn btn-primary" title="Remove quiz">Remove</a>--%>
                                     <%--</div>--%>
-                                <%--</div>--%>
-                            </form:form>
+                                    <%--</div>--%>
+                                    <%--</div>--%>
+                                </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            List of students
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Name</th>
-                                    <th>NRIC NO</th>
-                                    <th>Dob</th>
-                                    <th>Race</th>
-                                    <th>Gender</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="studentModel" items="${studentModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${studentModel.name}</td>
-                                        <td class="hidden-xs">${studentModel.nricNo}</td>
-                                        <td class="hidden-xs">${studentModel.dobFormatted}</td>
-                                        <td class="hidden-xs">${studentModel.raceTypeName}</td>
-                                        <td class="hidden-xs">${studentModel.genderTypeName}</td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                List of students
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-hover" id="sample-table-1">
+                                    <thead>
+                                        <tr>
+                                            <th class="center">#</th>
+                                            <th>Name</th>
+                                            <th>NRIC NO</th>
+                                            <th>Dob</th>
+                                            <th>Race</th>
+                                            <th>Gender</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="studentModel" items="${studentModels}" varStatus="idx">
+                                            <tr>
+                                                <td class="center">${idx.count}</td>
+                                                <td class="hidden-xs">${studentModel.name}</td>
+                                                <td class="hidden-xs">${studentModel.nricNo}</td>
+                                                <td class="hidden-xs">${studentModel.dobFormatted}</td>
+                                                <td class="hidden-xs">${studentModel.raceTypeName}</td>
+                                                <td class="hidden-xs">${studentModel.genderTypeName}</td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<jsp:include page="../include/footer.jsp"/>
-<jsp:include page="../include/footer_script.jsp"/>
+    <jsp:include page="../include/footer.jsp"/>
+    <jsp:include page="../include/footer_script.jsp"/>
 </body>
 </html>

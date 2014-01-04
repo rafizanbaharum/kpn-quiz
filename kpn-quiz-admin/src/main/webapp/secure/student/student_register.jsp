@@ -46,163 +46,163 @@
     <!-- end: MAIN CSS -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="../include/topbar.jsp"/>
-<div class="main-container">
-    <jsp:include page="../include/student_navbar.jsp"/>
-    <div class="main-content">
-        <div class="container">
-            <jsp:include page="../include/student_breadcrumb.jsp">
-                <jsp:param name="BREADCRUMB" value="${STUDENT_BREADCRUMB}"/>
-                <jsp:param name="TITLE" value="${STUDENT_TITLE}"/>
-            </jsp:include>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            Register a student
-                        </div>
-                        <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> REGISTER</h2>
-                            <hr>
-                            <form:form id="form-student-register" commandName="studentModel"
-                                       action="${pageContext.request.contextPath}/secure/student/add"
-                                       method="POST">
-                                <div class="row">
-                                    <jsp:include page="../include/msg.jsp"/>
-                                    <div class="col-md-12">
-                                        <div class="errorHandler alert alert-danger no-display">
-                                            <i class="icon-remove-sign"></i> You have some form errors. Please check
-                                            below.
+    <jsp:include page="../include/topbar.jsp"/>
+    <div class="main-container">
+        <jsp:include page="../include/student_navbar.jsp"/>
+        <div class="main-content">
+            <div class="container">
+                <jsp:include page="../include/student_breadcrumb.jsp">
+                    <jsp:param name="BREADCRUMB" value="${STUDENT_BREADCRUMB}"/>
+                    <jsp:param name="TITLE" value="${STUDENT_TITLE}"/>
+                </jsp:include>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                Register a student
+                            </div>
+                            <div class="panel-body">
+                                <h2><i class="icon-edit-sign teal"></i> REGISTER</h2>
+                                <hr>
+                                <form:form id="form-student-register" commandName="studentModel"
+                                           action="${pageContext.request.contextPath}/secure/student/add"
+                                           method="POST">
+                                    <div class="row">
+                                        <jsp:include page="../include/msg.jsp"/>
+                                        <div class="col-md-12">
+                                            <div class="errorHandler alert alert-danger no-display">
+                                                <i class="icon-remove-sign"></i> You have some form errors. Please check
+                                                below.
+                                            </div>
+                                            <div class="successHandler alert alert-success no-display">
+                                                <i class="icon-ok"></i> Your form validation is successful!
+                                            </div>
                                         </div>
-                                        <div class="successHandler alert alert-success no-display">
-                                            <i class="icon-ok"></i> Your form validation is successful!
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Student Name <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="name" placeholder="Insert your student Name"
+                                                            cssClass="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    NRIC <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="nricNo" placeholder="NRIC No"
+                                                            cssClass="form-control"
+                                                            maxlength="12"
+                                                        />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Confirm NRIC <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="confirmNricNo" placeholder="Confirm NRIC No"
+                                                            cssClass="form-control"
+                                                            maxlength="12"
+                                                        />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Gender <span class="symbol required"></span>
+                                                </label>
+                                                <form:select id="genderType" path="genderType"
+                                                             class="form-control">
+                                                    <form:option value="">Choose gender</form:option>
+                                                    <c:forEach items="${genderTypeMap}"
+                                                               var="genderType">
+                                                        <form:option
+                                                                value='${genderType.key}'>${genderType.value}</form:option>
+                                                    </c:forEach>
+                                                </form:select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Student Name <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="name" placeholder="Insert your student Name"
-                                                        cssClass="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                NRIC <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="nricNo" placeholder="NRIC No"
-                                                        cssClass="form-control"
-                                                        maxlength="12"
-                                                    />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Confirm NRIC <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="confirmNricNo" placeholder="Confirm NRIC No"
-                                                        cssClass="form-control"
-                                                        maxlength="12"
-                                                    />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Gender <span class="symbol required"></span>
-                                            </label>
-                                            <form:select id="genderType" path="genderType"
-                                                         class="form-control">
-                                                <form:option value="">Choose gender</form:option>
-                                                <c:forEach items="${genderTypeMap}"
-                                                           var="genderType">
-                                                    <form:option
-                                                            value='${genderType.key}'>${genderType.value}</form:option>
-                                                </c:forEach>
-                                            </form:select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Race <span class="symbol required"></span>
-                                            </label>
-                                            <form:select id="raceType" path="raceType"
-                                                         class="form-control">
-                                                <form:option value="">Choose race</form:option>
-                                                <c:forEach items="${raceTypeMap}"
-                                                           var="raceType">
-                                                    <form:option
-                                                            value='${raceType.key}'>${raceType.value}</form:option>
-                                                </c:forEach>
-                                            </form:select>
-                                        </div>
-                                        <div class="form-group connected-group">
-                                            <label class="control-label">
-                                                Date of Birth <span class="symbol required"></span>
-                                            </label>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Race <span class="symbol required"></span>
+                                                </label>
+                                                <form:select id="raceType" path="raceType"
+                                                             class="form-control">
+                                                    <form:option value="">Choose race</form:option>
+                                                    <c:forEach items="${raceTypeMap}"
+                                                               var="raceType">
+                                                        <form:option
+                                                                value='${raceType.key}'>${raceType.value}</form:option>
+                                                    </c:forEach>
+                                                </form:select>
+                                            </div>
+                                            <div class="form-group connected-group">
+                                                <label class="control-label">
+                                                    Date of Birth <span class="symbol required"></span>
+                                                </label>
 
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <form:select path="dob_dd" cssClass="form-control">
-                                                        <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="dd">
-                                                            <form:option value="${dd}"/>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <form:select path="dob_mm" cssClass="form-control">
-                                                        <option value="">MM</option>
-                                                        <c:forEach begin="1" end="12" var="mm">
-                                                            <form:option value="${mm}"/>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <form:input path="dob_yyyy" placeholder="YYYY"
-                                                                cssClass="form-control"/>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <form:select path="dob_dd" cssClass="form-control">
+                                                            <option value="">DD</option>
+                                                            <c:forEach begin="1" end="31" var="dd">
+                                                                <form:option value="${dd}"/>
+                                                            </c:forEach>
+                                                        </form:select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <form:select path="dob_mm" cssClass="form-control">
+                                                            <option value="">MM</option>
+                                                            <c:forEach begin="1" end="12" var="mm">
+                                                                <form:option value="${mm}"/>
+                                                            </c:forEach>
+                                                        </form:select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <form:input path="dob_yyyy" placeholder="YYYY"
+                                                                    cssClass="form-control"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <br/>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div>
-                                            <span class="symbol required"></span>Required Fields
-                                            <hr>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <br/>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-primary btn-block" type="submit">
-                                            Register <i class="icon-circle-arrow-right"></i>
-                                        </button>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div>
+                                                <span class="symbol required"></span>Required Fields
+                                                <hr>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </form:form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary btn-block" type="submit">
+                                                Register <i class="icon-circle-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<jsp:include page="../include/footer.jsp"/>
-<jsp:include page="../include/footer_script.jsp"/>
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
-<script>
-    setContextRoot('<%= request.getContextPath() %>');
-    jQuery(document).ready(function () {
-        Main.init();
-        FormValidator.init();
-    });
-</script>
+    <jsp:include page="../include/footer.jsp"/>
+    <jsp:include page="../include/footer_script.jsp"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
+    <script>
+        setContextRoot('<%= request.getContextPath() %>');
+        jQuery(document).ready(function () {
+            Main.init();
+            FormValidator.init();
+        });
+    </script>
 </body>
 </html>

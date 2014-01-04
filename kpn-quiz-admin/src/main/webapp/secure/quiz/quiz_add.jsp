@@ -23,160 +23,164 @@
     <!-- end: META -->
     <!-- start: MAIN CSS -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico">
-    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          media="screen">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/quiz.css">
     <!--[if IE 7]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- end: MAIN CSS -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="../include/topbar.jsp"/>
-<div class="main-container">
-    <jsp:include page="../include/quiz_navbar.jsp"/>
+    <jsp:include page="../include/topbar.jsp"/>
+    <div class="main-container">
+        <jsp:include page="../include/quiz_navbar.jsp"/>
 
-    <div class="main-content">
-        <div class="container">
-            <jsp:include page="../include/quiz_breadcrumb.jsp">
-                <jsp:param name="BREADCRUMB" value="TODO"/>
-                <jsp:param name="TITLE" value="TODO"/>
-            </jsp:include>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <jsp:include page="../include/msg.jsp"/>
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            Add a quiz
-                        </div>
-                        <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> Add</h2>
+        <div class="main-content">
+            <div class="container">
+                <jsp:include page="../include/quiz_breadcrumb.jsp">
+                    <jsp:param name="BREADCRUMB" value="TODO"/>
+                    <jsp:param name="TITLE" value="TODO"/>
+                </jsp:include>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <jsp:include page="../include/msg.jsp"/>
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                Add a quiz
+                            </div>
+                            <div class="panel-body">
+                                <h2><i class="icon-edit-sign teal"></i> Add</h2>
 
-                            <hr>
-                            <form:form id="form" commandName="quizModel"
-                                       action="${pageContext.request.contextPath}/secure/quiz/save"
-                                       method="POST">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Title <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="title" placeholder="Insert title"
-                                                        cssClass="form-control"/>
+                                <hr>
+                                <form:form id="form" commandName="quizModel"
+                                           action="${pageContext.request.contextPath}/secure/quiz/save"
+                                           method="POST">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Title <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="title" placeholder="Insert title"
+                                                            cssClass="form-control"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Round <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="round" placeholder="Insert round [1-9]"
-                                                        cssClass="form-control"/>
-                                            <form:errors path='round'
-                                                         cssClass="has-error control-label input-group-addon simpleError"/>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Round <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="round" placeholder="Insert round [1-9]"
+                                                            cssClass="form-control"/>
+                                                <form:errors path='round'
+                                                             cssClass="has-error control-label input-group-addon simpleError"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group connected-group">
-                                            <label class="control-label">
-                                                Start Date <span class="symbol required"></span>
-                                            </label>
+                                        <div class="col-md-12">
+                                            <div class="form-group connected-group">
+                                                <label class="control-label">
+                                                    Start Date <span class="symbol required"></span>
+                                                </label>
 
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <form:select path="startDate_dd" cssClass="form-control">
-                                                        <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="yyyy">
-                                                            <form:option value="${yyyy}"/>
-                                                        </c:forEach>
-                                                    </form:select>
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <form:select path="startDate_dd" cssClass="form-control">
+                                                            <option value="">DD</option>
+                                                            <c:forEach begin="1" end="31" var="yyyy">
+                                                                <form:option value="${yyyy}"/>
+                                                            </c:forEach>
+                                                        </form:select>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:select path="startDate_MM" cssClass="form-control">
+                                                            <option value="">MM</option>
+                                                            <c:forEach begin="1" end="12" var="MM">
+                                                                <form:option value="${MM}"/>
+                                                            </c:forEach>
+                                                        </form:select>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:input path="startDate_yyyy" placeholder="YYYY"
+                                                                    cssClass="form-control"/>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:input path="startDate_hh" placeholder="YYYY"
+                                                                    cssClass="form-control"/>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:input path="startDate_mm" placeholder="YYYY"
+                                                                    cssClass="form-control"/>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <form:select path="startDate_MM" cssClass="form-control">
-                                                        <option value="">MM</option>
-                                                        <c:forEach begin="1" end="12" var="MM">
-                                                            <form:option value="${MM}"/>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <form:input path="startDate_yyyy" placeholder="YYYY"
-                                                                cssClass="form-control"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <form:input path="startDate_hh" placeholder="YYYY"
-                                                                cssClass="form-control"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <form:input path="startDate_mm" placeholder="YYYY"
-                                                                cssClass="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group connected-group">
+                                                <label class="control-label">
+                                                    End Date <span class="symbol required"></span>
+                                                </label>
+
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <form:select path="endDate_dd" cssClass="form-control">
+                                                            <option value="">DD</option>
+                                                            <c:forEach begin="1" end="31" var="yyyy">
+                                                                <form:option value="${yyyy}"/>
+                                                            </c:forEach>
+                                                        </form:select>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:select path="endDate_MM" cssClass="form-control">
+                                                            <option value="">MM</option>
+                                                            <c:forEach begin="1" end="12" var="MM">
+                                                                <form:option value="${MM}"/>
+                                                            </c:forEach>
+                                                        </form:select>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:input path="endDate_yyyy" placeholder="YYYY"
+                                                                    cssClass="form-control"/>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:input path="endDate_hh" placeholder="YYYY"
+                                                                    cssClass="form-control"/>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <form:input path="endDate_mm" placeholder="YYYY"
+                                                                    cssClass="form-control"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group connected-group">
-                                            <label class="control-label">
-                                                End Date <span class="symbol required"></span>
-                                            </label>
-
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <form:select path="endDate_dd" cssClass="form-control">
-                                                        <option value="">DD</option>
-                                                        <c:forEach begin="1" end="31" var="yyyy">
-                                                            <form:option value="${yyyy}"/>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <form:select path="endDate_MM" cssClass="form-control">
-                                                        <option value="">MM</option>
-                                                        <c:forEach begin="1" end="12" var="MM">
-                                                            <form:option value="${MM}"/>
-                                                        </c:forEach>
-                                                    </form:select>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <form:input path="endDate_yyyy" placeholder="YYYY"
-                                                                cssClass="form-control"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <form:input path="endDate_hh" placeholder="YYYY"
-                                                                cssClass="form-control"/>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <form:input path="endDate_mm" placeholder="YYYY"
-                                                                cssClass="form-control"/>
-                                                </div>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary btn-block" type="submit">
+                                                Add <i class="icon-circle-arrow-right"></i>
+                                            </button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-primary btn-block" type="submit">
-                                            Add <i class="icon-circle-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form:form>
+                                </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<jsp:include page="../include/footer.jsp"/>
-<jsp:include page="../include/footer_script.jsp"/>
+    <jsp:include page="../include/footer.jsp"/>
+    <jsp:include page="../include/footer_script.jsp"/>
 </body>
 </html>

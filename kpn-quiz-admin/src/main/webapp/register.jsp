@@ -50,42 +50,42 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="login example2">
-<div class="main-login col-sm-6 col-sm-offset-3">
-    <div class="col-sm-offset-2">
-        <div class="logo">
-            <h2>ASEAN QUIZ</h2>
+    <div class="main-login col-sm-6 col-sm-offset-3">
+        <div class="col-sm-offset-2">
+            <div class="logo">
+                <h2>ASEAN QUIZ</h2>
+            </div>
         </div>
-    </div>
-    <div class="box-register">
-        <c:if test="${started && !ended}">
-            <h3>Sign Up</h3>
-            <form:form method="post" class="form-register" commandName="registration"
-                       action="${pageContext.request.contextPath}/register">
-                <jsp:include page="secure/include/msg.jsp"/>
-                <div class="errorHandler alert alert-danger no-display">
-                    <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-                </div>
-                <fieldset>
-                    <div class="col-md-6">
-                        <p>
-                            Enter your personal details below:
-                        </p>
+        <div class="box-register">
+            <c:if test="${started && !ended}">
+                <h3>Sign Up</h3>
+                <form:form method="post" class="form-register" commandName="registration"
+                           action="${pageContext.request.contextPath}/register">
+                    <jsp:include page="secure/include/msg.jsp"/>
+                    <div class="errorHandler alert alert-danger no-display">
+                        <i class="icon-remove-sign"></i> You have some form errors. Please check below.
+                    </div>
+                    <fieldset>
+                        <div class="col-md-6">
+                            <p>
+                                Enter your personal details below:
+                            </p>
 
-                        <div class="form-group">
-                            <form:input type="text" class="form-control" path="fullName" placeholder="Full Name"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input type="text" class="form-control" path="email" placeholder="Email"/>
-                        </div>
-                        <div class="form-group">
-                            <form:input type="text" class="form-control" path="phone"
-                                        placeholder="Your cell phone number"/>
-                        </div>
-                        <p>
-                            Enter your account details below:
-                        </p>
+                            <div class="form-group">
+                                <form:input type="text" class="form-control" path="fullName" placeholder="Full Name"/>
+                            </div>
+                            <div class="form-group">
+                                <form:input type="text" class="form-control" path="email" placeholder="Email"/>
+                            </div>
+                            <div class="form-group">
+                                <form:input type="text" class="form-control" path="phone"
+                                            placeholder="Your cell phone number"/>
+                            </div>
+                            <p>
+                                Enter your account details below:
+                            </p>
 
-                        <div class="form-group">
+                            <div class="form-group">
                                  <span class="input-icon">
                                     <form:input type="text" class="form-control"
                                                 path="nricNo" placeholder="NRIC No"
@@ -94,13 +94,13 @@
                                     <i class="icon-user"></i> 
                                  </span>
 
-                            <div id="username_status"></div>
-                        </div>
-                        <p>
-                            Password is 6 - 8 character
-                        </p>
+                                <div id="username_status"></div>
+                            </div>
+                            <p>
+                                Password is 6 - 8 character
+                            </p>
 
-                        <div class="form-group">
+                            <div class="form-group">
                                  <span class="input-icon">
                                     <form:password class="form-control" id="password"
                                                    path="password"
@@ -108,8 +108,8 @@
                                                    autocomplete="off"/>
                                     <i class="icon-lock"></i> 
                                  </span>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                                  <span class="input-icon">
                                     <form:password class="form-control"
                                                    path="passwordAgain"
@@ -117,14 +117,14 @@
                                                    autocomplete="off"/>
                                     <i class="icon-lock"></i> 
                                  </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <p>
-                            Enter your school details below:
-                        </p>
+                        <div class="col-md-6">
+                            <p>
+                                Enter your school details below:
+                            </p>
 
-                        <div class="form-group">
+                            <div class="form-group">
                                  <span class="input-icon">
                                     <form:select id="schoolType" path="schoolType"
                                                  class="form-control">
@@ -136,99 +136,99 @@
                                         </c:forEach>
                                     </form:select>
                                  </span>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                                  <span class="input-icon">
                                     <form:input type="text" class="form-control"
                                                 path="schoolName"
                                                 placeholder="School Name"/>
                                     <i class="icon-sitemap"></i> 
                                  </span>
-                        </div>
-                        <div class="form-group">
-                            <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
-                        </div>
-                        <div class="form-group">
-                            <form:select id="form-field-select-1" path="stateId" class="form-control">
-                                <form:option value="">Select state</form:option>
-                                <c:forEach items="${states}" var="state">
-                                    <form:option value='${state.key}'>${state.value}</form:option>
-                                </c:forEach>
-                            </form:select>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
+                                <form:input type="text" class="form-control" path="address1" placeholder="Address"/>
+                            </div>
+                            <div class="form-group">
+                                <form:select id="form-field-select-1" path="stateId" class="form-control">
+                                    <form:option value="">Select state</form:option>
+                                    <c:forEach items="${states}" var="state">
+                                        <form:option value='${state.key}'>${state.value}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </div>
+                            <div class="form-group">
                                  <span class="input-icon">
                                     <form:input type="text" class="form-control"
                                                 path="schoolPhone"
                                                 placeholder="School Phone"/>
                                     <i class="icon-phone"></i> 
                                  </span>
-                        </div>
-                        <div class="form-group">
+                            </div>
+                            <div class="form-group">
                                  <span class="input-icon">
                                     <form:input type="text" class="form-control"
                                                 path="schoolFax"
                                                 placeholder="School Fax"/>
                                     <i class="icon-phone-sign"></i> 
                                  </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row"></div>
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-light-grey go-back"
-                                onclick="parent.location = 'gate/in'">
-                            <i class="icon-circle-arrow-left"></i> Back
-                        </button>
-                        <button type="submit" class="btn btn-bricky pull-right">
-                            Submit <i class="icon-circle-arrow-right"></i>
-                        </button>
-                    </div>
-                </fieldset>
-            </form:form>
-        </c:if>
-        <c:if test="${!started}">
-            <div class="errorHandler alert alert-danger">
-                <i class="icon-remove-sign"></i> Sorry the registration has not started yet. Please come back
-                again.
-            </div>
-        </c:if>
-        <c:if test="${started && ended}">
-            <div class="errorHandler alert alert-danger">
-                <i class="icon-remove-sign"></i> Sorry the registration has ended.
-            </div>
-        </c:if>
+                        <div class="row"></div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-light-grey go-back"
+                                    onclick="parent.location = 'gate/in'">
+                                <i class="icon-circle-arrow-left"></i> Back
+                            </button>
+                            <button type="submit" class="btn btn-bricky pull-right">
+                                Submit <i class="icon-circle-arrow-right"></i>
+                            </button>
+                        </div>
+                    </fieldset>
+                </form:form>
+            </c:if>
+            <c:if test="${!started}">
+                <div class="errorHandler alert alert-danger">
+                    <i class="icon-remove-sign"></i> Sorry the registration has not started yet. Please come back
+                    again.
+                </div>
+            </c:if>
+            <c:if test="${started && ended}">
+                <div class="errorHandler alert alert-danger">
+                    <i class="icon-remove-sign"></i> Sorry the registration has ended.
+                </div>
+            </c:if>
+        </div>
+        <div class="copyright">
+            2013 &copy; ASEAN QUIZ
+        </div>
     </div>
-    <div class="copyright">
-        2013 &copy; ASEAN QUIZ
-    </div>
-</div>
-<!-- start: MAIN JAVASCRIPTS -->
-<!--[if lt IE 9]>
-<script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    setContextRoot('<%=request.getContextPath()%>');
-    jQuery(document).ready(function () {
-        Main.init();
-        Login.init();
-    });
-</script>
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+    <script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        setContextRoot('<%=request.getContextPath()%>');
+        jQuery(document).ready(function () {
+            Main.init();
+            Login.init();
+        });
+    </script>
 </body>
 <!-- end: BODY -->
 </html>

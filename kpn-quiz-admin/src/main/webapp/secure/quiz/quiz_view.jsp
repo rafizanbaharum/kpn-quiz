@@ -44,171 +44,173 @@
     <!-- end: MAIN CSS -->
 </head>
 <body class="footer-fixed layout-boxed">
-<jsp:include page="../include/topbar.jsp"/>
-<div class="main-container">
-    <jsp:include page="../include/quiz_navbar.jsp"/>
-    <div class="main-content">
-        <div class="container">
-            <jsp:include page="../include/quiz_breadcrumb.jsp">
-                <jsp:param name="BREADCRUMB" value="TODO"/>
-                <jsp:param name="TITLE" value="TODO"/>
-            </jsp:include>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            View a quiz
-                        </div>
-                        <div class="panel-body">
-                            <h2><i class="icon-edit-sign teal"></i> View</h2>
-                            <hr>
-                            <form:form id="form" commandName="quizModel"
-                                       action="${pageContext.request.contextPath}/secure/quiz/update"
-                                       method="POST">
-                                <div class="row">
-                                    <jsp:include page="../include/msg.jsp"/>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Title <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="title" placeholder="Insert title"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Round <span class="symbol required"></span>
-                                            </label>
-                                            <form:input path="round" placeholder="Insert round"
-                                                        cssClass="form-control" readonly="true"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Start Date <span class="symbol required"></span>
-                                            </label>
-                                            <input type="text" class="form-control" readonly="true"
-                                                   value="${quizModel.startDateFormatted}"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                End Date <span class="symbol required"></span>
-                                            </label>
-                                            <input type="text" class="form-control" readonly="true"
-                                                   value="${quizModel.endDateFormatted}"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="btn-group btn-group-justified">
-                                            <sec:authorize access="hasRole('ROLE_ADMINISTRATOR')">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
-                                                   class="btn btn-primary" title="Edit quiz">Edit</a>
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
-                                                   class="btn btn-primary" title="Remove quiz">Remove</a>
-                                            </sec:authorize>
-                                            <a href="${pageContext.request.contextPath}/secure/participant/browse?page=1&quizId=${quizModel.id}"
-                                               class="btn btn-primary" title="View quiz participants">Participants</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="btn-group btn-group-justified">
-                                            <sec:authorize access="hasRole('ROLE_ADMINISTRATOR')">
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/current/${quizModel.id}"
-                                                   class="btn btn-primary"
-                                                   title="Make this quiz current">Current</a>
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
-                                                   class="btn btn-primary"
-                                                   title="Initialize quiz with participants"
-                                                   onclick="return confirm('Are you sure? This will delete all gradebooks and participants')">
-                                                    Process Participant</a>
-                                                <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
-                                                   class="btn btn-primary" title="Process quiz gradebooks"
-                                                   onclick="return confirm('Are you sure? This will delete all gradebooks')">
-                                                    Process Gradebook</a>
-                                            </sec:authorize>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
-                                               class="btn btn-primary" title="Tabulate quiz results">Tabulate</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="btn-group btn-group-justified">
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/multiplechoice"
-                                               class="btn btn-primary" title="Add multiple choice question">Add Multiple
-                                                Choice</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/boolean"
-                                               class="btn btn-primary" title="Add true/false question">Add
-                                                True/False</a>
-                                            <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/subjective"
-                                               class="btn btn-primary" title="Add subjective question">Add
-                                                Subjective</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form:form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="icon-external-link-sign"></i>
-                            List of questions
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover" id="sample-table-1">
-                                <thead>
-                                <tr>
-                                    <th class="center">#</th>
-                                    <th>Statement</th>
-                                    <th>Type</th>
-                                    <th>Difficulty</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="questionModel" items="${questionModels}" varStatus="idx">
-                                    <tr>
-                                        <td class="center">${idx.count}</td>
-                                        <td class="hidden-xs">${questionModel.statementAbbreviated}</td>
-                                        <td class="hidden-xs">${questionModel.questionTypeString}</td>
-                                        <td class="hidden-xs">${questionModel.difficulty}</td>
-                                        <td class="center">
-                                            <div class="visible-md visible-lg hidden-sm hidden-xs">
-                                                <a href="${pageContext.request.contextPath}/secure/question/view/${questionModel.id}"
-                                                   class="btn btn-primary tooltips" data-placement="top"
-                                                   data-original-title="View"><i class="icon-archive"></i></a>
-                                                <a href="${pageContext.request.contextPath}/secure/question/edit/${questionModel.id}"
-                                                   class="btn btn-primary tooltips" data-placement="top"
-                                                   data-original-title="Edit"><i class="icon-edit"></i></a>
+    <jsp:include page="../include/topbar.jsp"/>
+    <div class="main-container">
+        <jsp:include page="../include/quiz_navbar.jsp"/>
+        <div class="main-content">
+            <div class="container">
+                <jsp:include page="../include/quiz_breadcrumb.jsp">
+                    <jsp:param name="BREADCRUMB" value="TODO"/>
+                    <jsp:param name="TITLE" value="TODO"/>
+                </jsp:include>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                View a quiz
+                            </div>
+                            <div class="panel-body">
+                                <h2><i class="icon-edit-sign teal"></i> View</h2>
+                                <hr>
+                                <form:form id="form" commandName="quizModel"
+                                           action="${pageContext.request.contextPath}/secure/quiz/update"
+                                           method="POST">
+                                    <div class="row">
+                                        <jsp:include page="../include/msg.jsp"/>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Title <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="title" placeholder="Insert title"
+                                                            cssClass="form-control" readonly="true"/>
                                             </div>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Round <span class="symbol required"></span>
+                                                </label>
+                                                <form:input path="round" placeholder="Insert round"
+                                                            cssClass="form-control" readonly="true"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Start Date <span class="symbol required"></span>
+                                                </label>
+                                                <input type="text" class="form-control" readonly="true"
+                                                       value="${quizModel.startDateFormatted}"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    End Date <span class="symbol required"></span>
+                                                </label>
+                                                <input type="text" class="form-control" readonly="true"
+                                                       value="${quizModel.endDateFormatted}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group btn-group-justified">
+                                                <sec:authorize access="hasRole('ROLE_ADMINISTRATOR')">
+                                                    <a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"
+                                                       class="btn btn-primary" title="Edit quiz">Edit</a>
+                                                    <a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"
+                                                       class="btn btn-primary" title="Remove quiz">Remove</a>
+                                                </sec:authorize>
+                                                <a href="${pageContext.request.contextPath}/secure/participant/browse?page=1&quizId=${quizModel.id}"
+                                                   class="btn btn-primary"
+                                                   title="View quiz participants">Participants</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group btn-group-justified">
+                                                <sec:authorize access="hasRole('ROLE_ADMINISTRATOR')">
+                                                    <a href="${pageContext.request.contextPath}/secure/quiz/current/${quizModel.id}"
+                                                       class="btn btn-primary"
+                                                       title="Make this quiz current">Current</a>
+                                                    <a href="${pageContext.request.contextPath}/secure/quiz/init/${quizModel.id}"
+                                                       class="btn btn-primary"
+                                                       title="Initialize quiz with participants"
+                                                       onclick="return confirm('Are you sure? This will delete all gradebooks and participants')">
+                                                        Process Participant</a>
+                                                    <a href="${pageContext.request.contextPath}/secure/quiz/process/${quizModel.id}"
+                                                       class="btn btn-primary" title="Process quiz gradebooks"
+                                                       onclick="return confirm('Are you sure? This will delete all gradebooks')">
+                                                        Process Gradebook</a>
+                                                </sec:authorize>
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/tabulate/${quizModel.id}"
+                                                   class="btn btn-primary" title="Tabulate quiz results">Tabulate</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group btn-group-justified">
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/multiplechoice"
+                                                   class="btn btn-primary" title="Add multiple choice question">Add
+                                                    Multiple
+                                                    Choice</a>
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/boolean"
+                                                   class="btn btn-primary" title="Add true/false question">Add
+                                                    True/False</a>
+                                                <a href="${pageContext.request.contextPath}/secure/quiz/view/${quizModel.id}/question/add/subjective"
+                                                   class="btn btn-primary" title="Add subjective question">Add
+                                                    Subjective</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <button class="btn btn-primary btn-block" type="submit">
-                        Add Question <i class="icon-circle-arrow-right"></i>
-                    </button>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="icon-external-link-sign"></i>
+                                List of questions
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-hover" id="sample-table-1">
+                                    <thead>
+                                        <tr>
+                                            <th class="center">#</th>
+                                            <th>Statement</th>
+                                            <th>Type</th>
+                                            <th>Difficulty</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="questionModel" items="${questionModels}" varStatus="idx">
+                                            <tr>
+                                                <td class="center">${idx.count}</td>
+                                                <td class="hidden-xs">${questionModel.statementAbbreviated}</td>
+                                                <td class="hidden-xs">${questionModel.questionTypeString}</td>
+                                                <td class="hidden-xs">${questionModel.difficulty}</td>
+                                                <td class="center">
+                                                    <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                        <a href="${pageContext.request.contextPath}/secure/question/view/${questionModel.id}"
+                                                           class="btn btn-primary tooltips" data-placement="top"
+                                                           data-original-title="View"><i class="icon-archive"></i></a>
+                                                        <a href="${pageContext.request.contextPath}/secure/question/edit/${questionModel.id}"
+                                                           class="btn btn-primary tooltips" data-placement="top"
+                                                           data-original-title="Edit"><i class="icon-edit"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-block" type="submit">
+                            Add Question <i class="icon-circle-arrow-right"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<jsp:include page="../include/footer.jsp"/>
-<jsp:include page="../include/footer_script.jsp"/>
+    <jsp:include page="../include/footer.jsp"/>
+    <jsp:include page="../include/footer_script.jsp"/>
 </body>
 </html>

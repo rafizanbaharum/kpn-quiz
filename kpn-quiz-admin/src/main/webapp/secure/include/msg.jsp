@@ -1,4 +1,4 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="col-md-12">
 
     <c:choose>
@@ -19,26 +19,26 @@
     </c:choose>
 
     <%
-       String msgSuccess = request.getParameter("msgSuccess");
-       if (null != msgSuccess){
-           %>
-           <div class="successHandler alert alert-success">
-               <i class="icon-ok"></i> <%=  msgSuccess %>
-           </div>
+        String msgSuccess = request.getParameter("msgSuccess");
+        if (null != msgSuccess) {
+    %>
+    <div class="successHandler alert alert-success">
+        <i class="icon-ok"></i> <%=  msgSuccess %>
+    </div>
     <%
-       }
+        }
     %>
 
 
     <%
-       String msgError = request.getParameter("msgError");
-       if (null != msgError){
+        String msgError = request.getParameter("msgError");
+        if (null != msgError) {
     %>
-            <div class="errorHandler alert alert-danger">
-                <i class="icon-remove-sign"></i>  <%= msgError %>
-            </div>
+    <div class="errorHandler alert alert-danger">
+        <i class="icon-remove-sign"></i> <%= msgError %>
+    </div>
     <%
-       }
+        }
     %>
 
 

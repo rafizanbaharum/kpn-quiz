@@ -47,51 +47,51 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="login example2">
-<div class="main-login col-sm-4 col-sm-offset-4">
-    <div class="logo"><h2>ASEAN QUIZ</h2></div>
-    <div class="box-login">
-        <h3>Thank you for your request</h3>
+    <div class="main-login col-sm-4 col-sm-offset-4">
+        <div class="logo"><h2>ASEAN QUIZ</h2></div>
+        <div class="box-login">
+            <h3>Thank you for your request</h3>
 
-        <p>An email has been sent to you with your password.</p>
+            <p>An email has been sent to you with your password.</p>
 
-        <fieldset>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-bricky pull-right"
-                        onclick="parent.location='../gate/in'">
-                    Login <i class="icon-circle-arrow-right"></i>
-                </button>
-            </div>
-        </fieldset>
-        </form>
+            <fieldset>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-bricky pull-right"
+                            onclick="parent.location='../gate/in'">
+                        Login <i class="icon-circle-arrow-right"></i>
+                    </button>
+                </div>
+            </fieldset>
+            </form>
+        </div>
+        <div class="copyright">
+            2013 &copy; ASEAN QUIZ
+        </div>
     </div>
-    <div class="copyright">
-        2013 &copy; ASEAN QUIZ
-    </div>
-</div>
-<!-- start: MAIN JAVASCRIPTS -->
-<!--[if lt IE 9]>
-<script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    jQuery(document).ready(function () {
-        Main.init();
-        Login.init();
-    });
-</script>
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+    <script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            Login.init();
+        });
+    </script>
 </body>
 <!-- end: BODY -->
 </html>

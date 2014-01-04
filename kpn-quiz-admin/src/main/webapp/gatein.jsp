@@ -47,36 +47,36 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="login example2" onload='document.f.username.focus();'>
-<div class="main-login col-sm-4 col-sm-offset-4">
-    <div class="col-sm-offset-1">
-        <div class="logo"><h2>ASEAN QUIZ</h2></div>
-    </div>
-    <div class="box-login">
-        <h3>Sign in to your account</h3>
+    <div class="main-login col-sm-4 col-sm-offset-4">
+        <div class="col-sm-offset-1">
+            <div class="logo"><h2>ASEAN QUIZ</h2></div>
+        </div>
+        <div class="box-login">
+            <h3>Sign in to your account</h3>
 
-        <p>
-            Please enter your NRIC No and password to log in.
-        </p>
+            <p>
+                Please enter your NRIC No and password to log in.
+            </p>
 
-        <form name="f" method="post" class="form-login" action="${pageContext.request.contextPath}/login">
-            <c:if test="${not empty param.login_error}">
-                <div class="errorHandler alert alert-danger">
-                    <i class="icon-remove-sign"></i>
-                    Your login attempt was not successful, try again.<br/>
-                    Reason: ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}
+            <form name="f" method="post" class="form-login" action="${pageContext.request.contextPath}/login">
+                <c:if test="${not empty param.login_error}">
+                    <div class="errorHandler alert alert-danger">
+                        <i class="icon-remove-sign"></i>
+                        Your login attempt was not successful, try again.<br/>
+                        Reason: ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}
+                    </div>
+                </c:if>
+                <div class="errorHandler alert alert-danger no-display">
+                    <i class="icon-remove-sign"></i> You have some form errors. Please check below.
                 </div>
-            </c:if>
-            <div class="errorHandler alert alert-danger no-display">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-            </div>
-            <fieldset>
-                <div class="form-group">
+                <fieldset>
+                    <div class="form-group">
 							<span class="input-icon">
 								<input type="text" class="form-control" name="username" placeholder="NRIC No"
                                        maxlength="12">
 								<i class="icon-user"></i> </span>
-                </div>
-                <div class="form-group form-actions">
+                    </div>
+                    <div class="form-group form-actions">
 							<span class="input-icon">
 								<input type="password" class="form-control password" name="password"
                                        placeholder="Password">
@@ -84,79 +84,80 @@
 								<a class="forgot" href="#">
                                     I forgot my password
                                 </a> </span>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-bricky pull-right">
-                        Login <i class="icon-circle-arrow-right"></i>
-                    </button>
-                </div>
-                <div class="new-account">
-                    Don't have an account yet?
-                    <a href="${pageContext.request.contextPath}/register" class="register">
-                        Create an account
-                    </a>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-    <div class="box-forgot">
-        <h3>Forget Password?</h3>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-bricky pull-right">
+                            Login <i class="icon-circle-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="new-account">
+                        Don't have an account yet?
+                        <a href="${pageContext.request.contextPath}/register" class="register">
+                            Create an account
+                        </a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="box-forgot">
+            <h3>Forget Password?</h3>
 
-        <p>
-            Enter NRIC NO below to reset your password.
-        </p>
+            <p>
+                Enter NRIC NO below to reset your password.
+            </p>
 
-        <form method="post" class="form-forgot" action="${pageContext.request.contextPath}/register/forgot_password">
-            <div class="errorHandler alert alert-danger no-display">
-                <i class="icon-remove-sign"></i> You have some form errors. Please check below.
-            </div>
-            <fieldset>
-                <div class="form-group">
+            <form method="post" class="form-forgot"
+                  action="${pageContext.request.contextPath}/register/forgot_password">
+                <div class="errorHandler alert alert-danger no-display">
+                    <i class="icon-remove-sign"></i> You have some form errors. Please check below.
+                </div>
+                <fieldset>
+                    <div class="form-group">
 							<span class="input-icon">
 								<input type="text" class="form-control" id="nricNo" name="nricNo" placeholder="NRIC No"
                                        maxlength="12">
 								<i class="icon-envelope"></i> </span>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-light-grey go-back">
-                        <i class="icon-circle-arrow-left"></i> Back
-                    </button>
-                    <button id="btn-submit-forgot" type="submit" class="btn btn-bricky pull-right">
-                        Submit <i class="icon-circle-arrow-right"></i>
-                    </button>
-                </div>
-            </fieldset>
-        </form>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-light-grey go-back">
+                            <i class="icon-circle-arrow-left"></i> Back
+                        </button>
+                        <button id="btn-submit-forgot" type="submit" class="btn btn-bricky pull-right">
+                            Submit <i class="icon-circle-arrow-right"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="copyright">
+            2013 &copy; ASEAN QUIZ
+        </div>
     </div>
-    <div class="copyright">
-        2013 &copy; ASEAN QUIZ
-    </div>
-</div>
-<!-- start: MAIN JAVASCRIPTS -->
-<!--[if lt IE 9]>
-<script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    setContextRoot('<%=request.getContextPath()%>');
-    jQuery(document).ready(function () {
-        Main.init();
-        Login.init();
-    });
-</script>
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+    <script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        setContextRoot('<%=request.getContextPath()%>');
+        jQuery(document).ready(function () {
+            Main.init();
+            Login.init();
+        });
+    </script>
 </body>
 <!-- end: BODY -->
 </html>

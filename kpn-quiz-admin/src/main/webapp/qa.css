@@ -5,6 +5,7 @@ body {
     font-size: small;
     margin: 8px;
 }
+
 #loading {
     position: absolute;
     left: 45%;

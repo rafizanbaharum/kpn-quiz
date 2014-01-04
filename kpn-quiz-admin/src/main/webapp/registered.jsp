@@ -49,45 +49,45 @@
 </head>
 
 <body class="login example2">
-<div class="main-login col-sm-4 col-sm-offset-4">
-    <div class="logo"><h2>ASEAN QUIZ</h2></div>
+    <div class="main-login col-sm-4 col-sm-offset-4">
+        <div class="logo"><h2>ASEAN QUIZ</h2></div>
 
-    <div class="box-register">
-        <h3>Successful Registration</h3>
+        <div class="box-register">
+            <h3>Successful Registration</h3>
 
-        <p>Registration Successful - Congratulations!</p></br>
-        <p>Click <a href="${pageContext.request.contextPath}/gate/in">here</a> to login</p>
+            <p>Registration Successful - Congratulations!</p></br>
+            <p>Click <a href="${pageContext.request.contextPath}/gate/in">here</a> to login</p>
+        </div>
+        <div class="copyright">
+            2013 &copy; ASEAN QUIZ
+        </div>
     </div>
-    <div class="copyright">
-        2013 &copy; ASEAN QUIZ
-    </div>
-</div>
 
-<!-- start: MAIN JAVASCRIPTS -->
-<!--[if lt IE 9]>
-<script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
-<![endif]-->
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+    <script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/login-form-validation.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/plugins/select2/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/form-elements.js"></script>
 
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script>
-    jQuery(document).ready(function () {
-        Main.init();
-    });
-</script>
+    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+        });
+    </script>
 </body>
 </html>
