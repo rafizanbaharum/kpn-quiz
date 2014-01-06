@@ -28,7 +28,8 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/resources/**")
-                .antMatchers("/assets/**");
+                .antMatchers("/assets/**")
+                .antMatchers("/docs/**");
     }
 
     @Override

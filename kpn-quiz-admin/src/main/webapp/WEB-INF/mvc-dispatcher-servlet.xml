@@ -6,6 +6,7 @@
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:resources mapping="/assets/**" location="/assets/"/>
+    <mvc:resources mapping="/docs/**" location="/docs/"/>
     <mvc:resources mapping="/gxt/**" location="/gxt/"/>
     <mvc:resources mapping="/quiz/**" location="/quiz/"/>
 
