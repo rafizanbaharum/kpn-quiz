@@ -16,6 +16,7 @@
 <script src="${pageContext.request.contextPath}/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/ckeditor/adapters/jquery.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/form-validation.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/custom.js"></script>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
