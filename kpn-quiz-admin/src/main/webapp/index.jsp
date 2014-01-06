@@ -150,8 +150,8 @@
                                 Download Asean Quiz Rules and Regulations
                             </div>
                             <a class="view-more"
-                               href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.doc">
-                                Download Here <i class="clip-arrow-right-2"></i>
+                               href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.pdf">
+                            Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
