@@ -20,8 +20,8 @@ public interface RegistrationManager {
                          Integer raceType,
                          QaInstructor instructor);
 
-    void updateStudent(QaStudent student, String username, String password, String name,
-                       String nricNo, Date dob,
+    void updateStudent(QaStudent student,
+                       String name, Date dob,
                        Integer genderType,
                        Integer raceType
     );
