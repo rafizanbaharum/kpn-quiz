@@ -72,7 +72,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="left">Registered Instructor</td>
+                                            <td class="left">Overall Report - instructor by state</td>
                                             <td class="right">
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                     <a href="${pageContext.request.contextPath}/secure/report/instructor/view/"
@@ -83,7 +83,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="left">Registered Student</td>
+                                            <td class="left">Overall Report - students by state</td>
                                             <td class="right">
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                     <a href="${pageContext.request.contextPath}/secure/report/student/view/"
@@ -94,7 +94,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="left">Registered Student Statistic</td>
+                                            <td class="left">Statistic : Students by race, gender and state</td>
                                             <td class="right">
                                                 <div class="visible-md visible-lg hidden-sm hidden-xs">
                                                     <a href="${pageContext.request.contextPath}/secure/report/studentStat/view/"
