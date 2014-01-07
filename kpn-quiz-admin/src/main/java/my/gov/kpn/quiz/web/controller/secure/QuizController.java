@@ -1,5 +1,6 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
+import my.gov.kpn.quiz.core.model.QaCompetition;
 import my.gov.kpn.quiz.core.model.QaQuiz;
 import my.gov.kpn.quiz.core.model.impl.QaQuizImpl;
 import my.gov.kpn.quiz.web.controller.AbstractController;
@@ -30,7 +31,7 @@ public class QuizController extends AbstractController {
 
     @RequestMapping(value = "/list", method = {RequestMethod.GET})
     public String quizList(@ModelAttribute("quizModel") QuizModel quizModel, ModelMap model) {
-        model.addAttribute("competitionModel", transformer.transform(competitionManager.findCompetitionByYear(2013)));
+        model.addAttribute("competitionModel", transformer.transform(competitionManager.getCurrentYearCompetition()));
         model.addAttribute("quizModels", transformer.transformQuizzes(competitionManager.findQuizzes()));
         return "secure/quiz/quiz_list";
     }
@@ -88,7 +89,7 @@ public class QuizController extends AbstractController {
         }
 
         QaQuiz quiz = new QaQuizImpl();
-        quiz.setCompetition(competitionManager.findCompetitionByYear(2013));
+        quiz.setCompetition(competitionManager.getCurrentYearCompetition());
         quiz.setTitle(quizModel.getTitle());
         quiz.setProcessed(false);
         quiz.setLocked(false);

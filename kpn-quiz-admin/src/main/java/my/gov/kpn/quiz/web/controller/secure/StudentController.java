@@ -196,8 +196,7 @@ public class StudentController extends AbstractController {
 
     @ModelAttribute("started")
     public boolean started() {
-        QaCompetition competition =
-                competitionManager.findCompetitionByYear(competitionManager.getCurrentYearCompetition().getYear());
+        QaCompetition competition = competitionManager.getCurrentYearCompetition();
         DateTime startDate = new DateTime(competition.getStartDate());
         DateTime today = new DateTime(new Date());
         return (today.isAfter(startDate));
@@ -205,7 +204,7 @@ public class StudentController extends AbstractController {
 
     @ModelAttribute("ended")
     public boolean ended() {
-        QaCompetition competition = competitionManager.findCompetitionByYear(competitionManager.getCurrentYearCompetition().getYear());
+        QaCompetition competition = competitionManager.getCurrentYearCompetition();
         DateTime endDate = new DateTime(competition.getEndDate());
         DateTime today = new DateTime(new Date());
         return (today.isAfter(endDate));

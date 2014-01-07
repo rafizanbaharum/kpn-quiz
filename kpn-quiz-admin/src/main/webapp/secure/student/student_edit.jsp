@@ -93,7 +93,7 @@
                                             </label>
                                             <form:input path="nricNo" placeholder="NRIC No"
                                                         cssClass="form-control"
-                                                        maxlength="12" readonly="true"/>
+                                                        maxlength="12" readonly="true" disabled="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
@@ -101,7 +101,7 @@
                                             </label>
                                             <form:input path="confirmNricNo" placeholder="Confirm NRIC No"
                                                         cssClass="form-control"
-                                                        maxlength="12" readonly="true"/>
+                                                        maxlength="12" readonly="true" disabled="true"/>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
