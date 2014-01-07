@@ -46,16 +46,18 @@
     <!-- end: MAIN CSS -->
 </head>
 <body class="footer-fixed layout-boxed">
-    <jsp:include page="../include/topbar.jsp"/>
-    <div class="main-container">
-        <jsp:include page="../include/student_navbar.jsp"/>
-        <div class="main-content">
-            <div class="container">
-                <jsp:include page="../include/student_breadcrumb.jsp">
-                    <jsp:param name="BREADCRUMB" value="${STUDENT_BREADCRUMB}"/>
-                    <jsp:param name="TITLE" value="${STUDENT_TITLE}"/>
-                </jsp:include>
-                <div class="row">
+<jsp:include page="../include/topbar.jsp"/>
+<div class="main-container">
+    <jsp:include page="../include/student_navbar.jsp"/>
+    <div class="main-content">
+        <div class="container">
+            <jsp:include page="../include/student_breadcrumb.jsp">
+                <jsp:param name="BREADCRUMB" value="${STUDENT_BREADCRUMB}"/>
+                <jsp:param name="TITLE" value="${STUDENT_TITLE}"/>
+            </jsp:include>
+            <div class="row">
+
+                <c:if test="${started && !ended}">
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -189,20 +191,26 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </c:if>
+                <c:if test="${started && ended}">
+                    <div class="errorHandler alert alert-danger">
+                        <i class="icon-remove-sign"></i> Sorry the registration has ended.
+                    </div>
+                </c:if>
             </div>
         </div>
     </div>
-    <jsp:include page="../include/footer.jsp"/>
-    <jsp:include page="../include/footer_script.jsp"/>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
-    <script>
-        setContextRoot('<%= request.getContextPath() %>');
-        jQuery(document).ready(function () {
-            Main.init();
-            FormValidator.init();
-        });
-    </script>
+</div>
+<jsp:include page="../include/footer.jsp"/>
+<jsp:include page="../include/footer_script.jsp"/>
+<script type="text/javascript"
+        src="${pageContext.request.contextPath}/assets/js/student-form-validation.js"></script>
+<script>
+    setContextRoot('<%= request.getContextPath() %>');
+    jQuery(document).ready(function () {
+        Main.init();
+        FormValidator.init();
+    });
+</script>
 </body>
 </html>
