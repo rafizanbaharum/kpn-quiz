@@ -48,7 +48,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/secure/application.jsp?gwt.codesvr=127.0.0.1:9997") //
+                .defaultSuccessUrl("/secure/application.jsp") // gwt.codesvr=127.0.0.1:9997
                 .failureUrl("/index.jsp?login_error=1")
                 .loginPage("/index.jsp")
                 .permitAll()
