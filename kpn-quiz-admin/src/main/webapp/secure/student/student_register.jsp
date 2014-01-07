@@ -56,7 +56,6 @@
                 <jsp:param name="TITLE" value="${STUDENT_TITLE}"/>
             </jsp:include>
             <div class="row">
-
                 <c:if test="${started && !ended}">
                     <div class="col-md-12">
                         <div class="panel panel-default">

@@ -145,28 +145,21 @@ public class RegistrationManagerImpl implements RegistrationManager {
 
     @Override
     public void updateStudent(QaStudent student,
-                              String username,
-                              String password,
                               String name,
-                              String nricNo,
                               Date dob,
                               Integer genderType,
                               Integer raceType
     ) {
 
         log.debug("Update = " + student);
-
         QaUser root = userDao.findById(ADMIN);
         QaUser user = userDao.findByActor(student);
         log.debug("user = " + user);
-        user.setUsername(username);
-        user.setPassword(password);
         userDao.update(user, root);
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(user);
 
         student.setName(name);
-        student.setNricNo(nricNo);
         student.setDob(dob);
         student.setGenderType(QaGenderType.get(genderType));
         student.setRaceType(QaRaceType.get(raceType));

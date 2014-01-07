@@ -116,7 +116,7 @@ public class StudentController extends AbstractController {
         log.debug("Year of competition = " + competition);
         if (null == competition) {
             model.addAttribute(studentModel);
-            model.addAttribute(MSG_ERROR, "An error occured! Competition is not exist. Please contact system administrator.");
+            model.addAttribute(MSG_ERROR, "An error occurred! Competition is not exist. Please contact system administrator.");
             return "secure/student/student_register";
         }
 
@@ -172,10 +172,7 @@ public class StudentController extends AbstractController {
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
         registrationManager.updateStudent(
                 student,
-                studentModel.getUsername(),
-                studentModel.getPassword(),
                 studentModel.getName(),
-                studentModel.getNricNo(),
                 extractDob(studentModel),
                 Integer.parseInt(studentModel.getGenderType()),
                 Integer.parseInt(studentModel.getRaceType())
