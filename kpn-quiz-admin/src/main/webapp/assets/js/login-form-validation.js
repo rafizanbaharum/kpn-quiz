@@ -181,6 +181,7 @@ var Login = function () {
                     required: true
                 },
                 nricNo: {
+                    minlength: 12,
                     required: true,
                     nricNo: true,
                     remote: {
