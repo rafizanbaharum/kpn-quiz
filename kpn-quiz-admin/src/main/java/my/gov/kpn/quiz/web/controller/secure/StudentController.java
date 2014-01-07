@@ -79,7 +79,7 @@ public class StudentController extends AbstractController {
     @RequestMapping(value = "/remove/confirm/{id}", method = {RequestMethod.POST})
     public String studentConfirmRemove(@PathVariable Long id, ModelMap model) {
         QaStudent student = instructorManager.findStudentById(id);
-
+        registrationManager .removeStudent(student);
         model.addAttribute("studentModel", transformer.transform(student));
         model.put(BREADCRUMB, "View Student Details");
         model.put(TITLE, "View Student Details");
