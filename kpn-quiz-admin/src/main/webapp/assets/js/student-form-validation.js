@@ -41,6 +41,7 @@ var FormValidator = function () {
                 },
                 nricNo: {
                     minlength: 12,
+                    maxlength:12,
                     required: true,
                     nricNo: true,
                     remote: {
@@ -70,7 +71,8 @@ var FormValidator = function () {
                     equalTo: "#nricNo"
                 },
                 username: {
-                    minlength: 2,
+                    minlength: 12,
+                    maxlength: 12,
                     required: true
                 },
                 genderType: {
@@ -139,6 +141,7 @@ var FormValidator = function () {
                 },
                 nricNo: {
                     minlength: 12,
+                    maxlength: 12,
                     required: true,
                     nricNo: true,
                     remote: {
@@ -168,7 +171,8 @@ var FormValidator = function () {
                     equalTo: "#nricNo"
                 },
                 username: {
-                    minlength: 2,
+                    minlength: 12,
+                    maxlength: 12,
                     required: true
                 },
                 genderType: {
