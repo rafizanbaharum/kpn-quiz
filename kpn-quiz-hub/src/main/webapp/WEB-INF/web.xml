@@ -154,8 +154,13 @@
     </listener>
 
     <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+
+    <listener>
         <listener-class>my.gov.kpn.quiz.web.listener.Log4jCleanupListener</listener-class>
     </listener>
+
     <listener>
         <listener-class>my.gov.kpn.quiz.web.listener.QuizStartupListener</listener-class>
     </listener>
