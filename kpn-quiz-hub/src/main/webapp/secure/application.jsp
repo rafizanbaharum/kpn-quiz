@@ -17,7 +17,7 @@
     <link rel="SHORTCUT ICON" href="${pageContext.request.contextPath}/assets/images/favicon/favicon.ico"/>
     <meta name="gwt:property" content="locale=ms">
 </head>
-<body style="overflow: hidden">
+<body style="overflow: hidden" oncopy='return false' oncut='return false' onpaste='return false'>
 <div id="loading">
     <div class="loading-indicator">
         <img src="${pageContext.request.contextPath}/gxt/images/default/shared/large-loading.gif"
