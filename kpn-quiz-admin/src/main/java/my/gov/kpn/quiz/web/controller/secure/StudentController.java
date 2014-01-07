@@ -8,6 +8,7 @@ import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.StudentModel;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -166,17 +167,9 @@ public class StudentController extends AbstractController {
     public String studentUpdate(@ModelAttribute("studentModel") StudentModel studentModel,
                                 ModelMap model) {
 
-        if (!studentModel.getNricNo().equals(studentModel.getConfirmNricNo())) {
-            model.addAttribute(studentModel);
-            model.addAttribute(MSG_ERROR, "NRIC No does not match. Please re-enter the same value");
-            return "secure/student/student_register";
-        }
-
-        // NRIC as username. Just copy it.
-        studentModel.setUsername(studentModel.getNricNo());
+        // no need to validate nric because it's read only
 
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
-
         registrationManager.updateStudent(
                 student,
                 studentModel.getUsername(),
@@ -203,6 +196,24 @@ public class StudentController extends AbstractController {
                 Integer.parseInt(studentModel.getDob_mm()),
                 Integer.parseInt(studentModel.getDob_dd())).toDate();
     }
+
+    @ModelAttribute("started")
+    public boolean started() {
+        QaCompetition competition =
+                competitionManager.findCompetitionByYear(competitionManager.getCurrentYearCompetition().getYear());
+        DateTime startDate = new DateTime(competition.getStartDate());
+        DateTime today = new DateTime(new Date());
+        return (today.isAfter(startDate));
+    }
+
+    @ModelAttribute("ended")
+    public boolean ended() {
+        QaCompetition competition = competitionManager.findCompetitionByYear(competitionManager.getCurrentYearCompetition().getYear());
+        DateTime endDate = new DateTime(competition.getEndDate());
+        DateTime today = new DateTime(new Date());
+        return (today.isAfter(endDate));
+    }
+
 
     /**
      * Get the first 6 digit of nric no
