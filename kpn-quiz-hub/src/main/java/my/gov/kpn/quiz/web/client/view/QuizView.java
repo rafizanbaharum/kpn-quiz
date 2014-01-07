@@ -492,16 +492,24 @@ public class QuizView extends View {
         next.setScale(Style.ButtonScale.LARGE);
         next.setMinWidth(100);
         next.addSelectionListener(new NextSelectionListener());
+
         Button prev = new Button("Prev");
         prev.addStyleName(QUIZ_NAV_BUTTON);
         prev.setScale(Style.ButtonScale.LARGE);
         prev.setMinWidth(100);
         prev.addSelectionListener(new PreviousSelectionListener());
 
+        Button logout = new Button("Logout");
+        logout.addStyleName(QUIZ_NAV_BUTTON);
+        logout.setScale(Style.ButtonScale.LARGE);
+        logout.setMinWidth(100);
+        logout.addSelectionListener(new LogoutSelectionListener());
+
         ButtonBar buttonBar = new ButtonBar();
         buttonBar.add(questionListCbx);
         buttonBar.add(prev);
         buttonBar.add(next);
+        buttonBar.add(logout);
         buttonBar.setAlignment(CENTER);
         footer.add(buttonBar, new MarginData(20, 0, 0, 0));
     }
@@ -696,6 +704,14 @@ public class QuizView extends View {
                         new QuizNavigateEvent(this, previousStep, currentStep)
                 );
             }
+        }
+    }
+
+    class LogoutSelectionListener extends SelectionListener<ButtonEvent> {
+        @Override
+        public void componentSelected(ButtonEvent buttonEvent) {
+            logout();
+
         }
     }
 
