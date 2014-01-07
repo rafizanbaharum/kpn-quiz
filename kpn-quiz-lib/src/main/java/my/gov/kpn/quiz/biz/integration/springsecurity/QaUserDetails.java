@@ -80,6 +80,7 @@ public class QaUserDetails implements UserDetails {
         return user.getId();
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -87,13 +88,13 @@ public class QaUserDetails implements UserDetails {
 
         QaUserDetails that = (QaUserDetails) o;
 
-        if (user != null ? !user.equals(that.user) : that.user != null) return false;
+        if (!user.equals(that.user)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return user != null ? user.hashCode() : 0;
+        return user.hashCode();
     }
 }
