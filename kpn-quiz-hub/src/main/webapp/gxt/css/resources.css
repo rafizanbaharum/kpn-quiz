@@ -64,8 +64,6 @@ quiz-app-viewport
     font-family: "Raleway", serif;
     padding-left: 30px;
     color: #000000;
-    background: url(../../gxt/images/bg/alarm-clock.png) no-repeat left center;
-
 }
 
 #quiz-counter {
@@ -74,7 +72,6 @@ quiz-app-viewport
     font-family: "Raleway", serif;
     padding-left: 30px;
     color: #000000;
-    background: url(../../gxt/images/bg/preview.png) no-repeat left center;
 }
 
 #quiz-status {
@@ -83,7 +80,6 @@ quiz-app-viewport
     font-family: "Raleway", serif;
     padding-left: 30px;
     color: #000000;
-    background: url(../../gxt/images/bg/fountain-pen.png) no-repeat left center;
 }
 
 /* custom button */

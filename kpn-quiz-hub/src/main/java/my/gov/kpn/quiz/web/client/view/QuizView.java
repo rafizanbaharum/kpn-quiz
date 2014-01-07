@@ -269,12 +269,11 @@ public class QuizView extends View {
     }
 
     private void updateCounter(String stat) {
-        log.info("updating counter: " + stat);
-        counter.setHtml(stat);
+        counter.setHtml("Remaining Questions: " + stat);
     }
 
     private void updateStatus(String stat) {
-        status.setHtml(stat);
+        status.setHtml("Question Status: " + stat);
     }
 
     private void updateLevel(String lev) {
@@ -282,7 +281,7 @@ public class QuizView extends View {
     }
 
     private void updateTimer() {
-        timer.setHtml(formattedNow());
+        timer.setHtml("Remaining Time: " + formattedNow());
     }
 
     // subjective
@@ -461,9 +460,9 @@ public class QuizView extends View {
         status.setHtml(INITIALIZING);
         LayoutContainer panel = new LayoutContainer();
         panel.setLayout(new HBoxLayout());
-        panel.add(timer, new HBoxLayoutData(0, 0, 0, 20));
-        panel.add(counter, new HBoxLayoutData(0, 0, 0, 20));
-        panel.add(status, new HBoxLayoutData(0, 0, 0, 20));
+        panel.add(timer, new HBoxLayoutData(0, 10, 0, 20));
+        panel.add(counter, new HBoxLayoutData(0, 10, 0, 170));
+        panel.add(status, new HBoxLayoutData(0, 10, 0, 170));
         header.add(panel, new MarginData(30, 0, 0, 0));
     }
 
