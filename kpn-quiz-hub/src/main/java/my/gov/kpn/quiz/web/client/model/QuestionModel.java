@@ -5,8 +5,8 @@ package my.gov.kpn.quiz.web.client.model;
  */
 public class QuestionModel extends MetaModel {
 
-    private final String RED = "red";
-    private final String GREEN = "green";
+    private static final String RED = "red";
+    private static final String GREEN = "green";
 
     public static final String ID = "id";
     public static final String STATEMENT = "statement";
