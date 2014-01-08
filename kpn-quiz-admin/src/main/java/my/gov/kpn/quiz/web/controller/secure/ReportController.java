@@ -107,12 +107,10 @@ public class ReportController extends AbstractController {
             ModelAndView modelAndView, ModelMap map) {
 
 
-//        JRBeanCollectionDataSource engine = new JRBeanCollectionDataSource(reportDao.getStudentList(studentModel.getState(),studentModel.getSchoolType(),studentModel.getSchoolType()));
+        JRBeanCollectionDataSource engine = new JRBeanCollectionDataSource(reportDao.getStudentStatisticMap());
 
         Map<String, Object> parameterMap = new HashMap<String, Object>();
-//        parameterMap.put("datasource", engine);
-//        parameterMap.put("pmt_state", reportHelper.findStateNameById(studentModel.getState()));
-//        parameterMap.put("pmt_school", "ALL");
+        parameterMap.put("datasource", engine);
         modelAndView = new ModelAndView("studentStatList", parameterMap);
 
         return modelAndView;

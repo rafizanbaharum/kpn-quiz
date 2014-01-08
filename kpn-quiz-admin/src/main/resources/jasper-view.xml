@@ -19,6 +19,11 @@
           p:url="/WEB-INF/classes/reports/student_list.jasper"
           p:reportDataKey="datasource" />
 
+    <bean id="studentStatList"
+          class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
+          p:url="/WEB-INF/classes/reports/student_stat_list.jasper"
+          p:reportDataKey="datasource" />
+
 
 
 </beans>

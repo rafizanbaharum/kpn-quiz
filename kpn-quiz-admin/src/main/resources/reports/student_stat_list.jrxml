@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student_stat_list" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="273565ca-4725-4bf0-b733-f74f4a8aad1a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select state_id,race_type,count(race_type) from qa_stdn s
+inner join qa_actr a on a.id = s.id
+group by race_type,state_id]]>
+	</queryString>
+	<field name="stateId" class="java.lang.Long"/>
+	<field name="stateName" class="java.lang.String"/>
+	<field name="maleTotal" class="java.lang.Long"/>
+	<field name="femaleTotal" class="java.lang.Long"/>
+	<field name="malayTotal" class="java.lang.Long"/>
+	<field name="chineseTotal" class="java.lang.Long"/>
+	<field name="indianTotal" class="java.lang.Long"/>
+	<field name="nativeSabahTotal" class="java.lang.Long"/>
+	<field name="nativeSarawakTotal" class="java.lang.Long"/>
+	<field name="othersTotal" class="java.lang.Long"/>
+	<field name="total" class="java.lang.Long"/>
+	<variable name="totalMale" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{maleTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalFemale" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{femaleTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalMalay" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{malayTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalChinese" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{chineseTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalIndian" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{indianTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalNativeSabah" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{nativeSabahTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalNativeSarawak" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{nativeSarawakTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalOthers" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{othersTotal}]]></variableExpression>
+	</variable>
+	<variable name="totalStudents" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="27101f4b-99ef-478c-ac35-c577b414503f" x="0" y="21" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATISTIC STUDENT BY RACE, GENDER AND STATE
+]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="648457d4-e387-4934-a39c-121a26ed9eb5" x="455" y="1" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="14" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6d06e723-f4a7-4ceb-9117-6589414f3266" x="0" y="0" width="171" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[State]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cd321093-f2ac-49a5-991b-0757d1a78515" x="194" y="2" width="30" height="75"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Male]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c88fc99-4353-4016-b4b8-1b013bfc4f1c" x="224" y="0" width="28" height="77"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Female]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2d6623b6-5cb9-4cfa-b2cd-f8e6c58f3f4d" x="270" y="0" width="40" height="77"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Malay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8d9723f2-aedf-414b-ac7d-2eb1f17f7c00" x="310" y="0" width="34" height="77"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chinese]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0165c4d6-3555-4134-8db4-491ddc965be3" x="344" y="0" width="39" height="77"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff4201f2-da76-4441-82bd-5a4987a9e7ce" x="383" y="0" width="37" height="77"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Native Sabah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2d0df5c-f3a2-41d6-be1d-3d8171ad1d9c" x="420" y="1" width="35" height="76"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Native Sarawak]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7f196663-8cd1-4bf9-9dca-88d404873f0f" x="455" y="0" width="49" height="77"/>
+				<textElement textAlignment="Right" rotation="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Others]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06f35989-1ccf-43d9-ba91-865043e6cad0" x="504" y="0" width="51" height="77"/>
+				<textElement textAlignment="Left">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<textField>
+				<reportElement uuid="de3cc123-bcc7-4ea8-8c6c-bd71146f5ad6" x="23" y="0" width="171" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{stateName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f0780a5a-1121-4b88-ad57-12e821e244d9" x="194" y="0" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{maleTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2907f104-37ce-4ca2-a1a0-658ad8b7858a" x="224" y="0" width="28" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{femaleTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="247b4f30-ab56-4968-a05d-1c9d77b50298" x="270" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{malayTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="896252fe-e456-4123-901c-89db33bb0416" x="310" y="0" width="34" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{chineseTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9293a701-fce7-4ecf-a004-4a44d6e26768" x="344" y="0" width="39" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{indianTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fcbcbaa0-941d-4caf-b14f-c0c746b3ea76" x="383" y="0" width="37" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nativeSabahTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f4f9aa39-6109-442a-a57d-d0303197f5f4" x="420" y="0" width="35" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nativeSarawakTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3466a82a-23c0-41ed-9281-c16d1b00b030" x="455" y="0" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{othersTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a8b48c41-860d-4953-909d-b055226a5c67" x="0" y="0" width="23" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7969d877-7fb1-4c01-8078-7697401eedae" x="504" y="0" width="51" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="228ee903-e343-45c1-b1ca-0358cd4ba510" x="0" y="20" width="555" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="10" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="bb1b94fe-b466-45d9-bc5c-5a3b6349ff40" x="194" y="0" width="28" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalMale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dff05f84-b3aa-44b9-aca1-edc5c4d705ec" x="224" y="0" width="28" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalFemale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="926f30b7-185d-4746-b5f2-73c9fa072fa5" x="270" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalMalay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8fcb6578-a139-4390-875f-9ad888a73c7b" x="310" y="0" width="34" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalChinese}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ff9dbcb-cd47-4215-a999-e92810a6412b" x="344" y="0" width="39" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalIndian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6ab89a69-dc4d-450d-82bd-42d3fc2f2df2" x="383" y="0" width="37" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalNativeSabah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6673767c-ea5d-4e61-a50c-2dff6016e421" x="420" y="0" width="35" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalNativeSarawak}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b2944ea1-4d2c-47a2-ae96-3962aa429a4d" x="455" y="0" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalOthers}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0a4939b9-50e3-45fe-9b77-43a6e764f923" x="435" y="29" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="64df4e38-6700-4f51-91f0-f9f932b49394" x="515" y="29" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d18cd63b-c2b5-4f7c-9615-19f69cb3b1c5" x="504" y="0" width="51" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{totalStudents}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

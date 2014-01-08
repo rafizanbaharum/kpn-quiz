@@ -60,67 +60,13 @@
                             <jsp:include page="../include/msg.jsp"/>
                             <div class="panel-heading">
                                 <i class="icon-external-link-sign"></i>
-                                Student List Report
+                                Statistic : Students by race, gender and state
                             </div>
                             <div class="panel-body">
 
                                 <form:form id="form" commandName="studentStatModel"
                                            action="${pageContext.request.contextPath}/secure/report/studentStat/list"
                                            method="GET" target="_blank">
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="control-label">
-                                                    State
-                                                </label>
-                                                <form:select id="form-field-select-1" path="state" class="form-control">
-                                                    <form:option value="">Select state</form:option>
-                                                    <c:forEach items="${states}" var="state">
-                                                        <form:option value='${state.key}'>${state.value}</form:option>
-                                                    </c:forEach>
-                                                </form:select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="control-label">
-                                                    Race
-                                                </label>
-                                                <form:select id="race" path="race"
-                                                             class="form-control">
-                                                    <form:option value="">Choose race</form:option>
-                                                    <c:forEach items="${raceTypeMap}"
-                                                               var="raceType">
-                                                        <form:option
-                                                                value='${raceType.key}'>${raceType.value}</form:option>
-                                                    </c:forEach>
-                                                </form:select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="control-label">
-                                                    Gender
-                                                </label>
-                                                <form:select id="gender" path="gender"
-                                                             class="form-control">
-                                                    <form:option value="">Choose gender</form:option>
-                                                    <c:forEach items="${genderTypeMap}"
-                                                               var="genderType">
-                                                        <form:option
-                                                                value='${genderType.key}'>${genderType.value}</form:option>
-                                                    </c:forEach>
-                                                </form:select>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="row">
                                         <div class="col-md-12">
