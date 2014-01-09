@@ -67,6 +67,7 @@ var Login = function () {
             rules: {
                 username: {
                     minlength: 12,
+                    maxlength: 12,
                     required: true,
                     nricNo: true
                 },
@@ -184,6 +185,7 @@ var Login = function () {
                 },
                 nricNo: {
                     minlength: 12,
+                    maxlength: 12,
                     required: true,
                     nricNo: true,
                     remote: {

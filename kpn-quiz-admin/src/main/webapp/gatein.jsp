@@ -72,14 +72,12 @@
                 <fieldset>
                     <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="username" placeholder="NRIC No"
-                                       maxlength="12">
+								<input type="text" class="form-control" name="username" placeholder="NRIC No" maxlength="12">
 								<i class="icon-user"></i> </span>
                     </div>
                     <div class="form-group form-actions">
 							<span class="input-icon">
-								<input type="password" class="form-control password" name="password"
-                                       placeholder="Password">
+								<input type="password" class="form-control password" name="password" placeholder="Password">
 								<i class="icon-lock"></i>
 								<a class="forgot" href="#">
                                     I forgot my password
