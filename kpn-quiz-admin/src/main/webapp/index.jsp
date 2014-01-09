@@ -165,7 +165,7 @@
                             <div class="content">
                                 Download Asean Quiz's manual for students.
                             </div>
-                            <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.doc">
+                            <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf">
                                 Download Manual <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
