@@ -306,10 +306,12 @@ public class QuizView extends View {
     private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
         log.info("#" + questionModel.getIndex() + " " + questionModel.getStatement() + " Answer:" + answerIndex);
         questionModel.setAnswered(Boolean.TRUE);
+        questionListCbx.getStore().removeAll();
+        questionListCbx.getStore().add(models);
         delegate.updateAnswer(questionModel, answerIndex, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
-                // TODO:
+                 caught.printStackTrace();
             }
 
             @Override
@@ -332,6 +334,7 @@ public class QuizView extends View {
         delegate.loadAnswerIndex(questionModel, new AsyncCallback<Integer>() {
             @Override
             public void onFailure(Throwable caught) {
+                caught.printStackTrace();
             }
 
             @Override
@@ -368,6 +371,7 @@ public class QuizView extends View {
         delegate.loadAnswerResponse(questionModel, new AsyncCallback<String>() {
             @Override
             public void onFailure(Throwable caught) {
+                caught.printStackTrace();
             }
 
             @Override
