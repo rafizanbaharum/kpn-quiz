@@ -95,6 +95,6 @@ public class QaUserDetails implements UserDetails {
 
     @Override
     public int hashCode() {
-        return null == user ? this.hashCode() : user.hashCode();
+        return null == user ? 0 : user.hashCode();
     }
 }
