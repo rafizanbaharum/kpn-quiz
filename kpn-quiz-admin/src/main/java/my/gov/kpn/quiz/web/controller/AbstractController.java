@@ -49,14 +49,31 @@ public class AbstractController {
     protected ResourceBundleMessageSource messageSource;
 
     private enum SchoolType {
-        SMK("SMK"),
+          /*
+1) Sekolah Menengah Kebangsaan (SMK)
+2) Sekolah Menengah Berasrama Penuh (SBP)
+3) Sekolah Menengah Teknik & Vokasional (SMT/V)
+4) Sekolah Menengah Kebangsaan Agama (SMKA)
+5) Sekolah Agama Bantuan Kerajaan (SABK)
+6) Sekolah Menengah Seni Dan Sukan (SM Sains Dan Sukan)
+7) Sekolah Persendirian / Swasta (Persendirian/Swasta)
+*/
+    SMK("Sekolah Menengah Kebangsaan"),
+    SBP("Sekolah Menengah Berasrama Penuh"),
+    SMT_V("Sekolah Menengah Teknik & Vokasional"),
+    SMKA("Sekolah Menengah Kebangsaan Agama"),
+    SABK("Sekolah Agama Bantuan Kerajaan"),
+    SMS("Sekolah Menengah Seni Dan Sukan"),
+    PRIVATE("Sekolah Persendirian / Swasta");
+
+        /*SMK("SMK"),
         PRIVATE("PRIVATE"),
         SBP("SBP"),
         SMK_TEKNIK("SMK TEKNIK"),
         SMKJ_C("SMKJ(C)"),
         SMKJ_T("SMKJ(T)"),
         SMA("SMA"),
-        MRSM("MRSM");
+        MRSM("MRSM");    */
 
         private String description;
 
