@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
@@ -22,6 +23,9 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Qualifier(value = "studentDetailService")
     private UserDetailsService userDetailService;
+
+    @Autowired
+    private SessionRegistry sessionRegistry;
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -48,7 +52,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/secure/application.jsp") // gwt.codesvr=127.0.0.1:9997
+                .defaultSuccessUrl("/secure/application.jsp?gwt.codesvr=127.0.0.1:9997") // gwt.codesvr=127.0.0.1:9997
                 .failureUrl("/index.jsp?login_error=1")
                 .loginPage("/index.jsp")
                 .permitAll()
@@ -56,12 +60,13 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/index.jsp")
-                .invalidateHttpSession(true);
-//                .and()
-//                .sessionManagement()
-//                .maximumSessions(1)
-//                .maxSessionsPreventsLogin(true)
-//                .expiredUrl("/gate/in");
+                .invalidateHttpSession(true)
+                .and()
+                .sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(true)
+                .sessionRegistry(sessionRegistry)
+                .expiredUrl("/gate/in");
     }
 
 
