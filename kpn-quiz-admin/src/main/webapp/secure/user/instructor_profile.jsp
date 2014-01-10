@@ -47,7 +47,7 @@
 <body class="footer-fixed layout-boxed">
     <jsp:include page="../include/topbar.jsp"/>
     <div class="main-container">
-        <jsp:include page="../include/instructor_navbar.jsp"/>
+        <jsp:include page="../include/student_navbar.jsp"/>
         <div class="main-content">
             <div class="container">
                 <div class="row">
