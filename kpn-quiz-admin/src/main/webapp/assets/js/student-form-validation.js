@@ -7,7 +7,7 @@ var FormValidator = function () {
         },
         'Please enter a valid NRIC no. without dash. eg: 671218045678');
 
-    $.validator.addMethod("FullDate", function () {
+    $.validator.addMethod("fullDate", function () {
         //if all values are selected
         if ($("#dob_dd").val() != "" && $("#dob_mm").val() != "" && $("#dob_yyyy").val() != "") {
             return true;
@@ -41,9 +41,10 @@ var FormValidator = function () {
                 },
                 nricNo: {
                     minlength: 12,
-                    maxlength:12,
+                    maxlength: 12,
                     required: true,
                     nricNo: true,
+                    number:true,
                     remote: {
                         url: getContextRoot() + "/register/validate/",
                         type: "GET",
@@ -68,6 +69,7 @@ var FormValidator = function () {
                 },
                 confirmNricNo: {
                     required: true,
+                    number:true,
                     equalTo: "#nricNo"
                 },
                 username: {
@@ -81,7 +83,12 @@ var FormValidator = function () {
                 raceType: {
                     required: true
                 },
-                dob_yyyy: "FullDate"
+                dob_yyyy: {
+                    fullDate:true,
+                    minlength: 4,
+                    maxlength: 4,
+                    number: true
+                }
             },
             messages: {
                 name: "Please specify your first name",
@@ -181,7 +188,12 @@ var FormValidator = function () {
                 raceType: {
                     required: true
                 },
-                dob_yyyy: "FullDate"
+                dob_yyyy: {
+                    fullDate:true,
+                    minlength: 4,
+                    maxlength: 4,
+                    number: true
+                }
             },
             messages: {
                 name: "Please specify your first name",
