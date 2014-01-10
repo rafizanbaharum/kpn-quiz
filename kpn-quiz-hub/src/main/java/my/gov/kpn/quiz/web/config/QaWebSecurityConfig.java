@@ -2,12 +2,15 @@ package my.gov.kpn.quiz.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 
@@ -56,12 +59,18 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/index.jsp")
-                .invalidateHttpSession(true);
-//                .and()
-//                .sessionManagement()
-//                .maximumSessions(1)
-//                .maxSessionsPreventsLogin(true)
-//                .expiredUrl("/gate/in");
+                .invalidateHttpSession(true)
+                .and()
+                .sessionManagement()
+                .maximumSessions(1)
+                .sessionRegistry(sessionRegistry())
+                .maxSessionsPreventsLogin(true)
+                .expiredUrl("/gate/in");
+    }
+
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
     }
 
 
