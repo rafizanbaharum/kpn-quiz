@@ -157,7 +157,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <form:input path="dob_yyyy" placeholder="YYYY"
-                                                                cssClass="form-control"/>
+                                                                cssClass="form-control" maxlength="4"/>
                                                 </div>
                                             </div>
                                         </div>
