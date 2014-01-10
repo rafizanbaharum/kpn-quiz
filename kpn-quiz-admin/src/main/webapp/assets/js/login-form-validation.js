@@ -141,11 +141,11 @@ var Login = function () {
                     required: true
                 },
                 address1: {
-                    minlength: 2,
+                    minlength: 5,
                     required: true
                 },
                 city: {
-                    minlength: 2,
+                    minlength: 5,
                     required: true
                 },
                 phone: {
@@ -164,7 +164,8 @@ var Login = function () {
                     required: true
                 },
                 schoolName: {
-                    minlength: 2,
+                    minlength: 6,
+                    maxlength: 100,
                     required: true
                 },
                 schoolPhone: {
@@ -218,6 +219,7 @@ var Login = function () {
                 passwordAgain: {
                     required: true,
                     minlength: 6,
+                    maxlength: 8,
                     equalTo: "#password"
                 }
             },
