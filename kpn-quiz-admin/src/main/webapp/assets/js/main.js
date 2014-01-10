@@ -33,7 +33,6 @@ var Main = function () {
         $('.sidebar-search input').removeAttr('style').removeClass('open');
         $('.sidebar-fixed .wrap-menu').css('height', $pageArea);
         runContainerHeight();
-        getContextRoot()
     };
     //function to adapt the Main Content height to the Main Navigation height 
     var runContainerHeight = function () {
