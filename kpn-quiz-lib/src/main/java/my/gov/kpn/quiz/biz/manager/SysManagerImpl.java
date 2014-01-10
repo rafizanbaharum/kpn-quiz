@@ -52,14 +52,22 @@ public class SysManagerImpl implements SysManager {
             public void prepare(MimeMessage mimeMessage) throws Exception {
                 mimeMessage.setFrom(new InternetAddress("fs.error@digitalspace.com.my", "KPN ASEAN Quiz"));
                 mimeMessage.setSender(new InternetAddress("fs.error@digitalspace.com.my"));
-                InternetAddress[] addresses = {new InternetAddress("alifhaikal88@gmail.com"),
-                        new InternetAddress("rafizan.baharum@gmail.com"),
-                        new InternetAddress("faizal.manan@gmail.com")};
+                InternetAddress[] addresses = {new InternetAddress(user.getEmail())};
                 mimeMessage.setRecipients(Message.RecipientType.TO, addresses);
                 mimeMessage.setSubject("Password Recovery");
                 mimeMessage.setSentDate(new Date());
                 mimeMessage.setText("Hello!\nThis is your password: " + user.getPassword());
                 mimeMessage.saveChanges();
+//                mimeMessage.setFrom(new InternetAddress("fs.error@digitalspace.com.my", "KPN ASEAN Quiz"));
+//                mimeMessage.setSender(new InternetAddress("fs.error@digitalspace.com.my"));
+//                InternetAddress[] addresses = {new InternetAddress("alifhaikal88@gmail.com"),
+//                        new InternetAddress("rafizan.baharum@gmail.com"),
+//                        new InternetAddress("faizal.manan@gmail.com")};
+//                mimeMessage.setRecipients(Message.RecipientType.TO, addresses);
+//                mimeMessage.setSubject("Password Recovery");
+//                mimeMessage.setSentDate(new Date());
+//                mimeMessage.setText("Hello!\nThis is your password: " + user.getPassword());
+//                mimeMessage.saveChanges();
             }
         });
     }
