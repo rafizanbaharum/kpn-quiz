@@ -107,38 +107,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <%--<div class="col-sm-6">--%>
-                        <%--<div class="core-box">--%>
-                            <%--<div class="heading">--%>
-                                <%--<i class="clip-user-4 circle-icon circle-green"></i>--%>
-
-                                <%--<h2>Manage Users</h2>--%>
-                            <%--</div>--%>
-                            <%--<div class="content">--%>
-                                <%--Manage user Instructor, Student and Support person.--%>
-                                <%--View, edit or register new record.--%>
-                            <%--</div>--%>
-                            <%--<a class="view-more" href="${pageContext.request.contextPath}/secure/user/list">--%>
-                                <%--View More <i class="clip-arrow-right-2"></i>--%>
-                            <%--</a>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <%--<div class="col-sm-6">--%>
-                        <%--<div class="core-box">--%>
-                            <%--<div class="heading">--%>
-                                <%--<i class="clip-clip circle-icon circle-teal"></i>--%>
-
-                                <%--<h2>Manage Competition</h2>--%>
-                            <%--</div>--%>
-                            <%--<div class="content">--%>
-                                <%--Manage your Round, Quiz and Questions.--%>
-                                <%--View, edit or create new record.--%>
-                            <%--</div>--%>
-                            <%--<a class="view-more" href="${pageContext.request.contextPath}/secure/competition/list">--%>
-                                <%--View More <i class="clip-arrow-right-2"></i>--%>
-                            <%--</a>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
                     <div class="col-sm-6">
                         <div class="core-box">
                             <div class="heading">
@@ -166,7 +134,7 @@
                                 Download Asean Quiz's manual for students.
                             </div>
                             <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf">
-                                Download Manual <i class="clip-arrow-right-2"></i>
+                                Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>

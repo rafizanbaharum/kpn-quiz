@@ -48,19 +48,34 @@
             <div class="container">
                 <jsp:include page="../include/manage_breadcrumb.jsp"/>
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="core-box">
                             <div class="heading">
-                                <i class="clip-user-4 circle-icon circle-green"></i>
+                                <i class="clip-archive circle-icon circle-blue"></i>
 
-                                <h2>Manage Students</h2>
+                                <h2>Rules and Regulations</h2>
                             </div>
                             <div class="content">
-                                Manage your profile, Students.
-                                View, edit or register new record.
+                                Download Asean Quiz Rules and Regulations
                             </div>
-                            <a class="view-more" href="${pageContext.request.contextPath}/secure/student/list">
-                                View More <i class="clip-arrow-right-2"></i>
+                            <a class="view-more"
+                               href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.pdf">
+                            Download Here <i class="clip-arrow-right-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="core-box">
+                            <div class="heading">
+                                <i class="clip-settings circle-icon circle-bricky"></i>
+
+                                <h2>Manual and Guidelines</h2>
+                            </div>
+                            <div class="content">
+                                Download Asean Quiz's manual for students.
+                            </div>
+                            <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf">
+                                Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
