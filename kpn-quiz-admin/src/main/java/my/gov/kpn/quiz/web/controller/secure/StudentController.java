@@ -9,6 +9,7 @@ import my.gov.kpn.quiz.web.model.StudentModel;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
+import org.joda.time.IllegalFieldValueException;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -133,12 +134,19 @@ public class StudentController extends AbstractController {
             return "secure/student/student_register";
         }
 
+        Date dob = null;
+        try {
+            dob = extractDob(studentModel);
+        } catch (IllegalFieldValueException e) {
+            model.addAttribute(MSG_ERROR, "Invalid date of birth");
+           return "secure/student/student_register";
+        }
         registrationManager.registerStudent(
                 studentModel.getUsername(),
                 generatePassword(studentModel.getNricNo()),
                 studentModel.getName(),
                 studentModel.getNricNo(),
-                extractDob(studentModel),
+                dob,
                 Integer.parseInt(studentModel.getGenderType()),
                 Integer.parseInt(studentModel.getRaceType()),
                 getCurrentInstructor());
@@ -170,10 +178,33 @@ public class StudentController extends AbstractController {
         // no need to validate nric because it's read only
 
         QaStudent student = instructorManager.findStudentById(studentModel.getId());
+
+        QaCompetition competition = competitionDao.findByYear(LocalDate.now().getYear());
+        Integer dobYear = Integer.valueOf(studentModel.getDob_yyyy());
+        int diff = competition.getYear() - dobYear;
+        log.debug("Diff DOB and competition year = " + diff);
+        log.debug(MessageFormat.format("Start constraint = {0} / End Constraint = {1}",
+                competition.getStartConstraint(), competition.getEndConstraint()));
+
+        if (!((diff >= competition.getStartConstraint()) && diff <= competition.getEndConstraint())) {
+            model.addAttribute(studentModel);
+            model.addAttribute(MSG_ERROR, MessageFormat.format("Age must be between {0} and {1} on {2}",
+                    competition.getStartConstraint(), competition.getEndConstraint(), String.valueOf(competition.getYear())));
+            return "secure/student/student_edit";
+        }
+
+        Date dob = null;
+        try {
+            dob = extractDob(studentModel);
+        } catch (IllegalFieldValueException e) {
+            model.addAttribute(MSG_ERROR, "Invalid date of birth");
+           return "secure/student/student_register";
+        }
+
         registrationManager.updateStudent(
                 student,
                 studentModel.getName(),
-                extractDob(studentModel),
+                dob,
                 Integer.parseInt(studentModel.getGenderType()),
                 Integer.parseInt(studentModel.getRaceType())
         );
