@@ -53,6 +53,17 @@
                 </jsp:include>
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="btn-group btn-group-justified">
+                            <a href="${pageContext.request.contextPath}/secure/instructor/browse?page=${previous}"
+                               class="btn btn-primary" ${!hasPrevious?"disabled":""}>Previous</a>
+                            <a href="${pageContext.request.contextPath}/secure/instructor/browse?page=${next}"
+                               class="btn btn-primary" ${!hasNext?"disabled":""}>Next</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"/>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <i class="icon-external-link-sign"></i>
