@@ -88,7 +88,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    Username <span class="symbol required"></span>
+                                                    Username
                                                 </label>
                                                 <form:input path="username" cssClass="form-control" readonly="true"/>
                                             </div>
@@ -96,7 +96,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    Name <span class="symbol required"></span>
+                                                    Name
                                                 </label>
                                                 <form:input path="name" cssClass="form-control" readonly="true"/>
                                             </div>
@@ -104,9 +104,17 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="control-label">
-                                                    NRIC NO <span class="symbol required"></span>
+                                                    NRIC NO
                                                 </label>
                                                 <form:input path="nricNo" cssClass="form-control" readonly="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Email
+                                                </label>
+                                                <form:input path="email" cssClass="form-control" readonly="true"/>
                                             </div>
                                         </div>
                                     </div>

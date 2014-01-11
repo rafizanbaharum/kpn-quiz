@@ -9,6 +9,7 @@ public class ActorModel extends MetaModel {
     private String address2;
     private String address3;
     private String phone;
+    private String email;
     private String fax;
 
     public String getUsername() {
@@ -73,5 +74,13 @@ public class ActorModel extends MetaModel {
 
     public void setFax(String fax) {
         this.fax = fax;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

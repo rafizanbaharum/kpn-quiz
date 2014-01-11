@@ -101,6 +101,7 @@ public class
         model.setId(user.getId());
         model.setName(user.getName());
         model.setUsername(user.getUsername());
+        model.setEmail(user.getEmail());
         model.setPassword(user.getPassword());
         model.setPasswordAgain(user.getPassword());
         return model;
@@ -253,6 +254,7 @@ public class
         QaUser user = instructorManager.findUserByActor(instructor);
         model.setId(instructor.getId());
         model.setUsername(user.getUsername());
+        model.setEmail(instructor.getEmail());
         model.setName(instructor.getName());
         model.setNricNo(instructor.getNricNo());
         model.setPhone(instructor.getPhone());
