@@ -41,89 +41,91 @@
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <body class="footer-fixed layout-boxed">
-    <jsp:include page="../include/topbar.jsp"/>
-    <div class="main-container">
-        <jsp:include page="../include/instructor_navbar.jsp"/>
-        <div class="main-content">
-            <div class="container">
-                <jsp:include page="../include/instructor_breadcrumb.jsp"/>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="core-box">
-                            <div class="heading">
-                                <i class="clip-user-4 circle-icon circle-green"></i>
+<jsp:include page="../include/topbar.jsp"/>
+<div class="main-container">
+    <jsp:include page="../include/instructor_navbar.jsp"/>
+    <div class="main-content">
+        <div class="container">
+            <jsp:include page="../include/instructor_breadcrumb.jsp"/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="core-box">
+                        <div class="heading">
+                            <i class="clip-user-4 circle-icon circle-green"></i>
 
-                                <h2>Manage Students</h2>
-                            </div>
-                            <div class="content">
-                                Manage your profile, Students.
-                                View, edit or register new record.
-                            </div>
-                            <a class="view-more" href="${pageContext.request.contextPath}/secure/student/list">
-                                View More <i class="clip-arrow-right-2"></i>
-                            </a>
+                            <h2>Manage Students</h2>
                         </div>
+                        <div class="content">
+                            Manage your profile, Students.
+                            View, edit or register new record.
+                        </div>
+                        <a class="view-more" href="${pageContext.request.contextPath}/secure/student/list">
+                            View More <i class="clip-arrow-right-2"></i>
+                        </a>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="core-box">
-                            <div class="heading">
-                                <i class="clip-settings circle-icon circle-teal"></i>
+                </div>
+                <div class="col-sm-6">
+                    <div class="core-box">
+                        <div class="heading">
+                            <i class="clip-settings circle-icon circle-teal"></i>
 
-                                <h2>Manual and Guidelines</h2>
-                            </div>
-                            <div class="content">
-                                Download Asean Quiz's manual for students.
-                            </div>
-                            <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf">
-                                Download Manual <i class="clip-arrow-right-2"></i>
-                            </a>
+                            <h2>Manual and Guidelines</h2>
                         </div>
+                        <div class="content">
+                            Download Asean Quiz's manual for students.
+                        </div>
+                        <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf"
+                           target="_blank">
+                            Download Manual <i class="clip-arrow-right-2"></i>
+                        </a>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="core-box">
-                            <div class="heading">
-                                <i class="clip-archive circle-icon circle-green"></i>
+                </div>
+                <div class="col-sm-6">
+                    <div class="core-box">
+                        <div class="heading">
+                            <i class="clip-archive circle-icon circle-green"></i>
 
-                                <h2>Rules and Regulations</h2>
-                            </div>
-                            <div class="content">
-                                Download Asean Quiz Rules and Regulations
-                            </div>
-                            <a class="view-more"
-                               href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.doc">
-                                Download Here <i class="clip-arrow-right-2"></i>
-                            </a>
+                            <h2>Rules and Regulations</h2>
                         </div>
+                        <div class="content">
+                            Download Asean Quiz Rules and Regulations
+                        </div>
+                        <a class="view-more"
+                           href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.doc"
+                           target="_blank">
+                            Download Here <i class="clip-arrow-right-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <jsp:include page="../include/footer.jsp"/>
+</div>
+<jsp:include page="../include/footer.jsp"/>
 
 
-    <!-- start: MAIN JAVASCRIPTS -->
-    <!--[if lt IE 9]>
-    <script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
-    <![endif]-->
-    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-    <!-- end: MAIN JAVASCRIPTS -->
-    <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
-    <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script>
-        jQuery(document).ready(function () {
-            Main.init();
-        });
-    </script>
+<!-- start: MAIN JAVASCRIPTS -->
+<!--[if lt IE 9]>
+<script src="${pageContext.request.contextPath}/assets/plugins/respond.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+<script src="${pageContext.request.contextPath}/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
+<!-- end: MAIN JAVASCRIPTS -->
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+    });
+</script>
 </body>
 <!-- end: BODY -->
 </html>
