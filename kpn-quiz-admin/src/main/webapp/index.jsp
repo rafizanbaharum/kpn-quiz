@@ -175,24 +175,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="core-box">
-                            <div class="heading">
-                                <i class="clip-settings circle-icon circle-bricky"></i>
-
-                                <h2>Manual and Guidelines</h2>
-                            </div>
-                            <div class="content">
-                                Download Asean Quiz's manual for students.
-                            </div>
-                            <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf"
-                                    target="_blank">
-                                Download Here <i class="clip-arrow-right-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -108,9 +108,16 @@
                                 </c:choose>
                                 </tbody>
                             </table>
-                            <div class="btn-group btn-group-justified">
-                                <a href="${pageContext.request.contextPath}/secure/student/register"
-                                   class="btn btn-primary">Register Student</a>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="btn-group btn-group-justified">
+                                        <a href="${pageContext.request.contextPath}/secure/student/register"
+                                           class="btn btn-primary">Register Student</a>
+                                        <a href="${pageContext.request.contextPath}/secure/report/student/listByInstructor"
+                                           class="btn btn-primary" target="_blank"
+                                           title="Remove this student">Print</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

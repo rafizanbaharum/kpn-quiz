@@ -2,6 +2,7 @@ package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.biz.manager.ReportHelper;
 import my.gov.kpn.quiz.core.dao.ReportDao;
+import my.gov.kpn.quiz.core.model.QaInstructor;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import my.gov.kpn.quiz.web.model.RegistrationModel;
 import my.gov.kpn.quiz.web.model.report.InstructorModel;
@@ -89,6 +90,26 @@ public class ReportController extends AbstractController {
         parameterMap.put("pmt_state", reportHelper.findStateNameById(studentModel.getState()));
         parameterMap.put("pmt_school", "ALL");
         modelAndView = new ModelAndView("studentList", parameterMap);
+
+        return modelAndView;
+
+    }
+
+    @RequestMapping(value = "/student/listByInstructor", method = RequestMethod.GET)
+    public Object studentListByInstructor(@ModelAttribute("studentModel") StudentModel studentModel,
+            ModelAndView modelAndView, ModelMap map) {
+
+
+        QaInstructor instructor = getCurrentInstructor();
+        JRBeanCollectionDataSource engine = new JRBeanCollectionDataSource(reportDao.getStudentList(instructor));
+
+
+        Map<String, Object> parameterMap = new HashMap<String, Object>();
+        parameterMap.put("datasource", engine);
+        parameterMap.put("pmt_state", reportHelper.findStateNameById(instructor.getState().getId().toString()));
+        parameterMap.put("pmt_school", instructor.getSchoolName());
+        parameterMap.put("pmt_instructor", instructor.getName());
+        modelAndView = new ModelAndView("studentListByInstructor", parameterMap);
 
         return modelAndView;
 

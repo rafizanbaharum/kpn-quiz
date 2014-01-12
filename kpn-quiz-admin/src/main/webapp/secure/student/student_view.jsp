@@ -168,9 +168,9 @@
                                                 <a href="${pageContext.request.contextPath}/secure/student/edit/${studentModel.id}"
                                                    class="btn btn-primary"
                                                    title="Edit this student">Edit</a>
-                                                <a href="${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}"
-                                                   class="btn btn-primary"
-                                                   title="Remove this student">Remove</a>
+                                                <%--<a href="${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}"--%>
+                                                   <%--class="btn btn-primary"--%>
+                                                   <%--title="Remove this student">Remove</a>--%>
                                             </div>
                                         </div>
                                     </div>

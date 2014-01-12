@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core.dao;
 
 import my.gov.kpn.quiz.core.model.QaGenderType;
+import my.gov.kpn.quiz.core.model.QaInstructor;
 import my.gov.kpn.quiz.core.model.QaRaceType;
 import my.gov.kpn.quiz.core.report.InstructorModel;
 import my.gov.kpn.quiz.core.report.StudentModel;
@@ -68,6 +69,24 @@ public class ReportDao {
         }
 
         query = query + "order by s.school_name, a.name ";
+
+
+        List<StudentModel> collection = this.jdbcTemplate.query(
+                query,
+                new StudentRowMapper());
+
+        return collection;
+    }
+
+    public List<StudentModel> getStudentList(QaInstructor instructor) {
+
+
+        String query = "select a.name,a.nric_no,s.dob,gender_type(s.gender_type),extract (year from current_date) - extract (year from dob) age,race_type(s.race_type),school_type(s.school_type),s.school_name " +
+                "from QA_STDN s " +
+                "inner join QA_ACTR a on s.id = a.id where s.instructor_id = " + instructor.getId();
+
+
+        query = query + " order by  a.name ";
 
 
         List<StudentModel> collection = this.jdbcTemplate.query(
@@ -181,6 +200,7 @@ public class ReportDao {
             model.setGender_type(rs.getString("gender_type"));
             model.setSchool_type(rs.getString("school_type"));
             model.setSchool_name(rs.getString("school_name"));
+            model.setNric(rs.getString("nric_no"));
 
             return model;
         }

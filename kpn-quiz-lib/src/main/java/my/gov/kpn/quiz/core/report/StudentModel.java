@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 public class StudentModel {
 
     private String name;
+    private String nric;
     private Timestamp dob;
     private String gender_type;
     private Double age;
@@ -66,5 +67,13 @@ public class StudentModel {
 
     public void setSchool_type(String school_type) {
         this.school_type = school_type;
+    }
+
+    public String getNric() {
+        return nric;
+    }
+
+    public void setNric(String nric) {
+        this.nric = nric;
     }
 }
