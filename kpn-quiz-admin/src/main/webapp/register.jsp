@@ -79,7 +79,7 @@
                             </div>
                             <div class="form-group">
                                 <form:input type="text" class="form-control" path="phone"
-                                            placeholder="Your cell phone number"/>
+                                            placeholder="Your cell phone number" maxlength="12"/>
                             </div>
                             <p>
                                 Enter your account details below:
@@ -160,7 +160,7 @@
                                  <span class="input-icon">
                                     <form:input type="text" class="form-control"
                                                 path="schoolPhone"
-                                                placeholder="School Phone"/>
+                                                placeholder="School Phone" maxlength="12"/>
                                     <i class="icon-phone"></i> 
                                  </span>
                             </div>
@@ -168,7 +168,7 @@
                                  <span class="input-icon">
                                     <form:input type="text" class="form-control"
                                                 path="schoolFax"
-                                                placeholder="School Fax"/>
+                                                placeholder="School Fax" maxlength="12"/>
                                     <i class="icon-phone-sign"></i> 
                                  </span>
                             </div>
