@@ -79,17 +79,17 @@ inner join QA_ACTR a on s.id = a.id]]>
 				<text><![CDATA[D.O.B]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="d8085c05-b0c7-4c06-a262-2c89eb058067" x="239" y="2" width="158" height="20"/>
+				<reportElement uuid="d8085c05-b0c7-4c06-a262-2c89eb058067" x="239" y="2" width="79" height="20"/>
 				<textElement/>
 				<text><![CDATA[NRIC]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2840a6c6-b807-4097-b919-244b71d40b04" x="411" y="0" width="44" height="20"/>
+				<reportElement uuid="2840a6c6-b807-4097-b919-244b71d40b04" x="318" y="2" width="44" height="20"/>
 				<textElement/>
 				<text><![CDATA[Gender]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="24390ba3-b670-415f-a0f8-0f67f3512b69" x="468" y="0" width="45" height="20"/>
+				<reportElement uuid="24390ba3-b670-415f-a0f8-0f67f3512b69" x="362" y="0" width="171" height="20"/>
 				<textElement/>
 				<text><![CDATA[Race]]></text>
 			</staticText>
@@ -113,17 +113,17 @@ inner join QA_ACTR a on s.id = a.id]]>
 				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
-				<reportElement uuid="f2ef62c9-b7b9-44f4-b705-6535c1354541" x="239" y="0" width="136" height="20"/>
+				<reportElement uuid="f2ef62c9-b7b9-44f4-b705-6535c1354541" x="239" y="0" width="79" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{nric}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="205839f5-11a2-4103-b623-1412cc55d379" x="411" y="2" width="44" height="20"/>
+				<reportElement uuid="205839f5-11a2-4103-b623-1412cc55d379" x="318" y="1" width="44" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{gender_type}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="0341f1ee-4499-45cb-83f9-e411d65d7577" x="468" y="1" width="45" height="20"/>
+				<reportElement uuid="0341f1ee-4499-45cb-83f9-e411d65d7577" x="362" y="1" width="171" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{race_type}]]></textFieldExpression>
 			</textField>
