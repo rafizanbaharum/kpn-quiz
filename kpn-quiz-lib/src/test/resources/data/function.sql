@@ -16,12 +16,12 @@ CREATE or replace FUNCTION public.race_type
 (val integer)
 RETURNS text AS $$
         BEGIN
-        if val = 0 then return 'MELAYU';
-        elsif val = 1 then return 'CINA';
-        elsif val = 2 then return 'INDIA';
-        elsif val = 3 then return 'BUMIPUTERA SABAH';
-        elsif val = 4 then return 'BUMIPUTERA SARAWAK';
-        elsif val = 5 then return 'LAIN LAIN';
+        if val = 0 then return 'MALAY';
+        elsif val = 1 then return 'CHINESE';
+        elsif val = 2 then return 'INDIAN';
+        elsif val = 3 then return 'NATIVE SABAH';
+        elsif val = 4 then return 'NATIVE SARAWAK';
+        elsif val = 5 then return 'OTHERS';
         else
            RETURN '-';
         end if;
