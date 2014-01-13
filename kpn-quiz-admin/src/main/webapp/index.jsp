@@ -100,9 +100,7 @@
                             </li>
                         </ol>
                         <div class="page-header">
-                            <h1>Dashboard
-                                <small>overview &amp; stats</small>
-                            </h1>
+                            <h1>Dashboard </h1>
                         </div>
                     </div>
                 </div>
@@ -119,8 +117,8 @@
                             </div>
                             <a class="view-more"
                                href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.pdf"
-                                    target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
+                               target="_blank">
+                                Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
@@ -135,8 +133,8 @@
                                 Download Asean Quiz's manual for teachers - registration manual.
                             </div>
                             <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf"
-                                    target="_blank">
-                                Download Here <i class="clip-arrow-right-2"></i>
+                               target="_blank">
+                            Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
@@ -153,8 +151,8 @@
                                 Download Asean Quiz's manual for students - online quiz manual.
                             </div>
                             <a class="view-more" href="#"
-                                    target="_blank">
-                                Download Here <i class="clip-arrow-right-2"></i>
+                               target="_blank">
+                            Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
@@ -169,8 +167,8 @@
                                 Download Manual for Online Quiz Monitoring - for teachers
                             </div>
                             <a class="view-more" href="#"
-                                    target="_blank">
-                                Download Here <i class="clip-arrow-right-2"></i>
+                               target="_blank">
+                            Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
