@@ -67,7 +67,7 @@
 
     </div>
     <div class="copyright">
-        2013 &copy; ASEAN QUIZ
+        2014 &copy; ASEAN QUIZ
     </div>
 </div>
 <!-- start: MAIN JAVASCRIPTS -->

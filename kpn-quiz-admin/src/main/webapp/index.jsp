@@ -134,7 +134,7 @@
                             </div>
                             <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf"
                                target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
+                                Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                             </div>
                             <a class="view-more" href="#"
                                target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
+                                Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                             </div>
                             <a class="view-more" href="#"
                                target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
+                                Download Here <i class="clip-arrow-right-2"></i>
                             </a>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
     </div>
     <div class="footer clearfix">
         <div class="footer-inner">
-            2013 &copy; ASEAN QUIZ
+            2014 &copy; ASEAN QUIZ
         </div>
         <div class="footer-items">
             <span class="go-top"><i class="clip-chevron-up"></i></span>

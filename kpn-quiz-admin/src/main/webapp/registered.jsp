@@ -59,7 +59,7 @@
             <p>Click <a href="${pageContext.request.contextPath}/gate/in">here</a> to login</p>
         </div>
         <div class="copyright">
-            2013 &copy; ASEAN QUIZ
+            2014 &copy; ASEAN QUIZ
         </div>
     </div>
 
