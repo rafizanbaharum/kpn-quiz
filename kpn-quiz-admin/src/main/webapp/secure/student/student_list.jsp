@@ -115,7 +115,7 @@
                                            class="btn btn-primary">Register Student</a>
                                         <a href="${pageContext.request.contextPath}/secure/report/student/listByInstructor"
                                            class="btn btn-primary" target="_blank"
-                                           title="Remove this student">Print</a>
+                                           title="Print">Print</a>
                                     </div>
                                 </div>
                             </div>
