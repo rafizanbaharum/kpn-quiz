@@ -91,10 +91,12 @@
                                                            class="btn btn-primary tooltips" data-placement="top"
                                                            data-original-title="Edit"><i
                                                                 class="icon-edit"></i></a>
-                                                        <a href="${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}"
-                                                           class="btn btn-primary tooltips" data-placement="top"
-                                                           data-original-title="Remove"><i
-                                                                class="icon-remove icon-white"></i></a>
+                                                            <%--
+                                                                                                                    <a href="${pageContext.request.contextPath}/secure/student/remove/${studentModel.id}"
+                                                                                                                       class="btn btn-primary tooltips" data-placement="top"
+                                                                                                                       data-original-title="Remove"><i
+                                                                                                                            class="icon-remove icon-white"></i></a>
+                                                            --%>
                                                     </div>
                                                 </td>
                                             </tr>
