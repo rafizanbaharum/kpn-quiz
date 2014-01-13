@@ -58,7 +58,7 @@ public class QaUserDaoImpl extends DaoSupport<Long, QaUser, QaUserImpl> implemen
     @Override
     public QaUser findByUsername(String username) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select u from QaUser u where u.name = :username and u.metadata.state = :state");
+        Query query = session.createQuery("select u from QaUser u where u.name = :username");// and u.metadata.state = :state");
         query.setString("username", username);
 //        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
         return (QaUser) query.uniqueResult();
