@@ -101,80 +101,124 @@
                             </a>
                         </li>
                         <li class="active">
-                            Dashboard
+                            Contact Us
                         </li>
                     </ol>
                     <div class="page-header">
-                        <h1>Dashboard </h1>
+                        <h1>Contact us </h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-archive circle-icon circle-blue"></i>
-
-                            <h2>Rules and Regulations</h2>
-                        </div>
-                        <div class="content">
-                            Download Asean Quiz Rules and Regulations
-                        </div>
-                        <a class="view-more"
-                           href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Rules_Guidelines.pdf"
-                           target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="core-box">
                         <div class="heading">
                             <i class="clip-settings circle-icon circle-bricky"></i>
 
-                            <h2>Manual and Guidelines</h2>
+                            <h2>Contact Points</h2>
                         </div>
                         <div class="content">
-                            Download Asean Quiz's manual for teachers - registration manual.
+                            For any technical assistance, you can communicate directly with the Secretariat
+                            ASEAN QUIZ 2014 at <a href="mailto:quiz.asean@inform.gov.my">quiz.asean@inform.gov.my</a> or at the state level following:
                         </div>
-                        <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Manual.pdf"
-                           target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
-                        </a>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-settings circle-icon circle-bricky"></i>
-
-                            <h2>Manual and Guidelines</h2>
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="icon-external-link-sign"></i>
+                            States Technical Teams
                         </div>
-                        <div class="content">
-                            Download Asean Quiz's manual for students - online quiz manual.
+                        <div class="panel-body">
+                            <table class="table table-hover" id="sample-table-1">
+                                <thead>
+                                <tr>
+                                    <th>State</th>
+                                    <th>Name</th>
+                                    <th>Contact</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Perlis</td>
+                                    <td>Elena Royani Binti Mohamad Yusof</td>
+                                    <td>04-9761286/ 3341</td>
+                                </tr>
+                                <tr>
+                                    <td>Kedah</td>
+                                    <td>Mohd Rizal Suhardy B Md Mansor</td>
+                                    <td>04-7711395</td>
+                                </tr>
+                                <tr>
+                                    <td>Perak</td>
+                                    <td>Siti Shahlawati Mat Husin</td>
+                                    <td>05 :5422500</td>
+                                </tr>
+                                <tr>
+                                    <td>Selangor</td>
+                                    <td>Ramizah Binti Ramli</td>
+                                    <td>5519 2519 / 111</td>
+                                </tr>
+                                <tr>
+                                    <td>Negeri Sembilan</td>
+                                    <td>Ishak Abu Jamin</td>
+                                    <td>06-7639800 / 141</td>
+                                </tr>
+                                <tr>
+                                    <td>Pulau Pinang</td>
+                                    <td>Mohd Faridzul b Abdul Rahman</td>
+                                    <td>04-2622123</td>
+                                </tr>
+                                <tr>
+                                    <td>Melaka</td>
+                                    <td>Rozilawati Bte Razali</td>
+                                    <td>06-2345661</td>
+                                </tr>
+                                <tr>
+                                    <td>Johor</td>
+                                    <td>Abdul Rahman bin Abdul Halim</td>
+                                    <td>07-2232957</td>
+                                </tr>
+                                <tr>
+                                    <td>Pahang</td>
+                                    <td>Mohd Amir Rul Ikhwan</td>
+                                    <td>09-5161995</td>
+                                </tr>
+                                <tr>
+                                    <td>Kelantan</td>
+                                    <td>Nor Ain Bt Mhd Anuar</td>
+                                    <td>09-7482063</td>
+                                </tr>
+                                <tr>
+                                    <td>Terengganu</td>
+                                    <td>Salmawati bt Ahmad @ Mohamad</td>
+                                    <td>09-6261075</td>
+                                </tr>
+                                <tr>
+                                    <td>Sabah</td>
+                                    <td>Ahmad Rozihan Ag Kanak</td>
+                                    <td>088-280600/619</td>
+                                </tr>
+                                <tr>
+                                    <td>Sarawak</td>
+                                    <td>Sharon Joy Charles</td>
+                                    <td>082-319812</td>
+                                </tr>
+                                <tr>
+                                    <td>Labuan</td>
+                                    <td>Hafidah Binti Mohd @ Alias</td>
+                                    <td>087-412335</td>
+                                </tr>
+                                <tr>
+                                    <td>WKL</td>
+                                    <td>Siti Hawa Binti Md Ali</td>
+                                    <td>03-26912500</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <a class="view-more" href="#"
-                           target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="core-box">
-                        <div class="heading">
-                            <i class="clip-settings circle-icon circle-bricky"></i>
-
-                            <h2>Manual and Guidelines</h2>
-                        </div>
-                        <div class="content">
-                            Download Manual for Online Quiz Monitoring - for teachers
-                        </div>
-                        <a class="view-more" href="#"
-                           target="_blank">
-                            Download Here <i class="clip-arrow-right-2"></i>
-                        </a>
                     </div>
                 </div>
             </div>
