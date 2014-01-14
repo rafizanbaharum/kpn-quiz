@@ -1,8 +1,11 @@
 package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.*;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -12,6 +15,7 @@ import java.io.Serializable;
 @Table(name = "QA_QSTN")
 @Entity(name = "QaQuestion")
 @Inheritance(strategy = InheritanceType.JOINED)
+@org.hibernate.annotations.Cache(region = "QaQuestion", usage = CacheConcurrencyStrategy.READ_WRITE)
 public abstract class QaQuestionImpl implements QaQuestion, Serializable {
 
     @Id

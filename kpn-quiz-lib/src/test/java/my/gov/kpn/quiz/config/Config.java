@@ -55,6 +55,10 @@ public class Config {
         properties.put("hibernate.format_sql", "true");
 //        properties.put("hibernate.current_session_context_class", "thread");
         properties.put("javax.persistence.validation.mode", "none");
+        properties.put("hibernate.cache.use_query_cache", "true");
+        properties.put("hibernate.cache.use_second_level_cache", "true");
+        properties.put("hibernate.generate_statistics", "true");
+        properties.put("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
 
         //properties.put("hibernate.connection.pool_size", "1");
         //properties.put("hibernate.format_sql", "true");

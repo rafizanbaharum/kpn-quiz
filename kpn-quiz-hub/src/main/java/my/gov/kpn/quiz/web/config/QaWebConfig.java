@@ -50,6 +50,10 @@ public class QaWebConfig {
         properties.put("hibernate.show_sql", "false");
         properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.format_sql", "true");
+        properties.put("hibernate.cache.use_query_cache", "true");
+        properties.put("hibernate.cache.use_second_level_cache", "true");
+        properties.put("hibernate.generate_statistics", "true");
+        properties.put("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
         properties.put("javax.persistence.validation.mode", "none");
 
         //properties.put("hibernate.connection.pool_size", "1");

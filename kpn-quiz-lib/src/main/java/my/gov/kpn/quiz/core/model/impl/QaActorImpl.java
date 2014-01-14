@@ -1,6 +1,5 @@
 package my.gov.kpn.quiz.core.model.impl;
 
-import com.google.common.base.Objects;
 import my.gov.kpn.quiz.core.model.QaActor;
 import my.gov.kpn.quiz.core.model.QaActorType;
 import my.gov.kpn.quiz.core.model.QaMetadata;

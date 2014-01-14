@@ -1,6 +1,7 @@
 package my.gov.kpn.quiz.core.model.impl;
 
 import my.gov.kpn.quiz.core.model.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +13,7 @@ import java.util.List;
  */
 @Table(name = "QA_GRBK")
 @Entity(name = "QaGradebook")
+@org.hibernate.annotations.Cache(region = "QaGradebook", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class QaGradebookImpl implements QaGradebook, Serializable {
 
     @Id

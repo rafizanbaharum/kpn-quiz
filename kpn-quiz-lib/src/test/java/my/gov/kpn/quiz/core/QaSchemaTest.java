@@ -25,19 +25,13 @@ public class QaSchemaTest extends AbstractTransactionalJUnit4SpringContextTests 
 
     private Logger log = LoggerFactory.getLogger(QaSchemaTest.class);
 
-    @Autowired
-    private SessionFactory sessionFactory;
-
-
     @Before
     public void setUp() {
     }
 
     @Test
     @Rollback(value = true)
-    public void test() {
-        String capitalize = WordUtils.capitalize("alif haikal abd razak");
-        log.debug("capitalize = " + capitalize);
+    public void generateSchema() {
     }
 
 }
