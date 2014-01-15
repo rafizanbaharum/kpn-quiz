@@ -20,12 +20,13 @@ import org.springframework.core.io.ClassPathResource;
  */
 @Configuration
 @EnableCaching
-public class QaCacheConfig implements CachingConfigurer {
+public class QaCacheConfig  implements CachingConfigurer {
 
     @Bean
     public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
         EhCacheManagerFactoryBean ehCacheManagerFactoryBean = new EhCacheManagerFactoryBean();
         ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("ehcache.xml"));
+        ehCacheManagerFactoryBean.setCacheManagerName("objectCacheManager");
         ehCacheManagerFactoryBean.setShared(true);
         return ehCacheManagerFactoryBean;
     }
@@ -36,6 +37,7 @@ public class QaCacheConfig implements CachingConfigurer {
         cacheManager.setCacheManager(ehCacheManagerFactoryBean().getObject());
         return cacheManager;
     }
+
 
     public KeyGenerator keyGenerator() {
         return new DefaultKeyGenerator();

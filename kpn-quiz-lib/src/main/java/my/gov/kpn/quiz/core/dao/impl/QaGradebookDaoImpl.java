@@ -56,6 +56,7 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     }
 
     @Override
+    @Cacheable(value = "gradebookItemRegion")
     public List<QaGradebookItem> find(QaGradebook gradebook) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaGradebookItem a where " +
@@ -67,6 +68,7 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     }
 
     @Override
+    @Cacheable(value = "gradebookItemRegion")
     public List<QaGradebookItem> find(QaGradebook participant, QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaGradebookItem a where " +

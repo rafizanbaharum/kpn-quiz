@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaParticipantImpl;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public class QaParticipantDaoImpl extends DaoSupport<Long, QaParticipant, QaPart
     }
 
     @Override
+    @Cacheable(value = "participantRegion")
     public List<QaParticipant> findAll(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaParticipant a where " +
@@ -53,6 +55,7 @@ public class QaParticipantDaoImpl extends DaoSupport<Long, QaParticipant, QaPart
     }
 
     @Override
+    @Cacheable(value = "participantRegion")
     public List<QaParticipant> find(QaQuiz quiz, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a from QaParticipant a where " +
