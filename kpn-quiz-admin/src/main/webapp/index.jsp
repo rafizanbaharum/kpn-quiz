@@ -171,7 +171,7 @@
                         <div class="content">
                             Download Manual for Online Quiz Monitoring - for teachers
                         </div>
-                        <a class="view-more" href="#"
+                        <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_QUIZ_Teacher_Monitoring.pdf"
                            target="_blank">
                             Download Here <i class="clip-arrow-right-2"></i>
                         </a>
