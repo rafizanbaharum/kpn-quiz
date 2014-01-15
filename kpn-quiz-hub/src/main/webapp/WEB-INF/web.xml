@@ -128,6 +128,16 @@
         <url-pattern>/quiz/QuizDelegate</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Load</servlet-name>
+        <servlet-class>my.gov.kpn.quiz.web.server.LoadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Load</servlet-name>
+        <url-pattern>/load</url-pattern>
+    </servlet-mapping>
+
     <!-- ====================================================================================== -->
     <!-- LISTENERS -->
     <!-- ====================================================================================== -->

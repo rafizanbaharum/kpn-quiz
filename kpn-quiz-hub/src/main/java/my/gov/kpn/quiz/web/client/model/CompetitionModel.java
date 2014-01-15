@@ -8,7 +8,6 @@ public class CompetitionModel extends MetaModel {
     public static final String ID = "id";
     public static final String YEAR = "year";
     public static final String LOCKED = "locked";
-    public static final String ROUND_MODEL = "roundModel";
 
 
     public Long getId() {
