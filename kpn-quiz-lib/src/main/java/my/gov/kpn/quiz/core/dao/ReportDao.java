@@ -52,7 +52,7 @@ public class ReportDao {
     public List<StudentModel> getStudentList(String state, String schoolType, String schoolName) {
 
 
-        String query = "select a.name,s.dob,gender_type(s.gender_type),extract (year from current_date) - extract (year from dob) age,race_type(s.race_type),school_type(s.school_type),s.school_name " +
+        String query = "select a.name,s.dob,gender_type(s.gender_type),extract (year from current_date) - extract (year from dob) age,race_type(s.race_type),school_type(s.school_type),s.school_name,a.nric_no " +
                 "from QA_STDN s " +
                 "inner join QA_ACTR a on s.id = a.id ";
 
@@ -81,7 +81,7 @@ public class ReportDao {
     public List<StudentModel> getStudentList(QaInstructor instructor) {
 
 
-        String query = "select a.name,a.nric_no,s.dob,gender_type(s.gender_type),extract (year from current_date) - extract (year from dob) age,race_type(s.race_type),school_type(s.school_type),s.school_name " +
+        String query = "select a.name,a.nric_no,s.dob,gender_type(s.gender_type),extract (year from current_date) - extract (year from dob) age,race_type(s.race_type),school_type(s.school_type),s.school_name,a.nric_no " +
                 "from QA_STDN s " +
                 "inner join QA_ACTR a on s.id = a.id where s.instructor_id = " + instructor.getId();
 
