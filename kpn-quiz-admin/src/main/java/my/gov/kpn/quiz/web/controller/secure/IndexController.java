@@ -1,12 +1,16 @@
 package my.gov.kpn.quiz.web.controller.secure;
 
 import my.gov.kpn.quiz.core.model.QaActor;
+import my.gov.kpn.quiz.core.model.QaPrincipalRole;
+import my.gov.kpn.quiz.core.model.QaRoleType;
 import my.gov.kpn.quiz.core.model.QaUser;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.Set;
 
 @Controller("SecureIndexController")
 @RequestMapping("/secure/index")
@@ -25,7 +29,20 @@ public class IndexController extends AbstractController {
             case STUDENT:
                 break;
             case SUPPORT:
-                view = "secure/admin/index";
+
+                Set<QaPrincipalRole> roles = user.getRoles();
+                boolean admin = false;
+                boolean report = false;
+
+                for (QaPrincipalRole role : roles) {
+                    if (role.getRoleType().equals(QaRoleType.ROLE_ADMINISTRATOR)) admin = true;
+                    if (role.getRoleType().equals(QaRoleType.ROLE_SUPPORT)) admin = true;
+                    if (role.getRoleType().equals(QaRoleType.ROLE_REPORT)) report = true;
+                }
+
+                if (admin) view = "secure/admin/index";
+                if (report) view = "secure/report/index";
+
                 break;
         }
         return view;
