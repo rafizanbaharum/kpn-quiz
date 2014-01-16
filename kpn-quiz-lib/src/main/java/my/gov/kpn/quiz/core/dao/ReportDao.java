@@ -27,12 +27,12 @@ public class ReportDao {
     public List<InstructorModel> getInstructorList(String state) {
 
 
-        String query = "select a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email,count(1) student_count " +
+        String query = "select a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email,count(astd.name) student_count " +
                 "from QA_INTR i " +
                 "inner join QA_ACTR a on i.id = a.id " +
-                "inner join QA_STDN s on s.INSTRUCTOR_ID = i.id " +
-                "inner join QA_ACTR astd on s.id = astd.id " +
-                "where a.m_st = 1 and astd.m_st = 1 ";
+                "left join QA_STDN s on s.INSTRUCTOR_ID = i.id " +
+                "left join QA_ACTR astd on s.id = astd.id and astd.m_st = 1 " +
+                "where a.m_st = 1  ";
 
         if (null != state && !state.isEmpty()) {
             query = query + " and i.state_id = " + state + " ";
