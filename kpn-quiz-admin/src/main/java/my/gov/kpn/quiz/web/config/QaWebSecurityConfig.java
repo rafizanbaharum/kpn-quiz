@@ -62,13 +62,13 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/index")
-                .invalidateHttpSession(true)
-                .and()
-                .sessionManagement()
-                .maximumSessions(1)
-                .sessionRegistry(sessionRegistry())
-                .maxSessionsPreventsLogin(true)
-                .expiredUrl("/gate/in");
+                .invalidateHttpSession(true);
+//                .and()
+//                .sessionManagement()
+//                .maximumSessions(1)
+//                .sessionRegistry(sessionRegistry())
+//                .maxSessionsPreventsLogin(true)
+//                .expiredUrl("/gate/in");
     }
 
     @Bean
