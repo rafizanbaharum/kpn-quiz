@@ -19,6 +19,9 @@ group by a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,
 	<field name="school_phone" class="java.lang.String"/>
 	<field name="email" class="java.lang.String"/>
 	<field name="student_count" class="java.lang.Long"/>
+	<variable name="studentTotal" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{student_count}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -54,64 +57,72 @@ AND TOTAL STUDENT]]></text>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="25" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="d87d7f63-ed52-4910-9dac-d72f5de72fed" x="15" y="0" width="119" height="20"/>
-				<textElement/>
+				<reportElement uuid="d87d7f63-ed52-4910-9dac-d72f5de72fed" mode="Transparent" x="15" y="0" width="352" height="20" backcolor="#FFFFFF"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="8f896480-5142-45aa-a195-eeaab4e3ad86" x="134" y="0" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[Phone]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="889d6f9e-0d69-4e35-ab88-9cfb9354c7f7" x="234" y="0" width="199" height="20"/>
-				<textElement/>
-				<text><![CDATA[School Name]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="c21e658a-dd12-4a1b-aa09-1c6df17235f1" x="433" y="0" width="74" height="20"/>
-				<textElement/>
-				<text><![CDATA[Phone]]></text>
+				<reportElement uuid="8f896480-5142-45aa-a195-eeaab4e3ad86" x="367" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone Instructor / School]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="9337033b-d5e2-4a7c-bae1-c5a10155b83f" x="507" y="0" width="48" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="26" splitType="Stretch">
-			<textField>
-				<reportElement uuid="1923e386-7e8f-4856-8570-58ada3855616" x="15" y="0" width="119" height="20"/>
-				<textElement/>
+		<band height="44" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1923e386-7e8f-4856-8570-58ada3855616" x="15" y="0" width="352" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="eb0ebe75-cc23-4702-b10f-3f054a98bdfe" x="134" y="0" width="100" height="20"/>
-				<textElement/>
+				<reportElement uuid="eb0ebe75-cc23-4702-b10f-3f054a98bdfe" x="367" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="46a67bff-623e-4333-92e6-e2d36ffbbda3" x="234" y="0" width="44" height="20"/>
-				<textElement/>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="46a67bff-623e-4333-92e6-e2d36ffbbda3" x="51" y="20" width="44" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{school_type}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="823b4345-062d-485a-a103-bfae1f6784ab" x="278" y="0" width="155" height="20"/>
-				<textElement/>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="823b4345-062d-485a-a103-bfae1f6784ab" x="95" y="20" width="272" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="2ea7423c-884f-4573-8643-067d647c765f" x="433" y="0" width="74" height="20"/>
-				<textElement/>
+				<reportElement uuid="2ea7423c-884f-4573-8643-067d647c765f" x="367" y="20" width="74" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{school_phone}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="e721d805-f57d-4c18-98cc-c5f096ce710c" x="507" y="0" width="48" height="20"/>
-				<textElement textAlignment="Right"/>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e721d805-f57d-4c18-98cc-c5f096ce710c" x="507" y="20" width="48" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{student_count}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -119,10 +130,13 @@ AND TOTAL STUDENT]]></text>
 				<textElement/>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement uuid="46c13efe-8a03-4418-acfe-f2f3d8e65453" x="0" y="40" width="555" height="2"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="25" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
@@ -139,6 +153,14 @@ AND TOTAL STUDENT]]></text>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="42" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4cefb2fe-ddee-43cc-9935-c57bb4605aff" x="507" y="0" width="48" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{studentTotal}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>
