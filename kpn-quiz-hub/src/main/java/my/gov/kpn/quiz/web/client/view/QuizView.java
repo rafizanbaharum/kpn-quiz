@@ -291,12 +291,11 @@ public class QuizView extends View {
         delegate.updateAnswer(questionModel, answerResponse, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
-                // TODO:
+                Info.display("Error occurred", "");
             }
 
             @Override
             public void onSuccess(Void result) {
-                // TODO:
                 Info.display("Saved!", "");
             }
         });
@@ -312,11 +311,11 @@ public class QuizView extends View {
             @Override
             public void onFailure(Throwable caught) {
                 caught.printStackTrace();
+                Info.display("Error occurred!", "");
             }
 
             @Override
             public void onSuccess(Void result) {
-                // TODO:
                 Info.display("Saved!", "");
             }
         });
@@ -481,6 +480,7 @@ public class QuizView extends View {
 
                 log.info("previousStep" + previousStep);
                 log.info("currentStep" + currentStep);
+                cardPanel.setActiveItem(cardPanel.getItem(currentStep));
                 cardPanel.fireEvent(
                         QuizEvents.QuizNavigate,
                         new QuizNavigateEvent(this, previousStep, currentStep)
