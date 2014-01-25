@@ -311,7 +311,7 @@ public class QuizView extends View {
         delegate.updateAnswer(questionModel, answerIndex, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
-                 caught.printStackTrace();
+                caught.printStackTrace();
             }
 
             @Override
@@ -471,23 +471,20 @@ public class QuizView extends View {
     }
 
     private void createButtonBar() {
-
         questionListCbx = new QuestionListComboBox();
         questionListCbx.setEmptyText("Jump to question...");
         questionListCbx.addSelectionChangedListener(new SelectionChangedListener<QuestionModel>() {
             @Override
             public void selectionChanged(SelectionChangedEvent<QuestionModel> se) {
-
-                log.info("Current Step:" + currentStep);
-                log.info("Current Question:" + getQuestion(currentStep));
-
-                saveAnswer(currentStep, getQuestion(currentStep));
+                int previousStep = currentStep;
                 currentStep = models.indexOf(se.getSelectedItem());
 
-                log.info("Next Step:" + currentStep);
-                log.info("Next Question:" + se.getSelectedItem());
-
-                cardPanel.setActiveItem(cardPanel.getItem(models.indexOf(se.getSelectedItem())));
+                log.info("previousStep" + previousStep);
+                log.info("currentStep" + currentStep);
+                cardPanel.fireEvent(
+                        QuizEvents.QuizNavigate,
+                        new QuizNavigateEvent(this, previousStep, currentStep)
+                );
             }
         });
 

@@ -3,23 +3,4 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
-    <mvc:resources mapping="/assets/**" location="/assets/"/>
-    <mvc:resources mapping="/docs/**" location="/docs/"/>
-    <mvc:resources mapping="/gxt/**" location="/gxt/"/>
-    <mvc:resources mapping="/quiz/**" location="/quiz/"/>
-
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/secure/**"/>
-            <bean class="my.gov.kpn.quiz.web.interceptor.CurrentUserHandlerInterceptor"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
-
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
 </beans>
