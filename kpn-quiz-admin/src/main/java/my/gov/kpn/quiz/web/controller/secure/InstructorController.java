@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.web.controller.secure;
 import my.gov.kpn.quiz.biz.manager.InstructorManager;
 import my.gov.kpn.quiz.biz.manager.RegistrationManager;
 import my.gov.kpn.quiz.core.model.QaInstructor;
+import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.web.controller.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class InstructorController extends AbstractController {
 
     private static final int LIMIT = 50;
+    private final String BREADCRUMB = "INSTRUCTOR_BREADCRUMB";
+    private final String TITLE = "INSTRUCTOR_TITLE";
 
 
     @RequestMapping(value = "/view/{id}", method = {RequestMethod.GET})
@@ -43,6 +46,40 @@ public class InstructorController extends AbstractController {
         model.addAttribute("hasPrevious", page > 1 ? true : false);
         model.addAttribute("instructorModels", transformer.transformInstructors(instructorManager.findInstructors(offset, LIMIT)));
         return "secure/instructor/instructor_browse";
+    }
+
+    @RequestMapping(value = "/remove/{id}", method = {RequestMethod.GET})
+    public String instructorRemove(@PathVariable Long id, ModelMap model) {
+        QaInstructor instructor = instructorManager.findInstructorById(id);
+
+        model.addAttribute("instructorModel", transformer.transform(instructor));
+        model.put(BREADCRUMB, "Confirm Remove Instructor");
+        model.put(TITLE, "Confirm Remove Instructor");
+        return "secure/student/student_remove";
+    }
+
+    @RequestMapping(value = "/remove/confirm/{id}", method = {RequestMethod.GET})
+    public String instructorConfirmRemove(@PathVariable Long id, ModelMap model) {
+
+        QaInstructor instructor = instructorManager.findInstructorById(id);
+        registrationManager.removeInstructor(instructor);
+//        model.addAttribute("studentModel", transformer.transform(instructor));
+        model.put(BREADCRUMB, "View Instructor Details");
+        model.put(TITLE, "View Instructor Details");
+        model.put(MSG_SUCCESS, "Instructor Removed");
+        return browse(1, model);
+    }
+
+
+    @RequestMapping(value = "/remove/student/{instructorId}/{studentId}", method = {RequestMethod.GET})
+    public String instructorRemoveStudent(@PathVariable Long instructorId,@PathVariable Long studentId, ModelMap model) {
+
+        QaStudent student = instructorManager.findStudentById(studentId);
+        registrationManager.removeStudent(student);
+        model.put(BREADCRUMB, "View Instructor Details");
+        model.put(TITLE, "View Instructor Details");
+        model.put(MSG_SUCCESS, "Instructor Removed");
+        return view(instructorId, model);
     }
 
 

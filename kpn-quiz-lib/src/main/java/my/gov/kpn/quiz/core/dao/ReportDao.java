@@ -27,7 +27,7 @@ public class ReportDao {
     public List<InstructorModel> getInstructorList(String state) {
 
 
-        String query = "select a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email,count(astd.name) student_count " +
+        String query = "select a.name,a.nric_no,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email,count(astd.name) student_count " +
                 "from QA_INTR i " +
                 "inner join QA_ACTR a on i.id = a.id " +
                 "left join QA_STDN s on s.INSTRUCTOR_ID = i.id " +
@@ -38,7 +38,7 @@ public class ReportDao {
             query = query + " and i.state_id = " + state + " ";
         }
 
-        query = query + "group by a.name,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email " +
+        query = query + "group by a.name,a.nric_no,a.phone,school_type(i.school_type),i.school_name,i.school_phone,a.email " +
                 "order by a.name";
 
 
@@ -183,6 +183,7 @@ public class ReportDao {
             model.setSchool_phone(rs.getString("school_phone"));
             model.setEmail(rs.getString("email"));
             model.setStudent_count(rs.getLong("student_count"));
+            model.setNric(rs.getString("nric_no"));
             return model;
         }
     }

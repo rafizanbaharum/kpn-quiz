@@ -48,7 +48,7 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register/**").permitAll()
                 .antMatchers("/secure/competition/**").hasRole("ADMINISTRATOR")
                 .antMatchers("/secure/quiz/**").hasRole("ADMINISTRATOR")
-                .antMatchers("/secure/instructor/**").hasRole("ADMINISTRATOR")
+                .antMatchers("/secure/instructor/**").access("hasRole('ROLE_ADMINISTRATOR') || hasRole('ROLE_SUPPORT')")
                 .antMatchers("/secure/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()

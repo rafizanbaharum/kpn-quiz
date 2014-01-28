@@ -1,9 +1,6 @@
 package my.gov.kpn.quiz.biz.manager;
 
-import my.gov.kpn.quiz.core.dao.QaActorDao;
-import my.gov.kpn.quiz.core.dao.QaPrincipalRoleDao;
-import my.gov.kpn.quiz.core.dao.QaStateDao;
-import my.gov.kpn.quiz.core.dao.QaUserDao;
+import my.gov.kpn.quiz.core.dao.*;
 import my.gov.kpn.quiz.core.model.*;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
 import my.gov.kpn.quiz.core.model.impl.QaStudentImpl;
@@ -16,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.apache.commons.lang.WordUtils.capitalize;
 
@@ -173,6 +171,20 @@ public class RegistrationManagerImpl implements RegistrationManager {
         QaUser root = userDao.findById(ADMIN);
         userDao.remove(userDao.findById(student.getId()), root);
         actorDao.remove(student, root);
+    }
+
+    @Override
+    public void removeInstructor(QaInstructor instructor) {
+
+        QaUser root = userDao.findById(ADMIN);
+
+        List<QaStudent> students = actorDao.findStudent(instructor);
+        for (QaStudent student : students) {
+            removeStudent(student);
+        }
+        userDao.remove(userDao.findById(instructor.getId()), root);
+        actorDao.remove(instructor, root);
+
     }
 
     public boolean isExists(String username) {
