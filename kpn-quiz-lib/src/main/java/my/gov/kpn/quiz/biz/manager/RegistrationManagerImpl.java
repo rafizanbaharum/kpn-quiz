@@ -169,7 +169,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
     @Override
     public void removeStudent(QaStudent student) {
         QaUser root = userDao.findById(ADMIN);
-        userDao.remove(userDao.findById(student.getId()), root);
+        userDao.remove(userDao.findByActor(student), root);
         actorDao.remove(student, root);
     }
 
@@ -182,7 +182,7 @@ public class RegistrationManagerImpl implements RegistrationManager {
         for (QaStudent student : students) {
             removeStudent(student);
         }
-        userDao.remove(userDao.findById(instructor.getId()), root);
+        userDao.remove(userDao.findByActor(instructor), root);
         actorDao.remove(instructor, root);
 
     }
