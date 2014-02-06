@@ -45,4 +45,6 @@ public interface QaUserDao {
 
     void remove(QaUser suser, QaUser user);
 
+    void delete(QaUser suser, QaUser user);
+
 }

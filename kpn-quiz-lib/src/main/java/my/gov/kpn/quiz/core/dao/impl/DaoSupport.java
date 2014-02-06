@@ -250,4 +250,18 @@ public class DaoSupport<K, I, E> implements InitializingBean {
         // update
         session.update(entity);
     }
+
+    public void delete(I entity, QaUser user) {
+
+        // sanity check
+        // sanity check
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(entity, "Object cannot be null");
+
+        // session
+        Session session = sessionFactory.getCurrentSession();
+
+        // update
+        session.delete(entity);
+    }
 }
