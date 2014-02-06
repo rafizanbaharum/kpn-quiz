@@ -78,7 +78,7 @@ public class InstructorController extends AbstractController {
         registrationManager.removeStudent(student);
         model.put(BREADCRUMB, "View Instructor Details");
         model.put(TITLE, "View Instructor Details");
-        model.put(MSG_SUCCESS, "Instructor Removed");
+        model.put(MSG_SUCCESS, "Student Removed");
         return view(instructorId, model);
     }
 

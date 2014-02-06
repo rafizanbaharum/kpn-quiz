@@ -169,7 +169,9 @@ public class RegistrationManagerImpl implements RegistrationManager {
     @Override
     public void removeStudent(QaStudent student) {
         QaUser root = userDao.findById(ADMIN);
-        userDao.delete(userDao.findByActor(student), root);
+        QaUser user = userDao.findByActor(student);
+        roleDao.revokeAll(user,root);
+        userDao.delete(user, root);
         actorDao.delete(student, root);
     }
 
@@ -182,7 +184,9 @@ public class RegistrationManagerImpl implements RegistrationManager {
         for (QaStudent student : students) {
             removeStudent(student);
         }
-        userDao.delete(userDao.findByActor(instructor), root);
+        QaUser user = userDao.findByActor(instructor);
+        roleDao.revokeAll(user,root);
+        userDao.delete(user, root);
         actorDao.delete(instructor, root);
 
     }
