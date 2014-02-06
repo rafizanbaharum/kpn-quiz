@@ -4,9 +4,11 @@ import my.gov.kpn.quiz.config.Config;
 import my.gov.kpn.quiz.core.dao.QaActorDao;
 import my.gov.kpn.quiz.core.dao.QaStateDao;
 import my.gov.kpn.quiz.core.dao.QaUserDao;
+import my.gov.kpn.quiz.core.model.QaActor;
 import my.gov.kpn.quiz.core.model.QaInstructor;
 import my.gov.kpn.quiz.core.model.QaUser;
 import my.gov.kpn.quiz.core.model.impl.QaInstructorImpl;
+import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,10 +18,14 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {Config.class})
 @Transactional
 public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTests {
+
+     private static final Logger log = Logger.getLogger(QaInstructorTest.class);
 
     @Autowired
     private QaUserDao userDao;
@@ -50,6 +56,28 @@ public class QaInstructorTest extends AbstractTransactionalJUnit4SpringContextTe
         instructor.setState(stateDao.findByCode("01"));
         instructor.setSchoolName("schoolName");
         actorDao.save(instructor, root);
+
+
+    }
+
+    @Test
+    public void loadAll(){
+
+        List<QaActor> qaActors = actorDao.find();
+        for (QaActor qaActor : qaActors) {
+            QaUser user = userDao.findByActor(qaActor);
+            if (null == user){
+                log.error("Null User:" + qaActor.getName());
+            }else{
+
+                String nric = qaActor.getNricNo().replaceAll("-", "");
+                log.debug(user.getUsername() + ":" + nric);
+                if (!user.getUsername().equals(nric))
+                    log.error("Invalid username:" + nric + ":" + user.getUsername());
+
+
+            }
+        }
 
 
     }
