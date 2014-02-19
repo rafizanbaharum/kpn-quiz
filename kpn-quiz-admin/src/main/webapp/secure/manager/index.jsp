@@ -93,7 +93,7 @@
                         <div class="content">
                             Download Asean Quiz's manual for students - online quiz manual.
                         </div>
-                        <a class="view-more" href="#"
+                        <a class="view-more" href="${pageContext.request.contextPath}/docs/KPN_Quiz_student_manual.pdf"
                                 target="_blank">
                             Download Here <i class="clip-arrow-right-2"></i>
                         </a>

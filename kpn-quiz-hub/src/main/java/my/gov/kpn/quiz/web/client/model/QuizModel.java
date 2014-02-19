@@ -9,6 +9,7 @@ public class QuizModel extends MetaModel {
     public static final String LOCKED = "locked";
     public static final String START_DATE = "startDate";
     public static final String END_DATE = "endDate";
+    public static final String REMAINING = "remaining";
     public static final String COMPETITION_MODEL = "roundModel";
 
     public Long getId() {
@@ -61,6 +62,14 @@ public class QuizModel extends MetaModel {
 
     public String toString() {
         return getTitle();
+    }
+
+    public Long getRemaining(){
+        return get(REMAINING);
+    }
+
+    public void setRemaining(Long remaining){
+        set(REMAINING,remaining);
     }
 }
 

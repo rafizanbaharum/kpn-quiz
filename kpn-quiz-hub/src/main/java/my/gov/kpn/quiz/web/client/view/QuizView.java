@@ -142,7 +142,7 @@ public class QuizView extends View {
             @Override
             public void handleEvent(LoadEvent be) {
                 QuizModel quiz = (QuizModel) be.getData();
-                now = Long.valueOf(quiz.getEndDate().getTime() - System.currentTimeMillis()).intValue();
+                now = quiz.getRemaining().intValue();
             }
         });
         quizLoader.load(new BaseListLoadConfig());
@@ -300,7 +300,7 @@ public class QuizView extends View {
             }
         });
     }
-
+                                                                                                        a
     // multiplechoice + boolean
     private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
         log.info("#" + questionModel.getIndex() + " " + questionModel.getStatement() + " Answer:" + answerIndex);
@@ -506,10 +506,17 @@ public class QuizView extends View {
         logout.setMinWidth(100);
         logout.addSelectionListener(new LogoutSelectionListener());
 
+        Button save = new Button("Save");
+        save.addStyleName(QUIZ_NAV_BUTTON);
+        save.setScale(Style.ButtonScale.LARGE);
+        save.setMinWidth(100);
+        save.addSelectionListener(new SaveSelectionListener());
+
         ButtonBar buttonBar = new ButtonBar();
         buttonBar.add(questionListCbx);
         buttonBar.add(prev);
         buttonBar.add(next);
+        buttonBar.add(save);
         buttonBar.add(logout);
         buttonBar.setAlignment(CENTER);
         footer.add(buttonBar, new MarginData(20, 0, 0, 0));
@@ -711,8 +718,16 @@ public class QuizView extends View {
     class LogoutSelectionListener extends SelectionListener<ButtonEvent> {
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
+            saveAnswer(currentStep, getQuestion(currentStep));
             logout();
 
+        }
+    }
+
+    class SaveSelectionListener extends SelectionListener<ButtonEvent> {
+        @Override
+        public void componentSelected(ButtonEvent buttonEvent) {
+            saveAnswer(currentStep, getQuestion(currentStep));
         }
     }
 

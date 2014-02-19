@@ -65,7 +65,6 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .maximumSessions(1)
                 .sessionRegistry(sessionRegistry())
-                .maxSessionsPreventsLogin(true)
                 .expiredUrl("/gate/in");
     }
 
