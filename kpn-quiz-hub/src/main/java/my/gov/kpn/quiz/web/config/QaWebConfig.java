@@ -56,7 +56,7 @@ public class QaWebConfig {
         properties.put("hibernate.generate_statistics", env.getProperty("hibernate.generate_statistics"));
         properties.put("hibernate.cache.region.factory_class", env.getProperty("hibernate.cache.region.factory_class"));
 
-        properties.put("hibernate.order_updates", env.getProperty("hibernate.order_update"));
+        properties.put("hibernate.order_updates", env.getProperty("hibernate.order_updates"));
         properties.put("hibernate.id.new_generator_mappings", env.getProperty("hibernate.id.new_generator_mappings"));
         properties.put("hibernate.jdbc.fetch_size", env.getProperty("hibernate.jdbc.fetch_size"));
         properties.put("hibernate.jdbc.batch_size", env.getProperty("hibernate.jdbc.batch_size"));
