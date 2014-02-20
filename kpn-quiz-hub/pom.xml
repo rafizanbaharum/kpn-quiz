@@ -416,7 +416,7 @@
         </repository>
         <repository>
             <id>maven repo 2</id>
-            <url>http://maven-repository.com/artifact</url>
+            <url>http://maven.tigase.org</url>
         </repository>
         <repository>
             <id>jahia</id>
