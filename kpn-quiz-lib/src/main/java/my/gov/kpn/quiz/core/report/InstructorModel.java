@@ -8,6 +8,7 @@ public class InstructorModel {
     private String school_type;
     private String school_phone;
     private String email;
+    private String nric;
     private Long student_count;
 
     public String getEmail() {
@@ -64,5 +65,13 @@ public class InstructorModel {
 
     public void setStudent_count(Long student_count) {
         this.student_count = student_count;
+    }
+
+    public String getNric() {
+        return nric;
+    }
+
+    public void setNric(String nric) {
+        this.nric = nric;
     }
 }

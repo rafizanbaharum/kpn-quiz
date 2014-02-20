@@ -70,6 +70,7 @@
                                 List of instructors
                             </div>
                             <div class="panel-body">
+                                 <jsp:include page="../include/msg.jsp"/>
                                 <table class="table table-hover" id="sample-table-1">
                                     <thead>
                                         <tr>

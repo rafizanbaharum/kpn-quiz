@@ -50,33 +50,45 @@ inner join QA_ACTR a on s.id = a.id]]>
 	<columnHeader>
 		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="52d39949-0f3b-4773-a23b-30a9a1c62c20" x="16" y="2" width="141" height="20"/>
-				<textElement/>
+				<reportElement uuid="52d39949-0f3b-4773-a23b-30a9a1c62c20" x="34" y="3" width="141" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2de567a5-91eb-4907-9623-fdd7229b101d" x="157" y="2" width="82" height="20"/>
-				<textElement/>
+				<reportElement uuid="2de567a5-91eb-4907-9623-fdd7229b101d" x="182" y="3" width="57" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[D.O.B]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="d8085c05-b0c7-4c06-a262-2c89eb058067" x="239" y="2" width="25" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Age]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="2840a6c6-b807-4097-b919-244b71d40b04" x="264" y="2" width="44" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Gender]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="24390ba3-b670-415f-a0f8-0f67f3512b69" x="310" y="2" width="45" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Race]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="22ea7a0e-6cf5-4d07-abce-cda77edf432c" x="355" y="2" width="200" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[School]]></text>
 			</staticText>
 		</band>
@@ -84,43 +96,59 @@ inner join QA_ACTR a on s.id = a.id]]>
 	<detail>
 		<band height="22" splitType="Stretch">
 			<textField>
-				<reportElement uuid="22fb30b1-278b-4597-a36f-222d717dfecd" x="0" y="0" width="16" height="20"/>
-				<textElement/>
+				<reportElement uuid="22fb30b1-278b-4597-a36f-222d717dfecd" x="0" y="0" width="34" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="bb7bf489-a3ca-4bd3-8d86-9c4ec848bdc3" x="16" y="0" width="141" height="20"/>
-				<textElement/>
+				<reportElement uuid="bb7bf489-a3ca-4bd3-8d86-9c4ec848bdc3" x="34" y="0" width="148" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement uuid="44819ff8-0df0-4b5c-9f28-3fcbfbd5f7b5" x="157" y="0" width="82" height="20"/>
-				<textElement/>
+				<reportElement uuid="44819ff8-0df0-4b5c-9f28-3fcbfbd5f7b5" x="182" y="0" width="57" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
 				<reportElement uuid="f2ef62c9-b7b9-44f4-b705-6535c1354541" x="239" y="0" width="25" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="205839f5-11a2-4103-b623-1412cc55d379" x="264" y="0" width="44" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{gender_type}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="0341f1ee-4499-45cb-83f9-e411d65d7577" x="308" y="0" width="45" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{race_type}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="cfb9639e-9f1d-4027-9e0b-57997e969047" x="355" y="0" width="56" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{school_type}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="72b6eb13-808d-4d93-aecb-2b99099fa668" x="411" y="0" width="144" height="20"/>
-				<textElement/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
 			</textField>
 		</band>

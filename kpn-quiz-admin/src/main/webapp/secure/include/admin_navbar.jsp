@@ -31,6 +31,8 @@
                         </a>
                     </li>
                 </ul>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_ADMINISTRATOR') || hasRole('ROLE_SUPPORT')">
                 <ul class="sub-menu">
                     <li>
                         <a href="${pageContext.request.contextPath}/secure/instructor/browse?page=1">
@@ -40,6 +42,7 @@
                 </ul>
                     </sec:authorize>
 
+                <sec:authorize access="hasRole('ROLE_ADMINISTRATOR') || hasRole('ROLE_REPORT')">
                 <ul class="sub-menu">
                     <li>
                         <a href="${pageContext.request.contextPath}/secure/report/list">
@@ -47,6 +50,7 @@
                         </a>
                     </li>
                 </ul>
+                </sec:authorize>
             </li>
         </ul>
     </div>

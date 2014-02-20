@@ -56,6 +56,7 @@ public class QuizConverter {
         model.setId(quiz.getId());
         model.setStartDate(quiz.getStartDate());
         model.setEndDate(quiz.getEndDate());
+        model.setRemaining(quiz.getEndDate().getTime() - System.currentTimeMillis());
 
         return model;
 

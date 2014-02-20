@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "sec" uri = "http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
@@ -139,16 +140,15 @@
                                         </div>
 
                                     </div>
-                                    <%--<div class="row">--%>
-                                    <%--<div class="col-md-12">--%>
-                                    <%--<div class="btn-group btn-group-justified">--%>
-                                    <%--<a href="${pageContext.request.contextPath}/secure/quiz/edit/${quizModel.id}"--%>
-                                    <%--class="btn btn-primary" title="Edit quiz">Edit</a>--%>
-                                    <%--<a href="${pageContext.request.contextPath}/secure/quiz/remove/${quizModel.id}"--%>
-                                    <%--class="btn btn-primary" title="Remove quiz">Remove</a>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
-                                    <%--</div>--%>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="btn-group btn-group-justified">
+                                                <sec:authorize access="hasRole('ROLE_SUPPORT')">
+                                                    <a href="${pageContext.request.contextPath}/secure/instructor/remove/confirm/${instructorModel.id}" class="btn btn-primary" title="Remove Instructor">Remove</a>
+                                                </sec:authorize>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form:form>
                             </div>
                         </div>
@@ -171,6 +171,7 @@
                                             <th>Dob</th>
                                             <th>Race</th>
                                             <th>Gender</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -182,6 +183,17 @@
                                                 <td class="hidden-xs">${studentModel.dobFormatted}</td>
                                                 <td class="hidden-xs">${studentModel.raceTypeName}</td>
                                                 <td class="hidden-xs">${studentModel.genderTypeName}</td>
+                                                <td class="center">
+                                                     <sec:authorize access="hasRole('ROLE_SUPPORT')">
+                                                    <div class="visible-md visible-lg hidden-sm hidden-xs">
+                                                        <a href="${pageContext.request.contextPath}/secure/instructor/remove/student/${instructorModel.id}/${studentModel.id}"
+                                                           class="btn btn-primary tooltips" data-placement="top"
+                                                           data-original-title="Remove"><i
+                                                                class="icon-remove"></i>
+                                                        </a>
+                                                    </div>
+                                                         </sec:authorize>
+                                                </td>
                                             </tr>
                                         </c:forEach>
                                     </tbody>

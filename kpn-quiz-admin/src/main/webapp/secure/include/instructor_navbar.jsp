@@ -1,3 +1,4 @@
+<%@ taglib prefix = "sec" uri = "http://www.springframework.org/security/tags" %>
 <div class="navbar-content">
     <div class="main-navigation navbar-collapse collapse">
         <div class="navigation-toggler">
@@ -15,6 +16,7 @@
                     <span class="title"> Manage Competition </span><i class="icon-arrow"></i>
                     <span class="selected"></span>
                 </a>
+                <sec:authorize access="hasRole('ROLE_ADMINISTRATOR')">
                 <ul class="sub-menu">
                     <li>
                         <a href="${pageContext.request.contextPath}/secure/competition/list">
@@ -29,6 +31,8 @@
                         </a>
                     </li>
                 </ul>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_ADMINISTRATOR') || hasRole('ROLE_SUPPORT')">
                 <ul class="sub-menu">
                     <li>
                         <a href="${pageContext.request.contextPath}/secure/instructor/browse?page=1">
@@ -36,13 +40,17 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="sub-menu">
+                </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ADMINISTRATOR') || hasRole('ROLE_REPORT')">
+               <ul class="sub-menu">
                     <li>
                         <a href="${pageContext.request.contextPath}/secure/report/list">
                             <span class="title">Reports</span>
                         </a>
                     </li>
                 </ul>
+                </sec:authorize>
+
             </li>
         </ul>
     </div>

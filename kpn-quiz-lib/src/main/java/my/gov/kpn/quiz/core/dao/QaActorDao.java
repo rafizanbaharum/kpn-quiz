@@ -40,4 +40,6 @@ public interface QaActorDao extends DaoSupport<Long, QaActor, QaActorImpl> {
     void update(QaActor actor, QaUser user);
 
     void deactivate(QaActor actor, QaUser user);
+
+    void delete(QaActor actor, QaUser user);
 }

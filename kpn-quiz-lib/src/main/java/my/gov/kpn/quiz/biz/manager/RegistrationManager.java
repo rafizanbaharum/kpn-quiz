@@ -28,5 +28,7 @@ public interface RegistrationManager {
 
     void removeStudent(QaStudent student);
 
+    void removeInstructor(QaInstructor instructor);
+
     boolean isExists(String username);
 }
