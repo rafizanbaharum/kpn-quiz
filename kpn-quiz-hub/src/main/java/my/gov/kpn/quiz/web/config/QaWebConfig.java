@@ -1,6 +1,6 @@
 package my.gov.kpn.quiz.web.config;
 
-import org.apache.commons.dbcp.BasicDataSource;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 /**
@@ -27,7 +28,7 @@ import java.util.Properties;
 public class QaWebConfig {
 
     @Autowired
-    private Environment environment;
+    private Environment env;
 
     @Bean
     public SessionFactory sessionFactory() {
@@ -46,42 +47,46 @@ public class QaWebConfig {
     @Bean
     public Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        properties.put("hibernate.show_sql", "false");
-        properties.put("hibernate.hbm2ddl.auto", "update");
-        properties.put("hibernate.format_sql", "true");
-        properties.put("hibernate.cache.use_query_cache", "true");
-        properties.put("hibernate.cache.use_second_level_cache", "true");
-        properties.put("hibernate.generate_statistics", "true");
-        properties.put("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
-        properties.put("javax.persistence.validation.mode", "none");
+        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+        properties.put("hibernate.cache.use_query_cache", env.getProperty("hibernate.cache.use_query_cache"));
+        properties.put("hibernate.cache.use_second_level_cache", env.getProperty("hibernate.cache.use_second_level_cache"));
+        properties.put("hibernate.generate_statistics", env.getProperty("hibernate.generate_statistics"));
+        properties.put("hibernate.cache.region.factory_class", env.getProperty("hibernate.cache.region.factory_class"));
 
-        //properties.put("hibernate.connection.pool_size", "1");
-        //properties.put("hibernate.format_sql", "true");
-        //properties.put("hibernate.use_sql_comments", "true");
-        //properties.put("hibernate.c3p0.min_size", "5");
-        //properties.put("hibernate.c3p0.max_size", "20");
-        //properties.put("hibernate.c3p0.timeout", "300");
-        //properties.put("hibernate.c3p0.max_statements", "50");
-        //properties.put("hibernate.c3p0.idle_test_period", "3000");
-        //properties.put("hibernate.cache.use_second_level_cache", "true");
-        //properties.put("hibernate.cache.region.factory_class","org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory");
-        //properties.put("hibernate.cache.use_query_cache", "true");
-        //properties.put("hibernate.cache.use_minimal_puts", "true");
-        //properties.put("hibernate.max_fetch_depth", "10");
+        properties.put("hibernate.order_updates", env.getProperty("hibernate.order_update"));
+        properties.put("hibernate.id.new_generator_mappings", env.getProperty("hibernate.id.new_generator_mappings"));
+        properties.put("hibernate.jdbc.fetch_size", env.getProperty("hibernate.jdbc.fetch_size"));
+        properties.put("hibernate.jdbc.batch_size", env.getProperty("hibernate.jdbc.batch_size"));
+        properties.put("hibernate.jdbc.batch_versioned_data", env.getProperty("hibernate.jdbc.batch_versioned_data"));
+        properties.put("hibernate.connection.release_mode", env.getProperty("hibernate.connection.release_mode"));
+        properties.put("hibernate.bytecode.use_reflection_optimizer", env.getProperty("hibernate.bytecode.use_reflection_optimizer"));
+        properties.put("hibernate.bytecode.provider", env.getProperty("hibernate.bytecode.provider"));
+        properties.put("javax.persistence.validation.mode", env.getProperty("javax.persistence.validation.mode"));
         return properties;
     }
 
     @Bean
     public DataSource dataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUsername(environment.getProperty("db.username"));
-        dataSource.setPassword(environment.getProperty("db.password"));
-        dataSource.setUrl(environment.getProperty("db.url"));
-        dataSource.setDriverClassName(environment.getProperty("db.driver"));
-        dataSource.setInitialSize(10);
-        dataSource.setMaxActive(5);
-        dataSource.setMaxWait(5000);
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        try {
+            dataSource.setUser(env.getProperty("db.username"));
+            dataSource.setPassword(env.getProperty("db.password"));
+            dataSource.setJdbcUrl(env.getProperty("db.url"));
+            dataSource.setDriverClass(env.getProperty("db.driver"));
+
+            // custom config
+            dataSource.setAcquireIncrement(Integer.parseInt(env.getProperty("c3p0.acquire_increment")));
+            dataSource.setMinPoolSize(Integer.parseInt(env.getProperty("c3p0.min_pool_size")));
+            dataSource.setMaxPoolSize(Integer.parseInt(env.getProperty("c3p0.max_pool_size")));
+            dataSource.setMaxIdleTime(Integer.parseInt(env.getProperty("c3p0.max_idle_time")));
+            dataSource.setMaxStatements(Integer.parseInt(env.getProperty("c3p0.max_statements")));
+            dataSource.setIdleConnectionTestPeriod(Integer.parseInt(env.getProperty("c3p0.idle_conn_test_period")));
+        } catch (PropertyVetoException e) {
+            e.printStackTrace();
+        }
         return dataSource;
     }
 
@@ -89,5 +94,4 @@ public class QaWebConfig {
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());
     }
-
 }
