@@ -1,0 +1,1 @@
+set CATALINA_OPTS=-server -Xms512m -Xmx4084m
