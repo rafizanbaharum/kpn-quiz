@@ -415,6 +415,10 @@
             <url>http://mvnrepository.com/artifact</url>
         </repository>
         <repository>
+            <id>maven repo 2</id>
+            <url>http://maven-repository.com/artifact</url>
+        </repository>
+        <repository>
             <id>jahia</id>
             <url>http://maven.jahia.org/maven2/</url>
         </repository>
