@@ -60,7 +60,6 @@ public class QaWebConfig {
         properties.put("hibernate.id.new_generator_mappings", env.getProperty("hibernate.id.new_generator_mappings"));
         properties.put("hibernate.jdbc.fetch_size", env.getProperty("hibernate.jdbc.fetch_size"));
         properties.put("hibernate.jdbc.batch_size", env.getProperty("hibernate.jdbc.batch_size"));
-        properties.put("hibernate.jdbc.batch_versioned_data", env.getProperty("hibernate.jdbc.batch_versioned_data"));
         properties.put("hibernate.connection.release_mode", env.getProperty("hibernate.connection.release_mode"));
         properties.put("hibernate.bytecode.use_reflection_optimizer", env.getProperty("hibernate.bytecode.use_reflection_optimizer"));
         properties.put("hibernate.bytecode.provider", env.getProperty("hibernate.bytecode.provider"));
