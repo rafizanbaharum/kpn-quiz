@@ -300,7 +300,7 @@ public class QuizView extends View {
             }
         });
     }
-                                                                                                        a
+
     // multiplechoice + boolean
     private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
         log.info("#" + questionModel.getIndex() + " " + questionModel.getStatement() + " Answer:" + answerIndex);
