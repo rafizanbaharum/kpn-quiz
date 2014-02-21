@@ -45,7 +45,7 @@ public class ResponseServlet extends HttpServlet {
         switch (question.getQuestionType()) {
             case MULTIPLE_CHOICE:
                 QaMultipleChoiceQuestion mcq = (QaMultipleChoiceQuestion) question;
-                competitionManager.updateAnswer(participant, question, Integer.parseInt(responseStr));
+                competitionManager.updateAnswer(participant, mcq, Integer.parseInt(responseStr));
                 break;
             case BOOLEAN:
                 QaBooleanQuestion bq = (QaBooleanQuestion) question;
