@@ -14,13 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 /**
  * @author rafizan.baharum
  * @since 1/15/14
  */
-public class LoadServlet extends HttpServlet {
+public class QuestionServlet extends HttpServlet {
 
     public static final String BR = "<br/>";
     @Autowired
@@ -38,37 +37,35 @@ public class LoadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QaQuiz quiz = GlobalRegistry.getQuiz();
-        List<QaQuestion> questions = competitionManager.findQuestions(quiz);
+        String idStr = req.getParameter("id");
+        QaQuestion question = competitionManager.findQuestionById(Long.valueOf(idStr));
         PrintWriter writer = resp.getWriter();
         writer.write("<html>");
         writer.write("<body>");
-        for (int i = 0, questionsSize = questions.size(); i < questionsSize; i++) {
-            QaQuestion question = questions.get(i);
-            writer.write("<p>");
-            writer.write(i + 1 + ": " + question.getStatement());
-            writer.write("</p>");
-            switch (question.getQuestionType()) {
-                case MULTIPLE_CHOICE:
-                    QaMultipleChoiceQuestion mcq = (QaMultipleChoiceQuestion) question;
-                    writer.write("<ol>");
-                    writer.write("<li>" + mcq.getChoice1() + "</li>");
-                    writer.write("<li>" + mcq.getChoice2() + "</li>");
-                    writer.write("<li>" + mcq.getChoice3() + "</li>");
-                    writer.write("<li>" + mcq.getChoice4() + "</li>");
-                    writer.write("</ol>");
-                    break;
-                case BOOLEAN:
-                    QaBooleanQuestion bq = (QaBooleanQuestion) question;
-                    writer.write("<ol>");
-                    writer.write("<li>" + "TRUE" + "</li>");
-                    writer.write("<li>" + "FALSE" + "</li>");
-                    writer.write("</ol>");
-                    break;
-                case SUBJECTIVE:
-                    QaSubjectiveQuestion sq = (QaSubjectiveQuestion) question;
-                    writer.write("limit: " + sq.getWordLimit());
-                    break;
-            }
+        writer.write("<p>");
+        writer.write("Q:" + question.getStatement());
+        writer.write("</p>");
+        switch (question.getQuestionType()) {
+            case MULTIPLE_CHOICE:
+                QaMultipleChoiceQuestion mcq = (QaMultipleChoiceQuestion) question;
+                writer.write("<ol>");
+                writer.write("<li>" + mcq.getChoice1() + "</li>");
+                writer.write("<li>" + mcq.getChoice2() + "</li>");
+                writer.write("<li>" + mcq.getChoice3() + "</li>");
+                writer.write("<li>" + mcq.getChoice4() + "</li>");
+                writer.write("</ol>");
+                break;
+            case BOOLEAN:
+                QaBooleanQuestion bq = (QaBooleanQuestion) question;
+                writer.write("<ol>");
+                writer.write("<li>" + "TRUE" + "</li>");
+                writer.write("<li>" + "FALSE" + "</li>");
+                writer.write("</ol>");
+                break;
+            case SUBJECTIVE:
+                QaSubjectiveQuestion sq = (QaSubjectiveQuestion) question;
+                writer.write("limit: " + sq.getWordLimit());
+                break;
         }
         writer.write("</body>");
         writer.write("</html>");
