@@ -79,4 +79,6 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailService);
     }
 
+
+
 }

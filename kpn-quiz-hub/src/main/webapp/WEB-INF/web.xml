@@ -128,6 +128,11 @@
         <url-pattern>/quiz/QuizDelegate</url-pattern>
     </servlet-mapping>
 
+
+    <!-- ====================================================================================== -->
+    <!-- TESTING SERVLET -->
+    <!-- ====================================================================================== -->
+
     <servlet>
         <servlet-name>Load</servlet-name>
         <servlet-class>my.gov.kpn.quiz.web.server.LoadServlet</servlet-class>
@@ -136,6 +141,26 @@
     <servlet-mapping>
         <servlet-name>Load</servlet-name>
         <url-pattern>/load</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Question</servlet-name>
+        <servlet-class>my.gov.kpn.quiz.web.server.QuestionServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Question</servlet-name>
+        <url-pattern>/question</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Response</servlet-name>
+        <servlet-class>my.gov.kpn.quiz.web.server.ResponseServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Response</servlet-name>
+        <url-pattern>/response</url-pattern>
     </servlet-mapping>
 
     <!-- ====================================================================================== -->
