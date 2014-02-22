@@ -24,7 +24,6 @@ public abstract class QaQuestionImpl implements QaQuestion, Serializable {
     @SequenceGenerator(name = "SEQ_QA_QSTN", sequenceName = "SEQ_QA_QSTN", allocationSize = 1)
     private Long id;
 
-    @Lob
     @Column(name = "STATEMENT")
     private String statement;
 
