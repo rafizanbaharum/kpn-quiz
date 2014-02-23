@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -63,9 +64,11 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .and()
                 .sessionManagement()
-                .maximumSessions(1)
-                .sessionRegistry(sessionRegistry())
-                .expiredUrl("/gate/in");
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//                .maximumSessions(1)
+//                .sessionRegistry(sessionRegistry())
+//                .expiredUrl("/gate/in")
+        ;
     }
 
     @Bean
@@ -78,7 +81,6 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void registerAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailService);
     }
-
 
 
 }
