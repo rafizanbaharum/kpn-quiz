@@ -5,7 +5,6 @@
 <%@ page session="true" %>
 
 <!DOCTYPE html>
-<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3 Version: 1.0 Author: ClipTheme -->
 <!--[if IE 8]>
 <html class="ie8 no-js" lang="en"><![endif]-->
 <!--[if IE 9]>
