@@ -16,7 +16,7 @@
   limitations under the License.
 -->
 <!-- The contents of this file will be loaded for each web application -->
-<Context>
+<Context sessionCookiePath="/" sessionCookiePathUsesTrailingSlash="false">
 
     <!-- Default set of monitored resources -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
@@ -34,14 +34,14 @@
 
     <!-- DB Session Persistence -->
     <Manager className="org.apache.catalina.session.PersistentManager"
-        distributable="true"  processExpiresFrequency="3" maxIdleBackup="1" >
+             distributable="true" processExpiresFrequency="3" maxIdleBackup="1">
         <Store className="org.apache.catalina.session.JDBCStore"
-            driverName="org.postgresql.Driver"
-            connectionURL="jdbc:postgresql://10.202.100.164:5432/quiz"
-            connectionName="quiz" connectionPassword="quiz"
-            sessionAppCol="app_name" sessionDataCol="session_data" sessionIdCol="session_id"
-            sessionLastAccessedCol="last_access" sessionMaxInactiveCol="max_inactive"
-            sessionTable="tomcat_sessions" sessionValidCol="valid_session" />
+               driverName="org.postgresql.Driver"
+               connectionURL="jdbc:postgresql://10.202.100.164:5432/quiz"
+               connectionName="quiz" connectionPassword="quiz"
+               sessionAppCol="app_name" sessionDataCol="session_data" sessionIdCol="session_id"
+               sessionLastAccessedCol="last_access" sessionMaxInactiveCol="max_inactive"
+               sessionTable="tomcat_sessions" sessionValidCol="valid_session"/>
     </Manager>
 
 </Context>
