@@ -41,6 +41,7 @@ public class ResponseServlet extends HttpServlet {
         String responseStr = req.getParameter("responseStr");
         QaQuestion question = competitionManager.findQuestionById(Long.valueOf(idStr));
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
+        resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
         switch (question.getQuestionType()) {
             case MULTIPLE_CHOICE:

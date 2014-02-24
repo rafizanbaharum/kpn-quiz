@@ -39,6 +39,7 @@ public class QuestionServlet extends HttpServlet {
         QaQuiz quiz = GlobalRegistry.getQuiz();
         String idStr = req.getParameter("id");
         QaQuestion question = competitionManager.findQuestionById(Long.valueOf(idStr));
+        resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
         writer.write("<html>");
         writer.write("<body>");

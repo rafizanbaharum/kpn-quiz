@@ -39,6 +39,7 @@ public class LoadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         QaQuiz quiz = GlobalRegistry.getQuiz();
         List<QaQuestion> questions = competitionManager.findQuestions(quiz);
+        resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
         writer.write("<html>");
         writer.write("<body>");
