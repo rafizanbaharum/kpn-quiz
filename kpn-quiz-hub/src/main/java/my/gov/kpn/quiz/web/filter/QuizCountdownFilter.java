@@ -37,6 +37,7 @@ public class QuizCountdownFilter extends AutoInjectingFilterListener {
             if (new Date().before(quiz.getStartDate())) {
                 request.getSession().setAttribute("startDate", quiz.getStartDate().getTime() / 1000);
                 request.getSession().setAttribute("endDate", quiz.getEndDate().getTime() / 1000);
+                request.getSession().setAttribute("now", new Date().getTime() / 1000);
                 request.getRequestDispatcher("countdown.jsp").forward(request, response);
             } else if (new Date().after(quiz.getEndDate())) {
                 log.debug("Quiz has ended!");

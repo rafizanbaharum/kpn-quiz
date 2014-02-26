@@ -28,7 +28,7 @@
 
                 startDate: ${sessionScope.startDate},
                 endDate: ${sessionScope.endDate},
-                now: new Date() / 1000
+                now: ${sessionScope.now}
             });
         });
     </script>
