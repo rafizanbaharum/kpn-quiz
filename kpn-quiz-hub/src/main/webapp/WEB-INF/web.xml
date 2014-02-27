@@ -205,6 +205,6 @@
     </welcome-file-list>
 
     <session-config>
-        <session-timeout>3</session-timeout>
+        <session-timeout>80</session-timeout>
     </session-config>
 </web-app>
