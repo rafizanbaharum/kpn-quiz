@@ -48,7 +48,6 @@ public class QaStudentDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException, DataAccessException {
-        log.debug("loading username: " + s);
         QaUser user = null;
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select u from QaUser u " +
@@ -66,7 +65,7 @@ public class QaStudentDetailService implements UserDetailsService {
         user = (QaUser) query.uniqueResult();
         if (user == null)
             throw new UsernameNotFoundException("No such user");
-        log.debug(user.getUsername() + " " + user.getPassword());
+        log.debug("Student logged in with id =" + s);
 
         audit(user);
         return new QaUserDetails(user, loadGrantedAuthoritiesFor(user));
@@ -77,7 +76,6 @@ public class QaStudentDetailService implements UserDetailsService {
         for (QaPrincipalRole role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleType().name()));
         }
-        log.info("load auth for " + user.getName() + "#" + user.getId());
         return grantedAuthorities;
     }
 
