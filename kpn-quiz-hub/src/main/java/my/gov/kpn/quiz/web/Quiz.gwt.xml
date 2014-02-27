@@ -10,7 +10,7 @@
     <inherits name='com.extjs.gxt.charts.Chart'/>
 
     <!-- EXP -->
-    <!--<inherits name="com.google.gwt.precompress.Precompress"/>-->
+    <inherits name="com.google.gwt.precompress.Precompress"/>
 
     <!-- For development a default of DEBUG is recommended -->
     <inherits name='com.google.gwt.logging.Logging'/>
