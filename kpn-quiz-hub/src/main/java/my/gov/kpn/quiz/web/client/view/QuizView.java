@@ -201,7 +201,7 @@ public class QuizView extends View {
                 } else { // subsequent load
                     QuestionModel prevQuestion = getQuestion(be.getPreviousQuestionIndex());
                     QuestionModel nextQuestion = getQuestion(be.getNextQuestionIndex());
-                    saveAnswer(be.getPreviousQuestionIndex(), prevQuestion);
+                    saveAnswer(be.getPreviousQuestionIndex(), prevQuestion, false);
                     loadAnswer(nextQuestion);
                     loadResponseStatus();
                 }
@@ -209,7 +209,7 @@ public class QuizView extends View {
         });
     }
 
-    private void saveAnswer(int prevQuestionIndex, QuestionModel prevQuestion) {
+    private void saveAnswer(int prevQuestionIndex, QuestionModel prevQuestion, boolean doLogout) {
         LayoutContainer container = (LayoutContainer) cardPanel.getItem(prevQuestionIndex);
         LayoutContainer box = (LayoutContainer) container.getItemByItemId(QUIZ_QUESTION_BOX);
         List<Component> items = box.getItems();
@@ -223,7 +223,7 @@ public class QuizView extends View {
                         Integer mcAnswer;
                         if (mcRadio.getValue()) {
                             mcAnswer = ansIdx;
-                            updateAnswer(prevQuestion, mcAnswer);
+                            updateAnswer(prevQuestion, mcAnswer, doLogout);
                             break;
                         }
                     }
@@ -240,7 +240,7 @@ public class QuizView extends View {
                         Integer mcAnswer;
                         if (mcRadio.getValue()) {
                             mcAnswer = ansIdx;
-                            updateAnswer(prevQuestion, mcAnswer);
+                            updateAnswer(prevQuestion, mcAnswer, doLogout);
                             break;
                         }
                     }
@@ -252,7 +252,7 @@ public class QuizView extends View {
                     log.info("item.getClass() = " + item.getClass());
                 }
                 TextArea textArea = (TextArea) box.getItemByItemId(QUIZ_QUESTION_RESPONSE);
-                updateAnswer(prevQuestion, textArea.getValue());
+                updateAnswer(prevQuestion, textArea.getValue(), doLogout);
                 break;
         }
     }
@@ -285,7 +285,7 @@ public class QuizView extends View {
     }
 
     // subjective
-    private void updateAnswer(QuestionModel questionModel, String answerResponse) {
+    private void updateAnswer(QuestionModel questionModel, String answerResponse, final boolean doLogout) {
         log.info("updating answer: " + answerResponse);
         questionModel.setAnswered(Boolean.TRUE);
         // NOTE: use update by id
@@ -293,17 +293,19 @@ public class QuizView extends View {
             @Override
             public void onFailure(Throwable caught) {
                 Info.display("Error occurred", "");
+                if (doLogout) logout();
             }
 
             @Override
             public void onSuccess(Void result) {
                 Info.display("Saved!", "");
+                if (doLogout) logout();
             }
         });
     }
 
     // multiplechoice + boolean
-    private void updateAnswer(QuestionModel questionModel, Integer answerIndex) {
+    private void updateAnswer(QuestionModel questionModel, Integer answerIndex, final boolean doLogout) {
         log.info("#" + questionModel.getIndex() + " " + questionModel.getStatement() + " Answer:" + answerIndex);
         questionModel.setAnswered(Boolean.TRUE);
         questionListCbx.getStore().removeAll();
@@ -315,11 +317,13 @@ public class QuizView extends View {
             public void onFailure(Throwable caught) {
                 caught.printStackTrace();
                 Info.display("Error occurred!", "");
+                if (doLogout) logout();
             }
 
             @Override
             public void onSuccess(Void result) {
                 Info.display("Saved!", "");
+                if (doLogout) logout();
             }
         });
     }
@@ -723,16 +727,15 @@ public class QuizView extends View {
     class LogoutSelectionListener extends SelectionListener<ButtonEvent> {
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
-            saveAnswer(currentStep, getQuestion(currentStep));
+            saveAnswer(currentStep, getQuestion(currentStep), true);
             logout();
-
         }
     }
 
     class SaveSelectionListener extends SelectionListener<ButtonEvent> {
         @Override
         public void componentSelected(ButtonEvent buttonEvent) {
-            saveAnswer(currentStep, getQuestion(currentStep));
+            saveAnswer(currentStep, getQuestion(currentStep), false);
         }
     }
 
@@ -744,7 +747,7 @@ public class QuizView extends View {
             timer.addStyleName("blink_me");
         }
         if (minutes == 0 && seconds == 0) {
-            saveAnswer(currentStep, getQuestion(currentStep));
+            saveAnswer(currentStep, getQuestion(currentStep), false);
             t.cancel();
             MessageBox.alert("Time out!", "Sorry, you're out of time!", new Listener<MessageBoxEvent>() {
                 @Override
