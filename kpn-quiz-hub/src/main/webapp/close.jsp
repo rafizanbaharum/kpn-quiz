@@ -34,7 +34,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/fonts/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main-responsive.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/iCheck/skins/all.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme_light.css" id="skin_color">
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -69,7 +68,6 @@
 <script src="${pageContext.request.contextPath}/assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/plugins/blockUI/jquery.blockUI.js"></script>
-<script src="${pageContext.request.contextPath}/assets/plugins/iCheck/jquery.icheck.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
