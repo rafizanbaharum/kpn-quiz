@@ -15,13 +15,30 @@ public interface QuizDelegate extends RemoteService {
 
     QuizModel loadCurrentQuiz();
 
+    // ==================================================================================================== //
+    // UPDATE ANSWER
+    // ==================================================================================================== //
     void updateAnswer(QuestionModel model, Integer answerIndex);
 
     void updateAnswer(QuestionModel model, String answerResponse);
+
+    void updateAnswer(Long id, Integer answerIndex);
+
+    void updateAnswer(Long id, String answerResponse);
+
+    // ==================================================================================================== //
+    // LOAD ANSWER
+    // ==================================================================================================== //
 
     // for multiple choice and boolean
     Integer loadAnswerIndex(QuestionModel model);
 
     // for subjective
     String loadAnswerResponse(QuestionModel model);
+
+    // for multiple choice and boolean
+    Integer loadAnswerIndex(Long id);
+
+    // for subjective
+    String loadAnswerResponse(Long id);
 }

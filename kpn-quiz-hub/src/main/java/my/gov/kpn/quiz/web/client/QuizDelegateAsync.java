@@ -15,6 +15,10 @@ public interface QuizDelegateAsync {
 
     void findCurrentQuestions(AsyncCallback<ListLoadResult<QuestionModel>> async);
 
+    // ==================================================================================================== //
+    // UPDATE ANSWER
+    // ==================================================================================================== //
+
     // for multiple choice and boolean
     void updateAnswer(QuestionModel model, Integer answerIndex, AsyncCallback<Void> async);
 
@@ -22,9 +26,25 @@ public interface QuizDelegateAsync {
     void updateAnswer(QuestionModel model, String answerResponse, AsyncCallback<Void> async);
 
     // for multiple choice and boolean
+    void updateAnswer(Long id, Integer answerIndex, AsyncCallback<Void> async);
+
+    // for subjective
+    void updateAnswer(Long id, String answerResponse, AsyncCallback<Void> async);
+
+    // ==================================================================================================== //
+    // LOAD ANSWER
+    // ==================================================================================================== //
+
+    // for multiple choice and boolean
     void loadAnswerIndex(QuestionModel model, AsyncCallback<Integer> async);
 
     // for subjective
     void loadAnswerResponse(QuestionModel model, AsyncCallback<String> async);
+
+    // for multiple choice and boolean
+    void loadAnswerIndex(Long id, AsyncCallback<Integer> async);
+
+    // for subjective
+    void loadAnswerResponse(Long id, AsyncCallback<String> async);
 
 }

@@ -72,6 +72,24 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
     }
 
     @Override
+    public void updateAnswer(Long id, Integer answerIndex) {
+        log.debug("Updating answer #{} with response {}", id, answerIndex);
+        QaQuestion question = competitionManager.findQuestionById(id);
+        QaQuiz quiz = GlobalRegistry.getQuiz();
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
+        competitionManager.updateAnswer(participant, question, answerIndex);
+    }
+
+    @Override
+    public void updateAnswer(Long id, String answerResponse) {
+        log.debug("Updating answer #{} with response {}", id, answerResponse);
+        QaQuestion question = competitionManager.findQuestionById(id);
+        QaQuiz quiz = GlobalRegistry.getQuiz();
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
+        competitionManager.updateAnswer(participant, question, answerResponse);
+    }
+
+    @Override
     public Integer loadAnswerIndex(QuestionModel model) {
         log.debug("Loading answer for question #{}", model.getId());
         QaQuestion question = competitionManager.findQuestionById(model.getId());
@@ -85,6 +103,26 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
     public String loadAnswerResponse(QuestionModel model) {
         log.debug("Loading answer for question #{}", model.getId());
         QaQuestion question = competitionManager.findQuestionById(model.getId());
+        QaQuiz quiz = GlobalRegistry.getQuiz();
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
+        QaGradebookItem item = competitionManager.findGradebookItem(participant, quiz, question);
+        return item.getAnswerResponse();
+    }
+
+    @Override
+    public Integer loadAnswerIndex(Long id) {
+        log.debug("Loading answer for question #{}", id);
+        QaQuestion question = competitionManager.findQuestionById(id);
+        QaQuiz quiz = GlobalRegistry.getQuiz();
+        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
+        QaGradebookItem item = competitionManager.findGradebookItem(participant, quiz, question);
+        return item.getAnswerIndex();
+    }
+
+    @Override
+    public String loadAnswerResponse(Long id) {
+        log.debug("Loading answer for question #{}", id);
+        QaQuestion question = competitionManager.findQuestionById(id);
         QaQuiz quiz = GlobalRegistry.getQuiz();
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
         QaGradebookItem item = competitionManager.findGradebookItem(participant, quiz, question);

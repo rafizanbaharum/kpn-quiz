@@ -288,7 +288,8 @@ public class QuizView extends View {
     private void updateAnswer(QuestionModel questionModel, String answerResponse) {
         log.info("updating answer: " + answerResponse);
         questionModel.setAnswered(Boolean.TRUE);
-        delegate.updateAnswer(questionModel, answerResponse, new AsyncCallback<Void>() {
+        // NOTE: use update by id
+        delegate.updateAnswer(questionModel.getId(), answerResponse, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
                 Info.display("Error occurred", "");
@@ -307,7 +308,9 @@ public class QuizView extends View {
         questionModel.setAnswered(Boolean.TRUE);
         questionListCbx.getStore().removeAll();
         questionListCbx.getStore().add(models);
-        delegate.updateAnswer(questionModel, answerIndex, new AsyncCallback<Void>() {
+
+        // NOTE: use update by id
+        delegate.updateAnswer(questionModel.getId(), answerIndex, new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
                 caught.printStackTrace();
@@ -330,7 +333,8 @@ public class QuizView extends View {
     }
 
     private void loadAnswerIndex(final QuestionModel questionModel) {
-        delegate.loadAnswerIndex(questionModel, new AsyncCallback<Integer>() {
+        // NOTE: use update by id
+        delegate.loadAnswerIndex(questionModel.getId(), new AsyncCallback<Integer>() {
             @Override
             public void onFailure(Throwable caught) {
                 caught.printStackTrace();
@@ -367,7 +371,8 @@ public class QuizView extends View {
     }
 
     private void loadAnswerResponse(final QuestionModel questionModel) {
-        delegate.loadAnswerResponse(questionModel, new AsyncCallback<String>() {
+        // NOTE: use update by id
+        delegate.loadAnswerResponse(questionModel.getId(), new AsyncCallback<String>() {
             @Override
             public void onFailure(Throwable caught) {
                 caught.printStackTrace();
