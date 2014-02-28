@@ -11,6 +11,8 @@ import my.gov.kpn.quiz.web.client.model.QuizModel;
  */
 public interface QuizDelegateAsync {
 
+    void loadCurrentQuiz(AsyncCallback<QuizModel> async);
+
     void findCurrentQuestions(AsyncCallback<ListLoadResult<QuestionModel>> async);
 
     // for multiple choice and boolean
@@ -25,7 +27,4 @@ public interface QuizDelegateAsync {
     // for subjective
     void loadAnswerResponse(QuestionModel model, AsyncCallback<String> async);
 
-    void loadCurrentQuiz(AsyncCallback<QuizModel> async);
-
-    void loadResponseStatus(AsyncCallback<String> async);
 }

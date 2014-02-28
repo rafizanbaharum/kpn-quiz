@@ -106,58 +106,6 @@ var Login = function () {
             }
         });
     };
-    var runRegisterValidator = function () {
-        var form3 = $('.form-register');
-        var errorHandler3 = $('.errorHandler', form3);
-        form3.validate({
-            rules: {
-                fullName: {
-                    minlength: 12,
-                    required: true
-                }
-                /*
-                 address1: {
-                 minlength: 2,
-                 required: true
-                 },
-                 city: {
-                 minlength: 2,
-                 required: true
-                 },
-                 gender: {
-                 required: true
-                 },
-                 email: {
-                 required: true
-                 },
-                 username: {
-                 minlength: 2,
-                 required: true
-                 },
-                 password: {
-                 minlength: 6,
-                 required: true
-                 },
-                 passwordAgain: {
-                 required: true,
-                 minlength: 5,
-                 equalTo: "#password"
-                 }
-                 agree: {
-                 minlength: 1,
-                 required: true
-                 }
-                 */
-            },
-            submitHandler: function (form) {
-                errorHandler3.hide();
-                form.submit();
-            },
-            invalidHandler: function (event, validator) { //display error alert on form submit
-                errorHandler3.show();
-            }
-        });
-    };
     return {
         //main function to initiate template pages
         init: function () {
@@ -165,7 +113,6 @@ var Login = function () {
             runSetDefaultValidation();
             runLoginValidator();
             runForgotValidator();
-            runRegisterValidator();
         }
     };
 }();

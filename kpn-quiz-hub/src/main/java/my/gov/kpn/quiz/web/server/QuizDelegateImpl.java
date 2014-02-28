@@ -11,7 +11,8 @@ import my.gov.kpn.quiz.web.client.QuizDelegate;
 import my.gov.kpn.quiz.web.client.model.QuestionModel;
 import my.gov.kpn.quiz.web.client.model.QuizModel;
 import my.gov.kpn.quiz.web.common.AutoInjectingRemoteServiceServlet;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implements QuizDelegate {
 
-    private static final Logger log = Logger.getLogger(QuizDelegateImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(QuizDelegateImpl.class);
 
     @Autowired
     private CompetitionManager competitionManager;
@@ -54,6 +55,7 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
     @Override
     public void updateAnswer(QuestionModel model, Integer answerIndex) {
+        log.debug("Updating answer #{} with response {}", model.getId(), answerIndex);
         QaQuestion question = competitionManager.findQuestionById(model.getId());
         QaQuiz quiz = GlobalRegistry.getQuiz();
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
@@ -62,6 +64,7 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
     @Override
     public void updateAnswer(QuestionModel model, String answerResponse) {
+        log.debug("Updating answer #{} with response {}", model.getId(), answerResponse);
         QaQuestion question = competitionManager.findQuestionById(model.getId());
         QaQuiz quiz = GlobalRegistry.getQuiz();
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
@@ -70,6 +73,7 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
     @Override
     public Integer loadAnswerIndex(QuestionModel model) {
+        log.debug("Loading answer for question #{}", model.getId());
         QaQuestion question = competitionManager.findQuestionById(model.getId());
         QaQuiz quiz = GlobalRegistry.getQuiz();
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
@@ -79,19 +83,11 @@ public class QuizDelegateImpl extends AutoInjectingRemoteServiceServlet implemen
 
     @Override
     public String loadAnswerResponse(QuestionModel model) {
+        log.debug("Loading answer for question #{}", model.getId());
         QaQuestion question = competitionManager.findQuestionById(model.getId());
         QaQuiz quiz = GlobalRegistry.getQuiz();
         QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
         QaGradebookItem item = competitionManager.findGradebookItem(participant, quiz, question);
         return item.getAnswerResponse();
-    }
-
-    @Override
-    public String loadResponseStatus() {
-        QaQuiz quiz = GlobalRegistry.getQuiz();
-        QaParticipant participant = competitionManager.findCurrentParticipant(quiz);
-        Integer questionCount = competitionManager.countQuestion(quiz);
-        Integer answeredCount = competitionManager.countAnsweredQuestion(quiz, participant);
-        return answeredCount + "/" + questionCount;
     }
 }
