@@ -73,7 +73,7 @@
                    redirectPort="8443"
                    address="127.0.0.1"
                    enableLookups="false"
-                   maxThreads="500"/>
+                   maxThreads="32000"/>
         <!-- A "Connector" using the shared thread pool-->
         <!--
         <Connector executor="tomcatThreadPool"
@@ -97,7 +97,7 @@
                    redirectPort="8443"
                    address="127.0.0.1"
                    enableLookups="false"
-                   maxThreads="500"/>
+                   maxThreads="32000"/>
 
 
         <!-- An Engine represents the entry point (within Catalina) that processes
