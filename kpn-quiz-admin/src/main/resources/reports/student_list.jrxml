@@ -16,6 +16,7 @@ inner join QA_ACTR a on s.id = a.id]]>
 	<field name="race_type" class="java.lang.String"/>
 	<field name="school_type" class="java.lang.String"/>
 	<field name="school_name" class="java.lang.String"/>
+	<field name="nric" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -94,7 +95,7 @@ inner join QA_ACTR a on s.id = a.id]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="22" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<textField>
 				<reportElement uuid="22fb30b1-278b-4597-a36f-222d717dfecd" x="0" y="0" width="34" height="20"/>
 				<textElement>
@@ -150,6 +151,13 @@ inner join QA_ACTR a on s.id = a.id]]>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="10017fd4-b24c-4c55-8789-fec2505743ce" x="34" y="20" width="148" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nric}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
