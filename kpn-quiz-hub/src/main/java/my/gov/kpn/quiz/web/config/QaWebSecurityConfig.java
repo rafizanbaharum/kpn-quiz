@@ -64,10 +64,10 @@ public class QaWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .and()
                 .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .maximumSessions(1)
-                .sessionRegistry(sessionRegistry())
-                .expiredUrl("/gate/in")
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .maximumSessions(1)
+//                .sessionRegistry(sessionRegistry())
+//                .expiredUrl("/gate/in")
         ;
     }
 
