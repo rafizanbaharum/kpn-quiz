@@ -1,9 +1,9 @@
-package my.gov.kpn.quiz;
+package my.gov.kpn.quiz.manual;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class StudentAnswer {
+public class StudentAnswerModel {
 
     private String name;
     private String nric;
@@ -12,7 +12,7 @@ public class StudentAnswer {
     private Map<Integer,String> answers;
     private int currentIndex;
 
-    public StudentAnswer() {
+    public StudentAnswerModel() {
         answers = new HashMap<Integer, String>();
         currentIndex = 0;
     }

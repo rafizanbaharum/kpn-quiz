@@ -1,4 +1,4 @@
-package my.gov.kpn.quiz;
+package my.gov.kpn.quiz.manual;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
