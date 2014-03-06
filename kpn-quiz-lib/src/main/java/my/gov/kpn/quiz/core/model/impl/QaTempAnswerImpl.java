@@ -5,6 +5,7 @@ import my.gov.kpn.quiz.core.model.QaStudent;
 import my.gov.kpn.quiz.core.model.QaTempAnswer;
 
 import javax.persistence.*;
+import java.util.Date;
 
 public class QaTempAnswerImpl implements QaTempAnswer {
 
@@ -33,6 +34,9 @@ public class QaTempAnswerImpl implements QaTempAnswer {
 
     @Column(name = "ERROR")
     private String error;
+
+    @Column(name = "M_TS")
+    private Date timestamp;
 
     @Column(name = "ANSWER01")
     private String answer01;
@@ -650,4 +654,13 @@ public class QaTempAnswerImpl implements QaTempAnswer {
     public void setStudentId(QaStudent studentId) {
         this.studentId = studentId;
     }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
 }

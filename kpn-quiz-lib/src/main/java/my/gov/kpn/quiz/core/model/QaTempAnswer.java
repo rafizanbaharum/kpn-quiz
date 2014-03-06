@@ -1,5 +1,7 @@
 package my.gov.kpn.quiz.core.model;
 
+import java.util.Date;
+
 public interface QaTempAnswer {
 
     Long getId();
@@ -21,6 +23,9 @@ public interface QaTempAnswer {
 
     String getError();
     void setError(String error);
+
+    Date getTimestamp();
+    void setTimestamp(Date timestamp);
 
     String getAnswer01();
     void setAnswer01(String answer01);

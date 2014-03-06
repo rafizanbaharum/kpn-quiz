@@ -1,5 +1,8 @@
 package my.gov.kpn.quiz.core.model;
 
+import javax.persistence.Column;
+import java.util.Date;
+
 public interface QaManualReaderLog {
 
     Long getId();
@@ -15,4 +18,8 @@ public interface QaManualReaderLog {
     String getError();
 
     void setError(String error);
+
+    Date getTimestamp();
+    void setTimestamp(Date timestamp);
+
 }

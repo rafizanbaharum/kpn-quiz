@@ -4,6 +4,7 @@ import my.gov.kpn.quiz.core.model.QaManualReaderLog;
 
 import javax.naming.ldap.PagedResultsControl;
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "MA_RD_LG")
 @Entity(name = "MaReaderLog")
@@ -24,6 +25,9 @@ public class QaManualReaderLogImpl implements QaManualReaderLog {
 
     @Column(name = "ERROR")
     private String error;
+
+    @Column(name = "M_TS")
+    private Date timestamp;
 
     public String getError() {
         return error;
@@ -55,5 +59,15 @@ public class QaManualReaderLogImpl implements QaManualReaderLog {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public Date getTimestamp() {
+        return null;
+    }
+
+    @Override
+    public void setTimestamp(Date timestamp) {
+
     }
 }
