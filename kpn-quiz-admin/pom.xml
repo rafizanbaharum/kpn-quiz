@@ -306,6 +306,16 @@
             <artifactId>jasperreports</artifactId>
             <version>${jasper.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>3.5-beta4</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>kpn-quiz-admin</finalName>
