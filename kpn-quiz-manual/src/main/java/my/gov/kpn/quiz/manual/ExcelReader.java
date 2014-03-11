@@ -27,7 +27,7 @@ public class ExcelReader {
             int cellType = cell.getCellType();
             if (0 == cellType){
                 val = String.valueOf(cell.getNumericCellValue());
-                val = val.substring(0,val.indexOf("."));
+                val = val.substring(0,val.indexOf(""));
             }
             else
             val = cell.getStringCellValue();

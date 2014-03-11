@@ -121,6 +121,22 @@ public class DaoSupport<K, I, E> implements InitializingBean {
         }
     }
 
+    public void save(I entity) {
+        Validate.notNull(entity, "User cannot be null");
+
+        try {
+            // session
+            Session session = sessionFactory.getCurrentSession();
+
+            // prepare metadata
+
+            // save
+            session.save(entity);
+        } catch (HibernateException e) {
+            log.debug("error occured", e);
+        }
+    }
+
     /**
      * @param entity
      * @param user

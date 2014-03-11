@@ -15,6 +15,8 @@ public interface DaoSupport<K, I, E> {
 
     public void save(I entity, QaUser user);
 
+    public void save(I entity);
+
     public void saveOrUpdate(I entity, QaUser user);
 
     public void save(Session session, I i, QaUser user);
