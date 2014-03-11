@@ -7,6 +7,8 @@ import my.gov.kpn.quiz.core.model.QaTempAnswer;
 import javax.persistence.*;
 import java.util.Date;
 
+@Table(name = "QA_TMP_ANS")
+@Entity(name = "QaTempAnswer")
 public class QaTempAnswerImpl implements QaTempAnswer {
 
     @Id
@@ -21,7 +23,10 @@ public class QaTempAnswerImpl implements QaTempAnswer {
     @Column(name = "NRIC")
     private String nric;
 
-    @OneToOne(targetEntity = QaStudent.class)
+    @Column(name = "SCHOOL")
+    private String school;
+
+    @OneToOne(targetEntity = QaStudentImpl.class)
     @JoinColumn(name = "STUDENT_ID")
     private QaStudent studentId;
 
@@ -158,37 +163,37 @@ public class QaTempAnswerImpl implements QaTempAnswer {
     @Column(name = "ANSWER40")
     private String answer40;
 
-     @Column(name = "ANSWER41")
+    @Column(name = "ANSWER41", length = 1)
     private String answer41;
 
-    @Column(name = "ANSWER42")
+    @Column(name = "ANSWER42", length = 1)
     private String answer42;
 
-    @Column(name = "ANSWER43")
+    @Column(name = "ANSWER43", length = 1)
     private String answer43;
 
-    @Column(name = "ANSWER44")
+    @Column(name = "ANSWER44", length = 1)
     private String answer44;
 
-    @Column(name = "ANSWER45")
+    @Column(name = "ANSWER45", length = 1)
     private String answer45;
 
-    @Column(name = "ANSWER46")
+    @Column(name = "ANSWER46", length = 1)
     private String answer46;
 
-    @Column(name = "ANSWER47")
+    @Column(name = "ANSWER47", length = 1)
     private String answer47;
 
-    @Column(name = "ANSWER48")
+    @Column(name = "ANSWER48", length = 1)
     private String answer48;
 
-    @Column(name = "ANSWER49")
+    @Column(name = "ANSWER49", length = 3000)
     private String answer49;
 
-    @Column(name = "ANSWER50")
+    @Column(name = "ANSWER50", length = 3000)
     private String answer50;
 
-    @Column(name = "ANSWER51")
+    @Column(name = "ANSWER51", length = 3000)
     private String answer51;
 
     public String getAnswer01() {
@@ -663,4 +668,11 @@ public class QaTempAnswerImpl implements QaTempAnswer {
         this.timestamp = timestamp;
     }
 
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
 }

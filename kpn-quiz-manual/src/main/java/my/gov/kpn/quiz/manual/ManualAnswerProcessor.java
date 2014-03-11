@@ -3,6 +3,7 @@ package my.gov.kpn.quiz.manual;
 import my.gov.kpn.quiz.biz.manager.ManualProcessManager;
 import my.gov.kpn.quiz.core.model.QaTempAnswer;
 import my.gov.kpn.quiz.core.model.impl.QaTempAnswerImpl;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,9 @@ import java.io.IOException;
 @Service
 public class ManualAnswerProcessor {
 
-    private String inputDir = "";
+    private static final Logger log = Logger.getLogger(ManualAnswerProcessor.class);
+
+    private String inputDir = "c:/temp/JawapanQuiz";
 
     @Autowired
     private ExcelReader excelReader;
@@ -21,7 +24,7 @@ public class ManualAnswerProcessor {
     @Autowired
     private ManualProcessManager manualProcessManager;
 
-    public void start(){
+    public void start() {
 
         File dir = new File(inputDir);
         FilenameFilter filter = new FilenameFilter() {
@@ -35,15 +38,18 @@ public class ManualAnswerProcessor {
 
         File[] files = dir.listFiles(filter);
         for (File file : files) {
-            if (file.canRead()){
+            if (file.canRead()) {
                 try {
-                    StudentAnswerModel studentAnswerModel = excelReader.readAnswer(file.getName());
+                    log.debug("Processing " + file.getAbsolutePath());
+                    StudentAnswerModel studentAnswerModel = null;
+                    studentAnswerModel = excelReader.readAnswer(file);
                     QaTempAnswer answer = transform(studentAnswerModel);
                     manualProcessManager.writeStudentAnswer(answer);
                     manualProcessManager.writeSuccessFileReadLog(file.getName());
-                    file.delete();
+                    log.debug("Success " + file.getName());
                 } catch (IOException e) {
-                    manualProcessManager.writeErrorFileReadLog(file.getName(),e.getMessage());
+                    log.error("error " + file.getName() + ": " + e.getMessage());
+                    manualProcessManager.writeErrorFileReadLog(file.getName(), e.getMessage());
                 }
             }
         }
@@ -52,11 +58,12 @@ public class ManualAnswerProcessor {
     }
 
 
-    private QaTempAnswer transform(StudentAnswerModel model){
+    private QaTempAnswer transform(StudentAnswerModel model) {
 
         QaTempAnswerImpl tempAnswer = new QaTempAnswerImpl();
         tempAnswer.setName(model.getName());
         tempAnswer.setNric(model.getNric());
+        tempAnswer.setSchool(model.getSchool());
         int id = 1;
 
         tempAnswer.setAnswer01(model.getAnswers().get(id++));
@@ -115,7 +122,6 @@ public class ManualAnswerProcessor {
         tempAnswer.setAnswer50(model.getAnswers().get(id++));
 
         tempAnswer.setAnswer51(model.getAnswers().get(id));
-
 
 
         return tempAnswer;
