@@ -28,4 +28,8 @@ public interface QaGradebook extends QaMetaObject {
     List<QaGradebookItem> getItems();
 
     void setItems(List<QaGradebookItem> items);
+
+    QaManualStatus getStatus();
+
+    void setStatus(QaManualStatus status);
 }

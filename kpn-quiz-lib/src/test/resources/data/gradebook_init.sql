@@ -6,25 +6,27 @@ drop sequence seq_qa_grbk;
 create sequence seq_qa_grbk start with 1 increment by 1 no maxvalue no minvalue cache 20 no cycle;
 drop sequence seq_qa_grbi;
 create sequence seq_qa_grbi start with 1 increment by 1 no maxvalue no minvalue cache 20 no cycle;
-INSERT INTO public.qa_prct(id,c_ts,c_id,m_st,quiz_id,user_id)
+INSERT INTO public.qa_prct (id, c_ts, c_id, m_st, quiz_id, user_id, status)
   (SELECT
      nextval('seq_qa_prct'),
      localtimestamp,
      0,
      1,
      14,
-     u.id
+     u.id,
+     0
    FROM qa_actr a
      INNER join qa_stdn s on a.id = s.id
 inner join qa_user u on u.actor_id = a.id);
-INSERT INTO public.qa_grbk(id,c_ts,c_id,m_st,participant_id,quiz_id)
+INSERT INTO public.qa_grbk (id, c_ts, c_id, m_st, participant_id, quiz_id, status)
   (SELECT
      nextval('seq_qa_grbk'),
      localtimestamp,
      0,
      1,
      id,
-     14
+     14,
+     0
    FROM qa_prct);
 INSERT INTO public.qa_grbi(id,c_ts,c_id,m_st,gradebook_id,question_id)
     (select nextval('seq_qa_grbi'),localtimestamp,0,1,
@@ -44,6 +46,17 @@ SET participant_id = (SELECT
                         id
                       FROM qa_prct p, student_info s
                       WHERE p.user_id = s.user_id AND nric = student_nric);
+
+UPDATE qa_prct
+SET status = 1
+WHERE id IN (SELECT
+               participant_id
+             FROM qa_tmp_ans);
+UPDATE qa_grbk
+SET status = 1
+WHERE participant_id IN (SELECT
+                           participant_id
+                         FROM qa_tmp_ans);
 
 -- update answer
 UPDATE qa_grbi i

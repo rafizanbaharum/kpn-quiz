@@ -10,6 +10,10 @@ public interface QaTempAnswer {
 
     void setName(String name);
 
+    String getFilename();
+
+    void setFilename(String filename);
+
     String getSchool();
 
     void setSchool(String school);

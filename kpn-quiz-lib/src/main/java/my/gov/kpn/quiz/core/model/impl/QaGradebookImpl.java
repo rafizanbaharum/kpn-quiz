@@ -30,6 +30,10 @@ public class QaGradebookImpl implements QaGradebook, Serializable {
     @JoinColumn(name = "PARTICIPANT_ID")
     private QaParticipant participant;
 
+    @Column(name = "STATUS")
+    @Enumerated(value = EnumType.ORDINAL)
+    private QaManualStatus status;
+
     @OneToMany(targetEntity = QaGradebookItemImpl.class, mappedBy = "gradebook")
     private List<QaGradebookItem> items;
 
@@ -42,6 +46,14 @@ public class QaGradebookImpl implements QaGradebook, Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public QaManualStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(QaManualStatus status) {
+        this.status = status;
     }
 
     public QaQuiz getQuiz() {

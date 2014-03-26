@@ -1,6 +1,8 @@
 package my.gov.kpn.quiz.manual;
 
+import my.gov.kpn.quiz.biz.manager.CompetitionManager;
 import my.gov.kpn.quiz.biz.manager.ManualProcessManager;
+import my.gov.kpn.quiz.core.dao.QaQuizDao;
 import my.gov.kpn.quiz.core.model.QaTempAnswer;
 import my.gov.kpn.quiz.core.model.impl.QaTempAnswerImpl;
 import org.apache.log4j.Logger;
@@ -9,20 +11,26 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
 
 @Service
 public class ManualAnswerProcessor {
 
     private static final Logger log = Logger.getLogger(ManualAnswerProcessor.class);
 
-    private String inputDir = "c:/temp/JawapanQuiz";
+    private String inputDir = "c:/temp/JawapanQuiz/flatten";
 
     @Autowired
     private ExcelReader excelReader;
 
     @Autowired
     private ManualProcessManager manualProcessManager;
+
+    @Autowired
+    private QaQuizDao quizDao;
+
+    @Autowired
+    private CompetitionManager competitionManager;
+
 
     public void start() {
 
@@ -44,10 +52,11 @@ public class ManualAnswerProcessor {
                     StudentAnswerModel studentAnswerModel = null;
                     studentAnswerModel = excelReader.readAnswer(file);
                     QaTempAnswer answer = transform(studentAnswerModel);
+                    answer.setFilename(file.getAbsolutePath());
                     manualProcessManager.writeStudentAnswer(answer);
                     manualProcessManager.writeSuccessFileReadLog(file.getName());
                     log.debug("Success " + file.getName());
-                } catch (IOException e) {
+                } catch (Exception e) {
                     log.error("error " + file.getName() + ": " + e.getMessage());
                     manualProcessManager.writeErrorFileReadLog(file.getName(), e.getMessage());
                 }
@@ -57,6 +66,15 @@ public class ManualAnswerProcessor {
 
     }
 
+    public void tabulate() {
+
+        boolean status = true;
+        while (status) {
+            status = competitionManager.tabulateResultPartial(null);
+        }
+
+
+    }
 
     private QaTempAnswer transform(StudentAnswerModel model) {
 

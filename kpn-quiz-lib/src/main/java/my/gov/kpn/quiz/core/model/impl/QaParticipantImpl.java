@@ -33,6 +33,10 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
     @JoinColumn(name = "USER_ID")
     private QaUser user;
 
+    @Column(name = "STATUS")
+    @Enumerated(value = EnumType.ORDINAL)
+    private QaManualStatus status;
+
     @Transient
     private boolean selected;
 
@@ -45,6 +49,14 @@ public class QaParticipantImpl implements QaParticipant, Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public QaManualStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(QaManualStatus status) {
+        this.status = status;
     }
 
     public Integer getResult() {

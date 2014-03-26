@@ -106,6 +106,33 @@ public class QaGradebookDaoImpl extends DaoSupport<Long, QaGradebook, QaGradeboo
     }
 
     @Override
+    public List<QaGradebook> findAnswered(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaGradebook a where " +
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state " +
+                "and a.status = :status");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        query.setInteger("status", QaManualStatus.ANSWERED.ordinal());
+        query.setFirstResult(0);
+        query.setMaxResults(1000);
+        return query.list();
+    }
+
+    public Integer findTotalAnswered(QaQuiz quiz) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a from QaGradebook a where " +
+                "a.quiz = :quiz " +
+                "and a.metadata.state = :state " +
+                "and a.status = :status");
+        query.setEntity("quiz", quiz);
+        query.setInteger("state", QaMetaState.ACTIVE.ordinal());
+        query.setInteger("status", QaManualStatus.ANSWERED.ordinal());
+        return query.list().size();
+    }
+
+    @Override
     public Integer count(QaQuiz quiz) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(a) from QaGradebook a where " +

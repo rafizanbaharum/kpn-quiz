@@ -18,6 +18,8 @@ public interface QaGradebookDao {
 
     List<QaGradebook> find(QaQuiz quiz);
 
+    List<QaGradebook> findAnswered(QaQuiz quiz);
+
     List<QaGradebook> find(QaParticipant participant, QaQuiz quiz, QaQuestion question);
 
     List<QaGradebookItem> find(QaGradebook gradebook);
@@ -25,6 +27,8 @@ public interface QaGradebookDao {
     List<QaGradebookItem> find(QaGradebook participant, QaQuiz quiz);
 
     Integer count(QaQuiz quiz);
+
+    public Integer findTotalAnswered(QaQuiz quiz);
 
     void save(QaGradebook gradebook, QaUser user);
 

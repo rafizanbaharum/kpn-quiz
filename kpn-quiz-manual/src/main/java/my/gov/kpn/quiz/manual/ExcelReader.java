@@ -63,7 +63,7 @@ public class ExcelReader {
 //        return answer;
 //    }
 
-    public StudentAnswerModel readAnswer(File fileName) throws IOException, OldExcelFormatException {
+    public StudentAnswerModel readAnswer(File fileName) throws IOException, OldExcelFormatException, WrongFormatException {
 
 
         Workbook workbook = null;
@@ -79,6 +79,10 @@ public class ExcelReader {
 
             Row row = sheet.getRow(i);
             Cell cell = row.getCell(1);
+
+            if (null == cell) {
+                throw new WrongFormatException("Unexpected column value at row " + i + " : " + fileName.getPath());
+            }
 
             int cellType = cell.getCellType();
             if (HSSFCell.CELL_TYPE_NUMERIC == cellType) {

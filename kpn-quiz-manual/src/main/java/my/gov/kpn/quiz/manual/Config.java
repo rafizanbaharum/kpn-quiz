@@ -10,8 +10,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -21,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan({"my.gov.kpn.quiz.core", "my.gov.kpn.quiz.biz","my.gov.kpn.quiz.manual"})
+@ComponentScan({"my.gov.kpn.quiz.core", "my.gov.kpn.quiz.biz", "my.gov.kpn.quiz.manual", "my.gov.kpn.quiz.manager"})
 @PropertySource("classpath:app.properties")
 @EnableTransactionManagement
 public class Config {

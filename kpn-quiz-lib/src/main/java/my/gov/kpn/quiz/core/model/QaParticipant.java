@@ -36,6 +36,9 @@ public interface QaParticipant extends QaMetaObject {
 
     void setAnswerResponse(String answerResponse);
 
+    QaManualStatus getStatus();
+
+    void setStatus(QaManualStatus status);
 
     // transient
     // NOTE: is selected for next round

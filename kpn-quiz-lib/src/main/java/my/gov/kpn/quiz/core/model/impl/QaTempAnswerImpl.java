@@ -26,6 +26,9 @@ public class QaTempAnswerImpl implements QaTempAnswer {
     @Column(name = "SCHOOL")
     private String school;
 
+    @Column(name = "FILENAME")
+    private String filename;
+
     @OneToOne(targetEntity = QaStudentImpl.class)
     @JoinColumn(name = "STUDENT_ID")
     private QaStudent studentId;
@@ -195,6 +198,14 @@ public class QaTempAnswerImpl implements QaTempAnswer {
 
     @Column(name = "ANSWER51", length = 3000)
     private String answer51;
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
     public String getAnswer01() {
         return answer01;

@@ -280,6 +280,62 @@ public class CompetitionManagerImpl implements CompetitionManager {
     }
 
     @Override
+    public boolean tabulateResultPartial(QaQuiz quiz) {
+        // TODO: not scalable
+        // TODO: use chunk? or spring batch?
+        boolean status = true;
+
+        QaUser root = userDao.findById(0L);
+        QaQuiz quizId = quizDao.findById(14L);
+        List<QaGradebook> gradebooks = gradebookDao.findAnswered(quizId); // todo chunking
+        if (null == gradebooks || gradebooks.size() == 0) {
+            return false;
+        }
+
+
+        for (QaGradebook gradebook : gradebooks) {
+            Integer result = 0;
+            QaParticipant participant = gradebook.getParticipant();
+            List<QaGradebookItem> items = gradebook.getItems();
+            for (QaGradebookItem item : items) {
+                QaQuestion question = item.getQuestion();
+                switch (question.getQuestionType()) {
+                    case MULTIPLE_CHOICE:
+                        log.debug("answer:" + question.getAnswerIndex());
+                        log.debug("response:" + item.getAnswerIndex());
+
+                        if (null != item.getAnswerIndex() &&
+                                null != question.getAnswerIndex() && // just in case
+                                item.getAnswerIndex().equals(question.getAnswerIndex())) {
+                            result += 1;
+                        }
+                        break;
+                    case BOOLEAN:
+                        if (null != item.getAnswerIndex() &&
+                                null != question.getAnswerIndex() && // just in case
+                                item.getAnswerIndex().equals(question.getAnswerIndex())) {
+                            result += 1;
+                        }
+                        break;
+                    case SUBJECTIVE:
+                        participant.setAnswerResponse(item.getAnswerResponse());
+                        break;
+                }
+            }
+            log.debug("result: " + result);
+            participant.setStatus(QaManualStatus.TABULATED);
+            participant.setResult(result);
+            participantDao.update(participant, root);
+
+
+            gradebook.setStatus(QaManualStatus.TABULATED);
+            gradebookDao.update(gradebook, root);
+            sessionFactory.getCurrentSession().flush();
+        }
+        return status;
+    }
+
+    @Override
     public void selectParticipantForNextRound(QaQuiz quiz, QaParticipant participant) {
         QaQuiz nextRound = quizDao.findByRound(quiz.getRound() + 1);
         QaParticipant newParticipant = new QaParticipantImpl();
