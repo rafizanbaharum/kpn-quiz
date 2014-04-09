@@ -570,22 +570,22 @@ public class QuizView extends View {
 
         RadioGroup group = new RadioGroup();
         Radio button1 = new CustomRadio();
-        button1.setItemId("3");
+        button1.setItemId("0");
         button1.setStyleName(QUIZ_QUESTION_CHOICE);
         button1.setBoxLabel(model.getChoice1());
         button1.setFireChangeEventOnSetValue(true);
         Radio button2 = new CustomRadio();
-        button2.setItemId("2");
+        button2.setItemId("1");
         button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel(model.getChoice2());
         button2.setFireChangeEventOnSetValue(true);
         Radio button3 = new CustomRadio();
-        button3.setItemId("1");
+        button3.setItemId("2");
         button3.setStyleName(QUIZ_QUESTION_CHOICE);
         button3.setBoxLabel(model.getChoice3());
         button3.setFireChangeEventOnSetValue(true);
         Radio button4 = new CustomRadio();
-        button4.setItemId("0");
+        button4.setItemId("3");
         button4.setStyleName(QUIZ_QUESTION_CHOICE);
         button4.setBoxLabel(model.getChoice4());
         button4.setFireChangeEventOnSetValue(true);
@@ -621,12 +621,12 @@ public class QuizView extends View {
 
         RadioGroup group = new RadioGroup();
         Radio button1 = new Radio();
-        button1.setItemId("1");
+        button1.setItemId("0");
         button1.setStyleName(QUIZ_QUESTION_CHOICE);
         button1.setBoxLabel("TRUE");
         button1.setFireChangeEventOnSetValue(true);
         Radio button2 = new Radio();
-        button2.setItemId("0");
+        button2.setItemId("1");
         button2.setStyleName(QUIZ_QUESTION_CHOICE);
         button2.setBoxLabel("FALSE");
         button2.setFireChangeEventOnSetValue(true);
