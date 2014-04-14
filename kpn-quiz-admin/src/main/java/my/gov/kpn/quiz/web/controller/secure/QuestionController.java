@@ -24,15 +24,15 @@ public class QuestionController extends AbstractController {
     private static final Logger log = Logger.getLogger(QuestionController.class);
 
     public enum MultipleChoiceAnswerType {
-        D,
-        C,
+        A,
         B,
-        A
+        C,
+        D,
     }
 
     public enum BooleanChoiceAnswerType {
-        FALSE,
         TRUE,
+        FALSE,
     }
 
     public enum DifficultiesType {
